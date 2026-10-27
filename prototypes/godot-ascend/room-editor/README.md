@@ -1,6 +1,6 @@
 # Bladefall Room Editor
 
-A local browser editor for the eight native Movement Workshop rooms. It edits `levels/world4.tscn` through Godot's existing authoring codec. There is no upload, hosting account or manual conversion step, and no campaign scene is written.
+A local browser editor for the thirteen native Movement Workshop rooms. It edits `levels/world4.tscn` through Godot's existing authoring codec. There is no upload, hosting account or manual conversion step, and no campaign scene is written.
 
 ## Open and edit
 
@@ -45,3 +45,5 @@ Black Woods rooms are 9–13: Borrowed Branch, Crooked Orchard, Hollow Crown, Ov
 Older six- and eight-room files merge by ID while retaining newer rooms. Older seventeen-room files restore matching active rooms, omit the six retired rooms from the active list, and retain the complete imported document in browser storage (`bladefall-editor-retired-draft-v019`). Keep your exported file if you want a portable archive of retired layouts. Unknown room IDs are rejected. Native backups from before consolidation remain available for review.
 
 Older eleven-room exports and browser drafts merge by ID while preserving Overturned Hollow and Returning Seed.
+
+Choose **Return shard · one** to require any one shard at the flag, or **Return shards · all** to require every shard in that room. Click to place a shard, then duplicate or place more. These are two finish modes for the same collectible: placing either tool sets the room rule, also shown in Room settings. Uncheck the requirement for optional shards. Death/retry resets carried shards; successful returns bank the room result. Returning Seed starts with three required shards along its far bank, upper branches and bell approach.

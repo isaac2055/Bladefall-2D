@@ -535,9 +535,11 @@ func workshop_recording():
  workshop_demo_picker.select(min(selected,routes.size()-1))
  return routes[workshop_demo_picker.selected].tape
 
+const WorkshopPickups=preload("res://scripts/workshop_pickups.gd")
+
 func workshop_goal_reached():
  if chapter_number!=4 or not sim.p.onGround or sim.p.state in ["dead","respawn"]: return false
- if sim.room.def.get("workshopRequireShard",false) and not workshop_has_shard(): return false
+ if not WorkshopPickups.ready(sim.room.def,sim.ents): return false
  if sim.room.def.get("workshopRequireStakes",false) and sim.ents.any(func(e):return e.type=="stone" and not e.get("lit",false)): return false
  var goal=sim.room.def.workshopGoal
  return Rect2(goal[0],goal[1]-2,goal[2],goal[3]+4).has_point(Vector2(sim.p.x+sim.p.w/2.0,sim.p.y+sim.p.h))
@@ -550,7 +552,7 @@ func tick_workshop():
  workshop_completed[sim.room.id]=true
  if shard_clear: workshop_shards[sim.room.id]=true
  room_picker.set_item_text(current,("◆ " if workshop_shards.has(sim.room.id) else "✓ ")+"%02d · %s"%[current+1,sim.room.name])
- notice_label.text=sim.room.def.get("workshopCompleteText","Shard brought home · room complete") if sim.room.def.get("workshopRequireShard",false) else ("Finish reached with the shard · optional detour complete" if shard_clear else "Finish reached")
+ notice_label.text="All %d shards brought home · room complete"%WorkshopPickups.counts(sim.ents)[1] if sim.room.def.get("workshopRequireAllShards",false) else sim.room.def.get("workshopCompleteText","Shard brought home · room complete") if sim.room.def.get("workshopRequireShard",false) else ("Finish reached with the shard · optional detour complete" if shard_clear else "Finish reached")
  notice_time=8
  audio.effect("gem",.6)
 
@@ -670,6 +672,9 @@ func bearing_caption():
    var stakes=sim.ents.filter(func(e):return e.type=="stone")
    var lit_stakes=stakes.filter(func(e):return e.get("lit",false)).size()
    return "FINISH REACHED" if workshop_completed.has(sim.room.id) else ("STAKES %d / %d · REACH THE GOLD FLAG"%[lit_stakes,stakes.size()])
+  if sim.room.def.get("workshopRequireAllShards",false):
+   var count=WorkshopPickups.counts(sim.ents)
+   return "ALL %d SHARDS BROUGHT HOME"%count[1] if workshop_shards.has(sim.room.id) else "SHARDS %d / %d · %s"%[count[0],count[1],"RETURN TO THE GOLD FLAG" if WorkshopPickups.ready(sim.room.def,sim.ents) else "COLLECT ALL, THEN RETURN"]
   if sim.room.def.get("workshopRequireShard",false):
    return sim.room.def.get("workshopCompleteText","SHARD BROUGHT HOME") if workshop_shards.has(sim.room.id) else (sim.room.def.get("workshopReturnText","SHARD FOUND · BRING IT HOME") if workshop_has_shard() else sim.room.def.get("workshopObjective","BRING THE FAR SHARD BACK TO THE FLAG"))
   if not sim.ents.any(func(e):return e.type=="shard"):

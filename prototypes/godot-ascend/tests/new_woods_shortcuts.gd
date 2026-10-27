@@ -26,6 +26,9 @@ func _initialize():
  var seed=S.solve(d,12,{"start":d.world.rooms[12].workshopRoutes[0].tape.slice(0,7),"max_x":272,"budget":30000,"width":70,"depth":50})
  check(seed.found,false,"no finish avoiding the Seed far bank found within budget",seed)
  var approach=d.duplicate(true);approach.world.rooms[12].workshopGoal=[280,232,72,4]
+ # This intermediate physical crossing must not fail merely for missing finish pickups.
+ approach.world.rooms[12].workshopRequireShard=false
+ approach.world.rooms[12].workshopRequireAllShards=false
  var no_pod=S.solve(approach,12,{"mode":"no_pods","budget":30000,"width":70,"depth":50})
  check(no_pod.found,false,"no pod-free Seed outward crossing found within budget",no_pod)
  finish_case(d)

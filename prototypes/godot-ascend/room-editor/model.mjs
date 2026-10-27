@@ -55,7 +55,8 @@ export function validate(doc) {
   if(room.requireStakes!==undefined&&typeof room.requireStakes!=='boolean'||room.keepStakes!==undefined&&typeof room.keepStakes!=='boolean')fail('invalid stake settings.');
   if(room.requireStakes&&!room.objects.some(o=>o.enabled&&o.glyph==='c'))fail('add a gate stake, or turn off “Light all stakes to finish”.');
   if(starts!==1)fail('keep exactly one player start.');
-  if(room.requirePickup&&shards===0)fail('add a shard, or turn off “Require pickup at finish”.');
+  if(room.requireAllPickups!==undefined&&typeof room.requireAllPickups!=='boolean')fail('invalid return pickup setting.');
+  if((room.requirePickup||room.requireAllPickups)&&shards===0)fail('add a shard, or turn off the shard requirements in Room settings.');
   const g=room.goal;
   if(!g||![g.x,g.y,g.w,g.h].every(Number.isFinite)||!Number.isInteger(g.x)||!Number.isInteger(g.y)||!Number.isInteger(g.w)||g.w<1||g.x<0||g.y<0||g.x+g.w>room.width||g.y>room.height||g.h!==0.5)fail('finish flag must fit inside the room.');
  }

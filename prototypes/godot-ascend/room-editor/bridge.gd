@@ -21,7 +21,7 @@ func snapshot():
     d.returnFrames=item.parameters.get("returnFrames",120)
    things.append(d)
   var goal=room.settings.workshopGoal
-  rooms.append({"id":room.room_id,"name":room.room_title,"width":room.map_width,"height":room.map_height,"tiles":Codec.read_map(room),"objects":things,"goal":{"x":goal[0]/8.0,"y":goal[1]/8.0,"w":goal[2]/8.0,"h":goal[3]/8.0},"requirePickup":room.settings.get("workshopRequireShard",false),"requireStakes":room.settings.get("workshopRequireStakes",false),"keepStakes":room.settings.get("workshopKeepStakes",false),"hint":room.settings.get("hint","")})
+  rooms.append({"id":room.room_id,"name":room.room_title,"width":room.map_width,"height":room.map_height,"tiles":Codec.read_map(room),"objects":things,"goal":{"x":goal[0]/8.0,"y":goal[1]/8.0,"w":goal[2]/8.0,"h":goal[3]/8.0},"requirePickup":room.settings.get("workshopRequireShard",false),"requireAllPickups":room.settings.get("workshopRequireAllShards",false),"requireStakes":room.settings.get("workshopRequireStakes",false),"keepStakes":room.settings.get("workshopKeepStakes",false),"hint":room.settings.get("hint","")})
  return {"format":"bladefall-workshop-editor","version":1,"retiredRoomIds":baseline.world.get("retiredWorkshopRoomIds",[]),"rooms":rooms}
 func own(parent,node):
  parent.add_child(node,true)
@@ -40,6 +40,7 @@ func apply_document(doc):
   room.map_width=int(d.width);room.map_height=int(d.height)
   room.settings.hint=d.hint
   room.settings.workshopRequireShard=d.requirePickup
+  room.settings.workshopRequireAllShards=d.get("requireAllPickups",false)
   if d.has("requireStakes"): room.settings.workshopRequireStakes=d.requireStakes
   if d.has("keepStakes"): room.settings.workshopKeepStakes=d.keepStakes
   room.settings.workshopGoal=[d.goal.x*8,d.goal.y*8,d.goal.w*8,d.goal.h*8]

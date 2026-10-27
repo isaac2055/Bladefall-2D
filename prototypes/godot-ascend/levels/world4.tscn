@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=4]
+[gd_scene load_steps=200 format=4]
 
 [ext_resource type="Script" path="res://authoring/world.gd" id="1_p5p1j"]
 [ext_resource type="Script" path="res://authoring/room.gd" id="2_0b5cq"]
@@ -1224,6 +1224,42 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_vipbs"]
 image = SubResource("Image_oevs6")
 
+[sub_resource type="Image" id="Image_hs5tt"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_xf5w7"]
+image = SubResource("Image_hs5tt")
+
+[sub_resource type="Image" id="Image_1602o"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_xhfb3"]
+image = SubResource("Image_1602o")
+
+[sub_resource type="Image" id="Image_gfxm1"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_8sxak"]
+image = SubResource("Image_gfxm1")
+
 [node name="Ascend_4" type="Node2D"]
 script = ExtResource("1_p5p1j")
 world_number = 4
@@ -1475,7 +1511,7 @@ original_palette = {
 "bunnies": "ffffffff",
 "flowers": "c4acd5ff"
 }
-source_fingerprint = "e5f4a5362c916b502432fc6fde62967bdb9cebed505e5396879add3c5301bf47"
+source_fingerprint = "9457e60824380a8b5aa1f28020ed2de9374fe5ee56f52686230d6b2935670ffb"
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -4047,7 +4083,7 @@ settings = {
 "aim8": true,
 "cols": 56.0,
 "exit": "none",
-"hint": "Hold jump and cut down-left through the low window, then steer right. Keep blue for the outward climb. Reach the bell from the far side before changing phase. Amber opens the roof: return to the same pod from above, then dash up to make the blue homeward landing.",
+"hint": "Bring all three seeds back to the gold flag. Follow the far bank, climb the outer branches, then collect the seed by the upper bell before returning through the pod housing.",
 "id": "workshop-returning",
 "lock": ["parry", "portal"],
 "name": "The Returning Seed",
@@ -4057,12 +4093,14 @@ settings = {
 "workshopBiome": "woods",
 "workshopCameraAnchorY": 110.0,
 "workshopGoal": [80.0, 112.0, 48.0, 4.0],
+"workshopRequireAllShards": true,
+"workshopRequireShard": true,
 "workshopRoutes": [{
 "name": "Outward diagonal rebound, open the roof, return from above",
 "tape": [[10.0, ""], [30.0, "rj"], [12.0, "rx"], [45.0, "r"], [10.0, ""], [20.0, "j"], [6.0, "ldsj"], [30.0, "rj"], [81.0, "rgu"], [16.0, ""], [14.0, "lj"], [25.0, ""], [14.0, "lj"], [25.0, ""], [12.0, "lj"], [25.0, ""], [28.0, "lj"], [12.0, ""], [20.0, "l"], [10.0, ""], [6.0, "us"], [10.0, "r"], [30.0, ""], [6.0, "rdsj"], [16.0, "j"], [12.0, "ux"], [30.0, ""], [16.0, "lj"], [18.0, ""], [18.0, "lj"], [20.0, ""]]
 }]
 }
-original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "workshopCameraAnchorY", "map"]
+original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "workshopCameraAnchorY", "map", "workshopRequireShard", "workshopRequireAllShards"]
 original_spawn = Vector2(64, 240)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-returning"]
@@ -4081,7 +4119,7 @@ original_position = Vector2(128, 8)
 preview_entity = {
 &"body": 0,
 "h": 256,
-"id": 2,
+"id": 5,
 "ox": 128,
 "oy": 8,
 &"phase": 0,
@@ -4117,7 +4155,7 @@ original_position = Vector2(192, 8)
 preview_entity = {
 &"body": 1,
 "h": 112,
-"id": 3,
+"id": 6,
 "ox": 192,
 "oy": 8,
 &"phase": 0,
@@ -4175,6 +4213,38 @@ show_behind_parent = true
 position = Vector2(4, 4)
 texture = SubResource("ImageTexture_2yfrq")
 
+[node name="Fixture_*_23_13" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(184, 104)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "*"
+original_position = Vector2(184, 104)
+preview_entity = {
+"h": 8,
+"id": 1,
+"ox": 184,
+"oy": 104,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "shard",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 184,
+"y": 104
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_*_23_13"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_lh30q")
+
 [node name="Fixture_B_10_14" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(80, 112)
 script = ExtResource("3_hhdtj")
@@ -4185,7 +4255,7 @@ original_position = Vector2(80, 112)
 preview_entity = {
 &"body": 2,
 "h": 16,
-"id": 4,
+"id": 7,
 "ox": 80,
 "oy": 112,
 &"phase": 1,
@@ -4209,7 +4279,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_lh30q")
+texture = SubResource("ImageTexture_wfnx0")
 
 [node name="Fixture_B_21_15" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(168, 120)
@@ -4221,7 +4291,7 @@ original_position = Vector2(168, 120)
 preview_entity = {
 &"body": 3,
 "h": 8,
-"id": 5,
+"id": 8,
 "ox": 168,
 "oy": 120,
 &"phase": 1,
@@ -4245,7 +4315,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_wfnx0")
+texture = SubResource("ImageTexture_37wwj")
 
 [node name="Fixture_A_24_16" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(192, 128)
@@ -4257,7 +4327,7 @@ original_position = Vector2(192, 128)
 preview_entity = {
 &"body": 4,
 "h": 88,
-"id": 6,
+"id": 9,
 "ox": 192,
 "oy": 128,
 &"phase": 0,
@@ -4281,7 +4351,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_37wwj")
+texture = SubResource("ImageTexture_06n1c")
 
 [node name="Fixture_B_26_16" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(208, 128)
@@ -4293,7 +4363,7 @@ original_position = Vector2(208, 128)
 preview_entity = {
 &"body": 5,
 "h": 64,
-"id": 7,
+"id": 10,
 "ox": 208,
 "oy": 128,
 &"phase": 1,
@@ -4317,7 +4387,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_06n1c")
+texture = SubResource("ImageTexture_6kr5v")
 
 [node name="Fixture_B_17_17" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(136, 136)
@@ -4329,7 +4399,7 @@ original_position = Vector2(136, 136)
 preview_entity = {
 &"body": 6,
 "h": 16,
-"id": 8,
+"id": 11,
 "ox": 136,
 "oy": 136,
 &"phase": 1,
@@ -4353,7 +4423,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_6kr5v")
+texture = SubResource("ImageTexture_nmlup")
 
 [node name="Fixture_B_30_18" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(240, 144)
@@ -4365,7 +4435,7 @@ original_position = Vector2(240, 144)
 preview_entity = {
 &"body": 7,
 "h": 16,
-"id": 9,
+"id": 12,
 "ox": 240,
 "oy": 144,
 &"phase": 1,
@@ -4389,7 +4459,39 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_nmlup")
+texture = SubResource("ImageTexture_b5y23")
+
+[node name="Fixture_*_34_18" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(272, 144)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "*"
+original_position = Vector2(272, 144)
+preview_entity = {
+"h": 8,
+"id": 2,
+"ox": 272,
+"oy": 144,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "shard",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 272,
+"y": 144
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_*_34_18"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_4njdv")
 
 [node name="Fixture_B_20_20" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(160, 160)
@@ -4401,7 +4503,7 @@ original_position = Vector2(160, 160)
 preview_entity = {
 &"body": 8,
 "h": 16,
-"id": 10,
+"id": 13,
 "ox": 160,
 "oy": 160,
 &"phase": 1,
@@ -4425,7 +4527,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_b5y23")
+texture = SubResource("ImageTexture_2nsmo")
 
 [node name="Fixture_B_33_20" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(264, 160)
@@ -4437,7 +4539,7 @@ original_position = Vector2(264, 160)
 preview_entity = {
 &"body": 9,
 "h": 16,
-"id": 11,
+"id": 14,
 "ox": 264,
 "oy": 160,
 &"phase": 1,
@@ -4461,7 +4563,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_4njdv")
+texture = SubResource("ImageTexture_xdt8i")
 
 [node name="Fixture_B_36_23" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(288, 184)
@@ -4473,7 +4575,7 @@ original_position = Vector2(288, 184)
 preview_entity = {
 &"body": 10,
 "h": 16,
-"id": 12,
+"id": 15,
 "ox": 288,
 "oy": 184,
 &"phase": 1,
@@ -4497,7 +4599,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_2nsmo")
+texture = SubResource("ImageTexture_xfidu")
 
 [node name="Fixture_B_26_26" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(208, 208)
@@ -4509,7 +4611,7 @@ original_position = Vector2(208, 208)
 preview_entity = {
 &"body": 11,
 "h": 16,
-"id": 13,
+"id": 16,
 "ox": 208,
 "oy": 208,
 &"phase": 1,
@@ -4533,7 +4635,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_xdt8i")
+texture = SubResource("ImageTexture_vpsab")
 
 [node name="Fixture_B_39_26" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(312, 208)
@@ -4545,7 +4647,7 @@ original_position = Vector2(312, 208)
 preview_entity = {
 &"body": 12,
 "h": 16,
-"id": 14,
+"id": 17,
 "ox": 312,
 "oy": 208,
 &"phase": 1,
@@ -4569,7 +4671,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_xfidu")
+texture = SubResource("ImageTexture_37lr8")
 
 [node name="Fixture_B_23_27" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(184, 216)
@@ -4581,7 +4683,7 @@ original_position = Vector2(184, 216)
 preview_entity = {
 &"body": 13,
 "h": 8,
-"id": 15,
+"id": 18,
 "ox": 184,
 "oy": 216,
 &"phase": 1,
@@ -4605,7 +4707,39 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_vpsab")
+texture = SubResource("ImageTexture_ohjpc")
+
+[node name="Fixture_*_37_27" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(296, 216)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "*"
+original_position = Vector2(296, 216)
+preview_entity = {
+"h": 8,
+"id": 3,
+"ox": 296,
+"oy": 216,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "shard",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 296,
+"y": 216
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_*_37_27"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_jw4br")
 
 [node name="Fixture_b_25_28" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(200, 224)
@@ -4615,7 +4749,7 @@ glyph = "b"
 original_position = Vector2(200, 224)
 preview_entity = {
 "h": 8,
-"id": 1,
+"id": 4,
 "ox": 200,
 "oy": 224,
 "remX": 0.0,
@@ -4637,7 +4771,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_37lr8")
+texture = SubResource("ImageTexture_h8kh1")
 
 [node name="Fixture_B_32_28" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(256, 224)
@@ -4649,7 +4783,7 @@ original_position = Vector2(256, 224)
 preview_entity = {
 &"body": 14,
 "h": 8,
-"id": 16,
+"id": 19,
 "ox": 256,
 "oy": 224,
 &"phase": 1,
@@ -4673,7 +4807,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_ohjpc")
+texture = SubResource("ImageTexture_vipbs")
 
 [node name="Fixture_B_35_29" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(280, 232)
@@ -4685,7 +4819,7 @@ original_position = Vector2(280, 232)
 preview_entity = {
 &"body": 15,
 "h": 16,
-"id": 17,
+"id": 20,
 "ox": 280,
 "oy": 232,
 &"phase": 1,
@@ -4709,7 +4843,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_jw4br")
+texture = SubResource("ImageTexture_xf5w7")
 
 [node name="Spawn" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(64, 240)
@@ -4724,7 +4858,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_h8kh1")
+texture = SubResource("ImageTexture_xhfb3")
 
 [node name="Fixture_B_18_32" type="Node2D" parent="Rooms/workshop-returning/Objects"]
 position = Vector2(144, 256)
@@ -4736,7 +4870,7 @@ original_position = Vector2(144, 256)
 preview_entity = {
 &"body": 16,
 "h": 16,
-"id": 18,
+"id": 21,
 "ox": 144,
 "oy": 256,
 &"phase": 1,
@@ -4760,4 +4894,4 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_vipbs")
+texture = SubResource("ImageTexture_8sxak")

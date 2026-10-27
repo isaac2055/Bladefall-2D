@@ -1,5 +1,6 @@
 extends RefCounted
 ## Ordinary-input witnesses and counterfactuals, separate from the application's UI tests.
+const Pickups=preload("res://scripts/workshop_pickups.gd")
 const Core=preload("res://scripts/core.gd")
 const Loader=preload("res://scripts/room_loader.gd")
 static func decode(keys):
@@ -17,7 +18,7 @@ static func device(core,role):
 static func at_goal(core):
  if core.room.def.get("workshopRequireStakes",false) and core.ents.any(func(e):return e.type=="stone" and not e.get("lit",false)): return false
  var goal=core.room.def.workshopGoal
- return core.p.state not in ["dead","respawn"] and core.p.onGround and Rect2(goal[0],goal[1]-2,goal[2],goal[3]+4).has_point(Vector2(core.p.x+core.p.w/2,core.p.y+core.p.h)) and (not core.room.def.get("workshopRequireShard",false) or carried(core))
+ return core.p.state not in ["dead","respawn"] and core.p.onGround and Rect2(goal[0],goal[1]-2,goal[2],goal[3]+4).has_point(Vector2(core.p.x+core.p.w/2,core.p.y+core.p.h)) and Pickups.ready(core.room.def,core.ents)
 static func play(data,index,tape,mode=""):
  var core=Core.new(data.constants.duplicate(true),data.playerDefaults)
  core.load_room(Loader.parse(data.world.rooms[index]))

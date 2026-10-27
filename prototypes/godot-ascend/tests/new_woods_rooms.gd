@@ -27,7 +27,7 @@ func run():
   proofs.append({"room":room.id,"proof":p})
   check(p.finish and p.deaths==0 and not p.advanced,"deathless ordinary solution: "+room.name)
   check(room.cols>40 or room.rows>23,"independent scrolling room: "+room.name)
-  check(not room.get("workshopRequireStakes",false) and not room.get("workshopRequireShard",false),"physical finish without collectible quotas: "+room.name)
+  check(not room.get("workshopRequireStakes",false) and (room.get("workshopRequireAllShards",false) if i==12 else not room.get("workshopRequireShard",false)),"authored finish requirement: "+room.name)
   check(Codec.objects(native.get_node("Rooms").get_child(i)).all(func(o):return o.position==o.position.snapped(Vector2(8,8))),"8px gameplay objects: "+room.name)
   check(not R.play(data,i,tape,"no_pods").finish,"recorded route uses the pod: "+room.name)
  native.free()

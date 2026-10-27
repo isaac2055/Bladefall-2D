@@ -116,3 +116,12 @@ Art replacement continues to use the fixed 8px gameplay grid and logical object 
 These rooms retain separate retries and optional demonstrations. `tests/new_woods_rooms.gd` checks the preserved three Woods layouts, both ordinary routes, physical phase/position decisions, the single pod's two uses, multiple timings, former shortcut recordings and actual application playback. The original eight are still compared by the existing Woods suite. `tests/new_woods_shortcuts.gd` chooses fresh inputs, with positive controls, looking for a pod-free Hollow ascent, a Seed finish without its far loop, and a pod-free Seed crossing. Searches are bounded evidence, not proofs that every shortcut is impossible or that the rooms are enjoyable.
 
 The editor integration checks cover thirteen rooms and merging older eleven-room files. All gameplay geometry remains on the 8px grid, with rendering separate from collision. No simulation changes were made.
+
+
+## Return pickup modes · 0.22.0
+
+Returning Seed requires three shards: one on the far bank (296, 216), one among the upper branches (272, 144), and one at the upper bell approach (184, 104). Every shard must be collected during the current attempt and brought to the gold flag. The existing ordinary-input demonstration collects all three. This adds the explicitly requested route requirement; it does not claim that only one precise movement sequence is possible.
+
+The editor exposes **Return shard · one** and **Return shards · all**. Both place the existing shard; choosing a tool also sets the room's finish rule. Room settings can change that rule or make pickups optional. This avoids separate lookalike collectibles with conflicting requirements. The all mode counts every enabled shard in the room and displays collected/total progress. Retry or death resets unbanked inventory; the successful return banks the room award. Older editor files default to the existing single/optional behavior.
+
+`tests/return_pickups.gd` checks the three ordinary-route collections, rejects each missing shard separately, verifies single-return behavior, HUD progress, reset/banking behavior and demonstrations. The browser integration checks both tools and their native save roundtrips. The older outward-crossing search uses a physical stage goal with pickup requirements disabled so it continues to test the geometry independently of the new finish rule.
