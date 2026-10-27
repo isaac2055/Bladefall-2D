@@ -86,7 +86,7 @@ var landing_speed=0.0
 var observed_room=""
 func configure_mood():
  var colors={1:["#efbf79","#bac9dc"],2:["#b7e1a0","#a9c4ab"],3:["#f3a66d","#cfb6a7"],21:["#cbb7ff","#b6aedc"],22:["#84e6d8","#98bfc2"],23:["#e8a5dc","#c4a6cf"]}
- var pair=colors.get(int(world_data.world.n),colors[1])
+ var pair=colors.get(2 if sim!=null and sim.room.def.get("workshopBiome","")=="woods" else int(world_data.world.n),colors[1])
  accent=Color(pair[0])
  mood=Color(pair[1])
  if int(world_data.world.n)==1 and environment_design>0:
@@ -127,7 +127,7 @@ func _ready():
  if fractured:
   for y in range(184): sky.set_pixel(0,y,Color("111020").lerp(Color("485866" if forest else ("6c4a66" if causeway else "514563")),float(y)/205))
  sky_gradient=ImageTexture.create_from_image(sky)
- if forest:
+ if forest or int(world_data.world.n)==4:
   for layer in range(3):
    var node=Node2D.new()
    node.set_meta("base",-999999)
@@ -339,6 +339,15 @@ func make_lights():
   lights.append({"node":light,"sparks":sparks,"point":point})
 func load_scene(core,smooth_join=false):
  sim = core
+ if int(world_data.world.n)==4:
+  var want_forest=sim.room.def.get("workshopBiome","")=="woods"
+  if forest!=want_forest:
+   forest=want_forest
+   var sky=Image.create(1,184,false,Image.FORMAT_RGBA8)
+   for y in range(184): sky.set_pixel(0,y,Color("0b191b").lerp(Color("344937"),float(y)/225) if forest else Color("101526").lerp(Color("53636a"),float(y)/200.0))
+   sky_gradient=ImageTexture.create_from_image(sky)
+  for node in forest_layers: node.visible=forest
+  configure_mood()
  active_position = placements.get(sim.room.id,Vector2.ZERO)
  snap_actor()
  if not smooth_join:

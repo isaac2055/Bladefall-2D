@@ -538,6 +538,7 @@ func workshop_recording():
 func workshop_goal_reached():
  if chapter_number!=4 or not sim.p.onGround or sim.p.state in ["dead","respawn"]: return false
  if sim.room.def.get("workshopRequireShard",false) and not workshop_has_shard(): return false
+ if sim.room.def.get("workshopRequireStakes",false) and sim.ents.any(func(e):return e.type=="stone" and not e.get("lit",false)): return false
  var goal=sim.room.def.workshopGoal
  return Rect2(goal[0],goal[1]-2,goal[2],goal[3]+4).has_point(Vector2(sim.p.x+sim.p.w/2.0,sim.p.y+sim.p.h))
 
@@ -606,6 +607,7 @@ func _physics_process(_delta):
  if watch: status.text = "ORIGINAL ROUTE     ·     Esc opens the menu     ·     Take control to play the updated world"
  else: status.text = "← → MOVE     SPACE / C JUMP     D DASH     A CLING / CARRY     W STRIKE     R RETRY"
  if chapter_number==4: status.text="← → MOVE     SPACE JUMP     D + ARROWS DASH     A CLING     R RETRY     H HINT     Esc MENU"
+ if chapter_number==4 and sim.room.def.get("workshopBiome","")=="woods": status.text="← → MOVE   SPACE JUMP   D DASH   A CLING   W + ARROWS CUT   R RETRY   H HINT   Esc MENU"
  if chapter_number==4 and watch: status.text="DEMONSTRATION     ·     Esc → Take control to play     ·     R repeats the route"
  if capture_path!="" and ticks>30: measured_physics.append((Time.get_ticks_usec()-physics_start)/1000.0)
  if capture_path!="" and ticks==screenshot_after: capture.call_deferred()
@@ -664,6 +666,10 @@ func close_app(code=0):
 
 func bearing_caption():
  if chapter_number==4:
+  if sim.room.def.get("workshopRequireStakes",false):
+   var stakes=sim.ents.filter(func(e):return e.type=="stone")
+   var lit_stakes=stakes.filter(func(e):return e.get("lit",false)).size()
+   return "FINISH REACHED" if workshop_completed.has(sim.room.id) else ("STAKES %d / %d · REACH THE GOLD FLAG"%[lit_stakes,stakes.size()])
   if sim.room.def.get("workshopRequireShard",false):
    return sim.room.def.get("workshopCompleteText","SHARD BROUGHT HOME") if workshop_shards.has(sim.room.id) else (sim.room.def.get("workshopReturnText","SHARD FOUND · BRING IT HOME") if workshop_has_shard() else sim.room.def.get("workshopObjective","BRING THE FAR SHARD BACK TO THE FLAG"))
   if not sim.ents.any(func(e):return e.type=="shard"):

@@ -64,6 +64,10 @@ func _init(constants: Dictionary, player_defaults: Dictionary):
  defaults = player_defaults
 
 func load_room(parsed: Dictionary, respawn = false):
+ var kept_stakes=[]
+ if respawn and room!=null and room.id==parsed.id and parsed.def.get("workshopKeepStakes",false):
+  for e in ents:
+   if e.type=="stone" and e.get("lit",false): kept_stakes.append(Vector2(e.ox,e.oy))
  var saved_sweeper_clock=sweeper_clock if autonomous_sweepers else 0
  room = parsed
  p = defaults.duplicate(true)
@@ -77,6 +81,8 @@ func load_room(parsed: Dictionary, respawn = false):
  for i in range(ents.size()):
   var e = ents[i]
   e.merge({"id":i,"ox":e.x,"oy":e.y,"remX":0.0,"remY":0.0,"vx":0.0,"vy":0.0,"timer":0,"t":0,"state":"idle"},true)
+ for e in ents:
+  if e.type=="stone" and Vector2(e.ox,e.oy) in kept_stakes: e.lit=true
  # Device reset order matches the browser: spent footholds precede moving decks.
  for group in device_groups("Y"):
   group.merge({"type":"foothold","dev":true,"solid":true,"id":"fh"+str(ents.size()),"used":false})

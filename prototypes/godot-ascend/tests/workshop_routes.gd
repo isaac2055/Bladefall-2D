@@ -4,7 +4,7 @@ const Core=preload("res://scripts/core.gd")
 const Loader=preload("res://scripts/room_loader.gd")
 static func decode(keys):
  var raw={}
- for pair in [["l","l"],["r","r"],["u","u"],["d","d"],["j","jump"],["x","dash"],["g","grab"]]: raw[pair[1]]=pair[0] in keys
+ for pair in [["l","l"],["r","r"],["u","u"],["d","d"],["j","jump"],["x","dash"],["g","grab"],["s","strike"]]: raw[pair[1]]=pair[0] in keys
  return raw
 static func carried(core):
  return core.ents.any(func(e):return e.type=="shard" and e.get("gone",false))
@@ -15,11 +15,14 @@ static func device(core,role):
   if e.type in ["zip","slide"] and e.ox==at[0] and e.oy==at[1]: return e
  return null
 static func at_goal(core):
+ if core.room.def.get("workshopRequireStakes",false) and core.ents.any(func(e):return e.type=="stone" and not e.get("lit",false)): return false
  var goal=core.room.def.workshopGoal
  return core.p.state not in ["dead","respawn"] and core.p.onGround and Rect2(goal[0],goal[1]-2,goal[2],goal[3]+4).has_point(Vector2(core.p.x+core.p.w/2,core.p.y+core.p.h)) and (not core.room.def.get("workshopRequireShard",false) or carried(core))
 static func play(data,index,tape,mode=""):
  var core=Core.new(data.constants.duplicate(true),data.playerDefaults)
  core.load_room(Loader.parse(data.world.rooms[index]))
+ if mode=="no_pods": core.ents=core.ents.filter(func(e):return e.type!="pod")
+ if mode=="no_bells": core.ents=core.ents.filter(func(e):return e.type!="bell")
  if mode in ["no_boost","no_x_boost"]: core.K.liftXCap=0
  if mode in ["no_boost","no_y_boost"]: core.K.liftYCap=0
  if mode=="no_refill": core.ents=core.ents.filter(func(e):return e.type!="refill")
@@ -36,9 +39,10 @@ static func play(data,index,tape,mode=""):
  if mode=="static":
   for e in core.ents:
    if e.type=="zip": e.type="slide"
- var proof={"finish":false,"deaths":0,"frames":0,"advanced":false,"contacts":[],"actions":[],"refills":[],"shard":false,"first_pickup_dash":-1,"pickup_frame":-1,"landings":[],"crumbles":[]}
+ var proof={"finish":false,"deaths":0,"frames":0,"advanced":false,"contacts":[],"actions":[],"refills":[],"shard":false,"first_pickup_dash":-1,"pickup_frame":-1,"landings":[],"crumbles":[],"events":[],"stakes":[]}
  var last_contact=""
  var seen_refills={}
+ var seen_stakes={}
  var crumble_states={}
  for segment in tape:
   for f in range(int(segment[0])):
@@ -61,12 +65,15 @@ static func play(data,index,tape,mode=""):
    var lift=core.lift()
    core.step(raw)
    proof.frames+=1
+   for event in core.events: proof.events.append({"f":proof.frames,"kind":event,"position":[core.p.x,core.p.y]})
    for kind in ["super","hyper","wallbounce","ultra"]: proof.advanced=proof.advanced or kind in core.events
    if carried(core) and not proof.shard:
     proof.first_pickup_dash=core.p.dashes
     proof.pickup_frame=proof.frames
    proof.shard=carried(core)
    for e in core.ents:
+    if e.type=="stone" and e.get("lit",false) and not seen_stakes.has(e.id):
+     seen_stakes[e.id]=true;proof.stakes.append({"f":proof.frames,"x":e.x,"y":e.y})
     if e.type=="crumble":
      var status="broken" if e.get("broken",false) else ("shaking" if e.get("shaking",0)>0 else "ready")
      if crumble_states.get(e.id,"")!=status:

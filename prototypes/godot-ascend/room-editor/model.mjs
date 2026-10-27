@@ -1,9 +1,9 @@
 export const clone = value => structuredClone(value);
 export const TERRAIN = {'.':'Erase','#':'Stone','%':'Weathered stone','=':'One-way ledge','^':'Spikes up','v':'Spikes down','<':'Spikes left','>':'Spikes right'};
-export const TYPES = {Z:'Moving block',K:'Pushable block','~':'Crumble platform',o:'Dash refill','*':'Shard',s:'Spring'};
+export const TYPES = {Z:'Moving block',K:'Pushable block','~':'Crumble platform',o:'Dash refill','*':'Shard',s:'Spring',b:'Moth pod',x:'Phase bell',c:'Gate stake',G:'Stake gate',A:'Amber phase branch',B:'Blue phase branch'};
 export const label = o => o.kind === 'Spawn' ? 'Player start' : o.kind === 'Goal' ? 'Finish flag' : o.kind === 'Prop' ? (o.prop === 'fern' ? 'Fern' : o.prop === 'post' ? 'Post' : 'Flowers') : TYPES[o.glyph] || o.kind;
 export function newObject(type,x,y) {
- const o={id:`edit_${crypto.randomUUID().replaceAll('-','')}`,kind:type==='P'?'Spawn':type.startsWith('prop:')?'Prop':'Fixture',glyph:type==='P'?'P':type.startsWith('prop:')?'':type,x,y,w:1,h:1,enabled:true,tint:'ffffffff',prop:type.slice(5)};
+ const o={id:`edit_${crypto.randomUUID().replaceAll('-','')}`,kind:type==='P'?'Spawn':type.startsWith('prop:')?'Prop':'Fixture',glyph:type==='P'?'P':type.startsWith('prop:')?'':type,x,y,w:1,h:1,enabled:true,tint:'ffffffff',prop:type.startsWith('prop:')?type.slice(5):'trumpets'};
  if(type==='Z')Object.assign(o,{w:3,h:2,targetX:x+8,targetY:y,holdFrames:30,returnFrames:120});
  if(type==='K'||type==='~')o.w=3;
  return o;
@@ -38,13 +38,15 @@ export function validate(doc) {
     if(!Number.isInteger(o.targetX)||!Number.isInteger(o.targetY)||o.targetX<0||o.targetY<0||o.targetX+o.w>room.width||o.targetY+o.h>room.height)fail('a moving block’s destination must fit inside the room.');
     if(!Number.isInteger(o.holdFrames)||!Number.isInteger(o.returnFrames)||o.holdFrames<1||o.returnFrames<1||o.holdFrames>3600||o.returnFrames>3600)fail('block timing must be 1–3600 frames.');
    }
-   if(!['Z','K','~'].includes(o.glyph)&&o.kind!=='Prop'&&(o.w!==1||o.h!==1))fail(`${label(o)} must be one square.`);
+   if(!['Z','K','~','A','B','G'].includes(o.glyph)&&o.kind!=='Prop'&&(o.w!==1||o.h!==1))fail(`${label(o)} must be one square.`);
   }
   for(let i=0;i<room.objects.length;i++)for(let j=i+1;j<room.objects.length;j++){
    const a=room.objects[i],b=room.objects[j];
-   if(!a?.enabled||!b?.enabled||!['Z','K','~'].includes(a.glyph)||a.glyph!==b.glyph)continue;
+   if(!a?.enabled||!b?.enabled||!['Z','K','~','A','B','G'].includes(a.glyph)||a.glyph!==b.glyph)continue;
    if(((a.x+a.w===b.x||b.x+b.w===a.x)&&a.y<b.y+b.h&&a.y+a.h>b.y)||((a.y+a.h===b.y||b.y+b.h===a.y)&&a.x<b.x+b.w&&a.x+a.w>b.x))fail(`Leave a square between separate ${label(a).toLowerCase()}s so the game does not merge them.`);
   }
+  if(room.requireStakes!==undefined&&typeof room.requireStakes!=='boolean'||room.keepStakes!==undefined&&typeof room.keepStakes!=='boolean')fail('invalid stake settings.');
+  if(room.requireStakes&&!room.objects.some(o=>o.enabled&&o.glyph==='c'))fail('add a gate stake, or turn off “Light all stakes to finish”.');
   if(starts!==1)fail('keep exactly one player start.');
   if(room.requirePickup&&shards===0)fail('add a shard, or turn off “Require pickup at finish”.');
   const g=room.goal;
