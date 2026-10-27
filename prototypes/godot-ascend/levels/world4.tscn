@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=4]
+[gd_scene load_steps=142 format=4]
 
 [ext_resource type="Script" path="res://authoring/world.gd" id="1_p5p1j"]
 [ext_resource type="Script" path="res://authoring/room.gd" id="2_0b5cq"]
@@ -912,318 +912,6 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_k3vro"]
 image = SubResource("Image_kfvxy")
 
-[sub_resource type="Image" id="Image_blcbb"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_88x5l"]
-image = SubResource("Image_blcbb")
-
-[sub_resource type="Image" id="Image_s8m1v"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_qbfrf"]
-image = SubResource("Image_s8m1v")
-
-[sub_resource type="Image" id="Image_rhvoq"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_yk8r8"]
-image = SubResource("Image_rhvoq")
-
-[sub_resource type="Image" id="Image_txvj3"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_8ofni"]
-image = SubResource("Image_txvj3")
-
-[sub_resource type="Image" id="Image_llye5"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_qrdpp"]
-image = SubResource("Image_llye5")
-
-[sub_resource type="Image" id="Image_dhihl"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_qfrx0"]
-image = SubResource("Image_dhihl")
-
-[sub_resource type="Image" id="Image_tkupo"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_a5jqn"]
-image = SubResource("Image_tkupo")
-
-[sub_resource type="Image" id="Image_8hlse"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_33tps"]
-image = SubResource("Image_8hlse")
-
-[sub_resource type="Image" id="Image_ac640"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_2yfrq"]
-image = SubResource("Image_ac640")
-
-[sub_resource type="Image" id="Image_r6o15"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_lh30q"]
-image = SubResource("Image_r6o15")
-
-[sub_resource type="Image" id="Image_v3l4k"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_wfnx0"]
-image = SubResource("Image_v3l4k")
-
-[sub_resource type="Image" id="Image_ys41t"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_37wwj"]
-image = SubResource("Image_ys41t")
-
-[sub_resource type="Image" id="Image_lklwe"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_06n1c"]
-image = SubResource("Image_lklwe")
-
-[sub_resource type="Image" id="Image_h3cdh"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_6kr5v"]
-image = SubResource("Image_h3cdh")
-
-[sub_resource type="Image" id="Image_ak8fi"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_nmlup"]
-image = SubResource("Image_ak8fi")
-
-[sub_resource type="Image" id="Image_4kl06"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_b5y23"]
-image = SubResource("Image_4kl06")
-
-[sub_resource type="Image" id="Image_g2s57"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_4njdv"]
-image = SubResource("Image_g2s57")
-
-[sub_resource type="Image" id="Image_05c6b"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_2nsmo"]
-image = SubResource("Image_05c6b")
-
-[sub_resource type="Image" id="Image_y04yf"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_xdt8i"]
-image = SubResource("Image_y04yf")
-
-[sub_resource type="Image" id="Image_tac4j"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_xfidu"]
-image = SubResource("Image_tac4j")
-
-[sub_resource type="Image" id="Image_xnfri"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_vpsab"]
-image = SubResource("Image_xnfri")
-
-[sub_resource type="Image" id="Image_1xy2p"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_37lr8"]
-image = SubResource("Image_1xy2p")
-
-[sub_resource type="Image" id="Image_ba5xq"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_ohjpc"]
-image = SubResource("Image_ba5xq")
-
-[sub_resource type="Image" id="Image_wec24"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_jw4br"]
-image = SubResource("Image_wec24")
-
-[sub_resource type="Image" id="Image_3e5y2"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_h8kh1"]
-image = SubResource("Image_3e5y2")
-
-[sub_resource type="Image" id="Image_oevs6"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_vipbs"]
-image = SubResource("Image_oevs6")
-
 [node name="Ascend_4" type="Node2D"]
 script = ExtResource("1_p5p1j")
 world_number = 4
@@ -1233,7 +921,7 @@ accent_color = Color(0.9372549, 0.7490196, 0.4745098, 1)
 flowers_color = Color(0.76862746, 0.6745098, 0.8352941, 1)
 world_settings = {
 "atlasStart": "workshop-relay",
-"blurb": "Seventeen puzzle rooms: eight movement studies and nine Black Woods challenges.",
+"blurb": "Eight movement studies and three Black Woods route puzzles.",
 "key": "movement-workshop",
 "kit": ["dash", "strike"],
 "n": 4.0,
@@ -1241,6 +929,7 @@ world_settings = {
 "outro": "Workshop complete.",
 "passages": [],
 "quests": [],
+"retiredWorkshopRoomIds": ["workshop-orchard", "workshop-unwanted", "workshop-hollow", "workshop-stake", "workshop-forked", "workshop-boughs"],
 "secrets": [],
 "sections": [{
 "fire": null,
@@ -1284,52 +973,25 @@ world_settings = {
 "y": 0.0
 }, {
 "fire": null,
-"room": "workshop-orchard",
+"room": "workshop-borrowed",
 "x": 528.0,
 "y": 0.0
 }, {
 "fire": null,
-"room": "workshop-borrowed",
+"room": "workshop-crooked",
 "x": 576.0,
 "y": 0.0
 }, {
 "fire": null,
-"room": "workshop-unwanted",
-"x": 624.0,
-"y": 0.0
-}, {
-"fire": null,
-"room": "workshop-hollow",
-"x": 672.0,
-"y": 0.0
-}, {
-"fire": null,
-"room": "workshop-stake",
-"x": 720.0,
-"y": 0.0
-}, {
-"fire": null,
-"room": "workshop-forked",
-"x": 768.0,
-"y": 0.0
-}, {
-"fire": null,
-"room": "workshop-crooked",
-"x": 816.0,
-"y": 0.0
-}, {
-"fire": null,
 "room": "workshop-crown",
-"x": 880.0,
-"y": 0.0
-}, {
-"fire": null,
-"room": "workshop-boughs",
-"x": 936.0,
+"x": 640.0,
 "y": 0.0
 }],
 "tapes": {
+"workshop-borrowed": [[10.0, ""], [2.0, "rj"], [12.0, "rx"], [12.0, "r"], [16.0, ""], [6.0, "lj"], [5.0, "us"], [65.0, "lgu"], [15.0, ""], [15.0, "j"], [12.0, "lux"], [45.0, "lgu"], [15.0, ""]],
 "workshop-counterweight": [[18.0, "r"], [15.0, "rj"], [12.0, "rg"], [20.0, "r"], [6.0, "rxg"], [24.0, "rg"], [27.0, "rgu"], [23.0, "rg"], [5.0, "ljg"], [15.0, "lg"], [20.0, "lgu"], [25.0, "rj"], [15.0, "r"], [10.0, ""]],
+"workshop-crooked": [[10.0, "us"], [18.0, "r"], [30.0, "rj"], [15.0, ""], [15.0, "rj"], [12.0, "rx"], [6.0, "dsj"], [28.0, "rj"], [25.0, "rgu"], [15.0, ""], [15.0, "rj"], [65.0, "rgu"], [12.0, ""], [12.0, "j"], [5.0, "us"], [12.0, "rux"], [65.0, "rgu"], [15.0, ""]],
+"workshop-crown": [[10.0, ""], [30.0, "rj"], [12.0, ""], [18.0, "r"], [6.0, "us"], [16.0, "r"], [6.0, "rdsj"], [44.0, "rj"], [12.0, "rux"], [80.0, "rgu"], [12.0, ""], [14.0, "l"], [15.0, "lj"], [150.0, "lgu"], [15.0, ""], [15.0, "lj"], [12.0, "lux"], [24.0, "lg"], [12.0, ""]],
 "workshop-engine": [[15.0, "r"], [15.0, "rj"], [10.0, "rg"], [35.0, ""], [8.0, "rj"], [19.0, "r"], [6.0, "rxg"], [8.0, "rg"], [30.0, "rg"], [3.0, "ljg"], [13.0, "l"], [12.0, "r"], [19.0, "d"], [6.0, "rxg"], [22.0, "rg"], [4.0, "rgu"], [32.0, "rg"], [8.0, "ljg"], [15.0, "lg"], [25.0, "rjg"], [20.0, "r"], [15.0, ""]],
 "workshop-ferry": [[17.0, "rg"], [33.0, "rg"], [6.0, "ruxg"], [12.0, "rgu"], [18.0, "rgu"], [3.0, "rjg"], [23.0, "r"], [12.0, "rj"], [25.0, "r"], [17.0, "d"], [6.0, "lxg"], [7.0, "lg"], [10.0, "lxg"], [10.0, "lg"], [10.0, "lux"], [50.0, "l"], [15.0, ""]],
 "workshop-gallery": [[30.0, "rg"], [36.0, "rgu"], [12.0, "rgu"], [12.0, "r"], [12.0, "lj"], [12.0, "ux"], [25.0, "lg"], [6.0, ""], [18.0, "ljg"], [10.0, "lgu"], [4.0, "rd"], [24.0, "d"], [12.0, "lxg"], [3.0, "lg"], [12.0, "lux"], [60.0, "l"], [15.0, ""]],
@@ -1489,7 +1151,7 @@ original_palette = {
 "bunnies": "ffffffff",
 "flowers": "c4acd5ff"
 }
-source_fingerprint = "9822d899844f83c4e1c4ebf9625aa6a0289e96d5767e29295057c23da88a9502"
+source_fingerprint = "5e4f0591d4f06ec5edd7d7c7166d7a789d0c8166ce89a23f368223723192f106"
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -2909,87 +2571,8 @@ show_behind_parent = true
 position = Vector2(4, 4)
 texture = SubResource("ImageTexture_jpjbc")
 
-[node name="workshop-orchard" type="Node2D" parent="Rooms"]
-position = Vector2(4224, 0)
-script = ExtResource("2_0b5cq")
-room_id = "workshop-orchard"
-room_title = "The Sideways Orchard"
-settings = {
-"aim8": true,
-"cols": 40.0,
-"exit": "none",
-"hint": "Pass the pod, then cut back toward it. Its sideways rebound restores the dash for the high bank beneath the canopy.",
-"id": "workshop-orchard",
-"lock": ["parry", "portal"],
-"name": "The Sideways Orchard",
-"palette": "woods",
-"question": "How can a cut send you toward the far high bank?",
-"rows": 23.0,
-"workshopBiome": "woods",
-"workshopGoal": [88.0, 80.0, 64.0, 4.0],
-"workshopRoutes": [{
-"name": "Side cut beneath the canopy",
-"tape": [[10.0, ""], [15.0, "lj"], [12.0, "lx"], [2.0, "l"], [5.0, "rs"], [12.0, "l"], [12.0, "lux"], [55.0, "lgu"], [10.0, "l"], [15.0, ""]]
-}]
-}
-original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "map"]
-original_spawn = Vector2(280, 136)
-
-[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-orchard"]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAnAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAnAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAnAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAAVAAYAAAAAAAAAAAAWAAYAAAAAAAAAAAAXAAYAAAAAAAAAAAAYAAYAAAAAAAAAAAAZAAYAAAAAAAAAAAAaAAYAAAAAAAAAAAAbAAYAAAAAAAAAAAAcAAYAAAAAAAAAAAAdAAYAAAAAAAAAAAAeAAYAAAAAAAAAAAAfAAYAAAAAAAAAAAAgAAYAAAAAAAAAAAAhAAYAAAAAAAAAAAAiAAYAAAAAAAAAAAAjAAYAAAAAAAAAAAAkAAYAAAAAAAAAAAAlAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAUAAcAAAAAAAAAAAAVAAcAAAAAAAAAAAAWAAcAAAAAAAAAAAAXAAcAAAAAAAAAAAAYAAcAAAAAAAAAAAAZAAcAAAAAAAAAAAAaAAcAAAAAAAAAAAAbAAcAAAAAAAAAAAAcAAcAAAAAAAAAAAAdAAcAAAAAAAAAAAAeAAcAAAAAAAAAAAAfAAcAAAAAAAAAAAAgAAcAAAAAAAAAAAAhAAcAAAAAAAAAAAAiAAcAAAAAAAAAAAAjAAcAAAAAAAAAAAAkAAcAAAAAAAAAAAAlAAcAAAAAAAAAAAAnAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAnAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAKAAoAAAAFAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAAnAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAKAAsAAAAFAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAAnAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAKAAwAAAAFAAAAAAAnAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAKAA0AAAAFAAAAAAAnAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAKAA4AAAAFAAAAAAAnAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAKAA8AAAAFAAAAAAAnAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAnABAAAAAAAAAAAAAAABEAAAAAAAAAAAAnABEAAAAAAAAAAAAAABIAAAAAAAAAAAAhABIAAAAAAAAAAAAiABIAAAAAAAAAAAAjABIAAAAAAAAAAAAkABIAAAAAAAAAAAAlABIAAAAAAAAAAAAnABIAAAAAAAAAAAAAABMAAAAAAAAAAAAhABMAAAAAAAAAAAAiABMAAAAAAAAAAAAjABMAAAAAAAAAAAAkABMAAAAAAAAAAAAlABMAAAAAAAAAAAAnABMAAAAAAAAAAAAAABQAAAAAAAAAAAAhABQAAAAAAAAAAAAiABQAAAAAAAAAAAAjABQAAAAAAAAAAAAkABQAAAAAAAAAAAAlABQAAAAAAAAAAAAnABQAAAAAAAAAAAAAABUAAAAAAAAAAAABABUAAAADAAAAAAACABUAAAADAAAAAAADABUAAAADAAAAAAAEABUAAAADAAAAAAAFABUAAAADAAAAAAAGABUAAAADAAAAAAAHABUAAAADAAAAAAAIABUAAAADAAAAAAAJABUAAAADAAAAAAAKABUAAAADAAAAAAALABUAAAADAAAAAAAMABUAAAADAAAAAAANABUAAAADAAAAAAAOABUAAAADAAAAAAAPABUAAAADAAAAAAAQABUAAAADAAAAAAARABUAAAADAAAAAAASABUAAAADAAAAAAATABUAAAADAAAAAAAUABUAAAADAAAAAAAVABUAAAADAAAAAAAWABUAAAADAAAAAAAXABUAAAADAAAAAAAYABUAAAADAAAAAAAZABUAAAADAAAAAAAaABUAAAADAAAAAAAbABUAAAADAAAAAAAcABUAAAADAAAAAAAdABUAAAADAAAAAAAeABUAAAADAAAAAAAfABUAAAADAAAAAAAgABUAAAADAAAAAAAhABUAAAAAAAAAAAAiABUAAAAAAAAAAAAjABUAAAAAAAAAAAAkABUAAAAAAAAAAAAlABUAAAAAAAAAAAAmABUAAAADAAAAAAAnABUAAAAAAAAAAAAAABYAAAAAAAAAAAABABYAAAAAAAAAAAACABYAAAAAAAAAAAADABYAAAAAAAAAAAAEABYAAAAAAAAAAAAFABYAAAAAAAAAAAAGABYAAAAAAAAAAAAHABYAAAAAAAAAAAAIABYAAAAAAAAAAAAJABYAAAAAAAAAAAAKABYAAAAAAAAAAAALABYAAAAAAAAAAAAMABYAAAAAAAAAAAANABYAAAAAAAAAAAAOABYAAAAAAAAAAAAPABYAAAAAAAAAAAAQABYAAAAAAAAAAAARABYAAAAAAAAAAAASABYAAAAAAAAAAAATABYAAAAAAAAAAAAUABYAAAAAAAAAAAAVABYAAAAAAAAAAAAWABYAAAAAAAAAAAAXABYAAAAAAAAAAAAYABYAAAAAAAAAAAAZABYAAAAAAAAAAAAaABYAAAAAAAAAAAAbABYAAAAAAAAAAAAcABYAAAAAAAAAAAAdABYAAAAAAAAAAAAeABYAAAAAAAAAAAAfABYAAAAAAAAAAAAgABYAAAAAAAAAAAAhABYAAAAAAAAAAAAiABYAAAAAAAAAAAAjABYAAAAAAAAAAAAkABYAAAAAAAAAAAAlABYAAAAAAAAAAAAmABYAAAAAAAAAAAAnABYAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_wwhx0")
-
-[node name="Objects" type="Node2D" parent="Rooms/workshop-orchard"]
-
-[node name="Fixture_b_29_14" type="Node2D" parent="Rooms/workshop-orchard/Objects"]
-position = Vector2(232, 112)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "b"
-original_position = Vector2(232, 112)
-preview_entity = {
-"h": 8,
-"id": 0,
-"ox": 232,
-"oy": 112,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "pod",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 232,
-"y": 112
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-orchard/Objects/Fixture_b_29_14"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_wbivo")
-
-[node name="Spawn" type="Node2D" parent="Rooms/workshop-orchard/Objects"]
-position = Vector2(280, 136)
-script = ExtResource("3_hhdtj")
-kind = "Spawn"
-glyph = "P"
-original_position = Vector2(280, 136)
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-orchard/Objects/Spawn"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_p5oec")
-
 [node name="workshop-borrowed" type="Node2D" parent="Rooms"]
-position = Vector2(4608, 0)
+position = Vector2(4224, 0)
 script = ExtResource("2_0b5cq")
 room_id = "workshop-borrowed"
 room_title = "The Borrowed Branch"
@@ -3054,7 +2637,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_3wn18")
+texture = SubResource("ImageTexture_wbivo")
 
 [node name="Fixture_x_24_15" type="Node2D" parent="Rooms/workshop-borrowed/Objects"]
 position = Vector2(192, 120)
@@ -3086,7 +2669,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_qggka")
+texture = SubResource("ImageTexture_p5oec")
 
 [node name="Spawn" type="Node2D" parent="Rooms/workshop-borrowed/Objects"]
 position = Vector2(128, 136)
@@ -3101,7 +2684,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_ksu43")
+texture = SubResource("ImageTexture_3wn18")
 
 [node name="Fixture_B_23_19" type="Node2D" parent="Rooms/workshop-borrowed/Objects"]
 position = Vector2(184, 152)
@@ -3137,53 +2720,128 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_2utmc")
+texture = SubResource("ImageTexture_qggka")
 
-[node name="workshop-unwanted" type="Node2D" parent="Rooms"]
-position = Vector2(4992, 0)
+[node name="workshop-crooked" type="Node2D" parent="Rooms"]
+position = Vector2(4608, 0)
 script = ExtResource("2_0b5cq")
-room_id = "workshop-unwanted"
-room_title = "The Unwanted Bell"
+room_id = "workshop-crooked"
+room_title = "The Crooked Orchard"
+map_width = 56
+map_height = 35
 settings = {
 "aim8": true,
-"cols": 40.0,
+"cols": 56.0,
 "exit": "none",
-"hint": "Choose your angle. The pod restores your dash; the bell swaps the landing. A cut does not have to hit both.",
-"id": "workshop-unwanted",
+"hint": "Blue carries the approach; amber catches the pod rebound. Keep that catch real. At the high bough, prepare the phase that your final dash will leave behind.",
+"id": "workshop-crooked",
 "lock": ["parry", "portal"],
-"name": "The Unwanted Bell",
+"name": "The Crooked Orchard",
 "palette": "woods",
-"question": "Can you borrow the pod without ringing its neighbour?",
-"rows": 23.0,
+"question": "Which branch should remain real after you leave the pod?",
+"rows": 35.0,
 "workshopBiome": "woods",
-"workshopGoal": [256.0, 80.0, 48.0, 4.0],
+"workshopCameraAnchorY": 110.0,
+"workshopGoal": [352.0, 40.0, 56.0, 4.0],
 "workshopRoutes": [{
-"name": "Leave the bell silent",
-"tape": [[10.0, ""], [15.0, "rj"], [12.0, "rx"], [3.0, "r"], [5.0, "ls"], [4.0, "r"], [12.0, "rux"], [38.0, "rgu"], [15.0, ""]]
+"name": "Prepare, preserve, then change",
+"tape": [[10.0, "us"], [18.0, "r"], [30.0, "rj"], [15.0, ""], [15.0, "rj"], [12.0, "rx"], [6.0, "dsj"], [28.0, "rj"], [25.0, "rgu"], [15.0, ""], [15.0, "rj"], [65.0, "rgu"], [12.0, ""], [12.0, "j"], [5.0, "us"], [12.0, "rux"], [65.0, "rgu"], [15.0, ""]]
 }]
 }
-original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "map"]
-original_spawn = Vector2(120, 136)
+original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "workshopCameraAnchorY", "map"]
+original_spawn = Vector2(48, 248)
 
-[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-unwanted"]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAnAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAnAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAnAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAnAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAnAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAnAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAnAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAnAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAnAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAnAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAnABAAAAAAAAAAAAAAABEAAAAAAAAAAAAnABEAAAAAAAAAAAAAABIAAAAAAAAAAAAJABIAAAAAAAAAAAAKABIAAAAAAAAAAAALABIAAAAAAAAAAAAMABIAAAAAAAAAAAANABIAAAAAAAAAAAAOABIAAAAAAAAAAAAPABIAAAAAAAAAAAAnABIAAAAAAAAAAAAAABMAAAAAAAAAAAAJABMAAAAAAAAAAAAKABMAAAAAAAAAAAALABMAAAAAAAAAAAAMABMAAAAAAAAAAAANABMAAAAAAAAAAAAOABMAAAAAAAAAAAAPABMAAAAAAAAAAAAnABMAAAAAAAAAAAAAABQAAAAAAAAAAAAJABQAAAAAAAAAAAAKABQAAAAAAAAAAAALABQAAAAAAAAAAAAMABQAAAAAAAAAAAANABQAAAAAAAAAAAAOABQAAAAAAAAAAAAPABQAAAAAAAAAAAAnABQAAAAAAAAAAAAAABUAAAAAAAAAAAABABUAAAADAAAAAAACABUAAAADAAAAAAADABUAAAADAAAAAAAEABUAAAADAAAAAAAFABUAAAADAAAAAAAGABUAAAADAAAAAAAHABUAAAADAAAAAAAIABUAAAADAAAAAAAJABUAAAAAAAAAAAAKABUAAAAAAAAAAAALABUAAAAAAAAAAAAMABUAAAAAAAAAAAANABUAAAAAAAAAAAAOABUAAAAAAAAAAAAPABUAAAAAAAAAAAAQABUAAAADAAAAAAARABUAAAADAAAAAAASABUAAAADAAAAAAATABUAAAADAAAAAAAUABUAAAADAAAAAAAVABUAAAADAAAAAAAWABUAAAADAAAAAAAXABUAAAADAAAAAAAYABUAAAADAAAAAAAZABUAAAADAAAAAAAaABUAAAADAAAAAAAbABUAAAADAAAAAAAcABUAAAADAAAAAAAdABUAAAADAAAAAAAeABUAAAADAAAAAAAfABUAAAADAAAAAAAgABUAAAADAAAAAAAhABUAAAADAAAAAAAiABUAAAADAAAAAAAjABUAAAADAAAAAAAkABUAAAADAAAAAAAlABUAAAADAAAAAAAmABUAAAADAAAAAAAnABUAAAAAAAAAAAAAABYAAAAAAAAAAAABABYAAAAAAAAAAAACABYAAAAAAAAAAAADABYAAAAAAAAAAAAEABYAAAAAAAAAAAAFABYAAAAAAAAAAAAGABYAAAAAAAAAAAAHABYAAAAAAAAAAAAIABYAAAAAAAAAAAAJABYAAAAAAAAAAAAKABYAAAAAAAAAAAALABYAAAAAAAAAAAAMABYAAAAAAAAAAAANABYAAAAAAAAAAAAOABYAAAAAAAAAAAAPABYAAAAAAAAAAAAQABYAAAAAAAAAAAARABYAAAAAAAAAAAASABYAAAAAAAAAAAATABYAAAAAAAAAAAAUABYAAAAAAAAAAAAVABYAAAAAAAAAAAAWABYAAAAAAAAAAAAXABYAAAAAAAAAAAAYABYAAAAAAAAAAAAZABYAAAAAAAAAAAAaABYAAAAAAAAAAAAbABYAAAAAAAAAAAAcABYAAAAAAAAAAAAdABYAAAAAAAAAAAAeABYAAAAAAAAAAAAfABYAAAAAAAAAAAAgABYAAAAAAAAAAAAhABYAAAAAAAAAAAAiABYAAAAAAAAAAAAjABYAAAAAAAAAAAAkABYAAAAAAAAAAAAlABYAAAAAAAAAAAAmABYAAAAAAAAAAAAnABYAAAAAAAAAAAA=")
+[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-crooked"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA3AAEAAAAAAAAAAAAAAAIAAAAAAAAAAAA3AAIAAAAAAAAAAAAAAAMAAAAAAAAAAAA3AAMAAAAAAAAAAAAAAAQAAAAAAAAAAAA3AAQAAAAAAAAAAAAAAAUAAAAAAAAAAAA3AAUAAAAAAAAAAAAAAAYAAAAAAAAAAAA3AAYAAAAAAAAAAAAAAAcAAAAAAAAAAAA3AAcAAAAAAAAAAAAAAAgAAAAAAAAAAAA3AAgAAAAAAAAAAAAAAAkAAAAAAAAAAAA3AAkAAAAAAAAAAAAAAAoAAAAAAAAAAAA3AAoAAAAAAAAAAAAAAAsAAAAAAAAAAAA3AAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAbAAwAAAAFAAAAAAA3AAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAbAA0AAAAFAAAAAAA3AA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAbAA4AAAAFAAAAAAA3AA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAbAA8AAAAFAAAAAAA3AA8AAAAAAAAAAAAAABAAAAAAAAAAAAAbABAAAAAFAAAAAAApABAAAAAFAAAAAAA3ABAAAAAAAAAAAAAAABEAAAAAAAAAAAAbABEAAAAFAAAAAAApABEAAAAFAAAAAAA3ABEAAAAAAAAAAAAAABIAAAAAAAAAAAApABIAAAAFAAAAAAA3ABIAAAAAAAAAAAAAABMAAAAAAAAAAAApABMAAAAFAAAAAAA3ABMAAAAAAAAAAAAAABQAAAAAAAAAAAApABQAAAAFAAAAAAA3ABQAAAAAAAAAAAAAABUAAAAAAAAAAAAbABUAAAAFAAAAAAApABUAAAAFAAAAAAA3ABUAAAAAAAAAAAAAABYAAAAAAAAAAAAbABYAAAAFAAAAAAApABYAAAAFAAAAAAA3ABYAAAAAAAAAAAAAABcAAAAAAAAAAAApABcAAAAFAAAAAAA3ABcAAAAAAAAAAAAAABgAAAAAAAAAAAApABgAAAAFAAAAAAA3ABgAAAAAAAAAAAAAABkAAAAAAAAAAAApABkAAAAFAAAAAAA3ABkAAAAAAAAAAAAAABoAAAAAAAAAAAApABoAAAAFAAAAAAA3ABoAAAAAAAAAAAAAABsAAAAAAAAAAAApABsAAAAFAAAAAAA3ABsAAAAAAAAAAAAAABwAAAAAAAAAAAApABwAAAAFAAAAAAA3ABwAAAAAAAAAAAAAAB0AAAAAAAAAAAApAB0AAAAFAAAAAAA3AB0AAAAAAAAAAAAAAB4AAAAAAAAAAAApAB4AAAAFAAAAAAA3AB4AAAAAAAAAAAAAAB8AAAAAAAAAAAApAB8AAAAFAAAAAAA3AB8AAAAAAAAAAAAAACAAAAAAAAAAAAADACAAAAAAAAAAAAAEACAAAAAAAAAAAAAFACAAAAAAAAAAAAAGACAAAAAAAAAAAAAHACAAAAAAAAAAAAAIACAAAAAAAAAAAAAJACAAAAAAAAAAAAAKACAAAAAAAAAAAAApACAAAAAFAAAAAAA3ACAAAAAAAAAAAAAAACEAAAAAAAAAAAABACEAAAADAAAAAAACACEAAAADAAAAAAADACEAAAAAAAAAAAAEACEAAAAAAAAAAAAFACEAAAAAAAAAAAAGACEAAAAAAAAAAAAHACEAAAAAAAAAAAAIACEAAAAAAAAAAAAJACEAAAAAAAAAAAAKACEAAAAAAAAAAAALACEAAAADAAAAAAAMACEAAAADAAAAAAANACEAAAADAAAAAAAOACEAAAADAAAAAAAPACEAAAADAAAAAAAQACEAAAADAAAAAAARACEAAAADAAAAAAASACEAAAADAAAAAAATACEAAAADAAAAAAAUACEAAAADAAAAAAAVACEAAAADAAAAAAAWACEAAAADAAAAAAAXACEAAAADAAAAAAAYACEAAAADAAAAAAAZACEAAAADAAAAAAAaACEAAAADAAAAAAAbACEAAAADAAAAAAAcACEAAAADAAAAAAAdACEAAAADAAAAAAAeACEAAAADAAAAAAAfACEAAAADAAAAAAAgACEAAAADAAAAAAAhACEAAAADAAAAAAAiACEAAAADAAAAAAAjACEAAAADAAAAAAAkACEAAAADAAAAAAAlACEAAAADAAAAAAAmACEAAAADAAAAAAAnACEAAAADAAAAAAAoACEAAAADAAAAAAApACEAAAADAAAAAAAqACEAAAADAAAAAAArACEAAAADAAAAAAAsACEAAAADAAAAAAAtACEAAAADAAAAAAAuACEAAAADAAAAAAAvACEAAAADAAAAAAAwACEAAAADAAAAAAAxACEAAAADAAAAAAAyACEAAAADAAAAAAAzACEAAAADAAAAAAA0ACEAAAADAAAAAAA1ACEAAAADAAAAAAA2ACEAAAADAAAAAAA3ACEAAAAAAAAAAAAAACIAAAAAAAAAAAABACIAAAAAAAAAAAACACIAAAAAAAAAAAADACIAAAAAAAAAAAAEACIAAAAAAAAAAAAFACIAAAAAAAAAAAAGACIAAAAAAAAAAAAHACIAAAAAAAAAAAAIACIAAAAAAAAAAAAJACIAAAAAAAAAAAAKACIAAAAAAAAAAAALACIAAAAAAAAAAAAMACIAAAAAAAAAAAANACIAAAAAAAAAAAAOACIAAAAAAAAAAAAPACIAAAAAAAAAAAAQACIAAAAAAAAAAAARACIAAAAAAAAAAAASACIAAAAAAAAAAAATACIAAAAAAAAAAAAUACIAAAAAAAAAAAAVACIAAAAAAAAAAAAWACIAAAAAAAAAAAAXACIAAAAAAAAAAAAYACIAAAAAAAAAAAAZACIAAAAAAAAAAAAaACIAAAAAAAAAAAAbACIAAAAAAAAAAAAcACIAAAAAAAAAAAAdACIAAAAAAAAAAAAeACIAAAAAAAAAAAAfACIAAAAAAAAAAAAgACIAAAAAAAAAAAAhACIAAAAAAAAAAAAiACIAAAAAAAAAAAAjACIAAAAAAAAAAAAkACIAAAAAAAAAAAAlACIAAAAAAAAAAAAmACIAAAAAAAAAAAAnACIAAAAAAAAAAAAoACIAAAAAAAAAAAApACIAAAAAAAAAAAAqACIAAAAAAAAAAAArACIAAAAAAAAAAAAsACIAAAAAAAAAAAAtACIAAAAAAAAAAAAuACIAAAAAAAAAAAAvACIAAAAAAAAAAAAwACIAAAAAAAAAAAAxACIAAAAAAAAAAAAyACIAAAAAAAAAAAAzACIAAAAAAAAAAAA0ACIAAAAAAAAAAAA1ACIAAAAAAAAAAAA2ACIAAAAAAAAAAAA3ACIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_wwhx0")
 
-[node name="Objects" type="Node2D" parent="Rooms/workshop-unwanted"]
+[node name="Objects" type="Node2D" parent="Rooms/workshop-crooked"]
 
-[node name="Fixture_A_31_10" type="Node2D" parent="Rooms/workshop-unwanted/Objects"]
-position = Vector2(248, 80)
+[node name="Fixture_B_26_1" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
+position = Vector2(208, 8)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(1, 32)
+original_position = Vector2(208, 8)
+preview_entity = {
+&"body": 0,
+"h": 256,
+"id": 3,
+"ox": 208,
+"oy": 8,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 208,
+"y": 8
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_B_26_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_ksu43")
+
+[node name="Fixture_B_42_1" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
+position = Vector2(336, 8)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(1, 32)
+original_position = Vector2(336, 8)
+preview_entity = {
+&"body": 1,
+"h": 256,
+"id": 4,
+"ox": 336,
+"oy": 8,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 336,
+"y": 8
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_B_42_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_2utmc")
+
+[node name="Fixture_A_44_5" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
+position = Vector2(352, 40)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
 glyph = "A"
-footprint = Vector2i(7, 2)
-original_position = Vector2(248, 80)
+footprint = Vector2i(7, 3)
+original_position = Vector2(352, 40)
 preview_entity = {
-&"body": 0,
-"h": 16,
-"id": 2,
-"ox": 248,
-"oy": 80,
+&"body": 2,
+"h": 24,
+"id": 5,
+"ox": 352,
+"oy": 40,
 &"phase": 0,
 "remX": 0.0,
 "remY": 0.0,
@@ -3195,29 +2853,29 @@ preview_entity = {
 "vx": 0.0,
 "vy": 0.0,
 "w": 56,
-"x": 248,
-"y": 80
+"x": 352,
+"y": 40
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-unwanted/Objects/Fixture_A_31_10"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_A_44_5"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
 texture = SubResource("ImageTexture_ugkgv")
 
-[node name="Fixture_x_22_12" type="Node2D" parent="Rooms/workshop-unwanted/Objects"]
-position = Vector2(176, 96)
+[node name="Fixture_x_37_10" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
+position = Vector2(296, 80)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
 glyph = "x"
-original_position = Vector2(176, 96)
+original_position = Vector2(296, 80)
 preview_entity = {
 "h": 8,
 "id": 0,
-"ox": 176,
-"oy": 96,
+"ox": 296,
+"oy": 80,
 "remX": 0.0,
 "remY": 0.0,
 "state": "idle",
@@ -3227,402 +2885,167 @@ preview_entity = {
 "vx": 0.0,
 "vy": 0.0,
 "w": 8,
-"x": 176,
-"y": 96
+"x": 296,
+"y": 80
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-unwanted/Objects/Fixture_x_22_12"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_x_37_10"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
 texture = SubResource("ImageTexture_31w73")
 
-[node name="Fixture_b_22_14" type="Node2D" parent="Rooms/workshop-unwanted/Objects"]
-position = Vector2(176, 112)
+[node name="Fixture_A_36_14" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
+position = Vector2(288, 112)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
-glyph = "b"
-original_position = Vector2(176, 112)
+glyph = "A"
+footprint = Vector2i(4, 3)
+original_position = Vector2(288, 112)
 preview_entity = {
-"h": 8,
-"id": 1,
-"ox": 176,
+&"body": 3,
+"h": 24,
+"id": 6,
+"ox": 288,
 "oy": 112,
+&"phase": 0,
 "remX": 0.0,
 "remY": 0.0,
+&"solid": true,
 "state": "idle",
 "t": 0,
 "timer": 0,
-"type": "pod",
+&"type": "toggle",
 "vx": 0.0,
 "vy": 0.0,
-"w": 8,
-"x": 176,
+"w": 32,
+"x": 288,
 "y": 112
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-unwanted/Objects/Fixture_b_22_14"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_A_36_14"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
 texture = SubResource("ImageTexture_r36rb")
 
-[node name="Spawn" type="Node2D" parent="Rooms/workshop-unwanted/Objects"]
-position = Vector2(120, 136)
+[node name="Fixture_A_28_20" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
+position = Vector2(224, 160)
 script = ExtResource("3_hhdtj")
-kind = "Spawn"
-glyph = "P"
-original_position = Vector2(120, 136)
+kind = "Fixture"
+glyph = "A"
+footprint = Vector2i(5, 2)
+original_position = Vector2(224, 160)
+preview_entity = {
+&"body": 4,
+"h": 16,
+"id": 7,
+"ox": 224,
+"oy": 160,
+&"phase": 0,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": true,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 40,
+"x": 224,
+"y": 160
+}
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-unwanted/Objects/Spawn"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_A_28_20"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
 texture = SubResource("ImageTexture_yfn80")
 
-[node name="workshop-hollow" type="Node2D" parent="Rooms"]
-position = Vector2(5376, 0)
-script = ExtResource("2_0b5cq")
-room_id = "workshop-hollow"
-room_title = "The Hollow Landing"
-settings = {
-"aim8": true,
-"cols": 40.0,
-"exit": "none",
-"hint": "Let the cracked balcony fall away. Hold jump as you cut down onto the pod for a high rebound, then dash toward the flag.",
-"id": "workshop-hollow",
-"lock": ["parry", "portal"],
-"name": "The Hollow Landing",
-"palette": "woods",
-"question": "Which floor needs to disappear?",
-"rows": 23.0,
-"workshopBiome": "woods",
-"workshopGoal": [248.0, 48.0, 48.0, 4.0],
-"workshopRoutes": [{
-"name": "Collapse, cut, climb",
-"tape": [[10.0, ""], [36.0, "rj"], [5.0, "rj"], [22.0, "j"], [6.0, "dsj"], [27.0, "rj"], [12.0, "rux"], [65.0, "rgu"], [10.0, "r"], [15.0, ""]]
-}]
-}
-original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "map"]
-original_spawn = Vector2(96, 136)
-
-[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-hollow"]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAnAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAnAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAnAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAeAAYAAAAAAAAAAAAfAAYAAAAAAAAAAAAgAAYAAAAAAAAAAAAhAAYAAAAAAAAAAAAiAAYAAAAAAAAAAAAjAAYAAAAAAAAAAAAkAAYAAAAAAAAAAAAlAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAeAAcAAAAAAAAAAAAfAAcAAAAAAAAAAAAgAAcAAAAAAAAAAAAhAAcAAAAAAAAAAAAiAAcAAAAAAAAAAAAjAAcAAAAAAAAAAAAkAAcAAAAAAAAAAAAlAAcAAAAAAAAAAAAnAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAdAAkAAAAFAAAAAAAnAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAdAAoAAAAFAAAAAAAnAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAdAAsAAAAFAAAAAAAnAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAdAAwAAAAFAAAAAAAnAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAdAA0AAAAFAAAAAAAnAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAdAA4AAAAFAAAAAAAnAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAdAA8AAAAFAAAAAAAnAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAQABAAAAADAAAAAAARABAAAAADAAAAAAAWABAAAAADAAAAAAAXABAAAAADAAAAAAAnABAAAAAAAAAAAAAAABEAAAAAAAAAAAAQABEAAAAAAAAAAAARABEAAAAAAAAAAAAWABEAAAAAAAAAAAAXABEAAAAAAAAAAAAnABEAAAAAAAAAAAAAABIAAAAAAAAAAAAHABIAAAAAAAAAAAAIABIAAAAAAAAAAAAJABIAAAAAAAAAAAAKABIAAAAAAAAAAAALABIAAAAAAAAAAAAMABIAAAAAAAAAAAANABIAAAAAAAAAAAAQABIAAAAAAAAAAAARABIAAAAAAAAAAAAWABIAAAAAAAAAAAAXABIAAAAAAAAAAAAnABIAAAAAAAAAAAAAABMAAAAAAAAAAAAHABMAAAAAAAAAAAAIABMAAAAAAAAAAAAJABMAAAAAAAAAAAAKABMAAAAAAAAAAAALABMAAAAAAAAAAAAMABMAAAAAAAAAAAANABMAAAAAAAAAAAAQABMAAAAAAAAAAAARABMAAAAAAAAAAAAWABMAAAAAAAAAAAAXABMAAAAAAAAAAAAnABMAAAAAAAAAAAAAABQAAAAAAAAAAAAHABQAAAAAAAAAAAAIABQAAAAAAAAAAAAJABQAAAAAAAAAAAAKABQAAAAAAAAAAAALABQAAAAAAAAAAAAMABQAAAAAAAAAAAANABQAAAAAAAAAAAASABQAAAADAAAAAAATABQAAAADAAAAAAAUABQAAAADAAAAAAAVABQAAAADAAAAAAAnABQAAAAAAAAAAAAAABUAAAAAAAAAAAABABUAAAADAAAAAAACABUAAAADAAAAAAADABUAAAADAAAAAAAEABUAAAADAAAAAAAFABUAAAADAAAAAAAGABUAAAADAAAAAAAHABUAAAAAAAAAAAAIABUAAAAAAAAAAAAJABUAAAAAAAAAAAAKABUAAAAAAAAAAAALABUAAAAAAAAAAAAMABUAAAAAAAAAAAANABUAAAAAAAAAAAAOABUAAAADAAAAAAAPABUAAAADAAAAAAAQABUAAAADAAAAAAARABUAAAADAAAAAAASABUAAAADAAAAAAATABUAAAADAAAAAAAUABUAAAADAAAAAAAVABUAAAADAAAAAAAWABUAAAADAAAAAAAXABUAAAADAAAAAAAYABUAAAADAAAAAAAZABUAAAADAAAAAAAaABUAAAADAAAAAAAbABUAAAADAAAAAAAcABUAAAADAAAAAAAdABUAAAADAAAAAAAeABUAAAADAAAAAAAfABUAAAADAAAAAAAgABUAAAADAAAAAAAhABUAAAADAAAAAAAiABUAAAADAAAAAAAjABUAAAADAAAAAAAkABUAAAADAAAAAAAlABUAAAADAAAAAAAmABUAAAADAAAAAAAnABUAAAAAAAAAAAAAABYAAAAAAAAAAAABABYAAAAAAAAAAAACABYAAAAAAAAAAAADABYAAAAAAAAAAAAEABYAAAAAAAAAAAAFABYAAAAAAAAAAAAGABYAAAAAAAAAAAAHABYAAAAAAAAAAAAIABYAAAAAAAAAAAAJABYAAAAAAAAAAAAKABYAAAAAAAAAAAALABYAAAAAAAAAAAAMABYAAAAAAAAAAAANABYAAAAAAAAAAAAOABYAAAAAAAAAAAAPABYAAAAAAAAAAAAQABYAAAAAAAAAAAARABYAAAAAAAAAAAASABYAAAAAAAAAAAATABYAAAAAAAAAAAAUABYAAAAAAAAAAAAVABYAAAAAAAAAAAAWABYAAAAAAAAAAAAXABYAAAAAAAAAAAAYABYAAAAAAAAAAAAZABYAAAAAAAAAAAAaABYAAAAAAAAAAAAbABYAAAAAAAAAAAAcABYAAAAAAAAAAAAdABYAAAAAAAAAAAAeABYAAAAAAAAAAAAfABYAAAAAAAAAAAAgABYAAAAAAAAAAAAhABYAAAAAAAAAAAAiABYAAAAAAAAAAAAjABYAAAAAAAAAAAAkABYAAAAAAAAAAAAlABYAAAAAAAAAAAAmABYAAAAAAAAAAAAnABYAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_wwhx0")
-
-[node name="Objects" type="Node2D" parent="Rooms/workshop-hollow"]
-
-[node name="Spawn" type="Node2D" parent="Rooms/workshop-hollow/Objects"]
-position = Vector2(96, 136)
+[node name="Fixture_b_23_26" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
+position = Vector2(184, 208)
 script = ExtResource("3_hhdtj")
-kind = "Spawn"
-glyph = "P"
-original_position = Vector2(96, 136)
+kind = "Fixture"
+glyph = "b"
+original_position = Vector2(184, 208)
+preview_entity = {
+"h": 8,
+"id": 1,
+"ox": 184,
+"oy": 208,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "pod",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 184,
+"y": 208
+}
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-hollow/Objects/Spawn"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_b_23_26"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
 texture = SubResource("ImageTexture_u2fhs")
 
-[node name="Fixture_~_18_17" type="Node2D" parent="Rooms/workshop-hollow/Objects"]
-position = Vector2(144, 136)
+[node name="Fixture_x_7_29" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
+position = Vector2(56, 232)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
-glyph = "~"
-footprint = Vector2i(4, 1)
-original_position = Vector2(144, 136)
+glyph = "x"
+original_position = Vector2(56, 232)
 preview_entity = {
 "h": 8,
-"id": 1,
-"ox": 144,
-"oy": 136,
+"id": 2,
+"ox": 56,
+"oy": 232,
 "remX": 0.0,
 "remY": 0.0,
 "state": "idle",
 "t": 0,
 "timer": 0,
-&"type": "crumble",
+"type": "bell",
 "vx": 0.0,
 "vy": 0.0,
-"w": 32,
-"x": 144,
-"y": 136
+"w": 8,
+"x": 56,
+"y": 232
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-hollow/Objects/Fixture_~_18_17"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_x_7_29"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
 texture = SubResource("ImageTexture_lvrqv")
 
-[node name="Fixture_b_20_19" type="Node2D" parent="Rooms/workshop-hollow/Objects"]
-position = Vector2(160, 152)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "b"
-original_position = Vector2(160, 152)
-preview_entity = {
-"h": 8,
-"id": 0,
-"ox": 160,
-"oy": 152,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "pod",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 160,
-"y": 152
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-hollow/Objects/Fixture_b_20_19"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_hkl5m")
-
-[node name="workshop-stake" type="Node2D" parent="Rooms"]
-position = Vector2(5760, 0)
-script = ExtResource("2_0b5cq")
-room_id = "workshop-stake"
-room_title = "The Last Stake"
-settings = {
-"aim8": true,
-"cols": 40.0,
-"exit": "none",
-"hint": "Light both stakes to open the gate. The far bank is safe; use the pod to come back to the flag.",
-"id": "workshop-stake",
-"lock": ["parry", "portal"],
-"name": "The Last Stake",
-"palette": "woods",
-"question": "How will you get home after lighting the last stake?",
-"rows": 23.0,
-"workshopBiome": "woods",
-"workshopGoal": [8.0, 144.0, 24.0, 4.0],
-"workshopRequireStakes": true,
-"workshopRoutes": [{
-"name": "Light the far stake and return",
-"tape": [[10.0, "us"], [10.0, "r"], [15.0, "rj"], [12.0, "rx"], [7.0, "rj"], [6.0, "dsj"], [8.0, "rj"], [12.0, "rx"], [30.0, "rgu"], [10.0, ""], [14.0, "ls"], [15.0, "lj"], [12.0, "lx"], [10.0, "l"], [5.0, "rs"], [4.0, "l"], [12.0, "lx"], [63.0, "l"], [10.0, ""]]
-}]
-}
-original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "map", "workshopRequireStakes"]
-original_spawn = Vector2(80, 136)
-
-[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-stake"]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAnAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAnAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAnAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAnAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAnAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAnAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAnAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAnAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAnAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAnAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAnABAAAAAAAAAAAAAAABEAAAAAAAAAAAAnABEAAAAAAAAAAAAAABIAAAAAAAAAAAABABIAAAAAAAAAAAACABIAAAAAAAAAAAADABIAAAAAAAAAAAAEABIAAAAAAAAAAAAFABIAAAAAAAAAAAAGABIAAAAAAAAAAAAHABIAAAAAAAAAAAAIABIAAAAAAAAAAAAJABIAAAAAAAAAAAAKABIAAAAAAAAAAAALABIAAAAAAAAAAAAMABIAAAAAAAAAAAANABIAAAAAAAAAAAAfABIAAAAAAAAAAAAgABIAAAAAAAAAAAAhABIAAAAAAAAAAAAiABIAAAAAAAAAAAAjABIAAAAAAAAAAAAkABIAAAAAAAAAAAAlABIAAAAAAAAAAAAnABIAAAAAAAAAAAAAABMAAAAAAAAAAAABABMAAAAAAAAAAAACABMAAAAAAAAAAAADABMAAAAAAAAAAAAEABMAAAAAAAAAAAAFABMAAAAAAAAAAAAGABMAAAAAAAAAAAAHABMAAAAAAAAAAAAIABMAAAAAAAAAAAAJABMAAAAAAAAAAAAKABMAAAAAAAAAAAALABMAAAAAAAAAAAAMABMAAAAAAAAAAAANABMAAAAAAAAAAAAfABMAAAAAAAAAAAAgABMAAAAAAAAAAAAhABMAAAAAAAAAAAAiABMAAAAAAAAAAAAjABMAAAAAAAAAAAAkABMAAAAAAAAAAAAlABMAAAAAAAAAAAAnABMAAAAAAAAAAAAAABQAAAAAAAAAAAABABQAAAAAAAAAAAACABQAAAAAAAAAAAADABQAAAAAAAAAAAAEABQAAAAAAAAAAAAFABQAAAAAAAAAAAAGABQAAAAAAAAAAAAHABQAAAAAAAAAAAAIABQAAAAAAAAAAAAJABQAAAAAAAAAAAAKABQAAAAAAAAAAAALABQAAAAAAAAAAAAMABQAAAAAAAAAAAANABQAAAAAAAAAAAAfABQAAAAAAAAAAAAgABQAAAAAAAAAAAAhABQAAAAAAAAAAAAiABQAAAAAAAAAAAAjABQAAAAAAAAAAAAkABQAAAAAAAAAAAAlABQAAAAAAAAAAAAnABQAAAAAAAAAAAAAABUAAAAAAAAAAAABABUAAAAAAAAAAAACABUAAAAAAAAAAAADABUAAAAAAAAAAAAEABUAAAAAAAAAAAAFABUAAAAAAAAAAAAGABUAAAAAAAAAAAAHABUAAAAAAAAAAAAIABUAAAAAAAAAAAAJABUAAAAAAAAAAAAKABUAAAAAAAAAAAALABUAAAAAAAAAAAAMABUAAAAAAAAAAAANABUAAAAAAAAAAAAOABUAAAADAAAAAAAPABUAAAADAAAAAAAQABUAAAADAAAAAAARABUAAAADAAAAAAASABUAAAADAAAAAAATABUAAAADAAAAAAAUABUAAAADAAAAAAAVABUAAAADAAAAAAAWABUAAAADAAAAAAAXABUAAAADAAAAAAAYABUAAAADAAAAAAAZABUAAAADAAAAAAAaABUAAAADAAAAAAAbABUAAAADAAAAAAAcABUAAAADAAAAAAAdABUAAAADAAAAAAAeABUAAAADAAAAAAAfABUAAAAAAAAAAAAgABUAAAAAAAAAAAAhABUAAAAAAAAAAAAiABUAAAAAAAAAAAAjABUAAAAAAAAAAAAkABUAAAAAAAAAAAAlABUAAAAAAAAAAAAmABUAAAADAAAAAAAnABUAAAAAAAAAAAAAABYAAAAAAAAAAAABABYAAAAAAAAAAAACABYAAAAAAAAAAAADABYAAAAAAAAAAAAEABYAAAAAAAAAAAAFABYAAAAAAAAAAAAGABYAAAAAAAAAAAAHABYAAAAAAAAAAAAIABYAAAAAAAAAAAAJABYAAAAAAAAAAAAKABYAAAAAAAAAAAALABYAAAAAAAAAAAAMABYAAAAAAAAAAAANABYAAAAAAAAAAAAOABYAAAAAAAAAAAAPABYAAAAAAAAAAAAQABYAAAAAAAAAAAARABYAAAAAAAAAAAASABYAAAAAAAAAAAATABYAAAAAAAAAAAAUABYAAAAAAAAAAAAVABYAAAAAAAAAAAAWABYAAAAAAAAAAAAXABYAAAAAAAAAAAAYABYAAAAAAAAAAAAZABYAAAAAAAAAAAAaABYAAAAAAAAAAAAbABYAAAAAAAAAAAAcABYAAAAAAAAAAAAdABYAAAAAAAAAAAAeABYAAAAAAAAAAAAfABYAAAAAAAAAAAAgABYAAAAAAAAAAAAhABYAAAAAAAAAAAAiABYAAAAAAAAAAAAjABYAAAAAAAAAAAAkABYAAAAAAAAAAAAlABYAAAAAAAAAAAAmABYAAAAAAAAAAAAnABYAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_wwhx0")
-
-[node name="Objects" type="Node2D" parent="Rooms/workshop-stake"]
-
-[node name="Fixture_G_5_11" type="Node2D" parent="Rooms/workshop-stake/Objects"]
-position = Vector2(40, 88)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "G"
-footprint = Vector2i(1, 7)
-original_position = Vector2(40, 88)
-preview_entity = {
-"h": 56,
-"id": 3,
-"ox": 40,
-"oy": 88,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-&"type": "gate",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 40,
-"y": 88
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-stake/Objects/Fixture_G_5_11"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_wpa2x")
-
-[node name="Fixture_c_10_16" type="Node2D" parent="Rooms/workshop-stake/Objects"]
-position = Vector2(80, 128)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "c"
-original_position = Vector2(80, 128)
-preview_entity = {
-"h": 8,
-"id": 0,
-"ox": 80,
-"oy": 128,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "stone",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 80,
-"y": 128
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-stake/Objects/Fixture_c_10_16"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_sa82d")
-
-[node name="Fixture_b_22_16" type="Node2D" parent="Rooms/workshop-stake/Objects"]
-position = Vector2(176, 128)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "b"
-original_position = Vector2(176, 128)
-preview_entity = {
-"h": 8,
-"id": 1,
-"ox": 176,
-"oy": 128,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "pod",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 176,
-"y": 128
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-stake/Objects/Fixture_b_22_16"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_qaxox")
-
-[node name="Spawn" type="Node2D" parent="Rooms/workshop-stake/Objects"]
-position = Vector2(80, 136)
-script = ExtResource("3_hhdtj")
-kind = "Spawn"
-glyph = "P"
-original_position = Vector2(80, 136)
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-stake/Objects/Spawn"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_hiyh0")
-
-[node name="Fixture_c_31_17" type="Node2D" parent="Rooms/workshop-stake/Objects"]
-position = Vector2(248, 136)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "c"
-original_position = Vector2(248, 136)
-preview_entity = {
-"h": 8,
-"id": 2,
-"ox": 248,
-"oy": 136,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "stone",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 248,
-"y": 136
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-stake/Objects/Fixture_c_31_17"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_rl15i")
-
-[node name="workshop-forked" type="Node2D" parent="Rooms"]
-position = Vector2(6144, 0)
-script = ExtResource("2_0b5cq")
-room_id = "workshop-forked"
-room_title = "The Forked Canopy"
-settings = {
-"aim8": true,
-"cols": 40.0,
-"exit": "none",
-"hint": "The bell prepares the upper pod route. Or leave it alone, dash through the trunk, and use the lower blue branch.",
-"id": "workshop-forked",
-"lock": ["parry", "portal"],
-"name": "The Forked Canopy",
-"palette": "woods",
-"question": "Will you take the crown or pass through the trunk?",
-"rows": 23.0,
-"workshopBiome": "woods",
-"workshopGoal": [248.0, 112.0, 48.0, 4.0],
-"workshopRoutes": [{
-"name": "Lower trunk route",
-"tape": [[10.0, ""], [12.0, "rj"], [12.0, "rx"], [24.0, "r"], [8.0, ""], [15.0, "rj"], [35.0, "rgu"], [10.0, ""]]
-}, {
-"name": "Upper canopy route",
-"tape": [[10.0, "us"], [15.0, "rj"], [12.0, "rx"], [6.0, "dsj"], [12.0, "j"], [12.0, "rux"], [30.0, "rgu"], [8.0, ""], [34.0, "r"], [20.0, ""]]
-}]
-}
-original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "map"]
-original_spawn = Vector2(96, 136)
-
-[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-forked"]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAnAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAnAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAnAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAnAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAnAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAnAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAnAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAnAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAdAA4AAAAAAAAAAAAeAA4AAAAAAAAAAAAfAA4AAAAAAAAAAAAgAA4AAAAAAAAAAAAhAA4AAAAAAAAAAAAiAA4AAAAAAAAAAAAjAA4AAAAAAAAAAAAkAA4AAAAAAAAAAAAlAA4AAAAAAAAAAAAnAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAdAA8AAAAAAAAAAAAeAA8AAAAAAAAAAAAfAA8AAAAAAAAAAAAgAA8AAAAAAAAAAAAhAA8AAAAAAAAAAAAiAA8AAAAAAAAAAAAjAA8AAAAAAAAAAAAkAA8AAAAAAAAAAAAlAA8AAAAAAAAAAAAnAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAdABAAAAAAAAAAAAAeABAAAAAAAAAAAAAfABAAAAAAAAAAAAAgABAAAAAAAAAAAAAhABAAAAAAAAAAAAAiABAAAAAAAAAAAAAjABAAAAAAAAAAAAAkABAAAAAAAAAAAAAlABAAAAAAAAAAAAAnABAAAAAAAAAAAAAAABEAAAAAAAAAAAAdABEAAAAAAAAAAAAeABEAAAAAAAAAAAAfABEAAAAAAAAAAAAgABEAAAAAAAAAAAAhABEAAAAAAAAAAAAiABEAAAAAAAAAAAAjABEAAAAAAAAAAAAkABEAAAAAAAAAAAAlABEAAAAAAAAAAAAnABEAAAAAAAAAAAAAABIAAAAAAAAAAAAIABIAAAAAAAAAAAAJABIAAAAAAAAAAAAKABIAAAAAAAAAAAALABIAAAAAAAAAAAAMABIAAAAAAAAAAAANABIAAAAAAAAAAAAdABIAAAAAAAAAAAAeABIAAAAAAAAAAAAfABIAAAAAAAAAAAAgABIAAAAAAAAAAAAhABIAAAAAAAAAAAAiABIAAAAAAAAAAAAjABIAAAAAAAAAAAAkABIAAAAAAAAAAAAlABIAAAAAAAAAAAAnABIAAAAAAAAAAAAAABMAAAAAAAAAAAAIABMAAAAAAAAAAAAJABMAAAAAAAAAAAAKABMAAAAAAAAAAAALABMAAAAAAAAAAAAMABMAAAAAAAAAAAANABMAAAAAAAAAAAAdABMAAAAAAAAAAAAeABMAAAAAAAAAAAAfABMAAAAAAAAAAAAgABMAAAAAAAAAAAAhABMAAAAAAAAAAAAiABMAAAAAAAAAAAAjABMAAAAAAAAAAAAkABMAAAAAAAAAAAAlABMAAAAAAAAAAAAnABMAAAAAAAAAAAAAABQAAAAAAAAAAAAIABQAAAAAAAAAAAAJABQAAAAAAAAAAAAKABQAAAAAAAAAAAALABQAAAAAAAAAAAAMABQAAAAAAAAAAAANABQAAAAAAAAAAAAdABQAAAAAAAAAAAAeABQAAAAAAAAAAAAfABQAAAAAAAAAAAAgABQAAAAAAAAAAAAhABQAAAAAAAAAAAAiABQAAAAAAAAAAAAjABQAAAAAAAAAAAAkABQAAAAAAAAAAAAlABQAAAAAAAAAAAAnABQAAAAAAAAAAAAAABUAAAAAAAAAAAABABUAAAADAAAAAAACABUAAAADAAAAAAADABUAAAADAAAAAAAEABUAAAADAAAAAAAFABUAAAADAAAAAAAGABUAAAADAAAAAAAHABUAAAADAAAAAAAIABUAAAAAAAAAAAAJABUAAAAAAAAAAAAKABUAAAAAAAAAAAALABUAAAAAAAAAAAAMABUAAAAAAAAAAAANABUAAAAAAAAAAAAOABUAAAADAAAAAAAPABUAAAADAAAAAAAQABUAAAADAAAAAAARABUAAAADAAAAAAASABUAAAADAAAAAAATABUAAAADAAAAAAAUABUAAAADAAAAAAAVABUAAAADAAAAAAAWABUAAAADAAAAAAAXABUAAAADAAAAAAAYABUAAAADAAAAAAAZABUAAAADAAAAAAAaABUAAAADAAAAAAAbABUAAAADAAAAAAAcABUAAAADAAAAAAAdABUAAAAAAAAAAAAeABUAAAAAAAAAAAAfABUAAAAAAAAAAAAgABUAAAAAAAAAAAAhABUAAAAAAAAAAAAiABUAAAAAAAAAAAAjABUAAAAAAAAAAAAkABUAAAAAAAAAAAAlABUAAAAAAAAAAAAmABUAAAADAAAAAAAnABUAAAAAAAAAAAAAABYAAAAAAAAAAAABABYAAAAAAAAAAAACABYAAAAAAAAAAAADABYAAAAAAAAAAAAEABYAAAAAAAAAAAAFABYAAAAAAAAAAAAGABYAAAAAAAAAAAAHABYAAAAAAAAAAAAIABYAAAAAAAAAAAAJABYAAAAAAAAAAAAKABYAAAAAAAAAAAALABYAAAAAAAAAAAAMABYAAAAAAAAAAAANABYAAAAAAAAAAAAOABYAAAAAAAAAAAAPABYAAAAAAAAAAAAQABYAAAAAAAAAAAARABYAAAAAAAAAAAASABYAAAAAAAAAAAATABYAAAAAAAAAAAAUABYAAAAAAAAAAAAVABYAAAAAAAAAAAAWABYAAAAAAAAAAAAXABYAAAAAAAAAAAAYABYAAAAAAAAAAAAZABYAAAAAAAAAAAAaABYAAAAAAAAAAAAbABYAAAAAAAAAAAAcABYAAAAAAAAAAAAdABYAAAAAAAAAAAAeABYAAAAAAAAAAAAfABYAAAAAAAAAAAAgABYAAAAAAAAAAAAhABYAAAAAAAAAAAAiABYAAAAAAAAAAAAjABYAAAAAAAAAAAAkABYAAAAAAAAAAAAlABYAAAAAAAAAAAAmABYAAAAAAAAAAAAnABYAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_wwhx0")
-
-[node name="Objects" type="Node2D" parent="Rooms/workshop-forked"]
-
-[node name="Fixture_B_23_8" type="Node2D" parent="Rooms/workshop-forked/Objects"]
-position = Vector2(184, 64)
+[node name="Fixture_B_13_29" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
+position = Vector2(104, 232)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
 glyph = "B"
 footprint = Vector2i(5, 1)
-original_position = Vector2(184, 64)
+original_position = Vector2(104, 232)
 preview_entity = {
-&"body": 0,
+&"body": 5,
 "h": 8,
-"id": 2,
-"ox": 184,
-"oy": 64,
+"id": 8,
+"ox": 104,
+"oy": 232,
 &"phase": 1,
 "remX": 0.0,
 "remY": 0.0,
@@ -3634,31 +3057,81 @@ preview_entity = {
 "vx": 0.0,
 "vy": 0.0,
 "w": 40,
-"x": 184,
-"y": 64
+"x": 104,
+"y": 232
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-forked/Objects/Fixture_B_23_8"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_B_13_29"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_n3oj4")
+texture = SubResource("ImageTexture_hkl5m")
 
-[node name="Fixture_A_20_11" type="Node2D" parent="Rooms/workshop-forked/Objects"]
-position = Vector2(160, 88)
+[node name="Spawn" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
+position = Vector2(48, 248)
+script = ExtResource("3_hhdtj")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(48, 248)
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_wpa2x")
+
+[node name="workshop-crown" type="Node2D" parent="Rooms"]
+position = Vector2(5120, 0)
+script = ExtResource("2_0b5cq")
+room_id = "workshop-crown"
+room_title = "The Hollow Crown"
+map_width = 56
+map_height = 38
+settings = {
+"aim8": true,
+"cols": 56.0,
+"exit": "none",
+"hint": "Open the roots by removing the approach bough. The pod crosses without changing phase. Restore the roots only after the earlier ones are behind you, climb the far side, then leave the crown in the phase your last dash creates.",
+"id": "workshop-crown",
+"lock": ["parry", "portal"],
+"name": "The Hollow Crown",
+"palette": "woods",
+"question": "Where must you be before the roots become real again?",
+"rows": 38.0,
+"workshopBiome": "woods",
+"workshopCameraAnchorY": 120.0,
+"workshopGoal": [144.0, 96.0, 48.0, 4.0],
+"workshopRoutes": [{
+"name": "Cross the roots before restoring them",
+"tape": [[10.0, ""], [30.0, "rj"], [12.0, ""], [18.0, "r"], [6.0, "us"], [16.0, "r"], [6.0, "rdsj"], [44.0, "rj"], [12.0, "rux"], [80.0, "rgu"], [12.0, ""], [14.0, "l"], [15.0, "lj"], [150.0, "lgu"], [15.0, ""], [15.0, "lj"], [12.0, "lux"], [24.0, "lg"], [12.0, ""]]
+}]
+}
+original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "workshopCameraAnchorY", "map"]
+original_spawn = Vector2(64, 216)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-crown"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA3AAEAAAAAAAAAAAAAAAIAAAAAAAAAAAA3AAIAAAAAAAAAAAAAAAMAAAAAAAAAAAA3AAMAAAAAAAAAAAAAAAQAAAAAAAAAAAA3AAQAAAAAAAAAAAAAAAUAAAAAAAAAAAA3AAUAAAAAAAAAAAAAAAYAAAAAAAAAAAA3AAYAAAAAAAAAAAAAAAcAAAAAAAAAAAA3AAcAAAAAAAAAAAAAAAgAAAAAAAAAAAA3AAgAAAAAAAAAAAAAAAkAAAAAAAAAAAA3AAkAAAAAAAAAAAAAAAoAAAAAAAAAAAA3AAoAAAAAAAAAAAAAAAsAAAAAAAAAAAA3AAsAAAAAAAAAAAAAAAwAAAAAAAAAAAARAAwAAAAFAAAAAAA3AAwAAAAAAAAAAAAAAA0AAAAAAAAAAAARAA0AAAAFAAAAAAA3AA0AAAAAAAAAAAAAAA4AAAAAAAAAAAARAA4AAAAFAAAAAAA3AA4AAAAAAAAAAAAAAA8AAAAAAAAAAAARAA8AAAAFAAAAAAA3AA8AAAAAAAAAAAAAABAAAAAAAAAAAAARABAAAAAFAAAAAAA3ABAAAAAAAAAAAAAAABEAAAAAAAAAAAARABEAAAAFAAAAAAA3ABEAAAAAAAAAAAAAABIAAAAAAAAAAAARABIAAAAFAAAAAAAXABIAAAAFAAAAAAAZABIAAAAFAAAAAAAbABIAAAAFAAAAAAAdABIAAAAFAAAAAAA3ABIAAAAAAAAAAAAAABMAAAAAAAAAAAARABMAAAAFAAAAAAAXABMAAAAFAAAAAAAZABMAAAAFAAAAAAAbABMAAAAFAAAAAAAdABMAAAAFAAAAAAA3ABMAAAAAAAAAAAAAABQAAAAAAAAAAAARABQAAAAFAAAAAAAXABQAAAAFAAAAAAAZABQAAAAFAAAAAAAbABQAAAAFAAAAAAAdABQAAAAFAAAAAAA3ABQAAAAAAAAAAAAAABUAAAAAAAAAAAARABUAAAAFAAAAAAAXABUAAAAFAAAAAAAZABUAAAAFAAAAAAAbABUAAAAFAAAAAAAdABUAAAAFAAAAAAA3ABUAAAAAAAAAAAAAABYAAAAAAAAAAAAXABYAAAAFAAAAAAAZABYAAAAFAAAAAAAbABYAAAAFAAAAAAAdABYAAAAFAAAAAAA3ABYAAAAAAAAAAAAAABcAAAAAAAAAAAA3ABcAAAAAAAAAAAAAABgAAAAAAAAAAAA3ABgAAAAAAAAAAAAAABkAAAAAAAAAAAA3ABkAAAAAAAAAAAAAABoAAAAAAAAAAAA3ABoAAAAAAAAAAAAAABsAAAAAAAAAAAA3ABsAAAAAAAAAAAAAABwAAAAAAAAAAAAEABwAAAAAAAAAAAAFABwAAAAAAAAAAAAGABwAAAAAAAAAAAAHABwAAAAAAAAAAAAIABwAAAAAAAAAAAAJABwAAAAAAAAAAAAKABwAAAAAAAAAAAALABwAAAAAAAAAAAAMABwAAAAAAAAAAAA3ABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAEAB0AAAAAAAAAAAAFAB0AAAAAAAAAAAAGAB0AAAAAAAAAAAAHAB0AAAAAAAAAAAAIAB0AAAAAAAAAAAAJAB0AAAAAAAAAAAAKAB0AAAAAAAAAAAALAB0AAAAAAAAAAAAMAB0AAAAAAAAAAAAmAB0AAAAAAAAAAAAnAB0AAAAAAAAAAAAoAB0AAAAAAAAAAAApAB0AAAAAAAAAAAAqAB0AAAAAAAAAAAArAB0AAAAAAAAAAAAsAB0AAAAAAAAAAAAtAB0AAAAAAAAAAAAuAB0AAAAAAAAAAAA3AB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAEAB4AAAAAAAAAAAAFAB4AAAAAAAAAAAAGAB4AAAAAAAAAAAAHAB4AAAAAAAAAAAAIAB4AAAAAAAAAAAAJAB4AAAAAAAAAAAAKAB4AAAAAAAAAAAALAB4AAAAAAAAAAAAMAB4AAAAAAAAAAAAmAB4AAAAAAAAAAAAnAB4AAAAAAAAAAAAoAB4AAAAAAAAAAAApAB4AAAAAAAAAAAAqAB4AAAAAAAAAAAArAB4AAAAAAAAAAAAsAB4AAAAAAAAAAAAtAB4AAAAAAAAAAAAuAB4AAAAAAAAAAAA3AB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAEAB8AAAAAAAAAAAAFAB8AAAAAAAAAAAAGAB8AAAAAAAAAAAAHAB8AAAAAAAAAAAAIAB8AAAAAAAAAAAAJAB8AAAAAAAAAAAAKAB8AAAAAAAAAAAALAB8AAAAAAAAAAAAMAB8AAAAAAAAAAAAmAB8AAAAAAAAAAAAnAB8AAAAAAAAAAAAoAB8AAAAAAAAAAAApAB8AAAAAAAAAAAAqAB8AAAAAAAAAAAArAB8AAAAAAAAAAAAsAB8AAAAAAAAAAAAtAB8AAAAAAAAAAAAuAB8AAAAAAAAAAAA3AB8AAAAAAAAAAAAAACAAAAAAAAAAAAAEACAAAAAAAAAAAAAFACAAAAAAAAAAAAAGACAAAAAAAAAAAAAHACAAAAAAAAAAAAAIACAAAAAAAAAAAAAJACAAAAAAAAAAAAAKACAAAAAAAAAAAAALACAAAAAAAAAAAAAMACAAAAAAAAAAAAAmACAAAAAAAAAAAAAnACAAAAAAAAAAAAAoACAAAAAAAAAAAAApACAAAAAAAAAAAAAqACAAAAAAAAAAAAArACAAAAAAAAAAAAAsACAAAAAAAAAAAAAtACAAAAAAAAAAAAAuACAAAAAAAAAAAAA3ACAAAAAAAAAAAAAAACEAAAAAAAAAAAAEACEAAAAAAAAAAAAFACEAAAAAAAAAAAAGACEAAAAAAAAAAAAHACEAAAAAAAAAAAAIACEAAAAAAAAAAAAJACEAAAAAAAAAAAAKACEAAAAAAAAAAAALACEAAAAAAAAAAAAMACEAAAAAAAAAAAAmACEAAAAAAAAAAAAnACEAAAAAAAAAAAAoACEAAAAAAAAAAAApACEAAAAAAAAAAAAqACEAAAAAAAAAAAArACEAAAAAAAAAAAAsACEAAAAAAAAAAAAtACEAAAAAAAAAAAAuACEAAAAAAAAAAAA3ACEAAAAAAAAAAAAAACIAAAAAAAAAAAAEACIAAAAAAAAAAAAFACIAAAAAAAAAAAAGACIAAAAAAAAAAAAHACIAAAAAAAAAAAAIACIAAAAAAAAAAAAJACIAAAAAAAAAAAAKACIAAAAAAAAAAAALACIAAAAAAAAAAAAMACIAAAAAAAAAAAAmACIAAAAAAAAAAAAnACIAAAAAAAAAAAAoACIAAAAAAAAAAAApACIAAAAAAAAAAAAqACIAAAAAAAAAAAArACIAAAAAAAAAAAAsACIAAAAAAAAAAAAtACIAAAAAAAAAAAAuACIAAAAAAAAAAAA3ACIAAAAAAAAAAAAAACMAAAAAAAAAAAABACMAAAADAAAAAAACACMAAAADAAAAAAADACMAAAADAAAAAAAEACMAAAAAAAAAAAAFACMAAAAAAAAAAAAGACMAAAAAAAAAAAAHACMAAAAAAAAAAAAIACMAAAAAAAAAAAAJACMAAAAAAAAAAAAKACMAAAAAAAAAAAALACMAAAAAAAAAAAAMACMAAAAAAAAAAAANACMAAAADAAAAAAAOACMAAAADAAAAAAAPACMAAAADAAAAAAAQACMAAAADAAAAAAARACMAAAADAAAAAAASACMAAAADAAAAAAATACMAAAADAAAAAAAUACMAAAADAAAAAAAVACMAAAADAAAAAAAWACMAAAADAAAAAAAXACMAAAADAAAAAAAZACMAAAADAAAAAAAbACMAAAADAAAAAAAdACMAAAADAAAAAAAgACMAAAADAAAAAAAhACMAAAADAAAAAAAiACMAAAADAAAAAAAjACMAAAADAAAAAAAkACMAAAADAAAAAAAlACMAAAADAAAAAAAmACMAAAAAAAAAAAAnACMAAAAAAAAAAAAoACMAAAAAAAAAAAApACMAAAAAAAAAAAAqACMAAAAAAAAAAAArACMAAAAAAAAAAAAsACMAAAAAAAAAAAAtACMAAAAAAAAAAAAuACMAAAAAAAAAAAAvACMAAAADAAAAAAAwACMAAAADAAAAAAAxACMAAAADAAAAAAAyACMAAAADAAAAAAAzACMAAAADAAAAAAA0ACMAAAADAAAAAAA1ACMAAAADAAAAAAA2ACMAAAADAAAAAAA3ACMAAAAAAAAAAAAAACQAAAAAAAAAAAABACQAAAADAAAAAAACACQAAAADAAAAAAADACQAAAADAAAAAAAEACQAAAAAAAAAAAAFACQAAAAAAAAAAAAGACQAAAAAAAAAAAAHACQAAAAAAAAAAAAIACQAAAAAAAAAAAAJACQAAAAAAAAAAAAKACQAAAAAAAAAAAALACQAAAAAAAAAAAAMACQAAAAAAAAAAAANACQAAAADAAAAAAAOACQAAAADAAAAAAAPACQAAAADAAAAAAAQACQAAAADAAAAAAARACQAAAADAAAAAAASACQAAAADAAAAAAATACQAAAADAAAAAAAUACQAAAADAAAAAAAVACQAAAADAAAAAAAWACQAAAADAAAAAAAXACQAAAADAAAAAAAYACQAAAADAAAAAAAZACQAAAADAAAAAAAaACQAAAADAAAAAAAbACQAAAADAAAAAAAcACQAAAADAAAAAAAdACQAAAADAAAAAAAeACQAAAADAAAAAAAfACQAAAADAAAAAAAgACQAAAADAAAAAAAhACQAAAADAAAAAAAiACQAAAADAAAAAAAjACQAAAADAAAAAAAkACQAAAADAAAAAAAlACQAAAADAAAAAAAmACQAAAAAAAAAAAAnACQAAAAAAAAAAAAoACQAAAAAAAAAAAApACQAAAAAAAAAAAAqACQAAAAAAAAAAAArACQAAAAAAAAAAAAsACQAAAAAAAAAAAAtACQAAAAAAAAAAAAuACQAAAAAAAAAAAAvACQAAAADAAAAAAAwACQAAAADAAAAAAAxACQAAAADAAAAAAAyACQAAAADAAAAAAAzACQAAAADAAAAAAA0ACQAAAADAAAAAAA1ACQAAAADAAAAAAA2ACQAAAADAAAAAAA3ACQAAAAAAAAAAAAAACUAAAAAAAAAAAABACUAAAAAAAAAAAACACUAAAAAAAAAAAADACUAAAAAAAAAAAAEACUAAAAAAAAAAAAFACUAAAAAAAAAAAAGACUAAAAAAAAAAAAHACUAAAAAAAAAAAAIACUAAAAAAAAAAAAJACUAAAAAAAAAAAAKACUAAAAAAAAAAAALACUAAAAAAAAAAAAMACUAAAAAAAAAAAANACUAAAAAAAAAAAAOACUAAAAAAAAAAAAPACUAAAAAAAAAAAAQACUAAAAAAAAAAAARACUAAAAAAAAAAAASACUAAAAAAAAAAAATACUAAAAAAAAAAAAUACUAAAAAAAAAAAAVACUAAAAAAAAAAAAWACUAAAAAAAAAAAAXACUAAAAAAAAAAAAYACUAAAAAAAAAAAAZACUAAAAAAAAAAAAaACUAAAAAAAAAAAAbACUAAAAAAAAAAAAcACUAAAAAAAAAAAAdACUAAAAAAAAAAAAeACUAAAAAAAAAAAAfACUAAAAAAAAAAAAgACUAAAAAAAAAAAAhACUAAAAAAAAAAAAiACUAAAAAAAAAAAAjACUAAAAAAAAAAAAkACUAAAAAAAAAAAAlACUAAAAAAAAAAAAmACUAAAAAAAAAAAAnACUAAAAAAAAAAAAoACUAAAAAAAAAAAApACUAAAAAAAAAAAAqACUAAAAAAAAAAAArACUAAAAAAAAAAAAsACUAAAAAAAAAAAAtACUAAAAAAAAAAAAuACUAAAAAAAAAAAAvACUAAAAAAAAAAAAwACUAAAAAAAAAAAAxACUAAAAAAAAAAAAyACUAAAAAAAAAAAAzACUAAAAAAAAAAAA0ACUAAAAAAAAAAAA1ACUAAAAAAAAAAAA2ACUAAAAAAAAAAAA3ACUAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_wwhx0")
+
+[node name="Objects" type="Node2D" parent="Rooms/workshop-crown"]
+
+[node name="Fixture_A_25_1" type="Node2D" parent="Rooms/workshop-crown/Objects"]
+position = Vector2(200, 8)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
 glyph = "A"
-footprint = Vector2i(2, 10)
-original_position = Vector2(160, 88)
+footprint = Vector2i(1, 17)
+original_position = Vector2(200, 8)
 preview_entity = {
-&"body": 1,
-"h": 80,
-"id": 3,
-"ox": 160,
-"oy": 88,
+&"body": 0,
+"h": 136,
+"id": 2,
+"ox": 200,
+"oy": 8,
 &"phase": 0,
 "remX": 0.0,
 "remY": 0.0,
@@ -3669,111 +3142,32 @@ preview_entity = {
 &"type": "toggle",
 "vx": 0.0,
 "vy": 0.0,
-"w": 16,
-"x": 160,
-"y": 88
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-forked/Objects/Fixture_A_20_11"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_44lqv")
-
-[node name="Fixture_x_13_15" type="Node2D" parent="Rooms/workshop-forked/Objects"]
-position = Vector2(104, 120)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "x"
-original_position = Vector2(104, 120)
-preview_entity = {
-"h": 8,
-"id": 0,
-"ox": 104,
-"oy": 120,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "bell",
-"vx": 0.0,
-"vy": 0.0,
 "w": 8,
-"x": 104,
-"y": 120
+"x": 200,
+"y": 8
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-forked/Objects/Fixture_x_13_15"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_A_25_1"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_jmu6w")
+texture = SubResource("ImageTexture_sa82d")
 
-[node name="Fixture_b_18_16" type="Node2D" parent="Rooms/workshop-forked/Objects"]
-position = Vector2(144, 128)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "b"
-original_position = Vector2(144, 128)
-preview_entity = {
-"h": 8,
-"id": 1,
-"ox": 144,
-"oy": 128,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "pod",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 144,
-"y": 128
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-forked/Objects/Fixture_b_18_16"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_cjngh")
-
-[node name="Spawn" type="Node2D" parent="Rooms/workshop-forked/Objects"]
-position = Vector2(96, 136)
-script = ExtResource("3_hhdtj")
-kind = "Spawn"
-glyph = "P"
-original_position = Vector2(96, 136)
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-forked/Objects/Spawn"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_bmccw")
-
-[node name="Fixture_B_22_18" type="Node2D" parent="Rooms/workshop-forked/Objects"]
-position = Vector2(176, 144)
+[node name="Fixture_B_18_12" type="Node2D" parent="Rooms/workshop-crown/Objects"]
+position = Vector2(144, 96)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
 glyph = "B"
-footprint = Vector2i(6, 1)
-original_position = Vector2(176, 144)
+footprint = Vector2i(6, 2)
+original_position = Vector2(144, 96)
 preview_entity = {
-&"body": 2,
-"h": 8,
-"id": 4,
-"ox": 176,
-"oy": 144,
+&"body": 1,
+"h": 16,
+"id": 3,
+"ox": 144,
+"oy": 96,
 &"phase": 1,
 "remX": 0.0,
 "remY": 0.0,
@@ -3785,633 +3179,173 @@ preview_entity = {
 "vx": 0.0,
 "vy": 0.0,
 "w": 48,
-"x": 176,
-"y": 144
+"x": 144,
+"y": 96
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-forked/Objects/Fixture_B_22_18"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_B_18_12"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_56qlp")
+texture = SubResource("ImageTexture_qaxox")
 
-[node name="workshop-crooked" type="Node2D" parent="Rooms"]
-position = Vector2(6528, 0)
-script = ExtResource("2_0b5cq")
-room_id = "workshop-crooked"
-room_title = "The Crooked Orchard"
-map_width = 56
-map_height = 33
-settings = {
-"aim8": true,
-"cols": 56.0,
-"exit": "none",
-"hint": "Leave the first bell silent to reach the amber bough. Light the far stake, then use the high pod to turn back toward the gate.",
-"id": "workshop-crooked",
-"lock": ["parry", "portal"],
-"name": "The Crooked Orchard",
-"palette": "woods",
-"question": "Which cut preserves the outward landing, and which sends you home?",
-"rows": 33.0,
-"workshopBiome": "woods",
-"workshopGoal": [8.0, 224.0, 24.0, 4.0],
-"workshopRequireStakes": true,
-"workshopRoutes": [{
-"name": "Selective crossing and high return",
-"tape": [[10.0, "us"], [15.0, "rj"], [12.0, "rx"], [3.0, "r"], [5.0, "ls"], [4.0, "r"], [12.0, "rux"], [38.0, "rgu"], [10.0, ""], [45.0, "r"], [15.0, ""], [16.0, "l"], [15.0, "lj"], [12.0, "lx"], [7.0, "l"], [5.0, "rs"], [4.0, "l"], [12.0, "lux"], [125.0, "lgu"], [10.0, ""]]
-}]
-}
-original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "map", "workshopRequireStakes"]
-original_spawn = Vector2(120, 216)
-
-[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-crooked"]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA3AAEAAAAAAAAAAAAAAAIAAAAAAAAAAAA3AAIAAAAAAAAAAAAAAAMAAAAAAAAAAAA3AAMAAAAAAAAAAAAAAAQAAAAAAAAAAAA3AAQAAAAAAAAAAAAAAAUAAAAAAAAAAAA3AAUAAAAAAAAAAAAAAAYAAAAAAAAAAAA3AAYAAAAAAAAAAAAAAAcAAAAAAAAAAAA3AAcAAAAAAAAAAAAAAAgAAAAAAAAAAAA3AAgAAAAAAAAAAAAAAAkAAAAAAAAAAAA3AAkAAAAAAAAAAAAAAAoAAAAAAAAAAAA3AAoAAAAAAAAAAAAAAAsAAAAAAAAAAAA3AAsAAAAAAAAAAAAAAAwAAAAAAAAAAAA3AAwAAAAAAAAAAAAAAA0AAAAAAAAAAAA3AA0AAAAAAAAAAAAAAA4AAAAAAAAAAAA3AA4AAAAAAAAAAAAAAA8AAAAAAAAAAAA3AA8AAAAAAAAAAAAAABAAAAAAAAAAAAA3ABAAAAAAAAAAAAAAABEAAAAAAAAAAAA3ABEAAAAAAAAAAAAAABIAAAAAAAAAAAA3ABIAAAAAAAAAAAAAABMAAAAAAAAAAAA3ABMAAAAAAAAAAAAAABQAAAAAAAAAAAA3ABQAAAAAAAAAAAAAABUAAAAAAAAAAAA3ABUAAAAAAAAAAAAAABYAAAAAAAAAAAAmABYAAAAAAAAAAAAnABYAAAAAAAAAAAAoABYAAAAAAAAAAAApABYAAAAAAAAAAAAqABYAAAAAAAAAAAArABYAAAAAAAAAAAAsABYAAAAAAAAAAAAtABYAAAAAAAAAAAAuABYAAAAAAAAAAAAvABYAAAAAAAAAAAAwABYAAAAAAAAAAAAxABYAAAAAAAAAAAAyABYAAAAAAAAAAAAzABYAAAAAAAAAAAA0ABYAAAAAAAAAAAA3ABYAAAAAAAAAAAAAABcAAAAAAAAAAAAmABcAAAAAAAAAAAAnABcAAAAAAAAAAAAoABcAAAAAAAAAAAApABcAAAAAAAAAAAAqABcAAAAAAAAAAAArABcAAAAAAAAAAAAsABcAAAAAAAAAAAAtABcAAAAAAAAAAAAuABcAAAAAAAAAAAAvABcAAAAAAAAAAAAwABcAAAAAAAAAAAAxABcAAAAAAAAAAAAyABcAAAAAAAAAAAAzABcAAAAAAAAAAAA0ABcAAAAAAAAAAAA3ABcAAAAAAAAAAAAAABgAAAAAAAAAAAAmABgAAAAAAAAAAAAnABgAAAAAAAAAAAAoABgAAAAAAAAAAAApABgAAAAAAAAAAAAqABgAAAAAAAAAAAArABgAAAAAAAAAAAAsABgAAAAAAAAAAAAtABgAAAAAAAAAAAAuABgAAAAAAAAAAAAvABgAAAAAAAAAAAAwABgAAAAAAAAAAAAxABgAAAAAAAAAAAAyABgAAAAAAAAAAAAzABgAAAAAAAAAAAA0ABgAAAAAAAAAAAA3ABgAAAAAAAAAAAAAABkAAAAAAAAAAAAmABkAAAAAAAAAAAAnABkAAAAAAAAAAAAoABkAAAAAAAAAAAApABkAAAAAAAAAAAAqABkAAAAAAAAAAAArABkAAAAAAAAAAAAsABkAAAAAAAAAAAAtABkAAAAAAAAAAAAuABkAAAAAAAAAAAAvABkAAAAAAAAAAAAwABkAAAAAAAAAAAAxABkAAAAAAAAAAAAyABkAAAAAAAAAAAAzABkAAAAAAAAAAAA0ABkAAAAAAAAAAAA3ABkAAAAAAAAAAAAAABoAAAAAAAAAAAAmABoAAAAAAAAAAAAnABoAAAAAAAAAAAAoABoAAAAAAAAAAAApABoAAAAAAAAAAAAqABoAAAAAAAAAAAArABoAAAAAAAAAAAAsABoAAAAAAAAAAAAtABoAAAAAAAAAAAAuABoAAAAAAAAAAAAvABoAAAAAAAAAAAAwABoAAAAAAAAAAAAxABoAAAAAAAAAAAAyABoAAAAAAAAAAAAzABoAAAAAAAAAAAA0ABoAAAAAAAAAAAA3ABoAAAAAAAAAAAAAABsAAAAAAAAAAAAmABsAAAAAAAAAAAAnABsAAAAAAAAAAAAoABsAAAAAAAAAAAApABsAAAAAAAAAAAAqABsAAAAAAAAAAAArABsAAAAAAAAAAAAsABsAAAAAAAAAAAAtABsAAAAAAAAAAAAuABsAAAAAAAAAAAAvABsAAAAAAAAAAAAwABsAAAAAAAAAAAAxABsAAAAAAAAAAAAyABsAAAAAAAAAAAAzABsAAAAAAAAAAAA0ABsAAAAAAAAAAAA3ABsAAAAAAAAAAAAAABwAAAAAAAAAAAABABwAAAAAAAAAAAACABwAAAAAAAAAAAADABwAAAAAAAAAAAAEABwAAAAAAAAAAAAFABwAAAAAAAAAAAAGABwAAAAAAAAAAAAHABwAAAAAAAAAAAAIABwAAAAAAAAAAAAJABwAAAAAAAAAAAAKABwAAAAAAAAAAAALABwAAAAAAAAAAAAMABwAAAAAAAAAAAANABwAAAAAAAAAAAAOABwAAAAAAAAAAAAPABwAAAAAAAAAAAAQABwAAAAAAAAAAAARABwAAAAAAAAAAAAmABwAAAAAAAAAAAAnABwAAAAAAAAAAAAoABwAAAAAAAAAAAApABwAAAAAAAAAAAAqABwAAAAAAAAAAAArABwAAAAAAAAAAAAsABwAAAAAAAAAAAAtABwAAAAAAAAAAAAuABwAAAAAAAAAAAAvABwAAAAAAAAAAAAwABwAAAAAAAAAAAAxABwAAAAAAAAAAAAyABwAAAAAAAAAAAAzABwAAAAAAAAAAAA0ABwAAAAAAAAAAAA3ABwAAAAAAAAAAAAAAB0AAAAAAAAAAAABAB0AAAAAAAAAAAACAB0AAAAAAAAAAAADAB0AAAAAAAAAAAAEAB0AAAAAAAAAAAAFAB0AAAAAAAAAAAAGAB0AAAAAAAAAAAAHAB0AAAAAAAAAAAAIAB0AAAAAAAAAAAAJAB0AAAAAAAAAAAAKAB0AAAAAAAAAAAALAB0AAAAAAAAAAAAMAB0AAAAAAAAAAAANAB0AAAAAAAAAAAAOAB0AAAAAAAAAAAAPAB0AAAAAAAAAAAAQAB0AAAAAAAAAAAARAB0AAAAAAAAAAAAmAB0AAAAAAAAAAAAnAB0AAAAAAAAAAAAoAB0AAAAAAAAAAAApAB0AAAAAAAAAAAAqAB0AAAAAAAAAAAArAB0AAAAAAAAAAAAsAB0AAAAAAAAAAAAtAB0AAAAAAAAAAAAuAB0AAAAAAAAAAAAvAB0AAAAAAAAAAAAwAB0AAAAAAAAAAAAxAB0AAAAAAAAAAAAyAB0AAAAAAAAAAAAzAB0AAAAAAAAAAAA0AB0AAAAAAAAAAAA3AB0AAAAAAAAAAAAAAB4AAAAAAAAAAAABAB4AAAAAAAAAAAACAB4AAAAAAAAAAAADAB4AAAAAAAAAAAAEAB4AAAAAAAAAAAAFAB4AAAAAAAAAAAAGAB4AAAAAAAAAAAAHAB4AAAAAAAAAAAAIAB4AAAAAAAAAAAAJAB4AAAAAAAAAAAAKAB4AAAAAAAAAAAALAB4AAAAAAAAAAAAMAB4AAAAAAAAAAAANAB4AAAAAAAAAAAAOAB4AAAAAAAAAAAAPAB4AAAAAAAAAAAAQAB4AAAAAAAAAAAARAB4AAAAAAAAAAAAmAB4AAAAAAAAAAAAnAB4AAAAAAAAAAAAoAB4AAAAAAAAAAAApAB4AAAAAAAAAAAAqAB4AAAAAAAAAAAArAB4AAAAAAAAAAAAsAB4AAAAAAAAAAAAtAB4AAAAAAAAAAAAuAB4AAAAAAAAAAAAvAB4AAAAAAAAAAAAwAB4AAAAAAAAAAAAxAB4AAAAAAAAAAAAyAB4AAAAAAAAAAAAzAB4AAAAAAAAAAAA0AB4AAAAAAAAAAAA3AB4AAAAAAAAAAAAAAB8AAAAAAAAAAAABAB8AAAAAAAAAAAACAB8AAAAAAAAAAAADAB8AAAAAAAAAAAAEAB8AAAAAAAAAAAAFAB8AAAAAAAAAAAAGAB8AAAAAAAAAAAAHAB8AAAAAAAAAAAAIAB8AAAAAAAAAAAAJAB8AAAAAAAAAAAAKAB8AAAAAAAAAAAALAB8AAAAAAAAAAAAMAB8AAAAAAAAAAAANAB8AAAAAAAAAAAAOAB8AAAAAAAAAAAAPAB8AAAAAAAAAAAAQAB8AAAAAAAAAAAARAB8AAAAAAAAAAAASAB8AAAADAAAAAAATAB8AAAADAAAAAAAUAB8AAAADAAAAAAAVAB8AAAADAAAAAAAWAB8AAAADAAAAAAAXAB8AAAADAAAAAAAYAB8AAAADAAAAAAAZAB8AAAADAAAAAAAaAB8AAAADAAAAAAAbAB8AAAADAAAAAAAcAB8AAAADAAAAAAAdAB8AAAADAAAAAAAeAB8AAAADAAAAAAAfAB8AAAADAAAAAAAgAB8AAAADAAAAAAAhAB8AAAADAAAAAAAiAB8AAAADAAAAAAAjAB8AAAADAAAAAAAkAB8AAAADAAAAAAAlAB8AAAADAAAAAAAmAB8AAAAAAAAAAAAnAB8AAAAAAAAAAAAoAB8AAAAAAAAAAAApAB8AAAAAAAAAAAAqAB8AAAAAAAAAAAArAB8AAAAAAAAAAAAsAB8AAAAAAAAAAAAtAB8AAAAAAAAAAAAuAB8AAAAAAAAAAAAvAB8AAAAAAAAAAAAwAB8AAAAAAAAAAAAxAB8AAAAAAAAAAAAyAB8AAAAAAAAAAAAzAB8AAAAAAAAAAAA0AB8AAAAAAAAAAAA1AB8AAAADAAAAAAA2AB8AAAADAAAAAAA3AB8AAAAAAAAAAAAAACAAAAAAAAAAAAABACAAAAAAAAAAAAACACAAAAAAAAAAAAADACAAAAAAAAAAAAAEACAAAAAAAAAAAAAFACAAAAAAAAAAAAAGACAAAAAAAAAAAAAHACAAAAAAAAAAAAAIACAAAAAAAAAAAAAJACAAAAAAAAAAAAAKACAAAAAAAAAAAAALACAAAAAAAAAAAAAMACAAAAAAAAAAAAANACAAAAAAAAAAAAAOACAAAAAAAAAAAAAPACAAAAAAAAAAAAAQACAAAAAAAAAAAAARACAAAAAAAAAAAAASACAAAAAAAAAAAAATACAAAAAAAAAAAAAUACAAAAAAAAAAAAAVACAAAAAAAAAAAAAWACAAAAAAAAAAAAAXACAAAAAAAAAAAAAYACAAAAAAAAAAAAAZACAAAAAAAAAAAAAaACAAAAAAAAAAAAAbACAAAAAAAAAAAAAcACAAAAAAAAAAAAAdACAAAAAAAAAAAAAeACAAAAAAAAAAAAAfACAAAAAAAAAAAAAgACAAAAAAAAAAAAAhACAAAAAAAAAAAAAiACAAAAAAAAAAAAAjACAAAAAAAAAAAAAkACAAAAAAAAAAAAAlACAAAAAAAAAAAAAmACAAAAAAAAAAAAAnACAAAAAAAAAAAAAoACAAAAAAAAAAAAApACAAAAAAAAAAAAAqACAAAAAAAAAAAAArACAAAAAAAAAAAAAsACAAAAAAAAAAAAAtACAAAAAAAAAAAAAuACAAAAAAAAAAAAAvACAAAAAAAAAAAAAwACAAAAAAAAAAAAAxACAAAAAAAAAAAAAyACAAAAAAAAAAAAAzACAAAAAAAAAAAAA0ACAAAAAAAAAAAAA1ACAAAAAAAAAAAAA2ACAAAAAAAAAAAAA3ACAAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_wwhx0")
-
-[node name="Objects" type="Node2D" parent="Rooms/workshop-crooked"]
-
-[node name="Fixture_b_32_18" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
-position = Vector2(256, 144)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "b"
-original_position = Vector2(256, 144)
-preview_entity = {
-"h": 8,
-"id": 0,
-"ox": 256,
-"oy": 144,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "pod",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 256,
-"y": 144
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_b_32_18"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_k3vro")
-
-[node name="Fixture_G_5_20" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
-position = Vector2(40, 160)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "G"
-footprint = Vector2i(1, 8)
-original_position = Vector2(40, 160)
-preview_entity = {
-"h": 64,
-"id": 5,
-"ox": 40,
-"oy": 160,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-&"type": "gate",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 40,
-"y": 160
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_G_5_20"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_88x5l")
-
-[node name="Fixture_A_31_20" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
-position = Vector2(248, 160)
+[node name="Fixture_A_24_17" type="Node2D" parent="Rooms/workshop-crown/Objects"]
+position = Vector2(192, 136)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
 glyph = "A"
-footprint = Vector2i(7, 1)
-original_position = Vector2(248, 160)
+footprint = Vector2i(1, 19)
+original_position = Vector2(192, 136)
 preview_entity = {
-&"body": 1,
-"h": 8,
-"id": 6,
-"ox": 248,
-"oy": 160,
-&"phase": 0,
-"remX": 0.0,
-"remY": 0.0,
-&"solid": true,
-"state": "idle",
-"t": 0,
-"timer": 0,
-&"type": "toggle",
-"vx": 0.0,
-"vy": 0.0,
-"w": 56,
-"x": 248,
-"y": 160
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_A_31_20"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_qbfrf")
-
-[node name="Fixture_c_41_21" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
-position = Vector2(328, 168)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "c"
-original_position = Vector2(328, 168)
-preview_entity = {
-"h": 8,
-"id": 1,
-"ox": 328,
-"oy": 168,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "stone",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 328,
-"y": 168
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_c_41_21"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_yk8r8")
-
-[node name="Fixture_x_22_22" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
-position = Vector2(176, 176)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "x"
-original_position = Vector2(176, 176)
-preview_entity = {
-"h": 8,
-"id": 2,
-"ox": 176,
-"oy": 176,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "bell",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 176,
-"y": 176
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_x_22_22"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_8ofni")
-
-[node name="Fixture_b_22_24" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
-position = Vector2(176, 192)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "b"
-original_position = Vector2(176, 192)
-preview_entity = {
-"h": 8,
-"id": 3,
-"ox": 176,
-"oy": 192,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "pod",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 176,
-"y": 192
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_b_22_24"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_qrdpp")
-
-[node name="Fixture_c_15_26" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
-position = Vector2(120, 208)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "c"
-original_position = Vector2(120, 208)
-preview_entity = {
-"h": 8,
-"id": 4,
-"ox": 120,
-"oy": 208,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "stone",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 120,
-"y": 208
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Fixture_c_15_26"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_qfrx0")
-
-[node name="Spawn" type="Node2D" parent="Rooms/workshop-crooked/Objects"]
-position = Vector2(120, 216)
-script = ExtResource("3_hhdtj")
-kind = "Spawn"
-glyph = "P"
-original_position = Vector2(120, 216)
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crooked/Objects/Spawn"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_a5jqn")
-
-[node name="workshop-crown" type="Node2D" parent="Rooms"]
-position = Vector2(7040, 0)
-script = ExtResource("2_0b5cq")
-room_id = "workshop-crown"
-room_title = "The Hollow Crown"
-map_width = 48
-map_height = 40
-settings = {
-"aim8": true,
-"cols": 48.0,
-"exit": "none",
-"hint": "Collapse the balcony and cut the pod. Dash through the trunk onto the blue branch. Ring the bell to restore the trunk, then take its crown toward the flag.",
-"id": "workshop-crown",
-"lock": ["parry", "portal"],
-"name": "The Hollow Crown",
-"palette": "woods",
-"question": "What will carry you after the balcony falls?",
-"rows": 40.0,
-"workshopBiome": "woods",
-"workshopCameraAnchorY": 120.0,
-"workshopGoal": [184.0, 112.0, 48.0, 4.0],
-"workshopRoutes": [{
-"name": "From fallen balcony to restored crown",
-"tape": [[10.0, ""], [36.0, "rj"], [10.0, "r"], [22.0, ""], [6.0, "dsj"], [10.0, "rj"], [12.0, "rux"], [55.0, "rgu"], [12.0, ""], [6.0, "lj"], [5.0, "us"], [90.0, "lgu"], [15.0, ""], [15.0, "j"], [12.0, "lux"], [40.0, "lgu"], [15.0, ""]]
-}]
-}
-original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "workshopCameraAnchorY", "map"]
-original_spawn = Vector2(144, 256)
-
-[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-crown"]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAvAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAvAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAvAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAvAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAvAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAvAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAvAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAvAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAvAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAvAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAvAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAvAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAvAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAWAA4AAAAFAAAAAAAXAA4AAAAAAAAAAAAYAA4AAAAAAAAAAAAZAA4AAAAAAAAAAAAaAA4AAAAAAAAAAAAbAA4AAAAAAAAAAAAcAA4AAAAAAAAAAAAvAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAWAA8AAAAFAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAZAA8AAAAAAAAAAAAaAA8AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAvAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAWABAAAAAFAAAAAAAvABAAAAAAAAAAAAAAABEAAAAAAAAAAAAWABEAAAAFAAAAAAAvABEAAAAAAAAAAAAAABIAAAAAAAAAAAAWABIAAAAFAAAAAAAvABIAAAAAAAAAAAAAABMAAAAAAAAAAAAvABMAAAAAAAAAAAAAABQAAAAAAAAAAAAvABQAAAAAAAAAAAAAABUAAAAAAAAAAAAvABUAAAAAAAAAAAAAABYAAAAAAAAAAAAvABYAAAAAAAAAAAAAABcAAAAAAAAAAAAvABcAAAAAAAAAAAAAABgAAAAAAAAAAAAvABgAAAAAAAAAAAAAABkAAAAAAAAAAAAvABkAAAAAAAAAAAAAABoAAAAAAAAAAAAvABoAAAAAAAAAAAAAABsAAAAAAAAAAAAvABsAAAAAAAAAAAAAABwAAAAAAAAAAAAvABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAvAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAvAB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAvAB8AAAAAAAAAAAAAACAAAAAAAAAAAAAvACAAAAAAAAAAAAAAACEAAAAAAAAAAAANACEAAAAAAAAAAAAOACEAAAAAAAAAAAAPACEAAAAAAAAAAAAQACEAAAAAAAAAAAARACEAAAAAAAAAAAASACEAAAAAAAAAAAATACEAAAAAAAAAAAAvACEAAAAAAAAAAAAAACIAAAAAAAAAAAANACIAAAAAAAAAAAAOACIAAAAAAAAAAAAPACIAAAAAAAAAAAAQACIAAAAAAAAAAAARACIAAAAAAAAAAAASACIAAAAAAAAAAAATACIAAAAAAAAAAAAvACIAAAAAAAAAAAAAACMAAAAAAAAAAAANACMAAAAAAAAAAAAOACMAAAAAAAAAAAAPACMAAAAAAAAAAAAQACMAAAAAAAAAAAARACMAAAAAAAAAAAASACMAAAAAAAAAAAATACMAAAAAAAAAAAAvACMAAAAAAAAAAAAAACQAAAAAAAAAAAANACQAAAAAAAAAAAAOACQAAAAAAAAAAAAPACQAAAAAAAAAAAAQACQAAAAAAAAAAAARACQAAAAAAAAAAAASACQAAAAAAAAAAAATACQAAAAAAAAAAAAvACQAAAAAAAAAAAAAACUAAAAAAAAAAAANACUAAAAAAAAAAAAOACUAAAAAAAAAAAAPACUAAAAAAAAAAAAQACUAAAAAAAAAAAARACUAAAAAAAAAAAASACUAAAAAAAAAAAATACUAAAAAAAAAAAAvACUAAAAAAAAAAAAAACYAAAAAAAAAAAABACYAAAADAAAAAAACACYAAAADAAAAAAADACYAAAADAAAAAAAEACYAAAADAAAAAAAFACYAAAADAAAAAAAGACYAAAADAAAAAAAHACYAAAADAAAAAAAIACYAAAADAAAAAAAJACYAAAADAAAAAAAKACYAAAADAAAAAAALACYAAAADAAAAAAAMACYAAAADAAAAAAANACYAAAAAAAAAAAAOACYAAAAAAAAAAAAPACYAAAAAAAAAAAAQACYAAAAAAAAAAAARACYAAAAAAAAAAAASACYAAAAAAAAAAAATACYAAAAAAAAAAAAUACYAAAADAAAAAAAVACYAAAADAAAAAAAWACYAAAADAAAAAAAXACYAAAADAAAAAAAYACYAAAADAAAAAAAZACYAAAADAAAAAAAaACYAAAADAAAAAAAbACYAAAADAAAAAAAcACYAAAADAAAAAAAdACYAAAADAAAAAAAeACYAAAADAAAAAAAfACYAAAADAAAAAAAgACYAAAADAAAAAAAhACYAAAADAAAAAAAiACYAAAADAAAAAAAjACYAAAADAAAAAAAkACYAAAADAAAAAAAlACYAAAADAAAAAAAmACYAAAADAAAAAAAnACYAAAADAAAAAAAoACYAAAADAAAAAAApACYAAAADAAAAAAAqACYAAAADAAAAAAArACYAAAADAAAAAAAsACYAAAADAAAAAAAtACYAAAADAAAAAAAuACYAAAADAAAAAAAvACYAAAAAAAAAAAAAACcAAAAAAAAAAAABACcAAAAAAAAAAAACACcAAAAAAAAAAAADACcAAAAAAAAAAAAEACcAAAAAAAAAAAAFACcAAAAAAAAAAAAGACcAAAAAAAAAAAAHACcAAAAAAAAAAAAIACcAAAAAAAAAAAAJACcAAAAAAAAAAAAKACcAAAAAAAAAAAALACcAAAAAAAAAAAAMACcAAAAAAAAAAAANACcAAAAAAAAAAAAOACcAAAAAAAAAAAAPACcAAAAAAAAAAAAQACcAAAAAAAAAAAARACcAAAAAAAAAAAASACcAAAAAAAAAAAATACcAAAAAAAAAAAAUACcAAAAAAAAAAAAVACcAAAAAAAAAAAAWACcAAAAAAAAAAAAXACcAAAAAAAAAAAAYACcAAAAAAAAAAAAZACcAAAAAAAAAAAAaACcAAAAAAAAAAAAbACcAAAAAAAAAAAAcACcAAAAAAAAAAAAdACcAAAAAAAAAAAAeACcAAAAAAAAAAAAfACcAAAAAAAAAAAAgACcAAAAAAAAAAAAhACcAAAAAAAAAAAAiACcAAAAAAAAAAAAjACcAAAAAAAAAAAAkACcAAAAAAAAAAAAlACcAAAAAAAAAAAAmACcAAAAAAAAAAAAnACcAAAAAAAAAAAAoACcAAAAAAAAAAAApACcAAAAAAAAAAAAqACcAAAAAAAAAAAArACcAAAAAAAAAAAAsACcAAAAAAAAAAAAtACcAAAAAAAAAAAAuACcAAAAAAAAAAAAvACcAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_wwhx0")
-
-[node name="Objects" type="Node2D" parent="Rooms/workshop-crown"]
-
-[node name="Fixture_A_33_22" type="Node2D" parent="Rooms/workshop-crown/Objects"]
-position = Vector2(264, 176)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "A"
-footprint = Vector2i(2, 16)
-original_position = Vector2(264, 176)
-preview_entity = {
-&"body": 0,
-"h": 128,
-"id": 2,
-"ox": 264,
-"oy": 176,
-&"phase": 0,
-"remX": 0.0,
-"remY": 0.0,
-&"solid": true,
-"state": "idle",
-"t": 0,
-"timer": 0,
-&"type": "toggle",
-"vx": 0.0,
-"vy": 0.0,
-"w": 16,
-"x": 264,
-"y": 176
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_A_33_22"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_33tps")
-
-[node name="Fixture_x_37_23" type="Node2D" parent="Rooms/workshop-crown/Objects"]
-position = Vector2(296, 184)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "x"
-original_position = Vector2(296, 184)
-preview_entity = {
-"h": 8,
-"id": 0,
-"ox": 296,
-"oy": 184,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "bell",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 296,
-"y": 184
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_x_37_23"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_2yfrq")
-
-[node name="Fixture_B_36_27" type="Node2D" parent="Rooms/workshop-crown/Objects"]
-position = Vector2(288, 216)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "B"
-footprint = Vector2i(7, 1)
-original_position = Vector2(288, 216)
-preview_entity = {
-&"body": 1,
-"h": 8,
-"id": 3,
-"ox": 288,
-"oy": 216,
-&"phase": 1,
-"remX": 0.0,
-"remY": 0.0,
-&"solid": false,
-"state": "idle",
-"t": 0,
-"timer": 0,
-&"type": "toggle",
-"vx": 0.0,
-"vy": 0.0,
-"w": 56,
-"x": 288,
-"y": 216
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_B_36_27"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_lh30q")
-
-[node name="Spawn" type="Node2D" parent="Rooms/workshop-crown/Objects"]
-position = Vector2(144, 256)
-script = ExtResource("3_hhdtj")
-kind = "Spawn"
-glyph = "P"
-original_position = Vector2(144, 256)
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Spawn"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_wfnx0")
-
-[node name="Fixture_~_24_32" type="Node2D" parent="Rooms/workshop-crown/Objects"]
-position = Vector2(192, 256)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "~"
-footprint = Vector2i(8, 1)
-original_position = Vector2(192, 256)
-preview_entity = {
-"h": 8,
+&"body": 2,
+"h": 152,
 "id": 4,
 "ox": 192,
-"oy": 256,
+"oy": 136,
+&"phase": 0,
 "remX": 0.0,
 "remY": 0.0,
+&"solid": true,
 "state": "idle",
 "t": 0,
 "timer": 0,
-&"type": "crumble",
+&"type": "toggle",
 "vx": 0.0,
 "vy": 0.0,
-"w": 64,
+"w": 8,
 "x": 192,
-"y": 256
+"y": 136
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_~_24_32"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_A_24_17"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_37wwj")
+texture = SubResource("ImageTexture_hiyh0")
 
-[node name="Fixture_b_27_35" type="Node2D" parent="Rooms/workshop-crown/Objects"]
-position = Vector2(216, 280)
+[node name="Fixture_A_26_17" type="Node2D" parent="Rooms/workshop-crown/Objects"]
+position = Vector2(208, 136)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
-glyph = "b"
-original_position = Vector2(216, 280)
+glyph = "A"
+footprint = Vector2i(6, 1)
+original_position = Vector2(208, 136)
 preview_entity = {
+&"body": 3,
 "h": 8,
-"id": 1,
-"ox": 216,
-"oy": 280,
+"id": 5,
+"ox": 208,
+"oy": 136,
+&"phase": 0,
 "remX": 0.0,
 "remY": 0.0,
+&"solid": true,
 "state": "idle",
 "t": 0,
 "timer": 0,
-"type": "pod",
+&"type": "toggle",
 "vx": 0.0,
 "vy": 0.0,
-"w": 8,
-"x": 216,
-"y": 280
+"w": 48,
+"x": 208,
+"y": 136
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_b_27_35"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_A_26_17"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_06n1c")
+texture = SubResource("ImageTexture_rl15i")
 
-[node name="workshop-boughs" type="Node2D" parent="Rooms"]
-position = Vector2(7488, 0)
-script = ExtResource("2_0b5cq")
-room_id = "workshop-boughs"
-room_title = "The Two Boughs"
-map_width = 88
-map_height = 35
-settings = {
-"aim8": true,
-"cols": 88.0,
-"exit": "none",
-"hint": "Light a stake in each wing, then return to the high central flag. The left wing uses a phase passage; the right wing asks for a careful pod cut. Lit stakes survive retries here.",
-"id": "workshop-boughs",
-"lock": ["parry", "portal"],
-"name": "The Two Boughs",
-"palette": "woods",
-"question": "Which bough will you light first?",
-"rows": 35.0,
-"workshopBiome": "woods",
-"workshopCameraAnchorY": 110.0,
-"workshopGoal": [320.0, 144.0, 32.0, 4.0],
-"workshopKeepStakes": true,
-"workshopRequireStakes": true,
-"workshopRoutes": [{
-"name": "Left bough first",
-"tape": [[10.0, ""], [14.0, "l"], [15.0, "lj"], [12.0, "lx"], [14.0, "l"], [10.0, ""], [25.0, "lj"], [35.0, "lgu"], [12.0, ""], [14.0, "r"], [30.0, "rj"], [30.0, ""], [6.0, "j"], [5.0, "us"], [12.0, "rx"], [30.0, "rgu"], [10.0, ""], [18.0, "r"], [10.0, "us"], [22.0, "r"], [15.0, "rj"], [12.0, "rx"], [10.0, "r"], [5.0, "ls"], [4.0, "r"], [12.0, "rux"], [55.0, "rgu"], [35.0, "r"], [12.0, ""], [16.0, "l"], [15.0, "lj"], [12.0, "lx"], [7.0, "l"], [5.0, "rs"], [4.0, "l"], [12.0, "lux"], [90.0, "lgu"], [12.0, ""], [8.0, "r"], [15.0, "j"], [12.0, "ux"], [55.0, "lgu"], [12.0, ""]]
-}, {
-"name": "Right bough first",
-"tape": [[10.0, ""], [12.0, "l"], [12.0, ""], [18.0, "r"], [10.0, ""], [22.0, "r"], [15.0, "rj"], [12.0, "rx"], [10.0, "r"], [5.0, "ls"], [4.0, "r"], [12.0, "rux"], [55.0, "rgu"], [35.0, "r"], [12.0, ""], [16.0, "l"], [15.0, "lj"], [12.0, "lx"], [7.0, "l"], [5.0, "rs"], [4.0, "l"], [12.0, "lux"], [90.0, "lgu"], [12.0, ""], [25.0, "l"], [12.0, ""], [10.0, ""], [14.0, "l"], [15.0, "lj"], [12.0, "lx"], [14.0, "l"], [10.0, ""], [25.0, "lj"], [35.0, "lgu"], [12.0, ""], [14.0, "r"], [30.0, "rj"], [30.0, ""], [6.0, "j"], [5.0, "us"], [12.0, "rx"], [30.0, "rgu"], [10.0, ""], [44.0, "r"], [12.0, ""], [15.0, "j"], [12.0, "ux"], [55.0, "lgu"], [12.0, ""]]
-}]
-}
-original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "workshopKeepStakes", "workshopCameraAnchorY", "map", "workshopRequireStakes"]
-original_spawn = Vector2(320, 216)
-
-[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-boughs"]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA5AAAAAAAAAAAAAAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAABAAAAAAAAAAAAAAABBAAAAAAAAAAAAAABCAAAAAAAAAAAAAABDAAAAAAAAAAAAAABEAAAAAAAAAAAAAABFAAAAAAAAAAAAAABGAAAAAAAAAAAAAABHAAAAAAAAAAAAAABIAAAAAAAAAAAAAABJAAAAAAAAAAAAAABKAAAAAAAAAAAAAABLAAAAAAAAAAAAAABMAAAAAAAAAAAAAABNAAAAAAAAAAAAAABOAAAAAAAAAAAAAABPAAAAAAAAAAAAAABQAAAAAAAAAAAAAABRAAAAAAAAAAAAAABSAAAAAAAAAAAAAABTAAAAAAAAAAAAAABUAAAAAAAAAAAAAABVAAAAAAAAAAAAAABWAAAAAAAAAAAAAABXAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAmAAEAAAAAAAAAAAAnAAEAAAAAAAAAAAAoAAEAAAAAAAAAAAApAAEAAAAAAAAAAAAqAAEAAAAAAAAAAAArAAEAAAAAAAAAAAAsAAEAAAAAAAAAAAAtAAEAAAAAAAAAAABXAAEAAAAAAAAAAAAAAAIAAAAAAAAAAABXAAIAAAAAAAAAAAAAAAMAAAAAAAAAAABXAAMAAAAAAAAAAAAAAAQAAAAAAAAAAABXAAQAAAAAAAAAAAAAAAUAAAAAAAAAAABXAAUAAAAAAAAAAAAAAAYAAAAAAAAAAABXAAYAAAAAAAAAAAAAAAcAAAAAAAAAAABXAAcAAAAAAAAAAAAAAAgAAAAAAAAAAABXAAgAAAAAAAAAAAAAAAkAAAAAAAAAAABXAAkAAAAAAAAAAAAAAAoAAAAAAAAAAABXAAoAAAAAAAAAAAAAAAsAAAAAAAAAAABXAAsAAAAAAAAAAAAAAAwAAAAAAAAAAABXAAwAAAAAAAAAAAAAAA0AAAAAAAAAAABXAA0AAAAAAAAAAAAAAA4AAAAAAAAAAABXAA4AAAAAAAAAAAAAAA8AAAAAAAAAAABXAA8AAAAAAAAAAAAAABAAAAAAAAAAAABXABAAAAAAAAAAAAAAABEAAAAAAAAAAABXABEAAAAAAAAAAAAAABIAAAAAAAAAAAAnABIAAAAAAAAAAAAoABIAAAAAAAAAAAApABIAAAAAAAAAAAAqABIAAAAAAAAAAAArABIAAAAAAAAAAAAsABIAAAAAAAAAAABXABIAAAAAAAAAAAAAABMAAAAAAAAAAAAnABMAAAAAAAAAAAAoABMAAAAAAAAAAAApABMAAAAAAAAAAAAqABMAAAAAAAAAAAArABMAAAAAAAAAAAAsABMAAAAAAAAAAABXABMAAAAAAAAAAAAAABQAAAAAAAAAAABXABQAAAAAAAAAAAAAABUAAAAAAAAAAABXABUAAAAAAAAAAAAAABYAAAAAAAAAAABXABYAAAAAAAAAAAAAABcAAAAAAAAAAABXABcAAAAAAAAAAAAAABgAAAAAAAAAAAASABgAAAAAAAAAAAATABgAAAAAAAAAAAAUABgAAAAAAAAAAAAVABgAAAAAAAAAAAAWABgAAAAAAAAAAABFABgAAAAAAAAAAABGABgAAAAAAAAAAABHABgAAAAAAAAAAABIABgAAAAAAAAAAABJABgAAAAAAAAAAABKABgAAAAAAAAAAABLABgAAAAAAAAAAABMABgAAAAAAAAAAABNABgAAAAAAAAAAABOABgAAAAAAAAAAABPABgAAAAAAAAAAABQABgAAAAAAAAAAABRABgAAAAAAAAAAABXABgAAAAAAAAAAAAAABkAAAAAAAAAAAASABkAAAAAAAAAAAATABkAAAAAAAAAAAAUABkAAAAAAAAAAAAVABkAAAAAAAAAAAAWABkAAAAAAAAAAABFABkAAAAAAAAAAABGABkAAAAAAAAAAABHABkAAAAAAAAAAABIABkAAAAAAAAAAABJABkAAAAAAAAAAABKABkAAAAAAAAAAABLABkAAAAAAAAAAABMABkAAAAAAAAAAABNABkAAAAAAAAAAABOABkAAAAAAAAAAABPABkAAAAAAAAAAABQABkAAAAAAAAAAABRABkAAAAAAAAAAABXABkAAAAAAAAAAAAAABoAAAAAAAAAAAASABoAAAAAAAAAAAATABoAAAAAAAAAAAAUABoAAAAAAAAAAAAVABoAAAAAAAAAAAAWABoAAAAAAAAAAABFABoAAAAAAAAAAABGABoAAAAAAAAAAABHABoAAAAAAAAAAABIABoAAAAAAAAAAABJABoAAAAAAAAAAABKABoAAAAAAAAAAABLABoAAAAAAAAAAABMABoAAAAAAAAAAABNABoAAAAAAAAAAABOABoAAAAAAAAAAABPABoAAAAAAAAAAABQABoAAAAAAAAAAABRABoAAAAAAAAAAABXABoAAAAAAAAAAAAAABsAAAAAAAAAAAASABsAAAAAAAAAAAATABsAAAAAAAAAAAAUABsAAAAAAAAAAAAVABsAAAAAAAAAAAAWABsAAAAAAAAAAABFABsAAAAAAAAAAABGABsAAAAAAAAAAABHABsAAAAAAAAAAABIABsAAAAAAAAAAABJABsAAAAAAAAAAABKABsAAAAAAAAAAABLABsAAAAAAAAAAABMABsAAAAAAAAAAABNABsAAAAAAAAAAABOABsAAAAAAAAAAABPABsAAAAAAAAAAABQABsAAAAAAAAAAABRABsAAAAAAAAAAABXABsAAAAAAAAAAAAAABwAAAAAAAAAAAASABwAAAAAAAAAAAATABwAAAAAAAAAAAAUABwAAAAAAAAAAAAVABwAAAAAAAAAAAAWABwAAAAAAAAAAAAkABwAAAAAAAAAAAAlABwAAAAAAAAAAAAmABwAAAAAAAAAAAAnABwAAAAAAAAAAAAoABwAAAAAAAAAAAApABwAAAAAAAAAAAAqABwAAAAAAAAAAAArABwAAAAAAAAAAAAsABwAAAAAAAAAAAAtABwAAAAAAAAAAAAuABwAAAAAAAAAAAAvABwAAAAAAAAAAABFABwAAAAAAAAAAABGABwAAAAAAAAAAABHABwAAAAAAAAAAABIABwAAAAAAAAAAABJABwAAAAAAAAAAABKABwAAAAAAAAAAABLABwAAAAAAAAAAABMABwAAAAAAAAAAABNABwAAAAAAAAAAABOABwAAAAAAAAAAABPABwAAAAAAAAAAABQABwAAAAAAAAAAABRABwAAAAAAAAAAABXABwAAAAAAAAAAAAAAB0AAAAAAAAAAAASAB0AAAAAAAAAAAATAB0AAAAAAAAAAAAUAB0AAAAAAAAAAAAVAB0AAAAAAAAAAAAWAB0AAAAAAAAAAAAkAB0AAAAAAAAAAAAlAB0AAAAAAAAAAAAmAB0AAAAAAAAAAAAnAB0AAAAAAAAAAAAoAB0AAAAAAAAAAAApAB0AAAAAAAAAAAAqAB0AAAAAAAAAAAArAB0AAAAAAAAAAAAsAB0AAAAAAAAAAAAtAB0AAAAAAAAAAAAuAB0AAAAAAAAAAAAvAB0AAAAAAAAAAABFAB0AAAAAAAAAAABGAB0AAAAAAAAAAABHAB0AAAAAAAAAAABIAB0AAAAAAAAAAABJAB0AAAAAAAAAAABKAB0AAAAAAAAAAABLAB0AAAAAAAAAAABMAB0AAAAAAAAAAABNAB0AAAAAAAAAAABOAB0AAAAAAAAAAABPAB0AAAAAAAAAAABQAB0AAAAAAAAAAABRAB0AAAAAAAAAAABXAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAASAB4AAAAAAAAAAAATAB4AAAAAAAAAAAAUAB4AAAAAAAAAAAAVAB4AAAAAAAAAAAAWAB4AAAAAAAAAAAAkAB4AAAAAAAAAAAAlAB4AAAAAAAAAAAAmAB4AAAAAAAAAAAAnAB4AAAAAAAAAAAAoAB4AAAAAAAAAAAApAB4AAAAAAAAAAAAqAB4AAAAAAAAAAAArAB4AAAAAAAAAAAAsAB4AAAAAAAAAAAAtAB4AAAAAAAAAAAAuAB4AAAAAAAAAAAAvAB4AAAAAAAAAAABFAB4AAAAAAAAAAABGAB4AAAAAAAAAAABHAB4AAAAAAAAAAABIAB4AAAAAAAAAAABJAB4AAAAAAAAAAABKAB4AAAAAAAAAAABLAB4AAAAAAAAAAABMAB4AAAAAAAAAAABNAB4AAAAAAAAAAABOAB4AAAAAAAAAAABPAB4AAAAAAAAAAABQAB4AAAAAAAAAAABRAB4AAAAAAAAAAABXAB4AAAAAAAAAAAAAAB8AAAAAAAAAAAASAB8AAAAAAAAAAAATAB8AAAAAAAAAAAAUAB8AAAAAAAAAAAAVAB8AAAAAAAAAAAAWAB8AAAAAAAAAAAAkAB8AAAAAAAAAAAAlAB8AAAAAAAAAAAAmAB8AAAAAAAAAAAAnAB8AAAAAAAAAAAAoAB8AAAAAAAAAAAApAB8AAAAAAAAAAAAqAB8AAAAAAAAAAAArAB8AAAAAAAAAAAAsAB8AAAAAAAAAAAAtAB8AAAAAAAAAAAAuAB8AAAAAAAAAAAAvAB8AAAAAAAAAAABFAB8AAAAAAAAAAABGAB8AAAAAAAAAAABHAB8AAAAAAAAAAABIAB8AAAAAAAAAAABJAB8AAAAAAAAAAABKAB8AAAAAAAAAAABLAB8AAAAAAAAAAABMAB8AAAAAAAAAAABNAB8AAAAAAAAAAABOAB8AAAAAAAAAAABPAB8AAAAAAAAAAABQAB8AAAAAAAAAAABRAB8AAAAAAAAAAABXAB8AAAAAAAAAAAAAACAAAAAAAAAAAAASACAAAAAAAAAAAAATACAAAAAAAAAAAAAUACAAAAAAAAAAAAAVACAAAAAAAAAAAAAWACAAAAAAAAAAAAAkACAAAAAAAAAAAAAlACAAAAAAAAAAAAAmACAAAAAAAAAAAAAnACAAAAAAAAAAAAAoACAAAAAAAAAAAAApACAAAAAAAAAAAAAqACAAAAAAAAAAAAArACAAAAAAAAAAAAAsACAAAAAAAAAAAAAtACAAAAAAAAAAAAAuACAAAAAAAAAAAAAvACAAAAAAAAAAAABFACAAAAAAAAAAAABGACAAAAAAAAAAAABHACAAAAAAAAAAAABIACAAAAAAAAAAAABJACAAAAAAAAAAAABKACAAAAAAAAAAAABLACAAAAAAAAAAAABMACAAAAAAAAAAAABNACAAAAAAAAAAAABOACAAAAAAAAAAAABPACAAAAAAAAAAAABQACAAAAAAAAAAAABRACAAAAAAAAAAAABXACAAAAAAAAAAAAAAACEAAAAAAAAAAAABACEAAAADAAAAAAACACEAAAADAAAAAAADACEAAAADAAAAAAAEACEAAAADAAAAAAAFACEAAAADAAAAAAAGACEAAAADAAAAAAAHACEAAAADAAAAAAAIACEAAAADAAAAAAAJACEAAAADAAAAAAAKACEAAAADAAAAAAALACEAAAADAAAAAAAMACEAAAADAAAAAAANACEAAAADAAAAAAAOACEAAAADAAAAAAAPACEAAAADAAAAAAAQACEAAAADAAAAAAARACEAAAADAAAAAAASACEAAAAAAAAAAAATACEAAAAAAAAAAAAUACEAAAAAAAAAAAAVACEAAAAAAAAAAAAWACEAAAAAAAAAAAAXACEAAAADAAAAAAAYACEAAAADAAAAAAAZACEAAAADAAAAAAAaACEAAAADAAAAAAAbACEAAAADAAAAAAAcACEAAAADAAAAAAAdACEAAAADAAAAAAAeACEAAAADAAAAAAAfACEAAAADAAAAAAAgACEAAAADAAAAAAAhACEAAAADAAAAAAAiACEAAAADAAAAAAAjACEAAAADAAAAAAAkACEAAAAAAAAAAAAlACEAAAAAAAAAAAAmACEAAAAAAAAAAAAnACEAAAAAAAAAAAAoACEAAAAAAAAAAAApACEAAAAAAAAAAAAqACEAAAAAAAAAAAArACEAAAAAAAAAAAAsACEAAAAAAAAAAAAtACEAAAAAAAAAAAAuACEAAAAAAAAAAAAvACEAAAAAAAAAAAAwACEAAAADAAAAAAAxACEAAAADAAAAAAAyACEAAAADAAAAAAAzACEAAAADAAAAAAA0ACEAAAADAAAAAAA1ACEAAAADAAAAAAA2ACEAAAADAAAAAAA3ACEAAAADAAAAAAA4ACEAAAADAAAAAAA5ACEAAAADAAAAAAA6ACEAAAADAAAAAAA7ACEAAAADAAAAAAA8ACEAAAADAAAAAAA9ACEAAAADAAAAAAA+ACEAAAADAAAAAAA/ACEAAAADAAAAAABAACEAAAADAAAAAABBACEAAAADAAAAAABCACEAAAADAAAAAABDACEAAAADAAAAAABEACEAAAADAAAAAABFACEAAAAAAAAAAABGACEAAAAAAAAAAABHACEAAAAAAAAAAABIACEAAAAAAAAAAABJACEAAAAAAAAAAABKACEAAAAAAAAAAABLACEAAAAAAAAAAABMACEAAAAAAAAAAABNACEAAAAAAAAAAABOACEAAAAAAAAAAABPACEAAAAAAAAAAABQACEAAAAAAAAAAABRACEAAAAAAAAAAABSACEAAAADAAAAAABTACEAAAADAAAAAABUACEAAAADAAAAAABVACEAAAADAAAAAABWACEAAAADAAAAAABXACEAAAAAAAAAAAAAACIAAAAAAAAAAAABACIAAAAAAAAAAAACACIAAAAAAAAAAAADACIAAAAAAAAAAAAEACIAAAAAAAAAAAAFACIAAAAAAAAAAAAGACIAAAAAAAAAAAAHACIAAAAAAAAAAAAIACIAAAAAAAAAAAAJACIAAAAAAAAAAAAKACIAAAAAAAAAAAALACIAAAAAAAAAAAAMACIAAAAAAAAAAAANACIAAAAAAAAAAAAOACIAAAAAAAAAAAAPACIAAAAAAAAAAAAQACIAAAAAAAAAAAARACIAAAAAAAAAAAASACIAAAAAAAAAAAATACIAAAAAAAAAAAAUACIAAAAAAAAAAAAVACIAAAAAAAAAAAAWACIAAAAAAAAAAAAXACIAAAAAAAAAAAAYACIAAAAAAAAAAAAZACIAAAAAAAAAAAAaACIAAAAAAAAAAAAbACIAAAAAAAAAAAAcACIAAAAAAAAAAAAdACIAAAAAAAAAAAAeACIAAAAAAAAAAAAfACIAAAAAAAAAAAAgACIAAAAAAAAAAAAhACIAAAAAAAAAAAAiACIAAAAAAAAAAAAjACIAAAAAAAAAAAAkACIAAAAAAAAAAAAlACIAAAAAAAAAAAAmACIAAAAAAAAAAAAnACIAAAAAAAAAAAAoACIAAAAAAAAAAAApACIAAAAAAAAAAAAqACIAAAAAAAAAAAArACIAAAAAAAAAAAAsACIAAAAAAAAAAAAtACIAAAAAAAAAAAAuACIAAAAAAAAAAAAvACIAAAAAAAAAAAAwACIAAAAAAAAAAAAxACIAAAAAAAAAAAAyACIAAAAAAAAAAAAzACIAAAAAAAAAAAA0ACIAAAAAAAAAAAA1ACIAAAAAAAAAAAA2ACIAAAAAAAAAAAA3ACIAAAAAAAAAAAA4ACIAAAAAAAAAAAA5ACIAAAAAAAAAAAA6ACIAAAAAAAAAAAA7ACIAAAAAAAAAAAA8ACIAAAAAAAAAAAA9ACIAAAAAAAAAAAA+ACIAAAAAAAAAAAA/ACIAAAAAAAAAAABAACIAAAAAAAAAAABBACIAAAAAAAAAAABCACIAAAAAAAAAAABDACIAAAAAAAAAAABEACIAAAAAAAAAAABFACIAAAAAAAAAAABGACIAAAAAAAAAAABHACIAAAAAAAAAAABIACIAAAAAAAAAAABJACIAAAAAAAAAAABKACIAAAAAAAAAAABLACIAAAAAAAAAAABMACIAAAAAAAAAAABNACIAAAAAAAAAAABOACIAAAAAAAAAAABPACIAAAAAAAAAAABQACIAAAAAAAAAAABRACIAAAAAAAAAAABSACIAAAAAAAAAAABTACIAAAAAAAAAAABUACIAAAAAAAAAAABVACIAAAAAAAAAAABWACIAAAAAAAAAAABXACIAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_wwhx0")
-
-[node name="Objects" type="Node2D" parent="Rooms/workshop-boughs"]
-
-[node name="Fixture_G_38_2" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
-position = Vector2(304, 16)
+[node name="Fixture_A_26_18" type="Node2D" parent="Rooms/workshop-crown/Objects"]
+position = Vector2(208, 144)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
-glyph = "G"
-footprint = Vector2i(1, 16)
-original_position = Vector2(304, 16)
+glyph = "A"
+footprint = Vector2i(1, 18)
+original_position = Vector2(208, 144)
 preview_entity = {
-"h": 128,
+&"body": 4,
+"h": 144,
+"id": 6,
+"ox": 208,
+"oy": 144,
+&"phase": 0,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": true,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 208,
+"y": 144
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_A_26_18"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_n3oj4")
+
+[node name="Fixture_A_28_18" type="Node2D" parent="Rooms/workshop-crown/Objects"]
+position = Vector2(224, 144)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "A"
+footprint = Vector2i(1, 18)
+original_position = Vector2(224, 144)
+preview_entity = {
+&"body": 5,
+"h": 144,
 "id": 7,
-"ox": 304,
-"oy": 16,
+"ox": 224,
+"oy": 144,
+&"phase": 0,
 "remX": 0.0,
 "remY": 0.0,
+&"solid": true,
 "state": "idle",
 "t": 0,
 "timer": 0,
-&"type": "gate",
+&"type": "toggle",
 "vx": 0.0,
 "vy": 0.0,
 "w": 8,
-"x": 304,
-"y": 16
+"x": 224,
+"y": 144
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Fixture_G_38_2"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_A_28_18"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_6kr5v")
+texture = SubResource("ImageTexture_44lqv")
 
-[node name="Fixture_G_45_2" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
-position = Vector2(360, 16)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "G"
-footprint = Vector2i(1, 16)
-original_position = Vector2(360, 16)
-preview_entity = {
-"h": 128,
-"id": 8,
-"ox": 360,
-"oy": 16,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-&"type": "gate",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 360,
-"y": 16
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Fixture_G_45_2"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_nmlup")
-
-[node name="Fixture_A_30_18" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
+[node name="Fixture_A_30_18" type="Node2D" parent="Rooms/workshop-crown/Objects"]
 position = Vector2(240, 144)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
 glyph = "A"
-footprint = Vector2i(2, 15)
+footprint = Vector2i(2, 18)
 original_position = Vector2(240, 144)
 preview_entity = {
-&"body": 2,
-"h": 120,
-"id": 9,
+&"body": 6,
+"h": 144,
+"id": 8,
 "ox": 240,
 "oy": 144,
 &"phase": 0,
@@ -4431,57 +3365,57 @@ preview_entity = {
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Fixture_A_30_18"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_A_30_18"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_b5y23")
+texture = SubResource("ImageTexture_jmu6w")
 
-[node name="Fixture_b_63_20" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
-position = Vector2(504, 160)
+[node name="Fixture_x_18_23" type="Node2D" parent="Rooms/workshop-crown/Objects"]
+position = Vector2(144, 184)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
-glyph = "b"
-original_position = Vector2(504, 160)
+glyph = "x"
+original_position = Vector2(144, 184)
 preview_entity = {
 "h": 8,
 "id": 0,
-"ox": 504,
-"oy": 160,
+"ox": 144,
+"oy": 184,
 "remX": 0.0,
 "remY": 0.0,
 "state": "idle",
 "t": 0,
 "timer": 0,
-"type": "pod",
+"type": "bell",
 "vx": 0.0,
 "vy": 0.0,
 "w": 8,
-"x": 504,
-"y": 160
+"x": 144,
+"y": 184
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Fixture_b_63_20"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_x_18_23"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_4njdv")
+texture = SubResource("ImageTexture_cjngh")
 
-[node name="Fixture_A_64_22" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
-position = Vector2(512, 176)
+[node name="Fixture_A_13_26" type="Node2D" parent="Rooms/workshop-crown/Objects"]
+position = Vector2(104, 208)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
 glyph = "A"
-footprint = Vector2i(5, 1)
-original_position = Vector2(512, 176)
+footprint = Vector2i(6, 1)
+original_position = Vector2(104, 208)
 preview_entity = {
-&"body": 3,
+&"body": 7,
 "h": 8,
-"id": 10,
-"ox": 512,
-"oy": 176,
+"id": 9,
+"ox": 104,
+"oy": 208,
 &"phase": 0,
 "remX": 0.0,
 "remY": 0.0,
@@ -4492,190 +3426,45 @@ preview_entity = {
 &"type": "toggle",
 "vx": 0.0,
 "vy": 0.0,
-"w": 40,
-"x": 512,
-"y": 176
+"w": 48,
+"x": 104,
+"y": 208
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Fixture_A_64_22"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_A_13_26"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_2nsmo")
+texture = SubResource("ImageTexture_bmccw")
 
-[node name="Fixture_c_20_23" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
-position = Vector2(160, 184)
+[node name="Spawn" type="Node2D" parent="Rooms/workshop-crown/Objects"]
+position = Vector2(64, 216)
 script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "c"
-original_position = Vector2(160, 184)
-preview_entity = {
-"h": 8,
-"id": 1,
-"ox": 160,
-"oy": 184,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "stone",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 160,
-"y": 184
-}
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(64, 216)
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Fixture_c_20_23"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Spawn"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_xdt8i")
+texture = SubResource("ImageTexture_56qlp")
 
-[node name="Fixture_x_55_23" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
-position = Vector2(440, 184)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "x"
-original_position = Vector2(440, 184)
-preview_entity = {
-"h": 8,
-"id": 2,
-"ox": 440,
-"oy": 184,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "bell",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 440,
-"y": 184
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Fixture_x_55_23"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_xfidu")
-
-[node name="Fixture_c_73_23" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
-position = Vector2(584, 184)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "c"
-original_position = Vector2(584, 184)
-preview_entity = {
-"h": 8,
-"id": 3,
-"ox": 584,
-"oy": 184,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "stone",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 584,
-"y": 184
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Fixture_c_73_23"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_vpsab")
-
-[node name="Fixture_x_27_24" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
-position = Vector2(216, 192)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "x"
-original_position = Vector2(216, 192)
-preview_entity = {
-"h": 8,
-"id": 4,
-"ox": 216,
-"oy": 192,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "bell",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 216,
-"y": 192
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Fixture_x_27_24"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_37lr8")
-
-[node name="Fixture_x_42_25" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
-position = Vector2(336, 200)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "x"
-original_position = Vector2(336, 200)
-preview_entity = {
-"h": 8,
-"id": 5,
-"ox": 336,
-"oy": 200,
-"remX": 0.0,
-"remY": 0.0,
-"state": "idle",
-"t": 0,
-"timer": 0,
-"type": "bell",
-"vx": 0.0,
-"vy": 0.0,
-"w": 8,
-"x": 336,
-"y": 200
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Fixture_x_42_25"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_ohjpc")
-
-[node name="Fixture_b_55_26" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
-position = Vector2(440, 208)
+[node name="Fixture_b_21_32" type="Node2D" parent="Rooms/workshop-crown/Objects"]
+position = Vector2(168, 256)
 script = ExtResource("3_hhdtj")
 kind = "Fixture"
 glyph = "b"
-original_position = Vector2(440, 208)
+original_position = Vector2(168, 256)
 preview_entity = {
 "h": 8,
-"id": 6,
-"ox": 440,
-"oy": 208,
+"id": 1,
+"ox": 168,
+"oy": 256,
 "remX": 0.0,
 "remY": 0.0,
 "state": "idle",
@@ -4685,65 +3474,14 @@ preview_entity = {
 "vx": 0.0,
 "vy": 0.0,
 "w": 8,
-"x": 440,
-"y": 208
+"x": 168,
+"y": 256
 }
 world_number = 4
 metadata/_edit_group_ = true
 
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Fixture_b_55_26"]
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-crown/Objects/Fixture_b_21_32"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
-texture = SubResource("ImageTexture_jw4br")
-
-[node name="Spawn" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
-position = Vector2(320, 216)
-script = ExtResource("3_hhdtj")
-kind = "Spawn"
-glyph = "P"
-original_position = Vector2(320, 216)
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Spawn"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_h8kh1")
-
-[node name="Fixture_B_26_28" type="Node2D" parent="Rooms/workshop-boughs/Objects"]
-position = Vector2(208, 224)
-script = ExtResource("3_hhdtj")
-kind = "Fixture"
-glyph = "B"
-footprint = Vector2i(4, 1)
-original_position = Vector2(208, 224)
-preview_entity = {
-&"body": 4,
-"h": 8,
-"id": 11,
-"ox": 208,
-"oy": 224,
-&"phase": 1,
-"remX": 0.0,
-"remY": 0.0,
-&"solid": false,
-"state": "idle",
-"t": 0,
-"timer": 0,
-&"type": "toggle",
-"vx": 0.0,
-"vy": 0.0,
-"w": 32,
-"x": 208,
-"y": 224
-}
-world_number = 4
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/workshop-boughs/Objects/Fixture_B_26_28"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-position = Vector2(4, 4)
-texture = SubResource("ImageTexture_vipbs")
+texture = SubResource("ImageTexture_k3vro")

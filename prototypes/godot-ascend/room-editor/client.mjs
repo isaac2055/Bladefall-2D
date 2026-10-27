@@ -157,8 +157,10 @@ function confirmReplace(){return !dirty()||confirm('You have unsaved changes. Ex
 async function reload(){if(!confirmReplace())return;try{const result=await api('/api/document');revision=result.revision;doc=clean(result);saved=stringify();undo=[];redo=[];selected=null;area=null;stash();refresh();fit();toast('Loaded the saved native rooms.');}catch(error){toast(error.message,true);}}
 function download(){const portable=clone(doc);delete portable.restoreFrom;const blob=new Blob([JSON.stringify(portable,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`bladefall-workshop-${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('Exported all workshop rooms as an editable file.');}
 function replaceDraft(next){
- if(!next||!Array.isArray(next.rooms)||next.rooms.some(r=>!doc.rooms.some(current=>current.id===r.id)))throw new Error('This file contains rooms outside the current workshop.');
- const incoming=clean(next);incoming.rooms=doc.rooms.map(current=>clone(incoming.rooms.find(r=>r.id===current.id)||current));
+ if(!next||!Array.isArray(next.rooms)||next.rooms.some(r=>!doc.rooms.some(current=>current.id===r.id)&&!(doc.retiredRoomIds||[]).includes(r.id)))throw new Error('This file contains rooms outside the current workshop.');
+ const retired=next.rooms.filter(r=>(doc.retiredRoomIds||[]).includes(r.id));
+ if(retired.length)localStorage.setItem('bladefall-editor-retired-draft-v019',JSON.stringify({time:Date.now(),doc:next}));
+ const incoming=clean(next);incoming.retiredRoomIds=clone(doc.retiredRoomIds||[]);incoming.rooms=doc.rooms.map(current=>clone(incoming.rooms.find(r=>r.id===current.id)||current));
  const errors=validate(incoming);if(errors.length)throw new Error(errors[0]);perform(()=>{doc=incoming;selected=null;area=null;});fit();
 }
 function setup(){

@@ -22,7 +22,7 @@ func snapshot():
    things.append(d)
   var goal=room.settings.workshopGoal
   rooms.append({"id":room.room_id,"name":room.room_title,"width":room.map_width,"height":room.map_height,"tiles":Codec.read_map(room),"objects":things,"goal":{"x":goal[0]/8.0,"y":goal[1]/8.0,"w":goal[2]/8.0,"h":goal[3]/8.0},"requirePickup":room.settings.get("workshopRequireShard",false),"requireStakes":room.settings.get("workshopRequireStakes",false),"keepStakes":room.settings.get("workshopKeepStakes",false),"hint":room.settings.get("hint","")})
- return {"format":"bladefall-workshop-editor","version":1,"rooms":rooms}
+ return {"format":"bladefall-workshop-editor","version":1,"retiredRoomIds":baseline.world.get("retiredWorkshopRoomIds",[]),"rooms":rooms}
 func own(parent,node):
  parent.add_child(node,true)
  node.owner=scene

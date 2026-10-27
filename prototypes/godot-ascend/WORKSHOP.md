@@ -1,6 +1,6 @@
-# Movement and Black Woods workshop · 0.19.0
+# Movement and Black Woods workshop · 0.20.0
 
-These seventeen standalone chapter-4 rooms include eight Outskirts movement puzzles and nine Black Woods puzzles. Native scene: `levels/world4.tscn`. Source geometry and ordinary-input demonstrations: `data/world4.json`. No campaign scenes, quests, voices or connecting passages are part of this change.
+These eleven standalone chapter-4 rooms include eight Outskirts movement puzzles and three Black Woods puzzles. Native scene: `levels/world4.tscn`. Source geometry and ordinary-input demonstrations: `data/world4.json`. No campaign scenes, quests, voices or connecting passages are part of this change.
 
 The Broken Relay and Behind the Counterweight are preserved from 0.15. The revised Lintel and Ferry address reported shortcuts and missing preparation; Engine and Circuit combine these relationships in larger spaces. Larger rooms scroll within their boundaries. The first two retain their fixed camera.
 
@@ -66,7 +66,7 @@ A moving fixture's optional Parameters dictionary accepts `holdFrames` and `retu
 
 `tests/workshop.gd` checks six native editable rooms, preserved accepted-room definitions, timing validation/serialization/defaults, six deathless clears without advanced movement, observed contacts and resources, timing variations, causal counterfactuals and bounded shortcut searches. The search includes 270 Lintel departure variants, 288 late-gate variants, 60 return-wall jump/dash variants across Ferry and Circuit, and 48 Circuit entrance attempts. Positive controls reproduce the old Lintel shortcut and earlier late-preparation Ferry win.
 
-The application checks use the actual gameplay controller for all seventeen primary routes, completion awards, pickup death/retry, demonstration playback, next/previous controls, camera bounds and campaign isolation. GPU mode writes starts, critical machinery contacts, pickups, finishes and the menu:
+The application checks use the actual gameplay controller for all eleven primary routes, completion awards, pickup death/retry, demonstration playback, next/previous controls, camera bounds and campaign isolation. GPU mode writes starts, critical machinery contacts, pickups, finishes and the menu:
 
 ```sh
 .cache/godot/Godot.app/Contents/MacOS/Godot --path prototypes/godot-ascend --script tests/workshop.gd -- /absolute/output/directory
@@ -85,26 +85,24 @@ Run `tests/new_workshop_rooms.gd` headlessly for preservation of the original si
 Human playtesting is still required for route readability, pacing and satisfaction. The tests establish playability and selected causal relationships, not a universal claim that no other solutions exist.
 
 
-## Black Woods rooms 9–17
+## Black Woods rooms 9–11
 
-| Room | Problem |
+| Room | Decision |
 | --- | --- |
-| 9 · The Sideways Orchard | Pass a pod and cut back toward it. Its recoil and restored dash bridge the distance to the high bank beneath the canopy. |
-| 10 · The Borrowed Branch | Dash under the thorned housing through the disappearing trunk onto a blue branch. Jump and ring the bell to recover the trunk as a climbable foothold. |
-| 11 · The Unwanted Bell | Cut the pod sideways without ringing its neighbour; preserve the phase needed for the final landing. |
-| 12 · The Hollow Landing | Collapse the lid of a small thorned well. Hold jump during a downward cut for a high pod rebound, then dash toward the high shelf. |
-| 13 · The Last Stake | Light the near and far stakes, use a pod to reverse direction and return to the opened home gate. |
-| 14 · The Forked Canopy | Choose the lower phase passage or prepare a high pod route with the bell. Both have ordinary-input demonstrations. |
-| 15 · The Crooked Orchard | A selective pod cut preserves the outward branch. After the far stake, a different high pod supplies the return reversal. |
-| 16 · The Hollow Crown | Collapse the balcony, rebound through the phase trunk, land on blue, then ring a bell to climb the restored trunk toward the crown. |
-| 17 · The Two Boughs | Clear a phase-passage wing and a selective-pod wing in either order. Both stakes open the high central flag chamber. Lit stakes survive Retry/death only here; full restart clears them. |
+| 9 · The Borrowed Branch | Short introduction: use blue for the approach, then ring the bell to restore a climbable trunk. |
+| 10 · The Crooked Orchard | Prepare blue for the approach dash. That dash restores amber; use the pod's phase-preserving rebound to retain the catch. At the upper bough, ring the bell before the final dash so the exit landing will be amber again. |
+| 11 · The Hollow Crown | Remove the approach bough and roots together. Cross using the pod while roots remain ghosted, restore them after passing the earlier stems, recover on the far bank, climb their far side, then dash out to create the blue goal landing. |
 
-The six contained rooms fit the 320×184 gameplay view. The three combinations scroll inside their own bounds and keep separate room checkpoints. Controls: W cuts in the aimed direction; hold Space for the high pod rebound. H reveals the room hint, N advances, and Esc selects a room or demonstration. Neither quests nor voice recordings were added.
+Orchard separates preparation, preservation and a later deliberate change. A rebound dash can remove the landing it seems to help reach. Crown ties the disappearing approach to the passage through the roots, then reuses those roots for the return climb. There are no stake quotas or crumble deadlines in these rebuilt rooms. Both larger rooms scroll within separate bounds and retain their own retries. H reveals an optional hint; Esc offers demonstrations.
+
+The Sideways Orchard, Unwanted Bell, Hollow Landing, Last Stake, Forked Canopy and Two Boughs are retired. Older native backups and Git retain them. Old portable editor documents merge matching active IDs and keep a complete browser backup of documents containing retired rooms. Loading an older surviving room replaces that room's draft layout for review; it does not save automatically.
 
 ### Black Woods verification
 
-`tests/woods_workshop.gd` checks the preserved original eight definitions, native round trips, all eleven new ordinary-input demonstrations (two in Forked Canopy and Two Boughs), route-specific mechanic restrictions, multiple input timings, stake-gated completion, and actual application death/Retry/full-restart behavior. `tests/workshop.gd` plays the primary solution of every room through the real application, including completion and camera bounds. The simple editor checks round trips for the Woods objects and preserves appended rooms when importing older files.
+`tests/woods_workshop.gd` compares all eight original definitions, roundtrips the native scene, plays the three deathless ordinary-input routes, observes the important phase/position decisions, checks multiple arrival timings and plays the demonstrations through the actual application. Restrictions on the recorded routes check their dependencies; they do not establish that every alternative needs the same mechanic.
 
-Fresh input search found an Orchard crossing without a pod and two Hollow Landing balcony skips. Inspection also identified a climb around Borrowed Branch. The former layouts and successful recordings remain positive controls in `tests/fixtures/woods-workshop.json`; the revised layouts reject those recordings. `tests/woods_shortcuts.gd` searches again with selected mechanics restricted. These are bounded beam searches; a failure to find a route does not prove none exists, and automation does not establish that a room is enjoyable.
+Fresh input searches found two actual pod skips during rebuilding: a low wall catch in Orchard and safe pockets below ghosted roots in Crown. The former layouts and successful recordings remain positive controls in `tests/fixtures/woods-consolidation-bypasses.json`. The revised geometry rejects those recordings. `tests/woods_shortcuts.gd` searches for new inputs toward the relevant intermediate landings, with positive controls against both former layouts. These are bounded beam searches; failure to find a bypass does not prove none exists. Automation also does not establish that a room is enjoyable.
 
-Art replacement continues to use the fixed 8px gameplay grid and logical object rectangles. The Woods presentation and browser icons are separate from collision; no physics depends on texture dimensions. Pods, bells, stakes, gates and phase branches remain individual native authoring objects. Terrain spikes remain grid hazards as before.
+The simple editor checks Woods object roundtrips, old six/eight-room imports, seventeen-room draft consolidation and unknown-ID rejection. `tests/workshop.gd` plays every primary solution through the real application and checks completion, camera bounds and campaign isolation.
+
+Art replacement continues to use the fixed 8px gameplay grid and logical object rectangles. Rendering is separate from collision. Pods, bells and phase branches remain individual native authoring objects; terrain spikes remain grid hazards. No movement rules were changed for these rooms.

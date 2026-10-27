@@ -40,10 +40,17 @@ export function validate(doc) {
    }
    if(!['Z','K','~','A','B','G'].includes(o.glyph)&&o.kind!=='Prop'&&(o.w!==1||o.h!==1))fail(`${label(o)} must be one square.`);
   }
-  for(let i=0;i<room.objects.length;i++)for(let j=i+1;j<room.objects.length;j++){
-   const a=room.objects[i],b=room.objects[j];
-   if(!a?.enabled||!b?.enabled||!['Z','K','~','A','B','G'].includes(a.glyph)||a.glyph!==b.glyph)continue;
-   if(((a.x+a.w===b.x||b.x+b.w===a.x)&&a.y<b.y+b.h&&a.y+a.h>b.y)||((a.y+a.h===b.y||b.y+b.h===a.y)&&a.x<b.x+b.w&&a.x+a.w>b.x))fail(`Leave a square between separate ${label(a).toLowerCase()}s so the game does not merge them.`);
+  // Mirror the game's row-first rectangle grouping. Touching shapes are safe
+  // when they retain the same individual collision rectangles after compilation.
+  const grouped=room.objects.filter(o=>o?.enabled&&['Z','K','~','A','B','G'].includes(o.glyph)&&[o.x,o.y,o.w,o.h].every(Number.isInteger)&&o.x>=0&&o.y>=0&&o.w>0&&o.h>0&&o.x+o.w<=room.width&&o.y+o.h<=room.height);
+  const cells=new Map(),seen=new Set();
+  for(const o of grouped)for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++)cells.set(y*room.width+x,o.glyph);
+  for(let y=0;y<room.height;y++)for(let x=0;x<room.width;x++){
+   const key=y*room.width+x,glyph=cells.get(key);if(!glyph||seen.has(key))continue;
+   let w=1,h=1;while(x+w<room.width&&cells.get(key+w)===glyph&&!seen.has(key+w))w++;
+   while(y+h<room.height&&Array.from({length:w},(_,dx)=>(y+h)*room.width+x+dx).every(k=>cells.get(k)===glyph&&!seen.has(k)))h++;
+   for(let dy=0;dy<h;dy++)for(let dx=0;dx<w;dx++)seen.add((y+dy)*room.width+x+dx);
+   if(!grouped.some(o=>o.glyph===glyph&&o.x===x&&o.y===y&&o.w===w&&o.h===h))fail('Leave a square between separate objects, or resize them to match the game’s rectangle grouping.');
   }
   if(room.requireStakes!==undefined&&typeof room.requireStakes!=='boolean'||room.keepStakes!==undefined&&typeof room.keepStakes!=='boolean')fail('invalid stake settings.');
   if(room.requireStakes&&!room.objects.some(o=>o.enabled&&o.glyph==='c'))fail('add a gate stake, or turn off “Light all stakes to finish”.');
