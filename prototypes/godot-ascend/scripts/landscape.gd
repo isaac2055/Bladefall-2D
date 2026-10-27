@@ -498,7 +498,7 @@ func target_camera():
  var look=camera_lead if not reduced_motion else Vector2.ZERO
  if world_data.world.get("workshop",false):
   # Small exercises stay fully framed; larger authored rooms use the same smooth camera.
-  return active_position+Vector2(clamp(actor.x-active_position.x-153+look.x,0,max(0,sim.room.w-320)),clamp(actor.y-active_position.y-100+look.y,0,max(0,sim.room.h-184)))
+  return active_position+Vector2(clamp(actor.x-active_position.x-153+look.x,0,max(0,sim.room.w-320)),clamp(actor.y-active_position.y-sim.room.def.get("workshopCameraAnchorY",100)+look.y,0,max(0,sim.room.h-184)))
  if runtime==null: return Vector2(max(0,actor.x-153+look.x),active_position.y+clamp(actor.y-active_position.y-94+look.y,0,max(0,sim.room.h-184)))
  # Continuous world coordinates keep doorway ownership out of the camera calculation.
  var y=camera_float.y

@@ -17,8 +17,8 @@ func run():
  var restored=Authoring.read(source,args[3])
  check(Codec.first_difference(original,restored)=="","backup restoration preserves full native data, including prior demonstrations")
  check(Codec.first_difference(original,no_edit)=="","no-edit dedicated save preserves the complete native chapter")
- check(edited.world.rooms.size()==6,"edited native scene retains six rooms")
- for i in range(1,6): check(Codec.first_difference(original.world.rooms[i],edited.world.rooms[i])=="","unselected room preserved: "+original.world.rooms[i].name)
+ check(edited.world.rooms.size()==8,"edited native scene retains eight rooms")
+ for i in range(1,original.world.rooms.size()): check(Codec.first_difference(original.world.rooms[i],edited.world.rooms[i])=="","unselected room preserved: "+original.world.rooms[i].name)
  var room=edited.world.rooms[0]
  var parsed=Loader.parse(room)
  check(room.name=="Editor test room","room title reaches gameplay")

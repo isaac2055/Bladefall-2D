@@ -47,7 +47,9 @@ export async function start({scene=nativeScene,port=48741,open=false,test=false}
    }
    if(req.method==='GET'&&url.pathname==='/api/backup'){
     const id=url.searchParams.get('id');if(!id||!/^[\dT_Z.-]+\.tscn$/.test(id))return send(400,{error:'Choose a saved backup.'});
-    return send(200,{...await bridge('read',path.join(backups,id)),revision:await revision(),restoreFrom:id});
+    const backup=await bridge('read',path.join(backups,id)),live=await current();
+    const sameRooms=JSON.stringify(backup.rooms.map(r=>r.id))===JSON.stringify(live.rooms.map(r=>r.id));
+    return send(200,{...backup,revision:await revision(),...(sameRooms?{restoreFrom:id}:{})});
    }
    if(req.method==='POST'&&url.pathname.startsWith('/api/')){
     if(req.headers['x-editor-token']!==token)return send(403,{error:'Reload the editor before saving.'});

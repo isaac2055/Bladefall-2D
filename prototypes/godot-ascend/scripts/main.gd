@@ -786,7 +786,7 @@ func switch_chapter(number):
  workshop_previous.visible=number==4 and data.world.rooms.size()>1
  workshop_next.visible=workshop_previous.visible
  if number==4:
-  pause_description.text="Six movement rooms · N for next room · H for a hint"
+  pause_description.text="%d movement rooms · N for next room · H for a hint"%data.world.rooms.size()
   workshop_recording()
  room_banner.text=sim.room.name.to_upper()
  banner_time=2.4

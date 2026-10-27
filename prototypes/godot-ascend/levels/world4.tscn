@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4]
+[gd_scene load_steps=92 format=4]
 
 [ext_resource type="Script" path="res://authoring/world.gd" id="1_p5p1j"]
 [ext_resource type="Script" path="res://authoring/room.gd" id="2_0b5cq"]
@@ -504,6 +504,114 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_en33t"]
 image = SubResource("Image_exo34")
 
+[sub_resource type="Image" id="Image_wo0cd"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_w0vrs"]
+image = SubResource("Image_wo0cd")
+
+[sub_resource type="Image" id="Image_s3sgs"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ay054"]
+image = SubResource("Image_s3sgs")
+
+[sub_resource type="Image" id="Image_jar24"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_338fw"]
+image = SubResource("Image_jar24")
+
+[sub_resource type="Curve2D" id="Curve2D_unfb8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -64)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_ul6jg"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_c3ca0"]
+image = SubResource("Image_ul6jg")
+
+[sub_resource type="Image" id="Image_sgtul"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_2vjyg"]
+image = SubResource("Image_sgtul")
+
+[sub_resource type="Image" id="Image_tmufq"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_l4a1s"]
+image = SubResource("Image_tmufq")
+
+[sub_resource type="Image" id="Image_u0aaj"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_2dhsc"]
+image = SubResource("Image_u0aaj")
+
+[sub_resource type="Curve2D" id="Curve2D_delgs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 176, 0)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_qae7d"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_jpjbc"]
+image = SubResource("Image_qae7d")
+
 [node name="Ascend_4" type="Node2D"]
 script = ExtResource("1_p5p1j")
 world_number = 4
@@ -552,14 +660,26 @@ world_settings = {
 "room": "workshop-smuggler",
 "x": 320.0,
 "y": 0.0
+}, {
+"fire": null,
+"room": "workshop-tower",
+"x": 392.0,
+"y": 0.0
+}, {
+"fire": null,
+"room": "workshop-gallery",
+"x": 464.0,
+"y": 0.0
 }],
 "tapes": {
 "workshop-counterweight": [[18.0, "r"], [15.0, "rj"], [12.0, "rg"], [20.0, "r"], [6.0, "rxg"], [24.0, "rg"], [27.0, "rgu"], [23.0, "rg"], [5.0, "ljg"], [15.0, "lg"], [20.0, "lgu"], [25.0, "rj"], [15.0, "r"], [10.0, ""]],
 "workshop-engine": [[15.0, "r"], [15.0, "rj"], [10.0, "rg"], [35.0, ""], [8.0, "rj"], [19.0, "r"], [6.0, "rxg"], [8.0, "rg"], [30.0, "rg"], [3.0, "ljg"], [13.0, "l"], [12.0, "r"], [19.0, "d"], [6.0, "rxg"], [22.0, "rg"], [4.0, "rgu"], [32.0, "rg"], [8.0, "ljg"], [15.0, "lg"], [25.0, "rjg"], [20.0, "r"], [15.0, ""]],
 "workshop-ferry": [[17.0, "rg"], [33.0, "rg"], [6.0, "ruxg"], [12.0, "rgu"], [18.0, "rgu"], [3.0, "rjg"], [23.0, "r"], [12.0, "rj"], [25.0, "r"], [17.0, "d"], [6.0, "lxg"], [7.0, "lg"], [10.0, "lxg"], [10.0, "lg"], [10.0, "lux"], [50.0, "l"], [15.0, ""]],
+"workshop-gallery": [[30.0, "rg"], [36.0, "rgu"], [12.0, "rgu"], [12.0, "r"], [12.0, "lj"], [12.0, "ux"], [25.0, "lg"], [6.0, ""], [18.0, "ljg"], [10.0, "lgu"], [4.0, "rd"], [24.0, "d"], [12.0, "lxg"], [3.0, "lg"], [12.0, "lux"], [60.0, "l"], [15.0, ""]],
 "workshop-lintel": [[20.0, "l"], [15.0, "lj"], [65.0, ""], [10.0, "l"], [12.0, "lj"], [18.0, "lg"], [5.0, "lg"], [21.0, "lg"], [19.0, "rj"], [6.0, "ux"], [6.0, "u"], [28.0, "r"], [25.0, ""]],
 "workshop-relay": [[15.0, "r"], [15.0, "rj"], [10.0, "rg"], [35.0, ""], [8.0, "rj"], [19.0, "r"], [6.0, "rxg"], [8.0, "rg"], [23.0, "rg"], [24.0, "lj"], [8.0, "l"], [20.0, ""]],
-"workshop-smuggler": [[17.0, "rg"], [33.0, "rg"], [6.0, "ruxg"], [12.0, "rgu"], [18.0, "rgu"], [3.0, "rjg"], [23.0, "r"], [12.0, "rj"], [25.0, "r"], [17.0, "d"], [6.0, "lxg"], [7.0, "lg"], [10.0, "lxg"], [12.0, "r"], [20.0, "j"], [12.0, "ux"], [6.0, "r"], [10.0, "lxg"], [24.0, "lg"], [25.0, "rjg"], [20.0, "r"], [15.0, ""]]
+"workshop-smuggler": [[17.0, "rg"], [33.0, "rg"], [6.0, "ruxg"], [12.0, "rgu"], [18.0, "rgu"], [3.0, "rjg"], [23.0, "r"], [12.0, "rj"], [25.0, "r"], [17.0, "d"], [6.0, "lxg"], [7.0, "lg"], [10.0, "lxg"], [12.0, "r"], [20.0, "j"], [12.0, "ux"], [6.0, "r"], [10.0, "lxg"], [24.0, "lg"], [25.0, "rjg"], [20.0, "r"], [15.0, ""]],
+"workshop-tower": [[6.0, "r"], [15.0, "rj"], [8.0, "rg"], [25.0, "rg"], [12.0, "ljg"], [12.0, "l"], [12.0, "ux"], [12.0, "r"], [12.0, "rux"], [55.0, "r"], [45.0, ""]]
 },
 "workshop": true
 }
@@ -712,7 +832,7 @@ original_palette = {
 "bunnies": "ffffffff",
 "flowers": "c4acd5ff"
 }
-source_fingerprint = "ac1a41c41a2e6f0f2a8cd4ca1792a9678c1fd3ff71200ce0934f622a663fc60e"
+source_fingerprint = "227b401ed9efb41d90b25f394b9b0b1b4690781ecad7588779e1346720a220f0"
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -1795,3 +1915,339 @@ modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
 texture = SubResource("ImageTexture_en33t")
+
+[node name="workshop-tower" type="Node2D" parent="Rooms"]
+position = Vector2(3136, 0)
+script = ExtResource("2_0b5cq")
+room_id = "workshop-tower"
+room_title = "The Divided Tower"
+map_width = 64
+map_height = 40
+settings = {
+"aim8": true,
+"authoring_visuals": {
+"zip@320.0000,224.0000": {
+"tint": "d9ba86ff"
+}
+},
+"cols": 64.0,
+"exit": "none",
+"hint": "One weight, two journeys. Use its rising launch to reach the high crystal, or its returning position to leave the lower wall.",
+"id": "workshop-tower",
+"lock": ["strike", "parry", "portal"],
+"name": "The Divided Tower",
+"question": "Reach the upper flag.",
+"rows": 40.0,
+"workshopCameraAnchorY": 160.0,
+"workshopDevices": {
+"counter": [320.0, 224.0]
+},
+"workshopGoal": [408.0, 216.0, 64.0, 4.0],
+"workshopRoutes": [{
+"name": "Upper route · rising launch",
+"tape": [[6.0, "r"], [15.0, "rj"], [8.0, "rg"], [25.0, "rg"], [12.0, "ljg"], [12.0, "l"], [12.0, "ux"], [12.0, "r"], [12.0, "rux"], [55.0, "r"], [45.0, ""]]
+}, {
+"name": "Lower route · returning foothold",
+"tape": [[6.0, "r"], [15.0, "rj"], [8.0, "rg"], [25.0, "rg"], [15.0, "d"], [6.0, "rxg"], [26.0, "rg"], [8.0, "rgu"], [24.0, "rg"], [18.0, "ljg"], [4.0, "lgu"], [25.0, "rjg"], [25.0, "r"], [15.0, ""]]
+}]
+}
+original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "workshopDevices", "map", "authoring_visuals", "workshopCameraAnchorY"]
+original_spawn = Vector2(288, 296)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-tower"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA5AAAAAAAAAAAAAAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA/AAEAAAAAAAAAAAAAAAIAAAAAAAAAAAA/AAIAAAAAAAAAAAAAAAMAAAAAAAAAAAA/AAMAAAAAAAAAAAAAAAQAAAAAAAAAAAA/AAQAAAAAAAAAAAAAAAUAAAAAAAAAAAA/AAUAAAAAAAAAAAAAAAYAAAAAAAAAAAA/AAYAAAAAAAAAAAAAAAcAAAAAAAAAAAA/AAcAAAAAAAAAAAAAAAgAAAAAAAAAAAA/AAgAAAAAAAAAAAAAAAkAAAAAAAAAAAA/AAkAAAAAAAAAAAAAAAoAAAAAAAAAAAA/AAoAAAAAAAAAAAAAAAsAAAAAAAAAAAA/AAsAAAAAAAAAAAAAAAwAAAAAAAAAAAA/AAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAwAA0AAAADAAAAAAA/AA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAvAA4AAAAFAAAAAAAwAA4AAAAAAAAAAAA/AA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAvAA8AAAAFAAAAAAAwAA8AAAAAAAAAAAA/AA8AAAAAAAAAAAAAABAAAAAAAAAAAAAvABAAAAAFAAAAAAAwABAAAAAAAAAAAAA/ABAAAAAAAAAAAAAAABEAAAAAAAAAAAAuABEAAAADAAAAAAAvABEAAAAFAAAAAAAwABEAAAAAAAAAAAAxABEAAAADAAAAAAAyABEAAAADAAAAAAA/ABEAAAAAAAAAAAAAABIAAAAAAAAAAAAtABIAAAAFAAAAAAAuABIAAAAAAAAAAAAvABIAAAAGAAAAAAAwABIAAAAAAAAAAAAxABIAAAAAAAAAAAAyABIAAAAAAAAAAAAzABIAAAADAAAAAAA/ABIAAAAAAAAAAAAAABMAAAAAAAAAAAAtABMAAAAFAAAAAAAuABMAAAAAAAAAAAAvABMAAAAGAAAAAAAwABMAAAAAAAAAAAAxABMAAAAAAAAAAAAyABMAAAAAAAAAAAAzABMAAAAAAAAAAAA/ABMAAAAAAAAAAAAAABQAAAAAAAAAAAAtABQAAAAFAAAAAAAuABQAAAAAAAAAAAAvABQAAAAGAAAAAAA/ABQAAAAAAAAAAAAAABUAAAAAAAAAAAAtABUAAAAFAAAAAAAuABUAAAAAAAAAAAAvABUAAAAGAAAAAAA/ABUAAAAAAAAAAAAAABYAAAAAAAAAAAAtABYAAAAFAAAAAAAuABYAAAAAAAAAAAAvABYAAAAGAAAAAAA/ABYAAAAAAAAAAAAAABcAAAAAAAAAAAAtABcAAAAFAAAAAAAuABcAAAAAAAAAAAAvABcAAAAGAAAAAAA/ABcAAAAAAAAAAAAAABgAAAAAAAAAAAAtABgAAAAFAAAAAAAuABgAAAAAAAAAAAAvABgAAAAGAAAAAAA/ABgAAAAAAAAAAAAAABkAAAAAAAAAAAAtABkAAAAFAAAAAAAuABkAAAAAAAAAAAAvABkAAAAGAAAAAAA/ABkAAAAAAAAAAAAAABoAAAAAAAAAAAAnABoAAAAFAAAAAAAoABoAAAADAAAAAAApABoAAAADAAAAAAAqABoAAAADAAAAAAArABoAAAADAAAAAAAtABoAAAAFAAAAAAAuABoAAAAAAAAAAAAvABoAAAAGAAAAAAA/ABoAAAAAAAAAAAAAABsAAAAAAAAAAAAnABsAAAAFAAAAAAAoABsAAAAAAAAAAAApABsAAAAAAAAAAAAqABsAAAAAAAAAAAArABsAAAAAAAAAAAAyABsAAAAFAAAAAAAzABsAAAAAAAAAAAA0ABsAAAAAAAAAAAA1ABsAAAAAAAAAAAA2ABsAAAAAAAAAAAA3ABsAAAAAAAAAAAA4ABsAAAAAAAAAAAA5ABsAAAAAAAAAAAA6ABsAAAAAAAAAAAA/ABsAAAAAAAAAAAAAABwAAAAAAAAAAAAyABwAAAAFAAAAAAAzABwAAAAAAAAAAAA0ABwAAAAAAAAAAAA1ABwAAAAAAAAAAAA2ABwAAAAAAAAAAAA3ABwAAAAAAAAAAAA4ABwAAAAAAAAAAAA5ABwAAAAAAAAAAAA6ABwAAAAAAAAAAAA/ABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAyAB0AAAAFAAAAAAAzAB0AAAAAAAAAAAA0AB0AAAAAAAAAAAA1AB0AAAAAAAAAAAA2AB0AAAAAAAAAAAA3AB0AAAAAAAAAAAA4AB0AAAAAAAAAAAA5AB0AAAAAAAAAAAA6AB0AAAAAAAAAAAA/AB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAyAB4AAAAFAAAAAAAzAB4AAAAAAAAAAAA0AB4AAAAAAAAAAAA1AB4AAAAAAAAAAAA2AB4AAAAAAAAAAAA3AB4AAAAAAAAAAAA4AB4AAAAAAAAAAAA5AB4AAAAAAAAAAAA6AB4AAAAAAAAAAAA/AB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAzAB8AAAAAAAAAAAA0AB8AAAAAAAAAAAA1AB8AAAAAAAAAAAA2AB8AAAAAAAAAAAA3AB8AAAAAAAAAAAA4AB8AAAAAAAAAAAA5AB8AAAAAAAAAAAA6AB8AAAAAAAAAAAA/AB8AAAAAAAAAAAAAACAAAAAAAAAAAAAzACAAAAAAAAAAAAA0ACAAAAAAAAAAAAA1ACAAAAAAAAAAAAA2ACAAAAAAAAAAAAA3ACAAAAAAAAAAAAA4ACAAAAAAAAAAAAA5ACAAAAAAAAAAAAA6ACAAAAAAAAAAAAA/ACAAAAAAAAAAAAAAACEAAAAAAAAAAAAzACEAAAAAAAAAAAA0ACEAAAAAAAAAAAA1ACEAAAAAAAAAAAA2ACEAAAAAAAAAAAA3ACEAAAAAAAAAAAA4ACEAAAAAAAAAAAA5ACEAAAAAAAAAAAA6ACEAAAAAAAAAAAA/ACEAAAAAAAAAAAAAACIAAAAAAAAAAAAzACIAAAAAAAAAAAA0ACIAAAAAAAAAAAA1ACIAAAAAAAAAAAA2ACIAAAAAAAAAAAA3ACIAAAAAAAAAAAA4ACIAAAAAAAAAAAA5ACIAAAAAAAAAAAA6ACIAAAAAAAAAAAA/ACIAAAAAAAAAAAAAACMAAAAAAAAAAAAzACMAAAAAAAAAAAA0ACMAAAAAAAAAAAA1ACMAAAAAAAAAAAA2ACMAAAAAAAAAAAA3ACMAAAAAAAAAAAA4ACMAAAAAAAAAAAA5ACMAAAAAAAAAAAA6ACMAAAAAAAAAAAA/ACMAAAAAAAAAAAAAACQAAAAAAAAAAAAzACQAAAAAAAAAAAA0ACQAAAAAAAAAAAA1ACQAAAAAAAAAAAA2ACQAAAAAAAAAAAA3ACQAAAAAAAAAAAA4ACQAAAAAAAAAAAA5ACQAAAAAAAAAAAA6ACQAAAAAAAAAAAA/ACQAAAAAAAAAAAAAACUAAAAAAAAAAAAoACUAAAADAAAAAAApACUAAAADAAAAAAAqACUAAAADAAAAAAArACUAAAADAAAAAAAsACUAAAADAAAAAAAtACUAAAADAAAAAAAuACUAAAADAAAAAAAvACUAAAADAAAAAAAwACUAAAADAAAAAAAxACUAAAADAAAAAAAyACUAAAADAAAAAAAzACUAAAAAAAAAAAA0ACUAAAAAAAAAAAA1ACUAAAAAAAAAAAA2ACUAAAAAAAAAAAA3ACUAAAAAAAAAAAA4ACUAAAAAAAAAAAA5ACUAAAAAAAAAAAA6ACUAAAAAAAAAAAA/ACUAAAAAAAAAAAAAACYAAAAAAAAAAAABACYAAAADAAAAAAACACYAAAADAAAAAAADACYAAAADAAAAAAAEACYAAAADAAAAAAAFACYAAAADAAAAAAAGACYAAAADAAAAAAAHACYAAAADAAAAAAAIACYAAAADAAAAAAAJACYAAAADAAAAAAAKACYAAAADAAAAAAALACYAAAADAAAAAAAMACYAAAADAAAAAAANACYAAAADAAAAAAAOACYAAAADAAAAAAAPACYAAAADAAAAAAAQACYAAAADAAAAAAARACYAAAADAAAAAAASACYAAAADAAAAAAATACYAAAADAAAAAAAUACYAAAADAAAAAAAVACYAAAADAAAAAAAWACYAAAADAAAAAAAXACYAAAADAAAAAAAYACYAAAADAAAAAAAZACYAAAADAAAAAAAaACYAAAADAAAAAAAbACYAAAADAAAAAAAcACYAAAADAAAAAAAdACYAAAADAAAAAAAeACYAAAADAAAAAAAfACYAAAADAAAAAAAgACYAAAADAAAAAAAhACYAAAAAAAAAAAAiACYAAAAAAAAAAAAjACYAAAAAAAAAAAAkACYAAAAAAAAAAAAlACYAAAAAAAAAAAAmACYAAAADAAAAAAAnACYAAAADAAAAAAAoACYAAAADAAAAAAApACYAAAADAAAAAAAqACYAAAADAAAAAAArACYAAAADAAAAAAAsACYAAAADAAAAAAAtACYAAAADAAAAAAAuACYAAAADAAAAAAAvACYAAAADAAAAAAAwACYAAAADAAAAAAAxACYAAAADAAAAAAAyACYAAAADAAAAAAAzACYAAAADAAAAAAA0ACYAAAADAAAAAAA1ACYAAAADAAAAAAA2ACYAAAADAAAAAAA3ACYAAAADAAAAAAA4ACYAAAADAAAAAAA5ACYAAAADAAAAAAA6ACYAAAADAAAAAAA7ACYAAAADAAAAAAA8ACYAAAADAAAAAAA9ACYAAAADAAAAAAA+ACYAAAADAAAAAAA/ACYAAAAAAAAAAAAAACcAAAAAAAAAAAABACcAAAAAAAAAAAACACcAAAAAAAAAAAADACcAAAAAAAAAAAAEACcAAAAAAAAAAAAFACcAAAAAAAAAAAAGACcAAAAAAAAAAAAHACcAAAAAAAAAAAAIACcAAAAAAAAAAAAJACcAAAAAAAAAAAAKACcAAAAAAAAAAAALACcAAAAAAAAAAAAMACcAAAAAAAAAAAANACcAAAAAAAAAAAAOACcAAAAAAAAAAAAPACcAAAAAAAAAAAAQACcAAAAAAAAAAAARACcAAAAAAAAAAAASACcAAAAAAAAAAAATACcAAAAAAAAAAAAUACcAAAAAAAAAAAAVACcAAAAAAAAAAAAWACcAAAAAAAAAAAAXACcAAAAAAAAAAAAYACcAAAAAAAAAAAAZACcAAAAAAAAAAAAaACcAAAAAAAAAAAAbACcAAAAAAAAAAAAcACcAAAAAAAAAAAAdACcAAAAAAAAAAAAeACcAAAAAAAAAAAAfACcAAAAAAAAAAAAgACcAAAAAAAAAAAAhACcAAAAAAAAAAAAiACcAAAAAAAAAAAAjACcAAAAAAAAAAAAkACcAAAAAAAAAAAAlACcAAAAAAAAAAAAmACcAAAAAAAAAAAAnACcAAAAAAAAAAAAoACcAAAAAAAAAAAApACcAAAAAAAAAAAAqACcAAAAAAAAAAAArACcAAAAAAAAAAAAsACcAAAAAAAAAAAAtACcAAAAAAAAAAAAuACcAAAAAAAAAAAAvACcAAAAAAAAAAAAwACcAAAAAAAAAAAAxACcAAAAAAAAAAAAyACcAAAAAAAAAAAAzACcAAAAAAAAAAAA0ACcAAAAAAAAAAAA1ACcAAAAAAAAAAAA2ACcAAAAAAAAAAAA3ACcAAAAAAAAAAAA4ACcAAAAAAAAAAAA5ACcAAAAAAAAAAAA6ACcAAAAAAAAAAAA7ACcAAAAAAAAAAAA8ACcAAAAAAAAAAAA9ACcAAAAAAAAAAAA+ACcAAAAAAAAAAAA/ACcAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_wwhx0")
+
+[node name="Objects" type="Node2D" parent="Rooms/workshop-tower"]
+
+[node name="Fixture_o_42_15" type="Node2D" parent="Rooms/workshop-tower/Objects"]
+position = Vector2(336, 120)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "o"
+original_position = Vector2(336, 120)
+preview_entity = {
+"h": 8,
+"id": 0,
+"ox": 336,
+"oy": 120,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "refill",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 336,
+"y": 120
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-tower/Objects/Fixture_o_42_15"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_w0vrs")
+
+[node name="Fixture_o_43_15" type="Node2D" parent="Rooms/workshop-tower/Objects"]
+position = Vector2(344, 120)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "o"
+original_position = Vector2(344, 120)
+preview_entity = {
+"h": 8,
+"id": 1,
+"ox": 344,
+"oy": 120,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "refill",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 344,
+"y": 120
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-tower/Objects/Fixture_o_43_15"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_ay054")
+
+[node name="Fixture_Z_40_28" type="Node2D" parent="Rooms/workshop-tower/Objects"]
+position = Vector2(320, 224)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+tint = Color(0.8509804, 0.7294118, 0.5254902, 1)
+glyph = "Z"
+footprint = Vector2i(4, 8)
+original_position = Vector2(320, 224)
+preview_entity = {
+"h": 64,
+"id": 2,
+"ox": 320,
+"oy": 224,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"tx": 384.0,
+&"ty": 160.0,
+&"type": "zip",
+"vx": 0.0,
+"vy": 0.0,
+"w": 32,
+"x": 320,
+"y": 224
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-tower/Objects/Fixture_Z_40_28"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_338fw")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/workshop-tower/Objects/Fixture_Z_40_28"]
+curve = SubResource("Curve2D_unfb8")
+
+[node name="Spawn" type="Node2D" parent="Rooms/workshop-tower/Objects"]
+position = Vector2(288, 296)
+script = ExtResource("3_hhdtj")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(288, 296)
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-tower/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_c3ca0")
+
+[node name="workshop-gallery" type="Node2D" parent="Rooms"]
+position = Vector2(3712, 0)
+script = ExtResource("2_0b5cq")
+room_id = "workshop-gallery"
+room_title = "The Falling Gallery"
+map_width = 56
+map_height = 30
+settings = {
+"aim8": true,
+"authoring_visuals": {
+"crumble@256.0000,144.0000": {
+"tint": "d9ba86ff"
+},
+"zip@128.0000,176.0000": {
+"tint": "94c8e0ff"
+}
+},
+"cols": 56.0,
+"exit": "none",
+"hint": "Your outward foothold becomes the return opening. The ferry keeps moving while you visit the shard wall.",
+"id": "workshop-gallery",
+"lock": ["strike", "parry", "portal"],
+"name": "The Falling Gallery",
+"question": "Bring the gallery shard home.",
+"rows": 30.0,
+"workshopCompleteText": "SHARD BROUGHT HOME · ROOM COMPLETE",
+"workshopDevices": {
+"ferry": [128.0, 176.0]
+},
+"workshopGoal": [56.0, 192.0, 48.0, 4.0],
+"workshopObjective": "Bring the gallery shard home.",
+"workshopRequireShard": true,
+"workshopReturnText": "SHARD FOUND · RETURN THROUGH THE FALLEN GALLERY",
+"workshopRoutes": [{
+"name": "One solution · gallery loop",
+"tape": [[30.0, "rg"], [36.0, "rgu"], [12.0, "rgu"], [12.0, "r"], [12.0, "lj"], [12.0, "ux"], [25.0, "lg"], [6.0, ""], [18.0, "ljg"], [10.0, "lgu"], [4.0, "rd"], [24.0, "d"], [12.0, "lxg"], [3.0, "lg"], [12.0, "lux"], [60.0, "l"], [15.0, ""]]
+}, {
+"name": "Alternate return · search solution",
+"tape": [[30.0, "rg"], [36.0, "rgu"], [12.0, "rgu"], [12.0, "r"], [12.0, "lj"], [12.0, "ux"], [25.0, "lg"], [6.0, ""], [18.0, "ljg"], [10.0, "lgu"], [12.0, "dxg"], [18.0, "l"], [18.0, "lj"], [12.0, "lxg"], [18.0, "lgu"], [6.0, ""]]
+}]
+}
+original_fields = ["id", "name", "cols", "rows", "map", "exit", "aim8", "lock", "decor", "people", "zips", "workshopGoal", "workshopRequireShard", "workshopObjective", "workshopReturnText", "workshopCompleteText", "question", "hint", "workshopDevices", "workshopRoutes", "authoring_visuals"]
+original_spawn = Vector2(80, 184)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-gallery"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAeAAEAAAAFAAAAAAAfAAEAAAAAAAAAAAAgAAEAAAAGAAAAAAA3AAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAeAAIAAAAFAAAAAAAfAAIAAAAAAAAAAAAgAAIAAAAGAAAAAAA3AAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAeAAMAAAAFAAAAAAAfAAMAAAAAAAAAAAAgAAMAAAAGAAAAAAA3AAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAeAAQAAAAFAAAAAAAfAAQAAAAAAAAAAAAgAAQAAAAGAAAAAAA3AAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAeAAUAAAAFAAAAAAAfAAUAAAAAAAAAAAAgAAUAAAAGAAAAAAA3AAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAeAAYAAAAFAAAAAAAfAAYAAAAAAAAAAAAgAAYAAAAGAAAAAAA3AAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAeAAcAAAAFAAAAAAAfAAcAAAAAAAAAAAA3AAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAeAAgAAAAFAAAAAAAfAAgAAAAAAAAAAAA3AAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAeAAkAAAAFAAAAAAAfAAkAAAAAAAAAAAAsAAkAAAADAAAAAAAtAAkAAAADAAAAAAAuAAkAAAADAAAAAAAvAAkAAAADAAAAAAAwAAkAAAADAAAAAAAxAAkAAAADAAAAAAAyAAkAAAADAAAAAAAzAAkAAAADAAAAAAA3AAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAeAAoAAAAFAAAAAAAfAAoAAAAAAAAAAAAsAAoAAAAAAAAAAAAtAAoAAAAAAAAAAAAuAAoAAAAAAAAAAAAvAAoAAAAAAAAAAAAwAAoAAAAAAAAAAAAxAAoAAAAAAAAAAAAyAAoAAAAAAAAAAAAzAAoAAAAAAAAAAAA3AAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAeAAsAAAAFAAAAAAAfAAsAAAAAAAAAAAAsAAsAAAAAAAAAAAAtAAsAAAAAAAAAAAAuAAsAAAAAAAAAAAAvAAsAAAAAAAAAAAAwAAsAAAAAAAAAAAAxAAsAAAAAAAAAAAAyAAsAAAAAAAAAAAAzAAsAAAAAAAAAAAA3AAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAeAAwAAAAFAAAAAAAfAAwAAAAAAAAAAAAsAAwAAAAAAAAAAAAtAAwAAAAAAAAAAAAuAAwAAAAAAAAAAAAvAAwAAAAAAAAAAAAwAAwAAAAAAAAAAAAxAAwAAAAAAAAAAAAyAAwAAAAAAAAAAAAzAAwAAAAAAAAAAAA3AAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAeAA0AAAAFAAAAAAAfAA0AAAAAAAAAAAAsAA0AAAAAAAAAAAAtAA0AAAAAAAAAAAAuAA0AAAAAAAAAAAAvAA0AAAAAAAAAAAAwAA0AAAAAAAAAAAAxAA0AAAAAAAAAAAAyAA0AAAAAAAAAAAAzAA0AAAAAAAAAAAA3AA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAeAA4AAAAFAAAAAAAfAA4AAAAAAAAAAAAsAA4AAAAAAAAAAAAtAA4AAAAAAAAAAAAuAA4AAAAAAAAAAAAvAA4AAAAAAAAAAAAwAA4AAAAAAAAAAAAxAA4AAAAAAAAAAAAyAA4AAAAAAAAAAAAzAA4AAAAAAAAAAAA3AA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAeAA8AAAAFAAAAAAAfAA8AAAAAAAAAAAAsAA8AAAAAAAAAAAAtAA8AAAAAAAAAAAAuAA8AAAAAAAAAAAAvAA8AAAAAAAAAAAAwAA8AAAAAAAAAAAAxAA8AAAAAAAAAAAAyAA8AAAAAAAAAAAAzAA8AAAAAAAAAAAA3AA8AAAAAAAAAAAAAABAAAAAAAAAAAAAeABAAAAAFAAAAAAAfABAAAAAAAAAAAAAsABAAAAAAAAAAAAAtABAAAAAAAAAAAAAuABAAAAAAAAAAAAAvABAAAAAAAAAAAAAwABAAAAAAAAAAAAAxABAAAAAAAAAAAAAyABAAAAAAAAAAAAAzABAAAAAAAAAAAAA3ABAAAAAAAAAAAAAAABEAAAAAAAAAAAAeABEAAAAFAAAAAAAfABEAAAAAAAAAAAAmABEAAAADAAAAAAAsABEAAAAAAAAAAAAtABEAAAAAAAAAAAAuABEAAAAAAAAAAAAvABEAAAAAAAAAAAAwABEAAAAAAAAAAAAxABEAAAAAAAAAAAAyABEAAAAAAAAAAAAzABEAAAAAAAAAAAA3ABEAAAAAAAAAAAAAABIAAAAAAAAAAAAeABIAAAAFAAAAAAAfABIAAAAAAAAAAAAmABIAAAAAAAAAAAAsABIAAAAAAAAAAAAtABIAAAAAAAAAAAAuABIAAAAAAAAAAAAvABIAAAAAAAAAAAAwABIAAAAAAAAAAAAxABIAAAAAAAAAAAAyABIAAAAAAAAAAAAzABIAAAAAAAAAAAA3ABIAAAAAAAAAAAAAABMAAAAAAAAAAAArABMAAAADAAAAAAAsABMAAAAAAAAAAAAtABMAAAAAAAAAAAAuABMAAAAAAAAAAAAvABMAAAAAAAAAAAAwABMAAAAAAAAAAAAxABMAAAAAAAAAAAAyABMAAAAAAAAAAAAzABMAAAAAAAAAAAA3ABMAAAAAAAAAAAAAABQAAAAAAAAAAAAQABQAAAAAAAAAAAARABQAAAAAAAAAAAASABQAAAAAAAAAAAATABQAAAAAAAAAAAAUABQAAAAAAAAAAAAVABQAAAAAAAAAAAAWABQAAAAFAAAAAAArABQAAAAAAAAAAAAsABQAAAAAAAAAAAAtABQAAAAAAAAAAAAuABQAAAAAAAAAAAAvABQAAAAAAAAAAAAwABQAAAAAAAAAAAAxABQAAAAAAAAAAAAyABQAAAAAAAAAAAAzABQAAAAAAAAAAAA3ABQAAAAAAAAAAAAAABUAAAAAAAAAAAAWABUAAAAFAAAAAAAsABUAAAAAAAAAAAAtABUAAAAAAAAAAAAuABUAAAAAAAAAAAAvABUAAAAAAAAAAAAwABUAAAAAAAAAAAAxABUAAAAAAAAAAAAyABUAAAAAAAAAAAAzABUAAAAAAAAAAAA3ABUAAAAAAAAAAAAAABYAAAAAAAAAAAAsABYAAAAAAAAAAAAtABYAAAAAAAAAAAAuABYAAAAAAAAAAAAvABYAAAAAAAAAAAAwABYAAAAAAAAAAAAxABYAAAAAAAAAAAAyABYAAAAAAAAAAAAzABYAAAAAAAAAAAA3ABYAAAAAAAAAAAAAABcAAAAAAAAAAAAsABcAAAAAAAAAAAAtABcAAAAAAAAAAAAuABcAAAAAAAAAAAAvABcAAAAAAAAAAAAwABcAAAAAAAAAAAAxABcAAAAAAAAAAAAyABcAAAAAAAAAAAAzABcAAAAAAAAAAAA3ABcAAAAAAAAAAAAAABgAAAAAAAAAAAAHABgAAAAAAAAAAAAIABgAAAAAAAAAAAAJABgAAAAAAAAAAAAKABgAAAAAAAAAAAALABgAAAAAAAAAAAAMABgAAAAAAAAAAAAsABgAAAAAAAAAAAAtABgAAAAAAAAAAAAuABgAAAAAAAAAAAAvABgAAAAAAAAAAAAwABgAAAAAAAAAAAAxABgAAAAAAAAAAAAyABgAAAAAAAAAAAAzABgAAAAAAAAAAAA3ABgAAAAAAAAAAAAAABkAAAAAAAAAAAAHABkAAAAAAAAAAAAIABkAAAAAAAAAAAAJABkAAAAAAAAAAAAKABkAAAAAAAAAAAALABkAAAAAAAAAAAAMABkAAAAAAAAAAAAsABkAAAAAAAAAAAAtABkAAAAAAAAAAAAuABkAAAAAAAAAAAAvABkAAAAAAAAAAAAwABkAAAAAAAAAAAAxABkAAAAAAAAAAAAyABkAAAAAAAAAAAAzABkAAAAAAAAAAAA3ABkAAAAAAAAAAAAAABoAAAAAAAAAAAAHABoAAAAAAAAAAAAIABoAAAAAAAAAAAAJABoAAAAAAAAAAAAKABoAAAAAAAAAAAALABoAAAAAAAAAAAAMABoAAAAAAAAAAAAsABoAAAAAAAAAAAAtABoAAAAAAAAAAAAuABoAAAAAAAAAAAAvABoAAAAAAAAAAAAwABoAAAAAAAAAAAAxABoAAAAAAAAAAAAyABoAAAAAAAAAAAAzABoAAAAAAAAAAAA3ABoAAAAAAAAAAAAAABsAAAAAAAAAAAAHABsAAAAAAAAAAAAIABsAAAAAAAAAAAAJABsAAAAAAAAAAAAKABsAAAAAAAAAAAALABsAAAAAAAAAAAAMABsAAAAAAAAAAAAsABsAAAAAAAAAAAAtABsAAAAAAAAAAAAuABsAAAAAAAAAAAAvABsAAAAAAAAAAAAwABsAAAAAAAAAAAAxABsAAAAAAAAAAAAyABsAAAAAAAAAAAAzABsAAAAAAAAAAAA3ABsAAAAAAAAAAAAAABwAAAAAAAAAAAABABwAAAADAAAAAAACABwAAAADAAAAAAADABwAAAADAAAAAAAEABwAAAADAAAAAAAFABwAAAADAAAAAAAGABwAAAADAAAAAAAHABwAAAADAAAAAAAIABwAAAADAAAAAAAJABwAAAADAAAAAAAKABwAAAADAAAAAAALABwAAAADAAAAAAAMABwAAAADAAAAAAANABwAAAADAAAAAAAOABwAAAADAAAAAAAPABwAAAADAAAAAAAQABwAAAADAAAAAAARABwAAAADAAAAAAASABwAAAADAAAAAAATABwAAAADAAAAAAAUABwAAAADAAAAAAAVABwAAAADAAAAAAAWABwAAAADAAAAAAAXABwAAAADAAAAAAAYABwAAAADAAAAAAAZABwAAAADAAAAAAAaABwAAAADAAAAAAAbABwAAAADAAAAAAAcABwAAAADAAAAAAAdABwAAAADAAAAAAAeABwAAAADAAAAAAAfABwAAAADAAAAAAAgABwAAAADAAAAAAAhABwAAAADAAAAAAAiABwAAAADAAAAAAAjABwAAAADAAAAAAAkABwAAAADAAAAAAAlABwAAAADAAAAAAAmABwAAAADAAAAAAAnABwAAAADAAAAAAAoABwAAAADAAAAAAApABwAAAADAAAAAAAqABwAAAADAAAAAAArABwAAAADAAAAAAAsABwAAAADAAAAAAAtABwAAAADAAAAAAAuABwAAAADAAAAAAAvABwAAAADAAAAAAAwABwAAAADAAAAAAAxABwAAAADAAAAAAAyABwAAAADAAAAAAAzABwAAAADAAAAAAA0ABwAAAADAAAAAAA1ABwAAAADAAAAAAA2ABwAAAADAAAAAAA3ABwAAAAAAAAAAAAAAB0AAAAAAAAAAAABAB0AAAAAAAAAAAACAB0AAAAAAAAAAAADAB0AAAAAAAAAAAAEAB0AAAAAAAAAAAAFAB0AAAAAAAAAAAAGAB0AAAAAAAAAAAAHAB0AAAAAAAAAAAAIAB0AAAAAAAAAAAAJAB0AAAAAAAAAAAAKAB0AAAAAAAAAAAALAB0AAAAAAAAAAAAMAB0AAAAAAAAAAAANAB0AAAAAAAAAAAAOAB0AAAAAAAAAAAAPAB0AAAAAAAAAAAAQAB0AAAAAAAAAAAARAB0AAAAAAAAAAAASAB0AAAAAAAAAAAATAB0AAAAAAAAAAAAUAB0AAAAAAAAAAAAVAB0AAAAAAAAAAAAWAB0AAAAAAAAAAAAXAB0AAAAAAAAAAAAYAB0AAAAAAAAAAAAZAB0AAAAAAAAAAAAaAB0AAAAAAAAAAAAbAB0AAAAAAAAAAAAcAB0AAAAAAAAAAAAdAB0AAAAAAAAAAAAeAB0AAAAAAAAAAAAfAB0AAAAAAAAAAAAgAB0AAAAAAAAAAAAhAB0AAAAAAAAAAAAiAB0AAAAAAAAAAAAjAB0AAAAAAAAAAAAkAB0AAAAAAAAAAAAlAB0AAAAAAAAAAAAmAB0AAAAAAAAAAAAnAB0AAAAAAAAAAAAoAB0AAAAAAAAAAAApAB0AAAAAAAAAAAAqAB0AAAAAAAAAAAArAB0AAAAAAAAAAAAsAB0AAAAAAAAAAAAtAB0AAAAAAAAAAAAuAB0AAAAAAAAAAAAvAB0AAAAAAAAAAAAwAB0AAAAAAAAAAAAxAB0AAAAAAAAAAAAyAB0AAAAAAAAAAAAzAB0AAAAAAAAAAAA0AB0AAAAAAAAAAAA1AB0AAAAAAAAAAAA2AB0AAAAAAAAAAAA3AB0AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_wwhx0")
+
+[node name="Objects" type="Node2D" parent="Rooms/workshop-gallery"]
+
+[node name="Fixture_*_32_13" type="Node2D" parent="Rooms/workshop-gallery/Objects"]
+position = Vector2(256, 104)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "*"
+original_position = Vector2(256, 104)
+preview_entity = {
+"h": 8,
+"id": 0,
+"ox": 256,
+"oy": 104,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "shard",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 256,
+"y": 104
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-gallery/Objects/Fixture_*_32_13"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_2vjyg")
+
+[node name="Fixture_~_32_18" type="Node2D" parent="Rooms/workshop-gallery/Objects"]
+position = Vector2(256, 144)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+tint = Color(0.8509804, 0.7294118, 0.5254902, 1)
+glyph = "~"
+footprint = Vector2i(6, 1)
+original_position = Vector2(256, 144)
+preview_entity = {
+"h": 8,
+"id": 1,
+"ox": 256,
+"oy": 144,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "crumble",
+"vx": 0.0,
+"vy": 0.0,
+"w": 48,
+"x": 256,
+"y": 144
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-gallery/Objects/Fixture_~_32_18"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_l4a1s")
+
+[node name="Fixture_Z_16_22" type="Node2D" parent="Rooms/workshop-gallery/Objects"]
+position = Vector2(128, 176)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+tint = Color(0.5803922, 0.78431374, 0.8784314, 1)
+glyph = "Z"
+footprint = Vector2i(6, 3)
+parameters = {
+"holdFrames": 60.0
+}
+original_position = Vector2(128, 176)
+preview_entity = {
+"h": 24,
+"holdFrames": 60,
+"id": 2,
+"ox": 128,
+"oy": 176,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"tx": 304.0,
+&"ty": 176.0,
+&"type": "zip",
+"vx": 0.0,
+"vy": 0.0,
+"w": 48,
+"x": 128,
+"y": 176
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-gallery/Objects/Fixture_Z_16_22"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_2dhsc")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/workshop-gallery/Objects/Fixture_Z_16_22"]
+curve = SubResource("Curve2D_delgs")
+
+[node name="Spawn" type="Node2D" parent="Rooms/workshop-gallery/Objects"]
+position = Vector2(80, 184)
+script = ExtResource("3_hhdtj")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(80, 184)
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-gallery/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_jpjbc")

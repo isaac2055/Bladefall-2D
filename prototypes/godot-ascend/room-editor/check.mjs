@@ -23,7 +23,7 @@ try{
  browser=await puppeteer.launch({headless:true,defaultViewport:{width:1440,height:980}});const page=await browser.newPage();
  page.on('pageerror',e=>failures.push(e.message));page.on('dialog',d=>d.accept());
  await page.goto(editor.url,{waitUntil:'networkidle0'});await page.waitForFunction(()=>window.editorState?.().document);if(await page.$eval('#welcome',e=>!e.hidden))await page.click('#dismiss-welcome');
- assert.equal(await page.$$eval('#rooms option',nodes=>nodes.length),6);assert.equal(await page.$eval('#issues',e=>e.hidden),true);pass('six existing native rooms open without validation errors');
+ assert.equal(await page.$$eval('#rooms option',nodes=>nodes.length),8);assert.equal(await page.$eval('#issues',e=>e.hidden),true);pass('all eight existing native rooms open without validation errors');
  const state=()=>page.evaluate(()=>window.editorState());
  const point=async(x,y)=>page.evaluate((x,y)=>{const v=window.editorState().view,b=document.querySelector('canvas').getBoundingClientRect();return {x:b.x+v.x+x*v.cell,y:b.y+v.y+y*v.cell};},x,y);
  const click=async(x,y)=>{const p=await point(x,y);await page.mouse.click(p.x,p.y);};
@@ -54,6 +54,9 @@ try{
  const session=await page.createCDPSession();await session.send('Page.setDownloadBehavior',{behavior:'allow',downloadPath:out});await page.click('#export');
  const exportName=`bladefall-workshop-${new Date().toISOString().slice(0,10)}.json`;for(let i=0;i<50;i++){try{if((await stat(path.join(out,exportName))).size>0)break;}catch{}await new Promise(r=>setTimeout(r,50));}
  const exported=JSON.parse(await readFile(path.join(out,exportName),'utf8'));assert.deepEqual(validate(exported),[]);await page.select('#rooms','0');await input('#room-name','Temporary draft');await (await page.$('#file')).uploadFile(path.join(out,exportName));await page.waitForFunction(()=>window.editorState().document.rooms[0].name==='Editor test room');pass('export and import use a complete editable file');
+ const legacy=clone(exported);legacy.rooms=legacy.rooms.slice(0,6);legacy.rooms[0].name='Legacy six-room draft';const legacyPath=path.join(out,'legacy-six.json');await writeFile(legacyPath,JSON.stringify(legacy));
+ await (await page.$('#file')).uploadFile(legacyPath);await page.waitForFunction(()=>window.editorState().document.rooms[0].name==='Legacy six-room draft');assert.equal((await state()).document.rooms.length,8);assert.deepEqual((await state()).document.rooms.slice(6),exported.rooms.slice(6));await page.click('#undo');pass('older six-room imports preserve the two appended rooms');
+
  await input('#room-name','Recovered browser draft');await new Promise(r=>setTimeout(r,250));await page.reload({waitUntil:'networkidle0'});await page.waitForSelector('#draft-dialog[open]');await page.click('#restore-draft');assert.equal((await state()).document.rooms[0].name,'Recovered browser draft');pass('unsaved drafts recover after browser reload');
  await appendFile(fixture,'\n');const conflicting=await post('/api/save',{...exported,revision:stored.revision});assert.equal(conflicting.status,409);pass('external native edits cause a conflict instead of being overwritten');
  await page.click('#reload');await page.waitForFunction(()=>!window.editorState().dirty);await page.click('#backups');await page.waitForSelector('#backup-list button');await page.click('#backup-list button');await page.waitForFunction(()=>window.editorState().document.rooms[0].name==='The Broken Relay');assert((await state()).dirty);await page.click('#save');await page.waitForFunction(()=>!window.editorState().busy&&!window.editorState().dirty,{timeout:60000});assert.deepEqual(await bridge('read',fixture),initial);pass('backup review and save restore the complete original native room data');

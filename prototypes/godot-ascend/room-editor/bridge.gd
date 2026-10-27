@@ -29,7 +29,7 @@ func own(parent,node):
 func apply_document(doc):
  var before=snapshot()
  if doc.get("format","")!="bladefall-workshop-editor" or doc.get("version",0)!=1 or doc.get("rooms",[]).size()!=before.rooms.size():
-  fault.append("This file is not a six-room workshop document.");return
+  fault.append("This file does not match the workshop’s room list.");return
  for index in range(before.rooms.size()):
   var original=before.rooms[index]
   var d=doc.rooms[index]
@@ -101,7 +101,7 @@ func run():
  if packed==null: quit(2);return
  scene=packed.instantiate()
  baseline=Authoring.baseline(JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json")))
- if scene.source_fingerprint!=Codec.fingerprint(baseline): fault.append("The source import changed. Reconcile it before editing this native workshop.")
+ if mode=="apply" and scene.source_fingerprint!=Codec.fingerprint(baseline): fault.append("The source import changed. Reconcile it before editing this native workshop.")
  if mode=="apply" and fault.is_empty():
   if args.size()<5: quit(2);return
   var doc=JSON.parse_string(FileAccess.get_file_as_string(args[3]))

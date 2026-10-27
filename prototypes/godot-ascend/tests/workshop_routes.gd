@@ -30,12 +30,16 @@ static func play(data,index,tape,mode=""):
  if mode.begins_with("early:"):
   var e=device(core,mode.get_slice(":",1))
   if e!=null: e.state="wind";e.t=0
+ if mode=="permanent_crumble":
+  for e in core.ents:
+   if e.type=="crumble": e.type="slide"
  if mode=="static":
   for e in core.ents:
    if e.type=="zip": e.type="slide"
- var proof={"finish":false,"deaths":0,"frames":0,"advanced":false,"contacts":[],"actions":[],"refills":[],"shard":false,"first_pickup_dash":-1,"pickup_frame":-1,"landings":[]}
+ var proof={"finish":false,"deaths":0,"frames":0,"advanced":false,"contacts":[],"actions":[],"refills":[],"shard":false,"first_pickup_dash":-1,"pickup_frame":-1,"landings":[],"crumbles":[]}
  var last_contact=""
  var seen_refills={}
+ var crumble_states={}
  for segment in tape:
   for f in range(int(segment[0])):
    if mode.begins_with("park:") and carried(core):
@@ -63,6 +67,11 @@ static func play(data,index,tape,mode=""):
     proof.pickup_frame=proof.frames
    proof.shard=carried(core)
    for e in core.ents:
+    if e.type=="crumble":
+     var status="broken" if e.get("broken",false) else ("shaking" if e.get("shaking",0)>0 else "ready")
+     if crumble_states.get(e.id,"")!=status:
+      proof.crumbles.append({"f":proof.frames,"state":status,"x":e.x,"y":e.y,"dash":core.p.dashes,"player":[core.p.x,core.p.y]})
+      crumble_states[e.id]=status
     if e.type=="refill" and e.timer>0 and not seen_refills.has(e.id):
      seen_refills[e.id]=true
      proof.refills.append({"f":proof.frames,"x":e.x,"y":e.y})

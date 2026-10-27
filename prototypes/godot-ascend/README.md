@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.17.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.18.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -17,9 +17,17 @@ Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump
 The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, a dedicated sound mixer, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
 
+## Two new workshop rooms · 0.18.0
+
+The workshop now has **eight rooms**. **The Divided Tower** offers two ordinary-input solutions around one counterweight: take its rising launch to the airborne refill pair and cross high, or dash through the opened lower passage and catch the returning weight as a foothold. **The Falling Gallery** uses a crumble platform first as a dash-restoring foothold, then as the opening through which you return to the retreating ferry with the shard.
+
+Both rooms have two demonstrations in **Esc → Demonstration**, including a Gallery return discovered by independent input search. The original six rooms are preserved. Open **Play Movement Workshop.command**, press Esc and choose room 7 or 8; **N** advances rooms. They are also editable directly in **Edit Workshop Rooms.command**. Older six-room editor exports/drafts merge into the current workshop while retaining the appended rooms.
+
+The new native tests compare both Tower routes under separate mechanic restrictions, retain actual solver-discovered shortcuts as positive regression controls, and search for fresh inputs instead of only replaying intended tapes. Search failures remain bounded evidence. See [WORKSHOP.md](WORKSHOP.md) for the design and verification limits.
+
 ## Dedicated room editor · 0.17.0
 
-Double-click **Edit Workshop Rooms.command** for a simple local browser editor of the six workshop rooms. Choose a terrain brush, paint on the grid, or place and drag objects. Select a moving block to drag its destination, resize it, or change its pause and return timing. Select a rectangle of terrain to move ground. Undo/redo, exact positions, room settings and optional hints are available without Godot's scene tree or Inspector.
+Double-click **Edit Workshop Rooms.command** for a simple local browser editor of the eight workshop rooms. Choose a terrain brush, paint on the grid, or place and drag objects. Select a moving block to drag its destination, resize it, or change its pause and return timing. Select a rectangle of terrain to move ground. Undo/redo, exact positions, room settings and optional hints are available without Godot's scene tree or Inspector.
 
 **Save & play** saves directly to the native workshop scene and opens that room in the actual Godot project. Every save keeps a backup; unsaved browser drafts can be recovered after reload. Import/export provides a portable editable file. Conflicting external edits are reported before writing, and changed rooms stop offering outdated demonstrations. Campaign scenes and browser shipping files are outside this editor's write path. The packaged app is rebuilt separately; the editor's Play action always uses current project files.
 

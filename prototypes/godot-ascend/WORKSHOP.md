@@ -1,4 +1,4 @@
-# Six linked movement rooms · 0.16.0
+# Eight linked movement rooms · 0.18.0
 
 These standalone chapter-4 rooms use Outskirts movement and contact-activated blocks. Native scene: `levels/world4.tscn`. Source geometry and ordinary-input demonstrations: `data/world4.json`. No campaign scenes, quests, voices or connecting passages are part of this change.
 
@@ -38,6 +38,26 @@ Prepare the gate outward and bring the seal back through the lower passage as in
 
 The final lift should be saved for the return. Its authored 600-frame return leaves a prematurely activated lift too high during the ordinary ferry recovery window. The early-activation counterfactual still collects the seal but fails the return chain. Removing the high refill, the ferry's return position or vertical inherited momentum also breaks the witnessed route. The high refill and finishing lift cannot be reached from the entrance floor in the tested jump/dash samples.
 
+## The Divided Tower
+
+The tall counterweight initially seals a narrow lower throat. Its initial overhead housing denies a standing dash reset on the parked block. Activating it changes both the opening and the reachable launch position.
+
+The high route departs during ascent, uses the upward launch and an upward dash to reach the airborne refill pair, then dashes across the upper partition and stepped housing toward the flag. The low route releases into the opened throat, spends the dash crossing to the far wall, and catches the counterweight during its return before jumping toward the flag.
+
+These are deliberately separate plans: removing refills breaks the high demonstration while leaving the low route playable; holding the weight at its raised stop leaves the high route playable but breaks the low route. The low route does not need upward inherited momentum. Static surfaces are guarded to prevent replacing either plan with a standing reset.
+
+The independent search exposed actual stationary-block shortcuts in earlier drafts. Their full earlier room definitions and successful input sequences are retained as positive regression controls. A search failure in the revision is only evidence within its declared node/action budget.
+
+## The Falling Gallery
+
+Cling to the horizontal ferry and move outward beneath the dividing wall. Climb onto its exposed far section, jump and dash up beside the gallery cap, then steer onto the crumble platform. Landing restores the spent dash while the ferry's clock continues. Jump left to the shard on the interior wall. The used platform collapses, exposing the return shaft. Drop through it and dash to catch the ferry during its return, then leave for the home flag.
+
+The shard is on the interior wall rather than the outer wall of the first sketch: this places the return shaft beside the pickup while the outward ascent remains farther right. The ceiling-anchored divider blocks a direct high return home. The exposed ascent area on the right remains a possible alternate route to investigate, rather than being declared impossible by inspection.
+
+The cap has two connected jobs: outward foothold/resource recovery and return opening. The demonstrations fail when the cap is made permanent, the ferry is static/parked, or return dashes are removed. The normal collapse and respawn durations are unchanged. The ferry uses the existing authored 60-frame pause.
+
+The second demonstration was found by a beam search choosing new inputs from a reachable pickup state. It uses a different return sequence, with no advanced movement. The same bounded search finds no return with the cap made permanent within 20,000 branches; that comparison supplies stronger evidence than replaying the first demonstration alone.
+
 ## Editing and timing
 
 A moving fixture's optional Parameters dictionary accepts `holdFrames` and `returnFrames`, whole numbers from 1 to 3600. Defaults remain 30 and 120; activation and outward travel remain 4 and 30. The JSON route format is `[dx_tiles, dy_tiles, {"holdFrames": 60}]`; native scene compilation preserves the optional dictionary. Timing edits belong to the individual fixture. The ferry uses holdFrames=60; Circuit's finishing lift uses returnFrames=600. Campaign fixtures omit overrides and retain their existing behavior.
@@ -55,3 +75,11 @@ The application checks use the actual gameplay controller for all six routes, co
 Use `--headless` to run without captures. The report contains individual checks, route observations, counterfactual results and search counts. Browser parity separately protects default movement and machinery behavior.
 
 A failed counterfactual replay proves a dependency of that replay; it does not establish impossibility of every alternative. Bounded searches broaden evidence but are not exhaustive. The authored timing choices and geometry still need human playtesting for readability, satisfaction and recovery options. Alternatives preserving the central relationships are welcome.
+
+## Additional verification for the new rooms
+
+Run `tests/new_workshop_rooms.gd` headlessly for preservation of the original six, both ordinary-input Tower routes, both Gallery routes, mechanic restrictions, timing variations, actual second-demonstration playback and independent searches. It saves checks and search reports when given an absolute JSON output path after `--`.
+
+`tests/workshop_search.gd` branches over ordinary movement, climbing, jumping and eight dash directions. Branches retain exact player state, input buffers, fractional motion and device timers. It uses a bounded beam and a static spatial heuristic, so it is not exhaustive. Positive controls reproduce witnessed shortcuts in previous Tower drafts, and an independent successful Gallery return calibrates the search. The static-block cases start from spawn; the Gallery recovery comparison begins from a reachable pickup state and searches fresh subsequent inputs.
+
+Human playtesting is still required for route readability, pacing and satisfaction. The tests establish playability and selected causal relationships, not a universal claim that no other solutions exist.

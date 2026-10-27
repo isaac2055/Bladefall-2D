@@ -70,9 +70,9 @@ func check_native(source,fixtures):
  var chapter=load("res://levels/world4.tscn").instantiate()
  var base=Authoring.baseline(source)
  var compiled=chapter.compile_into(base)
- check(Codec.first_difference(base,compiled)=="","six native rooms preserve geometry, timings, colors and recordings")
+ check(Codec.first_difference(base,compiled)=="","eight native rooms preserve geometry, timings, colors and recordings")
  check(chapter.validate_data(compiled).is_empty(),"saved workshop validates")
- check(chapter.get_node("Rooms").get_child_count()==6,"six independently editable rooms")
+ check(chapter.get_node("Rooms").get_child_count()==8,"eight independently editable rooms")
  for i in range(2): check(Codec.first_difference(fixtures.acceptedRooms[i],compiled.world.rooms[i])=="","accepted room preserved: "+compiled.world.rooms[i].name)
  var timed=null
  for room in chapter.get_node("Rooms").get_children():
@@ -98,12 +98,12 @@ func check_native(source,fixtures):
  check(authored.deaths==0 and authored.counts.wind==4 and authored.counts.go==30 and authored.counts.hold==60 and authored.counts.back==45,"authored timing changes only pause/return duration")
  return compiled
 func check_routes(data):
- for i in range(6):
+ for i in range(data.world.rooms.size()):
   var d=data.world.rooms[i]
   var p=Routes.play(data,i,d.workshopRoutes[0].tape)
   reports.append({"room":d.id,"baseline":p,"ablations":{},"timing":{}})
   check(p.finish and p.deaths==0 and not p.advanced,"deathless ordinary-input route: "+d.name)
- for i in range(6): phase_test(data,i,"static")
+ for i in range(data.world.rooms.size()): phase_test(data,i,"static")
  phase_test(data,0,"no_x_boost");phase_test(data,0,"no_y_boost")
  phase_test(data,1,"no_boost",true)
  phase_test(data,1,"park_high");phase_test(data,1,"park_low")
@@ -240,11 +240,11 @@ func check_application(data):
  await process_frame
  app.set_physics_process(false)
  var campaign=app.chapters[1].world.data.duplicate(true)
- check(app.chapter_number==4 and app.room_picker.item_count==6,"direct launch exposes all six workshop rooms")
+ check(app.chapter_number==4 and app.room_picker.item_count==8,"direct launch exposes all eight workshop rooms")
  check(app.workshop_previous.visible and app.workshop_next.visible,"previous/next room controls are available")
  check(app.world.data.constants==app.chapters[1].world.data.constants,"all rooms retain Outskirts player movement constants")
- for i in range(6): await app_route(i)
- for i in [3,4,5]:
+ for i in range(data.world.rooms.size()): await app_route(i)
+ for i in [3,4,5,7]:
   app.load_section(i)
   app.retry_room()
   var goal=app.sim.room.def.workshopGoal
@@ -265,7 +265,7 @@ func check_application(data):
  check(not app.workshop_has_shard() and app.workshop_shards.is_empty(),"death restores the carried pickup without banking it")
  key(KEY_H)
  check(app.notice_time>0 and app.notice_label.text==app.sim.room.def.hint,"hint remains optional")
- for i in range(6):
+ for i in range(data.world.rooms.size()):
   app.watch=false
   app.load_section(i)
   app.toggle_watch()
@@ -275,10 +275,11 @@ func check_application(data):
   app.toggle_watch()
  check(app.workshop_completed.is_empty() and app.workshop_shards.is_empty(),"watching solutions awards no player completion")
  check(not app.watch and app.sim.world_context==app.world,"Take control restores live world physics")
+ app.load_section(7)
  app.workshop_room(1)
- check(app.sim.room.id=="workshop-relay","next room wraps from Circuit to Relay")
+ check(app.sim.room.id=="workshop-relay","next room wraps from Gallery to Relay")
  app.workshop_room(-1)
- check(app.sim.room.id=="workshop-smuggler","previous room wraps from Relay to Circuit")
+ check(app.sim.room.id=="workshop-gallery","previous room wraps from Relay to Gallery")
  check(Codec.first_difference(campaign,app.chapters[1].world.data)=="","workshop leaves campaign data untouched")
  app.switch_chapter(1)
  check(not app.workshop_controls.visible and not app.workshop_demo_picker.visible,"campaign retains its ordinary interface")

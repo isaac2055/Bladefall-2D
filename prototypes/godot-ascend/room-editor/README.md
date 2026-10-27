@@ -1,6 +1,6 @@
 # Bladefall Room Editor
 
-A local browser editor for the six native Movement Workshop rooms. It edits `levels/world4.tscn` through Godot's existing authoring codec. There is no upload, hosting account or manual conversion step, and no campaign scene is written.
+A local browser editor for the eight native Movement Workshop rooms. It edits `levels/world4.tscn` through Godot's existing authoring codec. There is no upload, hosting account or manual conversion step, and no campaign scene is written.
 
 ## Open and edit
 
@@ -23,7 +23,7 @@ The palette contains solid stone, weathered stone, one-way ledges, four spike di
 - Native saves are staged, validated, reopened and then atomically installed. An external-file revision check prevents replacing another editor's saved work. If a conflict appears, export your draft before Reload saved.
 - Every save backs up the previous scene under the repository's ignored `.cache/room-editor/backups/`. **Saved backups** loads a version for review; Save is required to apply it.
 - Unsaved work is also cached in this browser. Reopening offers to recover the draft. This is not a substitute for saving or exporting, particularly if browser storage is cleared.
-- **Export file** downloads all six rooms as an editable JSON document. **Import file** loads one as an unsaved draft. Original room IDs and order are retained. The source `data/world4.json` remains the original workshop fixture.
+- **Export file** downloads all workshop rooms as an editable JSON document. **Import file** loads one as an unsaved draft. Original room IDs and order are retained. Older six-room files and recovered drafts merge their matching rooms into the current workshop; the two appended rooms stay available. Older native backups can also be reviewed this way; matching current-format backups restore their full native metadata. The source `data/world4.json` remains the original workshop fixture.
 - Old demonstrations are cleared only for changed rooms, because their recordings may no longer fit the edited geometry. Their prior versions remain in native backups. Unedited rooms retain their demonstrations.
 - Validation catches missing starts/pickups, invalid sizes, overlapping fixtures/terrain, merged adjacent blocks, out-of-bounds objects/destinations and invalid timing. It does not solve the edited room or prove it can be finished; use Play to check your design.
 
@@ -37,4 +37,4 @@ node prototypes/godot-ascend/room-editor/check.mjs
 
 Requires the repository's existing Puppeteer dependency. This test uses a copy of the native scene, real browser input and the real Godot bridge. It exercises painting/erasing, terrain selection/copy, object placement/movement/size/destination/timing, undo/redo, room switching and resizing, pan/zoom, native save, draft recovery, imports/exports, external conflicts and backup restoration. A native gameplay check verifies collision/device edits, preservation of unselected rooms and no-edit round trips, outdated-demo handling and live inputs. It also verifies the real workshop and user Outskirts scene were untouched. Reports and screenshots are written under `.cache/room-editor-check/`.
 
-The workshop's existing `tests/workshop.gd` remains the regression test for the six original layouts. Its demonstration-based route checks will naturally need revisiting after intentional geometry edits.
+The workshop's existing `tests/workshop.gd` remains the regression test for the eight workshop layouts. Its demonstration-based route checks will naturally need revisiting after intentional geometry edits.

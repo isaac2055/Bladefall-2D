@@ -10,7 +10,7 @@ export function newObject(type,x,y) {
 }
 export function validate(doc) {
  const errors=[];
- if(doc?.format!=='bladefall-workshop-editor'||doc.version!==1||!Array.isArray(doc.rooms)||doc.rooms.length!==6)return ['Choose a six-room Bladefall workshop file.'];
+ if(doc?.format!=='bladefall-workshop-editor'||doc.version!==1||!Array.isArray(doc.rooms)||doc.rooms.length<1||doc.rooms.length>64)return ['Choose a Bladefall workshop file with 1–64 rooms.'];
  const ids=new Set();
  for(const room of doc.rooms){
   const prefix=`${room.name||'Room'}: `, fail=text=>errors.push(prefix+text);
