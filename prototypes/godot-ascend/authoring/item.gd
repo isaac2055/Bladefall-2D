@@ -92,7 +92,13 @@ func _draw():
     Styles.line(painter,Vector2(at.x,footprint.y),at,"#839b83",.5)
     Styles.oval(painter,at,Vector2(1.5,.9),"#fffbee","#cdd8c7",.12)
   "Mechanism":
-   if not preview_entity.is_empty():
+   if field_path==["recoilPlatforms"]:
+    painter.draw_entity({"type":"recoilPlatform","x":0,"y":0,"ox":0,"oy":0,"w":parameters.get("w",6)*8,"h":8,"depth":parameters.get("depth",3)*8},Vector2.ZERO)
+   elif field_path==["hingeArms"]:
+    var e={"type":"hingeArm","x":0,"y":0,"pivotX":0,"pivotY":0,"length":parameters.get("length",8),"pulse":0,"jam":0}
+    e.merge(preload("res://scripts/causeway_devices.gd").pose(e,parameters.get("dir","right")),true)
+    painter.draw_entity(e,Vector2.ZERO)
+   elif not preview_entity.is_empty():
     if preview_kind=="enemy": painter.draw_hound(preview_entity,-Vector2(preview_entity.x,preview_entity.y))
     else: painter.draw_entity(preview_entity,-Vector2(preview_entity.x,preview_entity.y))
    else:

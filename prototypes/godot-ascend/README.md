@@ -1,6 +1,16 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.22.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.23.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Causeway workshop rooms · 0.23.0
+
+Open **Play Causeway Rooms.command**, or choose workshop rooms **14–16** in Esc. These are three separate checkpoints with optional H hints and ordinary-input demonstrations:
+
+- **The Stored Rise:** load and release two recoil plates, recovering between launches.
+- **The Turned Span:** turn an upright arm into a bridge, use a short hop beneath the overhead teeth, then climb the far steps.
+- **The Loaded Span:** launch to the hub landing, turn and cross the arm, then rise straight up from the far plate before steering over the final teeth.
+
+These are no-dash studies using the existing jump, climb, strike and lift-momentum rules. All thirteen earlier workshop layouts and recordings are preserved. The simple editor now places **Recoil platform** and **Hinged arm** objects. Recoil settings expose width, load depth, loading time and release speed; arm settings expose hub position, length and starting direction. Saving edits clears the changed room's outdated demonstration, with its previous version retained in backups. Older thirteen-room imports preserve the new rooms.
 
 ## Play
 

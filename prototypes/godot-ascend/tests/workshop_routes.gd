@@ -63,6 +63,8 @@ static func play(data,index,tape,mode=""):
      if e.type=="zip": e.type="slide";e.x=e.ox;e.y=e.oy
    var raw=decode(segment[1])
    if mode=="no_dash" or (mode=="no_return_dash" and carried(core)): raw.dash=false
+   if mode=="no_load": raw.d=false
+   if mode=="no_turn": raw.strike=false
    var lift=core.lift()
    core.step(raw)
    proof.frames+=1

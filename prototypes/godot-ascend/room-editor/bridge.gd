@@ -19,6 +19,15 @@ func snapshot():
     d.targetX=end.x/8;d.targetY=end.y/8
     d.holdFrames=item.parameters.get("holdFrames",30)
     d.returnFrames=item.parameters.get("returnFrames",120)
+   if item.kind=="Mechanism" and item.field_path in [["recoilPlatforms"],["hingeArms"]]:
+    var recoil=item.field_path==["recoilPlatforms"]
+    d.glyph="R" if recoil else "T"
+    d.w=item.parameters.get("w",6) if recoil else 1
+    d.h=1
+    if recoil:
+     d.depth=item.parameters.get("depth",3);d.loadFrames=item.parameters.get("loadFrames",30);d.releaseSpeed=item.parameters.get("releaseSpeed",120)
+    else:
+     d.length=item.parameters.length;d.dir=item.parameters.dir
    things.append(d)
   var goal=room.settings.workshopGoal
   rooms.append({"id":room.room_id,"name":room.room_title,"width":room.map_width,"height":room.map_height,"tiles":Codec.read_map(room),"objects":things,"goal":{"x":goal[0]/8.0,"y":goal[1]/8.0,"w":goal[2]/8.0,"h":goal[3]/8.0},"requirePickup":room.settings.get("workshopRequireShard",false),"requireAllPickups":room.settings.get("workshopRequireAllShards",false),"requireStakes":room.settings.get("workshopRequireStakes",false),"keepStakes":room.settings.get("workshopKeepStakes",false),"hint":room.settings.get("hint","")})
@@ -57,7 +66,7 @@ func apply_document(doc):
   for value in d.objects:
    var item=existing.get(value.id)
    if item==null:
-    if value.kind not in ["Spawn","Fixture","Prop"]: fault.append("Unsupported new object type.");continue
+    if value.kind not in ["Spawn","Fixture","Prop","Mechanism"]: fault.append("Unsupported new object type.");continue
     item=Item.new()
     item.name=value.id
     item.kind=value.kind
@@ -72,6 +81,15 @@ func apply_document(doc):
    item.glyph=value.glyph
    item.footprint=Vector2i(value.w,value.h)
    item.tint=Color(value.tint)
+   if item.kind=="Mechanism":
+    if value.glyph not in ["R","T"]: fault.append("Unsupported mechanism.");continue
+    item.field_path=["recoilPlatforms" if value.glyph=="R" else "hingeArms"]
+    item.array_element=true
+    if not item.field_path in room.array_fields: room.array_fields.append(item.field_path)
+    item.parameters={"id":value.id,"c":value.x,"r":value.y}
+    if value.glyph=="R":item.parameters.merge({"w":value.w,"depth":value.depth,"loadFrames":value.loadFrames,"releaseSpeed":value.releaseSpeed})
+    else:item.parameters.merge({"length":value.length,"dir":value.dir})
+    item.original_position=item.position
    if item.kind=="Prop": item.parameters.k=value.prop
    if item.kind=="Fixture" and item.glyph=="Z":
     var path=item.get_node_or_null("MotionPath")

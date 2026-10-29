@@ -1,13 +1,16 @@
 export const clone = value => structuredClone(value);
 export const TERRAIN = {'.':'Erase','#':'Stone','%':'Weathered stone','=':'One-way ledge','^':'Spikes up','v':'Spikes down','<':'Spikes left','>':'Spikes right'};
-export const TYPES = {Z:'Moving block',K:'Pushable block','~':'Crumble platform',o:'Dash refill','*':'Shard',s:'Spring',b:'Moth pod',x:'Phase bell',c:'Gate stake',G:'Stake gate',A:'Amber phase branch',B:'Blue phase branch'};
+export const TYPES = {R:'Recoil platform',T:'Hinged arm',Z:'Moving block',K:'Pushable block','~':'Crumble platform',o:'Dash refill','*':'Shard',s:'Spring',b:'Moth pod',x:'Phase bell',c:'Gate stake',G:'Stake gate',A:'Amber phase branch',B:'Blue phase branch'};
 export const label = o => o.kind === 'Spawn' ? 'Player start' : o.kind === 'Goal' ? 'Finish flag' : o.kind === 'Prop' ? (o.prop === 'fern' ? 'Fern' : o.prop === 'post' ? 'Post' : 'Flowers') : TYPES[o.glyph] || o.kind;
 export function newObject(type,x,y) {
- const o={id:`edit_${crypto.randomUUID().replaceAll('-','')}`,kind:type==='P'?'Spawn':type.startsWith('prop:')?'Prop':'Fixture',glyph:type==='P'?'P':type.startsWith('prop:')?'':type,x,y,w:1,h:1,enabled:true,tint:'ffffffff',prop:type.startsWith('prop:')?type.slice(5):'trumpets'};
+ const o={id:`edit_${crypto.randomUUID().replaceAll('-','')}`,kind:type==='P'?'Spawn':type.startsWith('prop:')?'Prop':['R','T'].includes(type)?'Mechanism':'Fixture',glyph:type==='P'?'P':type.startsWith('prop:')?'':type,x,y,w:1,h:1,enabled:true,tint:'ffffffff',prop:type.startsWith('prop:')?type.slice(5):'trumpets'};
+ if(type==='R')Object.assign(o,{w:6,depth:3,loadFrames:30,releaseSpeed:120});
+ if(type==='T')Object.assign(o,{length:8,dir:'right'});
  if(type==='Z')Object.assign(o,{w:3,h:2,targetX:x+8,targetY:y,holdFrames:30,returnFrames:120});
  if(type==='K'||type==='~')o.w=3;
  return o;
 }
+export function bounds(o){if(o.glyph!=='T')return o;const n=o.length;return {...o,x:o.x-(o.dir==='left'?n-1:0),y:o.y-(o.dir==='up'?n-1:0),w:['left','right'].includes(o.dir)?n:1,h:['up','down'].includes(o.dir)?n:1};}
 export function validate(doc) {
  const errors=[];
  if(doc?.format!=='bladefall-workshop-editor'||doc.version!==1||!Array.isArray(doc.rooms)||doc.rooms.length<1||doc.rooms.length>64)return ['Choose a Bladefall workshop file with 1–64 rooms.'];
@@ -23,13 +26,16 @@ export function validate(doc) {
   const occupied=new Set(),objectIds=new Set();let starts=0,shards=0;
   for(const o of room.objects){
    if(!o||typeof o.id!=='string'||!/^[A-Za-z0-9_*~-]{1,100}$/.test(o.id)||objectIds.has(o.id)){fail('invalid or repeated object ID.');continue;}objectIds.add(o.id);
-   if(!['Spawn','Fixture','Prop'].includes(o.kind)||typeof o.enabled!=='boolean'||!Number.isInteger(o.x)||!Number.isInteger(o.y)||!Number.isInteger(o.w)||!Number.isInteger(o.h)||o.w<1||o.h<1||o.w>200||o.h>100||typeof o.tint!=='string'||!/^[0-9a-f]{8}$/i.test(o.tint)){fail('object positions and sizes must use whole grid squares.');continue;}
-   if(o.kind==='Fixture'&&!Object.hasOwn(TYPES,o.glyph)||o.kind==='Spawn'&&o.glyph!=='P'||o.kind==='Prop'&&!['trumpets','fern','post'].includes(o.prop))fail('unknown object type.');
+   if(!['Spawn','Fixture','Prop','Mechanism'].includes(o.kind)||typeof o.enabled!=='boolean'||!Number.isInteger(o.x)||!Number.isInteger(o.y)||!Number.isInteger(o.w)||!Number.isInteger(o.h)||o.w<1||o.h<1||o.w>200||o.h>100||typeof o.tint!=='string'||!/^[0-9a-f]{8}$/i.test(o.tint)){fail('object positions and sizes must use whole grid squares.');continue;}
+   if(o.kind==='Mechanism'&&!['R','T'].includes(o.glyph)||o.kind==='Fixture'&&(!Object.hasOwn(TYPES,o.glyph)||['R','T'].includes(o.glyph))||o.kind==='Spawn'&&o.glyph!=='P'||o.kind==='Prop'&&!['trumpets','fern','post'].includes(o.prop))fail('unknown object type.');
+   if(o.glyph==='R'&&(!Number.isInteger(o.depth)||o.depth<1||o.depth>12||o.h!==1||!Number.isInteger(o.loadFrames)||o.loadFrames<1||o.loadFrames>3600||!Number.isFinite(o.releaseSpeed)||o.releaseSpeed<1||o.releaseSpeed>300))fail('recoil settings need depth 1–12, load time 1–3600 frames and release speed 1–300.');
+   if(o.glyph==='T'&&(!Number.isInteger(o.length)||o.length<2||o.length>40||!['right','down','left','up'].includes(o.dir)||o.w!==1||o.h!==1))fail('hinged arms need length 2–40 and a starting direction.');
    if(!o.enabled)continue;
    if(o.kind==='Spawn')starts++;
    if(o.glyph==='*')shards++;
-   if(o.x<0||o.y<0||o.x+o.w>room.width||o.y+o.h>room.height)fail(`${label(o)} is outside the room.`);
-   if(o.kind!=='Prop')for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++){
+   const b=bounds(o);
+   if(b.x<0||b.y<0||b.x+b.w>room.width||b.y+b.h>room.height)fail(`${label(o)} is outside the room.`);
+   if(o.kind!=='Prop')for(let y=b.y;y<b.y+b.h;y++)for(let x=b.x;x<b.x+b.w;x++){
     const key=`${x},${y}`;
     if(occupied.has(key)||room.tiles[y]?.[x]!=='.')fail(`${label(o)} overlaps terrain or another object at ${x}, ${y}.`);
     occupied.add(key);
@@ -38,7 +44,7 @@ export function validate(doc) {
     if(!Number.isInteger(o.targetX)||!Number.isInteger(o.targetY)||o.targetX<0||o.targetY<0||o.targetX+o.w>room.width||o.targetY+o.h>room.height)fail('a moving block’s destination must fit inside the room.');
     if(!Number.isInteger(o.holdFrames)||!Number.isInteger(o.returnFrames)||o.holdFrames<1||o.returnFrames<1||o.holdFrames>3600||o.returnFrames>3600)fail('block timing must be 1–3600 frames.');
    }
-   if(!['Z','K','~','A','B','G'].includes(o.glyph)&&o.kind!=='Prop'&&(o.w!==1||o.h!==1))fail(`${label(o)} must be one square.`);
+   if(!['Z','K','~','A','B','G','R'].includes(o.glyph)&&o.kind!=='Prop'&&(o.w!==1||o.h!==1))fail(`${label(o)} must be one square.`);
   }
   // Mirror the game's row-first rectangle grouping. Touching shapes are safe
   // when they retain the same individual collision rectangles after compilation.
@@ -64,7 +70,7 @@ export function validate(doc) {
 }
 export function paint(room,x,y,glyph){
  if(x<0||y<0||x>=room.width||y>=room.height)return false;
- if(glyph!=='.'&&room.objects.some(o=>o.enabled&&o.kind!=='Prop'&&x>=o.x&&y>=o.y&&x<o.x+o.w&&y<o.y+o.h))return false;
+ if(glyph!=='.'&&room.objects.some(o=>{const b=bounds(o);return o.enabled&&o.kind!=='Prop'&&x>=b.x&&y>=b.y&&x<b.x+b.w&&y<b.y+b.h;}))return false;
  if(room.tiles[y][x]===glyph)return false;
  room.tiles[y]=room.tiles[y].slice(0,x)+glyph+room.tiles[y].slice(x+1);return true;
 }
@@ -73,7 +79,7 @@ export function moveObject(o,x,y){
  o.x=x;o.y=y;
 }
 export function resizeRoom(room,width,height){
- if(room.objects.some(o=>o.x+o.w>width||o.y+o.h>height||o.glyph==='Z'&&(o.targetX+o.w>width||o.targetY+o.h>height))||room.goal.x+room.goal.w>width||room.goal.y>height)return false;
+ if(room.objects.some(o=>bounds(o).x+bounds(o).w>width||bounds(o).y+bounds(o).h>height||o.glyph==='Z'&&(o.targetX+o.w>width||o.targetY+o.h>height))||room.goal.x+room.goal.w>width||room.goal.y>height)return false;
  if(room.tiles.some((row,y)=>[...row].some((v,x)=>v!=='.'&&(x>=width||y>=height))))return false;
  room.tiles=Array.from({length:height},(_,y)=>(room.tiles[y]||'').padEnd(width,'.').slice(0,width));room.width=width;room.height=height;return true;
 }

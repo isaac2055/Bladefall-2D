@@ -86,7 +86,8 @@ var landing_speed=0.0
 var observed_room=""
 func configure_mood():
  var colors={1:["#efbf79","#bac9dc"],2:["#b7e1a0","#a9c4ab"],3:["#f3a66d","#cfb6a7"],21:["#cbb7ff","#b6aedc"],22:["#84e6d8","#98bfc2"],23:["#e8a5dc","#c4a6cf"]}
- var pair=colors.get(2 if sim!=null and sim.room.def.get("workshopBiome","")=="woods" else int(world_data.world.n),colors[1])
+ var biome=sim.room.def.get("workshopBiome","") if sim!=null else ""
+ var pair=colors.get(2 if biome=="woods" else 3 if biome=="causeway" else int(world_data.world.n),colors[1])
  accent=Color(pair[0])
  mood=Color(pair[1])
  if int(world_data.world.n)==1 and environment_design>0:
@@ -341,10 +342,14 @@ func load_scene(core,smooth_join=false):
  sim = core
  if int(world_data.world.n)==4:
   var want_forest=sim.room.def.get("workshopBiome","")=="woods"
-  if forest!=want_forest:
+  var want_causeway=sim.room.def.get("workshopBiome","")=="causeway"
+  if forest!=want_forest or causeway!=want_causeway:
    forest=want_forest
+   causeway=want_causeway
    var sky=Image.create(1,184,false,Image.FORMAT_RGBA8)
    for y in range(184): sky.set_pixel(0,y,Color("0b191b").lerp(Color("344937"),float(y)/225) if forest else Color("101526").lerp(Color("53636a"),float(y)/200.0))
+   if causeway:
+    for y in range(184):sky.set_pixel(0,y,Color("191b2c").lerp(Color("916d59"),float(y)/220))
    sky_gradient=ImageTexture.create_from_image(sky)
   for node in forest_layers: node.visible=forest
   configure_mood()
@@ -1129,6 +1134,9 @@ func draw_entity_body(e,origin):
   "hingeArm":
    box(x,y,e.w,e.h,"#73665b")
    box(x,y,e.w,1,"#bca37a")
+   if e.h>e.w:
+    box(x,y,1,e.h,"#bca37a")
+    for r in range(4,int(e.h),8):box(x+3,y+r,2,2,"#c6a879")
    var hub=origin+Vector2(e.pivotX+4,e.pivotY+4)
    circle(hub,5,"#332e2c")
    circle(hub,3.5,"#edd099" if e.pulse>0 else ("#cd7c69" if e.jam>0 else "#b99865"))
