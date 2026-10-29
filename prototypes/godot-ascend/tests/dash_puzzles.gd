@@ -22,54 +22,54 @@ func replay(index,tape):
  return c
 func run():
  var source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"));data=Authoring.read(source)
- var hashes=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/workshop-v024-hashes.json"))
+ var hashes=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/workshop-v025-hashes.json"))
  for room in source.world.rooms.slice(0,19):check(Codec.fingerprint(room)==hashes[room.id],"original room and recordings preserved: "+room.name)
  var native=load("res://levels/world4.tscn").instantiate()
- check(Codec.first_difference(Authoring.baseline(source),native.compile_into(Authoring.baseline(source)))=="","all 22 native rooms match source")
+ check(Codec.first_difference(Authoring.baseline(source),native.compile_into(Authoring.baseline(source)))=="","all 19 native rooms match source")
  native.free()
- for i in [19,20,21]:
+ for i in [16,17,18]:
   var room=data.world.rooms[i];var p=R.play(data,i,room.workshopRoutes[0].tape)
   check(room.dashes==1 and not "dash" in room.lock,"normal one-dash kit: "+room.name)
   check(p.finish and p.deaths==0 and not p.advanced,"ordinary deathless solution: "+room.name)
- var first=data.world.rooms[19].workshopRoutes[0].tape
- var airborne=replay(19,first.slice(0,6))
+ var first=data.world.rooms[16].workshopRoutes[0].tape
+ var airborne=replay(16,first.slice(0,6))
  check(airborne.p.dashes==0 and not airborne.p.onGround,"outward launch has spent its dash before reaching the lid")
- var landed=replay(19,first.slice(0,8))
+ var landed=replay(16,first.slice(0,8))
  check(landed.p.onGround and landed.p.dashes==1 and landed.standing(entity(landed,"hingeArm")),"landing on the removable arm restores the final dash")
- var opened=replay(19,first.slice(0,9))
+ var opened=replay(16,first.slice(0,9))
  check(entity(opened,"hingeArm").dir=="down" and opened.p.dashes==1,"folding the refill landing retains the recovered dash")
- check(not R.play(data,19,first,"no_turn").finish,"the intact lid blocks the exit route")
- var second=data.world.rooms[20].workshopRoutes[0].tape
- var initial=replay(20,[[10,""]])
+ check(not R.play(data,16,first,"no_turn").finish,"the intact lid blocks the exit route")
+ var second=data.world.rooms[17].workshopRoutes[0].tape
+ var initial=replay(17,[[10,""]])
  check(Devices.obstruction(initial,entity(initial,"hingeArm"),Devices.pose(entity(initial,"hingeArm"),"down"))=="solid","initial stone physically blocks the next arm pose")
- var docked=replay(20,second.slice(0,3))
+ var docked=replay(17,second.slice(0,3))
  check(entity(docked,"slide").x==344 and Devices.obstruction(docked,entity(docked,"hingeArm"),Devices.pose(entity(docked,"hingeArm"),"down"))==null,"right dock both clears the arm and parks a shaft landing")
- var refill=replay(20,second.slice(0,19))
+ var refill=replay(17,second.slice(0,19))
  check(refill.p.dashes==1 and refill.p.onGround and refill.standing(entity(refill,"slide")),"the shaft entry dash is recovered by landing on the repositioned stone")
- var folded=replay(20,second.slice(0,14))
+ var folded=replay(17,second.slice(0,14))
  for pose in ["left","up","right"]:
   check(Devices.obstruction(folded,entity(folded,"hingeArm"),Devices.pose(entity(folded,"hingeArm"),pose))==null,"service clearance allows recovery through arm pose: "+pose)
  var mistakes=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/dash-puzzle-mistakes.json"))
- var wrong=replay(20,mistakes.wrongDock)
+ var wrong=replay(17,mistakes.wrongDock)
  check(wrong.deaths==0 and entity(wrong,"slide").x==200 and Devices.obstruction(wrong,entity(wrong,"hingeArm"),Devices.pose(entity(wrong,"hingeArm"),"down"))==null,"wrong left dock also clears the arm but leaves no stone inside the shaft")
- var recovered=replay(20,mistakes.recoverDock)
+ var recovered=replay(17,mistakes.recoverDock)
  check(recovered.deaths==0 and entity(recovered,"slide").x==344,"wrong left dock can be re-shoved to the useful dock without dying or resetting")
- var missing=replay(20,mistakes.wrongDockAttempt)
+ var missing=replay(17,mistakes.wrongDockAttempt)
  check(entity(missing,"hingeArm").dir=="down" and missing.deaths==1 and not R.at_goal(missing),"the same open-shaft attempt fails when the stone was left at the wrong dock")
- var third=data.world.rooms[21].workshopRoutes[0].tape
- var delivered=replay(21,third.slice(0,11))
+ var third=data.world.rooms[18].workshopRoutes[0].tape
+ var delivered=replay(18,third.slice(0,11))
  check(entity(delivered,"recoilPlatform").loadedBy=="lantern" and entity(delivered,"recoilPlatform").charge==24,"delivered lantern keeps the remote plate lowered")
  check(Devices.obstruction(delivered,entity(delivered,"hingeArm","A"),Devices.pose(entity(delivered,"hingeArm","A"),"right"))==null,"lantern load clears the first exit-arm turn")
  check(Devices.obstruction(delivered,entity(delivered,"hingeArm","A"),Devices.pose(entity(delivered,"hingeArm","A"),"down"))=="arm","cargo bridge still blocks the second exit-arm turn")
- var remote=replay(21,third.slice(0,31))
+ var remote=replay(18,third.slice(0,31))
  check(entity(remote,"hingeArm","A").dir=="down" and entity(remote,"hingeArm","B").dir=="up" and entity(remote,"recoilPlatform").loadedBy=="lantern" and remote.p.x<=120,"both remote turns require leaving the delivered weight across the removed bridge")
- var empty=replay(21,[[10,""],[19,"r"],[6,""],[5,"j"],[1,"us"],[20,""]])
+ var empty=replay(18,[[10,""],[19,"r"],[6,""],[5,"j"],[1,"us"],[20,""]])
  check(entity(empty,"hingeArm","A").dir=="up" and entity(empty,"hingeArm","A").jamReason=="solid","unloaded plate physically jams the exit arm")
- for pair in [[19,4],[19,9],[20,16],[20,20],[21,19],[21,52]]:
+ for pair in [[16,4],[16,9],[17,16],[17,20],[18,19],[18,52]]:
   var w=R.timing_window(data,pair[0],pair[1],3)
   check(w.size()>=3,"nearby successful timings: "+str(pair)+" "+str(w))
  var app=Main.instantiate();app.test_mode=true;app.initial_world=4;root.add_child(app);await process_frame;app.set_physics_process(false)
- for i in [19,20,21]:
+ for i in [16,17,18]:
   app.watch=false;app.load_section(i);var room=app.sim.room.def
   app.journey=[];app.journey_frame=0
   for part in room.workshopRoutes[0].tape:

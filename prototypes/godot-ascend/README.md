@@ -1,6 +1,14 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.25.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.26.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Active workshop · 0.26.0
+
+The introductory Causeway studies **Stored Rise**, **Turned Span** and **Loaded Span** have been removed from both the game and editor. The active lineup is **19 rooms: 8 Outskirts, 5 Black Woods and 6 Causeway**. Causeway’s first puzzle set is now rooms **14–16**, and its dash puzzles are **17–19**. Both launchers follow the new numbering. Older editor files retain surviving rooms by ID and cannot restore the retired studies to the active list. The mechanism palette remains available.
+
+Five further rooms are **proposals only**: see [the next-room proposals](research/NEXT-FIVE-PROPOSALS.md). No new rooms or voices were built in this update.
+
+The release notes below use their original room numbering.
 
 ## Causeway dash puzzles · 0.25.0
 

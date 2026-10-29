@@ -1,3 +1,9 @@
+# Active workshop · 0.26.0
+
+The active list contains **19 rooms: Outskirts 1–8, Black Woods 9–13, Causeway 14–19**. The introductory Causeway studies Stored Rise, Turned Span, and Loaded Span are retired and absent from both the game and editor. All nineteen retained room definitions and recordings are unchanged. Older editor imports merge by ID, discard the studies from the active list, and retain their complete original document in recovery storage. The Causeway puzzle launcher starts at room 14, and the dash puzzle launcher at room 17.
+
+The design history below retains original release numbering; references to the cut introductory studies describe historical work.
+
 # Movement and Black Woods workshop · 0.21.0
 
 These thirteen standalone chapter-4 rooms include eight Outskirts movement puzzles and five Black Woods puzzles. Native scene: `levels/world4.tscn`. Source geometry and ordinary-input demonstrations: `data/world4.json`. No campaign scenes, quests, voices or connecting passages are part of this change.
