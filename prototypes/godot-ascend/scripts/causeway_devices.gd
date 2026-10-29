@@ -43,10 +43,23 @@ static func recoil_move(g,e,target):
   if not e.jammed: g.emit_event("recoil-jam")
   e.jammed=true
   return false
+ # A resting lantern is a real load: carry it with the plate rather than
+ # leaving it suspended while the descending plate loses contact each tick.
+ var loads=g.ents.filter(func(q):return q.type=="lantern" and not q.get("held",false) and not q.get("returning",false) and on(q,e))
+ for q in loads:
+  if g.solid(q.x,q.y+next-e.y,q.w,q.h,g.ents.find(e)):
+   if not e.jammed:g.emit_event("recoil-jam")
+   e.jammed=true
+   return false
+ var previous_y=e.y
  var ground=g.p.onGround
  if on(g.p,e) and g.p.vy>=0: g.p.onGround=true
  g.move_solid(e,0,dy)
  g.p.onGround=ground
+ for q in loads:
+  q.y+=e.y-previous_y
+  q.vy=0
+  q.remY=0
  e.charge=target
  e.jammed=false
  return true

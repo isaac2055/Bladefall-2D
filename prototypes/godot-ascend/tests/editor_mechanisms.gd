@@ -22,4 +22,6 @@ func _initialize():
    check(e.x==d.c*8 and e.y==d.r*8 and e.w==d.w*8 and e.depth==d.depth*8 and e.loadFrames==d.loadFrames and e.releaseSpeed==d.releaseSpeed,"edited recoil geometry and charge settings reach simulation")
   else:
    check(e.pivotX==d.c*8 and e.pivotY==d.r*8 and e.length==d.length and e.dir==d.dir,"edited hub, length and direction reach simulation")
+ for e in Loader.parse(room).entities:
+  if e.type=="lantern":check(core.ents.any(func(q):return q.type=="lantern" and q.x==e.x and q.y==e.y),"browser-authored lantern reaches the actual simulation")
  quit(1 if failed else 0)

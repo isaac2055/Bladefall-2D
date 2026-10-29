@@ -1,6 +1,16 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.23.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.24.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Causeway puzzles · 0.24.0
+
+Open **Play Causeway Puzzles.command**, or choose workshop rooms **17–19** in Esc:
+
+- **The Bridge You Must Remove:** cross for the return shard, then fold the borrowed bridge away because it blocks the spring launch home.
+- **The Wrong First Turn:** stage arm B away from its final useful pose, move A, visit its shard shelf, then finish B upright. Turning A first locks the pair; R restores the nearby checkpoint. A/B labels identify the hubs.
+- **Leave Your Weight Behind:** park the lantern on a recoil plate to hold it below the arm's next position while you work at the distant hub. Retrieve it after opening the upper route.
+
+These are separate puzzle checkpoints following the earlier machinery introductions. Each has an optional H hint and an ordinary-input demonstration. All sixteen previous room definitions and recordings are preserved. The editor now includes **Lantern weight**, which can be placed, moved and duplicated. A resting lantern travels with the recoil plate, keeping it loaded; taking it away releases the plate. This corrects contact loss during loading without changing player movement constants.
 
 ## Causeway workshop rooms · 0.23.0
 

@@ -1,6 +1,6 @@
 # Bladefall Room Editor
 
-A local browser editor for the sixteen native Movement Workshop rooms. It edits `levels/world4.tscn` through Godot's existing authoring codec. There is no upload, hosting account or manual conversion step, and no campaign scene is written.
+A local browser editor for the nineteen native Movement Workshop rooms. It edits `levels/world4.tscn` through Godot's existing authoring codec. There is no upload, hosting account or manual conversion step, and no campaign scene is written.
 
 ## Open and edit
 
@@ -37,7 +37,7 @@ node prototypes/godot-ascend/room-editor/check.mjs
 
 Requires the repository's existing Puppeteer dependency. This test uses a copy of the native scene, real browser input and the real Godot bridge. It exercises painting/erasing, terrain selection/copy, object placement/movement/size/destination/timing, undo/redo, room switching and resizing, pan/zoom, native save, draft recovery, imports/exports, external conflicts and backup restoration. A native gameplay check verifies collision/device edits, preservation of unselected rooms and no-edit round trips, outdated-demo handling and live inputs. It also verifies the real workshop and user Outskirts scene were untouched. Reports and screenshots are written under `.cache/room-editor-check/`.
 
-The workshop's existing `tests/workshop.gd` remains the regression test for all sixteen workshop layouts. Its demonstration-based route checks will naturally need revisiting after intentional geometry edits.
+The workshop's existing `tests/workshop.gd` remains the regression test for all nineteen workshop layouts. Its demonstration-based route checks will naturally need revisiting after intentional geometry edits.
 
 
 Black Woods rooms are 9–13: Borrowed Branch, Crooked Orchard, Hollow Crown, Overturned Hollow and Returning Seed. The palette includes moth pods, phase bells, stakes, gates and both phase branches. Select a branch or gate to resize it. W + arrows cuts in the game; holding Space during a downward pod cut gives a higher rebound.
@@ -50,3 +50,6 @@ Choose **Return shard · one** to require any one shard at the flag, or **Return
 
 
 Causeway machinery rooms are **14–16**: Stored Rise, Turned Span and Loaded Span. Choose **Recoil platform** or **Hinged arm**, then click to place one. Select a plate to change its width, load depth, loading time and release speed. The dashed outline marks its lowest loaded position. Select an arm to change its length and starting direction; its Position is the brass hub. Drag any visible part of the arm to move the whole object. Runtime turns advance right → down → left → up and jam if the next pose is blocked. In the game, hold Down to load a plate, release Down, then jump during its rise; W strikes a hub. These three studies have no dash. Older thirteen-room files merge while keeping all three additions.
+
+
+The approved Causeway puzzles are **17–19**: Bridge You Must Remove, Wrong First Turn and Leave Your Weight Behind. The **Lantern weight** palette entry places a real carried lantern. In play, A picks it up or throws it; Down + A puts it down. A lantern resting on a recoil plate keeps it loaded while the player operates a distant hub. Pick it up to remove that load. The two-arm room displays A/B hub letters in play and in the editor. Older sixteen-room exports and drafts retain the three appended puzzles when imported.

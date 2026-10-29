@@ -16,6 +16,11 @@ static func restore(core,state):
  for field in FIELDS:
   var value=state[field]
   core.set(field,value.duplicate(true) if value is Array or value is Dictionary else value)
+ # Restoring p and entities separately must preserve the held-object alias.
+ if core.p.get("carrying")!=null:
+  var id=core.p.carrying.id
+  var matches=core.ents.filter(func(e):return str(e.id)==str(id))
+  core.p.carrying=matches[0] if not matches.is_empty() else null
  core.events=[];core.deaths=0
 static func actions():
  var values=[]
@@ -85,6 +90,8 @@ static func solve(data,index,options={}):
       for e in core.ents:
        if e.type=="crumble":e.broken=false;e.shaking=0
      core.step(Routes.decode(action[1]))
+     if core.ents.any(func(e):return e.type=="hingeArm" and e.dir in options.get("forbid_pose",{}).get(e.label,[])):invalid=true;break
+     if options.get("forbid_weight",false) and core.ents.any(func(e):return e.type=="recoilPlatform" and e.get("loadedBy","")=="lantern"):invalid=true;break
      if core.deaths>0 or ["super","hyper","ultra","wallbounce"].any(func(k):return k in core.events):invalid=true;break
      if options.has("max_x") and core.p.x>options.max_x:invalid=true;break
      if Routes.at_goal(core):return {"found":true,"nodes":nodes,"depth":depth,"tape":prefix+parent.tape+[action]}

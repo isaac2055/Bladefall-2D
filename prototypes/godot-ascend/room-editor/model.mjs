@@ -1,6 +1,6 @@
 export const clone = value => structuredClone(value);
 export const TERRAIN = {'.':'Erase','#':'Stone','%':'Weathered stone','=':'One-way ledge','^':'Spikes up','v':'Spikes down','<':'Spikes left','>':'Spikes right'};
-export const TYPES = {R:'Recoil platform',T:'Hinged arm',Z:'Moving block',K:'Pushable block','~':'Crumble platform',o:'Dash refill','*':'Shard',s:'Spring',b:'Moth pod',x:'Phase bell',c:'Gate stake',G:'Stake gate',A:'Amber phase branch',B:'Blue phase branch'};
+export const TYPES = {l:'Lantern weight',R:'Recoil platform',T:'Hinged arm',Z:'Moving block',K:'Pushable block','~':'Crumble platform',o:'Dash refill','*':'Shard',s:'Spring',b:'Moth pod',x:'Phase bell',c:'Gate stake',G:'Stake gate',A:'Amber phase branch',B:'Blue phase branch'};
 export const label = o => o.kind === 'Spawn' ? 'Player start' : o.kind === 'Goal' ? 'Finish flag' : o.kind === 'Prop' ? (o.prop === 'fern' ? 'Fern' : o.prop === 'post' ? 'Post' : 'Flowers') : TYPES[o.glyph] || o.kind;
 export function newObject(type,x,y) {
  const o={id:`edit_${crypto.randomUUID().replaceAll('-','')}`,kind:type==='P'?'Spawn':type.startsWith('prop:')?'Prop':['R','T'].includes(type)?'Mechanism':'Fixture',glyph:type==='P'?'P':type.startsWith('prop:')?'':type,x,y,w:1,h:1,enabled:true,tint:'ffffffff',prop:type.startsWith('prop:')?type.slice(5):'trumpets'};

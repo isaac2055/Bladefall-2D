@@ -1141,6 +1141,7 @@ func draw_entity_body(e,origin):
    circle(hub,5,"#332e2c")
    circle(hub,3.5,"#edd099" if e.pulse>0 else ("#cd7c69" if e.jam>0 else "#b99865"))
    line(hub-Vector2(2,0),hub+Vector2(2,0),"#51473b")
+   if sim!=null and sim.room.def.get("workshopHingeLabels",false):ink.draw_string(ThemeDB.fallback_font,hub+Vector2(-2,-7),String.chr(65+int(e.get("group",0))),HORIZONTAL_ALIGNMENT_LEFT,-1,6,Color("#f3d296"))
   "combatGate","brittle":
    if e.open: return
    box(x,y,e.w,e.h,"#6d5e58" if e.type=="brittle" else "#414b55")
