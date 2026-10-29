@@ -12,7 +12,7 @@ func check(ok,label):
  print("PASS " if ok else "FAIL ",label);checks.append({"passed":bool(ok),"label":label});failed=failed or not ok
 func run():
  var source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"));var data=Authoring.read(source)
- check(data.world.rooms.size()==19,"Causeway introductions remain available among nineteen workshop rooms")
+ check(data.world.rooms.size()==22,"Causeway introductions remain available among twenty-two workshop rooms")
  var native=load("res://levels/world4.tscn").instantiate()
  check(Codec.first_difference(Authoring.baseline(source),native.compile_into(Authoring.baseline(source)))=="","native roundtrip preserves Causeway mechanism definitions")
  native.free()

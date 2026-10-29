@@ -155,3 +155,16 @@ Rooms **17–19** implement the three approved proposals as new checkpoints, pre
 The recoil contact fix carries resting lanterns with the plate and rejects movement that would collide their load with solid geometry. It is restricted to recoil platforms; existing lift/player movement rules and constants are unchanged. Search snapshots also reconnect the carried-lantern reference to the restored entity so independent input branches represent real inventories.
 
 `tests/causeway_puzzles.gd` checks hashes for the sixteen preserved rooms, ordinary deathless solutions, the actual proposed wrong plans and mechanical dependencies, nearby timings, real application clears, demos, retries and deaths. `tests/puzzle_shortcuts.gd` searches for alternate ordinary-input routes that omit specific puzzle dependencies, with late-approach positive controls. These finite searches are evidence against easy bypasses, not exhaustive route-uniqueness or enjoyment proofs. Browser integration checks lantern creation/movement, native persistence and sixteen-room imports. The packaged regression suites retain the existing workshop and Causeway campaign coverage.
+
+
+## Causeway puzzles with the normal dash · 0.25.0
+
+These are independent rooms **20–22**, opened by **Play Dash Puzzles.command**. Each keeps the standard one-dash kit and existing machinery rules. There are no hidden objective counters or custom dash locks.
+
+**The Landing You Must Spend.** Recoil and dash onto the horizontal shaft lid. Landing restores the dash; folding that same surface opens the shaft. The lower opening requires the saved charge. The capped left wall and tall right wall prevent an alternate ground refill or walking around the lid.
+
+**The Obstruction Is Your Landing.** The initial sliding stone blocks the arm’s next pose. Both horizontal docks clear that pose, but only the right dock puts the stone inside the shaft. Entering the shaft spends a dash; landing on the relocated obstruction restores the charge for the lower exit. The small port admits the stone but guards against following it. A wrong left dock is recoverable by jumping back around the stone and shoving right through the lower service clearance. The one-way service ledge allows a drop-strike at the hub, then an upward dash back to the ledge.
+
+**Your Shortcut Cannot Carry the Weight.** Carry the lantern over B and park it on the plate. B must then fold upright, removing the carrying route and clearing A’s downward pose. Dash back empty-handed and turn A through right to down while the lantern holds the plate below A’s first pose. Return across the gap, recover and set aside the lantern, then recoil and dash through the opened upper route. The high flag and guarded upper B prevent substituting a normal jump from the newly upright arm for the final launch. Carrying restrictions are unchanged.
+
+`tests/dash_puzzles.gd` checks all original 19 room fingerprints, native roundtrips, normal-dash solutions, actual refills, obstruction reasons, wrong-dock recovery, nearby input timings, application awards, retry/death reset and Watch. Browser integration also edits all three rooms through native saves and checks older nineteen-room imports. Shortcut searches are bounded evidence, not proofs that every unintended sequence is impossible.

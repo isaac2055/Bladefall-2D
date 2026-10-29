@@ -90,6 +90,9 @@ static func solve(data,index,options={}):
       for e in core.ents:
        if e.type=="crumble":e.broken=false;e.shaking=0
      core.step(Routes.decode(action[1]))
+     if options.get("forbid_recoil_jump",false) and "recoil-jump" in core.events:invalid=true;break
+     if options.has("slide_max_x") and core.ents.any(func(e):return e.type=="slide" and e.x>options.slide_max_x):invalid=true;break
+     if core.p.onGround and core.ents.any(func(e):return e.type in options.get("forbid_landing",[]) and core.standing(e)):invalid=true;break
      if core.ents.any(func(e):return e.type=="hingeArm" and e.dir in options.get("forbid_pose",{}).get(e.label,[])):invalid=true;break
      if options.get("forbid_weight",false) and core.ents.any(func(e):return e.type=="recoilPlatform" and e.get("loadedBy","")=="lantern"):invalid=true;break
      if core.deaths>0 or ["super","hyper","ultra","wallbounce"].any(func(k):return k in core.events):invalid=true;break

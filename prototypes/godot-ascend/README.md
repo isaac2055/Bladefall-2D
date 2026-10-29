@@ -1,6 +1,10 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.24.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.25.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Causeway dash puzzles · 0.25.0
+
+Rooms **20–22** add **The Landing You Must Spend**, **The Obstruction Is Your Landing**, and **Your Shortcut Cannot Carry the Weight**. Double-click **Play Dash Puzzles.command**, or choose them in Esc. All three retain the normal one-dash kit; H shows an optional hint and Watch demonstrates a deathless ordinary-input solution. They are available in the browser room editor. The original 19 rooms and their recordings are preserved.
 
 ## Causeway puzzles · 0.24.0
 
