@@ -1,10 +1,22 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.26.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.27.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Five new puzzles · 0.27.0
+
+**Play New Puzzle Rooms.command** starts at room 20. The browser editor also includes all five:
+
+- **20 · The Root That Stops the Stone** — create a useful stop, then remove it. Watch offers the pod route and an alternate plan that restores, climbs and dashes away the root.
+- **21 · Two Ways Through the Canopy** — two demonstrations use different bell orders and arrival phases to reach the same flag.
+- **22 · The Ferry Beneath the Roots** — prepare the ferry before leaving, bring the visible shard home, then use the return movement before the final phase change.
+- **23 · The Weight You Can Finally Move** — let the arm take over the first plate's load, transfer the lantern, then free that plate for the finish.
+- **24 · The Dock You Need Only Once** — use a temporary stone dock for service access, turn B into a return bridge, send the stone onward, then turn B upright for the final launch.
+
+All use the normal one-dash kit and existing mechanics. The original nineteen room definitions, placements and recordings are preserved. These are separate rooms with their own retries; no connecting passages are added. The five additions bring each biome to eight rooms, pending your playtest verdict.
 
 ## Active workshop · 0.26.0
 
-The introductory Causeway studies **Stored Rise**, **Turned Span** and **Loaded Span** have been removed from both the game and editor. The active lineup is **19 rooms: 8 Outskirts, 5 Black Woods and 6 Causeway**. Causeway’s first puzzle set is now rooms **14–16**, and its dash puzzles are **17–19**. Both launchers follow the new numbering. Older editor files retain surviving rooms by ID and cannot restore the retired studies to the active list. The mechanism palette remains available.
+The introductory Causeway studies **Stored Rise**, **Turned Span** and **Loaded Span** have been removed from both the game and editor. The active lineup is **24 rooms: 8 Outskirts, 8 Black Woods and 8 Causeway**. Causeway’s first puzzle set is now rooms **14–16**, and its dash puzzles are **17–19**. Both launchers follow the new numbering. Older editor files retain surviving rooms by ID and cannot restore the retired studies to the active list. The mechanism palette remains available.
 
 Five further rooms are **proposals only**: see [the next-room proposals](research/NEXT-FIVE-PROPOSALS.md). No new rooms or voices were built in this update.
 

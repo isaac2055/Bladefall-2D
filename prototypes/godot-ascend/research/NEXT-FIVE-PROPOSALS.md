@@ -1,6 +1,6 @@
 # Next five workshop rooms — proposals only
 
-2026-10-29. Scope: three Black Woods proposals and two Causeway proposals. None has been built, added to the editor, given a recording, or voiced. If approved and built, these would bring the retained lineup to eight rooms per world: 24 total. The three introductory Causeway studies were separately removed as authorized.
+2026-10-29. Approved and implemented in prototype 0.27.0 as rooms 20–24: three Black Woods rooms and two Causeway rooms. The retained lineup is eight per biome, 24 total. All five have ordinary-input demonstrations and editor support; no voices or quests were generated. The design proposals below record the approved intent; implementation details and validation are in `../WORKSHOP.md`. The Root room also supports a deliberate restored-root climb followed by a blue dash, alongside its pod route. In the final Dock build, B starts down; visible housing obstructs its unused right pose so cycling it back into a bridge cannot skip relocating the stone. B's left pose provides the return bridge before relocating the stone; the player then revisits the far ledge for the upright pose. A low housing over the initial stone prevents it serving as the temporary dock. The temporary-platform and second-dock relationship is retained.
 
 All five use the existing 8px grid, one normal dash, current collision and carrying rules, and existing editor objects. These are spatial hypotheses; dimensions and mandatory relationships remain to be measured after approval. A useful alternative solution is welcome if it preserves the main discovery. No hidden machine-use counters are proposed.
 
@@ -121,4 +121,4 @@ Intended plan:
 
 ## Approval boundary
 
-Only the removal of the three introductory studies is implemented. These five remain concepts for review. After approval, geometry validation, ordinary-input solutions, counterfactuals, fresh shortcut searches, reset behavior, editor roundtrips and visual checks would be required before treating any of them as finished levels.
+The user approved all five concepts. Their builds preserve the nineteen existing rooms, normal movement and individual retries. The new Root alternate is a different phase plan, rather than a mandatory pod requirement. Discovered simple shortcuts have replay fixtures; bounded searches and application/editor checks document their practical coverage. User playtesting remains the test of whether these belong in the liked lineup.

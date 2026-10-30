@@ -1,6 +1,6 @@
 # Bladefall Room Editor
 
-A local browser editor for the nineteen native Movement Workshop rooms. It edits `levels/world4.tscn` through Godot's existing authoring codec. There is no upload, hosting account or manual conversion step, and no campaign scene is written.
+A local browser editor for the twenty-four native Movement Workshop rooms. It edits `levels/world4.tscn` through Godot's existing authoring codec. There is no upload, hosting account or manual conversion step, and no campaign scene is written.
 
 ## Open and edit
 
@@ -37,7 +37,7 @@ node prototypes/godot-ascend/room-editor/check.mjs
 
 Requires the repository's existing Puppeteer dependency. This test uses a copy of the native scene, real browser input and the real Godot bridge. It exercises painting/erasing, terrain selection/copy, object placement/movement/size/destination/timing, undo/redo, room switching and resizing, pan/zoom, native save, draft recovery, imports/exports, external conflicts and backup restoration. A native gameplay check verifies collision/device edits, preservation of unselected rooms and no-edit round trips, outdated-demo handling and live inputs. It also verifies the real workshop and user Outskirts scene were untouched. Reports and screenshots are written under `.cache/room-editor-check/`.
 
-The workshop's existing `tests/workshop.gd` remains the regression test for all nineteen workshop layouts. Its demonstration-based route checks will naturally need revisiting after intentional geometry edits.
+The workshop's existing `tests/workshop.gd` remains the regression test for the retained workshop layouts. Its demonstration-based route checks will naturally need revisiting after intentional geometry edits.
 
 
 Black Woods rooms are 9–13: Borrowed Branch, Crooked Orchard, Hollow Crown, Overturned Hollow and Returning Seed. The palette includes moth pods, phase bells, stakes, gates and both phase branches. Select a branch or gate to resize it. W + arrows cuts in the game; holding Space during a downward pod cut gives a higher rebound.
@@ -52,3 +52,7 @@ Choose **Return shard · one** to require any one shard at the flag, or **Return
 The active Causeway puzzles are **14–19**. Rooms **14–16** are Bridge You Must Remove, Wrong First Turn, and Leave Your Weight Behind; rooms **17–19** are Landing You Must Spend, Obstruction Is Your Landing, and Your Shortcut Cannot Carry the Weight. The three introductory machinery studies have been removed. Older sixteen-, nineteen- and twenty-two-room exports merge surviving IDs and keep all six puzzles; retired studies stay out of the room list. Their original imported document is retained in local recovery storage.
 
 Choose **Recoil platform**, **Hinged arm**, or **Lantern weight** to place existing machinery. Plates expose width, depth, loading time and release speed. Arms expose length and initial direction, and turn right → down → left → up in play. Arm hit testing uses its complete pose; its position is the hub. A/B labels identify paired arms. A picks up/throws a lantern and Down + A puts it down; a resting lantern keeps a plate loaded. The dash puzzles retain the normal dash kit.
+
+## Five appended puzzles · 0.27.0
+
+Rooms 20–22 are Black Woods and rooms 23–24 are Causeway, making eight per biome. All five use existing editable objects; moving stones, pods, phase branches, bells, ferry paths/timings, lanterns, recoil plates and arm poses use the normal palette and properties. Previous nineteen-room exports retain these five when imported. Editing a room clears its outdated demonstrations, with the previous native scene available in backups.

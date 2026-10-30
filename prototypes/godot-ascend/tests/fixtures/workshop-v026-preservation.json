@@ -1,0 +1,160 @@
+{
+  "rooms": {
+    "workshop-borrowed": "76e82ab5f1107f7fec82b5febad046b6b5b160bc6edbc91df1508fa2d21ee4c4",
+    "workshop-borrowed-bridge": "d2e86eb429d208de7c41d5a87ee88054f77e2ad24e4d31f8949293be329b46c2",
+    "workshop-counterweight": "8415bfb22e07c84459f83403cb30eb7aad6563f827500c499ceebbe89e637a90",
+    "workshop-crooked": "2dc5134b70de461f2782409cf895b459e2d7dd7fb4553d613becfc110244418e",
+    "workshop-crown": "895b341b0e99a80ef0c671115b21884c8941a2cebda666bcbdebf0892cb3434d",
+    "workshop-empty-handed": "9c2994095299e044a1a8f53168ce006a3aa76c61b0f52a48bdb3a5e8c9ae1cd8",
+    "workshop-engine": "a81f8431d260a3daa2ab383f8969b66d6556e0606229a9935bc65938941346ba",
+    "workshop-ferry": "8b8e725e1125c9f7a156d857d0ed5030bdcb52e2cb17294f1ecd78d0c4129ca6",
+    "workshop-gallery": "35e620cb5fc19304f97ccb4b379c58e8216be9a3fa4acc972c4895eec8fb173f",
+    "workshop-left-behind": "0e6f5f6689186069339e30afafda01944754dc7991e30cfe0a6b4f3fae4553b6",
+    "workshop-lintel": "d437a4eee5590ddec6413b9d7baf6e8624e1e4a15ab9416396a1ffe1383134d7",
+    "workshop-obstruction-landing": "c53444df15302bdeb915d30a9a4dec28bf21b8d58d456bb7d4f4e1ad6e041755",
+    "workshop-overturned": "082419d9ca7c17a4499766f96d9a6237736c021b8a3321f4d4f206138293be73",
+    "workshop-relay": "9a811289426bebc9435bab71f1bef8d111885c477a0ed1e9c719cc86537acd21",
+    "workshop-returning": "4091b97f67242afaba4bbca3a460d9adbb572d873bd5bad4a237f06c63f214cd",
+    "workshop-smuggler": "d3f5859ddb2da2bfe840b50e10ad1661967079d53cba9e56423a872fbc84914c",
+    "workshop-spent-landing": "1ccb8a40ea1313c330fb5676e89577fbb8e34059d4c6cfe75d320a59c8c23f18",
+    "workshop-tower": "f886d05c08e054f5bf52b7a22e8dbc835d70cf27a78cf69cd9ec87aaf45ae037",
+    "workshop-wrong-first-turn": "7fecc634adbf119f6577099d549e7a3f8095c09f36d8207d228621b7166f8a17"
+  },
+  "sections": [
+    {
+      "fire": null,
+      "room": "workshop-relay",
+      "x": 0.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-counterweight",
+      "x": 48.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-lintel",
+      "x": 96.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-ferry",
+      "x": 168.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-engine",
+      "x": 240.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-smuggler",
+      "x": 320.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-tower",
+      "x": 392.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-gallery",
+      "x": 464.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-borrowed",
+      "x": 528.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-crooked",
+      "x": 576.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-crown",
+      "x": 640.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-overturned",
+      "x": 704.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-returning",
+      "x": 760.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-borrowed-bridge",
+      "x": 984.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-wrong-first-turn",
+      "x": 1036.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-left-behind",
+      "x": 1088.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-spent-landing",
+      "x": 1136.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-obstruction-landing",
+      "x": 1200.0,
+      "y": 0.0
+    },
+    {
+      "fire": null,
+      "room": "workshop-empty-handed",
+      "x": 1276.0,
+      "y": 0.0
+    }
+  ],
+  "tapes": {
+    "workshop-borrowed": "67f4d50547a8aafee1de8ca6a01d03a02a8e1959951b2b153885a465dcdb1a81",
+    "workshop-borrowed-bridge": "5f2422230d951d19851be0f3550936d92e00f1b6365c7495873e2e0bae00ea21",
+    "workshop-counterweight": "8773c3f8e8a38b5bb5b83437941eb9f1a8daed58602e79e722c1355753431c41",
+    "workshop-crooked": "9d07089f4077b359137aab63e73fff2548ea8e98685d7e49b1853beb5010ff5d",
+    "workshop-crown": "03d00e3be64183e8d0bbf5be68f413817490a6f34cca96167a4b6488b5a0f56d",
+    "workshop-empty-handed": "62f9cbd9e2c89f375654c3ee47e73571e16cefb5ebc17409960737ee3595049d",
+    "workshop-engine": "85970fbef8d712e58afe3b1169601edab8bace178b05c467e1c684d787d351b4",
+    "workshop-ferry": "7c1b2eb7723f2f91b3d29eae625854fe141b15a4cfdeb300940ce59e450070ea",
+    "workshop-gallery": "1c8fa33e4bbbae3e3e4db3ad2c121ae778195095c2eb9f08125c487e7a1dc293",
+    "workshop-left-behind": "eca47eaed0b3e75efc24a150c77ade368409e59dda29331155871ea0c4ecaa46",
+    "workshop-lintel": "164cc362db4076ae636edf21d1597231178a50676f8d45ebe176829660d26675",
+    "workshop-obstruction-landing": "7daa488b2dc1b1cbf29f67dc499ad8d2186fe0fbed8d435a3fb9a41a029b74f8",
+    "workshop-overturned": "b528c54388cdcc44a8eeebd3cd5ce5f5dd76a7f439e384d3225a3df643c490d5",
+    "workshop-relay": "b990c13bbb33d2d37a14634b0d24f57eef63ef93e03fabb83832c97e5ca405ce",
+    "workshop-returning": "07153d6f7ca4bf6d1ef1e199d7635a4d4a776f43e5ad9d2b183f26e29427b031",
+    "workshop-smuggler": "5bfece79ba4e2afd20ef0bf978af6480549d5b8713e583ffd76938cd743466c1",
+    "workshop-spent-landing": "0e316292511f2cbbef661f70b91c1c167ec85373e2a1aec2803b7e630dba5b04",
+    "workshop-tower": "91847452f12d729abb8798b9981f2871a365146a3794b2e8eeaff9aa650517b4",
+    "workshop-wrong-first-turn": "dc6b0ad412ca970483a8cc2c6ab0948e97cc798dca778cabe893692af40e8750"
+  }
+}

@@ -62,6 +62,10 @@ static func solve(data,index,options={}):
  for part in prefix:
   for f in range(int(part[0])):core.step(Routes.decode(part[1]))
  if core.deaths>0:return {"found":false,"nodes":0,"error":"invalid starting replay"}
+ if options.get("disable_lift_x_after_start",false):core.K.liftXCap=0
+ if options.get("freeze_zip_after_start",false):
+  for e in core.ents:
+   if e.type=="zip":e.type="slide"
  if permanent:
   # Restore the real cap, even when the reachable decision state follows its collapse.
   for e in core.ents:
