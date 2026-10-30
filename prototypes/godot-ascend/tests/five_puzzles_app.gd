@@ -16,7 +16,7 @@ func run():
   check(Codec.fingerprint(r)==preserved.rooms[r.id] and source.world.sections[i]==preserved.sections[i] and Codec.fingerprint(source.world.tapes[r.id])==preserved.tapes[r.id],"prior room, placement and recording preserved: "+r.name)
  var native=load("res://levels/world4.tscn").instantiate()
  var baseline=Authoring.baseline(source)
- check(native.get_node("Rooms").get_child_count()==24 and Codec.first_difference(baseline,native.compile_into(baseline))=="","24 native rooms compile exactly to source")
+ check(native.get_node("Rooms").get_child_count()==30 and Codec.first_difference(baseline,native.compile_into(baseline))=="","30 native rooms compile exactly to source")
  check(native.validate_data(native.compile_into(baseline)).is_empty(),"native room validation")
  native.free()
  var app=Main.instantiate();app.test_mode=true;app.initial_world=4;root.add_child(app);await process_frame;app.set_physics_process(false)

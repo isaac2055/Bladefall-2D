@@ -22,6 +22,7 @@ static func at_goal(core):
 static func play(data,index,tape,mode=""):
  var core=Core.new(data.constants.duplicate(true),data.playerDefaults)
  core.load_room(Loader.parse(data.world.rooms[index]))
+ if mode=="no_lantern": core.ents=core.ents.filter(func(e):return e.type!="lantern")
  if mode=="no_pods": core.ents=core.ents.filter(func(e):return e.type!="pod")
  if mode=="no_bells": core.ents=core.ents.filter(func(e):return e.type!="bell")
  if mode in ["no_boost","no_x_boost"]: core.K.liftXCap=0
@@ -61,6 +62,9 @@ static func play(data,index,tape,mode=""):
    if mode=="park_low" and core.p.state=="climb" and core.p.x==144 and core.p.dashes==0:
     for e in core.ents:
      if e.type=="zip": e.type="slide";e.x=e.ox;e.y=e.oy
+   if mode=="fixed_stone":
+    for e in core.ents:
+     if e.type=="slide":e.x=e.ox;e.y=e.oy;e.vx=0;e.vy=0
    var raw=decode(segment[1])
    if mode=="no_dash" or (mode=="no_return_dash" and carried(core)): raw.dash=false
    if mode=="no_load": raw.d=false

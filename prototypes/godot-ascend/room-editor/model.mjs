@@ -1,6 +1,6 @@
 export const clone = value => structuredClone(value);
 export const TERRAIN = {'.':'Erase','#':'Stone','%':'Weathered stone','=':'One-way ledge','^':'Spikes up','v':'Spikes down','<':'Spikes left','>':'Spikes right'};
-export const TYPES = {l:'Lantern weight',R:'Recoil platform',T:'Hinged arm',Z:'Moving block',K:'Pushable block','~':'Crumble platform',o:'Dash refill','*':'Shard',s:'Spring',b:'Moth pod',x:'Phase bell',c:'Gate stake',G:'Stake gate',A:'Amber phase branch',B:'Blue phase branch'};
+export const TYPES = {l:'Lantern weight',_:'Pressure plate',H:'Weight-held gate',R:'Recoil platform',T:'Hinged arm',Z:'Moving block',K:'Pushable block','~':'Crumble platform',o:'Dash refill','*':'Shard',s:'Spring',b:'Moth pod',x:'Phase bell',c:'Gate stake',G:'Stake gate',A:'Amber phase branch',B:'Blue phase branch'};
 export const label = o => o.kind === 'Spawn' ? 'Player start' : o.kind === 'Goal' ? 'Finish flag' : o.kind === 'Prop' ? (o.prop === 'fern' ? 'Fern' : o.prop === 'post' ? 'Post' : 'Flowers') : TYPES[o.glyph] || o.kind;
 export function newObject(type,x,y) {
  const o={id:`edit_${crypto.randomUUID().replaceAll('-','')}`,kind:type==='P'?'Spawn':type.startsWith('prop:')?'Prop':['R','T'].includes(type)?'Mechanism':'Fixture',glyph:type==='P'?'P':type.startsWith('prop:')?'':type,x,y,w:1,h:1,enabled:true,tint:'ffffffff',prop:type.startsWith('prop:')?type.slice(5):'trumpets'};
@@ -8,6 +8,7 @@ export function newObject(type,x,y) {
  if(type==='T')Object.assign(o,{length:8,dir:'right'});
  if(type==='Z')Object.assign(o,{w:3,h:2,targetX:x+8,targetY:y,holdFrames:30,returnFrames:120});
  if(type==='K'||type==='~')o.w=3;
+ if(type==='H')o.h=4;
  return o;
 }
 export function bounds(o){if(o.glyph!=='T')return o;const n=o.length;return {...o,x:o.x-(o.dir==='left'?n-1:0),y:o.y-(o.dir==='up'?n-1:0),w:['left','right'].includes(o.dir)?n:1,h:['up','down'].includes(o.dir)?n:1};}
@@ -44,11 +45,11 @@ export function validate(doc) {
     if(!Number.isInteger(o.targetX)||!Number.isInteger(o.targetY)||o.targetX<0||o.targetY<0||o.targetX+o.w>room.width||o.targetY+o.h>room.height)fail('a moving block’s destination must fit inside the room.');
     if(!Number.isInteger(o.holdFrames)||!Number.isInteger(o.returnFrames)||o.holdFrames<1||o.returnFrames<1||o.holdFrames>3600||o.returnFrames>3600)fail('block timing must be 1–3600 frames.');
    }
-   if(!['Z','K','~','A','B','G','R'].includes(o.glyph)&&o.kind!=='Prop'&&(o.w!==1||o.h!==1))fail(`${label(o)} must be one square.`);
+   if(!['Z','K','~','A','B','G','H','R'].includes(o.glyph)&&o.kind!=='Prop'&&(o.w!==1||o.h!==1))fail(`${label(o)} must be one square.`);
   }
   // Mirror the game's row-first rectangle grouping. Touching shapes are safe
   // when they retain the same individual collision rectangles after compilation.
-  const grouped=room.objects.filter(o=>o?.enabled&&['Z','K','~','A','B','G'].includes(o.glyph)&&[o.x,o.y,o.w,o.h].every(Number.isInteger)&&o.x>=0&&o.y>=0&&o.w>0&&o.h>0&&o.x+o.w<=room.width&&o.y+o.h<=room.height);
+  const grouped=room.objects.filter(o=>o?.enabled&&['Z','K','~','A','B','G','H'].includes(o.glyph)&&[o.x,o.y,o.w,o.h].every(Number.isInteger)&&o.x>=0&&o.y>=0&&o.w>0&&o.h>0&&o.x+o.w<=room.width&&o.y+o.h<=room.height);
   const cells=new Map(),seen=new Set();
   for(const o of grouped)for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++)cells.set(y*room.width+x,o.glyph);
   for(let y=0;y<room.height;y++)for(let x=0;x<room.width;x++){

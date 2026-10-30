@@ -29,6 +29,7 @@ static func actions():
  for keys in ["lxg","rxg","uxg","dxg","luxg","ruxg","ldxg","rdxg"]: values.append([12,keys])
  return values
 static func restrict(core,mode):
+ if mode=="no_lantern": core.ents=core.ents.filter(func(e):return e.type!="lantern")
  if mode=="no_pods": core.ents=core.ents.filter(func(e):return e.type!="pod")
  if mode=="no_bells": core.ents=core.ents.filter(func(e):return e.type!="bell")
 static func field(core,target,permanent):

@@ -23,7 +23,7 @@ func run():
  var source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"));var data=Authoring.read(source)
  var fixture=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/woods-workshop.json"))
  for i in range(8):check(Codec.first_difference(data.world.rooms[i],fixture.existingRooms[i])=="","original movement room preserved: "+fixture.existingRooms[i].name)
- check(data.world.rooms.size()==24,"eight rooms in each of Outskirts, Woods and Causeway")
+ check(data.world.rooms.size()==30,"ten rooms in each of Outskirts, Woods and Causeway")
  check(data.world.retiredWorkshopRoomIds.size()==9,"nine retired layouts are absent from the active workshop")
  var native=load("res://levels/world4.tscn").instantiate()
  check(Codec.first_difference(Authoring.baseline(source),native.compile_into(Authoring.baseline(source)))=="","native scene roundtrip preserves every layout and recording")

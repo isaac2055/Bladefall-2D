@@ -56,3 +56,10 @@ Choose **Recoil platform**, **Hinged arm**, or **Lantern weight** to place exist
 ## Five appended puzzles · 0.27.0
 
 Rooms 20–22 are Black Woods and rooms 23–24 are Causeway, making eight per biome. All five use existing editable objects; moving stones, pods, phase branches, bells, ferry paths/timings, lanterns, recoil plates and arm poses use the normal palette and properties. Previous nineteen-room exports retain these five when imported. Editing a room clears its outdated demonstrations, with the previous native scene available in backups.
+
+
+## Six appended rooms · 0.28.0
+
+The editor now includes all 30 rooms, ten per biome. Rooms 25–26 are Outskirts, 27–28 Woods and 29–30 Causeway. Actual previous-24 exports merge by ID and retain these additions.
+
+Choose **Pressure plate** to place the existing floor switch, or **Weight-held gate** for its rectangular door. Resize or move the door like a phase branch. Any plate held by the player or a resting lantern opens every weight-held gate in the room. Removing the load closes the gate once its opening is clear. A lantern can hold either a pressure plate or a recoil platform. These objects survive native save, export/import, duplicate and undo. Editing a room clears its old demonstration and keeps the prior native scene in backups.

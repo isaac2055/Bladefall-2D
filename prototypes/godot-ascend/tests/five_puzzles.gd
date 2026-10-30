@@ -21,7 +21,7 @@ func _initialize():
  data=JSON.parse_string(FileAccess.get_file_as_string(args[0] if not args.is_empty() else "res://data/world4.json"))
  var counts={"outskirts":0,"woods":0,"causeway":0}
  for room in data.world.rooms:counts[room.get("workshopBiome","outskirts")]+=1
- check(counts=={"outskirts":8,"woods":8,"causeway":8},"24 rooms, eight per biome")
+ check(counts=={"outskirts":10,"woods":10,"causeway":10},"30 rooms, ten per biome")
  for i in range(19,24):
   var room=data.world.rooms[i]
   check(room.dashes==1 and not "dash" in room.lock,"normal dash: "+room.name)

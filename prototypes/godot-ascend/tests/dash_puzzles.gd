@@ -25,7 +25,7 @@ func run():
  var hashes=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/workshop-v025-hashes.json"))
  for room in source.world.rooms.slice(0,19):check(Codec.fingerprint(room)==hashes[room.id],"original room and recordings preserved: "+room.name)
  var native=load("res://levels/world4.tscn").instantiate()
- check(Codec.first_difference(Authoring.baseline(source),native.compile_into(Authoring.baseline(source)))=="","all 24 native rooms match source")
+ check(Codec.first_difference(Authoring.baseline(source),native.compile_into(Authoring.baseline(source)))=="","all 30 native rooms match source")
  native.free()
  for i in [16,17,18]:
   var room=data.world.rooms[i];var p=R.play(data,i,room.workshopRoutes[0].tape)
