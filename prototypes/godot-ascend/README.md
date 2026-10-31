@@ -1,6 +1,18 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.28.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.29.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Three Fractured Outskirts puzzles · 0.29.0
+
+**Play Fractured Puzzle Rooms.command** starts at **The Lower Runway**. Alternatively, select chapter **21 · The Fractured Outskirts** in Esc, then rooms **39–41**:
+
+- **The Lower Runway:** lower the stone to make a clear launch surface beneath the ceiling.
+- **The Other Side of the Carriage:** rest at the far stop, change faces, and use the return for a wall jump toward home.
+- **The Door You Need Shut:** travel through the open doorway, remove its lantern weight, then use the closed door as the final runway.
+
+They follow Ring It from the Other Side on the continuous road, before The Broken Gate crossroads. Each has an independent checkpoint, **H** hint and **Esc → Watch reference** demonstration. The question appears first; the detailed route remains optional. The door room frames its elevated lantern from the entrance.
+
+World 21 now has **41 room definitions and 17 required challenges**. All earlier layouts and individual recordings are preserved; only the old ending links and crossroads placement change to accommodate the additions. The complete road reference takes 10,172 ordinary-input frames with zero deaths. These use existing mechanics and the chapter's taught supers, without new movement constants. The 30-room workshop and its browser editor remain separate; chapter-21 rooms are editable in Godot. See [the approved designs and implementation evidence](research/FRACTURED-OUTSKIRTS-PROPOSALS.md).
 
 ## Six new rooms · 0.28.0
 

@@ -1,8 +1,8 @@
 # Three Fractured Outskirts puzzle proposals
 
-2026-10-31. **Proposals only. No building authorized or performed.** These would extend the existing Fractured Outskirts road after Ring It from the Other Side and before The Broken Gate crossroads, preserving the current rooms and their individual checkpoints. They are three separate candidate rooms, not a combined finale.
+2026-10-31. **Approved and implemented in 0.29.0.** The original proposals below describe the design intent. All three now extend the Fractured Outskirts road after Ring It from the Other Side and before The Broken Gate crossroads, preserving earlier room geometry and individual checkpoints. Implementation evidence and differences follow the original proposals.
 
-Basis: [Celeste 1B research](FRACTURED-OUTSKIRTS-CELESTE-1B.md), current world-21 definitions, the existing workshop studies, and `scripts/core.gd`. The intended routes below are spatial hypotheses. They have not been laid out, simulated or proved, and exact geometry may need revision. All use existing mechanics, one normal dash and normal stamina. Supers are already taught by this chapter; no new mandatory hypers, wavedashes or wallbounces are proposed.
+Basis: [Celeste 1B research](FRACTURED-OUTSKIRTS-CELESTE-1B.md), world-21 definitions, the existing workshop studies, and `scripts/core.gd`. The routes below began as spatial hypotheses; the implementation section records their tested layouts. All use existing mechanics, one normal dash and normal stamina. Supers are already taught by this chapter; no new mandatory hypers, wavedashes or wallbounces are introduced.
 
 ## 1. The Lower Runway
 
@@ -60,4 +60,31 @@ Before accepting any later build, require a full normal-input route, multiple ne
 
 Native world-21 placement and completion tracking would need to be handled deliberately in a future implementation. The simple browser editor currently targets world 4; editing chapter-21 additions there would require chapter access support as a separate explicit part of that build scope. This document does not change the editor.
 
-No new quests, voices, assets, movement constants, rooms or proof tapes were created. These concepts await the user's selection or approval before implementation.
+At the proposal stage, no quests, voices, assets, movement constants, rooms or proof tapes were created. The user subsequently approved all three rooms.
+
+## Implemented layout and evidence · 0.29.0
+
+The native editable chapter and source contain all three additions at indices 38–40 (menu 39–41). `Play Fractured Puzzle Rooms.command` opens the first. They have separate live checkpoints, optional hints and complete Watch references reaching their physical exits. No workshop award or hidden action counter controls progression. No new quests, voices, art or movement constants were added.
+
+**Lower Runway:** the stone lowers from y=216 to y=248. Fixed side lips and the overhead mass make its original height obstruct the useful departure. The lowered arrangement remains stable during an extra 180-frame wait. The reference uses the same ground-dash recovery, super and air-dash pattern already present in Ash Verge.
+
+**Carriage:** the far bank restores full stamina. A generous 240-frame hold permits the player to walk underneath, grab the opposite face and return. An exposed high contact remains available for the homeward wall jump; the lower parked face and gallery entrance are guarded. The ordinary wall jump and upward dash preserve the proposed contact decision.
+
+**Door:** the lantern settles onto the plate at the start, opening the low route. The far steps lead back to the service ledge. Picking up the lantern closes the door on the following simulation tick; setting it aside leaves the stable runway. A spiked lintel prevents a direct open-door launch. A fresh search also finds a late air-dash finish from the closed runway without a super. This alternative preserves the architectural decision and is deliberately allowed.
+
+**Preservation and placement:** the previous 38 definitions and their recordings are protected by fingerprints. Only F63's onward socket and the crossroads' incoming link metadata change. The three sections start at tile coordinates (306,-190), (354,-190), and (406,-211). The crossroads moves to (462,-200). Other old placements, optional spaces, rewards and quest metadata stay unchanged. World 21 contains 41 definitions and 17 required challenges; the workshop remains 30 rooms. Browser editing still targets world 4, as scoped above.
+
+**Verification:**
+
+- `tests/fractured_puzzles.gd` proves three deathless routes with the normal kit, machinery states, full stamina recovery, stable preparation and six nearby timing sweeps. Five saved successful shortcuts from earlier drafts reproduce as positive controls and fail in the revised geometry: three carriage escapes and two open-door escapes.
+- `tests/fractured_puzzle_search.gd` runs 12 fresh-input cases, including positive controls and searches against both the carriage's home platform and actual exit gallery. Each case uses at most 20,000 branches, width 50 and depth 50. Negative results are bounded evidence, not exhaustive proofs.
+- `tests/fractured_puzzles_app.gd` checks source/native equality, native validation, preservation, actual gameplay routes, individual checkpoints, hint cleanup, Watch exits and death/retry restoration after interrupted stone, carriage and cargo actions.
+- `tests/fractured_journey.gd` completes the extended 10,172-frame road through 22 regions with zero deaths. Its original 7,907-frame prefix is unchanged. `tests/feel_journey.gd` repeats that route through the real application with camera/presentation enabled.
+- Packaged regression suites cover the earlier workshop, five-room and six-room puzzle sets, editor playback, pickups, Causeway and chapter behavior. All six browser-reference parity sets also pass: 322 traces and 95,367 frames.
+- Actual GPU captures from the signed app were inspected at the starts, decisions, finishes, hints and pause menus. A room-specific camera anchor makes the elevated lantern visible from the door-room entrance.
+
+The broader flower regression initially failed two assertions because it placed the player at the original patch coordinates, while the user's existing edited world-1 scene had moved the patch. Running the previous code with that same scene reproduced both failures. The test now reads the native patch's actual position; gameplay and the user's scene remain untouched.
+
+Run the new suites with the pinned Godot binary, `--headless --path prototypes/godot-ascend --script tests/<name>.gd`. The search accepts an optional report path after `--`. Packaged verification uses external test scripts against the app's actual PCK because tests are excluded from exports.
+
+Human playtesting remains necessary for route readability and enjoyment. Passing routes and bounded shortcut checks do not establish that every alternative has been eliminated.

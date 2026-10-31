@@ -358,7 +358,7 @@ func load_scene(core,smooth_join=false):
  if not smooth_join:
   reset_feel()
   camera_float = Vector2(actor.x-153,actor.y-133) if runtime!=null else target_camera()
-  if world_data.world.get("workshop",false): camera_float=target_camera()
+  if world_data.world.get("workshop",false) or sim.room.def.has("puzzleCameraAnchorY"): camera_float=target_camera()
   camera = camera_float
   fade = 0.16
   trails.clear()
@@ -486,7 +486,7 @@ func event_effect(type,point):
    wall_spark_frame=-100
    dash_ghost_frame=-100
    camera_float=Vector2(current_actor.x-153,current_actor.y-118) if runtime!=null else target_camera()
-   if world_data.world.get("workshop",false): camera_float=target_camera()
+   if world_data.world.get("workshop",false) or sim.room.def.has("puzzleCameraAnchorY"): camera_float=target_camera()
    camera_velocity=Vector2.ZERO
    camera_kick=Vector2.ZERO
    kick_velocity=Vector2.ZERO
@@ -513,6 +513,8 @@ func target_camera():
  if world_data.world.get("workshop",false):
   # Small exercises stay fully framed; larger authored rooms use the same smooth camera.
   return active_position+Vector2(clamp(actor.x-active_position.x-153+look.x,0,max(0,sim.room.w-320)),clamp(actor.y-active_position.y-sim.room.def.get("workshopCameraAnchorY",100)+look.y,0,max(0,sim.room.h-184)))
+ if runtime!=null and sim.room.def.has("puzzleCameraAnchorY"):
+  return Vector2(actor.x-153+look.x,active_position.y+clamp(actor.y-active_position.y-float(sim.room.def.puzzleCameraAnchorY)+look.y,0,max(0,sim.room.h-184)))
  if runtime==null: return Vector2(max(0,actor.x-153+look.x),active_position.y+clamp(actor.y-active_position.y-94+look.y,0,max(0,sim.room.h-184)))
  # Continuous world coordinates keep doorway ownership out of the camera calculation.
  var y=camera_float.y

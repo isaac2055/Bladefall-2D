@@ -10,6 +10,7 @@ var world
 const CHAPTERS=[1,2,3,21,22,23,4]
 var workshop_completed={}
 var workshop_shards={}
+var puzzle_hint_button:Button
 var workshop_controls:HBoxContainer
 var workshop_demo_picker:OptionButton
 var workshop_previous:Button
@@ -24,6 +25,7 @@ var pause_description: Label
 var quest_label: Label
 var notice_label: Label
 var notice_time=0.0
+var hint_room_id=""
 var sim
 var landscape
 var audio
@@ -280,6 +282,8 @@ func create_interface():
  button(row,"Resume",func():set_paused(false),false)
  button(row,"Retry · R",func():retry_room();set_paused(false))
  watch_button = button(row,"Watch reference",func():toggle_watch();set_paused(false))
+ puzzle_hint_button=button(row,"Hint · H",func():show_workshop_hint();set_paused(false))
+ puzzle_hint_button.hide()
  workshop_controls=HBoxContainer.new()
  workshop_controls.add_theme_constant_override("separation",8)
  column.add_child(workshop_controls)
@@ -419,7 +423,7 @@ func _unhandled_input(event):
  elif event.is_action_pressed("knight_retry") and not paused: retry_room()
  elif event is InputEventKey and event.pressed:
   if chapter_number==4 and event.physical_keycode==KEY_N: workshop_room(1)
-  elif chapter_number==4 and event.physical_keycode==KEY_H: show_workshop_hint()
+  elif event.physical_keycode==KEY_H and (chapter_number==4 or sim.room.def.get("puzzleStudy",false)): show_workshop_hint()
   elif event.physical_keycode==KEY_F11: toggle_fullscreen()
   elif event.physical_keycode==KEY_M:
    if audio.levels.Music>0: mute_music_level=audio.levels.Music;audio.levels.Music=0.0
@@ -506,6 +510,8 @@ func load_section(index,smooth_join=false):
  tape_frame = 0
  hold = 0
  room_picker.select(index)
+ clear_other_room_hint()
+ puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false)
  watch_button.text = "Take control" if watch else ("Watch solution" if chapter_number==4 else "Watch reference")
  title.text = data.world.name.to_upper()+" · "+(("SOLUTION" if chapter_number==4 else "REFERENCE") if watch else "ASCEND")
  room_banner.text = sim.room.name.to_upper()
@@ -520,8 +526,16 @@ func workshop_room(direction):
  load_section(posmod(current+direction,data.world.rooms.size()))
  set_paused(false)
 
+func clear_other_room_hint():
+ if hint_room_id!="" and hint_room_id!=sim.room.id:
+  notice_time=0
+  notice_label.text=""
+  notice_label.modulate.a=0
+  hint_room_id=""
+
 func show_workshop_hint():
- if chapter_number!=4: return
+ if chapter_number!=4 and not sim.room.def.get("puzzleStudy",false): return
+ hint_room_id=sim.room.id
  notice_label.text=sim.room.def.hint
  notice_time=12
 
@@ -587,6 +601,7 @@ func _physics_process(_delta):
   audio.events(effects)
   audio.tick(sim,1.0/60.0)
   if not world.notices.is_empty():
+   hint_room_id=""
    notice_label.text=world.notices.pop_front()
    notice_time=4.0
    audio.effect("quest",0.6)
@@ -598,6 +613,8 @@ func _physics_process(_delta):
    landscape.active_position=world.placements[world.active_id]
    landscape.snap_actor()
    room_picker.select(current)
+   clear_other_room_hint()
+   puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false)
    room_banner.text=sim.room.name.to_upper()
    banner_time=1.4
   if chapter_number==4 and not watch: tick_workshop()
@@ -684,6 +701,7 @@ func bearing_caption():
  if sim.p.get("pollen",0)>0: return "WHITE FLOWER SAP · movement weakened · %.1fs"%(sim.p.pollen/60.0)
  if chapter_number>=21:
   var prefix="♥ %d · "%world.heart_count() if world.heart_count()>0 else ""
+  if sim.room.def.get("puzzleStudy",false):return prefix+sim.room.def.question+" · H: hint"
   if sim.oath_root!=null and not sim.oath_root.taken:
    return prefix+("OATHBLADE · Press ↑ near the freed blade" if sim.oath_root.released else "OATHBLADE · Stand on the root counterweight to free the blade")
   if sim.root_lash!=null and sim.root_lash.crown!=null and not sim.root_lash.crown.cut: return prefix+"Cut the root crown · the timed roots stop when it falls"
@@ -792,6 +810,8 @@ func switch_chapter(number):
  pause_title.text=data.world.name.to_upper()
  pause_description.text="A road through the old watch · Ascend" if number==1 else ("Moths, pale resin and the lantern tree · Ascend" if number==2 else "Iron, counterweights and the toll road · Ascend")
  if number>=21: pause_description.text="The remembered road · Fractured Ascend"
+ clear_other_room_hint()
+ puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false)
  workshop_controls.visible=number==4
  workshop_demo_picker.visible=number==4
  workshop_previous.visible=number==4 and data.world.rooms.size()>1

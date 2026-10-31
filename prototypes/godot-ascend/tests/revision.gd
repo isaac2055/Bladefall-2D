@@ -59,10 +59,13 @@ func run():
  w.retry()
  check(c.sweeper_clock==old and point==Vector2(c.sweepers[0].x,c.sweepers[0].y),"retry preserves the continuous bunny phase")
  w.restart()
+ var flower=w.data.whiteFlowers.patches[0]
+ w.enter(flower.room,true)
  c=w.active()
- c.p.x=64
- c.p.y=133
+ c.p.x=flower.x
+ c.p.y=flower.y-4
  c.p.vx=0
+ c.p.vy=0
  c.p.onGround=true
  w.step({})
  check(c.p.get("pollen",0)==180 and "pollen-slow" in c.events,"touching an actual white flower starts the three-second sap effect")

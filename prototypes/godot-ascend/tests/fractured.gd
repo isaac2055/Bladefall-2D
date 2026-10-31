@@ -12,8 +12,8 @@ func run():
  root.add_child(app)
  await process_frame
  app.set_physics_process(false)
- check(app.chapters.size()==6 and app.chapter_picker.item_count==6,"six preloaded Ascend chapters are selectable")
- var counts={21:38,22:37,23:37}
+ check(app.chapters.size()==7 and app.chapter_picker.item_count==7,"six campaign chapters and the workshop are selectable")
+ var counts={21:41,22:37,23:37}
  for number in [21,22,23]:
   app.chapter_picker.item_selected.emit(app.CHAPTERS.find(number))
   var w=app.world

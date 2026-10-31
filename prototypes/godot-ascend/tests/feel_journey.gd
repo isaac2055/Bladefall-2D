@@ -29,8 +29,8 @@ func run():
    transitions+=1
    if distance>16: mismatch=true
   if i%120==0: await process_frame
- var ok=not mismatch and transitions==18 and app.world.frames==tour.frames and app.world.active_id=="cl21-atlas-crossroads" and app.sim.deaths==0
- print("PASS" if ok else "FAIL"," actual application road with polish · ",app.world.frames," unchanged physics frames · ",transitions," smooth ownership changes · ",app.sim.deaths," deaths · worst camera step ",snapped(worst,.01)," px")
+ var ok=not mismatch and transitions==app.world.data.world.sections.size()-1 and app.world.frames==tour.frames and app.world.active_id=="cl21-atlas-crossroads" and app.sim.deaths==0
+ print("PASS" if ok else "FAIL"," actual application road with polish · ",app.world.frames," normal-input physics frames · ",transitions," smooth ownership changes · ",app.sim.deaths," deaths · worst camera step ",snapped(worst,.01)," px")
  app.queue_free()
  await process_frame
  await create_timer(.15).timeout

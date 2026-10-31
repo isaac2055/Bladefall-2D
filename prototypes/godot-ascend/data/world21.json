@@ -297,9 +297,36 @@
         }
       },
       {
-        "room": "cl21-atlas-crossroads",
+        "room": "cl21-puzzle-lower-runway",
         "x": 306,
-        "y": -170,
+        "y": -190,
+        "fire": {
+          "c": 9,
+          "r": 29
+        }
+      },
+      {
+        "room": "cl21-puzzle-other-side",
+        "x": 354,
+        "y": -190,
+        "fire": {
+          "c": 22,
+          "r": 26
+        }
+      },
+      {
+        "room": "cl21-puzzle-door-shut",
+        "x": 406,
+        "y": -211,
+        "fire": {
+          "c": 6,
+          "r": 37
+        }
+      },
+      {
+        "room": "cl21-atlas-crossroads",
+        "x": 462,
+        "y": -200,
         "fire": {
           "c": 44,
           "r": 21
@@ -311,7 +338,7 @@
       {
         "id": "mara-echo",
         "title": "A Line Through the Blank",
-        "giver": "Mara’s echo",
+        "giver": "Mara\u2019s echo",
         "from": "cl21-fo21-map",
         "back": {
           "c": 5,
@@ -361,7 +388,7 @@
       {
         "id": "rowan-echo",
         "title": "Someone Answered",
-        "giver": "Rowan’s echo",
+        "giver": "Rowan\u2019s echo",
         "from": "cl21-fo21-camp",
         "back": {
           "c": 12,
@@ -503,7 +530,7 @@
         "lock": [
           "strike"
         ],
-        "hint": "Dash along the ground, then jump before the dash ends: the jump keeps the dash’s speed (a super)",
+        "hint": "Dash along the ground, then jump before the dash ends: the jump keeps the dash\u2019s speed (a super)",
         "question": "The gap is wider than a jump and a dash together. What if the dash comes first, on the ground?",
         "decor": [
           {
@@ -563,7 +590,7 @@
         "lock": [
           "strike"
         ],
-        "hint": "Cracked stone gives you a breath, not a rest · land, turn, and super again",
+        "hint": "Cracked stone gives you a breath, not a rest \u00b7 land, turn, and super again",
         "question": "Two gaps, each a super long. Where does the second one start?",
         "map": [
           "#.....##################################",
@@ -624,12 +651,12 @@
       },
       {
         "id": "cl21-fo21-ridge",
-        "name": "Watcher’s Ridge",
+        "name": "Watcher\u2019s Ridge",
         "exit": "right",
         "lock": [
           "strike"
         ],
-        "hint": "A super spends the dash on the ground · the crystal at the end of its arc gives it back",
+        "hint": "A super spends the dash on the ground \u00b7 the crystal at the end of its arc gives it back",
         "question": "The first crystal is past any plain jump. What carries you to it with nothing left to spend?",
         "map": [
           "########################################",
@@ -720,12 +747,12 @@
         "lock": [
           "strike"
         ],
-        "hint": "The cracked road starts shaking as you step on it · Mara’s chart opens the lost survey behind you",
+        "hint": "The cracked road starts shaking as you step on it \u00b7 Mara\u2019s chart opens the lost survey behind you",
         "question": "The road under your runway is cracked. How long do you have to start the super?",
         "people": [
           {
             "who": "mara",
-            "name": "MARA’S ECHO",
+            "name": "MARA\u2019S ECHO",
             "c": 5,
             "r": 17,
             "quest": "mara-echo",
@@ -792,7 +819,7 @@
         "lock": [
           "strike"
         ],
-        "hint": "Thorns grow on alternate walls · the top of the chimney is a runway, just",
+        "hint": "Thorns grow on alternate walls \u00b7 the top of the chimney is a runway, just",
         "question": "Up the chimney, and off the top with a super. Which wall does each stretch belong to?",
         "map": [
           "########################################",
@@ -929,7 +956,7 @@
         "lock": [
           "strike"
         ],
-        "hint": "Every island cracks · the long gap wants a super, the short ones only a jump",
+        "hint": "Every island cracks \u00b7 the long gap wants a super, the short ones only a jump",
         "question": "Nothing here holds for long. Which island do you super from?",
         "map": [
           "#..#####################################",
@@ -1000,12 +1027,12 @@
         "lock": [
           "strike"
         ],
-        "hint": "Dash into the tear · Rowan’s bell opens the way back through the camp",
+        "hint": "Dash into the tear \u00b7 Rowan\u2019s bell opens the way back through the camp",
         "question": "The tear lifts you to a cracked ledge. What do you do before it falls?",
         "people": [
           {
             "who": "rowan",
-            "name": "ROWAN’S ECHO",
+            "name": "ROWAN\u2019S ECHO",
             "c": 17,
             "r": 17,
             "quest": "rowan-echo",
@@ -1063,7 +1090,7 @@
         "lock": [
           "strike"
         ],
-        "hint": "Every survey stake lit opens the gate · the last one hangs in the arc of a super",
+        "hint": "Every survey stake lit opens the gate \u00b7 the last one hangs in the arc of a super",
         "question": "Two stakes, and only one of them is anywhere you could stand near. How do you pass the other?",
         "map": [
           "########################################",
@@ -1239,8 +1266,8 @@
           "strike"
         ],
         "study": true,
-        "hint": "The committed hammer becomes a foothold · from its top, a super reaches the bell",
-        "question": "The bell’s ledge is past any plain jump. Where can you stand to start a super that reaches it?",
+        "hint": "The committed hammer becomes a foothold \u00b7 from its top, a super reaches the bell",
+        "question": "The bell\u2019s ledge is past any plain jump. Where can you stand to start a super that reaches it?",
         "sentinel": {
           "mode": "hammer",
           "c": 2,
@@ -1306,7 +1333,7 @@
           "strike"
         ],
         "study": true,
-        "hint": "Its rush ends under you · its shoulders rise into a step",
+        "hint": "Its rush ends under you \u00b7 its shoulders rise into a step",
         "question": "The rush passes under your ledge. From its shoulders, how far can a super go?",
         "sentinel": {
           "mode": "rush",
@@ -1407,7 +1434,7 @@
         "people": [
           {
             "who": "mara",
-            "name": "MARA’S ECHO",
+            "name": "MARA\u2019S ECHO",
             "c": 5,
             "r": 3,
             "quest": "mara-echo",
@@ -1622,12 +1649,12 @@
         "lock": [
           "strike"
         ],
-        "hint": "Thorns up the pillar · one crystal · the lip is cracked · so is the stone halfway to the bell",
+        "hint": "Thorns up the pillar \u00b7 one crystal \u00b7 the lip is cracked \u00b7 so is the stone halfway to the bell",
         "question": "Up the pillar on one crystal, off a cracked lip with a super, and once more off a cracked stone. Where does the dash come back?",
         "people": [
           {
             "who": "rowan",
-            "name": "ROWAN’S ECHO",
+            "name": "ROWAN\u2019S ECHO",
             "c": 36,
             "r": 4,
             "quest": "rowan-echo",
@@ -1992,7 +2019,7 @@
       {
         "id": "cl21-secret-xm5",
         "name": "Both at the End",
-        "hint": "Light the stone, climb, then super up and hyper under — miss either and you start again",
+        "hint": "Light the stone, climb, then super up and hyper under \u2014 miss either and you start again",
         "question": "A raised ledge, then a low roof: which move lands high, and which one runs low?",
         "map": [
           "########################################",
@@ -2436,7 +2463,7 @@
             "dir": "r"
           }
         ],
-        "hint": "A cut turns the mirror · Your carriage also shades the receiver.",
+        "hint": "A cut turns the mirror \u00b7 Your carriage also shades the receiver.",
         "question": "When must your cover stop being cover?",
         "origin": "bank-f40",
         "bankOrigin": "bank-f40",
@@ -2642,7 +2669,7 @@
             "edge": "right",
             "floor": 10,
             "height": 5,
-            "to": "cl21-atlas-crossroads",
+            "to": "cl21-puzzle-lower-runway",
             "toFloor": 10
           }
         ]
@@ -2909,8 +2936,8 @@
             "edge": "left",
             "floor": 10,
             "height": 5,
-            "to": "cl21-bank-f63",
-            "toFloor": 10,
+            "to": "cl21-puzzle-door-shut",
+            "toFloor": 21,
             "kind": "room"
           },
           {
@@ -2934,8 +2961,8 @@
           "edge": "left",
           "floor": 10,
           "height": 5,
-          "to": "cl21-bank-f63",
-          "toFloor": 10
+          "to": "cl21-puzzle-door-shut",
+          "toFloor": 21
         },
         "atlasRegion": 21,
         "atlasRoads": [
@@ -3595,6 +3622,540 @@
             "link": "21-23"
           }
         ]
+      },
+      {
+        "id": "cl21-puzzle-lower-runway",
+        "name": "The Lower Runway",
+        "cols": 48,
+        "rows": 40,
+        "exit": "right",
+        "aim8": true,
+        "dashes": 1,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "fractured",
+        "decor": [
+          {
+            "k": "milestone",
+            "c": 42,
+            "r": 30
+          }
+        ],
+        "people": [],
+        "zips": [],
+        "question": "Why would lowering your foothold let you jump farther?",
+        "hint": "Jump onto the exposed stone and dash down. Its lowered top completes the runway beneath the ceiling. Super from the cleared far edge.",
+        "map": [
+          "################################################",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "#>..................###.......................<#",
+          "...............##...###.......................<#",
+          "....................###.........................",
+          ".................#KKKKKK#.......................",
+          ".............##...KKKKKK........................",
+          ".........P........KKKKKK........................",
+          "##################..............................",
+          "##################.....................<########",
+          "##################.....................<########",
+          "##################.....................<vvvvvvv#",
+          "########################......................<#",
+          "########################......................<#",
+          "########################......................<#",
+          "########################......................<#",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "################################################"
+        ],
+        "puzzleRoutes": [
+          {
+            "name": "Lower the stone, super through the cleared mouth",
+            "tape": [
+              [
+                15,
+                "r"
+              ],
+              [
+                20,
+                "rj"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                14,
+                "j"
+              ],
+              [
+                14,
+                "rj"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                15,
+                "r"
+              ],
+              [
+                15,
+                ""
+              ],
+              [
+                12,
+                "dx"
+              ],
+              [
+                65,
+                ""
+              ],
+              [
+                10,
+                "r"
+              ],
+              [
+                10,
+                "rx"
+              ],
+              [
+                20,
+                "rj"
+              ],
+              [
+                12,
+                "rx"
+              ],
+              [
+                35,
+                "r"
+              ]
+            ]
+          }
+        ],
+        "exitSpan": [
+          26,
+          31
+        ],
+        "puzzleGoal": [
+          320,
+          248,
+          56,
+          4
+        ],
+        "rbr": 21,
+        "puzzleStudy": true
+      },
+      {
+        "id": "cl21-puzzle-other-side",
+        "name": "The Other Side of the Carriage",
+        "cols": 52,
+        "rows": 44,
+        "exit": "right",
+        "aim8": true,
+        "dashes": 1,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "fractured",
+        "decor": [
+          {
+            "k": "milestone",
+            "c": 6,
+            "r": 16
+          }
+        ],
+        "people": [],
+        "zips": [
+          [
+            24,
+            0,
+            {
+              "holdFrames": 240,
+              "returnFrames": 180
+            }
+          ]
+        ],
+        "question": "Which side of the same carriage will you need for the journey home?",
+        "hint": "Ride the leading face to the far rest. Walk beneath it and catch the other side. Return near home, wall-jump left, then dash upward through the gallery opening.",
+        "map": [
+          "####################################################",
+          "#>................................................<#",
+          "#>................................................<#",
+          "#>................................................<#",
+          "#>................................................<#",
+          "#>................................................<#",
+          "#>................................................<#",
+          "#>................................................<#",
+          "#>................................................<#",
+          "#>................................................<#",
+          "#>................................................<#",
+          "#>................................................<#",
+          "#>..................................................",
+          "#>..................................................",
+          "#>..................................................",
+          "#>..................................................",
+          "#>..................................................",
+          "#>.>###>....<#######################################",
+          "#>.>vvv>....<vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv#",
+          "#>.>...>....<.....................................<#",
+          "#>................................................<#",
+          "#>..............^^^^^^^^^^^^^^^^^^^^^^^^..........<#",
+          "#>..............########################..........<#",
+          "#>................................................<#",
+          "#>..............ZZZZ..............................<#",
+          "#>.............<ZZZZ..............................<#",
+          "...............<ZZZZ..P...........................<#",
+          "...............<ZZZZ.######.......................<#",
+          "..................................................<#",
+          ".............................###..................<#",
+          "..................................................<#",
+          "#################################....###############",
+          "#################################....###############",
+          "#################################....###############",
+          "#################################....###############",
+          "#################################....###############",
+          "#################################....###############",
+          "#################################....###############",
+          "#################################....###############",
+          "#################################....###############",
+          "#################################....###############",
+          "#################################....###############",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "####################################################"
+        ],
+        "puzzleRoutes": [
+          {
+            "name": "Rest, change sides, return toward the gallery",
+            "tape": [
+              [
+                12,
+                "lg"
+              ],
+              [
+                55,
+                "lg"
+              ],
+              [
+                15,
+                "r"
+              ],
+              [
+                30,
+                ""
+              ],
+              [
+                43,
+                "l"
+              ],
+              [
+                10,
+                ""
+              ],
+              [
+                14,
+                "j"
+              ],
+              [
+                12,
+                "rg"
+              ],
+              [
+                37,
+                "rgu"
+              ],
+              [
+                232,
+                "rg"
+              ],
+              [
+                20,
+                "ljg"
+              ],
+              [
+                12,
+                "ux"
+              ],
+              [
+                20,
+                "l"
+              ],
+              [
+                30,
+                ""
+              ]
+            ]
+          }
+        ],
+        "exitSpan": [
+          12,
+          17
+        ],
+        "puzzleGoal": [
+          32,
+          136,
+          24,
+          4
+        ],
+        "rbr": 21,
+        "puzzleStudy": true
+      },
+      {
+        "id": "cl21-puzzle-door-shut",
+        "name": "The Door You Need Shut",
+        "cols": 56,
+        "rows": 46,
+        "exit": "right",
+        "aim8": true,
+        "dashes": 1,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "fractured",
+        "decor": [
+          {
+            "k": "milestone",
+            "c": 45,
+            "r": 20
+          }
+        ],
+        "people": [],
+        "zips": [],
+        "puzzleCameraAnchorY": 160,
+        "question": "When does closing the door help you escape?",
+        "hint": "Pass below while the lantern holds the door open. Loop up and return to the service ledge. Lift the lantern off its plate, put it down elsewhere, then use the closed door as your final super runway.",
+        "map": [
+          "########################################################",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>....................................................<#",
+          "#>................^^^^^^^^..............................",
+          "#>................########..............................",
+          "#>................########..............................",
+          "#>..............l.......................................",
+          "#>.............._.......................................",
+          "#>..........########HHHHHHHH..............<#############",
+          "#>..........vvvvvvvvHHHHHHHH^^^^^^^^^^^^^^<#############",
+          "#>..................HHHHHHHH###############vvvvvvvv...<#",
+          "#>..................HHHHHHHH..........................<#",
+          "#>..................HHHHHHHH..........................<#",
+          "#>..................HHHHHHHH..........................<#",
+          "#>......############HHHHHHHH#######...................<#",
+          "#>......vvvvvvvvvvvvHHHHHHHH..........................<#",
+          "#>..................HHHHHHHH.......####...............<#",
+          "#>..................HHHHHHHH..........................<#",
+          "#>..................HHHHHHHH..........................<#",
+          "#>..................HHHHHHHH...........####...........<#",
+          "....................HHHHHHHH..........................<#",
+          "....................HHHHHHHH..........................<#",
+          "....................HHHHHHHH.......####...............<#",
+          "....................HHHHHHHH..........................<#",
+          "......P.............HHHHHHHH..........................<#",
+          "############################################..........<#",
+          "############################################..........<#",
+          "############################################..........<#",
+          "############################################..........<#",
+          "############################################..........<#",
+          "############################################..........<#",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "########################################################"
+        ],
+        "puzzleRoutes": [
+          {
+            "name": "Withdraw the load and launch from the closed door",
+            "tape": [
+              [
+                149,
+                "r"
+              ],
+              [
+                12,
+                ""
+              ],
+              [
+                14,
+                "j"
+              ],
+              [
+                18,
+                "rj"
+              ],
+              [
+                15,
+                ""
+              ],
+              [
+                20,
+                "rj"
+              ],
+              [
+                8,
+                "r"
+              ],
+              [
+                15,
+                ""
+              ],
+              [
+                24,
+                "lj"
+              ],
+              [
+                12,
+                ""
+              ],
+              [
+                24,
+                "lj"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                22,
+                "l"
+              ],
+              [
+                10,
+                "lj"
+              ],
+              [
+                10,
+                "l"
+              ],
+              [
+                12,
+                "lx"
+              ],
+              [
+                10,
+                "l"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                35,
+                "l"
+              ],
+              [
+                10,
+                ""
+              ],
+              [
+                20,
+                "j"
+              ],
+              [
+                12,
+                "ux"
+              ],
+              [
+                32,
+                "r"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                1,
+                "g"
+              ],
+              [
+                10,
+                "l"
+              ],
+              [
+                12,
+                ""
+              ],
+              [
+                1,
+                "dg"
+              ],
+              [
+                25,
+                ""
+              ],
+              [
+                59,
+                "r"
+              ],
+              [
+                10,
+                "rx"
+              ],
+              [
+                20,
+                "rj"
+              ],
+              [
+                12,
+                "rx"
+              ],
+              [
+                35,
+                "r"
+              ],
+              [
+                20,
+                ""
+              ]
+            ]
+          }
+        ],
+        "exitSpan": [
+          16,
+          21
+        ],
+        "puzzleGoal": [
+          344,
+          168,
+          64,
+          4
+        ],
+        "rbr": 21,
+        "puzzleStudy": true
       }
     ],
     "tapes": {
@@ -5401,6 +5962,288 @@
           18,
           ""
         ]
+      ],
+      "cl21-puzzle-lower-runway": [
+        [
+          15,
+          "r"
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          14,
+          "j"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          15,
+          "r"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          12,
+          "dx"
+        ],
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ],
+        [
+          10,
+          "rx"
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          12,
+          "rx"
+        ],
+        [
+          35,
+          "r"
+        ],
+        [
+          20,
+          "r"
+        ]
+      ],
+      "cl21-puzzle-other-side": [
+        [
+          12,
+          "lg"
+        ],
+        [
+          55,
+          "lg"
+        ],
+        [
+          15,
+          "r"
+        ],
+        [
+          30,
+          ""
+        ],
+        [
+          43,
+          "l"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          14,
+          "j"
+        ],
+        [
+          12,
+          "rg"
+        ],
+        [
+          37,
+          "rgu"
+        ],
+        [
+          232,
+          "rg"
+        ],
+        [
+          20,
+          "ljg"
+        ],
+        [
+          12,
+          "ux"
+        ],
+        [
+          20,
+          "l"
+        ],
+        [
+          30,
+          ""
+        ],
+        [
+          24,
+          "rj"
+        ],
+        [
+          16,
+          "r"
+        ],
+        [
+          215,
+          "r"
+        ]
+      ],
+      "cl21-puzzle-door-shut": [
+        [
+          149,
+          "r"
+        ],
+        [
+          12,
+          ""
+        ],
+        [
+          14,
+          "j"
+        ],
+        [
+          18,
+          "rj"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          8,
+          "r"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          24,
+          "lj"
+        ],
+        [
+          12,
+          ""
+        ],
+        [
+          24,
+          "lj"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          22,
+          "l"
+        ],
+        [
+          10,
+          "lj"
+        ],
+        [
+          10,
+          "l"
+        ],
+        [
+          12,
+          "lx"
+        ],
+        [
+          10,
+          "l"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          35,
+          "l"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          12,
+          "ux"
+        ],
+        [
+          32,
+          "r"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          1,
+          "g"
+        ],
+        [
+          10,
+          "l"
+        ],
+        [
+          12,
+          ""
+        ],
+        [
+          1,
+          "dg"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          59,
+          "r"
+        ],
+        [
+          10,
+          "rx"
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          12,
+          "rx"
+        ],
+        [
+          35,
+          "r"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          48,
+          "r"
+        ]
       ]
     },
     "folk": {
@@ -5459,7 +6302,10 @@
       "cl21-fo21-yard",
       "cl21-fo21-hammer",
       "cl21-fo21-shoulder",
-      "cl21-bank-f63"
+      "cl21-bank-f63",
+      "cl21-puzzle-lower-runway",
+      "cl21-puzzle-other-side",
+      "cl21-puzzle-door-shut"
     ],
     "bankIntegration": {
       "version": "7.307.0",
@@ -5574,7 +6420,7 @@
       {
         "from": "cl21-walk-5-42",
         "to": "cl21-bank-f63",
-        "how": "up shaft at 14–15 (12 rock)",
+        "how": "up shaft at 14\u201315 (12 rock)",
         "kind": "walk",
         "entryDelta": 8.54400374531753,
         "toFire": [
