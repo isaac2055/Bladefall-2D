@@ -28,18 +28,18 @@ func run():
  for id in prior.tapes:check(Codec.fingerprint(source.world.tapes[id])==prior.tapes[id],"old recording unchanged: "+id)
  for s in prior.sections:
   var now=source.world.sections.filter(func(q):return q.room==s.room)[0]
-  check(now==s if s.room!="cl21-atlas-crossroads" else now.x==710 and now.y==-224 and now.fire==s.fire,"prior placement preserved or junction moved after new rooms: "+s.room)
+  check(now==s if s.room!="cl21-atlas-crossroads" else now.x==974 and now.y==-247 and now.fire==s.fire,"prior placement preserved or junction moved after new rooms: "+s.room)
  var meta=source.world.duplicate(true)
  for key in ["rooms","tapes","sections","requiredMainRooms"]:meta.erase(key)
  check(Codec.fingerprint(meta)==prior.worldMetadata,"quests, optional spaces, rewards and other chapter metadata preserved")
  check(Codec.fingerprint(source.constants)==prior.constants and Codec.fingerprint(source.playerDefaults)==prior.playerDefaults,"movement constants and player defaults preserved")
- check(source.world.requiredMainRooms.slice(0,14)==prior.requiredMainRooms and source.world.requiredMainRooms.size()==20,"approved additions follow the fourteen original required challenges")
+ check(source.world.requiredMainRooms.slice(0,14)==prior.requiredMainRooms and source.world.requiredMainRooms.size()==23,"approved additions follow the fourteen original required challenges")
  var native=load("res://levels/world21.tscn").instantiate();var baseline=Authoring.baseline(source)
- check(native.get_node("Rooms").get_child_count()==44 and Codec.first_difference(baseline,native.compile_into(baseline))=="","44 editable native rooms compile exactly to source")
+ check(native.get_node("Rooms").get_child_count()==47 and Codec.first_difference(baseline,native.compile_into(baseline))=="","47 editable native rooms compile exactly to source")
  check(native.validate_data(native.compile_into(baseline)).is_empty(),"new native chapter validation")
  native.free()
  app=Main.instantiate();app.test_mode=true;app.initial_world=21;root.add_child(app);await process_frame;app.set_physics_process(false)
- check(app.room_picker.item_count==31 and [38,39,40,41,42,43].all(func(i):return app.room_picker.get_item_index(i)>=0),"named section selector exposes all six appended rooms")
+ check(app.room_picker.item_count==34 and [38,39,40,41,42,43].all(func(i):return app.room_picker.get_item_index(i)>=0),"named section selector exposes all six appended rooms")
  for i in range(38,41):
   app.watch=false;app.load_section(i)
   var room=source.world.rooms[i];var deaths=app.sim.deaths

@@ -1,6 +1,20 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.32.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.33.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Nine added Fractured Outskirts rooms · 0.33.0
+
+**Play Latest Fractured Rooms.command** opens **The Catch You Leave Behind**. In chapter **21 · The Fractured Outskirts**, use **Esc → Explore a section** to select Catch or the three new rooms:
+
+- **The Door That Stops the Stone:** use the closed gate as the first stop, weight its plate, then relocate the stone through the opened gate.
+- **The Stone That Gives You Back the Dash:** prepare a recovery landing beyond the throat before spending the dash needed to reach it.
+- **The Bridge Above Your Landing:** remove the crumble cap to expose the returning, lowering carriage roof for the homeward wavedash.
+
+Catch now ties its hook approach to clearing the final throat: return to the stone, wait for the carrier to pass, lower the stone, then catch and release onto the launch lip. Wavedash left and dash up to the home flag. **H** supplies a hint; **Esc → Watch reference** demonstrates each complete route. All four retain independent checkpoints and normal movement.
+
+This brings the added Fractured Outskirts study lineup to **nine**, pending your judgment of the new rooms. Chapter 21 has **47 definitions and 23 required challenges**. Its continuous recording covers **17,419 frames and 28 regions with zero deaths**. The five other accepted added layouts and recordings are preserved. Fractured Woods and Fractured Causeway are unchanged; the base-world workshop extensions remain ten per world, thirty total. No new art, quests or voices were generated.
+
+The [design and implementation notes](research/FRACTURED-CATCH-REVISION-AND-NEXT-THREE.md) explain where existing stone physics required fixed launch lips and how Bridge's demonstrated sequence differs from its proposal. Source verification includes all four live clears and complete Watch exits, nearby setup timings, preparation counterfactuals, native parity and death/retry resets. The signed 0.33.0 macOS app passed twenty relevant suites, including the full campaign journey, all authored Fractured Watch routes, the thirty-room campaign workshop integration and editor playback.
 
 ## Campaign puzzle extensions and section selector · 0.32.0
 
@@ -10,7 +24,7 @@ Each base world now has its **ten approved workshop puzzles** after the final cr
 
 The editable puzzle source remains **levels/world4.tscn**: each base world reads the matching ten rooms from that saved scene. Editing an approved workshop layout therefore changes its practice and campaign versions together. Existing base-world native scenes are preserved, including local World 1 edits. The extensions use finish-to-next-room navigation so the enclosed approved layouts and return objectives stay intact; they do not add connecting platforming passages.
 
-The proposed Catch overhaul and three additional Fractured concepts are documented in [Catch revision and next three proposals](research/FRACTURED-CATCH-REVISION-AND-NEXT-THREE.md). They have **not** been built. Existing Fractured rooms, quests, voices, art and movement constants are unchanged.
+The proposed Catch overhaul and three additional Fractured concepts are documented in [Catch revision and next three proposals](research/FRACTURED-CATCH-REVISION-AND-NEXT-THREE.md). They were subsequently built in 0.33.0, described above. The following section records the 0.32.0 changes.
 
 Verification: `tests/section_menu.gd` checks actual selection, ordering, valid practice spawns and restart behavior across all six campaign worlds plus the workshop. `tests/campaign_workshop.gd` checks preservation, all thirty live campaign clears, every demonstration, entrance/finish navigation, required pickups, independent retry/death resets, completion isolation and the unchanged user World 1 scene. Existing road, quest, workshop and Fractured regressions remain applicable. The signed 0.32.0 packaged app passed fifteen suites, including the 264-check standalone workshop suite; GPU captures cover all six section menus and the three campaign entrances.
 

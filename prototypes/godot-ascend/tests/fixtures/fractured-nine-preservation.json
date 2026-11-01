@@ -1,0 +1,315 @@
+{
+  "constants": "35738c4e9ed316f60462c714c334f1d6a2d9d106246de44fbf30355bdaf6c17b",
+  "defaults": "1684a3aef3ebe26931477e0ba43f3b823561760a6d3b4878251c2786feef351d",
+  "required": [
+    "cl21-fo21-ash",
+    "cl21-fo21-mile",
+    "cl21-fo21-ridge",
+    "cl21-bank-b56",
+    "cl21-fo21-map",
+    "cl21-fo21-lookout",
+    "cl21-bank-f40",
+    "cl21-fo21-cracked",
+    "cl21-fo21-camp",
+    "cl21-fo21-gate",
+    "cl21-fo21-yard",
+    "cl21-fo21-hammer",
+    "cl21-fo21-shoulder",
+    "cl21-bank-f63",
+    "cl21-puzzle-lower-runway",
+    "cl21-puzzle-other-side",
+    "cl21-puzzle-door-shut",
+    "cl21-puzzle-walked-ceiling",
+    "cl21-puzzle-lower-catch",
+    "cl21-puzzle-coming-runway"
+  ],
+  "rooms": {
+    "cl21-bank-b56": "85ed666a1eefd5af9f1c138f60330ca230ea0c1177a3c7efebc106b494486bbb",
+    "cl21-bank-f40": "e65dd3a84c8360e37310a2f32c05c2c7d752a7d135609edaf1144fb52cf59ae1",
+    "cl21-bank-f63": "7ac97bbb1e29ef904dacbe5a95d9200ca0a8456ab6d6fc7c3e23b0802bec8e0a",
+    "cl21-fo21-ash": "36864e64603cd07e3bcd0dff14b4a4f8c84e7d247323804eaf3d312f03d36b7d",
+    "cl21-fo21-camp": "fc3638418906116fee3f1836070d2cf04f77ef4dc72d00c849af723cc512aba0",
+    "cl21-fo21-cracked": "a34e484d51250a6cb2e7dcd5148bd19f11043832e14995c8dbcd9c6dff761a2f",
+    "cl21-fo21-gate": "386c6e2309fb7a109907af0f83c6df7abf12c1f374b0e09ee46580235955e2b8",
+    "cl21-fo21-hammer": "456c944fc20b31aa46ff05922bf4ddb6dcc725dd5fa2f9b2ff9fba67eecad42c",
+    "cl21-fo21-lookout": "02c392b906077d5e07c5407d29c3353578cd676db204030c62fda8a17a079299",
+    "cl21-fo21-map": "b53cf8ad7cff858322d5b3c9aad417a82e68bdc18292d764767dc777838c1015",
+    "cl21-fo21-mile": "291734a2b9546275a1e50d1f45cd3ce0dfe9c2401a6f37c8a7f4aadac5c7af45",
+    "cl21-fo21-q-bell": "ff0a6e21e6a9b6f8619d90d02091dd71b18669196e3c892beb7dfcf078f78ca5",
+    "cl21-fo21-q-chart": "afb29322c204d5b6552b05bfb8337dda357f290a848d0cfa9b694fbcfe826687",
+    "cl21-fo21-ridge": "f117a609e6f3b9678b99352573fb75ba1ce8bdecb4fa98942bd71807c37b3b81",
+    "cl21-fo21-shoulder": "83e7dd85713006fd814fefaa82159c36c5ba34d9984a01a72c48a21864d28176",
+    "cl21-fo21-torn": "8b38275f199ad2576e2db74bb7250c48910b4a9ab15b27274ac537a27ca36111",
+    "cl21-fo21-yard": "4bd0f79ee1c484298eb2e83db89ec7a72b56a411fd5b99db937d4b77cbc48a6c",
+    "cl21-pass-17": "3ab94c030e4519240bcadf0efdb371caeda648a858006a3945ad2ffa55fe6d01",
+    "cl21-pass-18": "f54782b6e3b2033730cdcd4dec8bf2540b1a5eabca14e481c79d82f21b6c46e5",
+    "cl21-pass-19": "7d2ad259994539896ec3f0095f030436c5d7b79ff4091e5043e8c7c841bf410f",
+    "cl21-pass-20": "23f2a889b930528d9bf4e3b938f281d779f5a28fd0ff9d773991bc1905e6e02d",
+    "cl21-pass-21": "ebcc946cf23ef4d9b849c65c5b6f0f9b4af6d30b0b52a6edcc84428f99ff84af",
+    "cl21-pass-22": "d8288d9c5c45bd7c478752479b0882ebf2ad972a8f23e36e4cab952c606e1720",
+    "cl21-pass-23": "8217d5595a27021c50badf0e9bf23c82b7383824fecb84e22c33cdfe576e1aee",
+    "cl21-pass-30": "789030c6baf7697b94b58d8eaf00c3a0fa0eeee6ff33f6f92e08f931d271896a",
+    "cl21-pass-31": "70ec62b88cbb4f74b83ea11fb0b1be18a41e128cc8e5cf049666dfc083d82862",
+    "cl21-pass-32": "514819667e97a094fb49b6ad3ba4da6558323f14b1f379dbdd664a4ae622a664",
+    "cl21-pass-33": "005922e13071537332a8569174fc8c3122c804e902b141de49097238cb47a4cd",
+    "cl21-pass-34": "11705ef19db68f10322423aae62f5694b8a2c7955cb4d4b4cd87f19a0ce1b94e",
+    "cl21-pass-35": "5c561095d9e6c0b976874346be7e0c76f68d61becf9191424b3ab60fc3e88494",
+    "cl21-passage-21-22": "0dc3488905f587172ded70c09399a0e4906439697fa9e29e79c46dba29b3cb53",
+    "cl21-passage-21-23": "3c02d14f6595460a37e8ad300795689a01d2fa54fabde9fa7eea39c4087a8e20",
+    "cl21-puzzle-coming-runway": "072a27f939a828738ec982becc3ad9b83fdcb1990cd7d87332ee16b0499f6e01",
+    "cl21-puzzle-door-shut": "4efea9ec0d8c82421894049510303e4ecde08a7d50ad1f9eb494c3ddb94e7b0e",
+    "cl21-puzzle-lower-runway": "6424e23ce3394b571a5feb41e8ed6488561ba2ddf33163e8f14248dc1ff606e2",
+    "cl21-puzzle-other-side": "e77cabcbf152db73444e3df6624b648ae7db747bd7a9387fb8ad75a7b5f72cee",
+    "cl21-puzzle-walked-ceiling": "55ba92313989fa5eb55beff727179e8efdf6766c78a29314476b6d851ac5e588",
+    "cl21-secret-xm5": "ea854ee8413265929ad2eaba4140bcfa8a43f1a1e73d7cb5a2795b9d0f62b6dc",
+    "cl21-socket-19-21": "1847c268f64f215c6388e38f1d64bec867e3bec08c3c71f9e59300c1ccfdcd62",
+    "cl21-walk-3-15": "ec29fdbe3ba9195cb02e451c2b17fa5215a3b6191eb32ea141696870269bb1e5",
+    "cl21-walk-4-23": "220888113a60066e6f0458d74cc9c2aa3e86ee30328d67c91d6f61c2e06d7ddb",
+    "cl21-walk-5-42": "3033486f23e4c738990600e5ac3546d5dd406704898e5e330e2d1e7b40228f96"
+  },
+  "sections": [
+    {
+      "fire": {
+        "c": 2.0,
+        "r": 17.0
+      },
+      "room": "cl21-fo21-ash",
+      "x": 0.0,
+      "y": 0.0
+    },
+    {
+      "fire": {
+        "c": 2.0,
+        "r": 17.0
+      },
+      "room": "cl21-fo21-mile",
+      "x": 40.0,
+      "y": 0.0
+    },
+    {
+      "fire": {
+        "c": 1.0,
+        "r": 17.0
+      },
+      "room": "cl21-fo21-ridge",
+      "x": 44.0,
+      "y": -23.0
+    },
+    {
+      "fire": {
+        "c": 4.0,
+        "r": 16.0
+      },
+      "room": "cl21-bank-b56",
+      "x": 84.0,
+      "y": -34.0
+    },
+    {
+      "fire": {
+        "c": 2.0,
+        "r": 17.0
+      },
+      "room": "cl21-fo21-map",
+      "x": 132.0,
+      "y": -38.0
+    },
+    {
+      "fire": {
+        "c": 7.0,
+        "r": 20.0
+      },
+      "room": "cl21-fo21-lookout",
+      "x": 172.0,
+      "y": -55.0
+    },
+    {
+      "fire": null,
+      "room": "cl21-walk-3-15",
+      "x": 212.0,
+      "y": -55.0
+    },
+    {
+      "fire": {
+        "c": 36.0,
+        "r": 14.0
+      },
+      "room": "cl21-bank-f40",
+      "x": 180.0,
+      "y": -27.0
+    },
+    {
+      "fire": null,
+      "room": "cl21-walk-4-23",
+      "x": 220.0,
+      "y": -32.0
+    },
+    {
+      "fire": {
+        "c": 1.0,
+        "r": 17.0
+      },
+      "room": "cl21-fo21-cracked",
+      "x": 228.0,
+      "y": -46.0
+    },
+    {
+      "fire": {
+        "c": 11.0,
+        "r": 17.0
+      },
+      "room": "cl21-fo21-camp",
+      "x": 268.0,
+      "y": -58.0
+    },
+    {
+      "fire": {
+        "c": 1.0,
+        "r": 17.0
+      },
+      "room": "cl21-fo21-torn",
+      "x": 308.0,
+      "y": -69.0
+    },
+    {
+      "fire": {
+        "c": 1.0,
+        "r": 17.0
+      },
+      "room": "cl21-fo21-gate",
+      "x": 348.0,
+      "y": -80.0
+    },
+    {
+      "fire": {
+        "c": 36.0,
+        "r": 17.0
+      },
+      "room": "cl21-fo21-yard",
+      "x": 308.0,
+      "y": -94.0
+    },
+    {
+      "fire": {
+        "c": 26.0,
+        "r": 17.0
+      },
+      "room": "cl21-fo21-hammer",
+      "x": 268.0,
+      "y": -107.0
+    },
+    {
+      "fire": {
+        "c": 35.0,
+        "r": 10.0
+      },
+      "room": "cl21-fo21-shoulder",
+      "x": 228.0,
+      "y": -107.0
+    },
+    {
+      "fire": null,
+      "room": "cl21-walk-5-42",
+      "x": 220.0,
+      "y": -138.0
+    },
+    {
+      "fire": {
+        "c": 13.0,
+        "r": 25.0
+      },
+      "room": "cl21-bank-f63",
+      "x": 210.0,
+      "y": -170.0
+    },
+    {
+      "fire": {
+        "c": 9.0,
+        "r": 29.0
+      },
+      "room": "cl21-puzzle-lower-runway",
+      "x": 306.0,
+      "y": -190.0
+    },
+    {
+      "fire": {
+        "c": 22.0,
+        "r": 26.0
+      },
+      "room": "cl21-puzzle-other-side",
+      "x": 370.0,
+      "y": -190.0
+    },
+    {
+      "fire": {
+        "c": 6.0,
+        "r": 37.0
+      },
+      "room": "cl21-puzzle-door-shut",
+      "x": 422.0,
+      "y": -211.0
+    },
+    {
+      "fire": {
+        "c": 4.0,
+        "r": 24.0
+      },
+      "room": "cl21-puzzle-walked-ceiling",
+      "x": 494.0,
+      "y": -215.0
+    },
+    {
+      "fire": {
+        "c": 6.0,
+        "r": 34.0
+      },
+      "room": "cl21-puzzle-coming-runway",
+      "x": 630.0,
+      "y": -238.0
+    }
+  ],
+  "tapes": {
+    "cl21-bank-b56": "33a5a3eff58fe5f3aa91243fef94ea6d18217c27a6f57713ae90eaa407e7ebd7",
+    "cl21-bank-f40": "291bd1db66c3809f70d3fceb373a4a971107e4b9aa2ad1d0f406edfbd80447aa",
+    "cl21-bank-f63": "586e35b10b46b688745e1a6c437ad6ab06043925b4b1b65cc2559b6831c4a5a8",
+    "cl21-fo21-ash": "f4880a36efcde6895e8a55051a47204b457517840e5012b74da962b99ac54c64",
+    "cl21-fo21-camp": "3114392b12058558779f6390327f34dd71f0f7b62ac37beff2cb1dd25e68aaf3",
+    "cl21-fo21-cracked": "73b45fc35f1bd9dc2308a262b0cf202d9162e00fea42eba77160f2ca56cface8",
+    "cl21-fo21-gate": "b8a03d58c5ab3f9bd5b95f1b20c94048f8881983776b8ea240e087a49a07e8f7",
+    "cl21-fo21-hammer": "ad63d97561fd03a1d0c7935f62fd7377dad8fb3580d56ca66af95e41a7c5f7eb",
+    "cl21-fo21-lookout": "e12ca4a3a6059f23bf6a574fcfbb8830a8b38c9bbdd3f015bed5cdb153894baa",
+    "cl21-fo21-map": "bad038bd367488c52cff4180e6aab6c358eb74abdf64f95d07d2930218680cd0",
+    "cl21-fo21-mile": "4fe700897ba94dd540ca24c1abfdde7cd1f198da665b50221671f024b28c57a2",
+    "cl21-fo21-q-bell": "4aed8fce30c2b837ea3f5db72e608b861f00689a51cb3765ff22aab70ab43063",
+    "cl21-fo21-q-chart": "b9b2816688775c296e481cb1114104dde6d42ba2ef38a1602408ab83d32111b6",
+    "cl21-fo21-ridge": "0694ac3fbd87416ba8ca778be645bea34b4c2ff3fa367aa7a8b486e8388144a1",
+    "cl21-fo21-shoulder": "126aa4f518db4cfdad376ce086cc592aebc1c47e4ef0922ab55d21c5f49ff92f",
+    "cl21-fo21-torn": "8ae32d2dc21567832c02c7c7e8870e4ca3e56e97fa49b98f0fcff3241acc3863",
+    "cl21-fo21-yard": "ad261abda28aa89ca0a6f80cb5bc6a56fc8e70fe4f35dcdb02e9f152805aaff4",
+    "cl21-pass-17": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-pass-18": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-pass-19": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-pass-20": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-pass-21": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-pass-22": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-pass-23": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-pass-30": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-pass-31": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-pass-32": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-pass-33": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-pass-34": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-pass-35": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-passage-21-22": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-passage-21-23": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "cl21-puzzle-coming-runway": "5494cb2c31e6aa4f94c540caaf0700d5475606957c1dee3189cb7e53330780ef",
+    "cl21-puzzle-door-shut": "b94975b90ace6fd9ecca995b5d56e8904d425dbd7ef1e3c55f21333e17657cf9",
+    "cl21-puzzle-lower-runway": "9966a636d2899fa6d28ed0348c8382cdf42c33e4c8aef4f42ab2b46d49f37848",
+    "cl21-puzzle-other-side": "82f9a5433acf897e6026bd42c9999af0f4234d8331b19409b54d94644bf9151f",
+    "cl21-puzzle-walked-ceiling": "a5fc777d972f79c9bfbcfab714b4f340264be52953f2b55ee95dd19a8e8ce300",
+    "cl21-secret-xm5": "a763be1543ce114cda08451b21c92d16d1fdb1b13c063cb54522035b0e3d6bb2",
+    "cl21-socket-19-21": "e9bd780fd4adf9f30dec767dd63a27fb5581d37c8bc67ba84bdd854b7fb03620",
+    "cl21-walk-3-15": "75acefed7a0bb96f5b5fc988357fb31194726ac22799c96f2a014e817ccce7f8",
+    "cl21-walk-4-23": "2b83e0f77b339b5eb2cbc9fc6cae5fdd2fc7f8688760f33bf4a4d7a93e8bfe02",
+    "cl21-walk-5-42": "090a08aad8aacd309902651327d022368890d6644cc6f31be95cdf03b2777687"
+  },
+  "world1": "31dbed0936d4552718299175b24394ba5d0b1dc8fd073f3765949828cd056d47"
+}

@@ -28,7 +28,7 @@ func play(i,parts,mode="",park_after=-1):
    if "dash-start" in c.events:dash={"air":not c.p.onGround,"down":raw.d and (raw.l or raw.r)}
    if "super" in c.events and dash.get("air",false) and dash.get("down",false):q.waves.append([c.frame,c.p.vx,c.p.vy,c.p.dashes])
    q.advanced=q.advanced or ["hyper","wallbounce","late-wallbounce","late-reverse"].any(func(e):return e in c.events)
-   if c.p.get("hook")!=null and c.p.x>168 and c.p.x<256 and c.p.y>=235:q.low_catch=true
+   if c.p.get("hook")!=null and c.p.x>336 and c.p.x<384 and c.p.y>=205:q.low_catch=true
    for e in c.ents:
     if e.type=="crumble" and e.get("broken",false):
      q.broke=true
@@ -75,7 +75,7 @@ func _initialize():
   var current=play(43,fixture.tape,fixture.mode,fixture.parkAfter)
   revised.workshopGoal=saved_goal
   check(prior.finish and prior.core.deaths==0 and not current.finish,"reproduced bypass rejected: "+fixture.label)
- for pair in [[41,10],[41,11],[41,12],[41,13],[42,2],[42,4],[42,11],[43,17],[43,18],[43,19],[43,20]]:
+ for pair in [[41,10],[41,11],[41,12],[41,13],[43,17],[43,18],[43,19],[43,20]]:
   var window=[]
   for delta in range(-8,9):
    var varied=tape(pair[0]).duplicate(true);varied[pair[1]][0]+=delta

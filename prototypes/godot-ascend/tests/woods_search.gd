@@ -22,10 +22,10 @@ static func restore(core,state):
   var matches=core.ents.filter(func(e):return str(e.id)==str(id))
   core.p.carrying=matches[0] if not matches.is_empty() else null
  if core.p.get("hook")!=null:
-  var matches=core.ents.filter(func(e):return e.get("id","")==core.p.hook.ring.get("id",""))
+  var matches=core.ents.filter(func(e):return str(e.get("id",""))==str(core.p.hook.ring.get("id","")))
   core.p.hook.ring=matches[0] if not matches.is_empty() else core.p.hook.ring
  if core.p.get("lastRing")!=null:
-  var matches=core.ents.filter(func(e):return e.get("id","")==core.p.lastRing.get("id",""))
+  var matches=core.ents.filter(func(e):return str(e.get("id",""))==str(core.p.lastRing.get("id","")))
   core.p.lastRing=matches[0] if not matches.is_empty() else core.p.lastRing
  core.events=[];core.deaths=0
 static func actions():

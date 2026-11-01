@@ -35,15 +35,15 @@ func run():
  for id in prior.tapes:check(C.fingerprint(d.world.tapes[id])==prior.tapes[id],"prior recording preserved: "+id)
  for before in prior.sections:
   var now=d.world.sections.filter(func(s):return s.room==before.room)[0]
-  check(now==before if before.room!="cl21-atlas-crossroads" else now.x==710 and now.y==-224 and now.fire==before.fire,"prior placement preserved or junction moved after the additions: "+before.room)
+  check(now==before if before.room!="cl21-atlas-crossroads" else now.x==974 and now.y==-247 and now.fire==before.fire,"prior placement preserved or junction moved after the additions: "+before.room)
  var meta=d.world.duplicate(true)
  for k in ["rooms","tapes","sections","requiredMainRooms"]:meta.erase(k)
  check(C.fingerprint(meta)==prior.metadata and C.fingerprint(d.constants)==prior.constants and C.fingerprint(d.playerDefaults)==prior.defaults,"quests, optional spaces, rewards and movement settings preserved")
- check(d.world.requiredMainRooms.slice(0,17)==prior.required and d.world.requiredMainRooms.size()==20,"three separate challenges follow the existing seventeen")
+ check(d.world.requiredMainRooms.slice(0,17)==prior.required and d.world.requiredMainRooms.size()==23,"six later challenges follow the existing seventeen")
  var native=load("res://levels/world21.tscn").instantiate();var base=A.baseline(d)
- check(native.get_node("Rooms").get_child_count()==44 and C.first_difference(base,native.compile_into(base))=="" and native.validate_data(native.compile_into(base)).is_empty(),"44 editable native rooms validate and compile exactly to source");native.free()
+ check(native.get_node("Rooms").get_child_count()==47 and C.first_difference(base,native.compile_into(base))=="" and native.validate_data(native.compile_into(base)).is_empty(),"47 editable native rooms validate and compile exactly to source");native.free()
  app=Main.instantiate();app.test_mode=true;app.initial_world=21;root.add_child(app);await process_frame;app.set_physics_process(false)
- check(app.room_picker.item_count==31 and [41,42,43].all(func(i):return app.room_picker.get_item_index(i)>=0),"named section selector exposes all three additions")
+ check(app.room_picker.item_count==34 and [41,42,43].all(func(i):return app.room_picker.get_item_index(i)>=0),"named section selector exposes all three additions")
  for i in range(41,44):
   app.world.restart();app.watch=false;app.load_section(i);var room=d.world.rooms[i];var deaths=app.sim.deaths
   check(app.puzzle_hint_button.visible and app.bearing_caption().contains(room.question),"optional hint and question: "+room.name)

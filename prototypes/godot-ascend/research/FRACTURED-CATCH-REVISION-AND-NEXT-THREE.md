@@ -1,6 +1,6 @@
 # Catch revision and three further concepts
 
-2026-11-01. **Proposals only.** No geometry, room definitions, recordings, art or voices for these concepts have been created. Approval to integrate existing workshop rooms does not authorize these builds.
+2026-11-01. **All four approved changes are built and verified in prototype 0.33.0.** Each has a deathless ordinary-input recording, a live application clear, a complete Watch replay to its exit, and independent death/retry checks. Nearby setup timing samples pass. The continuous campaign recording reaches the crossroads through all 28 regions in 17,419 frames with zero deaths; the signed packaged app passed twenty relevant suites. No art, voices, quests or movement constants were added.
 
 ## Revise The Catch Below the Exit: The Catch You Leave Behind
 
@@ -54,4 +54,32 @@ Cross the bridge, activate the carriage and recover at the far rest. Step onto t
 
 ## Recommendation
 
-Prioritize the Catch revision, then Door and Stone. Bridge is a promising combination but needs a particularly careful timing prototype. None of these is approved for construction. Each eventual build needs its own checkpoint, ordinary-input demonstration, readable setup, nearby timing samples, actual wrong-plan attempts and death/retry verification. Finite searches can challenge obvious bypasses; they cannot establish that a room is enjoyable or that every alternative is impossible.
+Prioritize the Catch revision, then Door and Stone. Bridge is a promising combination but needs a particularly careful timing prototype. All four were subsequently approved for construction; the status above records implementation progress. Each eventual build needs its own checkpoint, ordinary-input demonstration, readable setup, nearby timing samples, actual wrong-plan attempts and death/retry verification. Finite searches can challenge obvious bypasses; they cannot establish that a room is enjoyable or that every alternative is impossible.
+
+
+## Implementation discoveries in progress
+
+A downward dash into a pushable stone shoves it and bounces the player. Its roof cannot directly supply the proposed wavedash. Door therefore uses the relocated stone to reach a guarded fixed launch lip; Stone uses the prepared roof for dash recovery before jumping/dashing to its fixed lip. The existing stone and movement physics remain unchanged.
+
+Door's first roof supplied a substitute approach to the service ledge. A fresh-input search reproduced that shortcut; the guarded roof and a separate return shaft remove that witnessed plan while shortening the return. Stone's fixed stop similarly supplied an unintended wall jump when its faces were exposed. The final stop has guarded sides; the primary reference still clears. Search failures describe their finite budgets, rather than universal impossibility.
+
+
+## Current implementation and differences from the proposals
+
+The descriptions above record the approved concepts. Existing stone physics require a change to their literal launch surfaces: a downward dash shoves a pushable stone and bounces, so it cannot directly supply a wavedash. All three stone rooms therefore use a fixed launch lip after the stone preparation.
+
+- **Catch:** the hook travels diagonally over a deep entrance and beneath a thorn screen. The returning ride reaches a refill and the high stone. Wait for the hook to clear below before lowering the stone; catch and immediately release right onto the fixed lip, then wavedash left through the cleared throat and dash up to the home flag. The lowered stone clears the route rather than becoming the wavedash surface. The flag has a physical stair/gallery route to the next checkpoint.
+- **Door:** the closed gate stops the first shove beneath the service ledge. A lantern holds the gate open for the second shove, which relocates the stone beneath the fixed launch lip. The return uses a short shaft. A guarded starting roof removes the witnessed shortcut to the service ledge.
+- **Stone:** the wrong dock is below the starting dock, rather than a second horizontal stop. A partial support leaves an underslot for an upward dash to restore the stone; the correct rightward shove supplies the recovery landing beyond the throat. The fixed stop has guarded sides to prevent replacing that landing with a wall jump.
+- **Bridge:** activation comes before the far rest in the demonstrated route; an outward bridge crossing is not required. A crumble cap blocks boarding the returning roof. Breaking it exposes that landing, and the carriage lowers slightly on its return to create clearance for the wavedash. The carriage has a 120-frame return and the cap retains the existing crumble timing.
+
+`tests/fractured_nine.gd` checks the four references, their preparation counterfactuals and nearby setup waits. `tests/fractured_nine_app.gd` checks native/source parity, preservation of accepted rooms and recordings, live clears, complete Watch exits and independent resets. Finite search results remain diagnostic evidence, not proof that all alternate routes are impossible. Human playtesting still decides whether these three additions belong in the liked lineup.
+
+
+## Release verification · 0.33.0
+
+The signed macOS app passed twenty suites: `fractured_nine`, `fractured_nine_app`, `feel_journey`, `fractured_next`, `fractured`, `section_menu`, `campaign_workshop`, `application`, `world_checks`, `world2_journey`, `world3_journey`, `black_woods`, `causeway`, `fractured_next_app`, `fractured_puzzles_app`, `fractured_journey`, `workshop`, `six_puzzles_app`, `five_puzzles_app` and `editor_play`. The new physics suite also replays the recoverable wrong dock and the two witnessed pre-guard shortcuts. Source and exported-resource tests use the same gameplay definitions. Exported scenes are binary-remapped, so the preservation SHA check reads the external source World 1 scene; native parity checks still inspect the packaged scene itself.
+
+The application journey observes 27 ownership changes, a maximum camera step of 14.06 pixels and zero deaths. Chapters 22 and 23 retain their existing deathless continuous recordings. Rendered captures cover each room's start, preparation, launch, finish, hint and menu. The user's existing World 1 scene remains byte-identical to its pre-change SHA `31dbed0936d4552718299175b24394ba5d0b1dc8fd073f3765949828cd056d47`.
+
+To replay the new checks from source, run Godot 4.5.1 with `--headless --path prototypes/godot-ascend --script tests/fractured_nine.gd`, then `tests/fractured_nine_app.gd` and `tests/feel_journey.gd` in the same way. Build the signed app with `bash prototypes/godot-ascend/tools/build-macos.sh`. No online deployment was performed.
