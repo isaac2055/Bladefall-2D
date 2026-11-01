@@ -21,6 +21,12 @@ static func restore(core,state):
   var id=core.p.carrying.id
   var matches=core.ents.filter(func(e):return str(e.id)==str(id))
   core.p.carrying=matches[0] if not matches.is_empty() else null
+ if core.p.get("hook")!=null:
+  var matches=core.ents.filter(func(e):return e.get("id","")==core.p.hook.ring.get("id",""))
+  core.p.hook.ring=matches[0] if not matches.is_empty() else core.p.hook.ring
+ if core.p.get("lastRing")!=null:
+  var matches=core.ents.filter(func(e):return e.get("id","")==core.p.lastRing.get("id",""))
+  core.p.lastRing=matches[0] if not matches.is_empty() else core.p.lastRing
  core.events=[];core.deaths=0
 static func actions():
  var values=[]
@@ -32,6 +38,7 @@ static func restrict(core,mode):
  if mode=="held_open":
   for e in core.ents:
    if e.type=="held":e.latchedOpen=true
+ if mode=="no_hooks":core.ents=core.ents.filter(func(e):return e.type not in ["hookCarrier","ring"])
  if mode=="no_lantern": core.ents=core.ents.filter(func(e):return e.type!="lantern")
  if mode=="no_pods": core.ents=core.ents.filter(func(e):return e.type!="pod")
  if mode=="no_bells": core.ents=core.ents.filter(func(e):return e.type!="bell")
@@ -74,6 +81,12 @@ static func solve(data,index,options={}):
  if options.get("freeze_zip_after_start",false):
   for e in core.ents:
    if e.type=="zip":e.type="slide"
+ if options.has("park_zip_after_start"):
+  for e in core.ents:
+   if e.type=="zip":
+    e.x=e.ox if options.park_zip_after_start=="home" else e.tx
+    e.y=e.oy if options.park_zip_after_start=="home" else e.ty
+    e.remX=0;e.remY=0;e.type="slide"
  if permanent:
   # Restore the real cap, even when the reachable decision state follows its collapse.
   for e in core.ents:
@@ -85,7 +98,7 @@ static func solve(data,index,options={}):
   if e.type=="shard":pickup_field=field(core,Vector2(e.x+4,e.y+4),permanent)
  var pending=[{"state":snapshot(core),"tape":[],"score":0.0,"dash_trace":dash_trace}]
  var seen={};var nodes=0;var maximum=options.get("budget",12000);var width=options.get("width",100)
- var moves=actions()
+ var moves=actions()+options.get("extra_actions",[])
  for keys in ["s","ls","rs","us","ds","dsj","rdsj","ldsj","lus","rus"]:
   moves.append([6,keys])
  var best=INF
@@ -102,11 +115,12 @@ static func solve(data,index,options={}):
      if permanent:
       for e in core.ents:
        if e.type=="crumble":e.broken=false;e.shaking=0
+     if options.has("max_hook_length") and core.p.get("hook")!=null and core.p.hook.len>options.max_hook_length:invalid=true;break
      var was_ground=core.p.onGround
      core.step(Routes.decode(action[1]))
      if track_wave:
       branch_dash=observe_dash(core,branch_dash)
-      if "super" in core.events and branch_dash.get("air",false) and branch_dash.get("down",false) and abs(core.p.vx)==325 and core.p.vy==-52.5:invalid=true;break
+      if "super" in core.events and branch_dash.get("air",false) and branch_dash.get("down",false):invalid=true;break
      if options.get("forbid_ground_dash",false) and (was_ground or core.p.onGround) and "dash-start" in core.events:invalid=true;break
      if options.has("forbid_ground_recovery_before_x") and core.p.onGround and core.p.x<options.forbid_ground_recovery_before_x and "refill-dash" in core.events:invalid=true;break
      if options.get("forbid_slide_y",false) and core.ents.any(func(e):return e.type=="slide" and e.y!=e.oy):invalid=true;break

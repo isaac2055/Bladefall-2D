@@ -1,6 +1,18 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.30.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.31.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Three more Fractured Outskirts rooms · 0.31.0
+
+**Play Next Fractured Rooms.command** opens **The Ceiling You Walk On**. You can also choose chapter **21 · The Fractured Outskirts**, rooms **42–44**:
+
+- **The Ceiling You Walk On:** break the upper crumble slab, settle below it, then wavedash under the divider and dash upward through the opening.
+- **The Catch Below the Exit:** reel down beneath the fixed thorn screen, reel up on the far side, and recover on the shelf before the final wavedash.
+- **The Runway Coming Toward You:** wake the carriage, climb to the sheltered bank, and dash to the thin drop shelf. Use **Down + Jump** to drop, land a down-left dash on the returning roof, then rise beside the housing to the home platform and upper gallery.
+
+Each has its own checkpoint, **H** hint and **Esc → Watch reference**. They follow Door You Need Shut and precede the crossroads. World 21 now contains **44 definitions and 20 required challenges**. All 41 previous room layouts and recordings are retained, including the accepted carriage room and both wavedash revisions. Only the crossroads' incoming link and placement change to extend the road. The full reference covers **12,502 frames and 25 regions with zero deaths**, preserving the entire prior 10,358-frame input prefix.
+
+These use existing physics, one dash, ordinary air steering and the established wavedash. No new art, quests, voices or movement constants were added. The native Godot scene includes all three; the separate browser workshop editor remains at 30 rooms. See [the designs, implementation details and verification](research/NEXT-THREE-FRACTURED-PROPOSALS.md).
 
 ## Fractured wavedash finishes · 0.30.0
 
@@ -10,7 +22,7 @@ Use **Play Fractured Puzzle Rooms.command**, or chapter 21, rooms **39–41**. *
 
 The full road now takes **10,358 frames**, with zero deaths. The original 7,907-frame chapter prefix is preserved. Room count remains **41**, with **17 required challenges**; the workshop remains **30**. The first and third rooms are wider, shifting the carriage and later sections along the road without changing the carriage's local layout. Tests protect all 39 untouched definitions and their recordings, reproduce five former shortcuts, and check 3,600 grounded-hyper and ordinary jump/dash alternatives from the small landings. Bounded searches supplement those checks; they do not prove every possible alternative impossible.
 
-[Three further Fractured room proposals](research/NEXT-THREE-FRACTURED-PROPOSALS.md) are written for approval. None has been built.
+The [three further Fractured proposals](research/NEXT-THREE-FRACTURED-PROPOSALS.md) were subsequently approved and built in 0.31.0, described above.
 
 ## Three Fractured Outskirts puzzles · 0.29.0
 

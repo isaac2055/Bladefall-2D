@@ -1,5 +1,7 @@
 # Three Fractured Outskirts puzzle proposals
 
+**0.31.0 continuation:** the three further concepts mentioned in the historical sections below have now been approved and built. See [their implementation and evidence](NEXT-THREE-FRACTURED-PROPOSALS.md).
+
 **0.30.0 update:** the user accepted room 2 unchanged and explicitly requested wavedash finishes in rooms 1 and 3. The original 0.29.0 super-based intent and evidence below are historical; the final section records the superseding wavedash revision. The next three concepts are [proposals only](NEXT-THREE-FRACTURED-PROPOSALS.md).
 
 2026-10-31. **Approved and implemented in 0.29.0.** The original proposals below describe the design intent. All three now extend the Fractured Outskirts road after Ring It from the Other Side and before The Broken Gate crossroads, preserving earlier room geometry and individual checkpoints. Implementation evidence and differences follow the original proposals.
