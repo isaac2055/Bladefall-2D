@@ -1,5 +1,7 @@
 # Editing Ascend
 
+The ten puzzle extensions in each base world share their editable source with the Movement Workshop: **levels/world4.tscn**. Edit those rooms there; their saved layouts are loaded into both practice and their home world. Base-world scenes retain their original rooms. In gameplay, Up at the final crossroads blue arch enters the extension, and Up at a solved gold flag continues.
+
 **For the eight workshop rooms, start with Edit Workshop Rooms.command.** It opens the dedicated browser editor: terrain brushes, click-to-place objects, drag-to-move, moving-block destination handles, undo, backups and Save & play. No Godot editor knowledge is needed. See [the dedicated editor guide](room-editor/README.md). The workflow below is the full Godot editor, still available for campaign chapters and advanced editing.
 
 Double-click **Edit Ascend.command** to open the pinned Godot 4.5.1 editor. The **Ascend** dock opens all six chapters: Outskirts, Black Woods, Broken Causeway, and their Fractured versions. All 197 native rooms are present, including optional rooms and the existing passage previews.

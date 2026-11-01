@@ -3,6 +3,8 @@ extends RefCounted
 const Core = preload("res://scripts/core.gd")
 const Loader = preload("res://scripts/room_loader.gd")
 const Layout = preload("res://scripts/world_layout.gd")
+const CampaignWorkshop=preload("res://scripts/campaign_workshop.gd")
+var campaign_completed={}
 var data
 var cores = {}
 var placements = {}
@@ -44,6 +46,9 @@ var secret_front_entry=false
 var award_color="#ff9fc8"
 func _init(source):
  data=preload("res://scripts/authoring_data.gd").read(source)
+ if int(data.world.n) in [1,2,3]:
+  var workshop_source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"))
+  CampaignWorkshop.append(data,preload("res://scripts/authoring_data.gd").read(workshop_source))
  var sections=data.world.sections.duplicate(true)
  for q in data.world.quests: sections.append_array(q.sections)
  for q in data.world.get("secrets",[]): sections.append_array(q.sections)
@@ -99,6 +104,7 @@ func _init(source):
     seam_tiles[id].append({"local":local,"point":key,"open":cells.get(key,0),"closed":value})
  restart()
 func restart():
+ campaign_completed.clear()
  for old in cores.values(): old.world_context=null
  cores.clear()
  for id in seam_tiles: set_seam(id,false)
@@ -218,7 +224,7 @@ func tick_inactive():
 func collect_progress():
  # The workshop shard is an optional round trip, banked at its finish by the UI.
  # Death/retry resets the pickup along with the room, unlike campaign bearings.
- if data.world.get("workshop",false): return
+ if data.world.get("workshop",false) or active().room.def.get("campaignWorkshop",false): return
  # Only the active knight can collect or light a stake. Inactive machinery cannot.
  for id in [active_id]:
   var core=cores[id]
@@ -276,7 +282,7 @@ func enter(id,practice=false):
   active_id=id
   checkpoint_id=id
   var destination=active()
-  if data.world.get("workshop",false):
+  if data.world.get("workshop",false) or destination.room.def.get("campaignWorkshop",false):
    destination.load_room(parsed[id])
    restore_progress(destination)
   configure_live_core(destination)

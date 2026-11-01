@@ -19,7 +19,7 @@ func run():
  var outskirts=app.world
  outskirts.bearings.ASH=true
  app.chapter_picker.item_selected.emit(1)
- if not check(app.chapter_number==2 and int(app.data.world.n)==2 and app.world.cores.size()==27,"Black Woods chapter selector activates all 27 preloaded rooms"): return
+ if not check(app.chapter_number==2 and int(app.data.world.n)==2 and app.world.cores.size()==37,"Black Woods chapter selector activates the original 27 rooms and ten approved puzzles"): return
  if not check(app.landscape.forest and app.audio.music.stream==app.audio.stream(app.audio.manifest.chapters["2"].music,true),"forest presentation and reused regional score selected"): return
  var woods=app.world
  woods.active().p.x+=2
@@ -36,7 +36,7 @@ func run():
   app.load_section(app.world.regions.find(id))
   var sim=app.sim
   for i in range(app.tape.size()): app._physics_process(1.0/60.0)
-  if not check(sim.exited and sim.deaths==0,"Watch reaches "+id+" exit without death"): return
+  if not check((app.CampaignWorkshop.goal_reached(sim) if sim.room.def.get("campaignWorkshop",false) else sim.exited) and sim.deaths==0,"Watch reaches "+id+" exit without death"): return
  app.watch=false
  var w=app.world
  w.restart()

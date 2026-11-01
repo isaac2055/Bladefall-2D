@@ -358,7 +358,7 @@ func load_scene(core,smooth_join=false):
  if not smooth_join:
   reset_feel()
   camera_float = Vector2(actor.x-153,actor.y-133) if runtime!=null else target_camera()
-  if world_data.world.get("workshop",false) or sim.room.def.has("puzzleCameraAnchorY") or sim.room.def.has("puzzleCameraAnchorX"): camera_float=target_camera()
+  if world_data.world.get("workshop",false) or sim.room.def.get("campaignWorkshop",false) or sim.room.def.has("puzzleCameraAnchorY") or sim.room.def.has("puzzleCameraAnchorX"): camera_float=target_camera()
   camera = camera_float
   fade = 0.16
   trails.clear()
@@ -486,7 +486,7 @@ func event_effect(type,point):
    wall_spark_frame=-100
    dash_ghost_frame=-100
    camera_float=Vector2(current_actor.x-153,current_actor.y-118) if runtime!=null else target_camera()
-   if world_data.world.get("workshop",false) or sim.room.def.has("puzzleCameraAnchorY") or sim.room.def.has("puzzleCameraAnchorX"): camera_float=target_camera()
+   if world_data.world.get("workshop",false) or sim.room.def.get("campaignWorkshop",false) or sim.room.def.has("puzzleCameraAnchorY") or sim.room.def.has("puzzleCameraAnchorX"): camera_float=target_camera()
    camera_velocity=Vector2.ZERO
    camera_kick=Vector2.ZERO
    kick_velocity=Vector2.ZERO
@@ -511,7 +511,7 @@ func burst(point,count,color,speed):
 func target_camera():
  var look=camera_lead if not reduced_motion else Vector2.ZERO
  var anchor_x=float(sim.room.def.get("puzzleCameraAnchorX",153))
- if world_data.world.get("workshop",false):
+ if world_data.world.get("workshop",false) or sim.room.def.get("campaignWorkshop",false):
   # Small exercises stay fully framed; larger authored rooms use the same smooth camera.
   return active_position+Vector2(clamp(actor.x-active_position.x-153+look.x,0,max(0,sim.room.w-320)),clamp(actor.y-active_position.y-sim.room.def.get("workshopCameraAnchorY",100)+look.y,0,max(0,sim.room.h-184)))
  if runtime!=null and sim.room.def.has("puzzleCameraAnchorY"):
@@ -723,6 +723,14 @@ func draw_front():
  for scene in scenes:
   var origin=scene.world_origin if runtime!=null else active_position
   if not Rect2(origin,Vector2(scene.room.w,scene.room.h)).intersects(view): continue
+  if world_data.world.has("campaignWorkshop") and scene.room.id==world_data.world.campaignWorkshop.entry:
+   var door=origin+Vector2(scene.room.spawn.x+scene.p.w/2.0,scene.room.spawn.y+scene.p.h)
+   line(door+Vector2(-10,0),door+Vector2(-10,-25),"#87c9dc",2)
+   line(door+Vector2(10,0),door+Vector2(10,-25),"#87c9dc",2)
+   line(door+Vector2(-10,-25),door+Vector2(10,-25),"#87c9dc",2)
+   line(door+Vector2(0,-13),door+Vector2(0,-20),"#d4f2f7",1)
+   line(door+Vector2(0,-20),door+Vector2(-3,-17),"#d4f2f7",1)
+   line(door+Vector2(0,-20),door+Vector2(3,-17),"#d4f2f7",1)
   if scene.room.def.has("workshopGoal"):
    var goal=scene.room.def.workshopGoal
    var flag=origin+Vector2(goal[0]+goal[2]/2.0,goal[1])

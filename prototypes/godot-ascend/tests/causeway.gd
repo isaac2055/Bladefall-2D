@@ -15,7 +15,7 @@ func run():
  var outskirts=app.world
  app.chapter_picker.item_selected.emit(2)
  var w=app.world
- check(app.chapter_number==3 and w.cores.size()==28,"chapter selector loads all 28 Causeway rooms")
+ check(app.chapter_number==3 and w.cores.size()==38,"chapter selector loads the original 28 Causeway rooms and ten approved puzzles")
  check(app.landscape.causeway and app.audio.music.stream==app.audio.stream(app.audio.manifest.chapters["3"].music,true),"Causeway art and existing score selected")
  app.switch_chapter(1)
  check(app.world==outskirts,"Outskirts state survives chapter switch")
@@ -27,7 +27,7 @@ func run():
   app.load_section(w.regions.find(section.room))
   var sim=app.sim
   for i in range(app.tape.size()): app._physics_process(1.0/60)
-  check(sim.exited and sim.deaths==0,"Watch finishes "+section.room)
+  check((app.CampaignWorkshop.goal_reached(sim) if sim.room.def.get("campaignWorkshop",false) else sim.exited) and sim.deaths==0,"Watch finishes "+section.room)
  app.watch=false
  w.enter("cl3-c3-brace",true)
  app.audio.room_changed(w.active())

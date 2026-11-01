@@ -1,6 +1,8 @@
-# Active workshop · 0.26.0
+# Active workshop · 0.32.0
 
 The active list contains **30 rooms, ten per biome**: Outskirts 1–8 and 25–26; Black Woods 9–13, 20–22 and 27–28; Causeway 14–19, 23–24 and 29–30. New rooms are appended so earlier indices stay stable. Stored Rise, Turned Span and Loaded Span remain retired. Older imports retain the six additions. **Play Six New Rooms.command** starts at room 25.
+
+The matching ten rooms also extend each base campaign world. They share the saved native workshop scene, layouts and recordings. Up at the final crossroads blue arch starts the sequence; Up at a solved flag continues. Return-item and stake requirements apply before advancing. Each room has an independent retry checkpoint and campaign completion is separate from practice.
 
 The design history below retains original release numbering; references to the cut introductory studies describe historical work.
 

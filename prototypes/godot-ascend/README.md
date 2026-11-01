@@ -1,6 +1,18 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.31.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.32.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Campaign puzzle extensions and section selector · 0.32.0
+
+Each base world now has its **ten approved workshop puzzles** after the final crossroads. At the blue arch beside the crossroads checkpoint, press **Up** to enter. Reach each gold flag with its required return items or stakes, then press **Up** to continue. The tenth flag returns to the crossroads. Every puzzle keeps its own retry checkpoint, normal movement, approved geometry, optional hints and selectable demonstrations. Campaign completion stays separate from Movement Workshop practice completion; restarting a world clears its campaign puzzle marks.
+
+**Esc → Explore a section** lists named playable sections in road order, followed by side routes, secrets and passage previews. Internal unnamed passage pieces remain in the world but are no longer selectable destinations. Menu positions map to stable room IDs; launcher room indices and recordings remain unchanged. Menu numbers now reflect the visible list, so older release notes below retain their historical raw room numbers. Select a room by its name.
+
+The editable puzzle source remains **levels/world4.tscn**: each base world reads the matching ten rooms from that saved scene. Editing an approved workshop layout therefore changes its practice and campaign versions together. Existing base-world native scenes are preserved, including local World 1 edits. The extensions use finish-to-next-room navigation so the enclosed approved layouts and return objectives stay intact; they do not add connecting platforming passages.
+
+The proposed Catch overhaul and three additional Fractured concepts are documented in [Catch revision and next three proposals](research/FRACTURED-CATCH-REVISION-AND-NEXT-THREE.md). They have **not** been built. Existing Fractured rooms, quests, voices, art and movement constants are unchanged.
+
+Verification: `tests/section_menu.gd` checks actual selection, ordering, valid practice spawns and restart behavior across all six campaign worlds plus the workshop. `tests/campaign_workshop.gd` checks preservation, all thirty live campaign clears, every demonstration, entrance/finish navigation, required pickups, independent retry/death resets, completion isolation and the unchanged user World 1 scene. Existing road, quest, workshop and Fractured regressions remain applicable. The signed 0.32.0 packaged app passed fifteen suites, including the 264-check standalone workshop suite; GPU captures cover all six section menus and the three campaign entrances.
 
 ## Three more Fractured Outskirts rooms · 0.31.0
 

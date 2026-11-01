@@ -5,6 +5,9 @@ const Loader = preload("res://scripts/room_loader.gd")
 const Landscape = preload("res://scripts/landscape.gd")
 const Controls = preload("res://scripts/controls.gd")
 const Sound = preload("res://scripts/audio.gd")
+const SectionMenu = preload("res://scripts/section_menu.gd")
+const CampaignWorkshop = preload("res://scripts/campaign_workshop.gd")
+var campaign_up_held=false
 var data
 var world
 const CHAPTERS=[1,2,3,21,22,23,4]
@@ -306,8 +309,8 @@ func create_interface():
  room_picker = OptionButton.new()
  room_picker.custom_minimum_size = Vector2(560,40)
  room_picker.focus_mode = Control.FOCUS_NONE
- for i in range(data.world.rooms.size()): room_picker.add_item("%02d · %s" % [i+1,data.world.rooms[i].get("name",data.world.rooms[i].id)])
- room_picker.item_selected.connect(func(index):load_section(index);set_paused(false))
+ rebuild_section_menu()
+ room_picker.item_selected.connect(func(index):load_section(room_picker.get_item_id(index));set_paused(false))
  column.add_child(room_picker)
  text(column,"OUTSKIRTS APPEARANCE",12,"#bba984")
  text(column,"Walking · Measured",14,"#a6b7bb")
@@ -423,7 +426,7 @@ func _unhandled_input(event):
  elif event.is_action_pressed("knight_retry") and not paused: retry_room()
  elif event is InputEventKey and event.pressed:
   if chapter_number==4 and event.physical_keycode==KEY_N: workshop_room(1)
-  elif event.physical_keycode==KEY_H and (chapter_number==4 or sim.room.def.get("puzzleStudy",false)): show_workshop_hint()
+  elif event.physical_keycode==KEY_H and (is_workshop_room() or sim.room.def.get("puzzleStudy",false)): show_workshop_hint()
   elif event.physical_keycode==KEY_F11: toggle_fullscreen()
   elif event.physical_keycode==KEY_M:
    if audio.levels.Music>0: mute_music_level=audio.levels.Music;audio.levels.Music=0.0
@@ -478,7 +481,7 @@ func toggle_watch():
    world.set_seam(sim.room.id,true)
    sim.room=world.parsed[sim.room.id]
   hold = 0
-  watch_button.text = "Watch solution" if chapter_number==4 else "Watch reference"
+  watch_button.text = "Watch solution" if is_workshop_room() else "Watch reference"
  else:
   watch = true
   load_section(current)
@@ -504,19 +507,20 @@ func load_section(index,smooth_join=false):
  audio.room_changed(sim)
  tape = []
  var recording=data.world.tapes.get(sim.room.id,[])
- if chapter_number==4: recording=workshop_recording()
+ if is_workshop_room(): recording=workshop_recording()
  for part in recording:
   for i in range(int(part[0])): tape.append(part[1])
  tape_frame = 0
  hold = 0
- room_picker.select(index)
+ select_section_menu()
  clear_other_room_hint()
- puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false)
- watch_button.text = "Take control" if watch else ("Watch solution" if chapter_number==4 else "Watch reference")
+ puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false) or sim.room.def.get("campaignWorkshop",false)
+ watch_button.text = "Take control" if watch else ("Watch solution" if is_workshop_room() else "Watch reference")
  title.text = data.world.name.to_upper()+" · "+(("SOLUTION" if chapter_number==4 else "REFERENCE") if watch else "ASCEND")
  room_banner.text = sim.room.name.to_upper()
  banner_time = 2.4
- if chapter_number==4:
+ workshop_demo_picker.visible=is_workshop_room()
+ if is_workshop_room():
   notice_time=0
   quest_label.text=bearing_caption()
 
@@ -534,7 +538,7 @@ func clear_other_room_hint():
   hint_room_id=""
 
 func show_workshop_hint():
- if chapter_number!=4 and not sim.room.def.get("puzzleStudy",false): return
+ if not is_workshop_room() and not sim.room.def.get("puzzleStudy",false): return
  hint_room_id=sim.room.id
  notice_label.text=sim.room.def.hint
  notice_time=12
@@ -551,27 +555,34 @@ func workshop_recording():
 
 const WorkshopPickups=preload("res://scripts/workshop_pickups.gd")
 
+func is_workshop_room():
+ return chapter_number==4 or sim.room.def.get("campaignWorkshop",false)
+
 func workshop_goal_reached():
- if chapter_number!=4 or not sim.p.onGround or sim.p.state in ["dead","respawn"]: return false
- if not WorkshopPickups.ready(sim.room.def,sim.ents): return false
- if sim.room.def.get("workshopRequireStakes",false) and sim.ents.any(func(e):return e.type=="stone" and not e.get("lit",false)): return false
- var goal=sim.room.def.workshopGoal
- return Rect2(goal[0],goal[1]-2,goal[2],goal[3]+4).has_point(Vector2(sim.p.x+sim.p.w/2.0,sim.p.y+sim.p.h))
+ return is_workshop_room() and CampaignWorkshop.goal_reached(sim)
 
 func tick_workshop():
  if not workshop_goal_reached(): return
+ if sim.room.def.get("campaignWorkshop",false):
+  if not world.campaign_completed.has(sim.room.id):
+   world.campaign_completed[sim.room.id]=true
+   rebuild_section_menu()
+   notice_label.text="Room complete · Up at the flag to continue"
+   notice_time=8
+   audio.effect("gem",.6)
+  return
  var first_clear=not workshop_completed.has(sim.room.id)
  var shard_clear=workshop_has_shard() and not workshop_shards.has(sim.room.id)
  if not first_clear and not shard_clear: return
  workshop_completed[sim.room.id]=true
  if shard_clear: workshop_shards[sim.room.id]=true
- room_picker.set_item_text(current,("◆ " if workshop_shards.has(sim.room.id) else "✓ ")+"%02d · %s"%[current+1,sim.room.name])
+ rebuild_section_menu()
  notice_label.text="All %d shards brought home · room complete"%WorkshopPickups.counts(sim.ents)[1] if sim.room.def.get("workshopRequireAllShards",false) else sim.room.def.get("workshopCompleteText","Shard brought home · room complete") if sim.room.def.get("workshopRequireShard",false) else ("Finish reached with the shard · optional detour complete" if shard_clear else "Finish reached")
  notice_time=8
  audio.effect("gem",.6)
 
 func workshop_has_shard():
- return chapter_number==4 and sim.ents.any(func(e):return e.type=="shard" and e.get("gone",false))
+ return is_workshop_room() and sim.ents.any(func(e):return e.type=="shard" and e.get("gone",false))
 func input_now(): return Controls.read()
 func decode(keys):
  var raw = {}
@@ -588,6 +599,7 @@ func _physics_process(_delta):
   if hold==0 and watch: next_section()
  else:
   var before = landscape.before_tick()
+  var live_input=input_now()
   if watch:
    if tape_frame<tape.size():
     sim.step(decode(tape[tape_frame]))
@@ -596,7 +608,7 @@ func _physics_process(_delta):
   elif journey_frame<journey.size():
    world.step(decode(journey[journey_frame]))
    journey_frame+=1
-  else: world.step(input_now())
+  else: world.step(live_input)
   var effects = landscape.after_tick(before)
   audio.events(effects)
   audio.tick(sim,1.0/60.0)
@@ -612,12 +624,13 @@ func _physics_process(_delta):
    landscape.sim=sim
    landscape.active_position=world.placements[world.active_id]
    landscape.snap_actor()
-   room_picker.select(current)
+   select_section_menu()
    clear_other_room_hint()
-   puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false)
+   puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false) or sim.room.def.get("campaignWorkshop",false)
    room_banner.text=sim.room.name.to_upper()
    banner_time=1.4
-  if chapter_number==4 and not watch: tick_workshop()
+  if is_workshop_room() and not watch: tick_workshop()
+  if not watch: campaign_travel(live_input)
   quest_label.text=bearing_caption()
 
  dash_label.text = "◆ DASH" if sim.p.dashes>0 else "◇ DASH"
@@ -630,6 +643,27 @@ func _physics_process(_delta):
  if chapter_number==4 and watch: status.text="DEMONSTRATION     ·     Esc → Take control to play     ·     R repeats the route"
  if capture_path!="" and ticks>30: measured_physics.append((Time.get_ticks_usec()-physics_start)/1000.0)
  if capture_path!="" and ticks==screenshot_after: capture.call_deferred()
+func campaign_travel(raw):
+ var pressed=raw.get("u",false)
+ var rising=pressed and not campaign_up_held
+ campaign_up_held=pressed
+ if not rising or not data.world.has("campaignWorkshop"): return
+ var route=data.world.campaignWorkshop
+ var target=""
+ if sim.room.id==route.entry:
+  var feet=Vector2(sim.p.x+sim.p.w/2.0,sim.p.y+sim.p.h)
+  var spawn=Vector2(sim.room.spawn.x+sim.p.w/2.0,sim.room.spawn.y+sim.p.h)
+  if sim.p.onGround and sim.p.state not in ["dead","respawn"] and feet.distance_to(spawn)<=24: target=route.rooms[0]
+ elif sim.room.def.get("campaignWorkshop",false) and workshop_goal_reached():
+  var index=route.rooms.find(sim.room.id)
+  target=route.rooms[index+1] if index+1<route.rooms.size() else route.entry
+ if target=="": return
+ watch=false
+ for i in range(data.world.rooms.size()):
+  if data.world.rooms[i].id==target:
+   load_section(i)
+   break
+
 func next_section():
  var sections = data.world.sections
  var index = -1
@@ -649,6 +683,22 @@ func next_section():
     if tape.is_empty() and watch: watch=false;sim.world_context=world;world.configure_live_core(sim);watch_button.text="Watch reference"
     return
  watch = false
+func select_section_menu():
+ var menu_index=room_picker.get_item_index(current)
+ room_picker.select(menu_index)
+ if menu_index<0: room_picker.text="Connecting passage"
+
+func rebuild_section_menu():
+ room_picker.clear()
+ for entry in SectionMenu.entries(data):
+  var id=data.world.rooms[entry.index].id
+  var mark=""
+  if chapter_number==4:
+   mark="◆ " if workshop_shards.has(id) else ("✓ " if workshop_completed.has(id) else "")
+  if world.campaign_completed.has(id): mark="✓ "
+  room_picker.add_item(mark+entry.label,entry.index)
+ select_section_menu()
+
 func capture():
  if capture_menu: set_paused(true)
  await RenderingServer.frame_post_draw
@@ -684,7 +734,19 @@ func close_app(code=0):
  get_tree().quit(code)
 
 func bearing_caption():
- if chapter_number==4:
+ if data.world.has("campaignWorkshop") and sim.room.id==data.world.campaignWorkshop.entry:
+  return "%d / %d PUZZLES COMPLETE · UP AT THE BLUE ARCH TO ENTER"%[world.campaign_completed.size(),data.world.campaignWorkshop.rooms.size()]
+ if is_workshop_room():
+  if sim.room.def.get("campaignWorkshop",false):
+   if workshop_goal_reached(): return "ROOM COMPLETE · UP AT THE FLAG TO CONTINUE"
+   if sim.room.def.get("workshopRequireAllShards",false):
+    var counts=WorkshopPickups.counts(sim.ents)
+    return "SHARDS %d / %d · COLLECT ALL AND RETURN TO THE FLAG"%[counts[0],counts[1]]
+   if sim.room.def.get("workshopRequireShard",false): return "SHARD FOUND · RETURN TO THE FLAG" if workshop_has_shard() else "BRING THE FAR SHARD BACK TO THE FLAG"
+   if sim.room.def.get("workshopRequireStakes",false):
+    var stakes=sim.ents.filter(func(e):return e.type=="stone")
+    return "STAKES %d / %d · REACH THE GOLD FLAG"%[stakes.filter(func(e):return e.get("lit",false)).size(),stakes.size()]
+   return "REACH THE GOLD FLAG · UP TO CONTINUE"
   if sim.room.def.get("workshopRequireStakes",false):
    var stakes=sim.ents.filter(func(e):return e.type=="stone")
    var lit_stakes=stakes.filter(func(e):return e.get("lit",false)).size()
@@ -736,7 +798,7 @@ func restart_world():
  if chapter_number==4:
   workshop_completed.clear()
   workshop_shards.clear()
-  for i in range(data.world.rooms.size()): room_picker.set_item_text(i,"%02d · %s"%[i+1,data.world.rooms[i].name])
+  rebuild_section_menu()
  world.restart()
  audio.restart_world()
  subtitle_panel.hide()
@@ -748,13 +810,13 @@ func restart_world():
  tape=[]
  tape_frame=0
  watch=false
- watch_button.text="Watch solution" if chapter_number==4 else "Watch reference"
+ watch_button.text="Watch solution" if is_workshop_room() else "Watch reference"
  title.text=data.world.name.to_upper()+" · ASCEND"
- current=0
  sim=world.active()
+ current=world.regions.find(world.active_id)
  landscape.runtime=world
  landscape.load_scene(sim)
- room_picker.select(0)
+ select_section_menu()
  room_banner.text=sim.room.name.to_upper()
  banner_time=2.4
  quest_label.text=bearing_caption()
@@ -794,11 +856,9 @@ func switch_chapter(number):
  tape=[]
  hold=0
  tape_frame=0
- watch_button.text="Watch solution" if number==4 else "Watch reference"
+ watch_button.text="Watch solution" if is_workshop_room() else "Watch reference"
  watch_button.disabled=false
- room_picker.clear()
- for i in range(data.world.rooms.size()): room_picker.add_item(("◆ " if number==4 and workshop_shards.has(data.world.rooms[i].id) else ("✓ " if number==4 and workshop_completed.has(data.world.rooms[i].id) else ""))+"%02d · %s" % [i+1,data.world.rooms[i].get("name",data.world.rooms[i].id)])
- room_picker.select(current)
+ rebuild_section_menu()
  chapter_picker.select(CHAPTERS.find(number))
  design_picker.disabled=number!=1
  npc_picker.disabled=number!=1
@@ -811,14 +871,15 @@ func switch_chapter(number):
  pause_description.text="A road through the old watch · Ascend" if number==1 else ("Moths, pale resin and the lantern tree · Ascend" if number==2 else "Iron, counterweights and the toll road · Ascend")
  if number>=21: pause_description.text="The remembered road · Fractured Ascend"
  clear_other_room_hint()
- puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false)
+ puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false) or sim.room.def.get("campaignWorkshop",false)
  workshop_controls.visible=number==4
- workshop_demo_picker.visible=number==4
+ workshop_demo_picker.visible=is_workshop_room()
  workshop_previous.visible=number==4 and data.world.rooms.size()>1
  workshop_next.visible=workshop_previous.visible
  if number==4:
   pause_description.text="%d movement rooms · N for next room · H for a hint"%data.world.rooms.size()
   workshop_recording()
+ elif is_workshop_room(): workshop_recording()
  room_banner.text=sim.room.name.to_upper()
  banner_time=2.4
  subtitle_panel.hide()

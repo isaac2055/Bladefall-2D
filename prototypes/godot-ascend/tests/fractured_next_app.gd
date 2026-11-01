@@ -43,7 +43,7 @@ func run():
  var native=load("res://levels/world21.tscn").instantiate();var base=A.baseline(d)
  check(native.get_node("Rooms").get_child_count()==44 and C.first_difference(base,native.compile_into(base))=="" and native.validate_data(native.compile_into(base)).is_empty(),"44 editable native rooms validate and compile exactly to source");native.free()
  app=Main.instantiate();app.test_mode=true;app.initial_world=21;root.add_child(app);await process_frame;app.set_physics_process(false)
- check(app.room_picker.item_count==44,"room selector exposes all three additions")
+ check(app.room_picker.item_count==31 and [41,42,43].all(func(i):return app.room_picker.get_item_index(i)>=0),"named section selector exposes all three additions")
  for i in range(41,44):
   app.world.restart();app.watch=false;app.load_section(i);var room=d.world.rooms[i];var deaths=app.sim.deaths
   check(app.puzzle_hint_button.visible and app.bearing_caption().contains(room.question),"optional hint and question: "+room.name)

@@ -14,7 +14,7 @@ func run():
  root.add_child(app)
  await process_frame
  app.set_physics_process(false)
- if not check(app.room_picker.item_count==app.data.world.rooms.size(),"all preloaded rooms available"): return
+ if not check(app.room_picker.item_count==app.SectionMenu.entries(app.data).size(),"all named playable sections available"): return
  Input.use_accumulated_input = false
  var before = app.sim.p.x
  var key = InputEventKey.new()

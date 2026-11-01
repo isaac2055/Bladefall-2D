@@ -39,7 +39,7 @@ func run():
  check(native.validate_data(native.compile_into(baseline)).is_empty(),"new native chapter validation")
  native.free()
  app=Main.instantiate();app.test_mode=true;app.initial_world=21;root.add_child(app);await process_frame;app.set_physics_process(false)
- check(app.room_picker.item_count==44,"chapter picker exposes all six appended rooms")
+ check(app.room_picker.item_count==31 and [38,39,40,41,42,43].all(func(i):return app.room_picker.get_item_index(i)>=0),"named section selector exposes all six appended rooms")
  for i in range(38,41):
   app.watch=false;app.load_section(i)
   var room=source.world.rooms[i];var deaths=app.sim.deaths
