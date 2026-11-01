@@ -15,7 +15,7 @@ func replay(i,parts,mode=""):
  if mode=="held_open":
   for e in c.ents:
    if e.type=="held":e.latchedOpen=true
- var finish=false;var supers=[];var advanced=false;var minimum_stamina=110.0
+ var finish=false;var supers=[];var waves=[];var dash_start={};var advanced=false;var minimum_stamina=110.0
  for part in parts:
   for f in range(int(part[0])):
    if mode=="fixed_stone":
@@ -23,11 +23,14 @@ func replay(i,parts,mode=""):
      if e.type=="slide":e.x=e.ox;e.y=e.oy;e.moving=false
    c.step(R.decode(part[1]));finish=finish or R.at_goal(c)
    minimum_stamina=min(minimum_stamina,c.p.stamina)
-   if "super" in c.events:supers.append([c.p.vx,c.p.vy])
-   advanced=advanced or ["hyper","ultra","wallbounce","late-wallbounce","late-reverse"].any(func(e):return e in c.events)
+   if "dash-start" in c.events:dash_start={"air":not c.p.onGround,"aim":c.p.pressAim.duplicate()}
+   if "super" in c.events:
+    supers.append([c.p.vx,c.p.vy])
+    if abs(c.p.vx)==325 and c.p.vy==-52.5 and dash_start.get("air",false) and dash_start.aim.x!=0 and dash_start.aim.y>0 and c.p.dashes==1:waves.append(c.frame)
+   advanced=advanced or ["hyper","wallbounce","late-wallbounce","late-reverse"].any(func(e):return e in c.events)
    if c.deaths>0:break
   if c.deaths>0:break
- return {"core":c,"finish":finish,"supers":supers,"advanced":advanced,"minimum_stamina":minimum_stamina}
+ return {"core":c,"finish":finish,"supers":supers,"advanced":advanced,"minimum_stamina":minimum_stamina,"waves":waves}
 func _initialize():
  data=JSON.parse_string(FileAccess.get_file_as_string("res://data/world21.json"))
  for r in data.world.rooms:
@@ -35,7 +38,7 @@ func _initialize():
  for i in range(38,41):
   var q=replay(i,tape(i))
   check(q.finish and q.core.deaths==0 and not q.advanced and q.minimum_stamina>=0,"deathless taught-kit clear: "+data.world.rooms[i].name)
-  check(data.world.rooms[i].dashes==1 and q.supers.all(func(s):return abs(s[0])==260 and s[1]==-105),"one dash, ordinary supers and no hyper launch: "+str(i))
+  check(data.world.rooms[i].dashes==1 and (q.waves.size()==1 and q.supers.all(func(s):return abs(s[0])==325 and s[1]==-52.5) if i!=39 else q.waves.is_empty()),"one dash; required wavedash in 1/3, unchanged ordinary carriage route: "+str(i))
  var prepared=replay(38,tape(38).slice(0,10)).core
  check(entity(prepared,"slide").x==144 and entity(prepared,"slide").y==248 and prepared.p.onGround,"lowered stone creates the stable floor beneath the roof")
  check(not replay(38,tape(38),"fixed_stone").finish,"original stone position cannot execute the prepared route")
@@ -69,11 +72,11 @@ func _initialize():
   var actual=data.world.rooms[40];data.world.rooms[40]=open_bypass.room
   var former_door=replay(40,open_bypass.tape,"held_open");data.world.rooms[40]=actual
   check(former_door.finish and former_door.core.deaths==0 and not revised_door.finish,"reproduced open-door shortcut rejected: "+open_bypass.label)
- for pair in [[38,11],[38,12],[39,9],[39,10],[40,30],[40,31]]:
+ for pair in [[38,14],[38,15],[38,16],[39,9],[39,10],[40,33],[40,34],[40,35]]:
   var window=[]
   for dt in range(-8,9):
    var varied=tape(pair[0]).duplicate(true);varied[pair[1]][0]+=dt
    var q=replay(pair[0],varied)
-   if q.finish and q.core.deaths==0 and not q.advanced:window.append(dt)
-  check(window.size()>=5,"nearby clear timings "+str(pair)+": "+str(window))
+   if q.finish and q.core.deaths==0 and not q.advanced and (pair[0]==39 or q.waves.size()==1):window.append(dt)
+  check(window.size()>=(3 if pair[1] in [14,33] else 5),"nearby clear timings "+str(pair)+": "+str(window))
  print("FRACTURED PUZZLES ","FAILED" if failed else "PASSED");quit(1 if failed else 0)

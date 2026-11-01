@@ -1,6 +1,16 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.29.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.30.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Fractured wavedash finishes · 0.30.0
+
+**The Lower Runway** and **The Door You Need Shut** now finish with a wavedash. Keep their original preparation, then reach the small landing: hop left, dash down-right onto it and jump as the dash returns. Carry the speed across the gap and use the recovered dash upward-right to the exit. **The Other Side of the Carriage** keeps its accepted layout and recording.
+
+Use **Play Fractured Puzzle Rooms.command**, or chapter 21, rooms **39–41**. **H** explains the wavedash; **Esc → Watch reference** demonstrates it. The camera shows the far landing before the final commitment. Each room retains its own checkpoint and retry. The gap and overhead clearance replace the old super shortcuts through ordinary geometry; no action counter or modified physics decides completion.
+
+The full road now takes **10,358 frames**, with zero deaths. The original 7,907-frame chapter prefix is preserved. Room count remains **41**, with **17 required challenges**; the workshop remains **30**. The first and third rooms are wider, shifting the carriage and later sections along the road without changing the carriage's local layout. Tests protect all 39 untouched definitions and their recordings, reproduce five former shortcuts, and check 3,600 grounded-hyper and ordinary jump/dash alternatives from the small landings. Bounded searches supplement those checks; they do not prove every possible alternative impossible.
+
+[Three further Fractured room proposals](research/NEXT-THREE-FRACTURED-PROPOSALS.md) are written for approval. None has been built.
 
 ## Three Fractured Outskirts puzzles · 0.29.0
 

@@ -1,5 +1,7 @@
 # Three Fractured Outskirts puzzle proposals
 
+**0.30.0 update:** the user accepted room 2 unchanged and explicitly requested wavedash finishes in rooms 1 and 3. The original 0.29.0 super-based intent and evidence below are historical; the final section records the superseding wavedash revision. The next three concepts are [proposals only](NEXT-THREE-FRACTURED-PROPOSALS.md).
+
 2026-10-31. **Approved and implemented in 0.29.0.** The original proposals below describe the design intent. All three now extend the Fractured Outskirts road after Ring It from the Other Side and before The Broken Gate crossroads, preserving earlier room geometry and individual checkpoints. Implementation evidence and differences follow the original proposals.
 
 Basis: [Celeste 1B research](FRACTURED-OUTSKIRTS-CELESTE-1B.md), world-21 definitions, the existing workshop studies, and `scripts/core.gd`. The routes below began as spatial hypotheses; the implementation section records their tested layouts. All use existing mechanics, one normal dash and normal stamina. Supers are already taught by this chapter; no new mandatory hypers, wavedashes or wallbounces are introduced.
@@ -88,3 +90,17 @@ The broader flower regression initially failed two assertions because it placed 
 Run the new suites with the pinned Godot binary, `--headless --path prototypes/godot-ascend --script tests/<name>.gd`. The search accepts an optional report path after `--`. Packaged verification uses external test scripts against the app's actual PCK because tests are excluded from exports.
 
 Human playtesting remains necessary for route readability and enjoyment. Passing routes and bounded shortcut checks do not establish that every alternative has been eliminated.
+
+## Wavedash revision · 0.30.0
+
+The approved change strengthens Lower Runway and Door You Need Shut while preserving their stone/door preparation. Each now leads to a small landing and a wider final gap. A diagonal downward **air** dash lands on that surface, restores the charge and supplies the low 325 px/s jump. A later upward-right dash completes the gap. Hints and Watch references demonstrate the complete route. The overhead clearance and gap distance make the former supers and the previously accepted non-wavedash late-air-dash route insufficient. Completion remains ordinary physical traversal; no runtime wavedash flag, secret input check or movement-constant change was introduced.
+
+The two rooms grow by 16 tiles each. Their starts remain at (306,-190) and move to (422,-211), respectively; the unchanged carriage moves to (370,-190), and the crossroads to (494,-200). The other 39 room definitions and recordings remain exact. All checkpoints remain separate. The full chapter's 7,907-frame original prefix is unchanged; the complete revised road is 10,358 frames. Native/source parity remains exact.
+
+`tests/fractured_puzzles.gd` now checks an airborne downward-diagonal dash, recovered charge and the resulting low fast jump in both revised references, plus nearby landing/jump/exit timings. The carriage retains its ordinary route. `tests/wavedash_finishes.gd` preserves the other 39 definitions and their tapes, reproduces the two 0.29.0 super clears and three grounded-hyper shortcuts from the first wavedash draft, then rejects those same tapes in the final geometry. It also checks 1,800 grounded-hyper and ordinary jump/dash attempts per landing across every supported integer starting position. Its fixtures preserve the actual earlier successful layouts.
+
+`tests/fractured_puzzle_search.gd` includes fresh positive controls after the wavedash and negative searches that reject the actual airborne downward-diagonal-dash-to-low-jump sequence, from both the prepared approach and the small landing. Other air dashes and grounded hypers remain available to those searches. It also retains the original stone, open-door and carriage counterfactuals. Each search has a 24,000-branch budget, width 60 and depth 50; negative results remain bounded evidence. Existing application checks cover the updated Watch routes, retries, deaths and checkpoints. They also verify that each distant finish is visible from the pre-wavedash landing. Actual app captures were inspected at preparation, landing, launch and finish.
+
+No additional rooms, quests, voices or art were built in this revision. The three further proposals require approval before implementation.
+
+Final validation used the signed 0.30.0 app: 13 packaged suites passed, including the 264-check workshop regression. Eight final search cases for the revised rooms passed with the stronger wavedash-specific filter. A positive and negative comparison against the previous search helper preserved its default results, exact input tape and node counts. The final camera/app road check completed all 10,358 frames with zero deaths.

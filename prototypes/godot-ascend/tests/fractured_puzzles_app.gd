@@ -28,7 +28,7 @@ func run():
  for id in prior.tapes:check(Codec.fingerprint(source.world.tapes[id])==prior.tapes[id],"old recording unchanged: "+id)
  for s in prior.sections:
   var now=source.world.sections.filter(func(q):return q.room==s.room)[0]
-  check(now==s if s.room!="cl21-atlas-crossroads" else now.x==462 and now.y==-200 and now.fire==s.fire,"prior placement preserved or junction moved after new rooms: "+s.room)
+  check(now==s if s.room!="cl21-atlas-crossroads" else now.x==494 and now.y==-200 and now.fire==s.fire,"prior placement preserved or junction moved after new rooms: "+s.room)
  var meta=source.world.duplicate(true)
  for key in ["rooms","tapes","sections","requiredMainRooms"]:meta.erase(key)
  check(Codec.fingerprint(meta)==prior.worldMetadata,"quests, optional spaces, rewards and other chapter metadata preserved")
@@ -46,7 +46,15 @@ func run():
   if i>38:check(app.notice_label.text=="" and app.notice_time==0,"previous-room hint cleared on room selection")
   check(app.puzzle_hint_button.visible and app.bearing_caption().contains(room.question),"question appears without revealing the full route: "+room.name)
   app.show_workshop_hint();check(app.notice_label.text==room.hint,"optional detailed hint: "+room.name)
-  play(room.puzzleRoutes[0].tape)
+  if i!=39:
+   var pad_at=13 if i==38 else 32
+   play(room.puzzleRoutes[0].tape.slice(0,pad_at))
+   app.landscape.snap_actor()
+   var camera=app.landscape.target_camera()
+   var landing=app.world.placements[room.id].x+room.puzzleGoal[0]
+   check(landing>camera.x and landing<camera.x+312,"final landing visible before the wavedash: "+room.name)
+   play(room.puzzleRoutes[0].tape.slice(pad_at))
+  else:play(room.puzzleRoutes[0].tape)
   check(goal(app.sim) and app.sim.deaths==deaths,"actual live controller clear: "+room.name)
   check(app.world.checkpoint_id==room.id,"separate room checkpoint: "+room.name)
   app.retry_room();play([[60,""]]);check(restored(app.sim),"retry restores this puzzle: "+room.name)
