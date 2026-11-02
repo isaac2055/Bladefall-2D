@@ -11,6 +11,7 @@ var glow_texture: Texture2D
 var room_material={}
 var felix_glow=1.0
 var gift_pulse=0.0
+var riding=false
 
 # Where the bedroom's furniture stands, in world pixels. Rooms are open air in front of it.
 const DOOR=Rect2(150,8,74,136)
@@ -20,12 +21,17 @@ const PILLOW=Vector2(1500,-58)
 const SHELF=Rect2(1330,-330,560,250)
 const DESK=Rect2(1960,-420,520,190)
 const DRESSER=Rect2(2580,-500,930,230)
-const WINDOW=Rect2(3500,-1050,280,250)
-const SILL_Y=-800.0
-const MOON=Vector2(3650,-975)
-const WARDROBE_X=26000.0
+# The window, sill and moon sit behind the windowsill room wherever the world puts it.
+var WINDOW=Rect2()
+var SILL_Y=0.0
+var MOON=Vector2()
+const WARDROBE_X=4500.0
 
 func _ready():
+ var sill=runtime.placements.get("cl1-atlas-crossroads",Vector2.ZERO)
+ SILL_Y=sill.y+80
+ WINDOW=Rect2(sill.x+40,SILL_Y-230,240,230)
+ MOON=Vector2(sill.x+200,SILL_Y-170)
  super._ready()
  wind.amount=18
  var dust=wind.process_material as ParticleProcessMaterial
@@ -242,7 +248,7 @@ func _draw():
  if view.intersects(DRESSER.grow(30)): dresser()
  if view.intersects(WINDOW.grow(120)): window()
  if view.intersects(Rect2(3840,-720,640,400)): curtains()
- if view.end.x>WARDROBE_X: wardrobe(view)
+ if view.end.x>WARDROBE_X and view.position.x<WINDOW.position.x-40: wardrobe(view)
  if view.intersects(Rect2(BED.position-Vector2(0,100),BED.size+Vector2(40,250))): bed()
  for point in fires:
   if view.has_point(point): crayon_star(point,runtime.checkpoint_id!="" and placements.get(runtime.checkpoint_id,Vector2(-9e9,0)).distance_to(point)<400)
@@ -431,13 +437,16 @@ func curtains():
 
 func wardrobe(view):
  # Inside the top of the wardrobe: dark panels, a rail of hanging clothes, boxes of old toys.
- box(view.position.x,view.position.y,view.size.x,view.size.y,Color("#20182a"))
+ var left=max(view.position.x,WARDROBE_X)
+ var right=min(view.end.x,WINDOW.position.x-40)
+ box(left,max(view.position.y,-712),right-left,view.end.y-max(view.position.y,-712),Color("#20182a"))
  for gx in range(floori(view.position.x/34),ceili(view.end.x/34)+1):
   box(gx*34,view.position.y,1.5,view.size.y,"#2c2236")
- var rail=-930.0
- box(view.position.x,rail,view.size.x,3,"#6d6070")
+ var rail=-640.0
+ box(left,rail,right-left,3,"#6d6070")
  for gx in range(floori(view.position.x/46),ceili(view.end.x/46)+1):
   var x=gx*46+hash_at(gx,1,9)%12
+  if x<left or x>right: continue
   var col=[Color("#3b3550"),Color("#4a3340"),Color("#2f4048"),Color("#463c2c")][hash_at(gx,2,9)%4]
   var length=70+hash_at(gx,3,9)%60
   line(Vector2(x,rail),Vector2(x,rail+6),"#8a7f8c",1)
@@ -445,6 +454,7 @@ func wardrobe(view):
   box(x-14,rail+6,28,3,col.lightened(.15))
  for gx in range(floori(view.position.x/90),ceili(view.end.x/90)+1):
   var b=Rect2(gx*90+hash_at(gx,4,9)%30,-700-hash_at(gx,5,9)%30,50+hash_at(gx,6,9)%20,36)
+  if b.position.x<left or b.end.x>right: continue
   box(b.position.x,b.position.y,b.size.x,b.size.y,"#3a2e26")
   box(b.position.x,b.position.y,b.size.x,2,"#56443a")
 
@@ -841,6 +851,12 @@ func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
    var hand=shoulder+Vector2(side*2.2,1.8+sin(cycle+side)*(.8 if walking_now else .2))
    if p.state=="climb" and side==p.facing: hand=shoulder+Vector2(side*2.4,-2.2+sin(clock*10)*(.6 if abs(p.vy)>1 else 0))
    line(shoulder,hand,"#fff7e2",.8)
+ # Riding the boy's basket up and out of a finished room.
+ if riding:
+  line(Vector2(x+4,y+9),Vector2(x+4,y-400),"#d9d2c0",.6)
+  box(x-2,y+9,12,5,"#3f8a5a")
+  for c in range(0,12,3): box(x-2+c,y+10,1,4,"#2d6744")
+  box(x-2,y+9,12,1,"#66b07e")
  # The light itself.
  ink.draw_set_transform_matrix(paint_transform*Transform2D(0,stretch,0,center))
  var pulse=sin(clock*2.2)*.3+gift_pulse*2.0
@@ -868,3 +884,8 @@ func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
  if p.carrying!=null:
   for side in [-1,1]: line(center+Vector2(side*3,-1),Vector2(x+4+side*2.5,y-3),"#fff7e2",.6)
   nightlight(Vector2(x,y-11))
+
+# The basket ride leaves the room's frame, so the camera follows Felix up and along the shelf.
+func target_camera():
+ if riding: return Vector2(actor.x-153,actor.y-100)
+ return super.target_camera()

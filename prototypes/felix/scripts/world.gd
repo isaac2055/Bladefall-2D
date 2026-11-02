@@ -52,6 +52,7 @@ func _init(source):
  # The approved workshop rooms become the top of the wardrobe, between the curtain and the sill.
  var workshop_source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"))
  CampaignWorkshop.append(data,preload("res://scripts/authoring_data.gd").read(workshop_source))
+ join_wardrobe(data)
  var sections=data.world.sections.duplicate(true)
  for q in data.world.quests: sections.append_array(q.sections)
  for q in data.world.get("secrets",[]): sections.append_array(q.sections)
@@ -123,6 +124,90 @@ func strip_to_road(source):
   d.erase("sideQuest")
   if d.has("doors"): d.doors=d.doors.filter(func(door): return str(door.get("to","")) not in cut_quests)
  source.world.passages=source.world.get("passages",[]).filter(func(s): return not cut_rooms.has(s.room))
+# One walkable world: from the curtain room's top-left nook, climb the overlook stair onto a
+# walkway along the top of the wardrobe. Each puzzle room hangs below it and is entered by
+# dropping through a hatch onto its authored start. The boy's basket lifts Felix out from
+# the drawing at its finish onto the next stretch of walkway. The windowsill ends the row.
+const SHELF_TOP=-89
+const ROOM_TOP=-83
+const ROOM_GAP=6
+var wardrobe_walks=[]
+var wardrobe_landing={}
+func put_section(source,id,x,y,fire=null):
+ for section in source.world.sections:
+  if section.room==id:
+   section.x=x
+   section.y=y
+   section.fire=fire
+   return
+ source.world.sections.append({"room":id,"x":x,"y":y,"fire":fire})
+func set_glyph(map,c,r,ch):
+ var row=map[r]
+ map[r]=row.substr(0,c)+ch+row.substr(c+1)
+func hatch_column(def):
+ var map=def.map
+ var sc=-1
+ var sr=-1
+ for r in range(map.size()):
+  var at=map[r].find("P")
+  if at>=0:
+   sc=at
+   sr=r
+ for offset in [0,1,-1,2,-2,3,-3,4,-4]:
+  var c=sc+offset
+  if c<1 or c+1>map[0].length()-2: continue
+  var clear=true
+  for r in range(1,sr+1):
+   for k in [c,c+1]:
+    if not map[r][k] in [".","P"]: clear=false
+  if clear and map[sr+1][c]=="#" and map[sr+1][c+1]=="#": return c
+ return sc
+func walk_room(id,cols,hole,barrier,open_right):
+ var map=[]
+ for r in range(6):
+  var row=""
+  for c in range(cols):
+   var ch="."
+   if r==0 or r==5: ch="#"
+   if r==5 and hole>=0 and (c==hole or c==hole+1): ch="."
+   if r in [1,2,3,4] and c==cols-1 and barrier and not open_right: ch="#"
+   row+=ch
+  map.append(row)
+ set_glyph(map,2,4,"P")
+ return {"id":id,"name":"The Top of the Wardrobe","cols":cols,"rows":6,"map":map,"exit":"right","lock":["strike","parry","portal"],"palette":"outskirts","wardrobeWalk":true}
+func join_wardrobe(source):
+ var rooms=source.world.campaignWorkshop.rooms
+ var defs={}
+ for d in source.world.rooms: defs[d.id]=d
+ # Codex's overlook stair already climbs from the curtain room's nook; open its side onto the walkway.
+ var stair=defs["godot-overlook-stair"]
+ for r in [22,23,24,25]: set_glyph(stair.map,7,r,".")
+ var x=563
+ var start=481
+ for i in range(rooms.size()):
+  var def=defs[rooms[i]]
+  var hc=hatch_column(def)
+  for k in [hc,hc+1]: set_glyph(def.map,k,0,".")
+  put_section(source,rooms[i],x,ROOM_TOP,null)
+  var hole=x+hc
+  var finish=hole+2
+  var walk="felix-walk-%d"%i
+  source.world.rooms.append(walk_room(walk,finish-start+1,hole-start,true,false))
+  put_section(source,walk,start,SHELF_TOP,{"c":2,"r":4})
+  wardrobe_walks.append(walk)
+  start=finish+1
+  x+=int(def.get("cols",40))+ROOM_GAP
+ # The windowsill at the end of the row; its doorway now faces the walkway.
+ var sill=defs["cl1-atlas-crossroads"]
+ for r in [6,7,8,9]:
+  set_glyph(sill.map,0,r,".")
+  set_glyph(sill.map,39,r,"#")
+ var last="felix-walk-%d"%rooms.size()
+ source.world.rooms.append(walk_room(last,x-start,-1,false,true))
+ put_section(source,last,start,SHELF_TOP,{"c":2,"r":4})
+ wardrobe_walks.append(last)
+ put_section(source,"cl1-atlas-crossroads",x,-94,{"c":5,"r":9})
+ for i in range(rooms.size()): wardrobe_landing[rooms[i]]=wardrobe_walks[i+1]
 func restart():
  campaign_completed.clear()
  for old in cores.values(): old.world_context=null

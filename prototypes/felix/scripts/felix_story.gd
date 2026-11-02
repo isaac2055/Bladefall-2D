@@ -36,7 +36,7 @@ var pulse_request=0.0
 var end_time=0.0
 var deaths_at_end=0
 var crayons=0
-var travel=""
+var ride=null           # the basket lifting Felix out of a finished wardrobe room
 var wardrobe_rooms=[]
 
 func _init(world):
@@ -52,7 +52,7 @@ func skip_prologue():
  boy.asleep=true
  boy.position=PILLOW
 
-func blocking(): return freeze>0 or phase in ["black","ending","end"]
+func blocking(): return freeze>0 or ride!=null or phase in ["black","ending","end"]
 
 func say(text_value,anchor="boy",seconds=2.6):
  # One voice at a time: a new line replaces whatever was still showing or waiting.
@@ -162,16 +162,15 @@ func tick(world,sim,delta):
   drawing.taken=true
   pulse_request=1.0
   show_hint("found: the first drawing of you",4.0)
- # Past the curtain room's last flap: up into the top of the wardrobe.
- if room==CURTAIN and sim.p.onGround and sim.p.x<64 and sim.p.y<48 and travel=="":
-  travel=wardrobe_rooms[0]
- # Each wardrobe room ends at a drawing; the last one leads out to the windowsill.
+ # Each wardrobe room ends at a drawing on a string: the basket lifts Felix out to the walkway.
  var index=wardrobe_rooms.find(room)
- if index>=0 and travel=="" and preload("res://scripts/campaign_workshop.gd").goal_reached(sim):
+ if index>=0 and ride==null and preload("res://scripts/campaign_workshop.gd").goal_reached(sim):
   world.campaign_completed[room]=true
   pulse_request=.8
-  travel=wardrobe_rooms[index+1] if index+1<wardrobe_rooms.size() else SILL
- if index==0 and not done.has("wardrobe"):
+  var landing=world.wardrobe_landing[room]
+  var spawn=world.parsed[landing].spawn
+  ride={"room":room,"landing":landing,"from":felix,"to":world.placements[landing]+Vector2(spawn.x,spawn.y),"t":0.0}
+ if room=="felix-walk-0" and not done.has("wardrobe"):
   done.wardrobe=true
   show_hint("the top of the wardrobe",3.5)
  if index>=0 and not done.has("objective:"+room):
@@ -184,6 +183,20 @@ func tick(world,sim,delta):
   say("eww, SLIME!","boy" if boy.pose!="bed" and boy.visible else "above",2.2)
  if room==SILL and sim.p.onGround and not done.has("ending"):
   begin_ending(world,sim)
+
+# Up the string to the walkway, then along it to the next stretch. Returns Felix's
+# top-left in world pixels, or null once the ride is over.
+func ride_point(delta):
+ ride.t+=delta
+ var top=Vector2(ride.from.x,ride.to.y)
+ var rise=max(1.0,(ride.from.y-top.y)/90.0)
+ var across=max(.4,abs(ride.to.x-top.x)/140.0)
+ if ride.t<.35: return ride.from
+ var t=ride.t-.35
+ if t<rise: return ride.from.lerp(top,ease(t/rise,-1.6))
+ t-=rise
+ if t<across: return top.lerp(ride.to,ease(t/across,-1.6))
+ return null
 
 func walk_boy(target,then):
  boy.target=target

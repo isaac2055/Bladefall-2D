@@ -27,10 +27,20 @@ R retries the room, Esc pauses.
   Behind the play rooms: the hallway door with light under it, the bed and the sleeping boy,
   bookshelves, the desk, the dresser, and the window with the moon.
 - **The top of the wardrobe:** Codex's ten approved Outskirts workshop rooms (from `levels/world4.tscn`)
-  are a mandatory stretch after the curtain room. Each ends at one of the boy's drawings; reaching it
-  fades to the next room, and the tenth opens onto the windowsill (the old crossroads), where the
-  naming happens. Their geometry and routes are unchanged; all ten clear with zero deaths on their
-  stored routes (`--reference workshop-relay --chain --report`).
+  are joined into the world after the curtain room. Codex's overlook stair climbs from the curtain
+  room's nook onto a walkway along the top of the wardrobe (`join_wardrobe` in `scripts/world.gd`).
+  - **Entering a room:** each room hangs below the walkway. You drop through a two-tile hatch cut
+    in its ceiling and land on its authored start.
+  - **Leaving a room:** reaching its drawing, with the room's finish rules met, lowers the boy's
+    basket. It lifts Felix up and along the walkway past a wall, so a room cannot be skipped by
+    walking over it.
+  - **The end:** after the tenth room the walkway leads to the windowsill (the old Upper Watch room),
+    where the naming happens.
+  - **Changed in the rooms:** only the entry hatch. Spawns, routes, devices and finish rules are as
+    approved.
+  - **Checked:** `--reference workshop-relay --chain --report` walks every stretch of walkway, drops
+    into every room, plays its stored route, rides every basket and reaches the naming with zero
+    deaths.
 - **Slime:** the white flowers are now spilled green slime puddles. The patches and the slowing are the
   same (run 55%, jump 67%, dash 60% for 3 seconds). Felix turns green and drips while it lasts, and the
   first touch after the legs gift gets "eww, SLIME!".

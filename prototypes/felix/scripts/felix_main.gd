@@ -219,10 +219,21 @@ func scripted_input():
 
 func _physics_process(_delta):
  ticks+=1
- if report and ticks%300==0: print("AT ",world.active_id," p=",Vector2(sim.p.x,sim.p.y)," state=",sim.p.state," deaths=",sim.deaths," tape=",script_frame,"/",script_tape.size()," phase=",story.phase)
+ if report and ticks%300==0: print("FPS ",Engine.get_frames_per_second()," AT ",world.active_id," p=",Vector2(sim.p.x,sim.p.y)," state=",sim.p.state," deaths=",sim.deaths," tape=",script_frame,"/",script_tape.size()," phase=",story.phase)
  if capture_path!="" and ticks==capture_after: capture.call_deferred()
  if paused: return
  if story.phase=="black" and not script_tape.is_empty() and ticks==40: begin_play()
+ if chain and pending_room!="" and script_frame>=script_tape.size():
+  var spawn=world.parsed[pending_room].spawn
+  print("LANDED ",pending_room," at ",Vector2(sim.p.x,sim.p.y)," spawn ",Vector2(spawn.x,spawn.y)," state=",sim.p.state," deaths=",sim.deaths)
+  world.enter(pending_room,true)
+  sim=world.active()
+  view.load_scene(sim,true)
+  script_tape=[]
+  script_frame=0
+  for part in world.data.world.tapes.get(pending_room,[]):
+   for i in range(int(part[0])): script_tape.append(part[1])
+  pending_room=""
  if not story.blocking():
   var before=view.before_tick()
   var raw=scripted_input()
@@ -234,6 +245,12 @@ func _physics_process(_delta):
   world.notices.clear()
   if world.update_region():
    sim=world.active()
+   if chain and walking_in and sim.room.def.get("campaignWorkshop",false):
+    walking_in=false
+    pending_room=sim.room.id
+    script_tape=[]
+    for i in range(240): script_tape.append("")
+    script_frame=0
    view.sim=sim
    view.active_position=world.placements[world.active_id]
    view.snap_actor()
@@ -247,9 +264,23 @@ func _physics_process(_delta):
  else:
   view.previous_actor=view.current_actor
  story.tick(world,sim,1.0/60.0)
- if story.travel!="":
-  go_to(story.travel)
-  story.travel=""
+ if story.ride!=null:
+  var point=story.ride_point(1.0/60.0)
+  if point==null:
+   var landing=story.ride.landing
+   story.ride=null
+   view.riding=false
+   world.enter(landing,true)
+   sim=world.active()
+   view.sim=sim
+   view.active_position=world.placements[landing]
+   view.snap_actor()
+   if report: print("ROOM ",landing," (basket) frame=",ticks)
+   if chain: walk_into_next()
+  else:
+   view.riding=true
+   view.previous_actor=view.current_actor
+   view.current_actor=point
  if story.pulse_request>0:
   view.gift_pulse=story.pulse_request
   view.burst(view.current_actor+Vector2(4,5),18,Color("#fff4d6"),26)
@@ -324,8 +355,20 @@ func go_to(id):
   for part in world.data.world.tapes.get(id,[]):
    for i in range(int(part[0])): script_tape.append(part[1])
 
+# Route checks: walk from the landing to the next hatch and drop in, then play that room's
+# stored route from its authored start.
+var walking_in=false
+var pending_room=""
+func walk_into_next():
+ walking_in=true
+ script_tape=[]
+ script_frame=0
+ for i in range(900): script_tape.append("r")
+
 func load_script(name):
  var plans={
+  "left":[[40,""],[120,"l"]],
+  "stair":[[40,""],[100,"l"],[1,"j"],[16,"j"],[40,""],[1,"j"],[16,"j"],[40,""],[1,"j"],[16,"j"],[40,""],[700,"r"],[200,""]],
   "prologue":[[60,""],[150,"r"],[200,""],[30,"r"],[1,"rj"],[14,"rj"],[40,"r"],[210,""],[60,"r"],[200,""]],
  }
  for part in plans.get(name,[]):
@@ -342,6 +385,6 @@ func play_reference(room_id):
   for i in range(int(part[0])): script_tape.append(part[1])
 
 func capture():
- await RenderingServer.frame_post_draw
+ for i in range(3): await get_tree().process_frame
  get_viewport().get_texture().get_image().save_png(capture_path)
  get_tree().quit()
