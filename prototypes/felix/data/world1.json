@@ -1,0 +1,5439 @@
+{
+  "sources": {
+    "bladefall-pcore.js": "ced41090f3e9b56ae660b7035aba7d635337d9a8c7c93251d0846776b66b2fc4",
+    "bladefall-pcore-combat.js": "af94f9287344104bf39de174ca48a0e4c562d4db7d2a90825c776af2f0d39f56",
+    "bladefall-pcore-foes.js": "ba8d86f09dcc286f12e35cb7c916b317b86e503e6e628c0aee7e3b361e97b3f5",
+    "bladefall-pcore-portals.js": "91a6f18f401d5e227a21cbcd2a886b66a6893c1fa3a6ca37defd850a3d219a04",
+    "bladefall-pcore-dev-beam.js": "055c49c55cd007f3064384805672ed39ddc9c54b206e508920621d8e3e5f1be7",
+    "bladefall-pcore-dev-citadel.js": "060cbcab64ebc11e08bff7aeee6342dbdcc9ec3f5a4ed8b963555f78da7483fe",
+    "bladefall-pcore-dev-core-checkpoints.js": "b045e97c55c652d59f52a9ccc864eb78c79a8fda04c34714b034ea706bace3f2",
+    "bladefall-pcore-dev-ember.js": "ae4d44a2fb82306ffdde2ff09670c629d3fc08debc640920f7f2fa6daf54b0b2",
+    "bladefall-pcore-dev-fault.js": "52074477e34debbc8109089c7351ce863b15f54e752b7085dea6b530648e7936",
+    "bladefall-pcore-dev-finale.js": "a2d985c81fa5dc55f496b5de2efd2d3bdcf7c56d8e13ffcbe5b110465f78c06b",
+    "bladefall-pcore-dev-foundry.js": "ec9d5e32beaa0711be0ee080396204874b05789051938fe0f8a6e6ce5c1cb56f",
+    "bladefall-pcore-dev-frost.js": "76e8c10101774e51defb1f4ec052f3f05c93c5bec0f5e336d0b53a971aab324f",
+    "bladefall-pcore-dev-gaol.js": "a93ffc17c3f49f8f82491299f0249640d6dd3531ff2846eb249251d7e1559dd4",
+    "bladefall-pcore-dev-gravity.js": "6d57f63aafd7c840c83b94b793141c666aa14e9c74bb93d385a00348a98acdc1",
+    "bladefall-pcore-dev-hinge.js": "e618f38e2ffa59fe77b806b682840872cc6cbaac87e4e85e509d74b037110999",
+    "bladefall-pcore-dev-hook.js": "c9db5eae750394019089fd3fe77a93ea994e548e736dd0cb71747d6187a2219c",
+    "bladefall-pcore-dev-impulse.js": "170326213c861f3ad17919780ba5415e0f9a50da335b4ba0440daccbdf35687b",
+    "bladefall-pcore-dev-mirror.js": "563abf8bc89187972e554d8995f7ab9909d3e8c19b13f3585bb197b9fe885f24",
+    "bladefall-pcore-dev-moving-hook.js": "b29478501ea795c63d523cf9cbb12210d0d1e923cb7d120cf18b788425618c77",
+    "bladefall-pcore-dev-rail.js": "5969523a5a26e8e49a5bbcb632fcbf96f4cd104e5796da36592ceaf0818a7534",
+    "bladefall-pcore-dev-rbr-causeway.js": "9545f02ef8fe72017aba71f5042b28f7a4c3ef1f994e19d2e5805db96f883297",
+    "bladefall-pcore-dev-rbr-cliffs.js": "d05cbd477a9275936d9e3ebcb9ffd8f9d78f22663d68affea3bc3d24311da22c",
+    "bladefall-pcore-dev-rbr-colossus.js": "eba18ead4c1d3dad8226162cb4920e7c64b1a79b97c63d9ffd5e8a6e026e5c23",
+    "bladefall-pcore-dev-rbr-deepline.js": "16b1b8a513dabbf0303bb04e4ef7272c2dad814d424a68da0f8a4f49fb980fc1",
+    "bladefall-pcore-dev-rbr-emberdeep.js": "e9d235ad02ac5bf4a49162ca1ed23ffc8cf71c763bbebab4d5c964f2c14184d6",
+    "bladefall-pcore-dev-rbr-f-outskirts.js": "b8aa716319a729fec8682c89f6343bf24f09252055c7608c1266c69e8da19b19",
+    "bladefall-pcore-dev-rbr-f-updrafts.js": "4eaa5d5ccfc418b59766ae289dd51bb2e979057d85aad7b8c7912e60d250fce7",
+    "bladefall-pcore-dev-rbr-f-woods.js": "410c4e1d3888b68e7c097642ed2e0a1372adfa5aab7a19420ba11b43c6c35853",
+    "bladefall-pcore-dev-rbr-frostfell.js": "956618773e9c654415974ef4130adb4fdd095ba742242c952dd0391527a121a2",
+    "bladefall-pcore-dev-rbr-gaol.js": "e71c25446cb99a308481842d263f1959c311085776f40ff5a3767b7b7826fca4",
+    "bladefall-pcore-dev-rbr-keep.js": "b8a0765cca2ee332da17ae8557773d77daad04c045394ed7b12084ee580d04c0",
+    "bladefall-pcore-dev-rbr-king.js": "320ed0ff1722a618b0d5c56a038a2f68187a2bb5f80b2c34d8adb8d9fe5a8b37",
+    "bladefall-pcore-dev-rbr-marksman.js": "b0938eddf47a372e5d84537a01575fca52f9b022e47f7fe72561a6d5ac4450f0",
+    "bladefall-pcore-dev-rbr-path.js": "39f7621b1c41cdf268d4f03acc1b4844db4ff6f063b02d8b81c550dfe9a3eca4",
+    "bladefall-pcore-dev-rbr-sorcerer.js": "28a177f81421f7fa88d40996b2c8a6ece14563d55e7464d914e0dba7a3db6c57",
+    "bladefall-pcore-dev-rbr-sunspire.js": "edcd9a5494c8987f6f923601335172436216c7f72fad4e227491f627847b2672",
+    "bladefall-pcore-dev-rbr-tyrant.js": "65547056703c182193c6f967d4d0e150891e5627f0d0f863e7fddc476c75b8c3",
+    "bladefall-pcore-dev-rbr-updrafts.js": "b1739991e1efde3713ab51522d6dcd196b21ceddbedeb03e9961ba60ca3ec37f",
+    "bladefall-pcore-dev-recoil.js": "52ffad00770606c45e0e4150e20498f76db4a7737012b26b79b9d928d6c1e30e",
+    "bladefall-pcore-dev-relay.js": "671a635ca4d0e10ef5adeb714a2474469bda9c18c406b3c3129e8d7ab2512a10",
+    "bladefall-pcore-dev-run9-base.js": "aa1a42c86b327fbdc5a2641fb63d29e84ff0b2b4a0a73410c8ed147ac748f983",
+    "bladefall-pcore-dev-shade.js": "83eab516773d1043db146fbe1c5f19e60b8eeb2c6ca6ff47e3293c7b4ec84ae4",
+    "bladefall-pcore-dev-spent-thorn.js": "047fffbb3355c8da5bd30fb6509a4094e4452b9910044938a86d4c5d1f6272ec",
+    "bladefall-pcore-dev-step-relay.js": "50faa5b503c8a48b60f1d8238fa19981bbcf7a6af863ca800bf276bbeef3775c",
+    "bladefall-pcore-dev-superrooms-base.js": "206d66c75e88580bddda79ec9601704b2a1962140fa533590468243f0c372fde",
+    "bladefall-pcore-dev-superrooms-colossus.js": "cc683a4c2b01c15c5347ee593c31a283af69b4b6b2b5ad02c7aca7e58c70c79c",
+    "bladefall-pcore-dev-superrooms-fractured.js": "f45fafabd6c85bcd3c66510c54ff644ef75cd1ad1a9d1f63fbec16fc0d715039",
+    "bladefall-pcore-dev-superrooms-fractured9.js": "da2023d53c98c79e166ad08e822c679eb65a11f21f65c2c24e5462b55ef5e2df",
+    "bladefall-pcore-dev-sweeper.js": "98544dd105f7895c2c64d7df4688c18980659a77a6b378bbca757e4ba031c47a",
+    "bladefall-pcore-dev-throne.js": "b1df4a78ec4261555a3ddf80edb0bc0e52e08e7054357b41e02b8ba21f5a6ccc",
+    "bladefall-pcore-dev-vector-refill.js": "5a67b1bbd37a7976014edf3f89b88e1b81efbc976b119c6a07f07ad0d391bffc",
+    "bladefall-pcore-dev-void.js": "c0d3042145ad9bee79bbaf673282635d0ed075164909df21101116052857f7a7",
+    "bladefall-pcore-dev-watch.js": "a4649ca5435a061628f1bed65862ab00153d0f50f0f01b46768e706d468626e7",
+    "bladefall-pcore-dev-water.js": "1a4848a3208fc4d5ba8d28f42b595f9e92987161b462e877e728bae886537c7c",
+    "bladefall-pcore-dev-workshop-room.js": "b7c90947fd50c9243bade7986628cb5bcd68c8c037c37db3e91df62a24a40e6e",
+    "bladefall-pcore-dev-zipline.js": "0322a7b5e34b43f38756c307b5678f7cbd7c7936d697102f834baa8968df3c68",
+    "bladefall-pcore-dev-cargo-clasp.js": "011d345e45213da639eca9c2e5bafc8bb8d20bc8e2d57989eb3b162b49794b2e",
+    "bladefall-climb-atlas.js": "41d208f88fdef5069b91b41ffb4ebc16d1f465c446750c0c490ab33b79370120",
+    "bladefall-climb-passages.js": "28f67db4bd03bebd97cfc8769b71f8c244b5cb87dedba84edd3e65f50e6cb852",
+    "bladefall-climb.js": "85b5633cb4b6588cb147db26388eb3a32abc83f51f42eee06a1ff5db59a12200",
+    "bladefall-climb-worlds.js": "14716d5994f1cee3330f626064ab52c42a75dc43407ef25f0df43252d0c57eea"
+  },
+  "playerDefaults": {
+    "x": 24,
+    "y": 133,
+    "w": 8,
+    "h": 11,
+    "remX": 0,
+    "remY": 0,
+    "vx": 0,
+    "vy": 0,
+    "facing": 1,
+    "state": "normal",
+    "dashes": 1,
+    "maxDashes": 1,
+    "stamina": 110,
+    "onGround": true,
+    "wasGround": true,
+    "jumpGrace": 0,
+    "varJump": 0,
+    "varJumpSpeed": 0,
+    "forceMoveX": 0,
+    "forceMoveTimer": 0,
+    "autoJump": false,
+    "dashTimer": 0,
+    "dashCooldown": 0,
+    "dashRefillCooldown": 0,
+    "dashDir": {
+      "x": 1,
+      "y": 0
+    },
+    "beforeDash": {
+      "x": 0,
+      "y": 0
+    },
+    "dashAim": false,
+    "ducking": false,
+    "wallSlide": 72,
+    "wallBoostDir": 0,
+    "wallBoostTimer": 0,
+    "climbNoMove": 0,
+    "retainTimer": 0,
+    "retained": 0,
+    "maxFall": 160,
+    "liftX": 0,
+    "liftY": 0,
+    "liftTimer": 0,
+    "carrying": null,
+    "strikeTimer": 0,
+    "strikeCooldown": 0,
+    "strikeDir": {
+      "x": 1,
+      "y": 0
+    },
+    "strikeHit": {},
+    "deadTimer": 0,
+    "respawnTimer": 0,
+    "dashFlash": 0,
+    "parryTimer": 0,
+    "parryCooldown": 0,
+    "fling": false,
+    "portalCool": 0,
+    "airJumps": 0,
+    "hook": null,
+    "lastRing": null,
+    "seat": null,
+    "seenT": 0
+  },
+  "source": "public/bladefall-climb-worlds.js",
+  "world": {
+    "n": 1,
+    "key": "outskirts",
+    "name": "The Outskirts",
+    "palette": "outskirts",
+    "kit": [
+      "dash"
+    ],
+    "blurb": "The Outskirts: one continuous road with 14 checkpointed challenges, ending in a superroom.",
+    "outro": "The Outskirts, end to end, without leaving the road.",
+    "sections": [
+      {
+        "room": "cl1-o1-road",
+        "x": 0,
+        "y": 0,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl1-o1-verge",
+        "x": 40,
+        "y": 0,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl1-o1-flowers",
+        "x": 80,
+        "y": 0,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl1-bank-b21",
+        "x": 120,
+        "y": -3,
+        "fire": {
+          "c": 2,
+          "r": 20
+        }
+      },
+      {
+        "room": "cl1-o1-camp",
+        "x": 160,
+        "y": 0,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl1-o1-lookout",
+        "x": 161,
+        "y": -23,
+        "fire": {
+          "c": 34,
+          "r": 21
+        }
+      },
+      {
+        "room": "cl1-o1-cut",
+        "x": 201,
+        "y": -31,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl1-o1-cracked",
+        "x": 241,
+        "y": -34,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl1-bank-b22",
+        "x": 281,
+        "y": -44,
+        "fire": {
+          "c": 10,
+          "r": 18
+        }
+      },
+      {
+        "room": "cl1-o1-mile",
+        "x": 321,
+        "y": -57,
+        "fire": {
+          "c": 1,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl1-o1-muster",
+        "x": 361,
+        "y": -57,
+        "fire": {
+          "c": 1,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl1-o1-yard",
+        "x": 401,
+        "y": -57,
+        "fire": {
+          "c": 1,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl1-o1-gate",
+        "x": 441,
+        "y": -65,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl1-bank-b62",
+        "x": 481,
+        "y": -83,
+        "fire": {
+          "c": 4,
+          "r": 35
+        }
+      },
+      {
+        "room": "cl1-atlas-crossroads",
+        "x": 393,
+        "y": -83,
+        "fire": {
+          "c": 44,
+          "r": 21
+        },
+        "atlasJunction": true
+      }
+    ],
+    "quests": [
+      {
+        "id": "rowan",
+        "title": "A Bell for the Camp",
+        "giver": "Rowan",
+        "from": "cl1-o1-camp",
+        "back": {
+          "c": 36,
+          "r": 17
+        },
+        "keepsake": {
+          "id": "rowan-bell",
+          "name": "Rowan’s Bell",
+          "gives": "Rowan hangs it at Camp Echo. In the Fractured Outskirts it still rings: it opens Rowan’s echo."
+        },
+        "sections": [
+          {
+            "room": "cl1-o1-q-yard",
+            "x": 200,
+            "y": 0,
+            "fire": {
+              "c": 2,
+              "r": 17
+            }
+          },
+          {
+            "room": "cl1-o1-q-tower",
+            "x": 240,
+            "y": -3,
+            "fire": {
+              "c": 15,
+              "r": 20
+            }
+          },
+          {
+            "room": "cl1-pass-4",
+            "x": 256,
+            "y": -9,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl1-pass-5",
+            "x": 246,
+            "y": -9,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl1-pass-6",
+            "x": 241,
+            "y": -9,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl1-pass-7",
+            "x": 241,
+            "y": -6,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl1-pass-8",
+            "x": 236,
+            "y": -7,
+            "fire": null,
+            "passage": true
+          }
+        ],
+        "short": false,
+        "returnTo": "cl1-o1-q-yard"
+      },
+      {
+        "id": "mara",
+        "title": "A Road Without a Name",
+        "giver": "Mara",
+        "from": null,
+        "keepsake": {
+          "id": "mara-chart",
+          "name": "Mara’s Chart",
+          "gives": "All three bearings agree, and the tunnel to the woods goes on her map. In the Fractured Outskirts the chart opens Mara’s echo."
+        },
+        "bearings": [
+          "ASH",
+          "GLASS",
+          "IRON"
+        ],
+        "sections": [],
+        "short": false
+      },
+      {
+        "id": "socket-19-1",
+        "socket": "19-1",
+        "title": "The Pilgrims’ Postern",
+        "from": null,
+        "sections": [
+          {
+            "room": "cl1-socket-19-1",
+            "x": 70,
+            "y": -14,
+            "fire": {
+              "c": 8,
+              "r": 9
+            }
+          }
+        ]
+      }
+    ],
+    "secrets": [
+      {
+        "id": "secret-1",
+        "host": "cl1-o1-cut",
+        "name": "Hang Time",
+        "origin": "r2",
+        "sections": [
+          {
+            "room": "cl1-secret-r2",
+            "x": 202,
+            "y": -54,
+            "fire": {
+              "c": 2,
+              "r": 15
+            }
+          },
+          {
+            "room": "cl1-pass-9",
+            "x": 225,
+            "y": -60,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl1-pass-10",
+            "x": 208,
+            "y": -60,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl1-pass-11",
+            "x": 203,
+            "y": -60,
+            "fire": null,
+            "passage": true
+          }
+        ],
+        "returnTo": "cl1-secret-r2"
+      }
+    ],
+    "rooms": [
+      {
+        "id": "cl1-o1-road",
+        "name": "The Verge Road",
+        "exit": "right",
+        "hint": "Hold jump to jump higher",
+        "question": "Two beds of white flowers and a bank. How high, and how far, does one jump go?",
+        "people": [
+          {
+            "who": "vey",
+            "c": 6,
+            "r": 17,
+            "face": 1,
+            "line": "Fire’s for anyone. Just don’t touch the white flowers."
+          }
+        ],
+        "decor": [
+          {
+            "k": "tent",
+            "c": 1,
+            "r": 17
+          },
+          {
+            "k": "watchfire",
+            "c": 8,
+            "r": 17
+          },
+          {
+            "k": "trumpets",
+            "c": 11,
+            "r": 17
+          },
+          {
+            "k": "trumpets",
+            "c": 27,
+            "r": 15
+          }
+        ],
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#...................######^^^^####......",
+          "#..P................##############......",
+          "###########^^###########################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "aim8": true,
+        "origin": "o1-road"
+      },
+      {
+        "id": "cl1-o1-verge",
+        "name": "The Poisoned Verge",
+        "exit": "right",
+        "hint": "A dash crosses what a jump cannot",
+        "question": "The pool is wider than any jump. What else carries you?",
+        "people": [
+          {
+            "who": "mara",
+            "c": 4,
+            "r": 17,
+            "face": 1,
+            "quest": "mara",
+            "leave": "right",
+            "line": "Oh! Hello. Mara, surveyor. Three posts off this road: Ash, Glass, Iron. Touch them for me?"
+          }
+        ],
+        "decor": [
+          {
+            "k": "trumpets",
+            "c": 27,
+            "r": 17
+          },
+          {
+            "k": "trumpets",
+            "c": 33,
+            "r": 17
+          }
+        ],
+        "map": [
+          "#####################################..#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          ".......................................#",
+          "........................................",
+          "....................######..............",
+          "....................######..............",
+          "...P................######..............",
+          "##########^^^^############^^^^^^^^^^^^##",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "aim8": true,
+        "seam": [
+          [
+            0,
+            13,
+            "#"
+          ],
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "o1-verge",
+        "doors": [
+          {
+            "edge": "up",
+            "cols": [
+              37,
+              38
+            ],
+            "to": "socket-19-1"
+          }
+        ]
+      },
+      {
+        "id": "cl1-o1-flowers",
+        "name": "White Flowers",
+        "exit": "right",
+        "hint": "Hold grab against a wall to cling and climb",
+        "question": "The wall is taller than any jump. What do your hands do?",
+        "decor": [
+          {
+            "k": "trumpets",
+            "c": 19,
+            "r": 17
+          },
+          {
+            "k": "trumpets",
+            "c": 26,
+            "r": 17
+          },
+          {
+            "k": "palisade",
+            "c": 34,
+            "r": 17
+          }
+        ],
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.............................###......#",
+          "#.............................###......#",
+          "#.............................###......#",
+          "#.............................###......#",
+          "#.............................###......#",
+          "#.............###.............###......#",
+          "#.............###.............###......#",
+          "#.............###.............###......#",
+          "#.............###.....###.....###......#",
+          "#.............###.............###......#",
+          "..............###.............###.......",
+          "..............###.............###.......",
+          "..............###.............###.......",
+          "...P..........###.............###.......",
+          "#################^^^^^^^^^^^^^##########",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "aim8": true,
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "o1-flowers"
+      },
+      {
+        "id": "cl1-o1-camp",
+        "name": "Camp Echo",
+        "exit": "up",
+        "side": "right",
+        "hint": "A survey stake lights when you touch it · every stake lit opens the shaft",
+        "question": "The shaft is shut. What up on the perch would open it?",
+        "bearing": "ASH",
+        "people": [
+          {
+            "who": "sentinel",
+            "c": 17,
+            "r": 17,
+            "face": -1,
+            "line": "Came up the west road? Huh. Touch the stake on the perch."
+          },
+          {
+            "who": "rowan",
+            "c": 31,
+            "r": 17,
+            "face": -1,
+            "quest": "rowan",
+            "line": "Gate’s shut. You got through anyway. Bell’s up the east tower.",
+            "lineDone": "There. Now we’ll hear them coming."
+          }
+        ],
+        "decor": [
+          {
+            "k": "clock",
+            "c": 24,
+            "r": 17
+          },
+          {
+            "k": "tent",
+            "c": 27,
+            "r": 17
+          },
+          {
+            "k": "post",
+            "c": 33,
+            "r": 17
+          }
+        ],
+        "map": [
+          "##################################....##",
+          "##################################GGGG##",
+          "##################################GGGG##",
+          "#................................#....##",
+          "#................................#....##",
+          "#..c.............................#....##",
+          "#######..........................#....##",
+          "#######....##....................#....##",
+          "#..........##....................#....##",
+          "#..........##....................#....##",
+          "#..........##....................#==..##",
+          "#..........##.........................##",
+          "#..........##.....*...................##",
+          "#..........##.........................##",
+          "...........##...........................",
+          "...........##...........................",
+          "...........##...........................",
+          "...P.......##...........................",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "sideQuest": "rowan",
+        "aim8": true,
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "o1-camp"
+      },
+      {
+        "id": "cl1-o1-lookout",
+        "name": "The Lookout",
+        "exit": "right",
+        "hint": "Jump off a wall you cling to · white flowers grow on the walls too",
+        "question": "Two walls, and poison on each. Which wall does each stretch belong to?",
+        "decor": [],
+        "map": [
+          "#......................................#",
+          "#......................................#",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#............................####.......",
+          "#...........................<####.......",
+          "#...........................<####....<##",
+          "#...........................<####....<##",
+          "#...........................<####>....##",
+          "#...........................<####>....##",
+          "#...........................<####>....##",
+          "#...........................<####.....##",
+          "#...........................<####....<##",
+          "#...........................<####....<##",
+          "#...........................<####....<##",
+          "#...........................<####.....##",
+          "#...........................<####.....##",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^####..P..##",
+          "#################################==#####"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "aim8": true,
+        "seam": [
+          [
+            33,
+            22,
+            "#"
+          ],
+          [
+            34,
+            22,
+            "#"
+          ]
+        ],
+        "origin": "o1-lookout"
+      },
+      {
+        "id": "cl1-o1-cut",
+        "name": "Watcher’s Cut",
+        "exit": "right",
+        "bearing": "GLASS",
+        "hint": "A crystal grows back a moment after you take it",
+        "question": "One crystal is not enough to cross the cut. Where can you get another?",
+        "people": [
+          {
+            "who": "olan",
+            "c": 6,
+            "r": 17,
+            "face": 1,
+            "line": "Clock’s stopped. The cut’s worse. Only the glass in the air holds."
+          }
+        ],
+        "decor": [
+          {
+            "k": "mast",
+            "c": 36,
+            "r": 14
+          }
+        ],
+        "map": [
+          "#..#####################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.........................*............#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          ".......................................G",
+          "...........................o...........G",
+          "...................o...................G",
+          "......................................cG",
+          "..................................######",
+          "..................................######",
+          "...P..............................######",
+          "##########........................######",
+          "##########........................######",
+          "##########........................######",
+          "##########^^^^^^^^^^^^^^^^^^^^^^^^######",
+          "########################################"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "aim8": true,
+        "seam": [
+          [
+            0,
+            11,
+            "#"
+          ],
+          [
+            0,
+            12,
+            "#"
+          ],
+          [
+            0,
+            13,
+            "#"
+          ],
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "o1-cut",
+        "doors": [
+          {
+            "edge": "up",
+            "cols": [
+              1,
+              2
+            ],
+            "to": "secret-1"
+          }
+        ]
+      },
+      {
+        "id": "cl1-o1-cracked",
+        "name": "Cracked Road",
+        "exit": "right",
+        "hint": "Cracked stone gives way a moment after you stand on it",
+        "question": "Nothing here holds for long. How long is long enough?",
+        "decor": [
+          {
+            "k": "milestone",
+            "c": 5,
+            "r": 17
+          }
+        ],
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#..............................#########",
+          "#.............................<#########",
+          "#.............................<#########",
+          "#.............................<#########",
+          "#....................~~~......<#########",
+          "..............................<#########",
+          "..............................<#########",
+          "..............~~~.............<#########",
+          "...P..........................<#########",
+          "##########....................<#########",
+          "##########....................<#########",
+          "##########....................<#########",
+          "##########^^^^^^^^^^^^^^^^^^^^^#########",
+          "########################################"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "aim8": true,
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "o1-cracked"
+      },
+      {
+        "id": "cl1-o1-mile",
+        "name": "The Hollow Mile",
+        "exit": "right",
+        "hint": "Cracked stone comes back a while after it falls",
+        "question": "The road is cracked the whole way. How long can you stand anywhere?",
+        "decor": [
+          {
+            "k": "milestone",
+            "c": 3,
+            "r": 17
+          },
+          {
+            "k": "palisade",
+            "c": 33,
+            "r": 17
+          }
+        ],
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          ".......................................G",
+          ".......................................G",
+          ".......................................G",
+          "..P.....~~~....~~~....~~~...~~~.....c..G",
+          "######..........................########",
+          "######..........................########",
+          "######..........................########",
+          "######^^^^^^^^^^^^^^^^^^^^^^^^^^########",
+          "########################################"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "aim8": true,
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "o1-mile"
+      },
+      {
+        "id": "cl1-o1-muster",
+        "name": "Broken Muster",
+        "exit": "right",
+        "bearing": "IRON",
+        "hint": "Climb, then let go and fall to the stake",
+        "question": "The muster gate is shut. What would the post on the old wall open?",
+        "people": [
+          {
+            "who": "mara",
+            "c": 31,
+            "r": 17,
+            "face": -1,
+            "quest": "mara",
+            "chart": true,
+            "line": "Made it. Any bearings for me?",
+            "lineDone": "Ash, Glass, Iron. They agree. The road goes through."
+          }
+        ],
+        "decor": [
+          {
+            "k": "palisade",
+            "c": 21,
+            "r": 17
+          },
+          {
+            "k": "palisade",
+            "c": 35,
+            "r": 17
+          }
+        ],
+        "map": [
+          "########################################",
+          "#.................GG...................#",
+          "#.................GG...................#",
+          "#.................GG.................*.#",
+          "#.................GG...................#",
+          "#.................GG...................#",
+          "#.............####GG...................#",
+          "#.............####GG...................#",
+          "#.............####GG...................#",
+          "#.......c.....####GG...................#",
+          "#.....=====...####GG...................#",
+          "#.............####GG...................#",
+          "#.............####GG...................#",
+          "#.............####GG...................#",
+          "..............####GG....................",
+          "..............####GG....................",
+          "..............####GG....................",
+          "..P...........####GG....................",
+          "######################^^^^^^^^^#########",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "aim8": true,
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "o1-muster"
+      },
+      {
+        "id": "cl1-o1-yard",
+        "name": "Muster Yard",
+        "exit": "right",
+        "hint": "Everything the road has taught, in one breath",
+        "question": "Cracked stone, a crystal, the yard wall. In what order, and with what left in hand?",
+        "decor": [
+          {
+            "k": "palisade",
+            "c": 35,
+            "r": 9
+          }
+        ],
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.......................................",
+          "#.......................................",
+          "#.............................###.......",
+          "#.............................###.......",
+          "#.............................###.......",
+          "#.............................###.......",
+          "#............................<###...####",
+          "#.....................o......<###..<####",
+          "#............................<###..<####",
+          "#............................<###..<####",
+          ".............................<###..<####",
+          ".............................<###..<####",
+          "...........~~~...............<###..<####",
+          "..P..........................<###..<####",
+          "######.......................<###..<####",
+          "######.......................<###..<####",
+          "######.......................<###..<####",
+          "######^^^^^^^^^^^^^^^^^^^^^^^^###^^^####",
+          "########################################"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "aim8": true,
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "o1-yard"
+      },
+      {
+        "id": "cl1-o1-gate",
+        "name": "The Gatehouse",
+        "exit": "right",
+        "hint": "Grab carries the lantern; grab again throws it · a plate holds its door open while something rests on it",
+        "question": "The gate only stays up while the plate is pressed. What can press it for you?",
+        "decor": [
+          {
+            "k": "gatehouse",
+            "c": 30,
+            "r": 17
+          }
+        ],
+        "map": [
+          "########################################",
+          "#.............................HH.......#",
+          "#.............................HH.......#",
+          "#.............................HH.......#",
+          "#.............................HH.......#",
+          "#.............................HH.......#",
+          "#.............................HH.......#",
+          "#.............................HH.......#",
+          "#.............................HH.......#",
+          "#.............................HH.......#",
+          "#.............................HH.......#",
+          "#.............................HH.......#",
+          "..............................HH.......#",
+          "..............................HH.......#",
+          "..............................HH........",
+          "..............................HH........",
+          "..............................HH........",
+          "...P..l............._.........HH........",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "aim8": true,
+        "seam": [
+          [
+            0,
+            12,
+            "#"
+          ],
+          [
+            0,
+            13,
+            "#"
+          ],
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "o1-gate"
+      },
+      {
+        "id": "cl1-o1-q-yard",
+        "name": "The Bell Yard",
+        "exit": "right",
+        "hint": "A stake opens the tower door",
+        "question": "The tower door is shut, and the stake is over the flowers. What still holds up there?",
+        "map": [
+          "#####################################..#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.................c....................#",
+          "#.................##...................#",
+          "#.................##...................#",
+          "#.................##...................#",
+          "#.................##...~~~............G.",
+          "..................##..................G.",
+          "..................##..................G.",
+          "..................##..................G.",
+          "...P..............##..................G.",
+          "############^^^^^^^^^^^^^^^^############",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "quest": "rowan",
+        "aim8": true,
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "o1-q-yard",
+        "decor": [],
+        "returns": [
+          {
+            "cols": [
+              37,
+              38
+            ],
+            "edge": "up",
+            "from": "rowan"
+          }
+        ]
+      },
+      {
+        "id": "cl1-o1-q-tower",
+        "name": "The Old Bell Tower",
+        "exit": "up",
+        "hint": "Cracked ledges fall · the bell is at the top; out through the belfry",
+        "question": "Cracked ledges on both walls. Which ones will still be there on the way up?",
+        "map": [
+          "##################....##################",
+          "##############............##############",
+          "##############>.*........<##############",
+          "##############>.##.......<##############",
+          "##############>..........<##############",
+          "##############>..........<##############",
+          "##############>...........##############",
+          "##############>......~~~..##############",
+          "##############>...........##############",
+          "##############>..........<##############",
+          "##############>....o.....<##############",
+          "##############...........<##############",
+          "##############.~~~.......<##############",
+          "##############...........<##############",
+          "##############>..........<##############",
+          "##############>...........##############",
+          "##############>...........##############",
+          "##############>.......~~~.##############",
+          ".........................<##############",
+          ".........................<##############",
+          "................P.........##############",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 1,
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "quest": "rowan",
+        "aim8": true,
+        "seam": [
+          [
+            0,
+            18,
+            "#"
+          ],
+          [
+            1,
+            18,
+            "#"
+          ],
+          [
+            2,
+            18,
+            "#"
+          ],
+          [
+            3,
+            18,
+            "#"
+          ],
+          [
+            4,
+            18,
+            "#"
+          ],
+          [
+            5,
+            18,
+            "#"
+          ],
+          [
+            6,
+            18,
+            "#"
+          ],
+          [
+            7,
+            18,
+            "#"
+          ],
+          [
+            8,
+            18,
+            "#"
+          ],
+          [
+            9,
+            18,
+            "#"
+          ],
+          [
+            10,
+            18,
+            "#"
+          ],
+          [
+            11,
+            18,
+            "#"
+          ],
+          [
+            12,
+            18,
+            "#"
+          ],
+          [
+            13,
+            18,
+            "#"
+          ],
+          [
+            0,
+            19,
+            "#"
+          ],
+          [
+            1,
+            19,
+            "#"
+          ],
+          [
+            2,
+            19,
+            "#"
+          ],
+          [
+            3,
+            19,
+            "#"
+          ],
+          [
+            4,
+            19,
+            "#"
+          ],
+          [
+            5,
+            19,
+            "#"
+          ],
+          [
+            6,
+            19,
+            "#"
+          ],
+          [
+            7,
+            19,
+            "#"
+          ],
+          [
+            8,
+            19,
+            "#"
+          ],
+          [
+            9,
+            19,
+            "#"
+          ],
+          [
+            10,
+            19,
+            "#"
+          ],
+          [
+            11,
+            19,
+            "#"
+          ],
+          [
+            12,
+            19,
+            "#"
+          ],
+          [
+            13,
+            19,
+            "#"
+          ],
+          [
+            0,
+            20,
+            "#"
+          ],
+          [
+            1,
+            20,
+            "#"
+          ],
+          [
+            2,
+            20,
+            "#"
+          ],
+          [
+            3,
+            20,
+            "#"
+          ],
+          [
+            4,
+            20,
+            "#"
+          ],
+          [
+            5,
+            20,
+            "#"
+          ],
+          [
+            6,
+            20,
+            "#"
+          ],
+          [
+            7,
+            20,
+            "#"
+          ],
+          [
+            8,
+            20,
+            "#"
+          ],
+          [
+            9,
+            20,
+            "#"
+          ],
+          [
+            10,
+            20,
+            "#"
+          ],
+          [
+            11,
+            20,
+            "#"
+          ],
+          [
+            12,
+            20,
+            "#"
+          ],
+          [
+            13,
+            20,
+            "#"
+          ],
+          [
+            14,
+            18,
+            ">"
+          ],
+          [
+            14,
+            19,
+            ">"
+          ]
+        ],
+        "origin": "o1-q-tower",
+        "decor": []
+      },
+      {
+        "id": "cl1-pass-4",
+        "name": "",
+        "exit": "left",
+        "entry": "down",
+        "seam": [
+          [
+            2,
+            5,
+            "#"
+          ],
+          [
+            3,
+            5,
+            "#"
+          ]
+        ],
+        "palette": "outskirts",
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 5,
+        "rows": 6,
+        "map": [
+          "#####",
+          "....#",
+          "P...#",
+          "##..#",
+          "##..#",
+          "##..#"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-4"
+      },
+      {
+        "id": "cl1-pass-5",
+        "name": "",
+        "exit": "left",
+        "entry": "right",
+        "seam": [
+          [
+            9,
+            1,
+            "#"
+          ],
+          [
+            9,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "outskirts",
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 10,
+        "rows": 4,
+        "map": [
+          "##########",
+          "..........",
+          ".........P",
+          "##########"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-5"
+      },
+      {
+        "id": "cl1-pass-6",
+        "name": "",
+        "exit": "down",
+        "entry": "right",
+        "seam": [
+          [
+            4,
+            1,
+            "#"
+          ],
+          [
+            4,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "outskirts",
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 5,
+        "rows": 3,
+        "map": [
+          "#####",
+          "#P...",
+          "#...."
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-6"
+      },
+      {
+        "id": "cl1-pass-7",
+        "name": "",
+        "exit": "left",
+        "entry": "up",
+        "seam": [
+          [
+            0,
+            0,
+            "#"
+          ],
+          [
+            1,
+            0,
+            "#"
+          ],
+          [
+            2,
+            0,
+            "#"
+          ]
+        ],
+        "palette": "outskirts",
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 4,
+        "rows": 3,
+        "map": [
+          "...#",
+          "P..#",
+          "####"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-7"
+      },
+      {
+        "id": "cl1-pass-8",
+        "name": "",
+        "exit": "down",
+        "entry": "right",
+        "seam": [
+          [
+            4,
+            1,
+            "#"
+          ],
+          [
+            4,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "outskirts",
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 5,
+        "rows": 7,
+        "map": [
+          "#####",
+          "#....",
+          "#...P",
+          "#..##",
+          "#..##",
+          "#..##",
+          "#..##"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-8"
+      },
+      {
+        "id": "cl1-socket-19-1",
+        "name": "The Pilgrims’ Postern",
+        "exit": "none",
+        "palette": "outskirts",
+        "cols": 16,
+        "rows": 14,
+        "map": [
+          "################",
+          "#..............#",
+          "#..............#",
+          "#..............#",
+          "#..............#",
+          "...............#",
+          "...............#",
+          "...............#",
+          "...............#",
+          ".........P.....#",
+          "#######==#######",
+          "#######..#######",
+          "#######..#######",
+          "#######..#######"
+        ],
+        "hint": "",
+        "question": "",
+        "seam": [
+          [
+            7,
+            11,
+            "#"
+          ],
+          [
+            8,
+            11,
+            "#"
+          ],
+          [
+            7,
+            12,
+            "#"
+          ],
+          [
+            8,
+            12,
+            "#"
+          ],
+          [
+            7,
+            13,
+            "#"
+          ],
+          [
+            8,
+            13,
+            "#"
+          ],
+          [
+            7,
+            10,
+            "#"
+          ],
+          [
+            8,
+            10,
+            "#"
+          ]
+        ],
+        "origin": "socket-19-1",
+        "decor": [],
+        "connector": true,
+        "atlasJunction": true,
+        "atlasGate": true,
+        "atlasRegion": 1,
+        "atlasSockets": [
+          {
+            "kind": "passage",
+            "edge": "left",
+            "floor": 10,
+            "link": "19-1",
+            "to": "cl1-passage-19-1",
+            "world": 1
+          }
+        ],
+        "atlasRoads": [
+          {
+            "edge": "left",
+            "floor": 10,
+            "points": [
+              {
+                "c": 9,
+                "r": 10
+              },
+              {
+                "c": 1,
+                "r": 10
+              }
+            ]
+          }
+        ],
+        "atlasDecks": [],
+        "atlasFloor": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "id": "cl1-secret-r2",
+        "name": "Hang Time",
+        "exit": "up",
+        "map": [
+          "##..####################..##############",
+          "#.......................GG##############",
+          "#.......................GG##############",
+          "#.........................##############",
+          "#.........................##############",
+          "#.........................##############",
+          "#.........................##############",
+          "#.........................##############",
+          "#.........................##############",
+          "#.........................##############",
+          "#.................c.......##############",
+          "#........................o##############",
+          "#................o........##############",
+          "#.........................##############",
+          "#.........................##############",
+          "#..P......................##############",
+          "#==####...................##############",
+          "#..####...................##############",
+          "#..####...................##############",
+          "#..####...................##############",
+          "#..####...................##############",
+          "#..####^^^^^^^^^^^^^^^^^^^##############",
+          "#..#####################################"
+        ],
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "palette": "outskirts",
+        "aim8": true,
+        "seam": [
+          [
+            1,
+            17,
+            "#"
+          ],
+          [
+            2,
+            17,
+            "#"
+          ],
+          [
+            1,
+            18,
+            "#"
+          ],
+          [
+            2,
+            18,
+            "#"
+          ],
+          [
+            1,
+            19,
+            "#"
+          ],
+          [
+            2,
+            19,
+            "#"
+          ],
+          [
+            1,
+            20,
+            "#"
+          ],
+          [
+            2,
+            20,
+            "#"
+          ],
+          [
+            1,
+            21,
+            "#"
+          ],
+          [
+            2,
+            21,
+            "#"
+          ],
+          [
+            1,
+            22,
+            "#"
+          ],
+          [
+            2,
+            22,
+            "#"
+          ],
+          [
+            1,
+            16,
+            "#"
+          ],
+          [
+            2,
+            16,
+            "#"
+          ]
+        ],
+        "origin": "r2",
+        "decor": [],
+        "secret": true,
+        "returns": [
+          {
+            "cols": [
+              2,
+              3
+            ],
+            "edge": "up",
+            "from": "secret-1"
+          }
+        ]
+      },
+      {
+        "id": "cl1-pass-9",
+        "name": "",
+        "exit": "left",
+        "entry": "down",
+        "seam": [
+          [
+            2,
+            5,
+            "#"
+          ],
+          [
+            3,
+            5,
+            "#"
+          ]
+        ],
+        "palette": "outskirts",
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 5,
+        "rows": 6,
+        "map": [
+          "#####",
+          "....#",
+          "P...#",
+          "##..#",
+          "##..#",
+          "##..#"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-9"
+      },
+      {
+        "id": "cl1-pass-10",
+        "name": "",
+        "exit": "left",
+        "entry": "right",
+        "seam": [
+          [
+            16,
+            1,
+            "#"
+          ],
+          [
+            16,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "outskirts",
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 17,
+        "rows": 4,
+        "map": [
+          "#################",
+          ".................",
+          "................P",
+          "#################"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-10"
+      },
+      {
+        "id": "cl1-pass-11",
+        "name": "",
+        "exit": "down",
+        "entry": "right",
+        "seam": [
+          [
+            4,
+            1,
+            "#"
+          ],
+          [
+            4,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "outskirts",
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 5,
+        "rows": 6,
+        "map": [
+          "#####",
+          "#....",
+          "#...P",
+          "#..##",
+          "#..##",
+          "#..##"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-11"
+      },
+      {
+        "id": "cl1-bank-b21",
+        "name": "Passing Places",
+        "palette": "path",
+        "study": true,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "map": [
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          ".......................................#",
+          "........................................",
+          ".....####..####.....#####..#####........",
+          "..P..####..####.....#####..#####........",
+          "########################################",
+          "########################################"
+        ],
+        "sweepers": [
+          {
+            "id": "west",
+            "path": [
+              [
+                5,
+                17.8
+              ],
+              [
+                14,
+                17.8
+              ]
+            ],
+            "period": 168,
+            "phase": 64
+          },
+          {
+            "id": "east",
+            "path": [
+              [
+                20,
+                17.8
+              ],
+              [
+                31,
+                17.8
+              ]
+            ],
+            "period": 192,
+            "phase": 24
+          }
+        ],
+        "hint": "The deep pockets lie below the patrol. Let it pass over you before climbing back out.",
+        "question": "When should you follow the thorns, and when should you let them pass?",
+        "origin": "bank-b21",
+        "bankOrigin": "bank-b21",
+        "rbr": 1,
+        "bank": {
+          "id": "bank-b21",
+          "side": "base",
+          "format": "room",
+          "collection": "",
+          "acceptance": "banked"
+        },
+        "campaignImport": {
+          "version": "7.307.0",
+          "source": "bank-b21",
+          "superroom": false
+        },
+        "seam": [
+          [
+            0,
+            17,
+            "#"
+          ],
+          [
+            0,
+            18,
+            "#"
+          ],
+          [
+            0,
+            19,
+            "#"
+          ],
+          [
+            0,
+            20,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl1-bank-b22",
+        "name": "Wait Below the Lip",
+        "palette": "path",
+        "study": true,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "map": [
+          "########################################",
+          "########................................",
+          "########................................",
+          "########................................",
+          "########................................",
+          "########>........#######################",
+          "########>.............<#################",
+          "########>.............<#################",
+          "########>.............<#################",
+          "##############........<#################",
+          "########>.............<#################",
+          "########>.............<#################",
+          "########>.............<#################",
+          "########>.............<#################",
+          "########>........#######################",
+          "########>.............<#################",
+          "......................<#################",
+          "......................<#################",
+          "..........P...........<#################",
+          "##############........<#################",
+          "##############........<#################",
+          "##############........<#################",
+          "########################################"
+        ],
+        "sweepers": [
+          {
+            "id": "lower",
+            "path": [
+              [
+                11,
+                12.8
+              ],
+              [
+                19,
+                12.8
+              ]
+            ],
+            "period": 180,
+            "phase": 30
+          },
+          {
+            "id": "upper",
+            "path": [
+              [
+                11,
+                7.8
+              ],
+              [
+                19,
+                7.8
+              ]
+            ],
+            "period": 156,
+            "phase": 70
+          }
+        ],
+        "hint": "The outer ends of the ledges are safe. Watch the crossing and the landing before you commit.",
+        "question": "Does the patrol leave enough room to finish your landing?",
+        "origin": "bank-b22",
+        "bankOrigin": "bank-b22",
+        "rbr": 1,
+        "bank": {
+          "id": "bank-b22",
+          "side": "base",
+          "format": "room",
+          "collection": "",
+          "acceptance": "banked"
+        },
+        "campaignImport": {
+          "version": "7.307.0",
+          "source": "bank-b22",
+          "superroom": false
+        },
+        "seam": [
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            1,
+            16,
+            "#"
+          ],
+          [
+            2,
+            16,
+            "#"
+          ],
+          [
+            3,
+            16,
+            "#"
+          ],
+          [
+            4,
+            16,
+            "#"
+          ],
+          [
+            5,
+            16,
+            "#"
+          ],
+          [
+            6,
+            16,
+            "#"
+          ],
+          [
+            7,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ],
+          [
+            1,
+            17,
+            "#"
+          ],
+          [
+            2,
+            17,
+            "#"
+          ],
+          [
+            3,
+            17,
+            "#"
+          ],
+          [
+            4,
+            17,
+            "#"
+          ],
+          [
+            5,
+            17,
+            "#"
+          ],
+          [
+            6,
+            17,
+            "#"
+          ],
+          [
+            7,
+            17,
+            "#"
+          ],
+          [
+            0,
+            18,
+            "#"
+          ],
+          [
+            1,
+            18,
+            "#"
+          ],
+          [
+            2,
+            18,
+            "#"
+          ],
+          [
+            3,
+            18,
+            "#"
+          ],
+          [
+            4,
+            18,
+            "#"
+          ],
+          [
+            5,
+            18,
+            "#"
+          ],
+          [
+            6,
+            18,
+            "#"
+          ],
+          [
+            7,
+            18,
+            "#"
+          ],
+          [
+            8,
+            16,
+            ">"
+          ],
+          [
+            8,
+            17,
+            ">"
+          ],
+          [
+            8,
+            18,
+            ">"
+          ]
+        ]
+      },
+      {
+        "id": "cl1-bank-b62",
+        "study": true,
+        "dashes": 1,
+        "cols": 76,
+        "rows": 40,
+        "palette": "outskirts",
+        "exit": "left",
+        "name": "Leave the Lift for Later",
+        "lock": [
+          "strike",
+          "parry",
+          "portal"
+        ],
+        "dropThru": true,
+        "map": [
+          "############################################################################",
+          "#......G...................##..............................................#",
+          ".......G...................##..............................................#",
+          ".......G...................##..............................................#",
+          ".......G...................##..............................................#",
+          ".......G...................##..............................................#",
+          "###################.......##################################################",
+          "#..........................##..............................................#",
+          "#..........................##..............................................#",
+          "#..======..................##............................o.......c.........#",
+          "#..........................##...............................##########.....#",
+          "#..........................##..............................................#",
+          "#...........==========.....##................o.....=====...................#",
+          "#..........................##..............................................#",
+          "#..........................##...............................=======........#",
+          "#..........................##..........~~~~~...............................#",
+          "#..........................................................................#",
+          "#................................................=======...................#",
+          "#........................==============....................................#",
+          "#..........................................................................#",
+          "#....................................=======...............................#",
+          "#..........................................................................#",
+          "#..........................##..............................................#",
+          "#..........................##======........................................#",
+          "#..........................##..............................................#",
+          "#..........................##..............................................#",
+          "#..........................##..............................................#",
+          "#....................ZZZZZ.##..............................................#",
+          "#..........................##..............................................#",
+          "#..........................GG..............................................#",
+          "#............=====..======.GG..............................................#",
+          "#..........................GG..............................................#",
+          "...........................GG..............................................#",
+          "....=====..............====GG..............................................#",
+          "...........................GG..............................................#",
+          "....P.....^^^^^^^^^........GG..^^^^^^^^^^^^^^^^^^^^^^......................#",
+          "############################################################################",
+          "############################################################################",
+          "############################################################################",
+          "############################################################################"
+        ],
+        "zips": [
+          [
+            0,
+            -9
+          ]
+        ],
+        "sweepers": [
+          {
+            "c": 43,
+            "r": 12,
+            "path": [
+              [
+                43,
+                12
+              ],
+              [
+                48,
+                12
+              ],
+              [
+                48,
+                17
+              ],
+              [
+                43,
+                17
+              ]
+            ],
+            "period": 210,
+            "size": 5
+          },
+          {
+            "c": 36,
+            "r": 23,
+            "path": [
+              [
+                36,
+                23
+              ],
+              [
+                43,
+                23
+              ]
+            ],
+            "period": 160,
+            "size": 5
+          }
+        ],
+        "hint": "The bearing raises the lift’s upper stop. Ride outward, light it, then return underneath the old route.",
+        "question": "The bearing opens the gate home. Where will the same lift take you on the return?",
+        "bearingLifts": [
+          {
+            "c": 21,
+            "r": 27,
+            "after": [
+              0,
+              -22
+            ]
+          }
+        ],
+        "origin": "bank-b62",
+        "bankOrigin": "bank-b62",
+        "rbr": 1,
+        "bank": {
+          "id": "bank-b62",
+          "side": "base",
+          "format": "superroom",
+          "collection": "superrooms",
+          "acceptance": "banked"
+        },
+        "campaignImport": {
+          "version": "7.307.0",
+          "source": "bank-b62",
+          "superroom": true
+        },
+        "seam": [
+          [
+            0,
+            32,
+            "#"
+          ],
+          [
+            0,
+            33,
+            "#"
+          ],
+          [
+            0,
+            34,
+            "#"
+          ],
+          [
+            0,
+            35,
+            "#"
+          ]
+        ],
+        "atlasSockets": [
+          {
+            "kind": "room",
+            "preview": true,
+            "edge": "left",
+            "floor": 6,
+            "height": 4,
+            "to": "cl1-atlas-crossroads",
+            "toFloor": 6
+          }
+        ]
+      },
+      {
+        "id": "cl1-atlas-crossroads",
+        "name": "Wayside Arches",
+        "map": [
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#.......................................................................................",
+          "#.......................................................................................",
+          "#.......................................................................................",
+          "#.......................................................................................",
+          "#............................................................................MMMMMMMMMMM",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#.....................................................................MMMMMMMMMMMMM....#",
+          "#......................................................................................#",
+          "#...............................................................MMMMMMMMMMMM...........#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "..........................................................MMMMMMMMMMMM..................",
+          "........................................................................................",
+          "........................................................................................",
+          "...................................................MMMMMMMMMMMMM........................",
+          "M#####################MM........................................MMMMMM#################M",
+          "######################.......................MMMMMMMMMMMM.............##################",
+          "#########################################MM..MMMMMM#####################################",
+          "#########################################...P......#####################################",
+          "########################################################################################"
+        ],
+        "cols": 88,
+        "rows": 23,
+        "exit": "none",
+        "entry": "right",
+        "dashes": 1,
+        "palette": "outskirts",
+        "atlasJunction": true,
+        "connector": true,
+        "atlasSockets": [
+          {
+            "edge": "right",
+            "floor": 6,
+            "height": 4,
+            "to": "cl1-bank-b62",
+            "toFloor": 6,
+            "kind": "room"
+          },
+          {
+            "edge": "left",
+            "floor": 18,
+            "kind": "passage",
+            "link": "1-2",
+            "to": "cl1-passage-1-2",
+            "world": 1
+          },
+          {
+            "edge": "right",
+            "floor": 18,
+            "kind": "passage",
+            "link": "1-3",
+            "to": "cl1-passage-1-3",
+            "world": 1
+          }
+        ],
+        "atlasMain": {
+          "edge": "right",
+          "floor": 6,
+          "height": 4,
+          "to": "cl1-bank-b62",
+          "toFloor": 6
+        },
+        "atlasRegion": 1,
+        "atlasRoads": [
+          {
+            "edge": "right",
+            "floor": 6,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 47,
+                "r": 22
+              },
+              {
+                "c": 53,
+                "r": 19
+              },
+              {
+                "c": 60,
+                "r": 17
+              },
+              {
+                "c": 66,
+                "r": 14
+              },
+              {
+                "c": 72,
+                "r": 11
+              },
+              {
+                "c": 79,
+                "r": 9
+              },
+              {
+                "c": 85,
+                "r": 6
+              }
+            ]
+          },
+          {
+            "edge": "left",
+            "floor": 18,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 41,
+                "r": 22
+              },
+              {
+                "c": 22,
+                "r": 20
+              },
+              {
+                "c": 2,
+                "r": 18
+              }
+            ]
+          },
+          {
+            "edge": "right",
+            "floor": 18,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 47,
+                "r": 22
+              },
+              {
+                "c": 66,
+                "r": 20
+              },
+              {
+                "c": 85,
+                "r": 18
+              }
+            ]
+          }
+        ],
+        "atlasDecks": [
+          {
+            "c": 42,
+            "r": 22,
+            "w": 9
+          },
+          {
+            "c": 45,
+            "r": 19,
+            "w": 12
+          },
+          {
+            "c": 51,
+            "r": 17,
+            "w": 13
+          },
+          {
+            "c": 58,
+            "r": 14,
+            "w": 12
+          },
+          {
+            "c": 64,
+            "r": 11,
+            "w": 12
+          },
+          {
+            "c": 70,
+            "r": 9,
+            "w": 13
+          },
+          {
+            "c": 77,
+            "r": 6,
+            "w": 11
+          },
+          {
+            "c": 41,
+            "r": 22,
+            "w": 5
+          },
+          {
+            "c": 22,
+            "r": 20,
+            "w": 21
+          },
+          {
+            "c": 0,
+            "r": 18,
+            "w": 24
+          },
+          {
+            "c": 42,
+            "r": 22,
+            "w": 9
+          },
+          {
+            "c": 45,
+            "r": 20,
+            "w": 25
+          },
+          {
+            "c": 64,
+            "r": 18,
+            "w": 24
+          }
+        ],
+        "atlasFloor": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ]
+      },
+      {
+        "id": "cl1-passage-1-2",
+        "name": "Rootwater Descent",
+        "cols": 108,
+        "rows": 64,
+        "map": [
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          ".......................................................................................................P....",
+          "........................................................................................####################",
+          "......................................................................................######################",
+          "....................................................................................########################",
+          "..................................................................................##########################",
+          ".................................................................................###########################",
+          "...............................................................................#############################",
+          ".............................................................................###############################",
+          "...........................................................................#################################",
+          ".........................................................###################################################",
+          ".......................................................#####################################################",
+          ".....................................................#######################################################",
+          "...................................................#########################################################",
+          ".................................................###########################################################",
+          "...............................................#############################################################",
+          ".............................................###############################################################",
+          ".............................###############################################################################",
+          "..........................##################################################################################",
+          ".......................#####################################################################################",
+          "...................#########################################################################################",
+          "................############################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################"
+        ],
+        "exit": "none",
+        "dashes": 1,
+        "connector": true,
+        "palette": "woods",
+        "atlasTransit": {
+          "link": "1-2",
+          "a": 1,
+          "b": 2,
+          "left": 2,
+          "right": 1,
+          "style": "roots",
+          "floor": [
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            48,
+            47,
+            47,
+            47,
+            46,
+            46,
+            46,
+            46,
+            45,
+            45,
+            45,
+            44,
+            44,
+            44,
+            43,
+            43,
+            43,
+            43,
+            43,
+            43,
+            43,
+            43,
+            43,
+            43,
+            43,
+            43,
+            43,
+            43,
+            43,
+            43,
+            42,
+            42,
+            41,
+            41,
+            40,
+            40,
+            39,
+            39,
+            38,
+            38,
+            37,
+            37,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            35,
+            35,
+            34,
+            34,
+            33,
+            33,
+            32,
+            31,
+            31,
+            30,
+            30,
+            29,
+            29,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "gateC": null,
+          "crown": null,
+          "winch": null,
+          "decks": [],
+          "route": [
+            {
+              "c": 4,
+              "r": 48,
+              "ground": true
+            },
+            {
+              "c": 9,
+              "r": 48,
+              "ground": true
+            },
+            {
+              "c": 14,
+              "r": 48,
+              "ground": true
+            },
+            {
+              "c": 19,
+              "r": 46,
+              "ground": true
+            },
+            {
+              "c": 24,
+              "r": 45,
+              "ground": true
+            },
+            {
+              "c": 29,
+              "r": 43,
+              "ground": true
+            },
+            {
+              "c": 34,
+              "r": 43,
+              "ground": true
+            },
+            {
+              "c": 39,
+              "r": 43,
+              "ground": true
+            },
+            {
+              "c": 44,
+              "r": 43,
+              "ground": true
+            },
+            {
+              "c": 49,
+              "r": 40,
+              "ground": true
+            },
+            {
+              "c": 54,
+              "r": 38,
+              "ground": true
+            },
+            {
+              "c": 59,
+              "r": 36,
+              "ground": true
+            },
+            {
+              "c": 64,
+              "r": 36,
+              "ground": true
+            },
+            {
+              "c": 69,
+              "r": 36,
+              "ground": true
+            },
+            {
+              "c": 74,
+              "r": 36,
+              "ground": true
+            },
+            {
+              "c": 79,
+              "r": 33,
+              "ground": true
+            },
+            {
+              "c": 84,
+              "r": 30,
+              "ground": true
+            },
+            {
+              "c": 89,
+              "r": 28,
+              "ground": true
+            },
+            {
+              "c": 94,
+              "r": 28,
+              "ground": true
+            },
+            {
+              "c": 99,
+              "r": 28,
+              "ground": true
+            },
+            {
+              "c": 103,
+              "r": 28,
+              "ground": true
+            }
+          ],
+          "scenery": [
+            {
+              "kind": "root",
+              "c": 27,
+              "r": 20
+            },
+            {
+              "kind": "root",
+              "c": 63,
+              "r": 16
+            },
+            {
+              "kind": "pool",
+              "c": 15,
+              "r": 51,
+              "w": 32
+            }
+          ],
+          "name": "Rootwater Descent"
+        },
+        "atlasSockets": [
+          {
+            "edge": "left",
+            "floor": 48,
+            "kind": "region",
+            "world": 2,
+            "link": "1-2"
+          },
+          {
+            "edge": "right",
+            "floor": 28,
+            "kind": "region",
+            "world": 1,
+            "link": "1-2"
+          }
+        ],
+        "hint": "Follow the river beneath the roots.",
+        "people": [
+          {
+            "who": "orra",
+            "name": "Root tender",
+            "line": "The Keep’s water finds its way down here. Follow the pale roots; they drink from the same river.",
+            "c": 64,
+            "r": 35
+          }
+        ]
+      },
+      {
+        "id": "cl1-passage-1-3",
+        "name": "Pilgrims’ Viaduct",
+        "cols": 116,
+        "rows": 64,
+        "map": [
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "....................................................................................................................",
+          "............................................................................................MMMMMMMMMMMMMM#MMMMMMMMM",
+          ".....................................................................MMMMMMMMMM..MMMMMMMMMM............#############",
+          ".............................................MMMMMMMMMM................................................#############",
+          ".......................................................................................................#############",
+          ".........................................................MMMMMMMMMMM..................................##############",
+          "......................MMMMMMMMMMM.MMMMMMMMMM..........................................................##############",
+          "......................................................................................................##############",
+          "....P................................................................................................###############",
+          "MMMMMMMMM#MMMMMMMMMMM................................................................................###############",
+          "##############.......................................................................................###############",
+          "##############.......................................................................................###############",
+          "###############.....................................................................................################",
+          "###############.....................................................................................################",
+          "###############.....................................................................................################",
+          "################....................................................................................################",
+          "################...................................................................................#################",
+          "################...................................................................................#################",
+          "#################..................................................................................#################",
+          "#################..................................................................................#################",
+          "#################.................................................................................##################",
+          "##################................................................................................##################",
+          "##################................................................................................##################",
+          "##################...............................................................................###################",
+          "###################..............................................................................###################",
+          "###################..............................................................................###################",
+          "###################..............................................................................###################",
+          "####################################################################################################################",
+          "####################################################################################################################",
+          "####################################################################################################################",
+          "####################################################################################################################",
+          "####################################################################################################################",
+          "####################################################################################################################",
+          "####################################################################################################################",
+          "####################################################################################################################",
+          "####################################################################################################################",
+          "####################################################################################################################"
+        ],
+        "exit": "none",
+        "dashes": 1,
+        "connector": true,
+        "palette": "outskirts",
+        "atlasTransit": {
+          "link": "1-3",
+          "a": 1,
+          "b": 3,
+          "left": 1,
+          "right": 3,
+          "style": "viaduct",
+          "floor": [
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            39,
+            42,
+            45,
+            48,
+            51,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            54,
+            50,
+            47,
+            43,
+            39,
+            35,
+            32,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28
+          ],
+          "gateC": null,
+          "crown": null,
+          "winch": null,
+          "decks": [
+            {
+              "c": 0,
+              "r": 36,
+              "w": 9,
+              "material": "bridge"
+            },
+            {
+              "c": 10,
+              "r": 36,
+              "w": 11,
+              "material": "bridge"
+            },
+            {
+              "c": 22,
+              "r": 33,
+              "w": 11,
+              "material": "bridge"
+            },
+            {
+              "c": 34,
+              "r": 33,
+              "w": 10,
+              "material": "bridge"
+            },
+            {
+              "c": 45,
+              "r": 30,
+              "w": 10,
+              "material": "bridge"
+            },
+            {
+              "c": 57,
+              "r": 32,
+              "w": 11,
+              "material": "bridge"
+            },
+            {
+              "c": 69,
+              "r": 29,
+              "w": 10,
+              "material": "bridge"
+            },
+            {
+              "c": 81,
+              "r": 29,
+              "w": 10,
+              "material": "bridge"
+            },
+            {
+              "c": 92,
+              "r": 28,
+              "w": 14,
+              "material": "bridge"
+            },
+            {
+              "c": 107,
+              "r": 28,
+              "w": 9,
+              "material": "bridge"
+            }
+          ],
+          "route": [
+            {
+              "c": 4,
+              "r": 36
+            },
+            {
+              "c": 15,
+              "r": 36
+            },
+            {
+              "c": 27,
+              "r": 33
+            },
+            {
+              "c": 39,
+              "r": 33
+            },
+            {
+              "c": 50,
+              "r": 30
+            },
+            {
+              "c": 62,
+              "r": 32
+            },
+            {
+              "c": 74,
+              "r": 29
+            },
+            {
+              "c": 86,
+              "r": 29
+            },
+            {
+              "c": 99,
+              "r": 28
+            },
+            {
+              "c": 111,
+              "r": 28
+            }
+          ],
+          "scenery": [
+            {
+              "kind": "broken-arch",
+              "c": 23,
+              "r": 33,
+              "w": 24
+            },
+            {
+              "kind": "broken-arch",
+              "c": 56,
+              "r": 32,
+              "w": 29
+            },
+            {
+              "kind": "fallen-bell",
+              "c": 62,
+              "r": 54
+            }
+          ],
+          "name": "Pilgrims’ Viaduct"
+        },
+        "atlasSockets": [
+          {
+            "edge": "left",
+            "floor": 36,
+            "kind": "region",
+            "world": 1,
+            "link": "1-3"
+          },
+          {
+            "edge": "right",
+            "floor": 28,
+            "kind": "region",
+            "world": 3,
+            "link": "1-3"
+          }
+        ],
+        "hint": "The broken road crosses the old valley. The undercroft offers a way back up."
+      }
+    ],
+    "tapes": {
+      "cl1-o1-cut#door": [
+        [
+          12,
+          "lj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          16,
+          "lgu"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "j"
+        ]
+      ],
+      "cl1-o1-verge#door": [
+        [
+          5,
+          "rdx"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          16,
+          "rgu"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "j"
+        ]
+      ],
+      "cl1-pass-4#through": [
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          5,
+          "lj"
+        ]
+      ],
+      "cl1-pass-5#through": [
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "l"
+        ]
+      ],
+      "cl1-pass-6#through": [
+        [
+          8,
+          "rgu"
+        ]
+      ],
+      "cl1-pass-7#through": [
+        [
+          13,
+          "lgu"
+        ]
+      ],
+      "cl1-pass-8#through": [
+        [
+          16,
+          "lgu"
+        ],
+        [
+          17,
+          "rgu"
+        ]
+      ],
+      "cl1-pass-9#through": [
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          5,
+          "lj"
+        ]
+      ],
+      "cl1-pass-10#through": [
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          20,
+          "lgu"
+        ]
+      ],
+      "cl1-pass-11#through": [
+        [
+          12,
+          "lgu"
+        ],
+        [
+          15,
+          "rgu"
+        ]
+      ],
+      "cl1-o1-road": [
+        [
+          24,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          30,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          30,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          72,
+          "r"
+        ]
+      ],
+      "cl1-o1-verge": [
+        [
+          14,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          2,
+          "lx"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          40,
+          "r"
+        ]
+      ],
+      "cl1-o1-flowers": [
+        [
+          20,
+          "ru"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          20,
+          "rg"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          40,
+          "ru"
+        ],
+        [
+          8,
+          "j"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          1,
+          "r"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          1,
+          "l"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          60,
+          "ru"
+        ],
+        [
+          10,
+          "lu"
+        ],
+        [
+          20,
+          "ru"
+        ]
+      ],
+      "cl1-o1-camp": [
+        [
+          14,
+          "rj"
+        ],
+        [
+          2,
+          "rux"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          10,
+          "rj"
+        ],
+        [
+          5,
+          "lx"
+        ],
+        [
+          20,
+          "lj"
+        ],
+        [
+          14,
+          "l"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          12,
+          "ru"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          3,
+          "lj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          20,
+          "rj"
+        ]
+      ],
+      "cl1-o1-camp#side": [
+        [
+          9,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          18,
+          "r"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          3,
+          "r"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          18,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          120,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ]
+      ],
+      "cl1-o1-camp#bearing": [
+        [
+          12,
+          "rj"
+        ],
+        [
+          8,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          12,
+          "r"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          1,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          40,
+          "ru"
+        ],
+        [
+          12,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          40,
+          "ru"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "lu"
+        ],
+        [
+          12,
+          "j"
+        ]
+      ],
+      "cl1-o1-lookout": [
+        [
+          12,
+          "lj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          3,
+          "j"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          12,
+          "r"
+        ]
+      ],
+      "cl1-o1-cut": [
+        [
+          6,
+          "j"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          14,
+          "lj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          32,
+          "r"
+        ]
+      ],
+      "cl1-o1-cut#bearing": [
+        [
+          20,
+          "ru"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          12,
+          "r"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          40,
+          "ru"
+        ]
+      ],
+      "cl1-o1-cracked": [
+        [
+          5,
+          "rx"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          60,
+          "ru"
+        ],
+        [
+          6,
+          "r"
+        ]
+      ],
+      "cl1-o1-mile": [
+        [
+          20,
+          "rj"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          10,
+          "r"
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          2,
+          "rx"
+        ],
+        [
+          20,
+          "r"
+        ],
+        [
+          20,
+          "rj"
+        ]
+      ],
+      "cl1-o1-muster": [
+        [
+          6,
+          "l"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          2,
+          "rx"
+        ],
+        [
+          54,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          20,
+          "ru"
+        ]
+      ],
+      "cl1-o1-muster#bearing": [
+        [
+          12,
+          "rj"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          4,
+          ""
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          4,
+          "j"
+        ],
+        [
+          10,
+          "ru"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "lu"
+        ],
+        [
+          40,
+          "ru"
+        ]
+      ],
+      "cl1-o1-yard": [
+        [
+          20,
+          "ru"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          12,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          8,
+          "r"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          2,
+          "rux"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          6,
+          "r"
+        ]
+      ],
+      "cl1-o1-gate": [
+        [
+          18,
+          "r"
+        ],
+        [
+          1,
+          "rg"
+        ],
+        [
+          66,
+          "r"
+        ],
+        [
+          1,
+          "dg"
+        ],
+        [
+          120,
+          "r"
+        ]
+      ],
+      "cl1-o1-q-yard": [
+        [
+          5,
+          "rx"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          20,
+          "rg"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          80,
+          "ru"
+        ]
+      ],
+      "cl1-o1-q-tower": [
+        [
+          12,
+          "rj"
+        ],
+        [
+          12,
+          "ru"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "lu"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "rg"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "ru"
+        ],
+        [
+          12,
+          "j"
+        ]
+      ],
+      "cl1-socket-19-1": [
+        [
+          90,
+          "l"
+        ]
+      ],
+      "cl1-secret-r2": [
+        [
+          12,
+          "r"
+        ],
+        [
+          22,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          16,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          30,
+          "rg"
+        ],
+        [
+          80,
+          "rgu"
+        ],
+        [
+          18,
+          "rg"
+        ],
+        [
+          5,
+          "lx"
+        ],
+        [
+          12,
+          "l"
+        ],
+        [
+          8,
+          ""
+        ],
+        [
+          0,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          30,
+          "rg"
+        ],
+        [
+          30,
+          "rgu"
+        ],
+        [
+          30,
+          "rg"
+        ],
+        [
+          130,
+          "rgu"
+        ],
+        [
+          60,
+          ""
+        ]
+      ],
+      "cl1-bank-b21": [
+        [
+          1,
+          "r"
+        ],
+        [
+          124,
+          ""
+        ],
+        [
+          11,
+          "r"
+        ],
+        [
+          28,
+          "rj"
+        ],
+        [
+          16,
+          "r"
+        ],
+        [
+          65,
+          ""
+        ],
+        [
+          40,
+          "rj"
+        ],
+        [
+          8,
+          "r"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          80,
+          ""
+        ],
+        [
+          8,
+          "r"
+        ],
+        [
+          40,
+          "rj"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          70,
+          ""
+        ],
+        [
+          45,
+          "rj"
+        ],
+        [
+          45,
+          "r"
+        ]
+      ],
+      "cl1-bank-b22": [
+        [
+          1,
+          "u"
+        ],
+        [
+          50,
+          ""
+        ],
+        [
+          16,
+          "rj"
+        ],
+        [
+          1,
+          "rux"
+        ],
+        [
+          16,
+          "rug"
+        ],
+        [
+          21,
+          "rgu"
+        ],
+        [
+          8,
+          ""
+        ],
+        [
+          36,
+          ""
+        ],
+        [
+          16,
+          "lj"
+        ],
+        [
+          1,
+          "lux"
+        ],
+        [
+          16,
+          "lug"
+        ],
+        [
+          22,
+          "lgu"
+        ],
+        [
+          8,
+          ""
+        ],
+        [
+          16,
+          "rj"
+        ],
+        [
+          1,
+          "rux"
+        ],
+        [
+          16,
+          "rug"
+        ],
+        [
+          130,
+          "r"
+        ]
+      ],
+      "cl1-bank-b62": [
+        [
+          20,
+          "r"
+        ],
+        [
+          1,
+          ""
+        ],
+        [
+          32,
+          "j"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          26,
+          "rj"
+        ],
+        [
+          12,
+          ""
+        ],
+        [
+          20,
+          "r"
+        ],
+        [
+          1,
+          ""
+        ],
+        [
+          26,
+          "rj"
+        ],
+        [
+          42,
+          ""
+        ],
+        [
+          66,
+          "r"
+        ],
+        [
+          28,
+          "rj"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          12,
+          "rux"
+        ],
+        [
+          32,
+          "r"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          12,
+          "rux"
+        ],
+        [
+          40,
+          "r"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          75,
+          "l"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          20,
+          "lj"
+        ],
+        [
+          12,
+          "lx"
+        ],
+        [
+          24,
+          "l"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          20,
+          "lj"
+        ],
+        [
+          30,
+          "l"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          1,
+          "dj"
+        ],
+        [
+          45,
+          "l"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          26,
+          "lj"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          32,
+          "j"
+        ],
+        [
+          5,
+          ""
+        ],
+        [
+          18,
+          "l"
+        ],
+        [
+          5,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          12,
+          "r"
+        ],
+        [
+          48,
+          ""
+        ],
+        [
+          25,
+          "lj"
+        ],
+        [
+          100,
+          "l"
+        ]
+      ]
+    },
+    "folk": {
+      "rowan": {
+        "cloak": "#6b6a52",
+        "trim": "#b8c5a0",
+        "skin": "#cfa98a",
+        "cap": true
+      }
+    },
+    "props": {},
+    "palettes": {},
+    "saved": [
+      {
+        "id": "o1-ridge",
+        "name": "Watcher’s Ridge",
+        "diff": 8,
+        "fun": 4,
+        "why": "rated 8"
+      }
+    ],
+    "difficulty": {
+      "min": 1,
+      "max": 3,
+      "mean": 1.9
+    },
+    "retiredRooms": {},
+    "retiredRoomDetails": [],
+    "checkpointLinks": [],
+    "requiredBankRooms": [
+      "cl1-bank-b21",
+      "cl1-bank-b22",
+      "cl1-bank-b62"
+    ],
+    "requiredMainRooms": [
+      "cl1-o1-road",
+      "cl1-o1-verge",
+      "cl1-o1-flowers",
+      "cl1-bank-b21",
+      "cl1-o1-camp",
+      "cl1-o1-lookout",
+      "cl1-o1-cut",
+      "cl1-o1-cracked",
+      "cl1-bank-b22",
+      "cl1-o1-mile",
+      "cl1-o1-muster",
+      "cl1-o1-yard",
+      "cl1-o1-gate",
+      "cl1-bank-b62"
+    ],
+    "bankIntegration": {
+      "version": "7.307.0",
+      "ordinary": [
+        "cl1-bank-b21",
+        "cl1-bank-b22"
+      ],
+      "superroom": "cl1-bank-b62",
+      "beforeBoss": null,
+      "sourceMainCount": 11,
+      "geography": "continuous",
+      "sealedEntrances": [],
+      "clearedDoorways": [
+        "cl1-o1-q-tower:2",
+        "cl1-bank-b22:3"
+      ]
+    },
+    "continuousSeams": [
+      {
+        "from": "cl1-o1-flowers",
+        "to": "cl1-bank-b21",
+        "how": "right tunnel (4 rock)",
+        "kind": "direct",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            4,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl1-bank-b21",
+        "to": "cl1-o1-camp",
+        "how": "right tunnel (4 rock)",
+        "kind": "direct",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            9,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl1-o1-cracked",
+        "to": "cl1-bank-b22",
+        "how": "right tunnel (24 rock)",
+        "kind": "direct",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            47,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl1-bank-b22",
+        "to": "cl1-o1-mile",
+        "how": "right tunnel (4 rock)",
+        "kind": "direct",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            4,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl1-o1-gate",
+        "to": "cl1-bank-b62",
+        "how": "right tunnel (4 rock)",
+        "kind": "direct",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            15,
+            "r"
+          ]
+        ]
+      }
+    ],
+    "atlasEnd": "cl1-bank-b62",
+    "atlasMiddle": "cl1-o1-cracked",
+    "atlasPassagesReady": true,
+    "passages": [
+      {
+        "room": "cl1-passage-1-2",
+        "x": 3000,
+        "y": 0,
+        "fire": {
+          "c": 103,
+          "r": 27
+        }
+      },
+      {
+        "room": "cl1-passage-1-3",
+        "x": 3160,
+        "y": 0,
+        "fire": {
+          "c": 4,
+          "r": 35
+        }
+      }
+    ],
+    "atlasStart": "cl1-o1-road"
+  },
+  "constants": {
+    "maxRun": 90,
+    "runAccel": 1000,
+    "runReduce": 400,
+    "airMult": 0.65,
+    "flingMaxFall": 420,
+    "gravity": 900,
+    "halfGravThreshold": 40,
+    "maxFall": 160,
+    "fastMaxFall": 240,
+    "fastMaxAccel": 300,
+    "jumpSpeed": -105,
+    "jumpHBoost": 40,
+    "varJumpFrames": 12,
+    "jumpGraceFrames": 6,
+    "bufferFrames": 5,
+    "wallJumpCheck": 3,
+    "superWallJumpCheck": 5,
+    "wallJumpForceFrames": 10,
+    "wallJumpH": 130,
+    "wallSlideStartMax": 20,
+    "wallSlideFrames": 72,
+    "wallSpeedRetentionFrames": 4,
+    "climbMaxStamina": 110,
+    "climbUpCost": 45.45454545454545,
+    "climbStillCost": 10,
+    "climbJumpCost": 27.5,
+    "climbTired": 20,
+    "climbUpSpeed": -45,
+    "touchClimbUpSpeed": -60,
+    "climbDownSpeed": 80,
+    "climbSlipSpeed": 30,
+    "climbAccel": 900,
+    "climbCheck": 2,
+    "climbHopX": 100,
+    "climbHopY": -120,
+    "climbHopForceFrames": 12,
+    "climbJumpBoostFrames": 12,
+    "climbNoMoveFrames": 6,
+    "dashSpeed": 240,
+    "endDashSpeed": 160,
+    "endDashUpMult": 0.75,
+    "dashFrames": 9,
+    "dashCooldownFrames": 12,
+    "dashRefillCooldownFrames": 6,
+    "dashFreezeFrames": 3,
+    "ultraMult": 1.2,
+    "superJumpH": 260,
+    "hyperXMult": 1.25,
+    "hyperYMult": 0.5,
+    "superWallJumpSpeed": -160,
+    "superWallJumpH": 170,
+    "superWallVarFrames": 15,
+    "upwardCorner": 4,
+    "dashCorner": 4,
+    "liftXCap": 250,
+    "liftYCap": -130,
+    "liftGraceFrames": 10,
+    "carryMaxFall": 45,
+    "throwX": 200,
+    "throwY": -80,
+    "strikeFrames": 5,
+    "strikeCooldownFrames": 15,
+    "podSpeed": -210,
+    "podSide": 190,
+    "podDown": 150,
+    "springSpeed": -185,
+    "refillRespawnFrames": 150,
+    "crumbleShakeFrames": 24,
+    "crumbleRespawnFrames": 120,
+    "stoneAccel": 600,
+    "stoneMax": 240,
+    "deathFrames": 24,
+    "respawnFrames": 10
+  }
+}

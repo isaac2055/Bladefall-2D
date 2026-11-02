@@ -1,0 +1,6215 @@
+{
+  "sources": {
+    "bladefall-pcore.js": "ced41090f3e9b56ae660b7035aba7d635337d9a8c7c93251d0846776b66b2fc4",
+    "bladefall-pcore-combat.js": "af94f9287344104bf39de174ca48a0e4c562d4db7d2a90825c776af2f0d39f56",
+    "bladefall-pcore-foes.js": "ba8d86f09dcc286f12e35cb7c916b317b86e503e6e628c0aee7e3b361e97b3f5",
+    "bladefall-pcore-portals.js": "91a6f18f401d5e227a21cbcd2a886b66a6893c1fa3a6ca37defd850a3d219a04",
+    "bladefall-pcore-dev-beam.js": "055c49c55cd007f3064384805672ed39ddc9c54b206e508920621d8e3e5f1be7",
+    "bladefall-pcore-dev-citadel.js": "060cbcab64ebc11e08bff7aeee6342dbdcc9ec3f5a4ed8b963555f78da7483fe",
+    "bladefall-pcore-dev-core-checkpoints.js": "b045e97c55c652d59f52a9ccc864eb78c79a8fda04c34714b034ea706bace3f2",
+    "bladefall-pcore-dev-ember.js": "ae4d44a2fb82306ffdde2ff09670c629d3fc08debc640920f7f2fa6daf54b0b2",
+    "bladefall-pcore-dev-fault.js": "52074477e34debbc8109089c7351ce863b15f54e752b7085dea6b530648e7936",
+    "bladefall-pcore-dev-finale.js": "a2d985c81fa5dc55f496b5de2efd2d3bdcf7c56d8e13ffcbe5b110465f78c06b",
+    "bladefall-pcore-dev-foundry.js": "ec9d5e32beaa0711be0ee080396204874b05789051938fe0f8a6e6ce5c1cb56f",
+    "bladefall-pcore-dev-frost.js": "76e8c10101774e51defb1f4ec052f3f05c93c5bec0f5e336d0b53a971aab324f",
+    "bladefall-pcore-dev-gaol.js": "a93ffc17c3f49f8f82491299f0249640d6dd3531ff2846eb249251d7e1559dd4",
+    "bladefall-pcore-dev-gravity.js": "6d57f63aafd7c840c83b94b793141c666aa14e9c74bb93d385a00348a98acdc1",
+    "bladefall-pcore-dev-hinge.js": "e618f38e2ffa59fe77b806b682840872cc6cbaac87e4e85e509d74b037110999",
+    "bladefall-pcore-dev-hook.js": "c9db5eae750394019089fd3fe77a93ea994e548e736dd0cb71747d6187a2219c",
+    "bladefall-pcore-dev-impulse.js": "170326213c861f3ad17919780ba5415e0f9a50da335b4ba0440daccbdf35687b",
+    "bladefall-pcore-dev-mirror.js": "563abf8bc89187972e554d8995f7ab9909d3e8c19b13f3585bb197b9fe885f24",
+    "bladefall-pcore-dev-moving-hook.js": "b29478501ea795c63d523cf9cbb12210d0d1e923cb7d120cf18b788425618c77",
+    "bladefall-pcore-dev-rail.js": "5969523a5a26e8e49a5bbcb632fcbf96f4cd104e5796da36592ceaf0818a7534",
+    "bladefall-pcore-dev-rbr-causeway.js": "9545f02ef8fe72017aba71f5042b28f7a4c3ef1f994e19d2e5805db96f883297",
+    "bladefall-pcore-dev-rbr-cliffs.js": "d05cbd477a9275936d9e3ebcb9ffd8f9d78f22663d68affea3bc3d24311da22c",
+    "bladefall-pcore-dev-rbr-colossus.js": "eba18ead4c1d3dad8226162cb4920e7c64b1a79b97c63d9ffd5e8a6e026e5c23",
+    "bladefall-pcore-dev-rbr-deepline.js": "16b1b8a513dabbf0303bb04e4ef7272c2dad814d424a68da0f8a4f49fb980fc1",
+    "bladefall-pcore-dev-rbr-emberdeep.js": "e9d235ad02ac5bf4a49162ca1ed23ffc8cf71c763bbebab4d5c964f2c14184d6",
+    "bladefall-pcore-dev-rbr-f-outskirts.js": "b8aa716319a729fec8682c89f6343bf24f09252055c7608c1266c69e8da19b19",
+    "bladefall-pcore-dev-rbr-f-updrafts.js": "4eaa5d5ccfc418b59766ae289dd51bb2e979057d85aad7b8c7912e60d250fce7",
+    "bladefall-pcore-dev-rbr-f-woods.js": "410c4e1d3888b68e7c097642ed2e0a1372adfa5aab7a19420ba11b43c6c35853",
+    "bladefall-pcore-dev-rbr-frostfell.js": "956618773e9c654415974ef4130adb4fdd095ba742242c952dd0391527a121a2",
+    "bladefall-pcore-dev-rbr-gaol.js": "e71c25446cb99a308481842d263f1959c311085776f40ff5a3767b7b7826fca4",
+    "bladefall-pcore-dev-rbr-keep.js": "b8a0765cca2ee332da17ae8557773d77daad04c045394ed7b12084ee580d04c0",
+    "bladefall-pcore-dev-rbr-king.js": "320ed0ff1722a618b0d5c56a038a2f68187a2bb5f80b2c34d8adb8d9fe5a8b37",
+    "bladefall-pcore-dev-rbr-marksman.js": "b0938eddf47a372e5d84537a01575fca52f9b022e47f7fe72561a6d5ac4450f0",
+    "bladefall-pcore-dev-rbr-path.js": "39f7621b1c41cdf268d4f03acc1b4844db4ff6f063b02d8b81c550dfe9a3eca4",
+    "bladefall-pcore-dev-rbr-sorcerer.js": "28a177f81421f7fa88d40996b2c8a6ece14563d55e7464d914e0dba7a3db6c57",
+    "bladefall-pcore-dev-rbr-sunspire.js": "edcd9a5494c8987f6f923601335172436216c7f72fad4e227491f627847b2672",
+    "bladefall-pcore-dev-rbr-tyrant.js": "65547056703c182193c6f967d4d0e150891e5627f0d0f863e7fddc476c75b8c3",
+    "bladefall-pcore-dev-rbr-updrafts.js": "b1739991e1efde3713ab51522d6dcd196b21ceddbedeb03e9961ba60ca3ec37f",
+    "bladefall-pcore-dev-recoil.js": "52ffad00770606c45e0e4150e20498f76db4a7737012b26b79b9d928d6c1e30e",
+    "bladefall-pcore-dev-relay.js": "671a635ca4d0e10ef5adeb714a2474469bda9c18c406b3c3129e8d7ab2512a10",
+    "bladefall-pcore-dev-run9-base.js": "aa1a42c86b327fbdc5a2641fb63d29e84ff0b2b4a0a73410c8ed147ac748f983",
+    "bladefall-pcore-dev-shade.js": "83eab516773d1043db146fbe1c5f19e60b8eeb2c6ca6ff47e3293c7b4ec84ae4",
+    "bladefall-pcore-dev-spent-thorn.js": "047fffbb3355c8da5bd30fb6509a4094e4452b9910044938a86d4c5d1f6272ec",
+    "bladefall-pcore-dev-step-relay.js": "50faa5b503c8a48b60f1d8238fa19981bbcf7a6af863ca800bf276bbeef3775c",
+    "bladefall-pcore-dev-superrooms-base.js": "206d66c75e88580bddda79ec9601704b2a1962140fa533590468243f0c372fde",
+    "bladefall-pcore-dev-superrooms-colossus.js": "cc683a4c2b01c15c5347ee593c31a283af69b4b6b2b5ad02c7aca7e58c70c79c",
+    "bladefall-pcore-dev-superrooms-fractured.js": "f45fafabd6c85bcd3c66510c54ff644ef75cd1ad1a9d1f63fbec16fc0d715039",
+    "bladefall-pcore-dev-superrooms-fractured9.js": "da2023d53c98c79e166ad08e822c679eb65a11f21f65c2c24e5462b55ef5e2df",
+    "bladefall-pcore-dev-sweeper.js": "98544dd105f7895c2c64d7df4688c18980659a77a6b378bbca757e4ba031c47a",
+    "bladefall-pcore-dev-throne.js": "b1df4a78ec4261555a3ddf80edb0bc0e52e08e7054357b41e02b8ba21f5a6ccc",
+    "bladefall-pcore-dev-vector-refill.js": "5a67b1bbd37a7976014edf3f89b88e1b81efbc976b119c6a07f07ad0d391bffc",
+    "bladefall-pcore-dev-void.js": "c0d3042145ad9bee79bbaf673282635d0ed075164909df21101116052857f7a7",
+    "bladefall-pcore-dev-watch.js": "a4649ca5435a061628f1bed65862ab00153d0f50f0f01b46768e706d468626e7",
+    "bladefall-pcore-dev-water.js": "1a4848a3208fc4d5ba8d28f42b595f9e92987161b462e877e728bae886537c7c",
+    "bladefall-pcore-dev-workshop-room.js": "b7c90947fd50c9243bade7986628cb5bcd68c8c037c37db3e91df62a24a40e6e",
+    "bladefall-pcore-dev-zipline.js": "0322a7b5e34b43f38756c307b5678f7cbd7c7936d697102f834baa8968df3c68",
+    "bladefall-pcore-dev-cargo-clasp.js": "011d345e45213da639eca9c2e5bafc8bb8d20bc8e2d57989eb3b162b49794b2e",
+    "bladefall-climb-atlas.js": "41d208f88fdef5069b91b41ffb4ebc16d1f465c446750c0c490ab33b79370120",
+    "bladefall-climb-passages.js": "28f67db4bd03bebd97cfc8769b71f8c244b5cb87dedba84edd3e65f50e6cb852",
+    "bladefall-climb.js": "85b5633cb4b6588cb147db26388eb3a32abc83f51f42eee06a1ff5db59a12200",
+    "bladefall-climb-worlds.js": "14716d5994f1cee3330f626064ab52c42a75dc43407ef25f0df43252d0c57eea"
+  },
+  "playerDefaults": {
+    "x": 24,
+    "y": 133,
+    "w": 8,
+    "h": 11,
+    "remX": 0,
+    "remY": 0,
+    "vx": 0,
+    "vy": 0,
+    "facing": 1,
+    "state": "normal",
+    "dashes": 1,
+    "maxDashes": 1,
+    "stamina": 110,
+    "onGround": true,
+    "wasGround": true,
+    "jumpGrace": 0,
+    "varJump": 0,
+    "varJumpSpeed": 0,
+    "forceMoveX": 0,
+    "forceMoveTimer": 0,
+    "autoJump": false,
+    "dashTimer": 0,
+    "dashCooldown": 0,
+    "dashRefillCooldown": 0,
+    "dashDir": {
+      "x": 1,
+      "y": 0
+    },
+    "beforeDash": {
+      "x": 0,
+      "y": 0
+    },
+    "dashAim": false,
+    "ducking": false,
+    "wallSlide": 72,
+    "wallBoostDir": 0,
+    "wallBoostTimer": 0,
+    "climbNoMove": 0,
+    "retainTimer": 0,
+    "retained": 0,
+    "maxFall": 160,
+    "liftX": 0,
+    "liftY": 0,
+    "liftTimer": 0,
+    "carrying": null,
+    "strikeTimer": 0,
+    "strikeCooldown": 0,
+    "strikeDir": {
+      "x": 1,
+      "y": 0
+    },
+    "strikeHit": {},
+    "deadTimer": 0,
+    "respawnTimer": 0,
+    "dashFlash": 0,
+    "parryTimer": 0,
+    "parryCooldown": 0,
+    "fling": false,
+    "portalCool": 0,
+    "airJumps": 0,
+    "hook": null,
+    "lastRing": null,
+    "seat": null,
+    "seenT": 0
+  },
+  "source": "public/bladefall-climb-worlds.js",
+  "world": {
+    "n": 22,
+    "key": "f-woods",
+    "name": "The Fractured Woods",
+    "palette": "fractured",
+    "kit": [
+      "dash",
+      "strike",
+      "parry",
+      "portal"
+    ],
+    "blurb": "The Fractured Woods: one continuous road with 13 checkpointed challenges, ending in a superroom.",
+    "outro": "The Oath Root lets go of the crown. Behind you, Elsie’s window holds its small light against the wind.",
+    "sections": [
+      {
+        "room": "cl22-atlas-arrival",
+        "x": -88,
+        "y": 0,
+        "fire": {
+          "c": 44,
+          "r": 21
+        },
+        "atlasJunction": true
+      },
+      {
+        "room": "cl22-fw22-refuge",
+        "x": 0,
+        "y": 0,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl22-fw22-root-loop",
+        "x": 40,
+        "y": 8,
+        "fire": {
+          "c": 2,
+          "r": 9
+        }
+      },
+      {
+        "room": "cl22-fw22-clearing",
+        "x": 80,
+        "y": 8,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl22-fw22-canopy",
+        "x": 120,
+        "y": -2,
+        "fire": {
+          "c": 1,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl22-fw22-briar",
+        "x": 80,
+        "y": -15,
+        "fire": {
+          "c": 36,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl22-fw22-kitchen",
+        "x": 40,
+        "y": -24,
+        "fire": {
+          "c": 35,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl22-fw22-edge",
+        "x": 0,
+        "y": -29,
+        "fire": {
+          "c": 36,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl22-walk-1-18",
+        "x": -8,
+        "y": -54,
+        "fire": null
+      },
+      {
+        "room": "cl22-bank-f26",
+        "x": 0,
+        "y": -65,
+        "fire": {
+          "c": 3,
+          "r": 14
+        }
+      },
+      {
+        "room": "cl22-walk-2-21",
+        "x": 40,
+        "y": -65,
+        "fire": null
+      },
+      {
+        "room": "cl22-fw22-wind",
+        "x": 5,
+        "y": -88,
+        "fire": {
+          "c": 36,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl22-walk-3-34",
+        "x": -3,
+        "y": -106,
+        "fire": null
+      },
+      {
+        "room": "cl22-bank-f17",
+        "x": 5,
+        "y": -112,
+        "fire": {
+          "c": 2,
+          "r": 9
+        }
+      },
+      {
+        "room": "cl22-walk-4-43",
+        "x": 45,
+        "y": -117,
+        "fire": null
+      },
+      {
+        "room": "cl22-fw22-oath1",
+        "x": 14,
+        "y": -140,
+        "fire": {
+          "c": 35,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl22-conn-1",
+        "x": 6,
+        "y": -153,
+        "fire": {
+          "c": 5,
+          "r": 30
+        }
+      },
+      {
+        "room": "cl22-fw22-oath2",
+        "x": -34,
+        "y": -167,
+        "fire": {
+          "c": 36,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl22-bank-f68",
+        "x": 6,
+        "y": -192,
+        "fire": {
+          "c": 4,
+          "r": 33
+        }
+      },
+      {
+        "room": "cl22-walk-6-52",
+        "x": -2,
+        "y": -195,
+        "fire": null
+      },
+      {
+        "room": "cl22-fw22-oath3",
+        "x": -1,
+        "y": -218,
+        "fire": {
+          "c": 1,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl22-atlas-crossroads",
+        "x": 39,
+        "y": -218,
+        "fire": {
+          "c": 44,
+          "r": 21
+        },
+        "atlasJunction": true
+      }
+    ],
+    "quests": [
+      {
+        "id": "elsie-echo",
+        "title": "A Bowl Kept Warm",
+        "giver": "Elsie’s echo",
+        "from": "cl22-fw22-kitchen",
+        "back": {
+          "c": 6,
+          "r": 17
+        },
+        "keepsake": {
+          "id": "elsie-remembered",
+          "name": "Elsie, remembered",
+          "gives": "She kept a place at the table even when the refuge went dark. Shown at the end."
+        },
+        "needs": "elsie-lantern",
+        "sections": [
+          {
+            "room": "cl22-fw22-q-bowl",
+            "x": 75,
+            "y": -47,
+            "fire": {
+              "c": 1,
+              "r": 17
+            }
+          },
+          {
+            "room": "cl22-fw22-q-lantern",
+            "x": 115,
+            "y": -49,
+            "fire": {
+              "c": 1,
+              "r": 9
+            }
+          },
+          {
+            "room": "cl22-pass-8",
+            "x": 124,
+            "y": -55,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl22-pass-9",
+            "x": 81,
+            "y": -55,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl22-pass-10",
+            "x": 76,
+            "y": -55,
+            "fire": null,
+            "passage": true
+          }
+        ],
+        "short": false,
+        "returnTo": "cl22-fw22-q-bowl"
+      }
+    ],
+    "secrets": [
+      {
+        "id": "secret-22",
+        "host": "cl22-fw22-oath3",
+        "name": "Speedy Thing",
+        "origin": "pv1",
+        "sections": [
+          {
+            "room": "cl22-secret-pv1",
+            "x": -6,
+            "y": -241,
+            "fire": {
+              "c": 5,
+              "r": 19
+            }
+          },
+          {
+            "room": "cl22-pass-11",
+            "x": 34,
+            "y": -225,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl22-pass-12",
+            "x": 36,
+            "y": -240,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl22-pass-13",
+            "x": 35,
+            "y": -245,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl22-pass-14",
+            "x": -6,
+            "y": -245,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl22-pass-15",
+            "x": -11,
+            "y": -245,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl22-pass-16",
+            "x": -11,
+            "y": -240,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl22-pass-17",
+            "x": -11,
+            "y": -225,
+            "fire": null,
+            "passage": true
+          }
+        ],
+        "returnTo": "cl22-secret-pv1"
+      }
+    ],
+    "rooms": [
+      {
+        "id": "cl22-fw22-refuge",
+        "name": "The Burnt Refuge",
+        "exit": "right",
+        "lock": [
+          "strike"
+        ],
+        "hint": "Dash down-diagonally into the floor, then jump: low and long, under the roof (a hyper) · the root between the pits is cracked: again",
+        "question": "The roof stops any jump. What carries you across without rising, twice?",
+        "decor": [
+          {
+            "k": "hut",
+            "c": 2,
+            "r": 17
+          }
+        ],
+        "map": [
+          "########################################",
+          "#.....##################################",
+          "#.....##################################",
+          "#.....##################################",
+          "#.....##################################",
+          "#.....##################################",
+          "#.....##################################",
+          "#.....##################################",
+          "#.....##################################",
+          "#.....##################################",
+          "#.....##################################",
+          "#.....##################################",
+          "#.....##################################",
+          "#.....##################################",
+          "......##################################",
+          "........................................",
+          "........................................",
+          "...P....................................",
+          "########............~~~...........<#####",
+          "########..........................<#####",
+          "########..........................<#####",
+          "########^^^^^^^^^^^^^^^^^^^^^^^^^^^#####",
+          "########################################"
+        ],
+        "rbr": 22,
+        "palette": "fractured",
+        "origin": "fw22-refuge",
+        "entry": "left",
+        "atlasMouth": {
+          "edge": "left",
+          "floor": 18
+        },
+        "atlasSockets": [
+          {
+            "kind": "room",
+            "edge": "left",
+            "floor": 18,
+            "to": "cl22-atlas-arrival",
+            "toFloor": 18
+          }
+        ]
+      },
+      {
+        "id": "cl22-fw22-root-loop",
+        "name": "The Root Loop",
+        "exit": "right",
+        "lock": [
+          "strike"
+        ],
+        "hint": "From the air, the same: land the down-diagonal dash on the root and jump at once (a wavedash) · then hyper root to root",
+        "question": "The root under the roof is cracked. Where does your dash have to end?",
+        "map": [
+          "########################################",
+          "#...........############################",
+          "#...........############################",
+          "#...........############################",
+          "#...........############################",
+          "#...........############################",
+          "............############################",
+          "............############################",
+          "............############################",
+          "...P........############################",
+          "##########..############################",
+          "##########..############################",
+          "##########..############################",
+          "##########..############################",
+          "##########..############################",
+          "##########..............................",
+          "##########..............................",
+          "##########..............................",
+          "##########...~~~.........~~~.......<####",
+          "##########.........................<####",
+          "##########.........................<####",
+          "##########^^^^^^^^^^^^^^^^^^^^^^^^^^####",
+          "########################################"
+        ],
+        "rbr": 22,
+        "palette": "fractured",
+        "seam": [
+          [
+            0,
+            6,
+            "#"
+          ],
+          [
+            0,
+            7,
+            "#"
+          ],
+          [
+            0,
+            8,
+            "#"
+          ],
+          [
+            0,
+            9,
+            "#"
+          ]
+        ],
+        "origin": "fw22-root-loop",
+        "decor": []
+      },
+      {
+        "id": "cl22-fw22-clearing",
+        "name": "The Bound Oathblade",
+        "exit": "right",
+        "study": true,
+        "hint": "Stand on the counterweight root at the end of the low run · then hold up at the freed blade",
+        "question": "The root that frees the blade is past the low run. How do you reach it, and then the blade?",
+        "oathRoot": {
+          "c": 24,
+          "r": 18,
+          "bladeC": 34,
+          "bladeR": 8
+        },
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................G",
+          "#......................................G",
+          "#......................................G",
+          "#......................................G",
+          "#......................................G",
+          "#......................................#",
+          "#......########################.======.#",
+          "#......########################........#",
+          "#......########################........#",
+          "#......########################........#",
+          "#......########################........#",
+          ".......########################........#",
+          ".......................................#",
+          ".......................................#",
+          "...P...................................#",
+          "#########............<##################",
+          "#########............<##################",
+          "#########............<##################",
+          "#########^^^^^^^^^^^^^##################",
+          "########################################"
+        ],
+        "rbr": 22,
+        "palette": "fractured",
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "fw22-clearing",
+        "decor": []
+      },
+      {
+        "id": "cl22-fw22-canopy",
+        "name": "The Biting Canopy",
+        "exit": "left",
+        "hint": "A held jump meets the thorns · hyper from cracked root to cracked root · cut the pod where the canopy opens",
+        "question": "Out along the low tunnel and back along the high one, and no root that holds. Where does each hyper start?",
+        "map": [
+          "########################################",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv....#",
+          ".......................................#",
+          ".......................................#",
+          ".......................................#",
+          "#####^^^^^^^^^^^~~~^^^^^^^^^^^~~~~~....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          ".....##############################....#",
+          ".....vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv....#",
+          ".......................................#",
+          ".......................................#",
+          "..P....................................#",
+          "#####.............~~~..................#",
+          "#####.............................b....#",
+          "#####..................................#",
+          "#####^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "########################################"
+        ],
+        "rbr": 22,
+        "palette": "fractured",
+        "seam": [
+          [
+            0,
+            13,
+            "#"
+          ],
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "fw22-canopy",
+        "decor": []
+      },
+      {
+        "id": "cl22-fw22-briar",
+        "name": "The Briar Ceiling",
+        "exit": "left",
+        "hint": "Every dash turns the thicket · the hyper’s dash too · the third branch waits for the third dash",
+        "question": "Your dash raises the branch you are aiming for, and drops the one you stand on. Where can a hyper start?",
+        "map": [
+          "########################################",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          ".....##############################....#",
+          ".....##############################....#",
+          ".....##############################....#",
+          ".....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv....#",
+          "#......................................#",
+          "#b.....................................#",
+          "#....................................P.#",
+          "#...................BBBBBB.........#####",
+          "#...~~~.......AAAAA.....................",
+          "#.......................................",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.....",
+          "########################################"
+        ],
+        "rbr": 22,
+        "palette": "fractured",
+        "seam": [
+          [
+            39,
+            19,
+            "#"
+          ],
+          [
+            39,
+            20,
+            "#"
+          ],
+          [
+            39,
+            21,
+            "#"
+          ],
+          [
+            38,
+            19,
+            "#"
+          ],
+          [
+            38,
+            20,
+            "#"
+          ],
+          [
+            38,
+            21,
+            "#"
+          ],
+          [
+            37,
+            19,
+            "#"
+          ],
+          [
+            37,
+            20,
+            "#"
+          ],
+          [
+            37,
+            21,
+            "#"
+          ],
+          [
+            36,
+            19,
+            "#"
+          ],
+          [
+            36,
+            20,
+            "#"
+          ],
+          [
+            36,
+            21,
+            "#"
+          ],
+          [
+            35,
+            19,
+            "#"
+          ],
+          [
+            35,
+            20,
+            "#"
+          ],
+          [
+            35,
+            21,
+            "#"
+          ]
+        ],
+        "origin": "fw22-briar",
+        "decor": []
+      },
+      {
+        "id": "cl22-fw22-kitchen",
+        "name": "Elsie’s Cold Kitchen",
+        "exit": "left",
+        "side": "up",
+        "hint": "Your old lantern opens the tree above the kitchen · the root in the cut is cracked",
+        "question": "No runway under the roof. Where does your dash land?",
+        "people": [
+          {
+            "who": "elsie",
+            "name": "ELSIE’S ECHO",
+            "c": 28,
+            "r": 17,
+            "quest": "elsie-echo",
+            "line": "I left a bowl out. Habit, I suppose.",
+            "lineDone": "Still warm. Don’t ask me how."
+          }
+        ],
+        "decor": [
+          {
+            "k": "table",
+            "c": 31,
+            "r": 17
+          },
+          {
+            "k": "stove",
+            "c": 26,
+            "r": 17
+          }
+        ],
+        "map": [
+          "##################################....##",
+          "#......................................#",
+          "#......................................#",
+          "#...............................##.....#",
+          "#...............................##.....#",
+          "#...............................##.....#",
+          "#...............................##.....#",
+          "#...............................##.....#",
+          "#...............................##.....#",
+          ".........##############.........##.....#",
+          ".........##############.........##.....#",
+          ".........##############.........##.....#",
+          ".........##############.........##.....#",
+          "#~~~>....##############.........##.....#",
+          "#^^^>....##############.........##......",
+          "####>...................................",
+          "####>...................................",
+          "####>...............................P...",
+          "####>..b............~~~..###############",
+          "####>....................###############",
+          "####>....................###############",
+          "####^^^^^^^^^^^^^^^^^^^^^###############",
+          "########################################"
+        ],
+        "rbr": 22,
+        "palette": "fractured",
+        "sideQuest": "elsie-echo",
+        "seam": [
+          [
+            39,
+            14,
+            "#"
+          ],
+          [
+            39,
+            15,
+            "#"
+          ],
+          [
+            39,
+            16,
+            "#"
+          ],
+          [
+            39,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "fw22-kitchen"
+      },
+      {
+        "id": "cl22-fw22-edge",
+        "name": "Thicket’s Broken Edge",
+        "exit": "left",
+        "study": true,
+        "hint": "Every dash turns the thicket · the middle branch waits for a late dash · a root lashes it",
+        "question": "Which branch is true when you land, which dash turned it, and how long before the lash?",
+        "lashes": [
+          {
+            "c0": 10,
+            "r0": 15,
+            "c1": 15,
+            "r1": 17,
+            "period": 90,
+            "on": 45,
+            "phase": 0
+          }
+        ],
+        "map": [
+          "########################################",
+          "#############################.........<#",
+          "#############################.........<#",
+          "#############################.........<#",
+          "#############################.........<#",
+          "#############################.........<#",
+          "#############################.........<#",
+          "#############################.........<#",
+          "#############################.........<#",
+          "#############################.........<#",
+          "#############################.........<#",
+          "#############################.........<#",
+          "#############################.........<#",
+          "#############################.........<#",
+          "#############################...........",
+          "........................................",
+          "........................................",
+          ".....................................P..",
+          "#..BBB.....AAAA...................######",
+          "#...........................BBBB..######",
+          "#.................................######",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^######",
+          "########################################"
+        ],
+        "rbr": 22,
+        "palette": "fractured",
+        "seam": [
+          [
+            39,
+            14,
+            "#"
+          ],
+          [
+            39,
+            15,
+            "#"
+          ],
+          [
+            39,
+            16,
+            "#"
+          ],
+          [
+            39,
+            17,
+            "#"
+          ],
+          [
+            38,
+            14,
+            "<"
+          ],
+          [
+            38,
+            15,
+            "<"
+          ]
+        ],
+        "origin": "fw22-edge",
+        "decor": []
+      },
+      {
+        "id": "cl22-fw22-wind",
+        "name": "The Resin Crown",
+        "exit": "left",
+        "study": true,
+        "hint": "Amber edges hold against the wind · dotted edges warn of the turn · the wind turns fast here",
+        "question": "Each branch holds for one beat of the wind, and the next one hardens as it softens. Can you keep the beat to the gap?",
+        "resinWind": {
+          "period": 60,
+          "branches": [
+            {
+              "c": 20,
+              "r": 18,
+              "w": 3,
+              "phase": 1
+            },
+            {
+              "c": 5,
+              "r": 18,
+              "w": 4,
+              "phase": 0
+            }
+          ]
+        },
+        "map": [
+          "########################################",
+          "#...#############################......#",
+          "#...#############################......#",
+          "#...#############################......#",
+          "....#############################......#",
+          "....#############################......#",
+          "....#############################......#",
+          "....#############################......#",
+          "....#############################......#",
+          "#...#############################......#",
+          "#...#############################......#",
+          "#...#############################......#",
+          "#...#############################......#",
+          "#...#############################......#",
+          "#...vvvvvvvvvvvvvvvvvvvvvvvvvvvvv......#",
+          "#......................................#",
+          "#......................................#",
+          "#....................................P.#",
+          "#................................#####==",
+          "#.b..............................#####..",
+          "#................................#####..",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#####..",
+          "######################################.."
+        ],
+        "rbr": 22,
+        "palette": "fractured",
+        "seam": [
+          [
+            38,
+            19,
+            "#"
+          ],
+          [
+            39,
+            19,
+            "#"
+          ],
+          [
+            38,
+            20,
+            "#"
+          ],
+          [
+            39,
+            20,
+            "#"
+          ],
+          [
+            38,
+            21,
+            "#"
+          ],
+          [
+            39,
+            21,
+            "#"
+          ],
+          [
+            38,
+            22,
+            "#"
+          ],
+          [
+            39,
+            22,
+            "#"
+          ],
+          [
+            38,
+            18,
+            "#"
+          ],
+          [
+            39,
+            18,
+            "#"
+          ]
+        ],
+        "origin": "fw22-wind",
+        "decor": []
+      },
+      {
+        "id": "cl22-fw22-oath1",
+        "name": "The Oath Root",
+        "exit": "left",
+        "study": true,
+        "hint": "Two lashes, out of step · the dotted outline strikes next · the root between is cracked",
+        "question": "The run under the roof is a hyper long, and the lash lies at the end of it. When do you set off?",
+        "rootCrown": {
+          "c": 4,
+          "r": 16
+        },
+        "lashes": [
+          {
+            "c0": 22,
+            "r0": 15,
+            "c1": 30,
+            "r1": 17,
+            "period": 96,
+            "on": 48,
+            "phase": 0
+          },
+          {
+            "c0": 1,
+            "r0": 15,
+            "c1": 8,
+            "r1": 17,
+            "period": 96,
+            "on": 40,
+            "phase": 48
+          }
+        ],
+        "map": [
+          "########################################",
+          "#################################......#",
+          "#################################......#",
+          "#################################......#",
+          "#################################......#",
+          "#################################......#",
+          "#################################......#",
+          "#################################......#",
+          "#################################......#",
+          "#################################......#",
+          "#################################......#",
+          "#################################......#",
+          "#################################......#",
+          "#################################......#",
+          "#vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv......#",
+          "G......................................#",
+          "G......................................#",
+          "G...................................P..#",
+          "#######>..........~~~............#==####",
+          "#######>.........................#..####",
+          "#######>.........................#..####",
+          "#######^^^^^^^^^^^^^^^^^^^^^^^^^^#..####",
+          "##################################..####"
+        ],
+        "rbr": 22,
+        "palette": "fractured",
+        "seam": [
+          [
+            34,
+            19,
+            "#"
+          ],
+          [
+            35,
+            19,
+            "#"
+          ],
+          [
+            34,
+            20,
+            "#"
+          ],
+          [
+            35,
+            20,
+            "#"
+          ],
+          [
+            34,
+            21,
+            "#"
+          ],
+          [
+            35,
+            21,
+            "#"
+          ],
+          [
+            34,
+            22,
+            "#"
+          ],
+          [
+            35,
+            22,
+            "#"
+          ],
+          [
+            34,
+            18,
+            "#"
+          ],
+          [
+            35,
+            18,
+            "#"
+          ]
+        ],
+        "origin": "fw22-oath1",
+        "decor": []
+      },
+      {
+        "id": "cl22-conn-1",
+        "name": "",
+        "exit": "left",
+        "palette": "fractured",
+        "connector": true,
+        "cols": 8,
+        "rows": 32,
+        "map": [
+          "########",
+          ".....###",
+          ".....###",
+          ".....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....###",
+          "#....##.",
+          "#.......",
+          "#.......",
+          "#.....P.",
+          "########"
+        ],
+        "hint": "",
+        "question": "",
+        "seam": [
+          [
+            7,
+            27,
+            "#"
+          ]
+        ],
+        "origin": "conn-1",
+        "decor": []
+      },
+      {
+        "id": "cl22-fw22-oath2",
+        "name": "The Oath Root, Waking",
+        "exit": "right",
+        "study": true,
+        "hint": "Out low, back high · a lash in each run · cut the crown as you pass",
+        "question": "One lash rests while the other strikes. Where are you when each comes down?",
+        "rootCrown": {
+          "c": 34,
+          "r": 7
+        },
+        "lashes": [
+          {
+            "c0": 24,
+            "r0": 15,
+            "c1": 31,
+            "r1": 17,
+            "period": 90,
+            "on": 45,
+            "phase": 60
+          },
+          {
+            "c0": 12,
+            "r0": 6,
+            "c1": 19,
+            "r1": 8,
+            "period": 90,
+            "on": 45,
+            "phase": 20
+          }
+        ],
+        "map": [
+          "########################################",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv....#",
+          "#......................................G",
+          "#......................................G",
+          "#......................................G",
+          "#....~~~~~^^^^^^^^^^^~~~^^^^^^^^^^^#####",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....##############################....#",
+          "#....vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv.....",
+          "#.......................................",
+          "#.......................................",
+          "#....................................P..",
+          "#..................~~~.............#####",
+          "#....b.............................#####",
+          "#..................................#####",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#####",
+          "########################################"
+        ],
+        "rbr": 22,
+        "palette": "fractured",
+        "seam": [
+          [
+            39,
+            14,
+            "#"
+          ],
+          [
+            39,
+            15,
+            "#"
+          ],
+          [
+            39,
+            16,
+            "#"
+          ],
+          [
+            39,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "fw22-oath2",
+        "decor": []
+      },
+      {
+        "id": "cl22-fw22-oath3",
+        "name": "The Quiet Passage",
+        "origin": "fw22-oath3",
+        "exit": "right",
+        "cols": 40,
+        "rows": 23,
+        "map": [
+          "#..#####################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#...........................############",
+          "#...........................############",
+          "#...........................############",
+          "#...................####################",
+          "#...................####################",
+          "#...................####################",
+          "#..........#############################",
+          "#..........#############################",
+          "#.P........#############################",
+          "###==###################################",
+          "###..###################################",
+          "###..###################################",
+          "###..###################################",
+          "###..###################################"
+        ],
+        "palette": "fractured",
+        "connector": true,
+        "retiredChallenge": true,
+        "seam": [
+          [
+            3,
+            19,
+            "#"
+          ],
+          [
+            4,
+            19,
+            "#"
+          ],
+          [
+            3,
+            20,
+            "#"
+          ],
+          [
+            4,
+            20,
+            "#"
+          ],
+          [
+            3,
+            21,
+            "#"
+          ],
+          [
+            4,
+            21,
+            "#"
+          ],
+          [
+            3,
+            22,
+            "#"
+          ],
+          [
+            4,
+            22,
+            "#"
+          ],
+          [
+            3,
+            18,
+            "#"
+          ],
+          [
+            4,
+            18,
+            "#"
+          ]
+        ],
+        "doors": [
+          {
+            "edge": "up",
+            "cols": [
+              1,
+              2
+            ],
+            "to": "secret-22"
+          }
+        ],
+        "returns": [],
+        "people": [],
+        "atlasSockets": [
+          {
+            "kind": "room",
+            "preview": true,
+            "edge": "right",
+            "floor": 9,
+            "height": 5,
+            "to": "cl22-atlas-crossroads",
+            "toFloor": 9
+          }
+        ]
+      },
+      {
+        "id": "cl22-fw22-q-bowl",
+        "name": "The Empty Bowl",
+        "exit": "right",
+        "study": true,
+        "hint": "Two roots bite on a clock · two hypers and a cut · the branch is false until your next dash",
+        "question": "The branch past the pod is false until something turns it. Which dash, and from where?",
+        "lashes": [
+          {
+            "c0": 7,
+            "r0": 15,
+            "c1": 18,
+            "r1": 17,
+            "period": 100,
+            "on": 60,
+            "phase": 0
+          },
+          {
+            "c0": 33,
+            "r0": 11,
+            "c1": 38,
+            "r1": 12,
+            "period": 100,
+            "on": 50,
+            "phase": 35
+          }
+        ],
+        "map": [
+          "##..####################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#......^^^^^^^^^^^^....................#",
+          "#......############....................#",
+          "#......############....................#",
+          "#......############....................#",
+          "#......############....................#",
+          "#......############..............BBBBBB#",
+          "#......############....................#",
+          "#......................................#",
+          "#..............................b.......#",
+          "#.P....................................#",
+          "==####.............~~~.................#",
+          "..####.................................#",
+          "..####.................................#",
+          "..####^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "..######################################"
+        ],
+        "rbr": 22,
+        "palette": "fractured",
+        "quest": "elsie-echo",
+        "seam": [
+          [
+            0,
+            19,
+            "#"
+          ],
+          [
+            1,
+            19,
+            "#"
+          ],
+          [
+            0,
+            20,
+            "#"
+          ],
+          [
+            1,
+            20,
+            "#"
+          ],
+          [
+            0,
+            21,
+            "#"
+          ],
+          [
+            1,
+            21,
+            "#"
+          ],
+          [
+            0,
+            22,
+            "#"
+          ],
+          [
+            1,
+            22,
+            "#"
+          ],
+          [
+            0,
+            18,
+            "#"
+          ],
+          [
+            1,
+            18,
+            "#"
+          ]
+        ],
+        "origin": "fw22-q-bowl",
+        "decor": [],
+        "returns": [
+          {
+            "cols": [
+              2,
+              3
+            ],
+            "edge": "up",
+            "from": "elsie-echo"
+          }
+        ]
+      },
+      {
+        "id": "cl22-fw22-q-lantern",
+        "name": "The Lantern That Waited",
+        "exit": "up",
+        "hint": "A wavedash under the roof, a pod, the high branch the dash itself turns · over the thorned crown root to root to her table",
+        "question": "The table is across the thorned crown of the tree, and only two cracked roots between. Where does each hyper start?",
+        "lashes": [
+          {
+            "c0": 32,
+            "r0": 9,
+            "c1": 38,
+            "r1": 10,
+            "period": 96,
+            "on": 40,
+            "phase": 8
+          }
+        ],
+        "people": [
+          {
+            "who": "elsie",
+            "name": "ELSIE’S ECHO",
+            "c": 12,
+            "r": 4,
+            "quest": "elsie-echo",
+            "line": "I knew you’d find the table.",
+            "lineDone": "You never did like eating alone."
+          }
+        ],
+        "map": [
+          "##########....##########################",
+          "##########.............................#",
+          "##########.............................#",
+          "##########.............................#",
+          "##########.*...........................#",
+          "#.........###......~~~......~~~........#",
+          "..........^^^^^^^^^^^^^^^^^^^^^........#",
+          "..........#####################........#",
+          "..........#####################........#",
+          "..P.......#####################........#",
+          "#######...#####################........#",
+          "#######...#####################.BBBBBBB#",
+          "#######...#####################........#",
+          "#######...#####################........#",
+          "#######...#####################........#",
+          "#######................................#",
+          "#######...........................b....#",
+          "#######................................#",
+          "#######...BBBB...........AAAAA.........#",
+          "#######................................#",
+          "#######................................#",
+          "#######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "########################################"
+        ],
+        "rbr": 22,
+        "palette": "fractured",
+        "quest": "elsie-echo",
+        "seam": [
+          [
+            0,
+            6,
+            "#"
+          ],
+          [
+            0,
+            7,
+            "#"
+          ],
+          [
+            0,
+            8,
+            "#"
+          ],
+          [
+            0,
+            9,
+            "#"
+          ]
+        ],
+        "origin": "fw22-q-lantern",
+        "decor": []
+      },
+      {
+        "id": "cl22-pass-8",
+        "name": "",
+        "exit": "left",
+        "entry": "down",
+        "seam": [
+          [
+            2,
+            5,
+            "#"
+          ],
+          [
+            3,
+            5,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "passage": true,
+        "cols": 5,
+        "rows": 6,
+        "map": [
+          "#####",
+          "....#",
+          "P...#",
+          "##..#",
+          "##..#",
+          "##..#"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-8"
+      },
+      {
+        "id": "cl22-pass-9",
+        "name": "",
+        "exit": "left",
+        "entry": "right",
+        "seam": [
+          [
+            42,
+            1,
+            "#"
+          ],
+          [
+            42,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "passage": true,
+        "cols": 43,
+        "rows": 4,
+        "map": [
+          "###########################################",
+          "...........................................",
+          "..........................................P",
+          "###########################################"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-9"
+      },
+      {
+        "id": "cl22-pass-10",
+        "name": "",
+        "exit": "down",
+        "entry": "right",
+        "seam": [
+          [
+            4,
+            1,
+            "#"
+          ],
+          [
+            4,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "passage": true,
+        "cols": 5,
+        "rows": 8,
+        "map": [
+          "#####",
+          "#....",
+          "#...P",
+          "#..##",
+          "#..##",
+          "#..##",
+          "#..##",
+          "#..##"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-10"
+      },
+      {
+        "id": "cl22-secret-pv1",
+        "name": "Speedy Thing",
+        "hint": "A floor portal remembers the height of the fall: speedy thing goes in, speedy thing comes out",
+        "portalMode": "one",
+        "portals": [
+          {
+            "color": "orange",
+            "c": 10,
+            "r": 6,
+            "face": "r"
+          }
+        ],
+        "question": "The orange end throws you across — but only as hard as you fell. How high do you need to fall from?",
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#........##............................#",
+          "#........##............................#",
+          "#........#%............................#",
+          "#........#%............................#",
+          "#........##............................#",
+          "#........##............................#",
+          "#........##............................#",
+          "#........##............................#",
+          "#........##............................#",
+          "#........##............................#",
+          "#........##............................#",
+          "#........##............................#",
+          "#........##............................#",
+          "#........##............................#",
+          ".........##.............................",
+          "......P..##.............................",
+          "###%%##==####.................##########",
+          "#######..####^^^^^^^^^^^^^^^^^##########",
+          "#######..###############################"
+        ],
+        "lock": [],
+        "palette": "fractured",
+        "seam": [
+          [
+            7,
+            21,
+            "#"
+          ],
+          [
+            8,
+            21,
+            "#"
+          ],
+          [
+            7,
+            22,
+            "#"
+          ],
+          [
+            8,
+            22,
+            "#"
+          ],
+          [
+            7,
+            20,
+            "#"
+          ],
+          [
+            8,
+            20,
+            "#"
+          ]
+        ],
+        "origin": "pv1",
+        "decor": [],
+        "secret": true,
+        "returns": [
+          {
+            "cols": [
+              18,
+              19
+            ],
+            "edge": "left",
+            "from": "secret-22"
+          }
+        ]
+      },
+      {
+        "id": "cl22-pass-11",
+        "name": "",
+        "exit": "up",
+        "entry": "left",
+        "seam": [
+          [
+            0,
+            2,
+            "#"
+          ],
+          [
+            0,
+            3,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 6,
+        "rows": 5,
+        "map": [
+          "###..#",
+          "###..#",
+          ".....#",
+          "P...s#",
+          "######"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-11"
+      },
+      {
+        "id": "cl22-pass-12",
+        "name": "",
+        "exit": "up",
+        "entry": "down",
+        "seam": [
+          [
+            1,
+            14,
+            "#"
+          ],
+          [
+            2,
+            14,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 4,
+        "rows": 15,
+        "map": [
+          "#P.#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-12"
+      },
+      {
+        "id": "cl22-pass-13",
+        "name": "",
+        "exit": "left",
+        "entry": "down",
+        "seam": [
+          [
+            2,
+            4,
+            "#"
+          ],
+          [
+            3,
+            4,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 5,
+        "rows": 5,
+        "map": [
+          "#####",
+          "....#",
+          "P...#",
+          "##..#",
+          "##..#"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-13"
+      },
+      {
+        "id": "cl22-pass-14",
+        "name": "",
+        "exit": "left",
+        "entry": "right",
+        "seam": [
+          [
+            40,
+            1,
+            "#"
+          ],
+          [
+            40,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 41,
+        "rows": 4,
+        "map": [
+          "#########################################",
+          ".........................................",
+          "........................................P",
+          "#########################################"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-14"
+      },
+      {
+        "id": "cl22-pass-15",
+        "name": "",
+        "exit": "down",
+        "entry": "right",
+        "seam": [
+          [
+            4,
+            1,
+            "#"
+          ],
+          [
+            4,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 5,
+        "rows": 5,
+        "map": [
+          "#####",
+          "#....",
+          "#...P",
+          "#..##",
+          "#..##"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-15"
+      },
+      {
+        "id": "cl22-pass-16",
+        "name": "",
+        "exit": "down",
+        "entry": "up",
+        "seam": [
+          [
+            1,
+            0,
+            "#"
+          ],
+          [
+            2,
+            0,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 4,
+        "rows": 15,
+        "map": [
+          "#P.#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-16"
+      },
+      {
+        "id": "cl22-pass-17",
+        "name": "",
+        "exit": "right",
+        "entry": "up",
+        "seam": [
+          [
+            1,
+            0,
+            "#"
+          ],
+          [
+            2,
+            0,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 5,
+        "rows": 5,
+        "map": [
+          "#..##",
+          "#..##",
+          "#....",
+          "#P...",
+          "#####"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-17"
+      },
+      {
+        "id": "cl22-bank-f17",
+        "name": "Leave the Wall Standing",
+        "hint": "Clear the dark passage from below. The same stone can stay above you as a roof.",
+        "question": "Which side of the plug is safe to move it from, before you commit to the void?",
+        "map": [
+          "########################################",
+          "#......#####################.###########",
+          "#......#####################.###########",
+          "#......#####################.###########",
+          "#......####################....#########",
+          "#......####################....#########",
+          ".......####################....#########",
+          ".......VVVVVVVVVVVVVVVVVVVV.............",
+          ".......VVVVVVVVVVVVVVVVVVVVKK...........",
+          "..P....VVVVVVVVVVVVVVVVVVVVKK...........",
+          "#####..###################>..vv<########",
+          "#......###################>....<########",
+          "#......###################>....<########",
+          "#......###################>....<########",
+          "#......###################>....<########",
+          "#......###################>....<########",
+          "#......###################>....<########",
+          "#......###################>....<########",
+          "#......###################>..YY<########",
+          "#..............................<########",
+          "#..............................<########",
+          "########################################",
+          "########################################"
+        ],
+        "palette": "causeway",
+        "study": true,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "beams": [
+          {
+            "c": 28,
+            "r": 0,
+            "dir": "d"
+          }
+        ],
+        "origin": "bank-f17",
+        "bankOrigin": "bank-f17",
+        "rbr": 22,
+        "bank": {
+          "id": "bank-f17",
+          "side": "fractured",
+          "format": "room",
+          "collection": "",
+          "acceptance": "banked"
+        },
+        "campaignImport": {
+          "version": "7.307.0",
+          "source": "bank-f17",
+          "superroom": false
+        },
+        "seam": [
+          [
+            0,
+            6,
+            "#"
+          ],
+          [
+            0,
+            7,
+            "#"
+          ],
+          [
+            0,
+            8,
+            "#"
+          ],
+          [
+            0,
+            9,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl22-bank-f26",
+        "name": "Keep the Borrowed Speed",
+        "palette": "combat",
+        "study": true,
+        "exit": "right",
+        "hint": "A downward cut rebounds without erasing sideways speed. Every dash swaps amber and blue.",
+        "question": "Which part of your speed must survive the last contact?",
+        "map": [
+          "########################################",
+          "#>.....................................#",
+          "#>.....................................#",
+          "#>.....................................#",
+          "#>......................................",
+          "#>......................................",
+          "#>......................................",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#############>........................<#",
+          "#############>.................BBBBBBB<#",
+          "..............................<.......<#",
+          "..............................<.......<#",
+          "..............................<.......<#",
+          "...P..........................<.......<#",
+          "##########....................<.......<#",
+          "##########....................<.......<#",
+          "##########....................<.......<#",
+          "##########....................<.......<#",
+          "##########....................<.......<#",
+          "##########....................<.......<#",
+          "##########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "########################################"
+        ],
+        "foes": [
+          {
+            "kind": "moth",
+            "x": 21,
+            "y": 16,
+            "path": [
+              2,
+              0
+            ],
+            "period": 120
+          }
+        ],
+        "origin": "bank-f26",
+        "bankOrigin": "bank-f26",
+        "rbr": 22,
+        "bank": {
+          "id": "bank-f26",
+          "side": "fractured",
+          "format": "room",
+          "collection": "",
+          "acceptance": "banked"
+        },
+        "campaignImport": {
+          "version": "7.307.0",
+          "source": "bank-f26",
+          "superroom": false
+        },
+        "seam": [
+          [
+            0,
+            11,
+            "#"
+          ],
+          [
+            0,
+            12,
+            "#"
+          ],
+          [
+            0,
+            13,
+            "#"
+          ],
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            1,
+            11,
+            ">"
+          ],
+          [
+            1,
+            12,
+            ">"
+          ],
+          [
+            1,
+            13,
+            ">"
+          ],
+          [
+            1,
+            14,
+            ">"
+          ]
+        ]
+      },
+      {
+        "id": "cl22-bank-f68",
+        "name": "The Branch That Becomes the Way Back",
+        "palette": "fractured",
+        "rbr": 22,
+        "study": true,
+        "movement": "survive-2",
+        "aim8": true,
+        "cols": 72,
+        "rows": 40,
+        "exit": "left",
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "rootCrown": {
+          "c": 8,
+          "r": 10
+        },
+        "hingeArms": [
+          {
+            "id": "Crown branch",
+            "c": 59,
+            "r": 33,
+            "length": 12,
+            "dir": "up"
+          }
+        ],
+        "resinWind": {
+          "period": 240,
+          "branches": [
+            {
+              "c": 26,
+              "r": 34,
+              "w": 12,
+              "phase": 0
+            },
+            {
+              "c": 33,
+              "r": 17,
+              "w": 8,
+              "phase": 1
+            }
+          ]
+        },
+        "lashes": [
+          {
+            "c0": 29,
+            "r0": 31,
+            "c1": 36,
+            "r1": 33,
+            "period": 240,
+            "on": 60,
+            "phase": 0
+          },
+          {
+            "c0": 33,
+            "r0": 14,
+            "c1": 40,
+            "r1": 16,
+            "period": 240,
+            "on": 65,
+            "phase": 0
+          }
+        ],
+        "hint": "The upright branch bars the far anvil. Turn it into a floor, then return above the roof you crossed beneath.",
+        "question": "Which branch must stop being a wall before it can become your return route?",
+        "map": [
+          "########################################################################",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "G......................................................................#",
+          "G......................................................................#",
+          "G......................................................................#",
+          "G......................................................................#",
+          "#############..........................................................#",
+          "#......................................................................#",
+          "#................########..............................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#................................................#########.............#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "#......................................................................#",
+          "............###############################################............#",
+          ".......................................................................#",
+          ".................................................................N.....#",
+          "....P..................................................................#",
+          "#############........................................###################",
+          "#############........................................###################",
+          "#############........................................###################",
+          "#############........................................###################",
+          "#############^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^###################",
+          "########################################################################"
+        ],
+        "origin": "bank-f68",
+        "bankOrigin": "bank-f68",
+        "bank": {
+          "id": "bank-f68",
+          "side": "fractured",
+          "format": "superroom",
+          "collection": "superrooms",
+          "acceptance": "banked"
+        },
+        "campaignImport": {
+          "version": "7.307.0",
+          "source": "bank-f68",
+          "superroom": true
+        },
+        "seam": [
+          [
+            0,
+            30,
+            "#"
+          ],
+          [
+            0,
+            31,
+            "#"
+          ],
+          [
+            0,
+            32,
+            "#"
+          ],
+          [
+            0,
+            33,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl22-walk-1-18",
+        "connector": true,
+        "cols": 8,
+        "rows": 44,
+        "map": [
+          "########",
+          "##......",
+          "##......",
+          "##......",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....#.",
+          "##====..",
+          "##......",
+          "##....P.",
+          "########"
+        ],
+        "exit": "right",
+        "exitSpan": [
+          1,
+          4
+        ],
+        "palette": "fractured",
+        "origin": "cl22-walk-1-18",
+        "name": "The Connecting Road",
+        "campaignWalk": true,
+        "entry": "right",
+        "seam": [
+          [
+            7,
+            39,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl22-walk-2-21",
+        "name": "The Connecting Road",
+        "connector": true,
+        "cols": 8,
+        "rows": 8,
+        "map": [
+          "##....##",
+          "##====##",
+          "##....##",
+          ".#....##",
+          "..====##",
+          "......##",
+          ".P....##",
+          "########"
+        ],
+        "exit": "up",
+        "palette": "fractured",
+        "origin": "cl22-walk-2-21",
+        "campaignWalk": true,
+        "entry": "left",
+        "seam": [
+          [
+            0,
+            3,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl22-walk-3-34",
+        "connector": true,
+        "cols": 8,
+        "rows": 28,
+        "map": [
+          "########",
+          "##......",
+          "##......",
+          "##......",
+          "##====##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....#.",
+          "##....#.",
+          "##====..",
+          "##......",
+          "##....P.",
+          "########"
+        ],
+        "exit": "right",
+        "exitSpan": [
+          1,
+          4
+        ],
+        "palette": "fractured",
+        "origin": "cl22-walk-3-34",
+        "name": "The Connecting Road",
+        "campaignWalk": true,
+        "entry": "right",
+        "seam": [
+          [
+            7,
+            22,
+            "#"
+          ],
+          [
+            7,
+            23,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl22-walk-4-43",
+        "name": "The Connecting Road",
+        "connector": true,
+        "cols": 8,
+        "rows": 16,
+        "map": [
+          "##....##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          ".#....##",
+          "..====##",
+          "......##",
+          ".P....##",
+          "########"
+        ],
+        "exit": "up",
+        "palette": "fractured",
+        "origin": "cl22-walk-4-43",
+        "campaignWalk": true,
+        "entry": "left",
+        "seam": [
+          [
+            0,
+            11,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl22-walk-6-52",
+        "name": "The Connecting Road",
+        "connector": true,
+        "cols": 8,
+        "rows": 16,
+        "map": [
+          "##....##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....#.",
+          "##====..",
+          "##......",
+          "##....P.",
+          "########"
+        ],
+        "exit": "up",
+        "palette": "fractured",
+        "origin": "cl22-walk-6-52",
+        "campaignWalk": true,
+        "entry": "right",
+        "seam": [
+          [
+            7,
+            11,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl22-atlas-crossroads",
+        "name": "The Mirror Door",
+        "map": [
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          ".......................................................................................#",
+          ".......................................................................................#",
+          ".......................................................................................#",
+          ".......................................................................................#",
+          "M#########MM...........................................................................#",
+          "##########.............................................................................#",
+          "##########.............................................................................#",
+          "##################MM...................................................................#",
+          "##################.....................................................................#",
+          "#########################MM.............................................................",
+          "#########################...............................................................",
+          "#########################...............................................................",
+          "#################################MM.....................................................",
+          "#################################...............................MMMMMM#################M",
+          "#########################################MM...........................##################",
+          "#########################################....MMMMMM#####################################",
+          "#########################################...P......#####################################",
+          "########################################################################################"
+        ],
+        "cols": 88,
+        "rows": 23,
+        "exit": "none",
+        "entry": "left",
+        "dashes": 1,
+        "palette": "fractured",
+        "atlasJunction": true,
+        "connector": true,
+        "atlasSockets": [
+          {
+            "edge": "left",
+            "floor": 9,
+            "height": 5,
+            "to": "cl22-fw22-oath3",
+            "toFloor": 9,
+            "kind": "room"
+          },
+          {
+            "edge": "right",
+            "floor": 18,
+            "kind": "passage",
+            "link": "22-24",
+            "to": "cl22-passage-22-24",
+            "world": 22
+          }
+        ],
+        "atlasMain": {
+          "edge": "left",
+          "floor": 9,
+          "height": 5,
+          "to": "cl22-fw22-oath3",
+          "toFloor": 9
+        },
+        "atlasRegion": 22,
+        "atlasRoads": [
+          {
+            "edge": "left",
+            "floor": 9,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 41,
+                "r": 22
+              },
+              {
+                "c": 33,
+                "r": 19
+              },
+              {
+                "c": 25,
+                "r": 17
+              },
+              {
+                "c": 18,
+                "r": 14
+              },
+              {
+                "c": 10,
+                "r": 12
+              },
+              {
+                "c": 2,
+                "r": 9
+              }
+            ]
+          },
+          {
+            "edge": "right",
+            "floor": 18,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 47,
+                "r": 22
+              },
+              {
+                "c": 66,
+                "r": 20
+              },
+              {
+                "c": 85,
+                "r": 18
+              }
+            ]
+          }
+        ],
+        "atlasDecks": [
+          {
+            "c": 41,
+            "r": 22,
+            "w": 5
+          },
+          {
+            "c": 33,
+            "r": 19,
+            "w": 10
+          },
+          {
+            "c": 25,
+            "r": 17,
+            "w": 10
+          },
+          {
+            "c": 18,
+            "r": 14,
+            "w": 9
+          },
+          {
+            "c": 10,
+            "r": 12,
+            "w": 10
+          },
+          {
+            "c": 0,
+            "r": 9,
+            "w": 12
+          },
+          {
+            "c": 42,
+            "r": 22,
+            "w": 9
+          },
+          {
+            "c": 45,
+            "r": 20,
+            "w": 25
+          },
+          {
+            "c": 64,
+            "r": 18,
+            "w": 24
+          }
+        ],
+        "atlasFloor": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          17,
+          17,
+          17,
+          17,
+          17,
+          17,
+          17,
+          17,
+          19,
+          19,
+          19,
+          19,
+          19,
+          19,
+          19,
+          19,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ]
+      },
+      {
+        "id": "cl22-atlas-arrival",
+        "name": "The Ashen Refuge",
+        "map": [
+          "#.......................................................................................",
+          "#.......................................................................................",
+          "#.......................................................................................",
+          "#.......................................................................................",
+          "#............................................................................MMMMMMMMMMM",
+          "#......................................................................................#",
+          "#.......................................................................................",
+          "#.....................................................................MMMMMMMMMMMMM.....",
+          "#.......................................................................................",
+          "#.......................................................................................",
+          "#...............................................................MMMMMMMMMMMMMMMMMMMMMMMM",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#.........................................................MMMMMMMMMMMMMMMMMMMMMM.......#",
+          "........................................................................................",
+          "........................................................................................",
+          "...................................................MMMMMMMMMMMMMMMMMMM..................",
+          "........................................................................................",
+          "M#####################MM........................................MMMMMM#################M",
+          "######################.......................MMMMMMMMMMMMMMMM.........##################",
+          "#########################################MM..MMMMMM#####################################",
+          "#########################################...P......#####################################",
+          "########################################################################################"
+        ],
+        "cols": 88,
+        "rows": 23,
+        "exit": "none",
+        "entry": "right",
+        "dashes": 1,
+        "palette": "fractured",
+        "connector": true,
+        "atlasJunction": true,
+        "atlasSockets": [
+          {
+            "edge": "right",
+            "floor": 18,
+            "to": "cl22-fw22-refuge",
+            "toFloor": 18,
+            "kind": "room"
+          },
+          {
+            "edge": "right",
+            "floor": 10,
+            "kind": "passage",
+            "link": "21-22",
+            "to": "cl21-passage-21-22",
+            "world": 21
+          },
+          {
+            "edge": "right",
+            "floor": 4,
+            "kind": "passage",
+            "link": "22-23",
+            "to": "cl22-passage-22-23",
+            "world": 22
+          },
+          {
+            "edge": "left",
+            "floor": 18,
+            "kind": "passage",
+            "link": "38-22",
+            "to": "cl38-passage-38-22",
+            "world": 38
+          }
+        ],
+        "atlasMain": {
+          "edge": "right",
+          "floor": 18,
+          "to": "cl22-fw22-refuge",
+          "toFloor": 18
+        },
+        "atlasRegion": 22,
+        "atlasRoads": [
+          {
+            "edge": "right",
+            "floor": 18,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 47,
+                "r": 22
+              },
+              {
+                "c": 66,
+                "r": 20
+              },
+              {
+                "c": 85,
+                "r": 18
+              }
+            ]
+          },
+          {
+            "edge": "right",
+            "floor": 10,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 47,
+                "r": 22
+              },
+              {
+                "c": 57,
+                "r": 19
+              },
+              {
+                "c": 66,
+                "r": 16
+              },
+              {
+                "c": 76,
+                "r": 13
+              },
+              {
+                "c": 85,
+                "r": 10
+              }
+            ]
+          },
+          {
+            "edge": "right",
+            "floor": 4,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 47,
+                "r": 22
+              },
+              {
+                "c": 53,
+                "r": 19
+              },
+              {
+                "c": 60,
+                "r": 16
+              },
+              {
+                "c": 66,
+                "r": 13
+              },
+              {
+                "c": 72,
+                "r": 10
+              },
+              {
+                "c": 79,
+                "r": 7
+              },
+              {
+                "c": 85,
+                "r": 4
+              }
+            ]
+          },
+          {
+            "edge": "left",
+            "floor": 18,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 41,
+                "r": 22
+              },
+              {
+                "c": 22,
+                "r": 20
+              },
+              {
+                "c": 2,
+                "r": 18
+              }
+            ]
+          }
+        ],
+        "atlasDecks": [
+          {
+            "c": 42,
+            "r": 22,
+            "w": 9
+          },
+          {
+            "c": 45,
+            "r": 20,
+            "w": 25
+          },
+          {
+            "c": 64,
+            "r": 18,
+            "w": 24
+          },
+          {
+            "c": 42,
+            "r": 22,
+            "w": 9
+          },
+          {
+            "c": 45,
+            "r": 19,
+            "w": 16
+          },
+          {
+            "c": 55,
+            "r": 16,
+            "w": 15
+          },
+          {
+            "c": 64,
+            "r": 13,
+            "w": 16
+          },
+          {
+            "c": 74,
+            "r": 10,
+            "w": 14
+          },
+          {
+            "c": 42,
+            "r": 22,
+            "w": 9
+          },
+          {
+            "c": 45,
+            "r": 19,
+            "w": 12
+          },
+          {
+            "c": 51,
+            "r": 16,
+            "w": 13
+          },
+          {
+            "c": 58,
+            "r": 13,
+            "w": 12
+          },
+          {
+            "c": 64,
+            "r": 10,
+            "w": 12
+          },
+          {
+            "c": 70,
+            "r": 7,
+            "w": 13
+          },
+          {
+            "c": 77,
+            "r": 4,
+            "w": 11
+          },
+          {
+            "c": 41,
+            "r": 22,
+            "w": 5
+          },
+          {
+            "c": 22,
+            "r": 20,
+            "w": 21
+          },
+          {
+            "c": 0,
+            "r": 18,
+            "w": 24
+          }
+        ],
+        "atlasFloor": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ]
+      },
+      {
+        "id": "cl22-passage-22-24",
+        "name": "The Hollow Vent",
+        "cols": 108,
+        "rows": 64,
+        "map": [
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "....P.......................................................................................................",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################"
+        ],
+        "exit": "none",
+        "dashes": 1,
+        "connector": true,
+        "palette": "fractured",
+        "atlasTransit": {
+          "link": "22-24",
+          "a": 22,
+          "b": 24,
+          "left": 22,
+          "right": 24,
+          "style": "fractured",
+          "floor": [
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59
+          ],
+          "gateC": null,
+          "crown": null,
+          "winch": null,
+          "decks": [],
+          "route": [],
+          "scenery": [],
+          "name": "The Hollow Vent"
+        },
+        "atlasSockets": [
+          {
+            "edge": "left",
+            "floor": 30,
+            "kind": "region",
+            "world": 22,
+            "link": "22-24"
+          },
+          {
+            "edge": "right",
+            "floor": 30,
+            "kind": "region",
+            "world": 24,
+            "link": "22-24"
+          }
+        ]
+      },
+      {
+        "id": "cl22-passage-22-23",
+        "name": "The Echo Spillway",
+        "cols": 108,
+        "rows": 64,
+        "map": [
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "....P.......................................................................................................",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################"
+        ],
+        "exit": "none",
+        "dashes": 1,
+        "connector": true,
+        "palette": "fractured",
+        "atlasTransit": {
+          "link": "22-23",
+          "a": 22,
+          "b": 23,
+          "left": 22,
+          "right": 23,
+          "style": "fractured",
+          "floor": [
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59
+          ],
+          "gateC": null,
+          "crown": null,
+          "winch": null,
+          "decks": [],
+          "route": [],
+          "scenery": [],
+          "name": "The Echo Spillway"
+        },
+        "atlasSockets": [
+          {
+            "edge": "left",
+            "floor": 30,
+            "kind": "region",
+            "world": 22,
+            "link": "22-23"
+          },
+          {
+            "edge": "right",
+            "floor": 30,
+            "kind": "region",
+            "world": 23,
+            "link": "22-23"
+          }
+        ]
+      }
+    ],
+    "tapes": {
+      "cl22-fw22-oath3#door": [
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          8,
+          "l"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "j"
+        ]
+      ],
+      "cl22-pass-8#through": [
+        [
+          43,
+          "lgu"
+        ]
+      ],
+      "cl22-pass-9#through": [
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          40,
+          "lgu"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          40,
+          "lgu"
+        ],
+        [
+          3,
+          "lj"
+        ]
+      ],
+      "cl22-pass-10#through": [
+        [
+          59,
+          "l"
+        ]
+      ],
+      "cl22-pass-11#through": [
+        [
+          12,
+          "rgu"
+        ]
+      ],
+      "cl22-pass-12#through": [
+        [
+          12,
+          "rgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          23,
+          "lj"
+        ]
+      ],
+      "cl22-pass-13#through": [
+        [
+          60,
+          "rgu"
+        ],
+        [
+          20,
+          "lj"
+        ],
+        [
+          10,
+          "l"
+        ]
+      ],
+      "cl22-pass-14#through": [
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          40,
+          "lgu"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          8,
+          "lj"
+        ]
+      ],
+      "cl22-pass-15#through": [
+        [
+          40,
+          "l"
+        ]
+      ],
+      "cl22-pass-16#through": [
+        [
+          47,
+          ""
+        ]
+      ],
+      "cl22-pass-17#through": [
+        [
+          24,
+          "rgu"
+        ]
+      ],
+      "cl22-fw22-refuge": [
+        [
+          20,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          15,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          40,
+          "r"
+        ]
+      ],
+      "cl22-fw22-root-loop": [
+        [
+          44,
+          "r"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          5,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          40,
+          "r"
+        ]
+      ],
+      "cl22-fw22-clearing": [
+        [
+          24,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          60,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          78,
+          "rgu"
+        ],
+        [
+          20,
+          "l"
+        ],
+        [
+          6,
+          "lu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          40,
+          "r"
+        ]
+      ],
+      "cl22-fw22-canopy": [
+        [
+          4,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          2,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          8,
+          "r"
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          2,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          1,
+          "ds"
+        ],
+        [
+          8,
+          "r"
+        ],
+        [
+          16,
+          "j"
+        ],
+        [
+          5,
+          "lux"
+        ],
+        [
+          16,
+          "lu"
+        ],
+        [
+          4,
+          ""
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          2,
+          "l"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          12,
+          "l"
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          2,
+          "l"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          40,
+          "l"
+        ]
+      ],
+      "cl22-fw22-briar": [
+        [
+          4,
+          "l"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          6,
+          "l"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          14,
+          "l"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          3,
+          "l"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          22,
+          ""
+        ],
+        [
+          14,
+          "lj"
+        ],
+        [
+          2,
+          ""
+        ],
+        [
+          1,
+          "ds"
+        ],
+        [
+          16,
+          ""
+        ],
+        [
+          5,
+          "lux"
+        ],
+        [
+          16,
+          "lu"
+        ]
+      ],
+      "cl22-fw22-kitchen": [
+        [
+          70,
+          "l"
+        ],
+        [
+          6,
+          "lj"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          3,
+          "l"
+        ],
+        [
+          25,
+          "lj"
+        ],
+        [
+          1,
+          "lds"
+        ],
+        [
+          3,
+          ""
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          4,
+          ""
+        ],
+        [
+          50,
+          "l"
+        ]
+      ],
+      "cl22-fw22-kitchen#side": [
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          6,
+          "l"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          6,
+          "lj"
+        ],
+        [
+          12,
+          "j"
+        ]
+      ],
+      "cl22-fw22-edge": [
+        [
+          1,
+          "l"
+        ],
+        [
+          11,
+          "l"
+        ],
+        [
+          6,
+          "lj"
+        ],
+        [
+          2,
+          "l"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          3,
+          "l"
+        ],
+        [
+          29,
+          "lj"
+        ],
+        [
+          5,
+          "lx"
+        ],
+        [
+          4,
+          ""
+        ],
+        [
+          12,
+          "l"
+        ],
+        [
+          5,
+          "lx"
+        ],
+        [
+          24,
+          "lj"
+        ]
+      ],
+      "cl22-fw22-wind": [
+        [
+          1,
+          "l"
+        ],
+        [
+          50,
+          ""
+        ],
+        [
+          4,
+          "l"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          6,
+          "l"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          6,
+          "l"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          2,
+          ""
+        ],
+        [
+          16,
+          "l"
+        ],
+        [
+          1,
+          "ds"
+        ],
+        [
+          12,
+          "l"
+        ],
+        [
+          16,
+          "j"
+        ],
+        [
+          5,
+          "lux"
+        ],
+        [
+          16,
+          "lu"
+        ]
+      ],
+      "cl22-fw22-oath1": [
+        [
+          1,
+          "l"
+        ],
+        [
+          48,
+          ""
+        ],
+        [
+          2,
+          "l"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          6,
+          "l"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          4,
+          ""
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          6,
+          "l"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          4,
+          "l"
+        ],
+        [
+          1,
+          "ls"
+        ],
+        [
+          40,
+          "l"
+        ]
+      ],
+      "cl22-conn-1": [
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          6,
+          "r"
+        ]
+      ],
+      "cl22-fw22-oath2": [
+        [
+          4,
+          "l"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          2,
+          "l"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          8,
+          "l"
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          2,
+          "l"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          14,
+          "l"
+        ],
+        [
+          1,
+          "ds"
+        ],
+        [
+          8,
+          "l"
+        ],
+        [
+          16,
+          "j"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          16,
+          "ru"
+        ],
+        [
+          4,
+          ""
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          2,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          12,
+          "r"
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          2,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          1,
+          "r"
+        ],
+        [
+          1,
+          "rs"
+        ],
+        [
+          40,
+          "r"
+        ]
+      ],
+      "cl22-fw22-oath3": [
+        [
+          42,
+          "r"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          47,
+          "r"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          42,
+          "r"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          70,
+          "r"
+        ]
+      ],
+      "cl22-fw22-q-bowl": [
+        [
+          1,
+          "r"
+        ],
+        [
+          56,
+          ""
+        ],
+        [
+          2,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          12,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          1,
+          "rds"
+        ],
+        [
+          16,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          30,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          30,
+          "r"
+        ]
+      ],
+      "cl22-fw22-q-lantern": [
+        [
+          34,
+          "r"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          5,
+          "r"
+        ],
+        [
+          16,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          12,
+          "r"
+        ],
+        [
+          16,
+          "rj"
+        ],
+        [
+          1,
+          "rds"
+        ],
+        [
+          12,
+          ""
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          12,
+          ""
+        ],
+        [
+          14,
+          "lj"
+        ],
+        [
+          3,
+          "l"
+        ],
+        [
+          5,
+          "lux"
+        ],
+        [
+          22,
+          "l"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          4,
+          "lj"
+        ],
+        [
+          8,
+          "l"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          2,
+          "lj"
+        ],
+        [
+          14,
+          "l"
+        ],
+        [
+          10,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          ""
+        ]
+      ],
+      "cl22-secret-pv1": [
+        [
+          8,
+          "l"
+        ],
+        [
+          1,
+          "ldq"
+        ],
+        [
+          1,
+          ""
+        ],
+        [
+          0,
+          "r"
+        ],
+        [
+          10,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          145,
+          "rgu"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          0,
+          "l"
+        ],
+        [
+          4,
+          "lj"
+        ],
+        [
+          28,
+          "l"
+        ],
+        [
+          60,
+          ""
+        ],
+        [
+          200,
+          "r"
+        ]
+      ],
+      "cl22-bank-f17": [
+        [
+          23,
+          "r"
+        ],
+        [
+          48,
+          ""
+        ],
+        [
+          114,
+          "r"
+        ],
+        [
+          24,
+          "rj"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          6,
+          "j"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          42,
+          ""
+        ],
+        [
+          117,
+          "l"
+        ],
+        [
+          12,
+          "rjg"
+        ],
+        [
+          104,
+          "rug"
+        ],
+        [
+          48,
+          "rx"
+        ],
+        [
+          34,
+          "rj"
+        ]
+      ],
+      "cl22-bank-f26": [
+        [
+          20,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          18,
+          "rj"
+        ],
+        [
+          7,
+          "r"
+        ],
+        [
+          5,
+          "rds"
+        ],
+        [
+          46,
+          "r"
+        ],
+        [
+          29,
+          "rj"
+        ]
+      ],
+      "cl22-bank-f68": [
+        [
+          30,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          25,
+          "rj"
+        ],
+        [
+          20,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          25,
+          "rj"
+        ],
+        [
+          25,
+          "r"
+        ],
+        [
+          1,
+          "rs"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          42,
+          "rj"
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          1,
+          "dsj"
+        ],
+        [
+          30,
+          "lj"
+        ],
+        [
+          5,
+          "lux"
+        ],
+        [
+          20,
+          "l"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          10,
+          "l"
+        ],
+        [
+          5,
+          "lx"
+        ],
+        [
+          5,
+          "l"
+        ],
+        [
+          16,
+          "lj"
+        ],
+        [
+          5,
+          "lux"
+        ],
+        [
+          25,
+          "l"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          20,
+          "lj"
+        ],
+        [
+          5,
+          "lux"
+        ],
+        [
+          20,
+          "l"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          24,
+          "l"
+        ],
+        [
+          15,
+          "lj"
+        ],
+        [
+          5,
+          "lux"
+        ],
+        [
+          20,
+          "l"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          6,
+          "l"
+        ],
+        [
+          1,
+          "ls"
+        ],
+        [
+          70,
+          "l"
+        ]
+      ],
+      "cl22-walk-1-18": [
+        [
+          12,
+          "l"
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          100,
+          "r"
+        ]
+      ],
+      "cl22-walk-2-21": [
+        [
+          12,
+          "r"
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ]
+      ],
+      "cl22-walk-3-34": [
+        [
+          12,
+          "l"
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          100,
+          "r"
+        ]
+      ],
+      "cl22-walk-4-43": [
+        [
+          12,
+          "r"
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ]
+      ],
+      "cl22-walk-6-52": [
+        [
+          12,
+          "l"
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ]
+      ]
+    },
+    "folk": {
+      "orra": {
+        "cloak": "#5a4a5e",
+        "trim": "#c9b48a",
+        "skin": "#d4b096",
+        "hood": true
+      },
+      "pell": {
+        "cloak": "#6a5a3a",
+        "trim": "#d8a040",
+        "skin": "#c99a78",
+        "cap": true
+      },
+      "hale": {
+        "cloak": "#4a5248",
+        "trim": "#9aa08a",
+        "skin": "#c8a080",
+        "helm": true
+      },
+      "bram": {
+        "cloak": "#56683f",
+        "trim": "#e0d0a0",
+        "skin": "#e0bc98",
+        "cap": true,
+        "flame": true
+      },
+      "elsie": {
+        "cloak": "#7a5040",
+        "trim": "#deb985",
+        "skin": "#dcb090",
+        "hood": true
+      }
+    },
+    "props": {
+      "cradle": [
+        [
+          -6,
+          -3,
+          20,
+          3,
+          "#4a3a28"
+        ],
+        [
+          -3,
+          -5,
+          14,
+          2,
+          "#5a4632"
+        ],
+        [
+          0,
+          -7,
+          8,
+          2,
+          "#6a5238"
+        ],
+        [
+          3,
+          -7,
+          2,
+          4,
+          "#1a1410"
+        ],
+        [
+          -5,
+          -6,
+          2,
+          3,
+          "#5a4632"
+        ],
+        [
+          11,
+          -6,
+          2,
+          3,
+          "#5a4632"
+        ]
+      ],
+      "fern": [
+        [
+          0,
+          -3,
+          1,
+          3,
+          "#3e6a3a"
+        ],
+        [
+          2,
+          -5,
+          1,
+          5,
+          "#4a7a40"
+        ],
+        [
+          4,
+          -4,
+          1,
+          4,
+          "#3e6a3a"
+        ],
+        [
+          1,
+          -6,
+          1,
+          2,
+          "#5f9a50"
+        ],
+        [
+          3,
+          -7,
+          1,
+          3,
+          "#5f9a50"
+        ],
+        [
+          5,
+          -5,
+          1,
+          2,
+          "#5f9a50"
+        ]
+      ],
+      "hut": [
+        [
+          0,
+          -11,
+          15,
+          11,
+          "#4b3b2b"
+        ],
+        [
+          -2,
+          -14,
+          19,
+          3,
+          "#6a5232"
+        ],
+        [
+          0,
+          -15,
+          15,
+          1,
+          "#7a6040"
+        ],
+        [
+          5,
+          -7,
+          4,
+          7,
+          "#22180f"
+        ],
+        [
+          11,
+          -8,
+          2,
+          2,
+          "#ffcf7a"
+        ]
+      ],
+      "table": [
+        [
+          0,
+          -5,
+          12,
+          1,
+          "#7a5a3a"
+        ],
+        [
+          1,
+          -4,
+          1,
+          4,
+          "#5a4028"
+        ],
+        [
+          10,
+          -4,
+          1,
+          4,
+          "#5a4028"
+        ],
+        [
+          2,
+          -7,
+          3,
+          2,
+          "#d8c8a8"
+        ],
+        [
+          7,
+          -7,
+          3,
+          2,
+          "#d8c8a8"
+        ],
+        [
+          3,
+          -8,
+          1,
+          1,
+          "#f0e8d8"
+        ]
+      ],
+      "stove": [
+        [
+          0,
+          -9,
+          7,
+          9,
+          "#3a3432"
+        ],
+        [
+          1,
+          -6,
+          5,
+          3,
+          "#ff9a4a"
+        ],
+        [
+          2,
+          -5,
+          3,
+          1,
+          "#ffd27a"
+        ],
+        [
+          2,
+          -14,
+          2,
+          5,
+          "#3a3432"
+        ]
+      ],
+      "step": [
+        [
+          0,
+          -2,
+          8,
+          2,
+          "#6a5238"
+        ],
+        [
+          5,
+          -2,
+          3,
+          1,
+          "#22180f"
+        ],
+        [
+          6,
+          -1,
+          2,
+          1,
+          "#22180f"
+        ]
+      ],
+      "roots": [
+        [
+          1,
+          0,
+          1,
+          6,
+          "#5a4632"
+        ],
+        [
+          3,
+          0,
+          1,
+          10,
+          "#4a3a28"
+        ],
+        [
+          5,
+          0,
+          1,
+          4,
+          "#5a4632"
+        ],
+        [
+          6,
+          0,
+          1,
+          7,
+          "#4a3a28"
+        ]
+      ],
+      "marker": [
+        [
+          3,
+          -12,
+          2,
+          12,
+          "#5a4632"
+        ],
+        [
+          0,
+          -12,
+          8,
+          4,
+          "#7a6448"
+        ],
+        [
+          1,
+          -11,
+          6,
+          1,
+          "#2a2018"
+        ],
+        [
+          1,
+          -9,
+          4,
+          1,
+          "#2a2018"
+        ]
+      ]
+    },
+    "palettes": {},
+    "saved": [],
+    "difficulty": {
+      "min": null,
+      "max": null,
+      "mean": null
+    },
+    "retiredRooms": {
+      "cl22-fw22-tower": "cl22-fw22-oath1",
+      "cl22-fw22-oath3": "cl22-bank-f68"
+    },
+    "retiredRoomDetails": [
+      {
+        "id": "cl22-fw22-tower",
+        "name": "The Hollow Crown",
+        "to": "cl22-fw22-oath1",
+        "grade": "B",
+        "evidence": "A tear, one pod and eight cracked tiles form a lift/cut/low-launch sequence. All three verbs have been introduced earlier, while this room does not use the chapter’s lashes or resin wind. A replacement can combine low launch with a more consequential timed arrival; retain any attached secret host.",
+        "dialogueMoved": []
+      },
+      {
+        "id": "cl22-fw22-oath3",
+        "name": "The Oath Root’s Crown",
+        "to": "cl22-bank-f68",
+        "reason": "Replaced by its native boss superroom"
+      }
+    ],
+    "checkpointLinks": [],
+    "requiredBankRooms": [
+      "cl22-bank-f17",
+      "cl22-bank-f26",
+      "cl22-bank-f68"
+    ],
+    "requiredMainRooms": [
+      "cl22-fw22-refuge",
+      "cl22-fw22-root-loop",
+      "cl22-fw22-clearing",
+      "cl22-fw22-canopy",
+      "cl22-fw22-briar",
+      "cl22-fw22-kitchen",
+      "cl22-fw22-edge",
+      "cl22-bank-f26",
+      "cl22-fw22-wind",
+      "cl22-bank-f17",
+      "cl22-fw22-oath1",
+      "cl22-fw22-oath2",
+      "cl22-bank-f68"
+    ],
+    "bankIntegration": {
+      "version": "7.307.0",
+      "ordinary": [
+        "cl22-bank-f17",
+        "cl22-bank-f26"
+      ],
+      "superroom": "cl22-bank-f68",
+      "beforeBoss": "cl22-fw22-oath1",
+      "sourceMainCount": 12,
+      "geography": "continuous",
+      "sealedEntrances": [],
+      "clearedDoorways": [
+        "cl22-fw22-edge:2",
+        "cl22-bank-f26:4"
+      ]
+    },
+    "continuousSeams": [
+      {
+        "from": "cl22-fw22-edge",
+        "to": "cl22-walk-1-18",
+        "how": "left tunnel (1 rock)",
+        "kind": "walk",
+        "entryDelta": 0,
+        "toFire": [
+          [
+            1,
+            ""
+          ]
+        ]
+      },
+      {
+        "from": "cl22-walk-1-18",
+        "to": "cl22-bank-f26",
+        "how": "right tunnel (4 rock)",
+        "kind": "walk",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            9,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl22-bank-f26",
+        "to": "cl22-walk-2-21",
+        "how": "right tunnel (1 rock)",
+        "kind": "walk",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            1,
+            ""
+          ]
+        ]
+      },
+      {
+        "from": "cl22-walk-2-21",
+        "to": "cl22-fw22-wind",
+        "how": "up shaft at 38–39 (10 rock)",
+        "kind": "walk",
+        "entryDelta": 0,
+        "toFire": [
+          [
+            70,
+            "lgu"
+          ],
+          [
+            21,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl22-fw22-wind",
+        "to": "cl22-walk-3-34",
+        "how": "left tunnel (2 rock)",
+        "kind": "walk",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            6,
+            ""
+          ]
+        ]
+      },
+      {
+        "from": "cl22-walk-3-34",
+        "to": "cl22-bank-f17",
+        "how": "right tunnel (4 rock)",
+        "kind": "walk",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            4,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl22-bank-f17",
+        "to": "cl22-walk-4-43",
+        "how": "right tunnel (1 rock)",
+        "kind": "walk",
+        "entryDelta": 0,
+        "toFire": [
+          [
+            1,
+            ""
+          ]
+        ]
+      },
+      {
+        "from": "cl22-walk-4-43",
+        "to": "cl22-fw22-oath1",
+        "how": "up shaft at 34–35 (10 rock)",
+        "kind": "walk",
+        "entryDelta": 0,
+        "toFire": [
+          [
+            70,
+            "rgu"
+          ],
+          [
+            19,
+            "l"
+          ]
+        ]
+      },
+      {
+        "from": "cl22-fw22-oath2",
+        "to": "cl22-bank-f68",
+        "how": "right tunnel (4 rock)",
+        "kind": "direct",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            8,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl22-bank-f68",
+        "to": "cl22-walk-6-52",
+        "how": "left tunnel (1 rock)",
+        "kind": "walk",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            1,
+            ""
+          ]
+        ]
+      },
+      {
+        "from": "cl22-walk-6-52",
+        "to": "cl22-fw22-oath3",
+        "how": "up shaft at 3–4 (10 rock)",
+        "kind": "walk",
+        "entryDelta": 8.54400374531753,
+        "toFire": [
+          [
+            70,
+            "lgu"
+          ],
+          [
+            7,
+            "r"
+          ]
+        ]
+      }
+    ],
+    "atlasEnd": "cl22-fw22-oath3",
+    "atlasMiddle": "cl22-fw22-wind",
+    "atlasPassagesReady": true,
+    "passages": [
+      {
+        "room": "cl22-passage-22-24",
+        "x": 7640,
+        "y": 0,
+        "fire": {
+          "c": 4,
+          "r": 58
+        }
+      },
+      {
+        "room": "cl22-passage-22-23",
+        "x": 12920,
+        "y": 0,
+        "fire": {
+          "c": 4,
+          "r": 58
+        }
+      }
+    ],
+    "atlasStart": "cl22-fw22-refuge"
+  },
+  "constants": {
+    "maxRun": 90,
+    "runAccel": 1000,
+    "runReduce": 400,
+    "airMult": 0.65,
+    "flingMaxFall": 420,
+    "gravity": 900,
+    "halfGravThreshold": 40,
+    "maxFall": 160,
+    "fastMaxFall": 240,
+    "fastMaxAccel": 300,
+    "jumpSpeed": -105,
+    "jumpHBoost": 40,
+    "varJumpFrames": 12,
+    "jumpGraceFrames": 6,
+    "bufferFrames": 5,
+    "wallJumpCheck": 3,
+    "superWallJumpCheck": 5,
+    "wallJumpForceFrames": 10,
+    "wallJumpH": 130,
+    "wallSlideStartMax": 20,
+    "wallSlideFrames": 72,
+    "wallSpeedRetentionFrames": 4,
+    "climbMaxStamina": 110,
+    "climbUpCost": 45.45454545454545,
+    "climbStillCost": 10,
+    "climbJumpCost": 27.5,
+    "climbTired": 20,
+    "climbUpSpeed": -45,
+    "touchClimbUpSpeed": -60,
+    "climbDownSpeed": 80,
+    "climbSlipSpeed": 30,
+    "climbAccel": 900,
+    "climbCheck": 2,
+    "climbHopX": 100,
+    "climbHopY": -120,
+    "climbHopForceFrames": 12,
+    "climbJumpBoostFrames": 12,
+    "climbNoMoveFrames": 6,
+    "dashSpeed": 240,
+    "endDashSpeed": 160,
+    "endDashUpMult": 0.75,
+    "dashFrames": 9,
+    "dashCooldownFrames": 12,
+    "dashRefillCooldownFrames": 6,
+    "dashFreezeFrames": 3,
+    "ultraMult": 1.2,
+    "superJumpH": 260,
+    "hyperXMult": 1.25,
+    "hyperYMult": 0.5,
+    "superWallJumpSpeed": -160,
+    "superWallJumpH": 170,
+    "superWallVarFrames": 15,
+    "upwardCorner": 4,
+    "dashCorner": 4,
+    "liftXCap": 250,
+    "liftYCap": -130,
+    "liftGraceFrames": 10,
+    "carryMaxFall": 45,
+    "throwX": 200,
+    "throwY": -80,
+    "strikeFrames": 5,
+    "strikeCooldownFrames": 15,
+    "podSpeed": -210,
+    "podSide": 190,
+    "podDown": 150,
+    "springSpeed": -185,
+    "refillRespawnFrames": 150,
+    "crumbleShakeFrames": 24,
+    "crumbleRespawnFrames": 120,
+    "stoneAccel": 600,
+    "stoneMax": 240,
+    "deathFrames": 24,
+    "respawnFrames": 10
+  },
+  "branchRewards": [
+    {
+      "id": "elsie-echo",
+      "kind": "quest",
+      "room": "cl22-fw22-q-lantern",
+      "title": "A Bowl Kept Warm",
+      "name": "Elsie, remembered",
+      "color": "#ff9fc8",
+      "host": "cl22-fw22-kitchen",
+      "rooms": [
+        "cl22-fw22-q-bowl",
+        "cl22-fw22-q-lantern",
+        "cl22-pass-8",
+        "cl22-pass-9",
+        "cl22-pass-10"
+      ],
+      "x": 118,
+      "y": 28
+    },
+    {
+      "id": "secret-22",
+      "kind": "secret",
+      "room": "cl22-secret-pv1",
+      "title": "Speedy Thing",
+      "name": "Heart",
+      "color": "#ffd28a",
+      "host": "cl22-fw22-oath3",
+      "rooms": [
+        "cl22-secret-pv1",
+        "cl22-pass-11",
+        "cl22-pass-12",
+        "cl22-pass-13",
+        "cl22-pass-14",
+        "cl22-pass-15",
+        "cl22-pass-16",
+        "cl22-pass-17"
+      ],
+      "x": 183,
+      "y": 81
+    }
+  ]
+}

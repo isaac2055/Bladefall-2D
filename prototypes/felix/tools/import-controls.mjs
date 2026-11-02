@@ -1,0 +1,4 @@
+import fs from 'node:fs';import vm from 'node:vm';import path from 'node:path';import {createHash} from 'node:crypto';import {root} from './reference.mjs';
+const source=fs.readFileSync(path.join(root,'public/bladefall-pcore-view.js'),'utf8');const take=name=>vm.runInNewContext('('+source.match(new RegExp('const '+name+'=(\\{[\\s\\S]*?\\});'))[1]+')');
+const data={source:'public/bladefall-pcore-view.js',sha256:createHash('sha256').update(source).digest('hex'),keys:take('KEY_DEFAULTS'),pad:take('PAD_DEFAULTS')};const file=path.join(root,'prototypes/godot-ascend/data/controls.json'),text=JSON.stringify(data,null,2)+'\n';
+if(process.argv.includes('--check')){if(fs.readFileSync(file,'utf8')!==text)throw Error('Controls differ from browser defaults');}else fs.writeFileSync(file,text);console.log('Browser control defaults verified');

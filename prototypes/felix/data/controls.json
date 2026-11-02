@@ -1,0 +1,91 @@
+{
+  "source": "public/bladefall-pcore-view.js",
+  "sha256": "ce50c612eaabfc94df7b4f619a8ff61c4d11093bf9f5fc06c25993e5a0dfa1e5",
+  "keys": {
+    "l": [
+      "ArrowLeft"
+    ],
+    "r": [
+      "ArrowRight"
+    ],
+    "u": [
+      "ArrowUp"
+    ],
+    "d": [
+      "ArrowDown"
+    ],
+    "jump": [
+      "Space",
+      "KeyC",
+      "KeyJ"
+    ],
+    "dash": [
+      "KeyD",
+      "KeyX",
+      "KeyK"
+    ],
+    "grab": [
+      "KeyA",
+      "KeyZ",
+      "ShiftLeft",
+      "ShiftRight",
+      "KeyL"
+    ],
+    "strike": [
+      "KeyW",
+      "KeyV",
+      "KeyI"
+    ],
+    "parry": [
+      "KeyF",
+      "KeyO"
+    ],
+    "portal": [
+      "KeyP"
+    ],
+    "retry": [
+      "KeyR"
+    ],
+    "pause": []
+  },
+  "pad": {
+    "l": [
+      14
+    ],
+    "r": [
+      15
+    ],
+    "u": [
+      12
+    ],
+    "d": [
+      13
+    ],
+    "jump": [
+      0
+    ],
+    "dash": [
+      2,
+      1
+    ],
+    "grab": [
+      4,
+      6
+    ],
+    "strike": [
+      3
+    ],
+    "parry": [
+      7
+    ],
+    "portal": [
+      5
+    ],
+    "retry": [
+      8
+    ],
+    "pause": [
+      9
+    ]
+  }
+}
