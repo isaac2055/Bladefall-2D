@@ -11,8 +11,7 @@ R retries the room, Esc pauses.
 
 - **Unchanged:** the movement physics, the Outskirts' native rooms from `levels/world1.tscn`, their
   order, checkpoints and every device's rules.
-- **Cut:** Rowan's and the Pilgrims' Postern side quests, their rooms, every resident, and the
-  workshop puzzles after the crossroads. Mara's crayons stay on the road as pickups.
+- **Cut:** Rowan's and the Pilgrims' Postern side quests, their rooms and every resident. Mara's crayons stay on the road as pickups.
 - **Story (scripts/felix_story.gd):** the night a five-year-old moves into a new house. The game
   opens on black and a child crying. One button makes a spark. The boy gives the light legs at the
   first bricks (jump), his sock as a cape on the rug (dash) and arms at the tall boxes (climb), each
@@ -27,6 +26,14 @@ R retries the room, Esc pauses.
   patrols are dust bunnies, the lift is a berry basket on a string and shards are crayons.
   Behind the play rooms: the hallway door with light under it, the bed and the sleeping boy,
   bookshelves, the desk, the dresser, and the window with the moon.
+- **The top of the wardrobe:** Codex's ten approved Outskirts workshop rooms (from `levels/world4.tscn`)
+  are a mandatory stretch after the curtain room. Each ends at one of the boy's drawings; reaching it
+  fades to the next room, and the tenth opens onto the windowsill (the old crossroads), where the
+  naming happens. Their geometry and routes are unchanged; all ten clear with zero deaths on their
+  stored routes (`--reference workshop-relay --chain --report`).
+- **Slime:** the white flowers are now spilled green slime puddles. The patches and the slowing are the
+  same (run 55%, jump 67%, dash 60% for 3 seconds). Felix turns green and drips while it lasts, and the
+  first touch after the legs gift gets "eww, SLIME!".
 - **Collectible:** the first drawing of Felix, hidden in Hang Time (the secret above Watcher's Cut).
 
 ## Developer flags (after `--`)

@@ -35,6 +35,7 @@ var script_tape=[]
 var script_frame=0
 var ticks=0
 var report=false
+var chain=false
 
 func _ready():
  get_tree().auto_accept_quit=false
@@ -89,6 +90,7 @@ func _ready():
    "--script": load_script(args[i+1])
    "--reference": play_reference(args[i+1])
    "--report": report=true
+   "--chain": chain=true
 
 func build_interface():
  var ui=Control.new()
@@ -245,6 +247,9 @@ func _physics_process(_delta):
  else:
   view.previous_actor=view.current_actor
  story.tick(world,sim,1.0/60.0)
+ if story.travel!="":
+  go_to(story.travel)
+  story.travel=""
  if story.pulse_request>0:
   view.gift_pulse=story.pulse_request
   view.burst(view.current_actor+Vector2(4,5),18,Color("#fff4d6"),26)
@@ -304,6 +309,20 @@ func update_lines():
   point.y=clamp(point.y,90,740)
   label.position=point-Vector2(350,24+i*40)
   label.modulate.a=clamp(min(line.life,(line.max-line.life)*4),0,1)
+
+# Rooms that are not joined in space: a short fade, then the next one.
+func go_to(id):
+ cover.color.a=.9
+ world.enter(id,true)
+ sim=world.active()
+ view.load_scene(sim)
+ audio.room_changed(sim)
+ if report: print("ROOM ",id," deaths=",sim.deaths," frame=",ticks)
+ if chain:
+  script_tape=[]
+  script_frame=0
+  for part in world.data.world.tapes.get(id,[]):
+   for i in range(int(part[0])): script_tape.append(part[1])
 
 func load_script(name):
  var plans={

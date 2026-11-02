@@ -12,6 +12,7 @@ const GATE="cl1-o1-gate"
 const CURTAIN="cl1-bank-b62"
 const SILL="cl1-atlas-crossroads"
 const SECRET="cl1-secret-r2"
+const WARDROBE="campaignWorkshop"
 const LATE=["cl1-o1-muster","cl1-o1-yard",GATE,CURTAIN]
 const PILLOW=Vector2(1490,-64)
 
@@ -35,8 +36,11 @@ var pulse_request=0.0
 var end_time=0.0
 var deaths_at_end=0
 var crayons=0
+var travel=""
+var wardrobe_rooms=[]
 
 func _init(world):
+ wardrobe_rooms=world.data.world.campaignWorkshop.rooms
  var origin=world.placements.get(SECRET,Vector2.ZERO)
  drawing.at=origin+Vector2(24*8+4,3*8+4)
 
@@ -158,8 +162,27 @@ func tick(world,sim,delta):
   drawing.taken=true
   pulse_request=1.0
   show_hint("found: the first drawing of you",4.0)
- # The windowsill: the nook past the curtain room's last flap, under the moon.
- if room==CURTAIN and sim.p.onGround and sim.p.x<64 and sim.p.y<48 and not done.has("ending"):
+ # Past the curtain room's last flap: up into the top of the wardrobe.
+ if room==CURTAIN and sim.p.onGround and sim.p.x<64 and sim.p.y<48 and travel=="":
+  travel=wardrobe_rooms[0]
+ # Each wardrobe room ends at a drawing; the last one leads out to the windowsill.
+ var index=wardrobe_rooms.find(room)
+ if index>=0 and travel=="" and preload("res://scripts/campaign_workshop.gd").goal_reached(sim):
+  world.campaign_completed[room]=true
+  pulse_request=.8
+  travel=wardrobe_rooms[index+1] if index+1<wardrobe_rooms.size() else SILL
+ if index==0 and not done.has("wardrobe"):
+  done.wardrobe=true
+  show_hint("the top of the wardrobe",3.5)
+ if index>=0 and not done.has("objective:"+room):
+  done["objective:"+room]=true
+  if sim.room.def.get("workshopRequireAllShards",false): show_hint("bring both crayons back to the drawing",4.5)
+  elif sim.room.def.get("workshopRequireShard",false): show_hint("bring the crayon back to the drawing",4.5)
+ # The first slime puddle teaches itself.
+ if sim.p.get("pollen",0)>0 and gifts.legs and not done.has("slime"):
+  done.slime=true
+  say("eww, SLIME!","boy" if boy.pose!="bed" and boy.visible else "above",2.2)
+ if room==SILL and sim.p.onGround and not done.has("ending"):
   begin_ending(world,sim)
 
 func walk_boy(target,then):
@@ -190,7 +213,7 @@ func begin_ending(world,sim):
  deaths_at_end=sim.deaths
  for core in world.cores.values():
   for e in core.ents:
-   if e.type=="shard" and e.get("gone",false): crayons+=1
+   if e.type=="shard" and e.get("gone",false) and core.room.def.has("bearing"): crayons+=1
 
 func tick_ending(delta):
  end_time+=delta

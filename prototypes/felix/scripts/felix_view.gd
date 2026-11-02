@@ -20,8 +20,10 @@ const PILLOW=Vector2(1500,-58)
 const SHELF=Rect2(1330,-330,560,250)
 const DESK=Rect2(1960,-420,520,190)
 const DRESSER=Rect2(2580,-500,930,230)
-const WINDOW=Rect2(3640,-930,840,314)
-const SILL_Y=-616.0
+const WINDOW=Rect2(3500,-1050,280,250)
+const SILL_Y=-800.0
+const MOON=Vector2(3650,-975)
+const WARDROBE_X=26000.0
 
 func _ready():
  super._ready()
@@ -189,10 +191,11 @@ func _process(delta):
  felix_glow=lerp(felix_glow,target,1-exp(-delta*3))
  felix_light.texture_scale=felix_glow*(1+gift_pulse*.6)
  felix_light.energy=1.1+gift_pulse*1.5
+ felix_light.color=Color(1,.97,.88).lerp(Color(.7,1,.6),clamp(float(sim.p.get("pollen",0))/45.0,0,1)*.6)
  felix_light.visible=sim.p.state!="dead"
  door_light.position=Vector2(DOOR.position.x+DOOR.size.x/2,DOOR.end.y-2)-camera
  door_light.visible=Rect2(-200,-200,720,580).has_point(door_light.position)
- moon_light.position=Vector2(4120,-800)-camera
+ moon_light.position=MOON+Vector2(0,40)-camera
  moon_light.energy=(story.moon_strength() if story!=null else .9)
  ambient.color=story.ambient() if story!=null else mood
  place_glow_lights()
@@ -238,6 +241,8 @@ func _draw():
  if view.intersects(DESK.grow(30)): desk()
  if view.intersects(DRESSER.grow(30)): dresser()
  if view.intersects(WINDOW.grow(120)): window()
+ if view.intersects(Rect2(3840,-720,640,400)): curtains()
+ if view.end.x>WARDROBE_X: wardrobe(view)
  if view.intersects(Rect2(BED.position-Vector2(0,100),BED.size+Vector2(40,250))): bed()
  for point in fires:
   if view.has_point(point): crayon_star(point,runtime.checkpoint_id!="" and placements.get(runtime.checkpoint_id,Vector2(-9e9,0)).distance_to(point)<400)
@@ -396,7 +401,7 @@ func window():
   var at=Vector2(w.position.x+fposmod(i*97.3-drift.x,w.size.x),w.position.y+fposmod(i*41.9-drift.y,w.size.y*.8))
   var a=.35+sin(clock*.9+i)*.25
   box(at.x,at.y,1,1,Color(1,1,.9,a))
- var moon=Vector2(4120,-830)-drift*.3
+ var moon=MOON-drift*.15
  circle(moon,34,Color(.85,.9,1,.06))
  circle(moon,24,Color(.9,.93,1,.12))
  circle(moon,16,"#f1efdc")
@@ -409,13 +414,39 @@ func window():
  box(w.position.x,w.position.y+w.size.y/2-3,w.size.x,6,frame)
  box(w.position.x-14,SILL_Y,w.size.x+28,9,"#6c7598")
  box(w.position.x-14,SILL_Y,w.size.x+28,2,"#9aa3c4")
- # Curtains hang either side of the far pane, down past the sill.
+ for side in [-1,1]:
+  var x=w.position.x-24 if side<0 else w.end.x+4
+  for fold in range(2):
+   polygon([Vector2(x+fold*10,w.position.y-14),Vector2(x+10+fold*10,w.position.y-14),Vector2(x+10+fold*10+sin(clock*.6+fold)*1.2,SILL_Y+30),Vector2(x+fold*10,SILL_Y+30)],[Color("#5a3d63"),Color("#4c3355")][fold])
+ box(w.position.x-30,w.position.y-20,w.size.x+60,5,"#7d6a52")
+
+func curtains():
+ # The long curtains of the room's other window: the climb before the wardrobe.
  for side in [3862.0,4352.0]:
   for fold in range(6):
    var x=side+fold*16
    var sway=sin(clock*.6+fold)*1.5
-   polygon([Vector2(x,w.position.y-20),Vector2(x+16,w.position.y-20),Vector2(x+16+sway,-340),Vector2(x+sway,-340)],[Color("#5a3d63"),Color("#4c3355")][fold%2])
- box(3620,w.position.y-26,880,6,"#7d6a52")
+   polygon([Vector2(x,-700),Vector2(x+16,-700),Vector2(x+16+sway,-340),Vector2(x+sway,-340)],[Color("#5a3d63"),Color("#4c3355")][fold%2])
+ box(3840,-706,620,6,"#7d6a52")
+
+func wardrobe(view):
+ # Inside the top of the wardrobe: dark panels, a rail of hanging clothes, boxes of old toys.
+ box(view.position.x,view.position.y,view.size.x,view.size.y,Color("#20182a"))
+ for gx in range(floori(view.position.x/34),ceili(view.end.x/34)+1):
+  box(gx*34,view.position.y,1.5,view.size.y,"#2c2236")
+ var rail=-930.0
+ box(view.position.x,rail,view.size.x,3,"#6d6070")
+ for gx in range(floori(view.position.x/46),ceili(view.end.x/46)+1):
+  var x=gx*46+hash_at(gx,1,9)%12
+  var col=[Color("#3b3550"),Color("#4a3340"),Color("#2f4048"),Color("#463c2c")][hash_at(gx,2,9)%4]
+  var length=70+hash_at(gx,3,9)%60
+  line(Vector2(x,rail),Vector2(x,rail+6),"#8a7f8c",1)
+  polygon([Vector2(x-14,rail+8),Vector2(x+14,rail+8),Vector2(x+18,rail+length),Vector2(x-18,rail+length)],col)
+  box(x-14,rail+6,28,3,col.lightened(.15))
+ for gx in range(floori(view.position.x/90),ceili(view.end.x/90)+1):
+  var b=Rect2(gx*90+hash_at(gx,4,9)%30,-700-hash_at(gx,5,9)%30,50+hash_at(gx,6,9)%20,36)
+  box(b.position.x,b.position.y,b.size.x,b.size.y,"#3a2e26")
+  box(b.position.x,b.position.y,b.size.x,2,"#56443a")
 
 func crayon_star(point,current):
  var col=Color("#ffe39a") if current else Color("#d9c17a")
@@ -577,9 +608,11 @@ func draw_front():
    for c in range(max(0,floori((view.position.x-origin.x)/8)),min(int(scene.room.cols),ceili((view.end.x-origin.x)/8))):
     var t=scene.room.grid[r*int(scene.room.cols)+c]
     if t>=3: draw_hazard(t,origin+Vector2(c*8,r*8))
+  if scene.room.def.has("workshopGoal"): goal_drawing(scene,origin)
   for e in scene.ents:
    if Rect2(origin+Vector2(e.x,e.y),Vector2(e.w,e.h)).grow(18).intersects(view): draw_entity(e,origin)
   for e in scene.sweepers: dust_bunny(e,origin,scene.room.id)
+ slime_puddles(view)
  if story!=null: story_items(view)
  for trail in trails:
   var alpha=trail.life/trail.max*(.12 if reduced_motion else .4)
@@ -715,6 +748,45 @@ func dust_bunny(e,origin,room_id):
  circle(at+Vector2(-r*.28+look,-r*.15),max(.8,r*.16),eye)
  circle(at+Vector2(r*.28+look,-r*.15),max(.8,r*.16),eye)
 
+# The white flowers are spilled slime: same patches, same slowing, now visible.
+func slime_puddles(view):
+ if not runtime.data.has("whiteFlowers"): return
+ for patch in runtime.data.whiteFlowers.patches:
+  var at=runtime.placements[patch.room]+Vector2(patch.x,patch.y)
+  if not view.grow(20).has_point(at): continue
+  var w=float(patch.w)
+  var bottom=at.y+float(patch.h)
+  var pts=[Vector2(at.x-1,bottom)]
+  var bumps=max(3,int(w/3))
+  for i in range(bumps+1):
+   var t=float(i)/bumps
+   var rise=2.2+sin(t*PI)*1.6+sin(clock*2.2+i*1.7)*.35
+   pts.append(Vector2(at.x-1+t*(w+2),bottom-rise))
+  pts.append(Vector2(at.x+w+1,bottom))
+  polygon(pts,"#5fcf4a")
+  box(at.x,bottom-1,w,1,"#3e9a33")
+  box(at.x+w*.2,bottom-3.2,w*.35,.8,Color("#d6ffb8",.8))
+  for i in range(int(w/7)+1):
+   var bx=at.x+3+i*7+fposmod(i*2.3,3)
+   var age=fposmod(clock*.5+i*.37,1.0)
+   circle(Vector2(bx,bottom-3-age*3),.6+age*.5,Color("#a8f08f",(1-age)*.8))
+
+func goal_drawing(scene,origin):
+ # Each wardrobe room ends at one of the boy's drawings, taped to the panel.
+ var goal=scene.room.def.workshopGoal
+ var at=origin+Vector2(goal[0]+goal[2]/2.0,goal[1]-24)
+ var reached=runtime.campaign_completed.has(scene.room.id)
+ circle(at,10,Color(1,.95,.75,.10 if not reached else .22))
+ ink.draw_set_transform_matrix(paint_transform*Transform2D(sin(clock*.8)*.04,at))
+ box(-7,-6,14,12,"#f4efe2")
+ box(-2,-7,4,2,Color("#e9e2c0",.9))
+ var col=[Color("#d0574d"),Color("#4f8fd0"),Color("#e1b84a"),Color("#5fae6a")][hash_at(goal[0],goal[1],1)%4]
+ circle(Vector2(0,-1),2.6,"#ffe9a0")
+ line(Vector2(-4,4),Vector2(4,4),col,.8)
+ line(Vector2(-5,-4),Vector2(-2,-2),col,.6)
+ ink.draw_set_transform_matrix(paint_transform)
+ box(origin.x+goal[0],origin.y+goal[1],goal[2],1,Color("#f4efe2",.35))
+
 func story_items(view):
  for item in story.items():
   if not view.has_point(item.at): continue
@@ -776,12 +848,20 @@ func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
  circle(Vector2.ZERO,5+pulse*.6,Color(1,.97,.85,.14))
  circle(Vector2.ZERO,3.6,"#fff6dc")
  circle(Vector2(-.8,-.9),2.2,"#ffffff")
+ var slimed=clamp(float(p.get("pollen",0))/45.0,0,1)
+ if slimed>0:
+  circle(Vector2(0,.8),3.4,Color("#5fcf4a",.75*slimed))
+  circle(Vector2(1.2,-1.4),1.1,Color("#c9ffb0",.8*slimed))
  if g.face:
   var f=p.facing
   box(-1.6+f*.7,-.6,.9,1.2,"#4a3a2e")
   box(.8+f*.7,-.6,.9,1.2,"#4a3a2e")
   ink.draw_arc(Vector2(f*.6,1),1.2,.3,PI-.3,6,Color("#4a3a2e")*ink_color,.5)
  ink.draw_set_transform_matrix(paint_transform)
+ if slimed>0:
+  for i in range(2):
+   var age=fposmod(clock*1.6+i*.5,1.0)
+   circle(center+Vector2(-1.5+i*3,3.5+age*5),.7,Color("#5fcf4a",(1-age)*slimed))
  if p.state=="climb":
   box(x+1,y-5,6,1,Color(0,0,0,.4))
   box(x+1,y-5,6*clamp(p.stamina/110,0,1),1,"#fff1c4")

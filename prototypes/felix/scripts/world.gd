@@ -49,6 +49,9 @@ func _init(source):
  # Felix: the New House keeps only the road and its one secret. Side quests,
  # their rooms and the people who gave them are cut; the workshop is not appended.
  strip_to_road(data)
+ # The approved workshop rooms become the top of the wardrobe, between the curtain and the sill.
+ var workshop_source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"))
+ CampaignWorkshop.append(data,preload("res://scripts/authoring_data.gd").read(workshop_source))
  var sections=data.world.sections.duplicate(true)
  for q in data.world.quests: sections.append_array(q.sections)
  for q in data.world.get("secrets",[]): sections.append_array(q.sections)
