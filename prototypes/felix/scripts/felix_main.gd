@@ -90,6 +90,7 @@ func _ready():
    "--script": load_script(args[i+1])
    "--reference": play_reference(args[i+1])
    "--report": report=true
+   "--photos": story.photos=world.data.world.campaignWorkshop.rooms.duplicate()
    "--chain": chain=true
 
 func build_interface():
@@ -281,6 +282,9 @@ func _physics_process(_delta):
    view.riding=true
    view.previous_actor=view.current_actor
    view.current_actor=point
+ if story.door_slam:
+  story.door_slam=false
+  audio.effect("gate",1.0)
  if story.pulse_request>0:
   view.gift_pulse=story.pulse_request
   view.burst(view.current_actor+Vector2(4,5),18,Color("#fff4d6"),26)
@@ -300,12 +304,12 @@ func _process(delta):
   if not end_shown:
    end_shown=true
    black_time=0
-   end_stats.text="%d %s   ·   crayons found: %d of 3%s"%[story.deaths_at_end,"fall" if story.deaths_at_end==1 else "falls",story.crayons,"   ·   the first drawing" if story.drawing.taken else ""]
+   end_stats.text="%d %s   ·   %d photos   ·   crayons found: %d of 3%s"%[story.deaths_at_end,"fall" if story.deaths_at_end==1 else "falls",story.photos.size(),story.crayons,"   ·   the first drawing" if story.drawing.taken else ""]
   cover.color.a=min(.88,cover.color.a+delta*.5)
   end_box.visible=black_time>1.0
   end_box.modulate.a=clamp((black_time-1.0)/1.5,0,1)
  # Music arrives once the boy stops crying.
- var want=-80.0 if not story.gifts.legs else -10.0
+ var want=story.music_level()
  music_db=lerp(music_db,want,1-exp(-delta*.5))
  audio.music.volume_db=music_db
  update_lines()

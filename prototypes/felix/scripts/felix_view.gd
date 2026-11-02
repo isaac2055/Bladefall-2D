@@ -249,6 +249,7 @@ func _draw():
  if view.intersects(WINDOW.grow(120)): window()
  if view.intersects(Rect2(3840,-720,640,400)): curtains()
  if view.end.x>WARDROBE_X and view.position.x<WINDOW.position.x-40: wardrobe(view)
+ if view.intersects(WINDOW.grow(60)): photo_wall()
  if view.intersects(Rect2(BED.position-Vector2(0,100),BED.size+Vector2(40,250))): bed()
  for point in fires:
   if view.has_point(point): crayon_star(point,runtime.checkpoint_id!="" and placements.get(runtime.checkpoint_id,Vector2(-9e9,0)).distance_to(point)<400)
@@ -291,7 +292,7 @@ func door():
 
 func moving_boxes(view):
  # Unpacked boxes, stacked behind the play rooms near the door.
- var boxes=[[Rect2(236,72,58,72),"BOOKS"],[Rect2(298,96,44,48),""],[Rect2(246,34,40,38),"ISAAC"],[Rect2(560,88,70,56),"TOYS"],[Rect2(860,100,52,44),"FRAGILE"],[Rect2(870,62,36,38),""]]
+ var boxes=[[Rect2(236,72,58,72),"BOOKS"],[Rect2(298,96,44,48),"MOM"],[Rect2(246,34,40,38),"ISAAC"],[Rect2(560,88,70,56),"TOYS"],[Rect2(860,100,52,44),"DAD - TAKE"],[Rect2(870,62,36,38),""]]
  for item in boxes:
   var b=item[0]
   if not view.intersects(b): continue
@@ -426,6 +427,13 @@ func window():
    polygon([Vector2(x+fold*10,w.position.y-14),Vector2(x+10+fold*10,w.position.y-14),Vector2(x+10+fold*10+sin(clock*.6+fold)*1.2,SILL_Y+30),Vector2(x+fold*10,SILL_Y+30)],[Color("#5a3d63"),Color("#4c3355")][fold])
  box(w.position.x-30,w.position.y-20,w.size.x+60,5,"#7d6a52")
 
+func photo_wall():
+ # The good days Felix brought up, propped along the windowsill against the glass.
+ if story==null: return
+ for i in range(story.photos.size()):
+  var at=Vector2(WINDOW.position.x+14+i*23,SILL_Y-9-(i%2)*2)
+  photo(at,story.wardrobe_rooms.find(story.photos[i]),sin(i*1.7)*.14)
+
 func curtains():
  # The long curtains of the room's other window: the climb before the wardrobe.
  for side in [3862.0,4352.0]:
@@ -436,27 +444,25 @@ func curtains():
  box(3840,-706,620,6,"#7d6a52")
 
 func wardrobe(view):
- # Inside the top of the wardrobe: dark panels, a rail of hanging clothes, boxes of old toys.
+ # The top of the wardrobe: dark panels behind a shelf of packed-away boxes.
  var left=max(view.position.x,WARDROBE_X)
  var right=min(view.end.x,WINDOW.position.x-40)
  box(left,max(view.position.y,-712),right-left,view.end.y-max(view.position.y,-712),Color("#20182a"))
  for gx in range(floori(view.position.x/34),ceili(view.end.x/34)+1):
   box(gx*34,view.position.y,1.5,view.size.y,"#2c2236")
- var rail=-640.0
- box(left,rail,right-left,3,"#6d6070")
- for gx in range(floori(view.position.x/46),ceili(view.end.x/46)+1):
-  var x=gx*46+hash_at(gx,1,9)%12
-  if x<left or x>right: continue
-  var col=[Color("#3b3550"),Color("#4a3340"),Color("#2f4048"),Color("#463c2c")][hash_at(gx,2,9)%4]
-  var length=70+hash_at(gx,3,9)%60
-  line(Vector2(x,rail),Vector2(x,rail+6),"#8a7f8c",1)
-  polygon([Vector2(x-14,rail+8),Vector2(x+14,rail+8),Vector2(x+18,rail+length),Vector2(x-18,rail+length)],col)
-  box(x-14,rail+6,28,3,col.lightened(.15))
+ # Below the walkway the rooms are the insides of the boxes: corrugated cardboard.
+ if view.end.y>-664:
+  var top=max(view.position.y,-664)
+  box(left,top,right-left,view.end.y-top,Color("#2e2218"))
+  for gx in range(floori(left/6),ceili(right/6)+1): box(gx*6,top,1,view.end.y-top,Color("#3a2c1f"))
+ # On the shelf, more boxes waiting their turn.
  for gx in range(floori(view.position.x/90),ceili(view.end.x/90)+1):
-  var b=Rect2(gx*90+hash_at(gx,4,9)%30,-700-hash_at(gx,5,9)%30,50+hash_at(gx,6,9)%20,36)
+  var h=30+hash_at(gx,5,9)%14
+  var b=Rect2(gx*90+hash_at(gx,4,9)%30,-672-h,50+hash_at(gx,6,9)%20,h)
   if b.position.x<left or b.end.x>right: continue
   box(b.position.x,b.position.y,b.size.x,b.size.y,"#3a2e26")
   box(b.position.x,b.position.y,b.size.x,2,"#56443a")
+  marker(["PHOTOS","FAMILY","BABY STUFF","PHOTOS","XMAS"][posmod(gx,5)],b.position+Vector2(4,b.size.y*.62),6,Color("#15100c"))
 
 func crayon_star(point,current):
  var col=Color("#ffe39a") if current else Color("#d9c17a")
@@ -571,6 +577,13 @@ func boy_kneeling(at,facing,prop):
  boy_head(at+Vector2(0,-78),facing,"look")
 
 func boy_in_bed(at):
+ if story.boy.get("hidden",false):
+  # Under the quilt, a small lump that shakes now and then.
+  var shiver=sin(clock*14)*.6 if fmod(clock,3.0)<.6 else 0.0
+  circle(at+Vector2(shiver,6),17,"#5d7aa8")
+  polygon([at+Vector2(14,10),at+Vector2(-120,6),at+Vector2(-124,22),at+Vector2(16,22)],"#5d7aa8")
+  ink.draw_arc(at+Vector2(shiver,6),17,PI*1.1,PI*1.9,10,Color("#86a0c8")*ink_color,1.5)
+  return
  boy_head(at,-1,"asleep" if story.boy.asleep else "look")
  # The quilt pulled up to his chin.
  polygon([at+Vector2(10,8),at+Vector2(-120,6),at+Vector2(-124,22),at+Vector2(14,22)],"#5d7aa8")
@@ -698,6 +711,12 @@ func draw_entity_body(e,origin):
     circle(Vector2(x+4,y+5+sin(clock*3)*.8),4,Color(1,.9,.5,.25))
     circle(Vector2(x+4,y+5+sin(clock*3)*.8),1.4,"#fff0a8")
    else: box(x+3.5,y+5,1,1,"#5a5a48")
+  "shard" when origin.x>=WARDROBE_X:
+   # A torn piece of the photo: it has to be brought to the rest of it.
+   var tc=Vector2(x+4,y+4+sin(clock*2+x)*.8)
+   circle(tc,5,Color(1,.95,.8,.12))
+   polygon([tc+Vector2(-3,-3),tc+Vector2(3,-2.4),tc+Vector2(2,1),tc+Vector2(3.2,3),tc+Vector2(-2.6,2.6),tc+Vector2(-2,0)],"#f4efe2")
+   polygon([tc+Vector2(-2,-2),tc+Vector2(2.2,-1.6),tc+Vector2(1.2,.6),tc+Vector2(-1.4,.4)],"#7fb6e6")
   "shard":
    # One of the boy's crayons, dropped on the way to bed.
    var col=Color({"ASH":"#d0574d","GLASS":"#4f8fd0","IRON":"#e1b84a"}.get(sim.room.def.get("bearing",""),"#a46ad1"))
@@ -782,20 +801,49 @@ func slime_puddles(view):
    circle(Vector2(bx,bottom-3-age*3),.6+age*.5,Color("#a8f08f",(1-age)*.8))
 
 func goal_drawing(scene,origin):
- # Each wardrobe room ends at one of the boy's drawings, taped to the panel.
+ # Each box holds one photo of a good day, hanging on the boy's string from the flaps.
  var goal=scene.room.def.workshopGoal
+ var index=story.wardrobe_rooms.find(scene.room.id) if story!=null else 0
  var at=origin+Vector2(goal[0]+goal[2]/2.0,goal[1]-24)
- var reached=runtime.campaign_completed.has(scene.room.id)
- circle(at,10,Color(1,.95,.75,.10 if not reached else .22))
- ink.draw_set_transform_matrix(paint_transform*Transform2D(sin(clock*.8)*.04,at))
- box(-7,-6,14,12,"#f4efe2")
- box(-2,-7,4,2,Color("#e9e2c0",.9))
- var col=[Color("#d0574d"),Color("#4f8fd0"),Color("#e1b84a"),Color("#5fae6a")][hash_at(goal[0],goal[1],1)%4]
- circle(Vector2(0,-1),2.6,"#ffe9a0")
- line(Vector2(-4,4),Vector2(4,4),col,.8)
- line(Vector2(-5,-4),Vector2(-2,-2),col,.6)
- ink.draw_set_transform_matrix(paint_transform)
+ var taken=story!=null and scene.room.id in story.photos
+ line(Vector2(at.x,origin.y),at+Vector2(0,-7),"#d9d2c0",.6)
+ if taken: return
+ circle(at,10,Color(1,.95,.75,.12))
+ photo(at,index,sin(clock*.8)*.06)
  box(origin.x+goal[0],origin.y+goal[1],goal[2],1,Color("#f4efe2",.35))
+
+# A small instant photo: one good day each.
+func photo(at,index,angle=0.0,size=1.0):
+ ink.draw_set_transform_matrix(paint_transform*Transform2D(angle,Vector2(size,size),0,at))
+ box(-7,-7,14,14,"#f4efe2")
+ var sky=[Color("#7fb6e6"),Color("#e9c27a"),Color("#a48a78"),Color("#c9d6e6"),Color("#8cc4e8"),Color("#9fc6e8"),Color("#e2b98c"),Color("#8cc4e8"),Color("#7fa9d6"),Color("#f0d48a")][index%10]
+ box(-6,-6,12,9,sky)
+ var ground=[Color("#e8d08a"),Color("#c98a5a"),Color("#6a4f6e"),Color("#f2f4f8"),Color("#6fae5c"),Color("#6a6e78"),Color("#b98a5a"),Color("#7fbf6a"),Color("#4f7fb0"),Color("#7fbf6a")][index%10]
+ box(-6,0,12,3,ground)
+ match index%10:
+  1: # a birthday cake
+   box(-3,-2,6,3,"#f6e2ea")
+   box(-.5,-4,1,2,"#f2f2f2")
+   box(-.5,-5,1,1,"#ffb347")
+  3: # a snowman
+   circle(Vector2(2,-1),1.6,"#ffffff")
+   circle(Vector2(2,-3.3),1.1,"#ffffff")
+  5: # the car, on a trip
+   box(-4,-2,7,2,"#c94a42")
+   box(-3,-3.5,4,1.5,"#c94a42")
+  7: # a giraffe at the zoo
+   box(2,-5,1,5,"#e0b04a")
+   box(1,-1,3,1.5,"#e0b04a")
+  _: pass
+ # The three of them, small.
+ var people=[[-4.5,"#4f6ea8"],[-2.6,"#b8576a"],[-3.4,"#e8c84a"]]
+ for k in range(3):
+  var px=-4.5+k*1.9 if index%2==0 else -5+k*2.2
+  var tall=2.6 if k<2 else 1.7
+  box(px,-tall,1.2,tall,people[k][1])
+  circle(Vector2(px+.6,-tall-.7),.7,"#f1c9a5")
+ box(-7,4,14,3,"#f4efe2")
+ ink.draw_set_transform_matrix(paint_transform)
 
 func story_items(view):
  for item in story.items():
@@ -857,6 +905,7 @@ func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
   box(x-2,y+9,12,5,"#3f8a5a")
   for c in range(0,12,3): box(x-2+c,y+10,1,4,"#2d6744")
   box(x-2,y+9,12,1,"#66b07e")
+  if story!=null and story.ride!=null: photo(Vector2(x+8,y+7),story.ride.photo,.25,.55)
  # The light itself.
  ink.draw_set_transform_matrix(paint_transform*Transform2D(0,stretch,0,center))
  var pulse=sin(clock*2.2)*.3+gift_pulse*2.0

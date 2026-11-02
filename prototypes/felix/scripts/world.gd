@@ -162,7 +162,7 @@ func hatch_column(def):
     if not map[r][k] in [".","P"]: clear=false
   if clear and map[sr+1][c]=="#" and map[sr+1][c+1]=="#": return c
  return sc
-func walk_room(id,cols,hole,barrier,open_right):
+func walk_room(id,cols,hole,barrier,open_right,spawn_col=2):
  var map=[]
  for r in range(6):
   var row=""
@@ -173,7 +173,7 @@ func walk_room(id,cols,hole,barrier,open_right):
    if r in [1,2,3,4] and c==cols-1 and barrier and not open_right: ch="#"
    row+=ch
   map.append(row)
- set_glyph(map,2,4,"P")
+ set_glyph(map,spawn_col,4,"P")
  return {"id":id,"name":"The Top of the Wardrobe","cols":cols,"rows":6,"map":map,"exit":"right","lock":["strike","parry","portal"],"palette":"outskirts","wardrobeWalk":true}
 func join_wardrobe(source):
  var rooms=source.world.campaignWorkshop.rooms
@@ -184,6 +184,7 @@ func join_wardrobe(source):
  for r in [22,23,24,25]: set_glyph(stair.map,7,r,".")
  var x=563
  var start=481
+ var finished_at=-1
  for i in range(rooms.size()):
   var def=defs[rooms[i]]
   var hc=hatch_column(def)
@@ -192,8 +193,13 @@ func join_wardrobe(source):
   var hole=x+hc
   var finish=hole+2
   var walk="felix-walk-%d"%i
-  source.world.rooms.append(walk_room(walk,finish-start+1,hole-start,true,false))
-  put_section(source,walk,start,SHELF_TOP,{"c":2,"r":4})
+  # The basket lifts Felix straight up from the last room's photo and sets him down there;
+  # only a photo left of this stretch's wall nudges him right, just past it.
+  var landing=2 if finished_at<0 else clampi(finished_at-start,2,hole-start-3)
+  source.world.rooms.append(walk_room(walk,finish-start+1,hole-start,true,false,landing))
+  put_section(source,walk,start,SHELF_TOP,{"c":landing,"r":4})
+  var goal=def.get("workshopGoal",[0,0,8,0])
+  finished_at=x+int(floor((goal[0]+goal[2]/2.0)/8.0))
   wardrobe_walks.append(walk)
   start=finish+1
   x+=int(def.get("cols",40))+ROOM_GAP
@@ -203,8 +209,9 @@ func join_wardrobe(source):
   set_glyph(sill.map,0,r,".")
   set_glyph(sill.map,39,r,"#")
  var last="felix-walk-%d"%rooms.size()
- source.world.rooms.append(walk_room(last,x-start,-1,false,true))
- put_section(source,last,start,SHELF_TOP,{"c":2,"r":4})
+ var last_landing=clampi(finished_at-start,2,x-start-3)
+ source.world.rooms.append(walk_room(last,x-start,-1,false,true,last_landing))
+ put_section(source,last,start,SHELF_TOP,{"c":last_landing,"r":4})
  wardrobe_walks.append(last)
  put_section(source,"cl1-atlas-crossroads",x,-94,{"c":5,"r":9})
  for i in range(rooms.size()): wardrobe_landing[rooms[i]]=wardrobe_walks[i+1]

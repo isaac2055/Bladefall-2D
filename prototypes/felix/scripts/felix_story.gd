@@ -13,12 +13,13 @@ const CURTAIN="cl1-bank-b62"
 const SILL="cl1-atlas-crossroads"
 const SECRET="cl1-secret-r2"
 const WARDROBE="campaignWorkshop"
+const STAIR="godot-overlook-stair"
 const LATE=["cl1-o1-muster","cl1-o1-yard",GATE,CURTAIN]
 const PILLOW=Vector2(1490,-64)
 
 var phase="black"        # black, play, ending, end
 var gifts={"legs":false,"cape":false,"arms":false,"face":false}
-var boy={"visible":true,"position":Vector2(104,144),"pose":"crying","facing":-1,"prop":"","asleep":false,"target":null,"speed":0.0,"then":""}
+var boy={"hidden":false,"visible":true,"position":Vector2(104,144),"pose":"crying","facing":-1,"prop":"","asleep":false,"target":null,"speed":0.0,"then":""}
 var lines=[]              # {text, anchor, at, life, max}
 var hint={"text":"","life":0.0}
 var freeze=0
@@ -33,9 +34,11 @@ var dark_target=0.0
 var dark=0.0
 var drawing={"kind":"drawing","at":Vector2.ZERO,"taken":false}
 var pulse_request=0.0
+var door_slam=false
 var end_time=0.0
 var deaths_at_end=0
 var crayons=0
+var photos=[]           # wardrobe rooms whose photo Felix brought up, in order
 var ride=null           # the basket lifting Felix out of a finished wardrobe room
 var wardrobe_rooms=[]
 
@@ -157,6 +160,27 @@ func tick(world,sim,delta):
   for core in [world.cores[GATE]]:
    for e in core.ents:
     if e.type=="plate" and e.get("down",false): dark_target=min(dark_target,.3)
+ # The turn: at the top of the stair, the parents through the floor. The boy hides under
+ # the quilt, and Felix goes after the good days packed away in the wardrobe boxes.
+ if room==STAIR and not done.has("fight"):
+  done.fight=true
+  boy.asleep=false
+  boy.hidden=false
+  freeze=620
+  cue_clock=0
+  say("...you said you'd be here by six—","below",2.6)
+  cue=[[160,func(): say("...not tonight. not in front of him.","below",2.6)],
+   [320,func(): say("then when? it's always 'not tonight'—","below",2.4)],
+   [450,func():
+     door_slam=true
+     dark=1.0
+     boy.hidden=true
+     say("(a door closes)","below",2.0)],
+   [540,func():
+     say("...","bed",1.6)
+     pulse_request=1.0],
+   [620,func(): show_hint("the good days are packed in the boxes up here",5.0)]]
+ if done.has("fight") and wardrobe_rooms.find(room)>=0: dark_target=.55
  # The first drawing, hidden above the desk.
  if room==SECRET and not drawing.taken and felix.distance_to(drawing.at)<10:
   drawing.taken=true
@@ -167,16 +191,14 @@ func tick(world,sim,delta):
  if index>=0 and ride==null and preload("res://scripts/campaign_workshop.gd").goal_reached(sim):
   world.campaign_completed[room]=true
   pulse_request=.8
+  if not room in photos: photos.append(room)
   var landing=world.wardrobe_landing[room]
   var spawn=world.parsed[landing].spawn
-  ride={"room":room,"landing":landing,"from":felix,"to":world.placements[landing]+Vector2(spawn.x,spawn.y),"t":0.0}
- if room=="felix-walk-0" and not done.has("wardrobe"):
-  done.wardrobe=true
-  show_hint("the top of the wardrobe",3.5)
+  ride={"room":room,"landing":landing,"from":felix,"to":world.placements[landing]+Vector2(spawn.x,spawn.y),"t":0.0,"photo":index}
  if index>=0 and not done.has("objective:"+room):
   done["objective:"+room]=true
-  if sim.room.def.get("workshopRequireAllShards",false): show_hint("bring both crayons back to the drawing",4.5)
-  elif sim.room.def.get("workshopRequireShard",false): show_hint("bring the crayon back to the drawing",4.5)
+  if sim.room.def.get("workshopRequireAllShards",false): show_hint("find both torn pieces, then bring them to the photo",4.5)
+  elif sim.room.def.get("workshopRequireShard",false): show_hint("find the torn corner, then bring it to the photo",4.5)
  # The first slime puddle teaches itself.
  if sim.p.get("pollen",0)>0 and gifts.legs and not done.has("slime"):
   done.slime=true
@@ -222,6 +244,8 @@ func tick_boy(delta):
 func begin_ending(world,sim):
  done.ending=true
  phase="ending"
+ boy.hidden=false
+ boy.asleep=true
  end_time=0.0
  deaths_at_end=sim.deaths
  for core in world.cores.values():
@@ -252,6 +276,13 @@ func ambient():
  night=night.lerp(Color(.3,.3,.44),dark)
  if phase in ["ending","end"]: night=night.lerp(Color(.62,.66,.86),clamp(end_time/3.0,0,1))
  return night
+
+# Music: none until the boy stops crying, quieter after the fight, gone while it happens.
+func music_level():
+ if not gifts.legs: return -80.0
+ if done.has("fight") and freeze>0 and room==STAIR: return -80.0
+ if done.has("fight") and not phase in ["ending","end"]: return -20.0
+ return -10.0
 
 func moon_strength():
  if room in [CURTAIN,SILL]: return 1.3 if phase=="play" else 2.0
