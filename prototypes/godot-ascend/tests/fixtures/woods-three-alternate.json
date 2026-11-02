@@ -1,0 +1,35 @@
+{
+  "chapter": 22,
+  "index": 37,
+  "tape": [
+    [
+      12,
+      "rxg"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      18,
+      "rjg"
+    ],
+    [
+      12,
+      "ruxg"
+    ],
+    [
+      18,
+      "rjg"
+    ],
+    [
+      6,
+      "lus"
+    ],
+    [
+      18,
+      "r"
+    ]
+  ],
+  "description": "Advanced super, wall contact and an airborne bell cut preserve the phase/landing decision without using the pods."
+}

@@ -141,7 +141,7 @@
       "portal"
     ],
     "blurb": "The Fractured Woods: one continuous road with 13 checkpointed challenges, ending in a superroom.",
-    "outro": "The Oath Root lets go of the crown. Behind you, Elsie’s window holds its small light against the wind.",
+    "outro": "The Oath Root lets go of the crown. Behind you, Elsie\u2019s window holds its small light against the wind.",
     "sections": [
       {
         "room": "cl22-atlas-arrival",
@@ -319,9 +319,36 @@
         }
       },
       {
-        "room": "cl22-atlas-crossroads",
+        "room": "cl22-puzzle-two-ceilings",
         "x": 39,
-        "y": -218,
+        "y": -243,
+        "fire": {
+          "c": 5,
+          "r": 33
+        }
+      },
+      {
+        "room": "cl22-puzzle-after-crossing",
+        "x": 103,
+        "y": -243,
+        "fire": {
+          "c": 5,
+          "r": 33
+        }
+      },
+      {
+        "room": "cl22-puzzle-bring-back-wall",
+        "x": 183,
+        "y": -271,
+        "fire": {
+          "c": 5,
+          "r": 33
+        }
+      },
+      {
+        "room": "cl22-atlas-crossroads",
+        "x": 255,
+        "y": -274,
         "fire": {
           "c": 44,
           "r": 21
@@ -333,7 +360,7 @@
       {
         "id": "elsie-echo",
         "title": "A Bowl Kept Warm",
-        "giver": "Elsie’s echo",
+        "giver": "Elsie\u2019s echo",
         "from": "cl22-fw22-kitchen",
         "back": {
           "c": 6,
@@ -467,7 +494,7 @@
         "lock": [
           "strike"
         ],
-        "hint": "Dash down-diagonally into the floor, then jump: low and long, under the roof (a hyper) · the root between the pits is cracked: again",
+        "hint": "Dash down-diagonally into the floor, then jump: low and long, under the roof (a hyper) \u00b7 the root between the pits is cracked: again",
         "question": "The roof stops any jump. What carries you across without rising, twice?",
         "decor": [
           {
@@ -526,7 +553,7 @@
         "lock": [
           "strike"
         ],
-        "hint": "From the air, the same: land the down-diagonal dash on the root and jump at once (a wavedash) · then hyper root to root",
+        "hint": "From the air, the same: land the down-diagonal dash on the root and jump at once (a wavedash) \u00b7 then hyper root to root",
         "question": "The root under the roof is cracked. Where does your dash have to end?",
         "map": [
           "########################################",
@@ -585,7 +612,7 @@
         "name": "The Bound Oathblade",
         "exit": "right",
         "study": true,
-        "hint": "Stand on the counterweight root at the end of the low run · then hold up at the freed blade",
+        "hint": "Stand on the counterweight root at the end of the low run \u00b7 then hold up at the freed blade",
         "question": "The root that frees the blade is past the low run. How do you reach it, and then the blade?",
         "oathRoot": {
           "c": 24,
@@ -649,7 +676,7 @@
         "id": "cl22-fw22-canopy",
         "name": "The Biting Canopy",
         "exit": "left",
-        "hint": "A held jump meets the thorns · hyper from cracked root to cracked root · cut the pod where the canopy opens",
+        "hint": "A held jump meets the thorns \u00b7 hyper from cracked root to cracked root \u00b7 cut the pod where the canopy opens",
         "question": "Out along the low tunnel and back along the high one, and no root that holds. Where does each hyper start?",
         "map": [
           "########################################",
@@ -712,7 +739,7 @@
         "id": "cl22-fw22-briar",
         "name": "The Briar Ceiling",
         "exit": "left",
-        "hint": "Every dash turns the thicket · the hyper’s dash too · the third branch waits for the third dash",
+        "hint": "Every dash turns the thicket \u00b7 the hyper\u2019s dash too \u00b7 the third branch waits for the third dash",
         "question": "Your dash raises the branch you are aiming for, and drops the one you stand on. Where can a hyper start?",
         "map": [
           "########################################",
@@ -823,20 +850,20 @@
       },
       {
         "id": "cl22-fw22-kitchen",
-        "name": "Elsie’s Cold Kitchen",
+        "name": "Elsie\u2019s Cold Kitchen",
         "exit": "left",
         "side": "up",
-        "hint": "Your old lantern opens the tree above the kitchen · the root in the cut is cracked",
+        "hint": "Your old lantern opens the tree above the kitchen \u00b7 the root in the cut is cracked",
         "question": "No runway under the roof. Where does your dash land?",
         "people": [
           {
             "who": "elsie",
-            "name": "ELSIE’S ECHO",
+            "name": "ELSIE\u2019S ECHO",
             "c": 28,
             "r": 17,
             "quest": "elsie-echo",
             "line": "I left a bowl out. Habit, I suppose.",
-            "lineDone": "Still warm. Don’t ask me how."
+            "lineDone": "Still warm. Don\u2019t ask me how."
           }
         ],
         "decor": [
@@ -905,10 +932,10 @@
       },
       {
         "id": "cl22-fw22-edge",
-        "name": "Thicket’s Broken Edge",
+        "name": "Thicket\u2019s Broken Edge",
         "exit": "left",
         "study": true,
-        "hint": "Every dash turns the thicket · the middle branch waits for a late dash · a root lashes it",
+        "hint": "Every dash turns the thicket \u00b7 the middle branch waits for a late dash \u00b7 a root lashes it",
         "question": "Which branch is true when you land, which dash turned it, and how long before the lash?",
         "lashes": [
           {
@@ -988,7 +1015,7 @@
         "name": "The Resin Crown",
         "exit": "left",
         "study": true,
-        "hint": "Amber edges hold against the wind · dotted edges warn of the turn · the wind turns fast here",
+        "hint": "Amber edges hold against the wind \u00b7 dotted edges warn of the turn \u00b7 the wind turns fast here",
         "question": "Each branch holds for one beat of the wind, and the next one hardens as it softens. Can you keep the beat to the gap?",
         "resinWind": {
           "period": 60,
@@ -1094,7 +1121,7 @@
         "name": "The Oath Root",
         "exit": "left",
         "study": true,
-        "hint": "Two lashes, out of step · the dotted outline strikes next · the root between is cracked",
+        "hint": "Two lashes, out of step \u00b7 the dotted outline strikes next \u00b7 the root between is cracked",
         "question": "The run under the roof is a hyper long, and the lash lies at the end of it. When do you set off?",
         "rootCrown": {
           "c": 4,
@@ -1261,7 +1288,7 @@
         "name": "The Oath Root, Waking",
         "exit": "right",
         "study": true,
-        "hint": "Out low, back high · a lash in each run · cut the crown as you pass",
+        "hint": "Out low, back high \u00b7 a lash in each run \u00b7 cut the crown as you pass",
         "question": "One lash rests while the other strikes. Where are you when each comes down?",
         "rootCrown": {
           "c": 34,
@@ -1455,7 +1482,7 @@
         "name": "The Empty Bowl",
         "exit": "right",
         "study": true,
-        "hint": "Two roots bite on a clock · two hypers and a cut · the branch is false until your next dash",
+        "hint": "Two roots bite on a clock \u00b7 two hypers and a cut \u00b7 the branch is false until your next dash",
         "question": "The branch past the pod is false until something turns it. Which dash, and from where?",
         "lashes": [
           {
@@ -1574,7 +1601,7 @@
         "id": "cl22-fw22-q-lantern",
         "name": "The Lantern That Waited",
         "exit": "up",
-        "hint": "A wavedash under the roof, a pod, the high branch the dash itself turns · over the thorned crown root to root to her table",
+        "hint": "A wavedash under the roof, a pod, the high branch the dash itself turns \u00b7 over the thorned crown root to root to her table",
         "question": "The table is across the thorned crown of the tree, and only two cracked roots between. Where does each hyper start?",
         "lashes": [
           {
@@ -1590,11 +1617,11 @@
         "people": [
           {
             "who": "elsie",
-            "name": "ELSIE’S ECHO",
+            "name": "ELSIE\u2019S ECHO",
             "c": 12,
             "r": 4,
             "quest": "elsie-echo",
-            "line": "I knew you’d find the table.",
+            "line": "I knew you\u2019d find the table.",
             "lineDone": "You never did like eating alone."
           }
         ],
@@ -1763,7 +1790,7 @@
             "face": "r"
           }
         ],
-        "question": "The orange end throws you across — but only as hard as you fell. How high do you need to fall from?",
+        "question": "The orange end throws you across \u2014 but only as hard as you fell. How high do you need to fall from?",
         "map": [
           "########################################",
           "#......................................#",
@@ -2688,8 +2715,8 @@
             "edge": "left",
             "floor": 9,
             "height": 5,
-            "to": "cl22-fw22-oath3",
-            "toFloor": 9,
+            "to": "cl22-puzzle-bring-back-wall",
+            "toFloor": 6,
             "kind": "room"
           },
           {
@@ -2705,8 +2732,8 @@
           "edge": "left",
           "floor": 9,
           "height": 5,
-          "to": "cl22-fw22-oath3",
-          "toFloor": 9
+          "to": "cl22-puzzle-bring-back-wall",
+          "toFloor": 6
         },
         "atlasRegion": 22,
         "atlasRoads": [
@@ -3710,6 +3737,499 @@
             "world": 23,
             "link": "22-23"
           }
+        ]
+      },
+      {
+        "id": "cl22-puzzle-two-ceilings",
+        "name": "The Pod Beneath Two Ceilings",
+        "cols": 64,
+        "rows": 44,
+        "exit": "right",
+        "movement": "survive-2",
+        "aim8": true,
+        "dashes": 1,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "fractured",
+        "rbr": 22,
+        "puzzleStudy": true,
+        "decor": [
+          {
+            "k": "milestone",
+            "c": 32,
+            "r": 33
+          }
+        ],
+        "people": [],
+        "zips": [],
+        "dropThru": true,
+        "puzzleGoal": [
+          240,
+          272,
+          240,
+          4
+        ],
+        "puzzleEntranceFloor": 34,
+        "puzzleExitFloor": 34,
+        "question": "Why does the same pod need a different way out after the bell?",
+        "hint": "Use the open shaft to rebound high onto the bell ledge. Ring blue to close the ceiling above the pod. Drop along its right edge and cut below-left for the low rebound, then steer right without dashing: the pod preserves blue, the amber gate stays open, and the blue landing stays beneath you.",
+        "puzzleCameraAnchorY": 96,
+        "map": [
+          "################################################################",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>.........................#..................................<#",
+          "#>^^^^^^^^^^^^^^^^^^^^....xBBBB...............................<#",
+          "######################.=====..................................<#",
+          "######################^.......A...............................<#",
+          "#>....................BBBB....A...............................<#",
+          "......................B....^..A.................................",
+          "......................B...<#..A.................................",
+          "......................B.b.<#..A.................................",
+          "......................B...<#..A.................................",
+          ".....P................B...<#..A.................................",
+          "######################B...<#.BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+          "######################BBBB<#.BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+          "######################........A...............................<#",
+          "######################........................................<#",
+          "######################........................................<#",
+          "######################........................................<#",
+          "######################........................................<#",
+          "######################........................................<#",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "################################################################"
+        ],
+        "puzzleRoutes": [
+          {
+            "name": "Use the high rebound, ring blue and return through the low passage",
+            "tape": [
+              [
+                75,
+                "r"
+              ],
+              [
+                16,
+                "rj"
+              ],
+              [
+                6,
+                "dsj"
+              ],
+              [
+                14,
+                "rj"
+              ],
+              [
+                30,
+                ""
+              ],
+              [
+                1,
+                "s"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                3,
+                "dj"
+              ],
+              [
+                3,
+                "r"
+              ],
+              [
+                10,
+                ""
+              ],
+              [
+                6,
+                "lds"
+              ],
+              [
+                75,
+                "r"
+              ]
+            ]
+          }
+        ],
+        "exitSpan": [
+          29,
+          34
+        ]
+      },
+      {
+        "id": "cl22-puzzle-after-crossing",
+        "name": "Ring It After the Crossing",
+        "cols": 80,
+        "rows": 48,
+        "exit": "right",
+        "movement": "survive-2",
+        "aim8": true,
+        "dashes": 1,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "fractured",
+        "rbr": 22,
+        "puzzleStudy": true,
+        "decor": [
+          {
+            "k": "milestone",
+            "c": 9,
+            "r": 25
+          }
+        ],
+        "people": [],
+        "zips": [],
+        "dropThru": true,
+        "puzzleGoal": [
+          56,
+          208,
+          64,
+          4
+        ],
+        "puzzleEntranceFloor": 34,
+        "puzzleExitFloor": 6,
+        "question": "When must the same bell be rung from its other side?",
+        "hint": "Ring blue before the low dash across the gap: the dash opens the blue gate. Ring the shared bell from its far face; the lower loop is a recovery route. Climb the restored blue roots, then jump and cut the upper pod from its left side to rebound home through the absent amber gate without dashing.",
+        "puzzleCameraAnchorY": 96,
+        "map": [
+          "################################################################################",
+          "#>..............................................................................",
+          "#>..............................................................................",
+          "#>..............................................................................",
+          "#>..............................................................................",
+          "#>..............................................................................",
+          "#>......========================================================================",
+          "#>............................................................................<#",
+          "#>...===......................................................................<#",
+          "#>............................................................................<#",
+          "#>............................................................................<#",
+          "#>.===........................................................................<#",
+          "#>............................................................................<#",
+          "#>............................................................................<#",
+          "#>...===......................................................................<#",
+          "#>............................................................................<#",
+          "#>............................................................................<#",
+          "#>.===.^^^^^^^^^^^^^^^^^^^^^^^^...............................................<#",
+          "#>.....########################...............................................<#",
+          "#>.....########################...............................................<#",
+          "#>...===..............A.......................................................<#",
+          "#>....................A.......................................................<#",
+          "#>....................A.......................................................<#",
+          "#>.===................A.......................................................<#",
+          "#>....................A...b...................................................<#",
+          "#>....................A.......................................................<#",
+          "#>.....BBBBBBBB>......A.BBBBBB................................................<#",
+          "#>.............>......A.......................................................<#",
+          "#>....................A........BBBB...........................................<#",
+          "..^^^^^^^^^^^^^^^^^^^^A^^^^^^^^^^^====........................................<#",
+          "..####################B#############..........................................<#",
+          "..####################B####BBBB#####..........................................<#",
+          "......................B..............====.....................................<#",
+          ".....P................x.......................................................<#",
+          "####################..B.====..................................................<#",
+          "####################..B......######################...........................<#",
+          "####################..B......######################...........................<#",
+          "####################..B.====..................................................<#",
+          "####################..B.......................................................<#",
+          "####################..........................................................<#",
+          "####################........====..............................................<#",
+          "####################..........................................................<#",
+          "####################..........................................................<#",
+          "####################..##########################################..............<#",
+          "#>....................##########################################..............<#",
+          "#>....................##########################################..............<#",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "################################################################################"
+        ],
+        "puzzleRoutes": [
+          {
+            "name": "Ring the shared bell from both faces and rebound home",
+            "tape": [
+              [
+                76,
+                "r"
+              ],
+              [
+                1,
+                "s"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                12,
+                "rx"
+              ],
+              [
+                6,
+                "r"
+              ],
+              [
+                10,
+                ""
+              ],
+              [
+                10,
+                "l"
+              ],
+              [
+                10,
+                ""
+              ],
+              [
+                1,
+                "ls"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                72,
+                "r"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                20,
+                "j"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                14,
+                "lj"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                16,
+                "lj"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                18,
+                "lj"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                27,
+                "l"
+              ],
+              [
+                10,
+                ""
+              ],
+              [
+                1,
+                "rsj"
+              ],
+              [
+                45,
+                "lj"
+              ]
+            ]
+          }
+        ],
+        "exitSpan": [
+          1,
+          6
+        ]
+      },
+      {
+        "id": "cl22-puzzle-bring-back-wall",
+        "name": "The Wall You Must Bring Back",
+        "cols": 72,
+        "rows": 48,
+        "exit": "right",
+        "movement": "survive-2",
+        "aim8": true,
+        "dashes": 1,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "fractured",
+        "rbr": 22,
+        "puzzleStudy": true,
+        "decor": [
+          {
+            "k": "milestone",
+            "c": 11,
+            "r": 14
+          }
+        ],
+        "people": [],
+        "zips": [],
+        "dropThru": true,
+        "puzzleGoal": [
+          72,
+          120,
+          112,
+          4
+        ],
+        "puzzleEntranceFloor": 34,
+        "puzzleExitFloor": 6,
+        "question": "Why bring back the wall you just removed?",
+        "hint": "Dash through the lower amber wall. Ring the far bell to restore it, then jump toward its far face and climb to the upper pod. Rebound high from the pod without changing phase. Dash left through the upper wall: blue becomes your landing.",
+        "puzzleCameraAnchorY": 100,
+        "map": [
+          "########################################################################",
+          "#>......................................................................",
+          "#>......................................................................",
+          "#>......................................................................",
+          "#>......................AA..............................................",
+          "#>......................AA..............................................",
+          "#>............==========AA==============================================",
+          "#>......................AA............................................<#",
+          "#>......................AA............................................<#",
+          "#>..........====........AA............................................<#",
+          "#>......................AA............................................<#",
+          "#>......................AA............................................<#",
+          "#>......====............AA............................................<#",
+          "#>......................AA............................................<#",
+          "#>......................AA............................................<#",
+          "#>......BBBBBBBBBBBBBBBBAA............................................<#",
+          "#>......................AA............................................<#",
+          "#>......................AA............................................<#",
+          "#>......................AA............................................<#",
+          "#>......................AA............................................<#",
+          "#>......................AA.b..........................................<#",
+          "#>......................AA............................................<#",
+          "#>......................AA............................................<#",
+          "#>......................AA............................................<#",
+          "#>......................AA............................................<#",
+          "#>......................AA............................................<#",
+          "#>^^^^^^^^^^^^^^^^......AA............................................<#",
+          "##################......AA............................................<#",
+          "##################......AA............................................<#",
+          "........................AA............................................<#",
+          "........................AA............................................<#",
+          "........................AA............................................<#",
+          "........................AA.........x..................................<#",
+          ".....P..................AA............................................<#",
+          "##################......AA.####################.......................<#",
+          "##################......AA.####################.......................<#",
+          "##################......AA............................................<#",
+          "##################......AA............................................<#",
+          "##################......AA............................................<#",
+          "##################......AA............................................<#",
+          "##################......AA............................................<#",
+          "##################....................................................<#",
+          "##################....................................................<#",
+          "##################....................................................<#",
+          "#>....................................................................<#",
+          "#>....................................................................<#",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "########################################################################"
+        ],
+        "puzzleRoutes": [
+          {
+            "name": "Restore the wall, climb to the pod and dash through its upper opening",
+            "tape": [
+              [
+                55,
+                "r"
+              ],
+              [
+                20,
+                "rj"
+              ],
+              [
+                12,
+                "rx"
+              ],
+              [
+                50,
+                "r"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                1,
+                "s"
+              ],
+              [
+                20,
+                ""
+              ],
+              [
+                30,
+                "l"
+              ],
+              [
+                16,
+                "ljg"
+              ],
+              [
+                125,
+                "lgu"
+              ],
+              [
+                6,
+                "dsj"
+              ],
+              [
+                16,
+                "j"
+              ],
+              [
+                12,
+                "lx"
+              ],
+              [
+                35,
+                "l"
+              ]
+            ]
+          }
+        ],
+        "exitSpan": [
+          1,
+          6
         ]
       }
     ],
@@ -5531,6 +6051,316 @@
           18,
           ""
         ]
+      ],
+      "cl22-puzzle-two-ceilings": [
+        [
+          75,
+          "r"
+        ],
+        [
+          16,
+          "rj"
+        ],
+        [
+          6,
+          "dsj"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          30,
+          ""
+        ],
+        [
+          1,
+          "s"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          3,
+          "dj"
+        ],
+        [
+          3,
+          "r"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          6,
+          "lds"
+        ],
+        [
+          75,
+          "r"
+        ],
+        [
+          160,
+          "r"
+        ]
+      ],
+      "cl22-puzzle-after-crossing": [
+        [
+          76,
+          "r"
+        ],
+        [
+          1,
+          "s"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          12,
+          "rx"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          10,
+          "l"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          1,
+          "ls"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          72,
+          "r"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          14,
+          "lj"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          16,
+          "lj"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          18,
+          "lj"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          27,
+          "l"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          1,
+          "rsj"
+        ],
+        [
+          45,
+          "lj"
+        ],
+        [
+          32,
+          "l"
+        ],
+        [
+          20,
+          "lj"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          390,
+          "r"
+        ]
+      ],
+      "cl22-puzzle-bring-back-wall": [
+        [
+          55,
+          "r"
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          12,
+          "rx"
+        ],
+        [
+          50,
+          "r"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          1,
+          "s"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          30,
+          "l"
+        ],
+        [
+          16,
+          "ljg"
+        ],
+        [
+          125,
+          "lgu"
+        ],
+        [
+          6,
+          "dsj"
+        ],
+        [
+          16,
+          "j"
+        ],
+        [
+          12,
+          "lx"
+        ],
+        [
+          35,
+          "l"
+        ],
+        [
+          18,
+          "lj"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          18,
+          "rj"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          18,
+          "rj"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          20,
+          "r"
+        ],
+        [
+          24,
+          "rj"
+        ],
+        [
+          260,
+          "r"
+        ]
       ]
     },
     "folk": {
@@ -5867,12 +6697,12 @@
         "name": "The Hollow Crown",
         "to": "cl22-fw22-oath1",
         "grade": "B",
-        "evidence": "A tear, one pod and eight cracked tiles form a lift/cut/low-launch sequence. All three verbs have been introduced earlier, while this room does not use the chapter’s lashes or resin wind. A replacement can combine low launch with a more consequential timed arrival; retain any attached secret host.",
+        "evidence": "A tear, one pod and eight cracked tiles form a lift/cut/low-launch sequence. All three verbs have been introduced earlier, while this room does not use the chapter\u2019s lashes or resin wind. A replacement can combine low launch with a more consequential timed arrival; retain any attached secret host.",
         "dialogueMoved": []
       },
       {
         "id": "cl22-fw22-oath3",
-        "name": "The Oath Root’s Crown",
+        "name": "The Oath Root\u2019s Crown",
         "to": "cl22-bank-f68",
         "reason": "Replaced by its native boss superroom"
       }
@@ -5896,7 +6726,10 @@
       "cl22-bank-f17",
       "cl22-fw22-oath1",
       "cl22-fw22-oath2",
-      "cl22-bank-f68"
+      "cl22-bank-f68",
+      "cl22-puzzle-two-ceilings",
+      "cl22-puzzle-after-crossing",
+      "cl22-puzzle-bring-back-wall"
     ],
     "bankIntegration": {
       "version": "7.307.0",
@@ -5957,7 +6790,7 @@
       {
         "from": "cl22-walk-2-21",
         "to": "cl22-fw22-wind",
-        "how": "up shaft at 38–39 (10 rock)",
+        "how": "up shaft at 38\u201339 (10 rock)",
         "kind": "walk",
         "entryDelta": 0,
         "toFire": [
@@ -6013,7 +6846,7 @@
       {
         "from": "cl22-walk-4-43",
         "to": "cl22-fw22-oath1",
-        "how": "up shaft at 34–35 (10 rock)",
+        "how": "up shaft at 34\u201335 (10 rock)",
         "kind": "walk",
         "entryDelta": 0,
         "toFire": [
@@ -6056,7 +6889,7 @@
       {
         "from": "cl22-walk-6-52",
         "to": "cl22-fw22-oath3",
-        "how": "up shaft at 3–4 (10 rock)",
+        "how": "up shaft at 3\u20134 (10 rock)",
         "kind": "walk",
         "entryDelta": 8.54400374531753,
         "toFire": [

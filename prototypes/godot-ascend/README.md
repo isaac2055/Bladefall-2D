@@ -1,6 +1,22 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.33.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.34.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Easier Bridge and three Fractured Black Woods rooms · 0.34.0
+
+**Play Easier Bridge.command** opens the revised **Bridge Above Your Landing** in chapter 21. Its roof and boarding opening are wider, its setup hop has more headroom, and its home landing is closer. The reference hops in place and escapes straight upward after the launch; the former rightward correction is gone. A later landing can still be recovered from. The crumble preparation and returning carriage remain useful, with unchanged movement and device timings.
+
+**Play Fractured Black Woods Rooms.command** opens the first of three additions at the end of chapter **22 · The Fractured Woods**:
+
+- **The Pod Beneath Two Ceilings:** rebound high to the bell, then approach the same pod from the exposed side of its newly closed ceiling and rebound low through the opening.
+- **Ring It After the Crossing:** use the shared bell from both faces, restore the upper blue route, then make a phase-preserving side rebound toward home.
+- **The Wall You Must Bring Back:** remove the wall to cross, restore it to climb, then use the upper pod and dash back through it to the blue landing.
+
+Each has its own checkpoint, **H** hint and **Esc → Watch reference**, plus selection by name under **Esc → Explore a section**. The guided Woods routes use normal jumps, dashes, sword rebounds and climbing; no mandatory hyper or wavedash was added. An advanced super/wall/bell alternative in the first room remains valid. Source chapter 22 now contains **40 definitions and 16 required challenges**, including these first three of the planned nine new Woods rooms. The nine added Outskirts rooms and thirty base-world workshop extensions remain in place.
+
+The signed 0.34.0 app passed **23 verification suites**. The Woods campaign reference covers **9,177 frames and 24 regions with zero deaths**; the Outskirts reference remains deathless across **17,419 frames and 28 regions**. Checks include the new rooms, recovery routes, earlier accepted layouts, independent resets, camera framing, existing quests, all thirty campaign workshop additions and editor playback.
+
+See [implementation and verification notes](research/FRACTURED-WOODS-FIRST-THREE.md). No new art, quests or voices were generated. The shared workshop editor remains at thirty rooms; these additions are editable in the native chapter-22 scene.
 
 ## Nine added Fractured Outskirts rooms · 0.33.0
 
