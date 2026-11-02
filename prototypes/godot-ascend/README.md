@@ -1,8 +1,24 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.34.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.35.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
-## Easier Bridge and three Fractured Black Woods rooms · 0.34.0
+## Fractured difficulty revisions · 0.35.0
+
+The four latest studies now connect preparation to sustained Fractured movement. Bridge restores its original six-tile carriage roof, six-tile crumble opening and higher home flag, with only the local setup-hop ceiling raised. The former ordinary-jump recovery no longer clears that finish.
+
+The existing **Play Easier Bridge.command** launcher still opens Bridge. **Play Fractured Black Woods Rooms.command** opens the revised Woods trio:
+
+- **The Pod Beneath Two Ceilings:** reach the higher bell with the first rebound, return low, wavedash from a short amber runway and use the recovered dash to restore the distant blue landing.
+- **Ring It After the Crossing:** reach the bell window below, circle the roof to reach it above, then link its phase change to a wavedash, a momentum-preserving high pod rebound and the final blue landing.
+- **The Wall You Must Bring Back:** leave the restored wall for an outward pod transfer, dash back through it onto a crumbling ledge, then wavedash under the low roof and dash upward beside home.
+
+The signed 0.35.0 app passed 23 regression suites. Fresh bounded searches found no ordinary-movement substitute in the three payoff tests and no pod-free route in the three spawn tests; their budgets and limits are recorded in the notes. Both full chapter journeys reach the crossroads without deaths.
+
+All four retain independent checkpoints, updated **H** hints and complete **Esc → Watch reference** recordings. No movement constants, quests, voices, art, other room layouts or workshop rooms changed. The camera and native editor use the revised geometry. See [design and verification notes](research/FRACTURED-DIFFICULTY-REVISION.md).
+
+## Previous build: easier Bridge and three Woods additions · 0.34.0
+
+The following describes the earlier build; 0.35.0 replaces its four layouts and references as described above.
 
 **Play Easier Bridge.command** opens the revised **Bridge Above Your Landing** in chapter 21. Its roof and boarding opening are wider, its setup hop has more headroom, and its home landing is closer. The reference hops in place and escapes straight upward after the launch; the former rightward correction is gone. A later landing can still be recovered from. The crumble preparation and returning carriage remain useful, with unchanged movement and device timings.
 

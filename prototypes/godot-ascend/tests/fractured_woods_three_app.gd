@@ -69,7 +69,7 @@ func run():
   app.toggle_watch()
   for death in [false,true]:
    app.world.restart();app.load_section(index)
-   play(app,room.puzzleRoutes[0].tape.slice(0,{46:18,37:6,38:9,39:10}[index]))
+   play(app,room.puzzleRoutes[0].tape.slice(0,{46:18,37:8,38:3,39:10}[index]))
    check(app.sim.phase!=0 or app.sim.p.state=="climb" or app.sim.ents.any(func(e):return e.type=="zip" and e.state!="idle"),"interrupted puzzle has changed state: "+room.name)
    if death:app.sim.die()
    else:app.retry_room()
@@ -77,9 +77,6 @@ func run():
    var reset=app.sim.phase==0 and app.sim.p.state not in ["dead","respawn","climb"] and app.sim.p.get("hook")==null and app.world.checkpoint_id==room.id
    reset=reset and app.sim.ents.all(func(e):return (e.type!="zip" or e.state=="idle" and e.x==e.ox and e.y==e.oy) and (e.type!="crumble" or not e.get("broken",false)) and (e.type not in ["pod","bell"] or e.timer==0))
    check(reset,("death" if death else "retry")+" restores the local puzzle: "+room.name)
- var alternate=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/woods-three-alternate.json"))
- app.world.restart();app.load_section(int(alternate.index));play(app,alternate.tape)
- check(goal(app.sim) and app.sim.deaths==0,"retained advanced alternate also clears in the live application")
  check(app.workshop_completed.is_empty(),"Fractured clears stay separate from workshop completion")
  app.queue_free();await process_frame
  print("FRACTURED WOODS THREE APP ","FAILED" if failed else "PASSED")

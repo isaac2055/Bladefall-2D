@@ -1,5 +1,7 @@
 # Easier Bridge and the first three Fractured Black Woods additions
 
+Historical 0.34.0 build. These layouts and acceptance criteria were superseded by the [0.35.0 difficulty revision](FRACTURED-DIFFICULTY-REVISION.md) after user playtesting found all four too easy.
+
 2026-11-01. Approved builds for prototype **0.34.0**. The signed packaged app passed twenty-three verification suites. The full Woods route reaches the crossroads through all 24 recorded regions in 9,177 ordinary-input frames with zero deaths. No new physics, quests, voices or art were introduced. Each room retains its own checkpoint.
 
 ## Bridge: keep the preparation, widen the execution
