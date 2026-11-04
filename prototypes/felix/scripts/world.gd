@@ -48,11 +48,14 @@ func _init(source):
  data=preload("res://scripts/authoring_data.gd").read(source)
  # Felix: the New House keeps only the road and its one secret. Side quests,
  # their rooms and the people who gave them are cut; the workshop is not appended.
- strip_to_road(data)
- # The approved workshop rooms become the top of the wardrobe, between the curtain and the sill.
+ var chapter=int(data.world.n)
+ strip_to_road(data,{1:["rowan","socket-19-1"],2:["refuge"]}.get(chapter,[]))
+ # The approved workshop rooms: in Chapter One the top of the wardrobe, between the curtain and
+ # the sill; in Chapter Two, Dad's story on the stormy night after the cabin.
  var workshop_source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"))
  CampaignWorkshop.append(data,preload("res://scripts/authoring_data.gd").read(workshop_source))
- join_wardrobe(data)
+ if chapter==1: join_wardrobe(data)
+ elif chapter==2 and not OS.get_cmdline_user_args().has("--unjoined"): join_story(data)
  var sections=data.world.sections.duplicate(true)
  for q in data.world.quests: sections.append_array(q.sections)
  for q in data.world.get("secrets",[]): sections.append_array(q.sections)
@@ -107,8 +110,7 @@ func _init(source):
     var value={"#":1,"%":1,"=":2,"^":3,"v":4,"<":5,">":6}.get(tile[2],0)
     seam_tiles[id].append({"local":local,"point":key,"open":cells.get(key,0),"closed":value})
  restart()
-func strip_to_road(source):
- var cut_quests=["rowan","socket-19-1"]
+func strip_to_road(source,cut_quests):
  var cut_rooms={}
  var kept=[]
  for q in source.world.quests:
@@ -145,6 +147,10 @@ func set_glyph(map,c,r,ch):
  var row=map[r]
  map[r]=row.substr(0,c)+ch+row.substr(c+1)
 func hatch_column(def):
+ var found=find_hatch(def)
+ return found[0]
+# [column, whether a 2-wide drop from the ceiling to the room's start is clear of everything].
+func find_hatch(def):
  var map=def.map
  var sc=-1
  var sr=-1
@@ -160,9 +166,9 @@ func hatch_column(def):
   for r in range(1,sr+1):
    for k in [c,c+1]:
     if not map[r][k] in [".","P"]: clear=false
-  if clear and map[sr+1][c]=="#" and map[sr+1][c+1]=="#": return c
- return sc
-func walk_room(id,cols,hole,barrier,open_right,spawn_col=2):
+  if clear and map[sr+1][c]=="#" and map[sr+1][c+1]=="#": return [c,true]
+ return [sc,false]
+func walk_room(id,cols,hole,barrier,open_right,spawn_col=2,title="The Top of the Wardrobe"):
  var map=[]
  for r in range(6):
   var row=""
@@ -174,7 +180,39 @@ func walk_room(id,cols,hole,barrier,open_right,spawn_col=2):
    row+=ch
   map.append(row)
  set_glyph(map,spawn_col,4,"P")
- return {"id":id,"name":"The Top of the Wardrobe","cols":cols,"rows":6,"map":map,"exit":"right","lock":["strike","parry","portal"],"palette":"outskirts","wardrobeWalk":true}
+ return {"id":id,"name":title,"cols":cols,"rows":6,"map":map,"exit":"right","lock":["strike","parry","portal"],"palette":"outskirts","wardrobeWalk":true}
+# Hang the workshop rooms in a row below a walkway, each entered through a ceiling hatch. Walk i
+# leads to room i's hatch; returns [x after the last room, start of the next walk, the last
+# room's finish column].
+func hang_rooms(source,rooms,x,start,shelf_top,room_top,prefix,title,lower_blocked=false):
+ var defs={}
+ for d in source.world.rooms: defs[d.id]=d
+ var finished_at=-1
+ for i in range(rooms.size()):
+  var def=defs[rooms[i]]
+  var found=find_hatch(def)
+  var hc=found[0]
+  # A room whose start has no clear drop above it keeps its ceiling; the light lowers Felix
+  # in from the walkway instead (lowerAt: the walkway column, in world tiles).
+  var lowered=lower_blocked and not found[1]
+  if lowered: def.lowerAt=x+hc
+  else:
+   for k in [hc,hc+1]: set_glyph(def.map,k,0,".")
+  put_section(source,rooms[i],x,room_top,null)
+  var hole=x+hc
+  var finish=hole+2
+  var walk=prefix+str(i)
+  # The basket lifts Felix straight up from the last room's finish and sets him down there;
+  # only a finish left of this stretch's wall nudges him right, just past it.
+  var landing=2 if finished_at<0 else clampi(finished_at-start,2,hole-start-3)
+  source.world.rooms.append(walk_room(walk,finish-start+1,-1 if lowered else hole-start,true,false,landing,title))
+  put_section(source,walk,start,shelf_top,{"c":landing,"r":4})
+  var goal=def.get("workshopGoal",[0,0,8,0])
+  finished_at=x+int(floor((goal[0]+goal[2]/2.0)/8.0))
+  wardrobe_walks.append(walk)
+  start=finish+1
+  x+=int(def.get("cols",40))+ROOM_GAP
+ return [x,start,finished_at]
 func join_wardrobe(source):
  var rooms=source.world.campaignWorkshop.rooms
  var defs={}
@@ -182,27 +220,10 @@ func join_wardrobe(source):
  # Codex's overlook stair already climbs from the curtain room's nook; open its side onto the walkway.
  var stair=defs["godot-overlook-stair"]
  for r in [22,23,24,25]: set_glyph(stair.map,7,r,".")
- var x=563
- var start=481
- var finished_at=-1
- for i in range(rooms.size()):
-  var def=defs[rooms[i]]
-  var hc=hatch_column(def)
-  for k in [hc,hc+1]: set_glyph(def.map,k,0,".")
-  put_section(source,rooms[i],x,ROOM_TOP,null)
-  var hole=x+hc
-  var finish=hole+2
-  var walk="felix-walk-%d"%i
-  # The basket lifts Felix straight up from the last room's photo and sets him down there;
-  # only a photo left of this stretch's wall nudges him right, just past it.
-  var landing=2 if finished_at<0 else clampi(finished_at-start,2,hole-start-3)
-  source.world.rooms.append(walk_room(walk,finish-start+1,hole-start,true,false,landing))
-  put_section(source,walk,start,SHELF_TOP,{"c":landing,"r":4})
-  var goal=def.get("workshopGoal",[0,0,8,0])
-  finished_at=x+int(floor((goal[0]+goal[2]/2.0)/8.0))
-  wardrobe_walks.append(walk)
-  start=finish+1
-  x+=int(def.get("cols",40))+ROOM_GAP
+ var row=hang_rooms(source,rooms,563,481,SHELF_TOP,ROOM_TOP,"felix-walk-","The Top of the Wardrobe")
+ var x=row[0]
+ var start=row[1]
+ var finished_at=row[2]
  # The windowsill at the end of the row; its doorway now faces the walkway.
  var sill=defs["cl1-atlas-crossroads"]
  for r in [6,7,8,9]:
@@ -215,6 +236,23 @@ func join_wardrobe(source):
  wardrobe_walks.append(last)
  put_section(source,"cl1-atlas-crossroads",x,-94,{"c":5,"r":9})
  for i in range(rooms.size()): wardrobe_landing[rooms[i]]=wardrobe_walks[i+1]
+# Chapter Two: Dad's story on the stormy night. It begins on its own stretch of path, east of the
+# cabin and the big tree, and runs room by room; the last room's finish ends the story, back
+# at the cabin. Passages to other worlds and the hall behind the start are cut.
+const STORY_TOP=-40
+func join_story(source):
+ for id in ["cl2-atlas-arrival"]:
+  source.world.rooms=source.world.rooms.filter(func(d): return d.id!=id)
+  source.world.sections=source.world.sections.filter(func(s): return s.room!=id)
+ source.world.rooms=source.world.rooms.filter(func(d): return not str(d.id).begins_with("cl2-passage-"))
+ source.world.passages=source.world.get("passages",[]).filter(func(s): return not str(s.room).begins_with("cl2-passage-"))
+ source.world.sections=source.world.sections.filter(func(s): return not str(s.room).begins_with("cl2-passage-"))
+ var rooms=source.world.campaignWorkshop.rooms
+ hang_rooms(source,rooms,500,490,STORY_TOP,STORY_TOP+6,"story-walk-","The Storm",true)
+ for i in range(rooms.size()-1): wardrobe_landing[rooms[i]]=wardrobe_walks[i+1]
+ wardrobe_landing[rooms[-1]]=""
+ # No workshop doorway at the cabin: the story is entered by Dad telling it.
+ source.world.campaignWorkshop.entry=""
 func restart():
  campaign_completed.clear()
  for old in cores.values(): old.world_context=null

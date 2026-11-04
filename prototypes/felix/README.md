@@ -1,4 +1,4 @@
-# Felix · Chapter One, The New House
+# Felix · Chapter One, The New House · Chapter Two, Sir Felix
 
 A story remake of Ascend's first world, The Outskirts, as the opening of the imaginary-friend game.
 It is a separate copy of the Godot Ascend prototype (`prototypes/godot-ascend` is untouched), on branch
@@ -54,6 +54,40 @@ R retries the room, Esc pauses.
   same (run 55%, jump 67%, dash 60% for 3 seconds). Felix turns green and drips while it lasts, and the
   first touch after the legs gift gets "eww, SLIME!".
 - **Collectible:** the first drawing of Felix, hidden in Hang Time (the secret above Watcher's Cut).
+
+## Chapter Two, Sir Felix (the Black Woods)
+
+Reached from Chapter One's end card ("press any button for Chapter Two"), or from the pause menu.
+Developer flag: `--chapter 2`. Story: `scripts/woods_story.gd`. Look: `scripts/woods_view.gd`, drawn over
+Codex's Black Woods (`levels/world2.tscn`), whose forest, tiles and devices are unchanged.
+
+- **The walk (two years later, every other weekend):** the boy walks Felix through the woods to Dad's
+  new cabin. He walks a little ahead in the forest's depth and talks along the way. Afternoon turns to
+  dusk room by room, and thunder starts far off near the end.
+- **The knighting:** in Oathblade Clearing the world stops. The boy kneels with Dad's walking stick:
+  "this is dad's stick. but now it's a SWORD." / "kneel." / "I dub thee..." (a cardboard helmet) /
+  "SIR FELIX!" (the stick becomes his sword). Strike (W) is locked until then.
+- **New devices get one line each:** moth pods, the branch swap and the bell.
+- **Dad's cabin:** the road ends in the old Rootbound Overlook. Dad sits on the porch step, a backlit
+  shape whose face is never shown. "there's my guy!" / "DAD! this is Sir Felix." / "...Sir Felix. very
+  nice to meet you, sir." Then rain, lightning and the power goes out. Dad offers a story; the boy
+  asks for a knight one.
+- **Dad's story:** Codex's ten Woods workshop rooms (`levels/world4.tscn`) are the tale, joined into
+  one walkable row east of the big tree (`join_story` in `scripts/world.gd`). The road cuts into the story
+  when Dad starts telling it. Each room gets a line of Dad's as Felix drops in and another at its
+  finish, with the boy interrupting now and then. The finish is where Dad's flashlight points, and its
+  beam lifts Felix out onto the next stretch, straight up as in Chapter One. Two rooms (Two Ways Through
+  the Canopy, The Landing You Make in Midair) and The Overturned Hollow have no clear drop to their
+  start, so the beam lowers Felix in instead. Their layouts are untouched.
+- **The ending:** the last finish lifts Felix out of the story, back to the porch. The boy is asleep across
+  Dad's knees. "...and Sir Felix kept watch all night," / "so nobody had to be scared." / "...I've got
+  the watch tonight, Sir Felix." Felix sets the helmet and sword down. End card: "Chapter Two · Sir Felix".
+- **Cut:** Elsie's supper quest and its rooms, the hall behind the start, and the passages to other worlds.
+  The secret (Read the Colors) gives the boy's drawing of Sir Felix instead of a heart.
+- **Checked:** `--chapter 2 --tour --report` plays Codex's recorded Black Woods tour through every scene
+  to the cabin and into the story with zero deaths. `--chapter 2 --reference workshop-borrowed --chain
+  --report` plays all ten story rooms, every beam and the ending with zero deaths. Chapter One's chain
+  still passes.
 
 ## Developer flags (after `--`)
 

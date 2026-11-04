@@ -1,8 +1,11 @@
 extends Node
-## Felix · Chapter One, The New House. One continuous climb on the Outskirts' road.
+## Felix. Chapter One, The New House: one continuous climb on the Outskirts' road.
+## Chapter Two, Sir Felix: the Black Woods to Dad's cabin, then Dad's story on a stormy night.
 const World=preload("res://scripts/world.gd")
 const View=preload("res://scripts/felix_view.gd")
 const Story=preload("res://scripts/felix_story.gd")
+const WoodsView=preload("res://scripts/woods_view.gd")
+const WoodsStory=preload("res://scripts/woods_story.gd")
 const Controls=preload("res://scripts/controls.gd")
 const Sound=preload("res://scripts/audio.gd")
 const ChapterMusic=preload("res://scripts/felix_music.gd")
@@ -40,6 +43,8 @@ var script_frame=0
 var ticks=0
 var report=false
 var chain=false
+# Survives the scene reload between chapters.
+static var chapter=1
 
 func _ready():
  get_tree().auto_accept_quit=false
@@ -47,10 +52,12 @@ func _ready():
  RenderingServer.set_default_clear_color(Color("05060a"))
  crayon=SystemFont.new()
  crayon.font_names=PackedStringArray(["Chalkboard SE","Marker Felt","Comic Sans MS","Noteworthy"])
- var data=JSON.parse_string(FileAccess.get_file_as_string("res://data/world1.json"))
+ var args=OS.get_cmdline_user_args()
+ if args.has("--chapter"): chapter=int(args[args.find("--chapter")+1])
+ var data=JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d.json"%chapter))
  world=World.new(data)
  sim=world.active()
- story=Story.new(world)
+ story=(WoodsStory if chapter==2 else Story).new(world)
  audio=Sound.new()
  audio.levels.Efforts=0.0
  audio.levels.Ambience=0.0
@@ -67,7 +74,7 @@ func _ready():
  viewport.canvas_item_default_texture_filter=Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
  container.add_child(viewport)
  add_child(container)
- view=View.new()
+ view=(WoodsView if chapter==2 else View).new()
  view.scale=Vector2(4,4)
  view.world_data=world.data
  view.runtime=world
@@ -78,7 +85,6 @@ func _ready():
  chapter_music=ChapterMusic.new()
  chapter_music.setup(audio.music)
  build_interface()
- var args=OS.get_cmdline_user_args()
  for i in range(args.size()):
   match args[i]:
    "--capture": capture_path=args[i+1]
@@ -98,6 +104,7 @@ func _ready():
    "--report": report=true
    "--photos": story.photos=world.data.world.campaignWorkshop.rooms.duplicate()
    "--chain": chain=true
+   "--tour": play_tour()
 
 func build_interface():
  var ui=Control.new()
@@ -134,8 +141,9 @@ func build_interface():
  title_box.size=Vector2(1280,240)
  title_box.alignment=BoxContainer.ALIGNMENT_CENTER
  ui.add_child(title_box)
- title_main=crayon_label(title_box,"sniff...",34,Color("#9aa3c4"))
- title_sub=crayon_label(title_box,"",22,Color("#69708e"))
+ var opening=story.title() if story.has_method("title") else ["sniff...",""]
+ title_main=crayon_label(title_box,opening[0],34,Color("#9aa3c4"))
+ title_sub=crayon_label(title_box,opening[1],22,Color("#69708e"))
  prompt_label=crayon_label(title_box,"",20,Color("#4d5470"))
  end_box=VBoxContainer.new()
  end_box.position=Vector2(0,250)
@@ -144,9 +152,9 @@ func build_interface():
  end_box.hide()
  ui.add_child(end_box)
  crayon_label(end_box,"Felix",72,Color("#fff1c9"))
- crayon_label(end_box,"Chapter One  ·  The New House",28,Color("#c9cfe8"))
+ crayon_label(end_box,"Chapter Two  ·  Sir Felix" if chapter==2 else "Chapter One  ·  The New House",28,Color("#c9cfe8"))
  end_stats=crayon_label(end_box,"",22,Color("#9aa3c4"))
- crayon_label(end_box,"to be continued",20,Color("#6f7694"))
+ crayon_label(end_box,"to be continued" if chapter==2 else "press any button for Chapter Two",20,Color("#6f7694"))
  pause_box=PanelContainer.new()
  var panel=StyleBoxFlat.new()
  panel.bg_color=Color(.04,.05,.09,.92)
@@ -192,7 +200,7 @@ func build_interface():
  music_volume.accessibility_name="Music volume"
  music_volume.value_changed.connect(func(value):chapter_music.set_gain(value/100.0))
  column.add_child(music_volume)
- for item in [["Keep climbing",func():set_paused(false)],["Begin the night again",restart_chapter],["Quit",func():get_tree().quit()]]:
+ for item in [["Keep climbing",func():set_paused(false)],["Begin the chapter again",restart_chapter],["Chapter One" if chapter==2 else "Chapter Two",func():chapter=3-chapter;restart_chapter()],["Quit",func():get_tree().quit()]]:
   var button=Button.new()
   button.text=item[0]
   button.add_theme_font_override("font",crayon)
@@ -231,6 +239,7 @@ func _unhandled_input(event):
  if story.phase=="black" and black_time>1.2 and (event is InputEventKey or event is InputEventJoypadButton) and event.pressed:
   begin_play()
  if story.phase=="end" and end_shown and black_time>2.0 and (event is InputEventKey or event is InputEventJoypadButton) and event.pressed:
+  if chapter==1: chapter=2
   restart_chapter()
 
 func _notification(what):
@@ -240,7 +249,7 @@ func gated(raw):
  if not story.gifts.legs: raw.jump=false
  if not story.gifts.cape: raw.dash=false
  if not story.gifts.arms: raw.grab=false
- raw.strike=false
+ if not story.gifts.get("sword",false): raw.strike=false
  raw.parry=false
  raw.portal=false
  return raw
@@ -313,11 +322,23 @@ func _physics_process(_delta):
    view.active_position=world.placements[landing]
    view.snap_actor()
    if report: print("ROOM ",landing," (basket) frame=",ticks)
-   if chain: walk_into_next()
+   if chain and sim.room.def.get("campaignWorkshop",false):
+    # Lowered straight into a room: play its route from the start.
+    pending_room=landing
+    script_tape=[]
+    for i in range(60): script_tape.append("")
+    script_frame=0
+   elif chain: walk_into_next()
   else:
    view.riding=true
    view.previous_actor=view.current_actor
    view.current_actor=point
+ # A cut in the story (into Dad's tale, or back out of it): a short fade, then that place.
+ if story.get("cut")!=null and story.cut!="":
+  var to=story.cut
+  story.cut=""
+  go_to(to)
+  if chain: script_tape=[]
  if story.door_slam:
   story.door_slam=false
   audio.effect("gate",1.0)
@@ -340,7 +361,7 @@ func _process(delta):
   if not end_shown:
    end_shown=true
    black_time=0
-   end_stats.text="%d %s   ·   %d photos   ·   crayons found: %d of 3%s"%[story.deaths_at_end,"fall" if story.deaths_at_end==1 else "falls",story.photos.size(),story.crayons,"   ·   the first drawing" if story.drawing.taken else ""]
+   end_stats.text=story.end_stats() if story.has_method("end_stats") else "%d %s   ·   %d photos   ·   crayons found: %d of 3%s"%[story.deaths_at_end,"fall" if story.deaths_at_end==1 else "falls",story.photos.size(),story.crayons,"   ·   the first drawing" if story.drawing.taken else ""]
   cover.color.a=min(.88,cover.color.a+delta*.5)
   end_box.visible=black_time>1.0
   end_box.modulate.a=clamp((black_time-1.0)/1.5,0,1)
@@ -424,7 +445,24 @@ func play_reference(room_id):
  for part in world.data.world.tapes.get(room_id,[]):
   for i in range(int(part[0])): script_tape.append(part[1])
 
+# Chapter Two's whole road from Codex's recorded tour, played from its first room with every
+# story scene on the way (the tape waits while a scene holds the world still).
+func play_tour():
+ var recording=JSON.parse_string(FileAccess.get_file_as_string("res://data/world2-tour.json"))
+ begin_play()
+ world.enter(recording.visited[0],true)
+ sim=world.active()
+ view.load_scene(sim)
+ for part in recording.tape:
+  for i in range(int(part[0])): script_tape.append(part[1])
+ # The recording stops at the overlook's top; walk down the decks to Dad's cabin.
+ for i in range(700): script_tape.append("l")
+
 func capture():
  for i in range(3): await get_tree().process_frame
+ # A window in the background may not have been redrawn lately; draw this frame now.
+ _process(0.0)
+ view._process(0.0)
+ RenderingServer.force_draw(false)
  get_viewport().get_texture().get_image().save_png(capture_path)
  get_tree().quit()
