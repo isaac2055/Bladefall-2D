@@ -408,7 +408,13 @@ func go_to(id):
  world.enter(id,true)
  sim=world.active()
  view.load_scene(sim)
+ # A chapter cut must retain the score selected in the merged Music menu.
+ var selected_score=audio.music.stream
+ var score_position=audio.music.get_playback_position()
  audio.room_changed(sim)
+ if chapter_music!=null and chapter_music.selected>=0:
+  audio.music.stream=selected_score
+  audio.music.play(score_position)
  if report: print("ROOM ",id," deaths=",sim.deaths," frame=",ticks)
  if chain:
   script_tape=[]
