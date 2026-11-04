@@ -860,45 +860,15 @@ func story_items(view):
    ink.draw_set_transform_matrix(paint_transform)
 
 # ---------------------------------------------------------------- Felix
+const FelixBody=preload("res://scripts/felix_body.gd")
+var body=FelixBody.new()
+
 func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
  var p=sim.p
  var x=actor.x
  var y=actor.y
  var g=story.gifts if story!=null else {"legs":true,"cape":true,"arms":true,"face":true}
- var stretch=Vector2.ONE
- if p.state=="dash" and not reduced_motion: stretch=Vector2(1+.35*abs(p.dashDir.x),1+.35*abs(p.dashDir.y))
- var amount=squash*(.3 if reduced_motion else 1.0)
- stretch*=Vector2(1+amount,1/(1+amount))
- var bob=0.0 if g.legs else sin(clock*3)*1.2-1.5
- var center=Vector2(x+4,y+4.5+bob)
- var walking_now=p.onGround and p.state=="normal" and abs(p.vx)>10
- var cycle=walking/4.2
- # The sock cape trails from the back, red and white, faded while the dash is spent.
- if g.cape:
-  var ready=p.dashes>0
-  var root=center+Vector2(-p.facing*2.5,-1.5)
-  var shift=root-plume[0]
-  for i in range(1,plume.size()):
-   var a=plume[i-1]+shift
-   var b=plume[i]+shift
-   var col=(Color("#d4504a") if i%2 else Color("#f3eee6")) if ready else (Color("#6d5a66") if i%2 else Color("#8a8494"))
-   line(a,b,col,max(1.4,3.0-i*.25))
- # Legs: two little strokes to the floor.
- if g.legs:
-  for side in [-1,1]:
-   var stride=sin(cycle+(0.0 if side<0 else PI)) if walking_now else 0.0
-   var hip=center+Vector2(side*1.4,2.8)
-   var foot=Vector2(x+4+side*1.8+stride*1.6,y+11-max(0,-stride)*1.2)
-   if not p.onGround: foot=hip+Vector2(side*1.2,3.5)
-   line(hip,foot,"#fff7e2",.9)
-   box(foot.x-.6,foot.y-.8,1.6,.9,"#fff7e2")
- # Arms: reach for the wall while climbing.
- if g.arms:
-  for side in [-1,1]:
-   var shoulder=center+Vector2(side*3.2,.6)
-   var hand=shoulder+Vector2(side*2.2,1.8+sin(cycle+side)*(.8 if walking_now else .2))
-   if p.state=="climb" and side==p.facing: hand=shoulder+Vector2(side*2.4,-2.2+sin(clock*10)*(.6 if abs(p.vy)>1 else 0))
-   line(shoulder,hand,"#fff7e2",.8)
+ var center=body.draw(self,g)
  # Riding the boy's basket up and out of a finished room.
  if riding:
   line(Vector2(x+4,y+9),Vector2(x+4,y-400),"#d9d2c0",.6)
@@ -906,30 +876,6 @@ func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
   for c in range(0,12,3): box(x-2+c,y+10,1,4,"#2d6744")
   box(x-2,y+9,12,1,"#66b07e")
   if story!=null and story.ride!=null: photo(Vector2(x+8,y+7),story.ride.photo,.25,.55)
- # The light itself.
- ink.draw_set_transform_matrix(paint_transform*Transform2D(0,stretch,0,center))
- var pulse=sin(clock*2.2)*.3+gift_pulse*2.0
- circle(Vector2.ZERO,7+pulse,Color(1,.97,.85,.06))
- circle(Vector2.ZERO,5+pulse*.6,Color(1,.97,.85,.14))
- circle(Vector2.ZERO,3.6,"#fff6dc")
- circle(Vector2(-.8,-.9),2.2,"#ffffff")
- var slimed=clamp(float(p.get("pollen",0))/45.0,0,1)
- if slimed>0:
-  circle(Vector2(0,.8),3.4,Color("#5fcf4a",.75*slimed))
-  circle(Vector2(1.2,-1.4),1.1,Color("#c9ffb0",.8*slimed))
- if g.face:
-  var f=p.facing
-  box(-1.6+f*.7,-.6,.9,1.2,"#4a3a2e")
-  box(.8+f*.7,-.6,.9,1.2,"#4a3a2e")
-  ink.draw_arc(Vector2(f*.6,1),1.2,.3,PI-.3,6,Color("#4a3a2e")*ink_color,.5)
- ink.draw_set_transform_matrix(paint_transform)
- if slimed>0:
-  for i in range(2):
-   var age=fposmod(clock*1.6+i*.5,1.0)
-   circle(center+Vector2(-1.5+i*3,3.5+age*5),.7,Color("#5fcf4a",(1-age)*slimed))
- if p.state=="climb":
-  box(x+1,y-5,6,1,Color(0,0,0,.4))
-  box(x+1,y-5,6*clamp(p.stamina/110,0,1),1,"#fff1c4")
  if p.carrying!=null:
   for side in [-1,1]: line(center+Vector2(side*3,-1),Vector2(x+4+side*2.5,y-3),"#fff7e2",.6)
   nightlight(Vector2(x,y-11))
