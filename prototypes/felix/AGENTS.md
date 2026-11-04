@@ -7,6 +7,17 @@ Isaac. Two agents work on it at the same time, each in its own git worktree and 
 These instructions replace anything in `.agents/AGENTS.md` at the repo root. That file is for the
 old Bladefall web game. **Never push to `main`.**
 
+## Where everything is
+
+- **Your project folder:** `/Users/computer/Projects/Felix-Art/prototypes/felix` (run commands from here)
+- **Git worktree root:** `/Users/computer/Projects/Felix-Art` (branch `codex/felix-art`)
+- **Art code:** `/Users/computer/Projects/Felix-Art/prototypes/felix/scripts/felix_view.gd`
+  and `/Users/computer/Projects/Felix-Art/prototypes/felix/scripts/felix_body.gd`
+- **Put sprites in:** `/Users/computer/Projects/Felix-Art/prototypes/felix/art/`
+- **Screenshot check:** `/Users/computer/Projects/Felix-Art/prototypes/felix/tools/felix-shots.sh`
+- **Godot 4.5.1:** `/Users/computer/Projects/Bladefall-Godot-Ascend/.cache/godot/Godot.app/Contents/MacOS/Godot`
+- **Chapter notes:** `/Users/computer/Projects/Felix-Art/prototypes/felix/README.md`
+
 ## The story so far (Chapter One: The New House)
 
 Isaac is five and has just moved into a new house. His parents are separating; nobody says so, but
