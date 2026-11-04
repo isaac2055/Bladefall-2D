@@ -2,6 +2,59 @@ extends "res://scripts/landscape.gd"
 ## The New House at night: the Outskirts' rooms, collision and devices are unchanged.
 ## Only what they are is redrawn: a firefly-sized light climbing a child's bedroom.
 
+
+# Authored sprites use one texture pixel per world pixel.
+const PIXELS={
+ "boy/arm":preload("res://art/boy/arm.png"),
+ "boy/head-asleep":preload("res://art/boy/head-asleep.png"),
+ "boy/head-crying":preload("res://art/boy/head-crying.png"),
+ "boy/head-look":preload("res://art/boy/head-look.png"),
+ "boy/hidden":preload("res://art/boy/hidden.png"),
+ "boy/kneeling":preload("res://art/boy/kneeling.png"),
+ "boy/leg":preload("res://art/boy/leg.png"),
+ "boy/quilt":preload("res://art/boy/quilt.png"),
+ "boy/sitting":preload("res://art/boy/sitting.png"),
+ "boy/torso":preload("res://art/boy/torso.png"),
+ "room/bed":preload("res://art/room/bed.png"),
+ "room/box":preload("res://art/room/box.png"),
+ "room/corrugated":preload("res://art/room/corrugated.png"),
+ "room/curtain":preload("res://art/room/curtain.png"),
+ "room/desk":preload("res://art/room/desk.png"),
+ "room/door":preload("res://art/room/door.png"),
+ "room/dresser":preload("res://art/room/dresser.png"),
+ "room/frame":preload("res://art/room/frame.png"),
+ "room/headboard":preload("res://art/room/headboard.png"),
+ "room/moon":preload("res://art/room/moon.png"),
+ "room/pillow":preload("res://art/room/pillow.png"),
+ "room/shelf":preload("res://art/room/shelf.png"),
+ "room/wallpaper":preload("res://art/room/wallpaper.png"),
+ "room/wardrobe":preload("res://art/room/wardrobe.png"),
+}
+
+func pixel(name,at,size=Vector2.ZERO,tint=Color.WHITE):
+ var texture=PIXELS[name]
+ if size==Vector2.ZERO: ink.draw_texture(texture,at.round(),tint*ink_color)
+ else: ink.draw_texture_rect(texture,Rect2(at.round(),size),false,tint*ink_color)
+
+func pixel_tile(name,rect,tint=Color.WHITE):
+ ink.draw_texture_rect(PIXELS[name],rect,true,tint*ink_color)
+
+func pixel_frame(rect):
+ # Nine-sliced moulding, with an open center for the live night sky.
+ var texture=PIXELS["room/frame"]
+ var edges=[0.0,7.0,rect.size.x-7,rect.size.x]
+ var rows=[0.0,7.0,rect.size.y-7,rect.size.y]
+ var uv=[0.0,7.0,9.0,16.0]
+ for y in range(3):
+  for x in range(3):
+   if x==1 and y==1: continue
+   ink.draw_texture_rect_region(texture,Rect2(rect.position+Vector2(edges[x],rows[y]),Vector2(edges[x+1]-edges[x],rows[y+1]-rows[y])),Rect2(uv[x],uv[y],uv[x+1]-uv[x],uv[y+1]-uv[y]),ink_color)
+
+func boy_limb(name,a,b,width):
+ ink.draw_set_transform_matrix(Transform2D(0,-camera)*Transform2D((b-a).angle()-PI/2,a.round()))
+ pixel(name,Vector2(-width/2,0),Vector2(width,a.distance_to(b)))
+ ink.draw_set_transform(-camera)
+
 var story=null
 var felix_light: PointLight2D
 var door_light: PointLight2D
@@ -222,19 +275,10 @@ func _draw():
  draw_set_transform(Vector2.ZERO)
 
 func wallpaper(view):
- var step=22
- for gy in range(floori(view.position.y/step),ceili(view.end.y/step)+1):
-  for gx in range(floori(view.position.x/step),ceili(view.end.x/step)+1):
-   var at=Vector2(gx*step+(11 if gy%2 else 0),gy*step)
-   var h=hash_at(gx,gy,4)
-   if h%3==0:
-    box(at.x,at.y,1,1,"#39406a")
-    box(at.x-1,at.y,3,.5,Color("#39406a",.5))
-   elif h%3==1:
-    circle(at,1.6,"#323a5e")
-    circle(at+Vector2(.8,-.5),1.4,"#1d2338")
- for stripe in range(floori(view.position.x/88),ceili(view.end.x/88)+1):
-  box(stripe*88,view.position.y,1,view.size.y,Color("#2c3352",.6))
+ # Stable world-aligned repeats avoid swimming when the camera moves.
+ for y in range(floori(view.position.y/88),ceili(view.end.y/88)):
+  for x in range(floori(view.position.x/88),ceili(view.end.x/88)):
+   pixel("room/wallpaper",Vector2(x*88,y*88))
 
 func baseboard(view):
  # The floor runs under the first five rooms; skirting boards trace it.
@@ -243,122 +287,36 @@ func baseboard(view):
  box(max(view.position.x,0),130,min(view.size.x,1640),1.5,"#535475")
 
 func door():
- var d=DOOR
- box(d.position.x-5,d.position.y-5,d.size.x+10,d.size.y+5,"#3b3a55")
- box(d.position.x,d.position.y,d.size.x,d.size.y,"#2e2c43")
- for panel in [Rect2(d.position+Vector2(8,10),Vector2(d.size.x-16,50)),Rect2(d.position+Vector2(8,70),Vector2(d.size.x-16,56))]:
-  ink.draw_rect(panel,Color("#3e3b5a"),false,1.2)
- circle(Vector2(d.end.x-10,d.position.y+72),2.2,"#8a7a5a")
- # Hallway light under the door: someone is still awake out there.
- box(d.position.x+2,d.end.y-2,d.size.x-4,2,"#f3c785")
- polygon([Vector2(d.position.x+2,d.end.y),Vector2(d.end.x-2,d.end.y),Vector2(d.end.x+16,d.end.y+1),Vector2(d.position.x-16,d.end.y+1)],Color(1,.8,.5,.35))
+ pixel("room/door",DOOR.position-Vector2(5,5))
+ # Hallway light remains a live lighting effect.
+ polygon([Vector2(DOOR.position.x+2,DOOR.end.y),Vector2(DOOR.end.x-2,DOOR.end.y),Vector2(DOOR.end.x+16,DOOR.end.y+1),Vector2(DOOR.position.x-16,DOOR.end.y+1)],Color(1,.8,.5,.35))
 
 func moving_boxes(view):
- # Unpacked boxes, stacked behind the play rooms near the door.
  var boxes=[[Rect2(236,72,58,72),"BOOKS"],[Rect2(298,96,44,48),"MOM"],[Rect2(246,34,40,38),"ISAAC"],[Rect2(560,88,70,56),"TOYS"],[Rect2(860,100,52,44),"DAD - TAKE"],[Rect2(870,62,36,38),""]]
  for item in boxes:
   var b=item[0]
   if not view.intersects(b): continue
-  box(b.position.x,b.position.y,b.size.x,b.size.y,"#4d3d2e")
-  box(b.position.x,b.position.y,b.size.x,2,"#6c5641")
-  box(b.position.x+b.size.x/2-3,b.position.y,6,b.size.y*.4,"#6e6450")
-  line(b.position+Vector2(0,b.size.y),b.end,"#2b2119",1)
+  pixel("room/box",b.position,b.size,Color("#b9a8ae"))
   if item[1]!="": marker(item[1],b.position+Vector2(5,b.size.y*.62),6,Color("#1f1a18"))
 
 func marker(text_value,at,size,color):
  ink.draw_string(ThemeDB.fallback_font,at,text_value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,color*ink_color)
 
 func bed():
- var b=BED
- # Legs reach the floor; the frame sits above the room you crawl through underneath.
- for x in [b.position.x+8,b.end.x-30]: box(x,b.end.y,10,144-b.end.y,"#3a2a22")
- box(b.position.x,b.position.y+30,b.size.x,16,"#4b3528")
- box(b.position.x,b.position.y+30,b.size.x,2,"#6a4c38")
- # Mattress and quilt.
- box(b.position.x+4,b.position.y+12,b.size.x-8,20,"#c9c4d6")
- var quilt=[Color("#405a8c"),Color("#5d7aa8"),Color("#6a5590"),Color("#3f6e7a")]
- for i in range(int(b.size.x/26)):
-  var x=b.position.x+6+i*26
-  if x>b.end.x-90: break
-  box(x,b.position.y+4,26,30,quilt[i%4])
-  box(x,b.position.y+4,26,1.5,quilt[i%4].lightened(.25))
-  for k in range(3): box(x+4+k*8,b.position.y+18,2,2,Color(1,1,1,.12))
- # Headboard and pillow.
- var h=HEADBOARD
- box(h.position.x,h.position.y,h.size.x,h.size.y,"#4e382b")
- circle(Vector2(h.position.x+h.size.x/2,h.position.y),13,"#4e382b")
- box(h.position.x+4,h.position.y+10,h.size.x-8,2,"#6a4c38")
+ pixel("room/bed",BED.position)
+ pixel("room/headboard",HEADBOARD.position-Vector2(0,13))
  ink.draw_set_transform_matrix(Transform2D(0,-camera)*Transform2D(-.06,PILLOW))
- box(-34,-10,68,22,"#e4e0ec")
- box(-34,-10,68,3,"#f6f4fb")
+ pixel("room/pillow",Vector2(-34,-10))
  ink.draw_set_transform(-camera)
 
 func shelf():
- var s=SHELF
- box(s.position.x,s.position.y,s.size.x,s.size.y,"#2b2537")
- for k in range(4):
-  var y=s.position.y+k*62+52
-  box(s.position.x,y,s.size.x,6,"#47394f")
-  var x=s.position.x+8
-  var i=0
-  while x<s.end.x-14:
-   var w=6+hash_at(i,k,1)%7
-   var hgt=26+hash_at(i,k,2)%20
-   var col=[Color("#6e3f4d"),Color("#3f5a6e"),Color("#6a6a3c"),Color("#4f3f6e"),Color("#3c6a58")][hash_at(i,k,3)%5]
-   if hash_at(i,k,4)%9==0: x+=10
-   else:
-    box(x,y-hgt,w,hgt,col)
-    box(x+1,y-hgt+4,w-2,1,col.lightened(.25))
-   x+=w+1
-   i+=1
+ pixel("room/shelf",SHELF.position)
 
 func desk():
- var d=DESK
- box(d.position.x,d.position.y+16,d.size.x,10,"#4a3a30")
- box(d.position.x,d.position.y+16,d.size.x,1.5,"#6d5747")
- for x in [d.position.x+10,d.end.x-22]: box(x,d.position.y+26,12,d.size.y,"#3c2f27")
- # A desk lamp, switched off, and a cup of crayons.
- var base=Vector2(d.position.x+80,d.position.y+16)
- box(base.x-14,base.y-4,28,4,"#3d4258")
- line(base,base+Vector2(18,-46),"#4c526c",3)
- line(base+Vector2(18,-46),base+Vector2(-12,-70),"#4c526c",3)
- polygon([base+Vector2(-12,-70),base+Vector2(-36,-58),base+Vector2(-20,-48)],"#5a607d")
- var cup=Vector2(d.end.x-120,d.position.y+16)
- box(cup.x,cup.y-22,20,22,"#5d6f8c")
- for i in range(5):
-  var col=[Color("#d0574d"),Color("#e1b84a"),Color("#4f8fd0"),Color("#5fae6a"),Color("#a46ad1")][i]
-  line(cup+Vector2(3+i*3.5,-20),cup+Vector2(2+i*3.6,-34-i%2*4),col,2)
+ pixel("room/desk",DESK.position-Vector2(0,54))
 
 func dresser():
- var d=DRESSER
- box(d.position.x,d.position.y,d.size.x,d.size.y,"#33283a")
- box(d.position.x,d.position.y,d.size.x,6,"#4b3b52")
- for row in range(3):
-  for col in range(4):
-   var r=Rect2(d.position.x+12+col*(d.size.x-24)/4,d.position.y+18+row*70,(d.size.x-24)/4-10,58)
-   ink.draw_rect(r,Color("#45384f"),false,1.5)
-   circle(r.position+r.size/2,3,"#7d6a52")
- # Toys asleep on top: a robot, a stacking-ring tower, a rocket.
- var top=d.position.y
- var robot=Vector2(d.position.x+160,top)
- box(robot.x-12,robot.y-30,24,22,"#5a6274")
- box(robot.x-9,robot.y-48,18,16,"#6b7387")
- box(robot.x-5,robot.y-42,3,3,"#2a2d38")
- box(robot.x+2,robot.y-42,3,3,"#2a2d38")
- line(robot+Vector2(0,-48),robot+Vector2(0,-56),"#6b7387",1.5)
- circle(robot+Vector2(0,-57),2,"#9a4a4a")
- box(robot.x-10,robot.y-8,6,8,"#4a5262")
- box(robot.x+4,robot.y-8,6,8,"#4a5262")
- var rings=Vector2(d.position.x+520,top)
- line(rings,rings+Vector2(0,-62),"#6d5b45",3)
- for i in range(5):
-  var w=36-i*6
-  box(rings.x-w/2,rings.y-10-i*10,w,9,[Color("#a34d4d"),Color("#c4893f"),Color("#b9a947"),Color("#4f8d5c"),Color("#4c6fa3")][i])
- var rocket=Vector2(d.position.x+760,top)
- polygon([rocket+Vector2(-8,0),rocket+Vector2(8,0),rocket+Vector2(6,-40),rocket+Vector2(0,-56),rocket+Vector2(-6,-40)],"#b7b2c4")
- circle(rocket+Vector2(0,-30),4,"#3c5f8a")
- polygon([rocket+Vector2(-8,0),rocket+Vector2(-15,4),rocket+Vector2(-7,-14)],"#a44848")
- polygon([rocket+Vector2(8,0),rocket+Vector2(15,4),rocket+Vector2(7,-14)],"#a44848")
+ pixel("room/dresser",DRESSER.position-Vector2(0,62))
 
 func window():
  var w=WINDOW
@@ -374,21 +332,19 @@ func window():
  var moon=MOON-drift*.15
  circle(moon,34,Color(.85,.9,1,.06))
  circle(moon,24,Color(.9,.93,1,.12))
- circle(moon,16,"#f1efdc")
- circle(moon+Vector2(-5,-3),3,"#dcd8c0")
- circle(moon+Vector2(6,5),2.2,"#dcd8c0")
- # Frame and mullions.
- var frame=Color("#5d6688")
- ink.draw_rect(w,frame,false,7)
- box(w.position.x+w.size.x/2-3,w.position.y,6,w.size.y,frame)
- box(w.position.x,w.position.y+w.size.y/2-3,w.size.x,6,frame)
- box(w.position.x-14,SILL_Y,w.size.x+28,9,"#6c7598")
- box(w.position.x-14,SILL_Y,w.size.x+28,2,"#9aa3c4")
+ pixel("room/moon",moon-Vector2(16,16))
+ pixel_frame(Rect2(w.position-Vector2(4,4),w.size+Vector2(8,8)))
+ pixel_tile("room/frame",Rect2(w.position.x+w.size.x/2-3,w.position.y,6,w.size.y))
+ pixel_tile("room/frame",Rect2(w.position.x,w.position.y+w.size.y/2-3,w.size.x,6))
+ pixel_tile("room/frame",Rect2(w.position.x-14,SILL_Y,w.size.x+28,9))
  for side in [-1,1]:
   var x=w.position.x-24 if side<0 else w.end.x+4
   for fold in range(2):
-   polygon([Vector2(x+fold*10,w.position.y-14),Vector2(x+10+fold*10,w.position.y-14),Vector2(x+10+fold*10+sin(clock*.6+fold)*1.2,SILL_Y+30),Vector2(x+fold*10,SILL_Y+30)],[Color("#5a3d63"),Color("#4c3355")][fold])
- box(w.position.x-30,w.position.y-20,w.size.x+60,5,"#7d6a52")
+   var sway=sin(clock*.6+fold)*1.2
+   ink.draw_set_transform_matrix(Transform2D(0,-camera)*Transform2D(Vector2(1,0),Vector2(sway/(w.size.y+44),1),Vector2(x+fold*10,w.position.y-14)))
+   pixel_tile("room/curtain",Rect2(0,0,10,w.size.y+44))
+ ink.draw_set_transform(-camera)
+ pixel_tile("room/frame",Rect2(w.position.x-30,w.position.y-20,w.size.x+60,5))
 
 func photo_wall():
  # The good days Felix brought up, propped along the windowsill against the glass.
@@ -398,33 +354,27 @@ func photo_wall():
   photo(at,story.wardrobe_rooms.find(story.photos[i]),sin(i*1.7)*.14)
 
 func curtains():
- # The long curtains of the room's other window: the climb before the wardrobe.
  for side in [3862.0,4352.0]:
   for fold in range(6):
-   var x=side+fold*16
    var sway=sin(clock*.6+fold)*1.5
-   polygon([Vector2(x,-700),Vector2(x+16,-700),Vector2(x+16+sway,-340),Vector2(x+sway,-340)],[Color("#5a3d63"),Color("#4c3355")][fold%2])
- box(3840,-706,620,6,"#7d6a52")
+   ink.draw_set_transform_matrix(Transform2D(0,-camera)*Transform2D(Vector2(1,0),Vector2(sway/360,1),Vector2(side+fold*16,-700)))
+   pixel_tile("room/curtain",Rect2(0,0,16,360),Color.WHITE if fold%2==0 else Color("#c4afcb"))
+ ink.draw_set_transform(-camera)
+ pixel_tile("room/frame",Rect2(3840,-706,620,6))
 
 func wardrobe(view):
- # The top of the wardrobe: dark panels behind a shelf of packed-away boxes.
  var left=max(view.position.x,WARDROBE_X)
  var right=min(view.end.x,WINDOW.position.x-40)
- box(left,max(view.position.y,-712),right-left,view.end.y-max(view.position.y,-712),Color("#20182a"))
- for gx in range(floori(view.position.x/34),ceili(view.end.x/34)+1):
-  box(gx*34,view.position.y,1.5,view.size.y,"#2c2236")
- # Below the walkway the rooms are the insides of the boxes: corrugated cardboard.
+ var top=max(view.position.y,-712)
+ pixel_tile("room/wardrobe",Rect2(left,top,right-left,view.end.y-top))
  if view.end.y>-664:
-  var top=max(view.position.y,-664)
-  box(left,top,right-left,view.end.y-top,Color("#2e2218"))
-  for gx in range(floori(left/6),ceili(right/6)+1): box(gx*6,top,1,view.end.y-top,Color("#3a2c1f"))
- # On the shelf, more boxes waiting their turn.
+  top=max(view.position.y,-664)
+  pixel_tile("room/corrugated",Rect2(left,top,right-left,view.end.y-top))
  for gx in range(floori(view.position.x/90),ceili(view.end.x/90)+1):
   var h=30+hash_at(gx,5,9)%14
   var b=Rect2(gx*90+hash_at(gx,4,9)%30,-672-h,50+hash_at(gx,6,9)%20,h)
   if b.position.x<left or b.end.x>right: continue
-  box(b.position.x,b.position.y,b.size.x,b.size.y,"#3a2e26")
-  box(b.position.x,b.position.y,b.size.x,2,"#56443a")
+  pixel("room/box",b.position,b.size,Color("#b9a8ae"))
   marker(["PHOTOS","FAMILY","BABY STUFF","PHOTOS","XMAS"][posmod(gx,5)],b.position+Vector2(4,b.size.y*.62),6,Color("#15100c"))
 
 func crayon_star(point,current):
@@ -475,42 +425,14 @@ func draw_boy():
   "bed": boy_in_bed(at)
 
 func boy_head(c,face_dir,mood_name):
- circle(c,15,"#f1c9a5")
- # Messy hair.
- polygon([c+Vector2(-16,-2),c+Vector2(-14,-14),c+Vector2(-4,-19),c+Vector2(8,-18),c+Vector2(16,-9),c+Vector2(15,-1),c+Vector2(9,-9),c+Vector2(0,-8),c+Vector2(-8,-11)],"#5b3a24")
- polygon([c+Vector2(-2,-17),c+Vector2(2,-25),c+Vector2(5,-17)],"#5b3a24")
- var e=c+Vector2(face_dir*3,1)
- match mood_name:
-  "crying":
-   line(e+Vector2(-7,0),e+Vector2(-3,1),"#3b2a22",1.3)
-   line(e+Vector2(3,1),e+Vector2(7,0),"#3b2a22",1.3)
-   box(e.x-6,e.y+3,1,4+sin(clock*3)*1.5,Color("#9fd0ff",.8))
-   line(e+Vector2(-3,8),e+Vector2(3,8),"#7a4636",1.2)
-  "asleep":
-   line(e+Vector2(-7,0),e+Vector2(-3,0),"#3b2a22",1.2)
-   line(e+Vector2(3,0),e+Vector2(7,0),"#3b2a22",1.2)
-  _:
-   circle(e+Vector2(-5,0),2.2,"#2b211c")
-   circle(e+Vector2(5,0),2.2,"#2b211c")
-   box(e.x-5.5,e.y-1,1,1,"#ffffff")
-   box(e.x+4.5,e.y-1,1,1,"#ffffff")
-   ink.draw_arc(e+Vector2(0,5),3.5,.2,PI-.2,8,Color("#7a4636")*ink_color,1.2)
- circle(c+Vector2(-9+face_dir*2,5),2.6,Color("#f09a8a",.35))
- circle(c+Vector2(9+face_dir*2,5),2.6,Color("#f09a8a",.35))
+ pixel("boy/head-"+(mood_name if mood_name in ["crying","asleep"] else "look"),c+Vector2(-19,-26))
 
 func pajamas(rect):
- box(rect.position.x,rect.position.y,rect.size.x,rect.size.y,"#5170a3")
- for i in range(int(rect.size.x*rect.size.y/90)):
-  var at=rect.position+Vector2(hash_at(i,1,5)%int(rect.size.x),hash_at(i,2,5)%int(rect.size.y))
-  box(at.x,at.y,1.5,1.5,"#d9cf86")
+ pixel("boy/torso",rect.position,rect.size)
 
 func boy_sitting(at,crying):
- # at: where he sits on the floor. Knees up, arms around them.
  var rock=sin(clock*2.4)*1.2 if crying else 0.0
- pajamas(Rect2(at+Vector2(-14,-46),Vector2(26,40)))
- polygon([at+Vector2(-2,-8),at+Vector2(26,-8),at+Vector2(30,-38),at+Vector2(12,-42)],"#46639a")
- box(at.x+22,at.y-8,12,7,"#f1c9a5")
- line(at+Vector2(-8,-34),at+Vector2(20,-36),"#f1c9a5",5)
+ pixel("boy/sitting",at+Vector2(-18,-47))
  boy_head(at+Vector2(4+rock,-60),1 if not crying else 0,"crying" if crying else "look")
 
 func boy_standing(at,facing,pose):
@@ -518,44 +440,36 @@ func boy_standing(at,facing,pose):
  var t=clock*9
  for side in [-1,1]:
   var swing=sin(t+(0.0 if side<0 else PI))*(10 if run else 0)
-  line(at+Vector2(side*5,-46),at+Vector2(side*5+swing,-2),"#46639a",8)
-  box(at.x+side*5+swing-5,at.y-4,11,4,"#e8e4ee")
- pajamas(Rect2(at+Vector2(-13,-86),Vector2(26,42)))
+  boy_limb("boy/leg",at+Vector2(side*5,-46),at+Vector2(side*5+swing,0),9)
+ pixel("boy/torso",at+Vector2(-15,-87))
  var arm_a=at+Vector2(-12,-80)
  var arm_b=at+Vector2(12,-80)
- if pose=="wave": line(arm_b,arm_b+Vector2(10,-26+sin(clock*8)*4),"#5170a3",6)
- elif pose=="point": line(arm_b,arm_b+Vector2(facing*24,-22),"#5170a3",6)
- else: line(arm_b,arm_b+Vector2(4+sin(t)*(8 if run else 1),26),"#5170a3",6)
- line(arm_a,arm_a+Vector2(-4-sin(t)*(8 if run else 1),26),"#5170a3",6)
+ if pose=="wave": boy_limb("boy/arm",arm_b,arm_b+Vector2(10,-26+sin(clock*8)*4),7)
+ elif pose=="point": boy_limb("boy/arm",arm_b,arm_b+Vector2(facing*24,-22),7)
+ else: boy_limb("boy/arm",arm_b,arm_b+Vector2(4+sin(t)*(8 if run else 1),26),7)
+ boy_limb("boy/arm",arm_a,arm_a+Vector2(-4-sin(t)*(8 if run else 1),26),7)
  boy_head(at+Vector2(0,-102),facing,"look")
 
 func boy_kneeling(at,facing,prop):
- pajamas(Rect2(at+Vector2(-13,-62),Vector2(26,40)))
- line(at+Vector2(-6,-24),at+Vector2(-18*facing,-2),"#46639a",8)
- line(at+Vector2(6,-24),at+Vector2(10,-2),"#46639a",8)
+ pixel("boy/kneeling",at+Vector2(-24,-64))
  var hand=at+Vector2(facing*20,-40)
- line(at+Vector2(facing*10,-56),hand,"#5170a3",6)
+ boy_limb("boy/arm",at+Vector2(facing*10,-56),hand,7)
  if prop=="sock":
-  for k in range(5): box(hand.x+facing*k*3,hand.y-2+k*1.2,3,5,"#c84a46" if k%2==0 else "#f2ede4")
+  for k in range(5):
+   ink.draw_texture_rect(body.CAPE_RED if k%2==0 else body.CAPE_CREAM,Rect2(hand+Vector2(facing*k*3,-2+k*1.2),Vector2(3,5)),false,ink_color)
  boy_head(at+Vector2(0,-78),facing,"look")
 
 func boy_in_bed(at):
  if story.boy.get("hidden",false):
-  # Under the quilt, a small lump that shakes now and then.
   var shiver=sin(clock*14)*.6 if fmod(clock,3.0)<.6 else 0.0
-  circle(at+Vector2(shiver,6),17,"#5d7aa8")
-  polygon([at+Vector2(14,10),at+Vector2(-120,6),at+Vector2(-124,22),at+Vector2(16,22)],"#5d7aa8")
-  ink.draw_arc(at+Vector2(shiver,6),17,PI*1.1,PI*1.9,10,Color("#86a0c8")*ink_color,1.5)
+  pixel("boy/hidden",at+Vector2(-123+shiver,-21))
   return
  boy_head(at,-1,"asleep" if story.boy.asleep else "look")
- # The quilt pulled up to his chin.
- polygon([at+Vector2(10,8),at+Vector2(-120,6),at+Vector2(-124,22),at+Vector2(14,22)],"#5d7aa8")
- line(at+Vector2(10,8),at+Vector2(-120,6),"#86a0c8",1.5)
+ pixel("boy/quilt",at+Vector2(-124,6))
  if story.boy.asleep and fmod(clock,4.0)<2.6:
   var z=fmod(clock,4.0)
   marker("z",at+Vector2(-14-z*4,-18-z*8),7,Color(.8,.85,1,.6*(1-z/2.6)))
 
-# ---------------------------------------------------------------- the play plane
 const LEGO=[Color("#d8433a"),Color("#f0c234"),Color("#3a6fd0"),Color("#ece8e0")]
 func draw_hazard(t,point):
  var h=hash_at(point.x,point.y,7)
