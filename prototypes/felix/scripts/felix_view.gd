@@ -71,45 +71,8 @@ func configure_mood():
 
 # Twenty tiles: floorboards and furniture wood, moving-box cardboard, a ruler shelf, open air.
 func make_tiles():
- var image=Image.create(160,8,false,Image.FORMAT_RGBA8)
- image.fill(Color.TRANSPARENT)
- for variant in range(20):
-  for y in range(8):
-   for x in range(8):
-    var color=Color.TRANSPARENT
-    if variant<=10 or variant in [16,17]:
-     # Floorboards: long planks, a seam only now and then.
-     color=Color("#4c3424")
-     if y==7: color=Color("#3a281c")
-     if variant in [0,4] and x==6 and y<7: color=Color("#34241a")
-     if hash_at(x,y,variant)%11==0: color=color.lightened(.05)
-     if variant<4:
-      if y==0: color=Color("#b3875c")
-      elif y==1: color=Color("#8d6342")
-      elif y==2: color=Color("#694832")
-     elif variant==8 and x==0: color=Color("#6c4b33")
-     elif variant==9 and x==7: color=Color("#2c1f15")
-     elif variant==10 and y==7: color=Color("#24180f")
-     if variant in [16,17]:
-      color=Color("#2a1d15") if (y+variant)%4 else Color("#231811")
-      if hash_at(x,y,variant)%9==0: color=Color("#31231a")
-    elif variant<=14 or variant in [18,19]:
-     color=Color("#a77c49")
-     if x%2==0: color=Color("#9f7443")
-     if hash_at(x,y,variant)%17==0: color=color.darkened(.08)
-     if variant==11:
-      if y==0: color=Color("#dcb882")
-      elif y==1: color=Color("#c39a64")
-      if x in [3,4] and y<=3: color=Color("#d9cfa6")
-     elif variant==13 and x==0: color=Color("#c9a26c")
-     elif variant==14 and x==7: color=Color("#76552f")
-     elif variant in [18,19]: color=color.darkened(.12)
-    elif variant==15:
-     if y==0: color=Color("#ead79d")
-     elif y==1: color=Color("#b99d5c") if x%2==0 else Color("#cdb377")
-    image.set_pixel(variant*8+x,y,color)
  var atlas=TileSetAtlasSource.new()
- atlas.texture=ImageTexture.create_from_image(image)
+ atlas.texture=preload("res://art/tiles/bedroom.png")
  atlas.texture_region_size=Vector2i(8,8)
  for x in range(20): atlas.create_tile(Vector2i(x,0))
  var result=TileSet.new()
