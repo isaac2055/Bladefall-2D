@@ -1,0 +1,17 @@
+{
+  "provider": "ElevenLabs",
+  "model_id": "eleven_music_v2",
+  "instrumental": true,
+  "lyrics_type": "instrumental",
+  "prompt": "Warm intimate ambient indie-game lullaby at 72 BPM in 4/4, G major with occasional E minor color: soft felt piano repeating a simple three-note motif, celeste, delicate nylon-string harmonics, warm sustained analog pad and an almost imperceptible brushed pulse. Dreamy, tender, wistful and reassuring, restrained dynamics and soft transients; instrumental only, no singing, choir, humming, spoken words or vocal samples. Over four minutes maintain a gentle steady cyclic groove with subtle variations and space for gameplay sounds, begin immediately without a dramatic intro and end on the same harmony and instrumentation as the opening with no final cadence or fade to silence, suitable for a seamless game loop.",
+  "duration_seconds": 240.0,
+  "sample_rate": 48000,
+  "channels": 2,
+  "overlap_seconds": 6.666666666666667,
+  "peak": 0.5009881854057312,
+  "seam_delta": 0.014354068785905838,
+  "typical_delta_999": 0.014122441411018372,
+  "minimum_one_second_rms_db": -42.33325361770174,
+  "raw_sha256": "f345e1b21c6adddd988d318b0e534adf6247b7a0294bfe01da40c5f07464af86",
+  "ogg_sha256": "8168cc62f3a6f769d0123706d20bc996f701ebba8322f4b3d8d2a1e11879c0b1"
+}

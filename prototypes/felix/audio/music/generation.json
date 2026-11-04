@@ -1,0 +1,50 @@
+{
+  "provider": "ElevenLabs",
+  "model_id": "eleven_music_v2",
+  "flow_id": "Mvyx75tWe9Y4BvAigODI",
+  "flow_url": "https://elevenlabs.io/app/flows/Mvyx75tWe9Y4BvAigODI",
+  "tracks": [
+    {
+      "id": "socks-and-starlight",
+      "node_id": "zI0mpab9zv8WTO2Lz0Hn",
+      "session_id": "AI7fahslWkS3KPhDAgen",
+      "generation_id": "w5uhcYP0YDZtd3H71yrV",
+      "duration_seconds": 246.68,
+      "instrumental": true,
+      "lyrics_type": "instrumental",
+      "price": {
+        "credits": 3699.1777777777775,
+        "price_cents": 67.25777777777778,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "id": "room-full-of-mountains",
+      "node_id": "jLiAmZoU3VXNkebWEFBH",
+      "session_id": "e9eE3bmyt8yXHsAEwwNM",
+      "generation_id": "bx0MxGiaxMZp2QBcliIQ",
+      "duration_seconds": 246,
+      "instrumental": true,
+      "lyrics_type": "instrumental",
+      "price": {
+        "credits": 3689.18,
+        "price_cents": 67.076,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "id": "good-days-packed-away",
+      "node_id": "jE7oupCxFr6x4mc9Ob1T",
+      "session_id": "j3QL7IZkEFon9cRh6OUX",
+      "generation_id": "Zw6xniEFq2vblDb7xoIO",
+      "duration_seconds": 247.48,
+      "instrumental": true,
+      "lyrics_type": "instrumental",
+      "price": {
+        "credits": 3711.675,
+        "price_cents": 67.485,
+        "cost_fiat_currency": "usd"
+      }
+    }
+  ]
+}

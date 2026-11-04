@@ -1,0 +1,40 @@
+{
+  "tracks": [
+    {
+      "id": "socks-and-starlight",
+      "title": "Socks & Starlight",
+      "bpm": 72,
+      "description": "Felt piano, celeste, and a warm bedtime glow.",
+      "path": "res://audio/music/socks-and-starlight.ogg",
+      "duration_seconds": 240,
+      "model_id": "eleven_music_v2",
+      "prompt": "Warm intimate ambient indie-game lullaby at 72 BPM in 4/4, G major with occasional E minor color: soft felt piano repeating a simple three-note motif, celeste, delicate nylon-string harmonics, warm sustained analog pad and an almost imperceptible brushed pulse. Dreamy, tender, wistful and reassuring, restrained dynamics and soft transients; instrumental only, no singing, choir, humming, spoken words or vocal samples. Over four minutes maintain a gentle steady cyclic groove with subtle variations and space for gameplay sounds, begin immediately without a dramatic intro and end on the same harmony and instrumentation as the opening with no final cadence or fade to silence, suitable for a seamless game loop.",
+      "instrumental": true,
+      "lyrics_type": "instrumental"
+    },
+    {
+      "id": "room-full-of-mountains",
+      "title": "A Room Full of Mountains",
+      "bpm": 80,
+      "description": "Gentle 16-bit adventure with soft marimba and arpeggios.",
+      "path": "res://audio/music/room-full-of-mountains.ogg",
+      "duration_seconds": 240,
+      "model_id": "eleven_music_v2",
+      "prompt": "Soft nostalgic 16-bit exploration music at 80 BPM in 4/4, D major with B minor passages: sampled marimba melody, warm triangle-wave bass, muted square-wave arpeggios, round electric-piano chords and delicate brushed percussion. Quietly curious, warm and hopeful, rounded soft transients, never shrill or loud, no modern dance drums; strictly instrumental with no singing, choir, humming, spoken words or vocal samples. Evolve gently over four minutes without a big climax, immediate subtle groove without a dramatic intro, maintain consistent tempo and return to the opening harmony and texture at the end without a final cadence or fade to silence for continuous looping.",
+      "instrumental": true,
+      "lyrics_type": "instrumental"
+    },
+    {
+      "id": "good-days-packed-away",
+      "title": "The Good Days, Packed Away",
+      "bpm": 64,
+      "description": "Music-box memories, nylon guitar, and soft strings.",
+      "path": "res://audio/music/good-days-packed-away.ogg",
+      "duration_seconds": 240,
+      "model_id": "eleven_music_v2",
+      "prompt": "Intimate nostalgic chamber-ambient game score at 64 BPM in 4/4, C major and A minor: a delicate music-box motif, nylon-guitar fingerpicking, warm felt piano and restrained chamber-string pads with almost imperceptible soft percussion. Tender, slightly melancholy resolving into comfort, spacious and reassuring, no dramatic orchestral swell or heavy bass; strictly instrumental, no singing, choir, humming, speech or vocal samples. Across four minutes use subtle evolving variations with quiet stable energy and tempo, start gently but immediately without a long intro, then end with the opening harmony and texture still playing with no ending cadence or fade, suitable for a seamless loop.",
+      "instrumental": true,
+      "lyrics_type": "instrumental"
+    }
+  ]
+}

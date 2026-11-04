@@ -1,0 +1,17 @@
+{
+  "provider": "ElevenLabs",
+  "model_id": "eleven_music_v2",
+  "instrumental": true,
+  "lyrics_type": "instrumental",
+  "prompt": "Soft nostalgic 16-bit exploration music at 80 BPM in 4/4, D major with B minor passages: sampled marimba melody, warm triangle-wave bass, muted square-wave arpeggios, round electric-piano chords and delicate brushed percussion. Quietly curious, warm and hopeful, rounded soft transients, never shrill or loud, no modern dance drums; strictly instrumental with no singing, choir, humming, spoken words or vocal samples. Evolve gently over four minutes without a big climax, immediate subtle groove without a dramatic intro, maintain consistent tempo and return to the opening harmony and texture at the end without a final cadence or fade to silence for continuous looping.",
+  "duration_seconds": 240.0,
+  "sample_rate": 48000,
+  "channels": 2,
+  "overlap_seconds": 6.0,
+  "peak": 0.5021913647651672,
+  "seam_delta": 0.004206896759569645,
+  "typical_delta_999": 0.06302244961261749,
+  "minimum_one_second_rms_db": -22.389389427748533,
+  "raw_sha256": "deef2a017d6585471720f7adb6817e858bb1fcb5ba90f668d1ea9a79f9ac61b1",
+  "ogg_sha256": "0cc5960d360dc7525bdc319b9e19ef8504ca9a0b64e32c1d8dd355774ca782b3"
+}

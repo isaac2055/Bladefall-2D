@@ -7,7 +7,7 @@ remain live; the character, furniture, terrain and prop surfaces use these textu
 
 ## Editing
 
-The three Python files are editable source art: explicit pixel patterns, limited
+The Python files are editable source art: explicit pixel patterns, limited
 palettes and offline raster drawing. They require Pillow to rebuild, but the game
 only needs the committed PNGs and Godot `.import` metadata. Run from the project:
 
@@ -28,7 +28,7 @@ python3 art/make_prop_art.py
   the original story poses, body positions and animation clocks.
 - `room/`: furniture is drawn at the existing furniture anchors. Repeating wood,
   wallpaper and corrugated cardboard stay aligned with world coordinates.
-- `props/`: eight-pixel hazard cells, devices, ten 14 × 14 family photos, torn
+- `props/`: eight-pixel hazard cells, devices, ten 22 × 22 family photos, torn
   paper, baskets, slime, and soft shadow silhouettes. Device state still selects
   visibility, readiness, opening, breaking and bobbing in the view code.
 
@@ -47,3 +47,9 @@ For a full-bright visual pose sheet using the production drawing functions, run:
 ```
 
 This standalone art preview does not load or change the game simulation.
+
+Memory pictures use 22 × 22 canvases anchored at (-11, -15) relative to the
+existing photo position. Their lower paper edge remains at +7, so the photos
+stay on the same windowsill and collectible anchors. `make_memory_art.py` is
+called by `make_prop_art.py`; it authors the ten scenes and the three family
+portraits. Felix's face keeps its 8 × 9 canvas and uses a curved U-shaped smile.

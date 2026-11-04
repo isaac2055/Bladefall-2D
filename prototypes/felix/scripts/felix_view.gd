@@ -673,10 +673,10 @@ func goal_drawing(scene,origin):
  photo(at,index,sin(clock*.8)*.06)
  box(origin.x+goal[0],origin.y+goal[1],goal[2],1,Color("#f4efe2",.35))
 
-# A small instant photo: one good day each.
+# An instant photo: larger scene, same lower paper edge and collectible position.
 func photo(at,index,angle=0.0,size=1.0):
  ink.draw_set_transform_matrix(paint_transform*Transform2D(angle,Vector2(size,size),0,at))
- pixel("props/photo-"+str(posmod(index,10)),Vector2(-7,-7))
+ pixel("props/photo-"+str(posmod(index,10)),Vector2(-11,-15))
  ink.draw_set_transform_matrix(paint_transform)
 
 func story_items(view):

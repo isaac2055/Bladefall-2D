@@ -1,0 +1,17 @@
+{
+  "provider": "ElevenLabs",
+  "model_id": "eleven_music_v2",
+  "instrumental": true,
+  "lyrics_type": "instrumental",
+  "prompt": "Intimate nostalgic chamber-ambient game score at 64 BPM in 4/4, C major and A minor: a delicate music-box motif, nylon-guitar fingerpicking, warm felt piano and restrained chamber-string pads with almost imperceptible soft percussion. Tender, slightly melancholy resolving into comfort, spacious and reassuring, no dramatic orchestral swell or heavy bass; strictly instrumental, no singing, choir, humming, speech or vocal samples. Across four minutes use subtle evolving variations with quiet stable energy and tempo, start gently but immediately without a long intro, then end with the opening harmony and texture still playing with no ending cadence or fade, suitable for a seamless loop.",
+  "duration_seconds": 240.0,
+  "sample_rate": 48000,
+  "channels": 2,
+  "overlap_seconds": 7.5,
+  "peak": 0.7905388474464417,
+  "seam_delta": 0.0008191177621483803,
+  "typical_delta_999": 0.01588498055934906,
+  "minimum_one_second_rms_db": -35.7467006287554,
+  "raw_sha256": "8d7d35b1609d6decd91cedfe69cb9c19d322d217ca2afa124218fcec1f5de50b",
+  "ogg_sha256": "69b5c6923db3677de8d6734fdb3fee216f8b9616f7f81bc07d1de8b677abecd2"
+}

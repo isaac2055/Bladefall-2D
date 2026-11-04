@@ -255,13 +255,16 @@ func begin_ending(world,sim):
 func tick_ending(delta):
  end_time+=delta
  dark_target=0.0
- if end_time>1.2 and not done.has("whisper"):
+ if end_time>1.2 and not done.has("naming"):
+  done.naming=true
+  say("I think I'll name you...","below",2.8)
+ if end_time>4.0 and not done.has("whisper"):
   done.whisper=true
   say("...Felix.","below",4.2)
- if end_time>3.0 and not gifts.face:
+ if end_time>5.8 and not gifts.face:
   gifts.face=true
   pulse_request=1.4
- if end_time>7.5: phase="end"
+ if end_time>10.0: phase="end"
 
 func felix_radius():
  if phase=="black": return .15

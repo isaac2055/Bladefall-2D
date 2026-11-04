@@ -59,35 +59,10 @@ for i,(letter,rows) in enumerate(letters.items()):
   for x,c in enumerate(row):
    if c=='x':d.point((x+3,y+2),fill='#f3dba9')
  save(im,f'props/block-{letter.lower()}.png')
-# Ten instant photographs: each image is literally 12 x 9 pixels within its paper.
-skies=['#8cc3e1','#e9c27a','#a48a78','#c9d6e6','#8cc4e8','#9fc6e8','#e2b98c','#8cc4e8','#7fa9d6','#f0d48a']
-grounds=['#e8d08a','#c98a5a','#6a4f6e','#f2f4f8','#6fae5c','#6a6e78','#b98a5a','#7fbf6a','#4f7fb0','#7fbf6a']
-for i in range(10):
- im,d=new(14,14);d.rectangle((0,0,13,13),fill='#f4efdf');d.rectangle((1,1,12,9),fill=skies[i]);d.rectangle((1,7,12,9),fill=grounds[i]);d.line([(1,1),(12,1)],fill='#8a8297');d.point((2,12),fill='#cbb9a5')
- if i==0: # beach and sun
-  d.rectangle((8,6,12,7),fill='#78b1c2');d.point((10,3),fill='#ffe9b0')
- elif i==1:
-  d.rectangle((7,6,11,8),fill='#fff0e4');d.rectangle((7,6,11,6),fill='#c781a0');d.point((9,4),fill='#fff4ca');d.point((9,3),fill='#ef8f52')
- elif i==2: # a picnic beneath a tent
-  d.polygon([(7,7),(10,3),(12,7)],fill='#c58b7a');d.rectangle((7,8,12,9),fill='#ca8f92')
- elif i==3:
-  d.rectangle((9,6,11,8),fill='#ffffff');d.rectangle((9,4,10,5),fill='#ffffff');d.point((10,4),fill='#67788f')
- elif i==4: # garden
-  d.rectangle((10,4,10,7),fill='#608f5a');d.rectangle((8,2,12,4),fill='#689d68');d.point((10,2),fill='#d8e3a0')
- elif i==5:
-  d.rectangle((6,5,11,7),fill='#c35e62');d.rectangle((7,4,9,4),fill='#cae1e2');d.point((7,8),fill='#3b4155');d.point((10,8),fill='#3b4155')
- elif i==6: # at home on a sofa
-  d.rectangle((6,6,12,8),fill='#9d7588');d.line([(7,5),(11,5)],fill='#cba78e')
- elif i==7:
-  d.rectangle((10,2,10,7),fill='#e5bc63');d.rectangle((9,6,12,7),fill='#e5bc63');d.point((11,2),fill='#a06d4b');d.point((11,7),fill='#a06d4b')
- elif i==8: # boat on a lake
-  d.polygon([(7,7),(11,7),(9,9)],fill='#d9a373');d.line([(9,3),(9,7)],fill='#eee4ca');d.polygon([(10,3),(12,6),(10,6)],fill='#f5e5ca')
- else: # summer kite
-  d.polygon([(10,2),(12,3),(10,5),(9,3)],fill='#c5687c');d.line([(10,5),(8,7)],fill='#ecddb6')
- # Mom, Dad and Isaac; the shorter yellow figure is the child.
- for x,y,col in [(2,5,'#4f6ea8'),(4,5,'#b8576a'),(6,6,'#e8c84a')]:
-  d.line([(x,y),(x,8)],fill=col);d.point((x,y-1),fill='#f1c9a5')
- save(im,f'props/photo-{i}.png')
+# The larger memory pictures are authored separately, at one pixel per world pixel.
+# Keep the existing photo-N asset names for the ten approved collectible scenes.
+from make_memory_art import make_memories
+make_memories()
 # Soft-edged shadow silhouettes. Dither only at the outer edges, never blurred pixels.
 for variant in range(3):
  im,d=new(28,128)

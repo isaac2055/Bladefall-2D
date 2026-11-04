@@ -33,9 +33,10 @@ ball = [
 ]
 sprite('felix/light.png', ball, light)
 face = ball.copy()
-face[3] = 'cwehhwec'
-face[4] = 'cwrhhwrc'
-face[5] = 'scweewco'
+face[3] = 'cwehhewc'
+face[4] = 'cwrhhrcc'
+face[5] = 'scewweco'
+face[6] = '.sceecs.'
 sprite('felix/face.png', face, light)
 slime = dict(light, o='659d50', s='93d368', c='c9f69b', w='e8ffd0', h='f6ffe8')
 sprite('felix/slime.png', ball, slime)

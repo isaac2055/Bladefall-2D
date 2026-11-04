@@ -5,6 +5,7 @@ const View=preload("res://scripts/felix_view.gd")
 const Story=preload("res://scripts/felix_story.gd")
 const Controls=preload("res://scripts/controls.gd")
 const Sound=preload("res://scripts/audio.gd")
+const ChapterMusic=preload("res://scripts/felix_music.gd")
 
 var world
 var sim
@@ -28,6 +29,9 @@ var black_time=0.0
 var end_shown=false
 var retry_held=false
 var music_db=-80.0
+var chapter_music
+var music_picker: OptionButton
+var music_description: Label
 # Developer flags.
 var capture_path=""
 var capture_after=120
@@ -71,6 +75,8 @@ func _ready():
  viewport.add_child(view)
  view.load_scene(sim)
  audio.room_changed(sim)
+ chapter_music=ChapterMusic.new()
+ chapter_music.setup(audio.music)
  build_interface()
  var args=OS.get_cmdline_user_args()
  for i in range(args.size()):
@@ -150,14 +156,42 @@ func build_interface():
  panel.content_margin_top=22
  panel.content_margin_bottom=22
  pause_box.add_theme_stylebox_override("panel",panel)
- pause_box.position=Vector2(470,300)
- pause_box.size=Vector2(340,220)
+ pause_box.position=Vector2(400,215)
+ pause_box.size=Vector2(480,390)
  pause_box.hide()
  ui.add_child(pause_box)
  var column=VBoxContainer.new()
  column.add_theme_constant_override("separation",12)
  pause_box.add_child(column)
  crayon_label(column,"paused",30,Color("#fff1c9"))
+ crayon_label(column,"Music",20,Color("#c9cfe8"))
+ music_picker=OptionButton.new()
+ music_picker.add_theme_font_override("font",crayon)
+ music_picker.add_theme_font_size_override("font_size",20)
+ column.add_child(music_picker)
+ for i in range(chapter_music.tracks.size()):
+  music_picker.add_item(chapter_music.tracks[i].title,i)
+  music_picker.set_item_disabled(i,not chapter_music.available(i))
+ music_picker.selected=chapter_music.selected
+ music_picker.item_selected.connect(func(index):
+  if chapter_music.select_track(index):
+   music_description.text=chapter_music.tracks[index].description
+   audio.music.stream_paused=false)
+ music_description=crayon_label(column,"",16,Color("#9aa3c4"))
+ music_description.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ if chapter_music.selected>=0:
+  music_description.text=chapter_music.tracks[chapter_music.selected].description
+ else:
+  music_description.text="Original score"
+ var music_volume=HSlider.new()
+ music_volume.min_value=0
+ music_volume.max_value=100
+ music_volume.step=1
+ music_volume.value=chapter_music.gain*100
+ music_volume.tooltip_text="Music volume"
+ music_volume.accessibility_name="Music volume"
+ music_volume.value_changed.connect(func(value):chapter_music.set_gain(value/100.0))
+ column.add_child(music_volume)
  for item in [["Keep climbing",func():set_paused(false)],["Begin the night again",restart_chapter],["Quit",func():get_tree().quit()]]:
   var button=Button.new()
   button.text=item[0]
@@ -187,6 +221,8 @@ func set_paused(value):
  paused=value
  pause_box.visible=value
  audio.set_paused(value)
+ # Let the selected score play while its menu is open for comparison.
+ audio.music.stream_paused=false
 
 func _unhandled_input(event):
  if event.is_action_pressed("knight_pause") and story.phase in ["play","ending"]:
@@ -309,7 +345,7 @@ func _process(delta):
   end_box.visible=black_time>1.0
   end_box.modulate.a=clamp((black_time-1.0)/1.5,0,1)
  # Music arrives once the boy stops crying.
- var want=story.music_level()
+ var want=chapter_music.volume_db(story.music_level(),paused)
  music_db=lerp(music_db,want,1-exp(-delta*.5))
  audio.music.volume_db=music_db
  update_lines()
