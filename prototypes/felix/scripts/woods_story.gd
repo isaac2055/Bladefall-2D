@@ -310,7 +310,9 @@ func tick_boy(world,delta):
   # He walks a little ahead, on the ground Felix last stood on.
   if sim.p.onGround: boy.ground=felix.y+11
   var ahead=felix.x+(70 if boy.facing>=0 else -70)
-  var to=Vector2(clamp(ahead,rect.position.x+20,rect.end.x-20),boy.get("ground",rect.end.y-40))
+  ahead=clamp(ahead,rect.position.x+20,rect.end.x-20)
+  var to=stand_spot(world,ahead,boy.get("ground",rect.end.y-40))
+  if to==null: to=boy.position
   if abs(to.x-boy.position.x)>18 or abs(to.y-boy.position.y)>4:
    boy.target=to
    boy.speed=clamp(abs(to.x-boy.position.x)*1.6,60,260)
@@ -325,6 +327,34 @@ func tick_boy(world,delta):
   boy.pose=boy.then
   return
  boy.position+=to.normalized()*boy.speed*delta
+
+# Somewhere the boy can really stand near x: a solid floor (or a ledge) under his feet, nothing
+# in the 80 px above him, and no spikes or thorns where he stands. Prefers the floor nearest
+# Felix's, then the nearest x. Cached per tile so it is cheap to ask every frame.
+const BOY_TALL=10
+var spot_cache={}
+func stand_spot(world,x,ground_y):
+ var key=Vector2i(floori(x/8),roundi(ground_y/8))
+ if spot_cache.has(key): return spot_cache[key]
+ var cells=world.cells
+ var found=null
+ for dx in [0,1,-1,2,-2,3,-3,4,-4,6,-6,8,-8,10,-10,13,-13,16,-16,20,-20]:
+  var cx=key.x+dx
+  for dy in [0,-1,1,-2,2,-3,3,-4,4,-5,5,-6,6,-8,8]:
+   var r=key.y+dy
+   if not boy_fits(cells,cx,r): continue
+   found=Vector2(cx*8+4,r*8)
+   break
+  if found!=null: break
+ spot_cache[key]=found
+ return found
+
+func boy_fits(cells,cx,r):
+ for x in [cx-1,cx,cx+1]:
+  if not cells.get(Vector2i(x,r),0) in [1,2]: return false
+  for y in range(r-BOY_TALL,r):
+   if cells.get(Vector2i(x,y),0)!=0: return false
+ return true
 
 func walk_boy(target,then):
  boy.target=target

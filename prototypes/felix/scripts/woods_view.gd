@@ -61,26 +61,9 @@ func sprite_limb(name,a,b,width):
 func power_visible():
  return story.power and not story.in_tale and story.phase not in ["ending","end"]
 
+# The story already stands him on clear ground (woods_story.stand_spot), so draw him there.
 func boy_background_target():
- var at=story.boy.position
- if not story.boy.follow: return at
- at+=Vector2(16,-5)
- at.y=clamp(at.y,camera.y+84,camera.y+174)
- # This is a far path, not a second colliding actor. Find a clear background
- # silhouette rather than drawing his head through the foreground platforms.
- var best=at
- var best_cost=INF
- for offset in [0,32,-32,64,-64,96,-96,128,-128,160,-160]:
-  var candidate=Vector2(clamp(at.x+offset,camera.x+24,camera.x+296),at.y)
-  var cost=abs(offset)*.01
-  for x in [-9,0,9]:
-   for y in range(-80,-3,8):
-    var cell=Vector2i(floori((candidate.x+x)/8),floori((candidate.y+y)/8))
-    if runtime.cells.get(cell,0) in [1,2]: cost+=16 if y<-48 else 2
-  if cost<best_cost:
-   best_cost=cost
-   best=candidate
- return best
+ return story.boy.position
 
 func render_boy_point():
  return boy_draw_point if boy_draw_point.x!=INF else story.boy.position
