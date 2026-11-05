@@ -1076,6 +1076,11 @@ func draw_entity_body(e,origin):
    var col=Color("#c0b7ff") if e.state=="" else Color("#515371")
    line(from,to,Color(col,.3),1)
    for at in [from,to]:
+    # A one-way line's far end is not a mouth: draw it closed and unlit.
+    if e.get("oneWay",false) and at==to:
+     circle(at,2,Color("#515371",.35))
+     line(at-Vector2(2,0),at+Vector2(2,0),Color("#515371"),1)
+     continue
     circle(at,4,Color(col,.12))
     line(at-Vector2(1,4),at+Vector2(1,4),col,1.5)
     line(at-Vector2(2,2),at+Vector2(2,2),col,1)

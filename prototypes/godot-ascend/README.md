@@ -2,6 +2,16 @@
 
 Version **0.36.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
+## Three Fractured Causeway rooms · Claude, branch `claude/fractured-causeway`
+
+The Fractured Causeway now has its first three affixed puzzle studies (of a planned nine), between the Quiet Passage and the crossroads. All three ask what else a **tear** is for; the road already taught riding one. Parry and portal stay locked. Open them with **Play Fractured Causeway Rooms.command** (or `--world 23 --room 37`).
+
+- **The Line That Carries You Away from the Exit:** the only tear leans back toward the entrance. Ride it anyway: it throws you up with your dash returned, and that second dash is the only way into the high corridor.
+- **The Line That Will Not Set You Down:** two lines leave the shelf. The upper one sets you safely on a perch that is a caged dead end; the lower one keeps its full speed and throws you through the slot.
+- **The Line That Only Runs Home:** a one-way tear. Its near end is drawn dark and closed; cross the cracked sills on foot to the lit far end, then ride home and dash up.
+
+Each has its own checkpoint, a question on screen, an **H** hint phrased as a question, and **Esc → Watch reference**. Source chapter 23 now has **40 definitions and 16 required challenges**. The continuous Causeway reference covers **10,073 frames and 23 road sections with zero deaths**. The only engine change is drawing: a one-way tear's closed end is dimmed (no existing tear was one-way). See [notes](research/FRACTURED-CAUSEWAY-FIRST-THREE.md).
+
 ## Close the Woods route bypasses · 0.36.0
 
 **Bridge is banked and unchanged.** The three Woods studies now use the approved physical route constraints:
