@@ -77,6 +77,7 @@ static func solve(data,index,options={}):
    core.step(Routes.decode(part[1]))
    if track_wave:dash_trace=observe_dash(core,dash_trace)
  if core.deaths>0:return {"found":false,"nodes":0,"error":"invalid starting replay"}
+ restrict(core,options.get("mode_after_start",""))
  if options.get("disable_lift_x_after_start",false):core.K.liftXCap=0
  if options.get("freeze_zip_after_start",false):
   for e in core.ents:

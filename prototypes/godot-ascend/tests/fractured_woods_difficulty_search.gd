@@ -20,10 +20,14 @@ func _initialize():
  before.world.rooms[37]=short.room
  before.world.rooms[37].workshopGoal=short.room.puzzleGoal
  record(37,"positive control: find an ordinary-movement finish on the former long runway",S.solve(before,37,{"budget":20000,"width":65,"depth":35,"start":short.tape.slice(0,12)}),true)
+ if "--positive-only" in OS.get_cmdline_user_args():
+  quit(1 if failed else 0);return
  for index in [37,38,39]:
   var tape=d.world.rooms[index].puzzleRoutes[0].tape
-  record(index,"no ordinary-movement payoff found within budget",S.solve(d,index,{"budget":20000,"width":65,"depth":35,"start":tape.slice(0,{37:12,38:15,39:15}[index])}),false)
- for index in [37,38,39]:
-  record(index,"no pod-free route found from spawn within budget",S.solve(d,index,{"budget":25000,"width":75,"depth":45,"mode":"no_pods","allow_super":true,"allow_ultra":true}),false)
+  record(index,"no ordinary route found from before the return, upper bell or wall climb",S.solve(d,index,{"budget":80000,"width":40,"depth":60,"start":tape.slice(0,{37:8,38:7,39:7}[index])}),false)
+ for index in [38,39]:
+  var tape=d.world.rooms[index].puzzleRoutes[0].tape
+  var options={"start":tape.slice(0,7 if index==38 else 9),"mode_after_start":"no_bells" if index==38 else "no_pods","allow_super":true,"allow_ultra":true,"budget":80000,"width":40,"depth":60}
+  record(index,"no finish found without the upper bell or outward pod; powered movement remains available",S.solve(d,index,options),false)
  print("FRACTURED WOODS DIFFICULTY SEARCH ","FAILED" if failed else "PASSED")
  quit(1 if failed else 0)

@@ -63,7 +63,7 @@ func _initialize():
   if index==37:check(q.pods==2 and q.bells==1 and q.loft and q.low,"one pod supplies high and low rebounds around the bell change")
   if index==38:check(q.pods==1 and q.bells==2,"shared bell used from both faces before the momentum-preserving high rebound")
   if index==39:check(q.climbed and q.climb_stamina>5 and q.climb_frames<90 and q.pods==1,"shorter finite-stamina climb connects to an outward pod transfer")
-  for segment in {37:[2,13],38:[16,19],39:[9,17]}[index]:
+  for segment in {37:[2,13],38:[18,21],39:[9,16]}[index]:
    var clears=[]
    for delta in range(-4,5):
     var varied=tape.duplicate(true);varied[segment][0]+=delta
@@ -72,6 +72,13 @@ func _initialize():
     if sample.finish and sample.deaths==0:clears.append(delta)
    check(clears.size()>=3,"nearby timings "+str([index,segment])+": "+str(clears))
  var before=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/fractured-difficulty-before.json"))
+ # Departure/cut timing can vary when the player adjusts the return and landing.
+ # Do not confuse one fixed end-to-end tape's timing with a one-frame mechanic.
+ for sample in [[8,4,16,18],[9,5,14,18],[10,6,14,24],[11,7,10,18],[12,8,12,22]]:
+  var varied=b.world.rooms[39].puzzleRoutes[0].tape.duplicate(true)
+  for pair in [[10,sample[0]],[11,sample[1]],[12,sample[2]],[14,sample[3]]]:varied[pair[0]][0]=pair[1]
+  var q=play(b,39,varied)
+  check(q.finish and q.deaths==0 and q.pods==1 and q.waves==1,"nearby Wall departure/cut with adjusted return: "+str(sample))
  for index in [37,38,39]:
   var prior=before.chapters["22"][str(index)]
   check(play(b,index,prior.room.puzzleRoutes[0].tape,"",prior.room).finish and not play(b,index,prior.room.puzzleRoutes[0].tape).finish,"old easy reference clears its original room but misses the revised flag: "+str(index))
@@ -81,6 +88,13 @@ func _initialize():
  check(play(b,37,alternate.tape,"no_pods",before.chapters["22"]["37"].room).finish and not play(b,37,alternate.tape,"no_pods").finish,"former short bell-only alternate clears before, fails after the new high bell and connected finish")
  var shortcut=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/woods-runway-shortcut.json"))
  check(play(b,37,shortcut.tape,"",shortcut.room).finish and not play(b,37,shortcut.tape).finish,"search-discovered coyote jump clears the long runway but fails after the shorter runway and farther landing")
+ var bypasses=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/woods-035-bypasses.json"))
+ for f in bypasses.cases:
+  check(play(b,int(f.index),f.tape,"",f.room).finish and not play(b,int(f.index),f.tape).finish,"0.35 shortcut succeeds before, fails after: "+f.label)
+ for path in bypasses.files:
+  var args=OS.get_cmdline_user_args()
+  var source_root=args[0] if not args.is_empty() else "res://"
+  check(FileAccess.get_sha256(source_root.path_join(path))==bypasses.files[path],"banked Bridge or unrelated source untouched: "+path)
  var momentum=play(b,38,b.world.rooms[38].puzzleRoutes[0].tape,"pod_without_speed")
  check(not momentum.finish,"Crossing reference needs sideways speed carried through the high pod rebound")
  check(not play(b,39,b.world.rooms[39].puzzleRoutes[0].tape,"no_wall").finish,"Wall reference needs the restored climbing face")

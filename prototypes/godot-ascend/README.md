@@ -1,8 +1,22 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.35.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.36.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
-## Fractured difficulty revisions · 0.35.0
+## Close the Woods route bypasses · 0.36.0
+
+**Bridge is banked and unchanged.** The three Woods studies now use the approved physical route constraints:
+
+- **Pod Beneath Two Ceilings:** the canopy reaches the ceiling and has a guarded outer face, closing its elevated rest/refill shortcut while keeping the low powered launch clear.
+- **Ring It After the Crossing:** amber approach roots replace the fixed roof. The upper bell preserves the launch dash, blue housing constrains the pod approach, and the farther blue landing rewards speed carried through the rebound.
+- **Wall You Must Bring Back:** an amber overhang caps the climb, making the outward high pod rebound useful for reaching the returning crumble ledge. The final low launch home remains.
+
+Use **Play Fractured Black Woods Rooms.command**, or select each room by name under **Esc → Explore a section**. All three have updated **H** hints, complete **Esc → Watch reference** recordings and their own checkpoint. The existing Bridge launcher opens the accepted 0.35.0 Bridge. No physics, quests, voices, art, other levels or workshop rooms changed. See [route requirements and verification](research/FRACTURED-WOODS-ROUTE-REQUIREMENTS.md).
+
+The signed app passed **24 packaged suites**, including **1,221 shortcut variations** and three historical positive controls. Five fresh bounded searches found no ordinary-movement finish or omitted-preparation finish within their stated limits. The Woods campaign recording reaches the crossroads through 24 regions in 8,685 frames without deaths. The packaged checks use a corrected test-only overlay and require actual test output; older exit-code-only counts below are unreliable.
+
+## Previous Woods build and accepted Bridge · 0.35.0
+
+The Woods layouts below are historical and superseded by 0.36.0. Bridge remains accepted in this form.
 
 The four latest studies now connect preparation to sustained Fractured movement. Bridge restores its original six-tile carriage roof, six-tile crumble opening and higher home flag, with only the local setup-hop ceiling raised. The former ordinary-jump recovery no longer clears that finish.
 
@@ -12,7 +26,7 @@ The existing **Play Easier Bridge.command** launcher still opens Bridge. **Play 
 - **Ring It After the Crossing:** reach the bell window below, circle the roof to reach it above, then link its phase change to a wavedash, a momentum-preserving high pod rebound and the final blue landing.
 - **The Wall You Must Bring Back:** leave the restored wall for an outward pod transfer, dash back through it onto a crumbling ledge, then wavedash under the low roof and dash upward beside home.
 
-The signed 0.35.0 app passed 23 regression suites. Fresh bounded searches found no ordinary-movement substitute in the three payoff tests and no pod-free route in the three spawn tests; their budgets and limits are recorded in the notes. Both full chapter journeys reach the crossroads without deaths.
+The old harness reported 23 packaged suites for 0.35.0, but those counts were invalid: excluded test scripts could fail to load while Godot returned zero. The 0.36.0 harness mounts test-only resources and rejects missing assertions and runtime errors. Fresh bounded searches found no ordinary-movement substitute in the three payoff tests and no pod-free route in the three spawn tests; their budgets and limits are recorded in the notes. Both full chapter journeys reach the crossroads without deaths.
 
 All four retain independent checkpoints, updated **H** hints and complete **Esc → Watch reference** recordings. No movement constants, quests, voices, art, other room layouts or workshop rooms changed. The camera and native editor use the revised geometry. See [design and verification notes](research/FRACTURED-DIFFICULTY-REVISION.md).
 
@@ -30,7 +44,7 @@ The following describes the earlier build; 0.35.0 replaces its four layouts and 
 
 Each has its own checkpoint, **H** hint and **Esc → Watch reference**, plus selection by name under **Esc → Explore a section**. The guided Woods routes use normal jumps, dashes, sword rebounds and climbing; no mandatory hyper or wavedash was added. An advanced super/wall/bell alternative in the first room remains valid. Source chapter 22 now contains **40 definitions and 16 required challenges**, including these first three of the planned nine new Woods rooms. The nine added Outskirts rooms and thirty base-world workshop extensions remain in place.
 
-The signed 0.34.0 app passed **23 verification suites**. The Woods campaign reference covers **9,177 frames and 24 regions with zero deaths**; the Outskirts reference remains deathless across **17,419 frames and 28 regions**. Checks include the new rooms, recovery routes, earlier accepted layouts, independent resets, camera framing, existing quests, all thirty campaign workshop additions and editor playback.
+The old harness reported **23 packaged verification suites** for 0.34.0; that packaged count is unreliable because of the loading/exit-code flaw corrected in 0.36.0. The Woods campaign reference covers **9,177 frames and 24 regions with zero deaths**; the Outskirts reference remains deathless across **17,419 frames and 28 regions**. Checks include the new rooms, recovery routes, earlier accepted layouts, independent resets, camera framing, existing quests, all thirty campaign workshop additions and editor playback.
 
 See [implementation and verification notes](research/FRACTURED-WOODS-FIRST-THREE.md). No new art, quests or voices were generated. The shared workshop editor remains at thirty rooms; these additions are editable in the native chapter-22 scene.
 

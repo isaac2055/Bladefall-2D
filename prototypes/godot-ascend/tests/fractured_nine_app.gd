@@ -27,7 +27,9 @@ func run():
   check(d.world.sections.filter(func(s):return s.room==section.room)[0]==section,"accepted placement preserved: "+section.room)
  check(C.fingerprint(d.constants)==before.constants and C.fingerprint(d.playerDefaults)==before.defaults,"movement settings unchanged")
  check(d.world.requiredMainRooms.slice(0,before.required.size())==before.required,"previous required road retained")
- check(FileAccess.get_sha256("res://levels/world1.tscn")==before.world1,"user World 1 scene untouched")
+ var args=OS.get_cmdline_user_args()
+ var source_root=args[0] if not args.is_empty() else "res://"
+ check(FileAccess.get_sha256(source_root.path_join("levels/world1.tscn"))==before.world1,"user World 1 scene untouched")
  var base=A.baseline(d)
  var native=load("res://levels/world21.tscn").instantiate()
  check(C.first_difference(base,native.compile_into(base))=="" and native.validate_data(native.compile_into(base)).is_empty(),"native rooms compile exactly and validate")
