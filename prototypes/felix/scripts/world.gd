@@ -49,13 +49,13 @@ func _init(source):
  # Felix: the New House keeps only the road and its one secret. Side quests,
  # their rooms and the people who gave them are cut; the workshop is not appended.
  var chapter=int(data.world.n)
- strip_to_road(data,{1:["rowan","socket-19-1"],2:["refuge"]}.get(chapter,[]))
+ strip_to_road(data,{1:["rowan","socket-19-1"],2:["refuge"],3:["defector"]}.get(chapter,[]))
  # The approved workshop rooms: in Chapter One the top of the wardrobe, between the curtain and
  # the sill; in Chapter Two, Dad's story on the stormy night after the cabin.
  var workshop_source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"))
  CampaignWorkshop.append(data,preload("res://scripts/authoring_data.gd").read(workshop_source))
  if chapter==1: join_wardrobe(data)
- elif chapter==2 and not OS.get_cmdline_user_args().has("--unjoined"): join_story(data)
+ elif chapter in [2,3] and not OS.get_cmdline_user_args().has("--unjoined"): join_story(data,chapter)
  var sections=data.world.sections.duplicate(true)
  for q in data.world.quests: sections.append_array(q.sections)
  for q in data.world.get("secrets",[]): sections.append_array(q.sections)
@@ -240,15 +240,19 @@ func join_wardrobe(source):
 # cabin and the big tree, and runs room by room; the last room's finish ends the story, back
 # at the cabin. Passages to other worlds and the hall behind the start are cut.
 const STORY_TOP=-40
-func join_story(source):
- for id in ["cl2-atlas-arrival"]:
-  source.world.rooms=source.world.rooms.filter(func(d): return d.id!=id)
-  source.world.sections=source.world.sections.filter(func(s): return s.room!=id)
- source.world.rooms=source.world.rooms.filter(func(d): return not str(d.id).begins_with("cl2-passage-"))
- source.world.passages=source.world.get("passages",[]).filter(func(s): return not str(s.room).begins_with("cl2-passage-"))
- source.world.sections=source.world.sections.filter(func(s): return not str(s.room).begins_with("cl2-passage-"))
+const DRIVE_TOP=-60
+# Chapter Three: the drive to Dad's, east of the lot at the end of the Causeway, the same way.
+func join_story(source,chapter=2):
+ var arrival="cl%d-atlas-arrival"%chapter
+ var passage="cl%d-passage-"%chapter
+ source.world.rooms=source.world.rooms.filter(func(d): return d.id!=arrival)
+ source.world.sections=source.world.sections.filter(func(s): return s.room!=arrival)
+ source.world.rooms=source.world.rooms.filter(func(d): return not str(d.id).begins_with(passage))
+ source.world.passages=source.world.get("passages",[]).filter(func(s): return not str(s.room).begins_with(passage))
+ source.world.sections=source.world.sections.filter(func(s): return not str(s.room).begins_with(passage))
  var rooms=source.world.campaignWorkshop.rooms
- hang_rooms(source,rooms,500,490,STORY_TOP,STORY_TOP+6,"story-walk-","The Storm",true)
+ if chapter==2: hang_rooms(source,rooms,500,490,STORY_TOP,STORY_TOP+6,"story-walk-","The Storm",true)
+ else: hang_rooms(source,rooms,720,710,DRIVE_TOP,DRIVE_TOP+6,"story-walk-","The Drive",true)
  for i in range(rooms.size()-1): wardrobe_landing[rooms[i]]=wardrobe_walks[i+1]
  wardrobe_landing[rooms[-1]]=""
  # No workshop doorway at the cabin: the story is entered by Dad telling it.

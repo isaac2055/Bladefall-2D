@@ -111,7 +111,7 @@ Chapter Two when Isaac says so. To keep that merge clean, the files are split:
 | `scripts/felix_view.gd`, `scripts/felix_body.gd`, `art/**`, new art helper scripts | **you** |
 | `scripts/felix_story.gd`, `scripts/world.gd`, `data/**`, `levels/**` | Claude |
 | `scripts/felix_main.gd`, `felix.tscn`, `project.godot` | Claude. Ask Isaac before changing these |
-| `scripts/woods_*.gd` and anything else named for Chapter Two | Claude |
+| `scripts/woods_*.gd`, `scripts/phantom_*.gd` and anything else named for Chapters Two and Three | Claude |
 | Engine scripts (`core.gd`, `landscape.gd`, devices, etc.) | nobody. Leave them alone |
 
 **One shared seam:** `felix_body.gd` draws Felix's body and returns his center. Chapter Two will dress

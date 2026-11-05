@@ -1,4 +1,4 @@
-# Felix · Chapter One, The New House · Chapter Two, Sir Felix
+# Felix · Chapter One, The New House · Chapter Two, Sir Felix · Chapter Three, Phantom
 
 A story remake of Ascend's first world, The Outskirts, as the opening of the imaginary-friend game.
 It is a separate copy of the Godot Ascend prototype (`prototypes/godot-ascend` is untouched), on branch
@@ -88,6 +88,39 @@ Codex's Black Woods (`levels/world2.tscn`), whose forest, tiles and devices are 
   to the cabin and into the story with zero deaths. `--chapter 2 --reference workshop-borrowed --chain
   --report` plays all ten story rooms, every beam and the ending with zero deaths. Chapter One's chain
   still passes.
+
+## Chapter Three, Phantom (the Causeway)
+
+Run it with `--chapter 3`, or press a button at the end of Chapter Two.
+
+- **Story (scripts/phantom_story.gd):** Isaac is ten. Every other Friday he is handed over at a lot
+  across the Causeway. This Friday the bridge is stuck, so Mom and her new friend, a big man in a work
+  jacket, walk him over to Dad's car. At the camp the boy decides knights are for little kids: Felix
+  becomes **Phantom**, a spy (hood, mask, Dad's stick snapped into a dagger, so W still strikes), and
+  his mission is to tail the big man and find out what he's hiding. The boy talks on a toy radio.
+  - **Three clues, each misread:** his phone keeps buzzing (The Patrol Road), he keeps looking back
+    (The Upper Chain), he's carrying two coffees (Counterweight Rise).
+  - **The counter (F)** is given in Broken Standard, the first fight.
+  - **The Brute:** in "Let Him Clear the Causeway" the big man is the Brute as the boy sees him,
+    and he smashes the broken road open.
+  - **The handoff, at the lot (cl3-atlas-crossroads):** goodbyes, the boy gets into Dad's car, and as
+    it pulls away, through the back window, Mom's smile drops and the man puts his arm around her.
+    Nobody says anything. The boy keeps it to himself.
+- **The drive (`join_story(source,3)` in scripts/world.gd):** Codex's ten Causeway workshop rooms hang
+  below their own road east of the lot, entered the same way as Dad's story. Each room has one line
+  as Felix drops in and one at its finish: Dad's small talk, the boy's short answers, and the three
+  clues re-read in Phantom's notebook ("...it was her. calling him."). The finish is a streetlight's
+  pool and headlights carry him on.
+- **Sunday night:** back at the lot, the boy gets out of Dad's car and hands the big man his bag.
+  "hey." / "...hey, bud. got it." Felix takes his mask off.
+- **Cut:** the Defector side quest and its rooms, the Pilgrims' Landing hall, and the passage to other
+  worlds. **Secret:** Phantom's ID card at the top of the Glass Ladder.
+- **Look (scripts/phantom_view.gd):** placeholder figures drawn in code over Codex's Causeway tiles
+  (the man, Mom, the boy, Dad's car, the hood and mask), Friday gold to sunset, the drive at night
+  under passing streetlights.
+- **Checks:** `--chapter 3 --tour --report` plays the whole Causeway to the lot and into
+  story-walk-0; `--chapter 3 --reference workshop-borrowed-bridge --chain --report` plays the drive
+  to Sunday night (`phase=end`). `tools/phantom-shots.sh <dir>` saves 13 shots.
 
 ## Developer flags (after `--`)
 
