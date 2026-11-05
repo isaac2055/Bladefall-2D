@@ -347,7 +347,7 @@ func boy_asleep(at):
 
 # ---------------------------------------------------------------- Felix
 func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
- var p=sim.p
+ var p=body.pose(self)
  var g=story.gifts if story!=null else {"legs":true,"cape":true,"arms":true,"face":true,"sword":true,"helmet":true}
  var center=body.draw(self,g)
  if g.get("helmet",false): helmet(center,p.facing)

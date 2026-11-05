@@ -181,9 +181,6 @@ func tick(world,sim,delta):
  if room==BRACE and not done.has("counter"):
   done.counter=true
   gifts.counter=true
-  pulse_request=1.0
-  radio("if something swings at you, F. spies dodge and hit back.",3.4)
-  show_hint("F   counter",5.0)
  if room==BRUTE and not done.has("brute"):
   done.brute=true
   man.lead=false
@@ -317,6 +314,7 @@ func handoff(world):
   [1400,func():
     car.leaving=false
     car.visible=false
+    in_car=false
     in_drive=true
     cut="story-walk-0"]])
 

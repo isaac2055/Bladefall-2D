@@ -267,7 +267,7 @@ func id_card(at): sprite("id-card",at)
 # ---------------------------------------------------------------- Felix
 func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
  if story!=null and story.in_car: return
- var p=sim.p
+ var p=body.pose(self)
  var g=story.gifts if story!=null else {"legs":true,"cape":true,"arms":true,"face":true,"mask":true,"dagger":true}
  var center=body.draw(self,g)
  if g.get("mask",false): mask(center,p.facing)
