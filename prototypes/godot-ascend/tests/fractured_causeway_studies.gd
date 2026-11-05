@@ -1,5 +1,5 @@
 extends SceneTree
-## The first three Fractured Causeway studies: tear properties as puzzles.
+## The Fractured Causeway studies (first six): tear properties, a timed mouth and the brute as a key.
 ## Physical witnesses, counterfactuals and nearby timings; no input quotas.
 const Core=preload("res://scripts/core.gd")
 const L=preload("res://scripts/room_loader.gd")
@@ -21,7 +21,7 @@ func play(d,id,tape,mode=""):
  if mode=="two_way":
   for e in c.ents:
    if e.type=="zipline": e.oneWay=false
- var q={"finish":false,"deaths":0,"rides":0,"exits":[],"exited":false}
+ var q={"finish":false,"deaths":0,"rides":0,"exits":[],"exited":false,"brute_dead":false,"breach":false}
  for part in tape:
   for i in range(int(part[0])):
    c.step(R.decode(part[1]))
@@ -29,6 +29,9 @@ func play(d,id,tape,mode=""):
    q.exited=q.exited or c.exited
    if "zip-in" in c.events: q.rides+=1
    if "zip-out" in c.events: q.exits.append([c.p.vx,c.p.vy,c.p.dashes])
+   if c.combat.has("enemies"):
+    q.brute_dead=c.combat.enemies.any(func(e):return e.get("dead",false))
+    q.breach=q.breach or "breach" in c.events
    if c.deaths>0:
     q.deaths=c.deaths
     return q
@@ -36,7 +39,7 @@ func play(d,id,tape,mode=""):
 func clears(q): return q.finish and q.deaths==0
 func _initialize():
  var d=JSON.parse_string(FileAccess.get_file_as_string("res://data/world23.json"))
- var ids=["cl23-puzzle-line-away","cl23-puzzle-line-keeps-speed","cl23-puzzle-line-runs-home"]
+ var ids=["cl23-puzzle-line-away","cl23-puzzle-line-keeps-speed","cl23-puzzle-line-runs-home","cl23-puzzle-sill-clock","cl23-puzzle-line-downhill","cl23-puzzle-keep-weight-off"]
  for id in ids:
   var r=room(d,id)
   check(r!=null and r.puzzleStudy and r.lock==["parry","portal"] and r.dashes==1,"study exists with parry and portal locked: "+id)
@@ -44,7 +47,7 @@ func _initialize():
   var ref=r.puzzleRoutes[0].tape
   var q=play(d,id,ref)
   check(clears(q) and q.exited,"deathless reference reaches the goal and leaves by the exit: "+id)
-  check(not play(d,id,ref,"no_lines").finish,"the reference needs its tear: "+id)
+  if not r.lines.is_empty(): check(not play(d,id,ref,"no_lines").finish,"the reference needs its tear: "+id)
  # 1 · The Line That Carries You Away from the Exit: the tear's refill is the second dash.
  var a="cl23-puzzle-line-away"
  var ref1=room(d,a).puzzleRoutes[0].tape
@@ -89,4 +92,41 @@ func _initialize():
   var t=ref3.slice(0,18)+[[1,"lx"],[6,"l"],[n,""],[1,"ux"],[8,"u"],[24,"ur"],[300,"r"]]
   if clears(play(d,c,t)):near3.append(n)
  check(near3.size()>=3,"nearby dash timings after the ride: "+str(near3))
+
+ # 4 · The Sill That Starts the Clock: the sill's shake decides when you pass the timed mouth.
+ var e4="cl23-puzzle-sill-clock"
+ var hits=[]
+ for w in range(0,96,6):
+  if clears(play(d,e4,[[w,""],[64,"r"],[30,""],[1,"rx"],[6,"r"],[200,"r"]])):hits.append(w)
+ check(hits.size()>=3 and hits.size()<=8,"only some starting moments in the 96-frame cycle pass the open mouth: "+str(hits))
+ check(not play(d,e4,[[40,"r"],[1,"rj"],[16,"rj"],[1,"rx"],[100,"r"]]).finish,"jumping the shaft reaches nothing: its wall is whole but for the slit")
+ # 5 · The Line You Must Ride Downhill: the climbing line keeps no speed, the falling one does.
+ var e5="cl23-puzzle-line-downhill"
+ var q5=play(d,e5,[[30,"r"],[1,"rx"],[6,"r"],[200,"r"]])
+ check(q5.rides==1 and q5.exits[0][0]>150 and q5.exits[0][1]>0,"the downhill line throws forward with its speed")
+ check(not play(d,e5,[[30,"r"],[1,"rx"],[6,"r"],[200,"r"]]).finish,"the throw alone falls short: the returned dash is part of it")
+ var uphill=0
+ for k in [8,10,12]:
+  for dd in [8,16,24,30,36,44,52,60]:
+   for aim in ["rx","drx","urx"]:
+    for steer in ["r","","l"]:
+     var t=[[24,"r"],[8,""],[1,"j"],[k,"j"],[1,"rx"],[6,"r"],[dd,steer],[1,aim],[8,aim.substr(0,aim.length()-1)],[200,"r"]]
+     if play(d,e5,t).finish:uphill+=1
+ check(uphill==0,"216 rides up the climbing line, each with a dash after, all fall short")
+ var near5=[]
+ for k in [20,22,24]:
+  if clears(play(d,e5,[[30,"r"],[1,"rx"],[6,"r"],[k,"r"],[1,"rx"],[8,"r"],[200,"r"]])):near5.append(k)
+ check(near5.size()==3,"nearby dash timings after the throw: "+str(near5))
+ # 6 · The Weight You Keep Off the Hound: its charge breaks the door; the weight kills the key.
+ var e6="cl23-puzzle-keep-weight-off"
+ var ref6=room(d,e6).puzzleRoutes[0].tape
+ var q6=play(d,e6,ref6)
+ check(q6.breach and not q6.brute_dead,"the reference opens the door with the brute's charge and leaves it alive")
+ var trap=play(d,e6,[[64,"r"],[20,""],[1,"j"],[12,"j"],[1,"dx"],[8,"d"],[60,""],[100,"r"],[100,""],[200,"r"]])
+ check(trap.brute_dead and not trap.breach and not trap.finish,"dropping the weight on the brute leaves the door shut for good")
+ check(not play(d,e6,ref6.slice(0,4)+[[200,"r"]]).finish,"standing in the charge without jumping fails")
+ var near6=[]
+ for j in [70,72,74,76]:
+  if clears(play(d,e6,ref6.slice(0,4)+[[j,""],[1,"j"],[14,"j"],[30,""],[120,"r"]])):near6.append(j)
+ check(near6.size()>=3,"nearby jump timings over the charge and its wave: "+str(near6))
  quit(1 if failed else 0)
