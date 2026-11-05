@@ -69,3 +69,32 @@ Camera: `puzzleCameraAnchorY` 40 (room 4, so the shaft and mouth show from the s
 - The tour was re-recorded: 10,994 frames, 26 of 26 sections, 0 deaths. Captures of all three rooms were checked by eye.
 
 Room 6's jump window is about 7 frames, after a 36-frame tell. That is tighter than the "breather" the report planned; widen it if it plays tense.
+
+# Studies seven to nine
+
+2026-11-05, same branch. These complete the nine. The report's room 7 ("The Way Home You Ride Once": lift out, `once` tear home, lift throw out) and room 8 (portals) were not built:
+
+- **The report's room 7.** The single-use line's near mouth cannot be both reachable from the start (to tempt you) and the place that lifts you out on the way home. Tear entry needs a dash that does not oppose the line, and the upward pop needs a slope steeper than 0.25. Death also resets a spent line, so "single-use" never bites.
+- **The report's room 8** needs portals, which stay locked.
+
+These three are built from parts already proven in this set.
+
+| Room | Idea | Built from |
+| --- | --- | --- |
+| The Line That Opens on the Beat | two timed lines (period 120; windows of 40 and 30 frames, offset 54) with a cracked perch between; leave late or wait on the perch | timed mouth (4), set-down (2), cracked sill (3) |
+| The Line Behind the Brittle Wall | a one-way line starts in an alcove behind a brittle wall. A reading ledge beside it keeps you above the brute's charge and its waves. Wait until the brute charges away again, then ride up and dash out | brute key (6), one-way (3), refill pop (1) |
+| The Lift That Keeps the Beat | the road's lift throw carries you past a timed mouth; when you step on decides whether it is open; the line brings you back up into the shaft with your dash | lift throw (road), timed mouth (4), refill pop (1) |
+
+The reading ledge in room 8 replaced a jump over the charge. That jump only worked in a 5-frame window, which made it a reflex test rather than a puzzle. A spiked wall over the door stops anyone standing on the door top.
+
+**Placement:**
+- Rooms at (678,−198), (744,−201) and (792,−221); the crossroads is now at (848,−233).
+- Room 9's reference walk was lengthened: its first recording ran out 6 px short of the seam.
+
+**Verification:**
+- `tests/fractured_causeway_studies.gd`: 68 of 68.
+  - Room 7: dashing on landing after an early start fails; waiting for the second beat clears; the perch can't be reached without the first line.
+  - Room 8: the brute breaks the alcove and stays alive; stepping off the ledge early fails; the corridor can't be reached from the walkway or the ledge; every long wait on the ledge (160–300 frames) works.
+  - Room 9: 4 of 10 step-on moments work; the throw plus a dash without the line fails; 3 of 3 nearby in-flight dash timings work.
+- `fractured`: 125 of 125. `fractured_journey`, `world_checks`, `causeway`, `world3_journey`, `world3_secret`, `refinements`, `revision`, `fractured_next` and `fractured_nine` all pass.
+- The tour was re-recorded: 12,323 frames, 29 of 29 sections, 0 deaths. Captures of all three rooms were checked by eye.

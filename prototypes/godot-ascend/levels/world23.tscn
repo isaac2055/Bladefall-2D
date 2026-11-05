@@ -1,4 +1,4 @@
-[gd_scene load_steps=375 format=4]
+[gd_scene load_steps=402 format=4]
 
 [ext_resource type="Script" path="res://authoring/world.gd" id="1_yurgf"]
 [ext_resource type="Script" path="res://authoring/room.gd" id="2_incbt"]
@@ -2310,6 +2310,168 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_cno0p"]
 image = SubResource("Image_cw0e6")
 
+[sub_resource type="Image" id="Image_j4lae"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_omu8v"]
+image = SubResource("Image_j4lae")
+
+[sub_resource type="Image" id="Image_3n8up"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_thb6l"]
+image = SubResource("Image_3n8up")
+
+[sub_resource type="Image" id="Image_17iwq"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ie5cb"]
+image = SubResource("Image_17iwq")
+
+[sub_resource type="Curve2D" id="Curve2D_iss13"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 160, 0)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_d2wdy"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_e04o3"]
+image = SubResource("Image_d2wdy")
+
+[sub_resource type="Curve2D" id="Curve2D_0xg0k"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 152, 0)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_8sdve"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_f17cj"]
+image = SubResource("Image_8sdve")
+
+[sub_resource type="Image" id="Image_4uxit"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_2ubrh"]
+image = SubResource("Image_4uxit")
+
+[sub_resource type="Curve2D" id="Curve2D_378ey"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64, -136)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_mp0iy"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_5bnwl"]
+image = SubResource("Image_mp0iy")
+
+[sub_resource type="Image" id="Image_fa8s1"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_l45u3"]
+image = SubResource("Image_fa8s1")
+
+[sub_resource type="Image" id="Image_bsofh"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_76e2m"]
+image = SubResource("Image_bsofh")
+
+[sub_resource type="Image" id="Image_nb673"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_qw6w6"]
+image = SubResource("Image_nb673")
+
+[sub_resource type="Curve2D" id="Curve2D_ofy38"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 0)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_javv1"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_af5gp"]
+image = SubResource("Image_javv1")
+
+[sub_resource type="Curve2D" id="Curve2D_6ewu2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -120, -96)
+}
+point_count = 2
+
 [node name="Ascend_23" type="Node2D"]
 script = ExtResource("1_yurgf")
 world_number = 23
@@ -2495,7 +2657,7 @@ world_settings = {
 "title": "The Forty-First Pace"
 }],
 "requiredBankRooms": ["cl23-bank-b46", "cl23-bank-f23", "cl23-bank-f69"],
-"requiredMainRooms": ["cl23-fc23-camp", "cl23-fc23-yard", "cl23-fc23-relay", "cl23-fc23-silas", "cl23-bank-b46", "cl23-bank-f23", "cl23-fc23-counterpoise", "cl23-fc23-chainwalk", "cl23-fc23-gantry", "cl23-fc23-standard", "cl23-fc23-west", "cl23-fc23-east", "cl23-bank-f69", "cl23-puzzle-line-away", "cl23-puzzle-line-keeps-speed", "cl23-puzzle-line-runs-home", "cl23-puzzle-sill-clock", "cl23-puzzle-line-downhill", "cl23-puzzle-keep-weight-off"],
+"requiredMainRooms": ["cl23-fc23-camp", "cl23-fc23-yard", "cl23-fc23-relay", "cl23-fc23-silas", "cl23-bank-b46", "cl23-bank-f23", "cl23-fc23-counterpoise", "cl23-fc23-chainwalk", "cl23-fc23-gantry", "cl23-fc23-standard", "cl23-fc23-west", "cl23-fc23-east", "cl23-bank-f69", "cl23-puzzle-line-away", "cl23-puzzle-line-keeps-speed", "cl23-puzzle-line-runs-home", "cl23-puzzle-sill-clock", "cl23-puzzle-line-downhill", "cl23-puzzle-keep-weight-off", "cl23-puzzle-line-on-beat", "cl23-puzzle-line-behind-wall", "cl23-puzzle-lift-on-beat"],
 "retiredRoomDetails": [{
 "dialogueMoved": [],
 "evidence": "A descending solid staircase with no hazard glyph, enemy or device; the entire saved route is [200, left]. The hint explicitly calls it a breath before the courts. This is the clearest Fractured low-complexity slot, but keep some safe boss preparation rather than filling every breather.",
@@ -2795,14 +2957,38 @@ world_settings = {
 "x": 638.0,
 "y": -206.0
 }, {
+"fire": {
+"c": 3.0,
+"r": 9.0
+},
+"room": "cl23-puzzle-line-on-beat",
+"x": 678.0,
+"y": -198.0
+}, {
+"fire": {
+"c": 3.0,
+"r": 14.0
+},
+"room": "cl23-puzzle-line-behind-wall",
+"x": 744.0,
+"y": -201.0
+}, {
+"fire": {
+"c": 3.0,
+"r": 24.0
+},
+"room": "cl23-puzzle-lift-on-beat",
+"x": 792.0,
+"y": -221.0
+}, {
 "atlasJunction": true,
 "fire": {
 "c": 44.0,
 "r": 21.0
 },
 "room": "cl23-atlas-crossroads",
-"x": 678.0,
-"y": -206.0
+"x": 848.0,
+"y": -233.0
 }],
 "tapes": {
 "cl23-bank-b46": [[17.0, "r"], [15.0, "rj"], [1.0, "r"], [8.0, "rj"], [1.0, "rjds"], [16.0, "rj"], [80.0, "r"]],
@@ -2841,9 +3027,12 @@ world_settings = {
 "cl23-pass-28#through": [[100.0, ""], [10.0, "u"]],
 "cl23-pass-29#through": [[24.0, "rgu"]],
 "cl23-puzzle-keep-weight-off": [[46.0, "r"], [1.0, "rj"], [14.0, "rj"], [110.0, "r"], [72.0, ""], [1.0, "j"], [14.0, "j"], [30.0, ""], [120.0, "r"]],
+"cl23-puzzle-lift-on-beat": [[60.0, ""], [26.0, "r"], [1.0, ""], [20.0, ""], [1.0, "rj"], [20.0, "rj"], [1.0, "ux"], [8.0, "u"], [24.0, ""], [1.0, "ux"], [8.0, "u"], [24.0, "ur"], [320.0, "r"]],
 "cl23-puzzle-line-away": [[40.0, "r"], [1.0, "rj"], [16.0, "rj"], [1.0, "ux"], [16.0, ""], [1.0, "ux"], [8.0, "u"], [24.0, "ur"], [240.0, "r"]],
+"cl23-puzzle-line-behind-wall": [[168.0, "r"], [4.0, "r"], [200.0, ""], [1.0, "l"], [30.0, ""], [44.0, "r"], [2.0, ""], [1.0, "ux"], [8.0, "u"], [28.0, ""], [1.0, "ux"], [8.0, "u"], [30.0, "ur"], [120.0, "r"]],
 "cl23-puzzle-line-downhill": [[30.0, "r"], [1.0, "rx"], [6.0, "r"], [22.0, "r"], [1.0, "rx"], [8.0, "r"], [200.0, "r"]],
 "cl23-puzzle-line-keeps-speed": [[10.0, ""], [1.0, "rx"], [60.0, ""], [200.0, "r"]],
+"cl23-puzzle-line-on-beat": [[24.0, "r"], [8.0, ""], [1.0, "rx"], [6.0, "r"], [22.0, ""], [6.0, ""], [1.0, "rx"], [6.0, "r"], [160.0, "r"]],
 "cl23-puzzle-line-runs-home": [[30.0, "r"], [1.0, "rj"], [14.0, "rj"], [20.0, "r"], [10.0, "r"], [1.0, "rj"], [14.0, "rj"], [20.0, "r"], [8.0, "r"], [1.0, "rj"], [10.0, "rj"], [1.0, "rx"], [22.0, "r"], [4.0, "r"], [1.0, "rj"], [14.0, "rj"], [20.0, "r"], [12.0, "r"], [1.0, "lx"], [6.0, "l"], [49.0, ""], [1.0, "ux"], [8.0, "u"], [24.0, "ur"], [300.0, "r"]],
 "cl23-puzzle-sill-clock": [[12.0, ""], [64.0, "r"], [30.0, ""], [1.0, "rx"], [6.0, "r"], [200.0, "r"]],
 "cl23-secret-p117": [[30.0, "r"], [10.0, "rj"], [5.0, "rux"], [28.0, "r"], [1.0, "us"], [14.0, "r"], [14.0, "rj"], [1.0, "us"], [28.0, "r"], [5.0, "rx"], [14.0, "r"], [5.0, "rux"], [14.0, "rj"]],
@@ -3086,7 +3275,7 @@ original_palette = {
 "bunnies": "ffffffff",
 "flowers": "dcb092ff"
 }
-source_fingerprint = "731cc28520aac5dbbd9d8c832e428797c404244835dff97a1e17790f1a0845d9"
+source_fingerprint = "8be3bcb06c0e9a1d591eef2eccb7c65512b81c6d7053f2ee51915802c1e9e9df"
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -7501,7 +7690,7 @@ position = Vector2(4, 4)
 texture = SubResource("ImageTexture_s5mdt")
 
 [node name="cl23-atlas-crossroads" type="Node2D" parent="Rooms"]
-position = Vector2(5424, -1648)
+position = Vector2(6784, -1864)
 script = ExtResource("2_incbt")
 room_id = "cl23-atlas-crossroads"
 room_title = "The Last Count"
@@ -9097,3 +9286,394 @@ modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 scale = Vector2(1.25, 1.25)
 texture = SubResource("ImageTexture_cno0p")
+
+[node name="cl23-puzzle-line-on-beat" type="Node2D" parent="Rooms"]
+position = Vector2(5424, -1584)
+script = ExtResource("2_incbt")
+room_id = "cl23-puzzle-line-on-beat"
+room_title = "The Line That Opens on the Beat"
+map_width = 66
+map_height = 24
+settings = {
+"aim8": true,
+"cols": 66.0,
+"dashes": 1.0,
+"exit": "right",
+"exitSpan": [8.0, 12.0],
+"hint": "Which line are you really waiting for?",
+"id": "cl23-puzzle-line-on-beat",
+"lines": [],
+"lock": ["parry", "portal"],
+"name": "The Line That Opens on the Beat",
+"palette": "fractured",
+"puzzleGoal": [432.0, 96.0, 64.0, 4.0],
+"puzzleRoutes": [{
+"name": "Reference",
+"tape": [[24.0, "r"], [8.0, ""], [1.0, "rx"], [6.0, "r"], [22.0, ""], [6.0, ""], [1.0, "rx"], [6.0, "r"], [160.0, "r"]]
+}],
+"puzzleStudy": true,
+"question": "Both lines blink, and the perch between them is cracked. When should you leave?",
+"rbr": 23.0,
+"rows": 24.0
+}
+original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "decor", "people", "zips", "lines", "puzzleGoal", "question", "hint", "map", "puzzleRoutes", "exitSpan"]
+array_fields = [["lines"]]
+original_spawn = Vector2(24, 72)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-puzzle-line-on-beat"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA5AAAAAAAAAAAAAAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAABAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAAEAAAAAAAAAAABBAAEAAAAAAAAAAAAAAAIAAAAAAAAAAABBAAIAAAAAAAAAAAAAAAMAAAAAAAAAAABBAAMAAAAAAAAAAAAAAAQAAAAAAAAAAABBAAQAAAAAAAAAAAAAAAUAAAAAAAAAAABBAAUAAAAAAAAAAABBAAYAAAAAAAAAAABBAAcAAAAAAAAAAAAAAAoAAAAAAAAAAAABAAoAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAyAAwAAAAAAAAAAAAzAAwAAAAAAAAAAAA0AAwAAAAAAAAAAAA1AAwAAAAAAAAAAAA2AAwAAAAAAAAAAAA3AAwAAAAAAAAAAAA4AAwAAAAAAAAAAAA5AAwAAAAAAAAAAAA6AAwAAAAAAAAAAAA7AAwAAAAAAAAAAAA8AAwAAAAAAAAAAAA9AAwAAAAAAAAAAAA+AAwAAAAAAAAAAAA/AAwAAAAAAAAAAABAAAwAAAAAAAAAAABBAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAyAA0AAAAAAAAAAAAzAA0AAAAAAAAAAAA0AA0AAAAAAAAAAAA1AA0AAAAAAAAAAAA2AA0AAAAAAAAAAAA3AA0AAAAAAAAAAAA4AA0AAAAAAAAAAAA5AA0AAAAAAAAAAAA6AA0AAAAAAAAAAAA7AA0AAAAAAAAAAAA8AA0AAAAAAAAAAAA9AA0AAAAAAAAAAAA+AA0AAAAAAAAAAAA/AA0AAAAAAAAAAABAAA0AAAAAAAAAAABBAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAyAA4AAAAAAAAAAAAzAA4AAAAAAAAAAAA0AA4AAAAAAAAAAAA1AA4AAAAAAAAAAAA2AA4AAAAAAAAAAAA3AA4AAAAAAAAAAAA4AA4AAAAAAAAAAAA5AA4AAAAAAAAAAAA6AA4AAAAAAAAAAAA7AA4AAAAAAAAAAAA8AA4AAAAAAAAAAAA9AA4AAAAAAAAAAAA+AA4AAAAAAAAAAAA/AA4AAAAAAAAAAABAAA4AAAAAAAAAAABBAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAyAA8AAAAAAAAAAAAzAA8AAAAAAAAAAAA0AA8AAAAAAAAAAAA1AA8AAAAAAAAAAAA2AA8AAAAAAAAAAAA3AA8AAAAAAAAAAAA4AA8AAAAAAAAAAAA5AA8AAAAAAAAAAAA6AA8AAAAAAAAAAAA7AA8AAAAAAAAAAAA8AA8AAAAAAAAAAAA9AA8AAAAAAAAAAAA+AA8AAAAAAAAAAAA/AA8AAAAAAAAAAABAAA8AAAAAAAAAAABBAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAyABAAAAAAAAAAAAAzABAAAAAAAAAAAAA0ABAAAAAAAAAAAAA1ABAAAAAAAAAAAAA2ABAAAAAAAAAAAAA3ABAAAAAAAAAAAAA4ABAAAAAAAAAAAAA5ABAAAAAAAAAAAAA6ABAAAAAAAAAAAAA7ABAAAAAAAAAAAAA8ABAAAAAAAAAAAAA9ABAAAAAAAAAAAAA+ABAAAAAAAAAAAAA/ABAAAAAAAAAAAABAABAAAAAAAAAAAABBABAAAAAAAAAAAAAAABEAAAAAAAAAAAAyABEAAAAAAAAAAAAzABEAAAAAAAAAAAA0ABEAAAAAAAAAAAA1ABEAAAAAAAAAAAA2ABEAAAAAAAAAAAA3ABEAAAAAAAAAAAA4ABEAAAAAAAAAAAA5ABEAAAAAAAAAAAA6ABEAAAAAAAAAAAA7ABEAAAAAAAAAAAA8ABEAAAAAAAAAAAA9ABEAAAAAAAAAAAA+ABEAAAAAAAAAAAA/ABEAAAAAAAAAAABAABEAAAAAAAAAAABBABEAAAAAAAAAAAAAABIAAAAAAAAAAAAyABIAAAAAAAAAAAAzABIAAAAAAAAAAAA0ABIAAAAAAAAAAAA1ABIAAAAAAAAAAAA2ABIAAAAAAAAAAAA3ABIAAAAAAAAAAAA4ABIAAAAAAAAAAAA5ABIAAAAAAAAAAAA6ABIAAAAAAAAAAAA7ABIAAAAAAAAAAAA8ABIAAAAAAAAAAAA9ABIAAAAAAAAAAAA+ABIAAAAAAAAAAAA/ABIAAAAAAAAAAABAABIAAAAAAAAAAABBABIAAAAAAAAAAAAAABMAAAAAAAAAAAAyABMAAAAAAAAAAAAzABMAAAAAAAAAAAA0ABMAAAAAAAAAAAA1ABMAAAAAAAAAAAA2ABMAAAAAAAAAAAA3ABMAAAAAAAAAAAA4ABMAAAAAAAAAAAA5ABMAAAAAAAAAAAA6ABMAAAAAAAAAAAA7ABMAAAAAAAAAAAA8ABMAAAAAAAAAAAA9ABMAAAAAAAAAAAA+ABMAAAAAAAAAAAA/ABMAAAAAAAAAAABAABMAAAAAAAAAAABBABMAAAAAAAAAAAAAABQAAAAAAAAAAAAyABQAAAAAAAAAAAAzABQAAAAAAAAAAAA0ABQAAAAAAAAAAAA1ABQAAAAAAAAAAAA2ABQAAAAAAAAAAAA3ABQAAAAAAAAAAAA4ABQAAAAAAAAAAAA5ABQAAAAAAAAAAAA6ABQAAAAAAAAAAAA7ABQAAAAAAAAAAAA8ABQAAAAAAAAAAAA9ABQAAAAAAAAAAAA+ABQAAAAAAAAAAAA/ABQAAAAAAAAAAABAABQAAAAAAAAAAABBABQAAAAAAAAAAAAAABUAAAAAAAAAAAAyABUAAAAAAAAAAAAzABUAAAAAAAAAAAA0ABUAAAAAAAAAAAA1ABUAAAAAAAAAAAA2ABUAAAAAAAAAAAA3ABUAAAAAAAAAAAA4ABUAAAAAAAAAAAA5ABUAAAAAAAAAAAA6ABUAAAAAAAAAAAA7ABUAAAAAAAAAAAA8ABUAAAAAAAAAAAA9ABUAAAAAAAAAAAA+ABUAAAAAAAAAAAA/ABUAAAAAAAAAAABAABUAAAAAAAAAAABBABUAAAAAAAAAAAAAABYAAAAAAAAAAAAyABYAAAAAAAAAAAAzABYAAAAAAAAAAAA0ABYAAAAAAAAAAAA1ABYAAAAAAAAAAAA2ABYAAAAAAAAAAAA3ABYAAAAAAAAAAAA4ABYAAAAAAAAAAAA5ABYAAAAAAAAAAAA6ABYAAAAAAAAAAAA7ABYAAAAAAAAAAAA8ABYAAAAAAAAAAAA9ABYAAAAAAAAAAAA+ABYAAAAAAAAAAAA/ABYAAAAAAAAAAABAABYAAAAAAAAAAABBABYAAAAAAAAAAAAAABcAAAAAAAAAAAABABcAAAADAAAAAAACABcAAAADAAAAAAADABcAAAADAAAAAAAEABcAAAADAAAAAAAFABcAAAADAAAAAAAGABcAAAADAAAAAAAHABcAAAADAAAAAAAIABcAAAADAAAAAAAJABcAAAADAAAAAAAKABcAAAADAAAAAAALABcAAAADAAAAAAAMABcAAAADAAAAAAANABcAAAADAAAAAAAOABcAAAADAAAAAAAPABcAAAADAAAAAAAQABcAAAADAAAAAAARABcAAAADAAAAAAASABcAAAADAAAAAAATABcAAAADAAAAAAAUABcAAAADAAAAAAAVABcAAAADAAAAAAAWABcAAAADAAAAAAAXABcAAAADAAAAAAAYABcAAAADAAAAAAAZABcAAAADAAAAAAAaABcAAAADAAAAAAAbABcAAAADAAAAAAAcABcAAAADAAAAAAAdABcAAAADAAAAAAAeABcAAAADAAAAAAAfABcAAAADAAAAAAAgABcAAAADAAAAAAAhABcAAAADAAAAAAAiABcAAAADAAAAAAAjABcAAAADAAAAAAAkABcAAAADAAAAAAAlABcAAAADAAAAAAAmABcAAAADAAAAAAAnABcAAAADAAAAAAAoABcAAAADAAAAAAApABcAAAADAAAAAAAqABcAAAADAAAAAAArABcAAAADAAAAAAAsABcAAAADAAAAAAAtABcAAAADAAAAAAAuABcAAAADAAAAAAAvABcAAAADAAAAAAAwABcAAAADAAAAAAAxABcAAAADAAAAAAAyABcAAAAAAAAAAAAzABcAAAAAAAAAAAA0ABcAAAAAAAAAAAA1ABcAAAAAAAAAAAA2ABcAAAAAAAAAAAA3ABcAAAAAAAAAAAA4ABcAAAAAAAAAAAA5ABcAAAAAAAAAAAA6ABcAAAAAAAAAAAA7ABcAAAAAAAAAAAA8ABcAAAAAAAAAAAA9ABcAAAAAAAAAAAA+ABcAAAAAAAAAAAA/ABcAAAAAAAAAAABAABcAAAAAAAAAAABBABcAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_sr5nf")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-puzzle-line-on-beat"]
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-puzzle-line-on-beat/Objects"]
+position = Vector2(24, 72)
+script = ExtResource("3_gwymu")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(24, 72)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-line-on-beat/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_omu8v")
+
+[node name="Fixture_~_26_10" type="Node2D" parent="Rooms/cl23-puzzle-line-on-beat/Objects"]
+position = Vector2(208, 80)
+script = ExtResource("3_gwymu")
+kind = "Fixture"
+glyph = "~"
+footprint = Vector2i(5, 1)
+original_position = Vector2(208, 80)
+preview_entity = {
+"h": 8,
+"id": 0,
+"ox": 208,
+"oy": 80,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "crumble",
+"vx": 0.0,
+"vy": 0.0,
+"w": 40,
+"x": 208,
+"y": 80
+}
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-line-on-beat/Objects/Fixture_~_26_10"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_thb6l")
+
+[node name="lines_0" type="Node2D" parent="Rooms/cl23-puzzle-line-on-beat/Objects"]
+position = Vector2(64, 72)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [8.0, 9.0],
+"b": [28.0, 9.0],
+"period": 120.0,
+"phase": 0.0,
+"setDown": true,
+"upT": 40.0
+}
+original_position = Vector2(64, 72)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-line-on-beat/Objects/lines_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_ie5cb")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-line-on-beat/Objects/lines_0"]
+curve = SubResource("Curve2D_iss13")
+
+[node name="lines_1" type="Node2D" parent="Rooms/cl23-puzzle-line-on-beat/Objects"]
+position = Vector2(232, 72)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [29.0, 9.0],
+"b": [48.0, 9.0],
+"period": 120.0,
+"phase": 54.0,
+"upT": 30.0
+}
+original_position = Vector2(232, 72)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-line-on-beat/Objects/lines_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_e04o3")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-line-on-beat/Objects/lines_1"]
+curve = SubResource("Curve2D_0xg0k")
+
+[node name="cl23-puzzle-line-behind-wall" type="Node2D" parent="Rooms"]
+position = Vector2(5952, -1608)
+script = ExtResource("2_incbt")
+room_id = "cl23-puzzle-line-behind-wall"
+room_title = "The Line Behind the Brittle Wall"
+map_width = 48
+map_height = 30
+settings = {
+"aim8": true,
+"cols": 48.0,
+"combat": {
+"doors": [],
+"enemies": [],
+"receivers": [],
+"waitForMove": true
+},
+"dashes": 1.0,
+"exit": "right",
+"exitSpan": [1.0, 5.0],
+"hint": "Where can you watch the charge without standing in it?",
+"id": "cl23-puzzle-line-behind-wall",
+"lines": [],
+"lock": ["parry", "portal"],
+"name": "The Line Behind the Brittle Wall",
+"palette": "fractured",
+"puzzleCameraAnchorY": 56.0,
+"puzzleGoal": [320.0, 40.0, 48.0, 4.0],
+"puzzleRoutes": [{
+"name": "Reference",
+"tape": [[168.0, "r"], [4.0, "r"], [200.0, ""], [1.0, "l"], [30.0, ""], [44.0, "r"], [2.0, ""], [1.0, "ux"], [8.0, "u"], [28.0, ""], [1.0, "ux"], [8.0, "u"], [30.0, "ur"], [120.0, "r"]]
+}],
+"puzzleStudy": true,
+"question": "The line starts behind a wall your blade cannot break. Where should you be while something else breaks it?",
+"rbr": 23.0,
+"rows": 30.0
+}
+original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "decor", "people", "zips", "lines", "puzzleGoal", "question", "hint", "map", "puzzleRoutes", "exitSpan", "combat", "puzzleCameraAnchorY"]
+array_fields = [["lines"], ["combat", "enemies"], ["combat", "doors"]]
+original_spawn = Vector2(24, 112)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-puzzle-line-behind-wall"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAmAAUAAAAAAAAAAAAnAAUAAAAAAAAAAAAoAAUAAAAAAAAAAAApAAUAAAAAAAAAAAAqAAUAAAAAAAAAAAArAAUAAAAAAAAAAAAsAAUAAAAAAAAAAAAtAAUAAAAAAAAAAAAuAAUAAAAAAAAAAAAvAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAlAAYAAAAFAAAAAAAmAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAvAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAlAAcAAAAFAAAAAAAmAAcAAAAAAAAAAAAnAAcAAAAAAAAAAAAvAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAlAAgAAAAFAAAAAAAmAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAAvAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAlAAkAAAAFAAAAAAAmAAkAAAAAAAAAAAAnAAkAAAAAAAAAAAAvAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAlAAoAAAAFAAAAAAAmAAoAAAAAAAAAAAAnAAoAAAAAAAAAAAAvAAoAAAAAAAAAAAAlAAsAAAAFAAAAAAAmAAsAAAAAAAAAAAAnAAsAAAAAAAAAAAAvAAsAAAAAAAAAAAAlAAwAAAAFAAAAAAAmAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAvAAwAAAAAAAAAAAAlAA0AAAAFAAAAAAAmAA0AAAAAAAAAAAAnAA0AAAAAAAAAAAAvAA0AAAAAAAAAAAAlAA4AAAAFAAAAAAAmAA4AAAAAAAAAAAAnAA4AAAAAAAAAAAAvAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAABAA8AAAAAAAAAAAACAA8AAAAAAAAAAAADAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAKAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAANAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAAPAA8AAAAAAAAAAAAQAA8AAAAAAAAAAAARAA8AAAAAAAAAAAASAA8AAAAAAAAAAAATAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAZAA8AAAAAAAAAAAAaAA8AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAdAA8AAAAAAAAAAAAeAA8AAAAAAAAAAAAfAA8AAAAAAAAAAAAgAA8AAAAAAAAAAAAhAA8AAAAAAAAAAAAlAA8AAAAFAAAAAAAmAA8AAAAAAAAAAAAnAA8AAAAAAAAAAAAvAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdABAAAAAAAAAAAAAeABAAAAAAAAAAAAAfABAAAAAAAAAAAAAgABAAAAAAAAAAAAAhABAAAAAAAAAAAAAlABAAAAAFAAAAAAAmABAAAAAAAAAAAAAnABAAAAAAAAAAAAAvABAAAAAAAAAAAAAAABEAAAAAAAAAAAAlABEAAAAFAAAAAAAmABEAAAAAAAAAAAAnABEAAAAAAAAAAAAvABEAAAAAAAAAAAAAABIAAAAAAAAAAAAmABIAAAAAAAAAAAAnABIAAAAAAAAAAAAvABIAAAAAAAAAAAAAABMAAAAAAAAAAAAmABMAAAAAAAAAAAAnABMAAAAAAAAAAAAvABMAAAAAAAAAAAAAABQAAAAAAAAAAAAmABQAAAAAAAAAAAAnABQAAAAAAAAAAAAvABQAAAAAAAAAAAAAABUAAAAAAAAAAAAoABUAAAAAAAAAAAApABUAAAAAAAAAAAAqABUAAAAAAAAAAAArABUAAAAAAAAAAAAsABUAAAAAAAAAAAAtABUAAAAAAAAAAAAuABUAAAAAAAAAAAAvABUAAAAAAAAAAAAAABYAAAAAAAAAAAAiABYAAAAAAAAAAAAjABYAAAAAAAAAAAAkABYAAAAAAAAAAAAvABYAAAAAAAAAAAAAABcAAAAAAAAAAAAvABcAAAAAAAAAAAAAABgAAAAAAAAAAAAvABgAAAAAAAAAAAAAABkAAAAAAAAAAAAvABkAAAAAAAAAAAAAABoAAAAAAAAAAAABABoAAAAAAAAAAAACABoAAAAAAAAAAAADABoAAAAAAAAAAAAEABoAAAAAAAAAAAAFABoAAAAAAAAAAAAGABoAAAAAAAAAAAAHABoAAAAAAAAAAAAIABoAAAAAAAAAAAAJABoAAAAAAAAAAAAKABoAAAAAAAAAAAALABoAAAAAAAAAAAAMABoAAAAAAAAAAAANABoAAAAAAAAAAAAOABoAAAAAAAAAAAAPABoAAAAAAAAAAAAQABoAAAAAAAAAAAARABoAAAAAAAAAAAASABoAAAAAAAAAAAATABoAAAAAAAAAAAAUABoAAAAAAAAAAAAVABoAAAAAAAAAAAAWABoAAAAAAAAAAAAXABoAAAAAAAAAAAAYABoAAAAAAAAAAAAZABoAAAAAAAAAAAAaABoAAAAAAAAAAAAbABoAAAAAAAAAAAAcABoAAAAAAAAAAAAdABoAAAAAAAAAAAAeABoAAAAAAAAAAAAfABoAAAAAAAAAAAAgABoAAAAAAAAAAAAhABoAAAAAAAAAAAAiABoAAAAAAAAAAAAjABoAAAAAAAAAAAAkABoAAAAAAAAAAAAlABoAAAAAAAAAAAAmABoAAAAAAAAAAAAnABoAAAAAAAAAAAAoABoAAAAAAAAAAAApABoAAAAAAAAAAAAqABoAAAAAAAAAAAArABoAAAAAAAAAAAAsABoAAAAAAAAAAAAtABoAAAAAAAAAAAAuABoAAAAAAAAAAAAvABoAAAAAAAAAAAAAABsAAAAAAAAAAAABABsAAAAAAAAAAAACABsAAAAAAAAAAAADABsAAAAAAAAAAAAEABsAAAAAAAAAAAAFABsAAAAAAAAAAAAGABsAAAAAAAAAAAAHABsAAAAAAAAAAAAIABsAAAAAAAAAAAAJABsAAAAAAAAAAAAKABsAAAAAAAAAAAALABsAAAAAAAAAAAAMABsAAAAAAAAAAAANABsAAAAAAAAAAAAOABsAAAAAAAAAAAAPABsAAAAAAAAAAAAQABsAAAAAAAAAAAARABsAAAAAAAAAAAASABsAAAAAAAAAAAATABsAAAAAAAAAAAAUABsAAAAAAAAAAAAVABsAAAAAAAAAAAAWABsAAAAAAAAAAAAXABsAAAAAAAAAAAAYABsAAAAAAAAAAAAZABsAAAAAAAAAAAAaABsAAAAAAAAAAAAbABsAAAAAAAAAAAAcABsAAAAAAAAAAAAdABsAAAAAAAAAAAAeABsAAAAAAAAAAAAfABsAAAAAAAAAAAAgABsAAAAAAAAAAAAhABsAAAAAAAAAAAAiABsAAAAAAAAAAAAjABsAAAAAAAAAAAAkABsAAAAAAAAAAAAlABsAAAAAAAAAAAAmABsAAAAAAAAAAAAnABsAAAAAAAAAAAAoABsAAAAAAAAAAAApABsAAAAAAAAAAAAqABsAAAAAAAAAAAArABsAAAAAAAAAAAAsABsAAAAAAAAAAAAtABsAAAAAAAAAAAAuABsAAAAAAAAAAAAvABsAAAAAAAAAAAAAABwAAAAAAAAAAAABABwAAAAAAAAAAAACABwAAAAAAAAAAAADABwAAAAAAAAAAAAEABwAAAAAAAAAAAAFABwAAAAAAAAAAAAGABwAAAAAAAAAAAAHABwAAAAAAAAAAAAIABwAAAAAAAAAAAAJABwAAAAAAAAAAAAKABwAAAAAAAAAAAALABwAAAAAAAAAAAAMABwAAAAAAAAAAAANABwAAAAAAAAAAAAOABwAAAAAAAAAAAAPABwAAAAAAAAAAAAQABwAAAAAAAAAAAARABwAAAAAAAAAAAASABwAAAAAAAAAAAATABwAAAAAAAAAAAAUABwAAAAAAAAAAAAVABwAAAAAAAAAAAAWABwAAAAAAAAAAAAXABwAAAAAAAAAAAAYABwAAAAAAAAAAAAZABwAAAAAAAAAAAAaABwAAAAAAAAAAAAbABwAAAAAAAAAAAAcABwAAAAAAAAAAAAdABwAAAAAAAAAAAAeABwAAAAAAAAAAAAfABwAAAAAAAAAAAAgABwAAAAAAAAAAAAhABwAAAAAAAAAAAAiABwAAAAAAAAAAAAjABwAAAAAAAAAAAAkABwAAAAAAAAAAAAlABwAAAAAAAAAAAAmABwAAAAAAAAAAAAnABwAAAAAAAAAAAAoABwAAAAAAAAAAAApABwAAAAAAAAAAAAqABwAAAAAAAAAAAArABwAAAAAAAAAAAAsABwAAAAAAAAAAAAtABwAAAAAAAAAAAAuABwAAAAAAAAAAAAvABwAAAAAAAAAAAAAAB0AAAAAAAAAAAABAB0AAAAAAAAAAAACAB0AAAAAAAAAAAADAB0AAAAAAAAAAAAEAB0AAAAAAAAAAAAFAB0AAAAAAAAAAAAGAB0AAAAAAAAAAAAHAB0AAAAAAAAAAAAIAB0AAAAAAAAAAAAJAB0AAAAAAAAAAAAKAB0AAAAAAAAAAAALAB0AAAAAAAAAAAAMAB0AAAAAAAAAAAANAB0AAAAAAAAAAAAOAB0AAAAAAAAAAAAPAB0AAAAAAAAAAAAQAB0AAAAAAAAAAAARAB0AAAAAAAAAAAASAB0AAAAAAAAAAAATAB0AAAAAAAAAAAAUAB0AAAAAAAAAAAAVAB0AAAAAAAAAAAAWAB0AAAAAAAAAAAAXAB0AAAAAAAAAAAAYAB0AAAAAAAAAAAAZAB0AAAAAAAAAAAAaAB0AAAAAAAAAAAAbAB0AAAAAAAAAAAAcAB0AAAAAAAAAAAAdAB0AAAAAAAAAAAAeAB0AAAAAAAAAAAAfAB0AAAAAAAAAAAAgAB0AAAAAAAAAAAAhAB0AAAAAAAAAAAAiAB0AAAAAAAAAAAAjAB0AAAAAAAAAAAAkAB0AAAAAAAAAAAAlAB0AAAAAAAAAAAAmAB0AAAAAAAAAAAAnAB0AAAAAAAAAAAAoAB0AAAAAAAAAAAApAB0AAAAAAAAAAAAqAB0AAAAAAAAAAAArAB0AAAAAAAAAAAAsAB0AAAAAAAAAAAAtAB0AAAAAAAAAAAAuAB0AAAAAAAAAAAAvAB0AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_sr5nf")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-puzzle-line-behind-wall"]
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects"]
+position = Vector2(24, 112)
+script = ExtResource("3_gwymu")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(24, 112)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_f17cj")
+
+[node name="lines_0" type="Node2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects"]
+position = Vector2(344, 192)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [43.0, 24.0],
+"b": [35.0, 7.0],
+"oneWay": true
+}
+original_position = Vector2(344, 192)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects/lines_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_2ubrh")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects/lines_0"]
+curve = SubResource("Curve2D_378ey")
+
+[node name="enemies_0" type="Node2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects"]
+position = Vector2(150, 192)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brute": true,
+"crush": 1.0,
+"face": -1.0,
+"kind": "hound",
+"stamp": "always",
+"x": 150.0,
+"y": 192.0
+}
+original_position = Vector2(150, 192)
+field_path = ["combat", "enemies"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects/enemies_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_5bnwl")
+
+[node name="doors_0" type="Node2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects"]
+position = Vector2(304, 168)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brittle": true,
+"h": 40.0,
+"w": 16.0,
+"x": 304.0,
+"y": 168.0
+}
+original_position = Vector2(304, 168)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects/doors_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_l45u3")
+
+[node name="cl23-puzzle-lift-on-beat" type="Node2D" parent="Rooms"]
+position = Vector2(6336, -1768)
+script = ExtResource("2_incbt")
+room_id = "cl23-puzzle-lift-on-beat"
+room_title = "The Lift That Keeps the Beat"
+map_width = 56
+map_height = 30
+settings = {
+"aim8": true,
+"cols": 56.0,
+"dashes": 1.0,
+"exit": "right",
+"exitSpan": [2.0, 6.0],
+"hint": "How long after you step on does the lift let you go?",
+"id": "cl23-puzzle-lift-on-beat",
+"lines": [],
+"lock": ["parry", "portal"],
+"name": "The Lift That Keeps the Beat",
+"palette": "fractured",
+"puzzleGoal": [304.0, 48.0, 72.0, 4.0],
+"puzzleRoutes": [{
+"name": "Reference",
+"tape": [[60.0, ""], [26.0, "r"], [1.0, ""], [20.0, ""], [1.0, "rj"], [20.0, "rj"], [1.0, "ux"], [8.0, "u"], [24.0, ""], [1.0, "ux"], [8.0, "u"], [24.0, "ur"], [320.0, "r"]]
+}],
+"puzzleStudy": true,
+"question": "The lift throws you past a mouth that blinks. When should you step on?",
+"rbr": 23.0,
+"rows": 30.0
+}
+original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "decor", "people", "zips", "lines", "puzzleGoal", "question", "hint", "map", "puzzleRoutes", "exitSpan"]
+array_fields = [["lines"]]
+original_spawn = Vector2(24, 192)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-puzzle-lift-on-beat"]
+tile_map_data = PackedByteArray("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AAABAA0AAAAAAAAAAAACAA0AAAAAAAAAAAADAA0AAAAAAAAAAAAEAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0AAAAAAAAAAAAIAA0AAAAAAAAAAAAJAA0AAAAAAAAAAAAKAA0AAAAAAAAAAAA2AA0AAAAFAAAAAAA3AA0AAAAAAAAAAAAAAA4AAAAAAAAAAAABAA4AAAAAAAAAAAACAA4AAAAAAAAAAAADAA4AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAA2AA4AAAAFAAAAAAA3AA4AAAAAAAAAAAAAAA8AAAAAAAAAAAA2AA8AAAAFAAAAAAA3AA8AAAAAAAAAAAAAABAAAAAAAAAAAAA2ABAAAAAFAAAAAAA3ABAAAAAAAAAAAAAAABEAAAAAAAAAAAA2ABEAAAAFAAAAAAA3ABEAAAAAAAAAAAAAABIAAAAAAAAAAAA2ABIAAAAFAAAAAAA3ABIAAAAAAAAAAAAAABMAAAAAAAAAAAA2ABMAAAAFAAAAAAA3ABMAAAAAAAAAAAAAABQAAAAAAAAAAAA2ABQAAAAFAAAAAAA3ABQAAAAAAAAAAAA2ABUAAAAFAAAAAAA3ABUAAAAAAAAAAAA2ABYAAAAFAAAAAAA3ABYAAAAAAAAAAAA2ABcAAAAFAAAAAAA3ABcAAAAAAAAAAAA2ABgAAAAFAAAAAAA3ABgAAAAAAAAAAAAAABkAAAAAAAAAAAABABkAAAAAAAAAAAACABkAAAAAAAAAAAADABkAAAAAAAAAAAAEABkAAAAAAAAAAAAFABkAAAAAAAAAAAAGABkAAAAAAAAAAAAHABkAAAAAAAAAAAA2ABkAAAAFAAAAAAA3ABkAAAAAAAAAAAAAABoAAAAAAAAAAAABABoAAAAAAAAAAAACABoAAAAAAAAAAAADABoAAAAAAAAAAAAEABoAAAAAAAAAAAAFABoAAAAAAAAAAAAGABoAAAAAAAAAAAAHABoAAAAAAAAAAAA2ABoAAAAFAAAAAAA3ABoAAAAAAAAAAAAAABsAAAAAAAAAAAABABsAAAAAAAAAAAACABsAAAAAAAAAAAADABsAAAAAAAAAAAAEABsAAAAAAAAAAAAFABsAAAAAAAAAAAAGABsAAAAAAAAAAAAHABsAAAAAAAAAAAA2ABsAAAAFAAAAAAA3ABsAAAAAAAAAAAAAABwAAAAAAAAAAAABABwAAAAAAAAAAAACABwAAAAAAAAAAAADABwAAAAAAAAAAAAEABwAAAAAAAAAAAAFABwAAAAAAAAAAAAGABwAAAAAAAAAAAAHABwAAAAAAAAAAAA2ABwAAAAFAAAAAAA3ABwAAAAAAAAAAAAAAB0AAAAAAAAAAAABAB0AAAAAAAAAAAACAB0AAAAAAAAAAAADAB0AAAAAAAAAAAAEAB0AAAAAAAAAAAAFAB0AAAAAAAAAAAAGAB0AAAAAAAAAAAAHAB0AAAAAAAAAAAAIAB0AAAADAAAAAAAJAB0AAAADAAAAAAAKAB0AAAADAAAAAAALAB0AAAADAAAAAAAMAB0AAAADAAAAAAANAB0AAAADAAAAAAAOAB0AAAADAAAAAAAPAB0AAAADAAAAAAAQAB0AAAADAAAAAAARAB0AAAADAAAAAAASAB0AAAADAAAAAAATAB0AAAADAAAAAAAUAB0AAAADAAAAAAAVAB0AAAADAAAAAAAWAB0AAAADAAAAAAAXAB0AAAADAAAAAAAYAB0AAAADAAAAAAAZAB0AAAADAAAAAAAaAB0AAAADAAAAAAAbAB0AAAADAAAAAAAcAB0AAAADAAAAAAAdAB0AAAADAAAAAAAeAB0AAAADAAAAAAAfAB0AAAADAAAAAAAgAB0AAAADAAAAAAAhAB0AAAADAAAAAAAiAB0AAAADAAAAAAAjAB0AAAADAAAAAAAkAB0AAAADAAAAAAAlAB0AAAADAAAAAAAmAB0AAAADAAAAAAAnAB0AAAADAAAAAAAoAB0AAAADAAAAAAApAB0AAAADAAAAAAAqAB0AAAADAAAAAAArAB0AAAADAAAAAAAsAB0AAAADAAAAAAAtAB0AAAADAAAAAAAuAB0AAAADAAAAAAAvAB0AAAADAAAAAAAwAB0AAAADAAAAAAAxAB0AAAADAAAAAAAyAB0AAAADAAAAAAAzAB0AAAADAAAAAAA0AB0AAAADAAAAAAA1AB0AAAADAAAAAAA2AB0AAAADAAAAAAA3AB0AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_sr5nf")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-puzzle-lift-on-beat"]
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-puzzle-lift-on-beat/Objects"]
+position = Vector2(24, 192)
+script = ExtResource("3_gwymu")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(24, 192)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-lift-on-beat/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_76e2m")
+
+[node name="Fixture_Z_8_25" type="Node2D" parent="Rooms/cl23-puzzle-lift-on-beat/Objects"]
+position = Vector2(64, 200)
+script = ExtResource("3_gwymu")
+kind = "Fixture"
+glyph = "Z"
+footprint = Vector2i(4, 1)
+original_position = Vector2(64, 200)
+preview_entity = {
+"h": 8,
+"id": 0,
+"ox": 64,
+"oy": 200,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"tx": 144.0,
+&"ty": 200.0,
+&"type": "zip",
+"vx": 0.0,
+"vy": 0.0,
+"w": 32,
+"x": 64,
+"y": 200
+}
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-lift-on-beat/Objects/Fixture_Z_8_25"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_qw6w6")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-lift-on-beat/Objects/Fixture_Z_8_25"]
+curve = SubResource("Curve2D_ofy38")
+
+[node name="lines_0" type="Node2D" parent="Rooms/cl23-puzzle-lift-on-beat/Objects"]
+position = Vector2(168, 160)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [21.0, 20.0],
+"b": [6.0, 8.0],
+"period": 120.0,
+"phase": 0.0,
+"upT": 36.0
+}
+original_position = Vector2(168, 160)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-lift-on-beat/Objects/lines_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_af5gp")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-lift-on-beat/Objects/lines_0"]
+curve = SubResource("Curve2D_6ewu2")

@@ -1,5 +1,5 @@
 extends SceneTree
-## The Fractured Causeway studies (first six): tear properties, a timed mouth and the brute as a key.
+## The nine Fractured Causeway studies: tear properties, timed mouths, the brute as a key and the lift.
 ## Physical witnesses, counterfactuals and nearby timings; no input quotas.
 const Core=preload("res://scripts/core.gd")
 const L=preload("res://scripts/room_loader.gd")
@@ -39,7 +39,7 @@ func play(d,id,tape,mode=""):
 func clears(q): return q.finish and q.deaths==0
 func _initialize():
  var d=JSON.parse_string(FileAccess.get_file_as_string("res://data/world23.json"))
- var ids=["cl23-puzzle-line-away","cl23-puzzle-line-keeps-speed","cl23-puzzle-line-runs-home","cl23-puzzle-sill-clock","cl23-puzzle-line-downhill","cl23-puzzle-keep-weight-off"]
+ var ids=["cl23-puzzle-line-away","cl23-puzzle-line-keeps-speed","cl23-puzzle-line-runs-home","cl23-puzzle-sill-clock","cl23-puzzle-line-downhill","cl23-puzzle-keep-weight-off","cl23-puzzle-line-on-beat","cl23-puzzle-line-behind-wall","cl23-puzzle-lift-on-beat"]
  for id in ids:
   var r=room(d,id)
   check(r!=null and r.puzzleStudy and r.lock==["parry","portal"] and r.dashes==1,"study exists with parry and portal locked: "+id)
@@ -129,4 +129,36 @@ func _initialize():
  for j in [70,72,74,76]:
   if clears(play(d,e6,ref6.slice(0,4)+[[j,""],[1,"j"],[14,"j"],[30,""],[120,"r"]])):near6.append(j)
  check(near6.size()>=3,"nearby jump timings over the charge and its wave: "+str(near6))
+ # 7 · The Line That Opens on the Beat: leave late in the first window, or wait on the cracked perch.
+ var e7="cl23-puzzle-line-on-beat"
+ var seen7={}
+ for w in [0,4,8]:
+  for wait in [0,12,24]:
+   var t=[[24,"r"],[8,""],[w,""],[1,"rx"],[6,"r"],[22,""],[wait,""],[1,"rx"],[6,"r"],[160,"r"]]
+   seen7[str([w,wait])]=clears(play(d,e7,t))
+ check(not seen7[str([0,0])] and seen7[str([0,12])],"leaving early and dashing on landing fails; waiting on the perch for the second beat clears")
+ check(not play(d,e7,[[30,"r"],[1,"rj"],[12,"rj"],[1,"rx"],[100,"r"]]).finish,"the cracked perch is out of reach without the first line")
+ # 8 · The Line Behind the Brittle Wall: the brute opens the alcove; the ledge keeps you out of its charge.
+ var e8="cl23-puzzle-line-behind-wall"
+ var ref8=room(d,e8).puzzleRoutes[0].tape
+ var q8=play(d,e8,ref8)
+ check(q8.breach and q8.rides==1 and not q8.brute_dead,"the brute breaks the alcove and the one-way line lifts you out")
+ check(not play(d,e8,[[168,"r"],[4,"r"],[60,""],[1,"l"],[30,""],[44,"r"],[2,""],[1,"ux"],[8,"u"],[28,""],[1,"ux"],[8,"u"],[30,"ur"],[120,"r"]]).finish,"leaving the ledge before the brute is sent away again fails")
+ check(not play(d,e8,[[160,"r"],[1,"rj"],[10,"rj"],[1,"urx"],[8,"ur"],[100,"r"]]).finish and not play(d,e8,[[168,"r"],[4,"r"],[30,""],[1,"rj"],[10,"rj"],[1,"urx"],[8,"ur"],[100,"r"]]).finish,"the exit corridor is out of reach from the walkway and the ledge")
+ var waits8=[]
+ for w in [160,200,240,300]:
+  var t=ref8.duplicate(true);t[2]=[w,""]
+  if clears(play(d,e8,t)):waits8.append(w)
+ check(waits8.size()==4,"any long wait on the ledge works: "+str(waits8))
+ # 9 · The Lift That Keeps the Beat: when you step on the lift decides whether the mouth is open as you fly past.
+ var e9="cl23-puzzle-lift-on-beat"
+ var steps=[]
+ for w in range(0,120,12):
+  if clears(play(d,e9,[[w,""],[26,"r"],[1,""],[20,""],[1,"rj"],[20,"rj"],[1,"ux"],[8,"u"],[24,""],[1,"ux"],[8,"u"],[24,"ur"],[320,"r"]])):steps.append(w)
+ check(steps.size()>=3 and steps.size()<=5,"only some moments to step on the lift catch the open mouth: "+str(steps))
+ check(not play(d,e9,[[26,"r"],[1,""],[20,""],[1,"rj"],[20,"rj"],[1,"ux"],[8,"u"],[60,"r"]]).finish,"the lift's throw and a dash cannot reach the corridor without the line")
+ var near9=[]
+ for k in [18,20,22]:
+  if clears(play(d,e9,[[60,""],[26,"r"],[1,""],[20,""],[1,"rj"],[k,"rj"],[1,"ux"],[8,"u"],[24,""],[1,"ux"],[8,"u"],[24,"ur"],[320,"r"]])):near9.append(k)
+ check(near9.size()==3,"nearby dash timings in flight: "+str(near9))
  quit(1 if failed else 0)
