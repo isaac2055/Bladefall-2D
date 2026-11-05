@@ -15,7 +15,9 @@ Commit the PNGs and their `.import` files; no art tools run in the game.
   shadow on the ground. Claude's grounded `stand_spot()` and direct
   `boy_background_target()` are retained, without a clearance search or y-clamp in
   the view. The only story edit is `BOY_TALL=8`: 56 pixels plus one tile of clearance.
-- Dad is an 84-pixel seated figure with shaped shoulders, bent arms, knees and boots.
+- Dad is a 116-pixel seated figure with shaped shoulders, bent arms, knees and boots,
+  slightly smaller than his original 128-pixel silhouette. His seat and feet still
+  meet the same porch step and ground; the extra height is in his upper body.
   His warm and cold silhouettes have no facial features. He sits on the existing
   porch step and leaves the doorway visible. The smaller curled-up sleeping sprite
   rests across his knees. Cabin wall grain, window, rope lights and the

@@ -72,41 +72,41 @@ im,d=new(22,5)
 for y,left,right,a in [(0,6,15,16),(1,2,19,38),(2,0,21,65),(3,2,19,42),(4,6,15,18)]:
  d.line([(left,y),(right,y)],fill=(18,27,29,a))
 save(im,'boy-shadow')
-# An 84 px seated adult (1.5 x Isaac). The doorway silhouettes his profile;
+# A 116 px seated adult, slightly smaller than the original 128 px Dad. The doorway silhouettes his profile;
 # the face has no eyes, mouth, skin color or illuminated facial plane.
 for state,rim in [('warm','#d3b582'),('cold','#89a9c4')]:
- im,d=new(70,84)
+ im,d=new(84,116)
  outline='#141c27';shirt='#222c36';fold='#2d3742';denim='#263342'
  # Far shoe and bent leg, visible under the near knee.
- d.polygon([(36,59),(45,58),(47,73),(54,78),(54,82),(39,82),(37,76)],fill=outline)
- d.polygon([(39,62),(43,62),(43,75),(48,78),(40,78)],fill='#202c3b')
+ d.polygon([(43, 90), (54, 89), (56, 105), (65, 110), (65, 114), (47, 114), (44, 108)], fill=outline)
+ d.polygon([(47, 94), (52, 94), (52, 107), (58, 110), (48, 110)], fill='#202c3b')
  # Back, rounded shoulder, shirt hem and seated hip.
- d.polygon([(23,18),(32,18),(34,22),(41,23),(46,28),(44,40),(39,48),(39,57),(34,62),(19,62),(15,58),(16,41),(16,30),(19,24)],fill=outline)
- d.polygon([(22,24),(30,22),(38,26),(40,38),(35,49),(36,56),(20,57),(19,47),(19,32)],fill=shirt)
- d.line([(20,37),(22,45),(21,52)],fill=fold)
- d.line([(24,54),(31,55)],fill='#3a4149')
+ d.polygon([(28, 28), (38, 28), (41, 34), (49, 35), (55, 43), (53, 61), (47, 74), (47, 87), (41, 94), (23, 94), (18, 89), (19, 63), (19, 46), (23, 37)], fill=outline)
+ d.polygon([(26, 37), (36, 34), (46, 40), (48, 58), (42, 75), (43, 86), (24, 87), (23, 72), (23, 49)], fill=shirt)
+ d.line([(24, 57), (26, 69), (25, 80)], fill=fold)
+ d.line([(29, 83), (37, 84)], fill='#3a4149')
  # Thigh turns into the knee, with a distinct shin and grounded boot.
- d.polygon([(29,53),(41,53),(54,57),(60,60),(61,67),(60,78),(67,79),(69,82),(68,83),(51,83),(49,79),(50,67),(46,65),(31,64),(24,61)],fill=outline)
- d.polygon([(32,55),(42,56),(54,60),(56,63),(54,76),(51,77),(52,65),(46,62),(31,61)],fill=denim)
- d.line([(35,57),(48,59),(54,62)],fill='#3b4653')
- d.line([(57,67),(56,76)],fill='#414a57')
- d.line([(53,81),(66,81)],fill='#3a414a')
+ d.polygon([(35, 81), (49, 81), (65, 87), (72, 92), (73, 99), (72, 110), (80, 111), (83, 114), (82, 115), (61, 115), (59, 111), (60, 99), (55, 97), (37, 96), (29, 93)], fill=outline)
+ d.polygon([(38, 84), (50, 86), (65, 92), (67, 95), (65, 108), (61, 109), (62, 97), (55, 94), (37, 93)], fill=denim)
+ d.line([(42, 87), (58, 90), (65, 94)], fill='#3b4653')
+ d.line([(68, 99), (67, 108)], fill='#414a57')
+ d.line([(64, 113), (79, 113)], fill='#3a414a')
  # Neck and slightly bowed, stepped head profile; no facial features.
- d.polygon([(25,14),(33,15),(33,23),(27,25),(23,21)],fill=outline)
- d.polygon([(22,4),(25,1),(31,0),(36,3),(38,7),(38,9),(40,11),(38,13),(37,17),(32,20),(26,18),(23,14),(21,9)],fill=outline)
- d.polygon([(23,5),(26,2),(31,1),(34,3),(27,3),(24,7)],fill='#25303b')
+ d.polygon([(30, 21), (40, 23), (40, 35), (32, 38), (28, 32)], fill=outline)
+ d.polygon([(26, 6), (30, 2), (37, 0), (43, 5), (46, 11), (46, 14), (48, 17), (46, 20), (44, 26), (38, 31), (31, 28), (28, 21), (25, 14)], fill=outline)
+ d.polygon([(28, 8), (31, 3), (37, 2), (41, 5), (32, 5), (29, 11)], fill='#25303b')
  # Far arm rests on the lap; near arm bends gently to the flashlight hand.
- d.polygon([(19,28),(23,29),(22,44),(28,49),(35,51),(35,54),(26,54),(18,49),(17,44)],fill='#1c2632')
- d.line([(20,34),(20,44),(25,49)],fill='#34404a')
- d.polygon([(36,26),(41,27),(44,32),(43,39),(46,42),(54,41),(57,43),(55,46),(44,47),(39,44),(36,36)],fill=outline)
- d.polygon([(38,29),(40,30),(41,37),(40,40),(44,44),(52,43),(52,45),(43,45),(38,41)],fill=shirt)
- d.line([(44,46),(50,46)],fill='#40464c')
+ d.polygon([(23, 43), (28, 44), (26, 67), (34, 75), (42, 78), (42, 83), (31, 83), (22, 75), (20, 67)], fill='#1c2632')
+ d.line([(24, 52), (24, 67), (30, 75)], fill='#34404a')
+ d.polygon([(43, 40), (49, 41), (53, 49), (52, 60), (55, 64), (65, 63), (68, 66), (66, 71), (53, 72), (47, 67), (43, 55)], fill=outline)
+ d.polygon([(46, 44), (48, 46), (49, 57), (48, 61), (53, 67), (62, 66), (62, 69), (52, 69), (46, 63)], fill=shirt)
+ d.line([(53, 71), (60, 71)], fill='#40464c')
  # Light catches the back, shoulder seam and edge of the knees, never the face.
- d.line([(23,4),(22,7),(22,11)],fill=rim)
- d.line([(23,16),(25,19),(23,22),(20,24),(18,28),(17,35),(17,45)],fill=rim)
- d.line([(19,56),(19,59),(24,61)],fill=rim)
- d.line([(35,54),(43,55),(53,58)],fill=rim)
- d.point((55,60),fill=rim)
+ d.line([(28, 6), (26, 11), (26, 17)], fill=rim)
+ d.line([(28, 25), (30, 29), (28, 34), (24, 37), (22, 43), (20, 54), (20, 69)], fill=rim)
+ d.line([(23, 86), (23, 90), (29, 93)], fill=rim)
+ d.line([(42, 83), (52, 84), (64, 89)], fill=rim)
+ d.point((66, 92), fill=rim)
  save(im,'dad-'+state)
 # Right-pointing flashlight, small enough to sit inside the curled hand.
 im,d=new(14,6);d.rectangle((0,1,9,4),fill='#364251');d.line([(1,2),(8,2)],fill='#677c90')

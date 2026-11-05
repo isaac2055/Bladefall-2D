@@ -233,14 +233,14 @@ func dad_point(): return Vector2(CABIN.position.x+236,FLOOR_Y)
 
 func draw_dad():
  var at=dad_point()
- sprite("dad-warm" if power_visible() else "dad-cold",at+Vector2(-34,-84))
- var hand=at+Vector2(20,-41)
+ sprite("dad-warm" if power_visible() else "dad-cold",at+Vector2(-41,-116))
+ var hand=at+Vector2(24,-50)
  if story.dad.flashlight:
   sprite("flashlight",hand+Vector2(-2,-4))
   var tip=hand+Vector2(12,-1)
   var points=PackedVector2Array([tip+Vector2(0,-3),tip+Vector2(0,3),tip+Vector2(155,65),tip+Vector2(155,-50)])
   ink.draw_polygon(points,PackedColorArray([Color.WHITE]),PackedVector2Array([Vector2(0,0),Vector2(1,0),Vector2(1,1),Vector2(0,1)]),SPRITES["beam"])
- if story.dad.lap: boy_asleep(at+Vector2(4,-24))
+ if story.dad.lap: boy_asleep(at+Vector2(8,-27))
 
 func tale_backdrop(view):
  # Mist sits in the depth, rather than covering the knight or his route.
