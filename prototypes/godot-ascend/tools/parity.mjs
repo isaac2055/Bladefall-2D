@@ -1,9 +1,9 @@
 import {reference} from './reference.mjs';
 import fs from 'node:fs';import path from 'node:path';import {spawnSync} from 'node:child_process';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..'),project=path.join(root,'prototypes/godot-ascend');
-const ctx=reference();
 const number=Number(process.argv.find(a=>/^--world=/.test(a))?.split('=')[1]||1);
-const w=ctx.BladefallClimb.world(number),C=ctx.BladefallPrecisionCore;
+const ctx=reference({cores:number>100});
+const w=number>100?ctx.BladefallClimbCores.worlds.find(x=>x.n===number):ctx.BladefallClimb.world(number),C=ctx.BladefallPrecisionCore;
 const tests=[];
 const actions={l:'l',r:'r',u:'u',d:'d',jump:'j',dash:'x',grab:'g',strike:'s',parry:'p',portal:'q'};
 function trace(def,tape,label=def.id){
@@ -23,6 +23,13 @@ for(const def of w.rooms){const tape=w.tapes[def.id];if(tape)trace(def,tape);}
 let seed=0xb1ade;
 const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/2**32;};
 for(const def of w.rooms){const tape=[];for(let i=0;i<40;i++){let k='';for(const ch of ['l','r','u','d','j','x','g','s'])if(random()<0.25)k+=ch;tape.push([5+Math.floor(random()*11),k]);}trace(def,tape,def.id+' / varied inputs');}
+// Cores: follow the reference route past a save point, then vary inputs so deaths respawn at that save.
+if(number>100)for(const def of w.rooms){
+ const keys=[];for(const [n,k] of w.tapes[def.id])for(let i=0;i<n;i++)keys.push(k||'');
+ const g=C.createGame([def]),saves=[];
+ for(let f=0;f<keys.length&&!g.exited;f++){const raw={};for(const [key,ch] of Object.entries(actions))raw[key]=keys[f].includes(ch);C.step(g,raw);if(g.events.some(e=>e.type==='core-checkpoint'))saves.push(f+1);g.events.length=0;}
+ for(const at of saves.slice(0,2)){const tape=[[at+20,'']].slice(0,0);for(let f=0;f<at+20;f++)tape.push([1,keys[f]]);for(let i=0;i<60;i++){let k='';for(const ch of ['l','r','u','d','j','x','g','s'])if(random()<0.3)k+=ch;tape.push([4+Math.floor(random()*9),k]);}trace(def,tape,def.id+' / after save at '+at);}
+}
 for(const def of w.rooms)if(def.combat||def.foes||def.portalMode){const tape=[];for(let i=0;i<48;i++)tape.push([7,i%4===0?'rp':i%4===1?'uqs':i%4===2?'lj':'rdxp']);trace(def,tape,def.id+' / ward and portal inputs');}
 fs.mkdirSync(path.join(root,'.cache/godot'),{recursive:true});const file=path.join(root,`.cache/godot/reference-world${number}.json`);fs.writeFileSync(file,JSON.stringify(tests));
 const engine=process.env.GODOT||path.join(root,'.cache/godot/Godot.app/Contents/MacOS/Godot');

@@ -3,10 +3,12 @@ import vm from 'node:vm';
 // Export the authored world and browser reference traces, never approximated geometry.
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');
-const ctx=reference();
 const number=Number(process.argv.find(a=>/^--world=/.test(a))?.split('=')[1]||1);
-const world=ctx.BladefallClimb.world(number),Core=ctx.BladefallPrecisionCore;
-const payload={sources:ctx.__loadedSources,playerDefaults:Core.createGame([world.rooms[0]]).p,source:'public/bladefall-climb-worlds.js',world,constants:Core.K};
+const ctx=reference({cores:number>100});
+// Cores are one continuous room each, registered by bladefall-climb-cores.js as worlds 101-120.
+const world=number>100?ctx.BladefallClimbCores.worlds.find(w=>w.n===number):ctx.BladefallClimb.world(number),Core=ctx.BladefallPrecisionCore;
+if(!world)throw Error('No world '+number);
+const payload={sources:ctx.__loadedSources,playerDefaults:Core.createGame([world.rooms[0]]).p,source:number>100?'public/bladefall-climb-core-tapes.js':'public/bladefall-climb-worlds.js',world,constants:Core.K};
 if(number===2){
  vm.runInContext(fs.readFileSync(path.join(root,'public/bladefall-climb-errands.js'),'utf8'),ctx);
  const quest=ctx.BladefallClimbErrands.QUESTS.refuge;

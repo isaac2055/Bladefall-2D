@@ -20,6 +20,7 @@ var void_travel=null
 var void_grace=0
 const MovementTwo=preload("res://scripts/movement_two.gd")
 const Fractured=preload("res://scripts/fractured_devices.gd")
+const CoreCheckpoints=preload("res://scripts/core_checkpoints.gd")
 var sentinel=null
 var oath_root=null
 var resin_wind=null
@@ -58,6 +59,8 @@ var foothold_previous = {}
 var kick_direction=0
 var moving_decks=[]
 var spent_footholds=[]
+# Core save point reached in this room (bladefall-pcore-dev-core-checkpoints.js); survives deaths.
+var core_run=null
 
 func _init(constants: Dictionary, player_defaults: Dictionary):
  K = constants
@@ -98,6 +101,7 @@ func load_room(parsed: Dictionary, respawn = false):
  RopeDevices.reset(self)
  RailDevice.reset(self)
  Fractured.reset(self)
+ CoreCheckpoints.reset(self)
  ItemDevices.reset_late(self)
  LightDevices.trace(self)
  for entity in ents:
@@ -264,6 +268,8 @@ func jump(inp,kind = "jump",direction = 0):
  else:
   p.facing = direction
   p.state = "normal"
+ # Counterweight rooms (Cores) remember the direction a lift-boosted jump carried you.
+ if kind == "jump" and room.def.get("counterweightFlow",false) and abs(l.x)>0: p.counterweightMomentum=sign(p.vx)
  if kind in ["walljump","wallbounce"]: kick_direction=direction
  emit_event(kind)
 func climb_jump(inp):
@@ -288,8 +294,10 @@ func super_jump():
  p.autoJump = false
  p.wallSlide = K.wallSlideFrames
  p.facing = direction
+ var incoming=p.vx
  p.vx = K.superJumpH*p.facing
  p.vy = K.jumpSpeed
+ var hyper=p.ducking
  if p.ducking:
   p.vx *= K.hyperXMult
   p.vy *= K.hyperYMult
@@ -300,6 +308,13 @@ func super_jump():
  p.vy*=pollen_scale("jump")
  p.varJumpSpeed = p.vy
  p.liftTimer = 0
+ # Counterweight rooms (Cores) reward a continuous landing, not a stationary hyper.
+ if room.def.get("counterweightFlow",false) and hyper and p.get("counterweightMomentum",null)==direction and incoming*direction>K.superJumpH*K.hyperXMult:
+  p.vx=direction*max(abs(p.vx),abs(incoming))
+  p.dashRefillCooldown=0
+  refill()
+  emit_event("counterweight-relay")
+ if room.def.get("counterweightFlow",false) and abs(l.x)>0: p.counterweightMomentum=sign(p.vx)
  p.state = "normal"
  emit_event("super")
 func start_dash(inp):
@@ -594,6 +609,9 @@ func step(raw):
     if e.type=="zip" and e.ox==d.c*8 and e.oy==d.r*8:
      e.tx = e.ox+d.after[0]*8
      e.ty = e.oy+d.after[1]*8
+ # Counterweight momentum ends when you climb, carry, steer against it or slow below a hyper.
+ var cwm=p.get("counterweightMomentum",0)
+ if cwm and (p.state=="climb" or p.carrying!=null or inp.mx==-cwm or (p.state=="normal" and p.vx*cwm<=K.superJumpH*K.hyperXMult)): p.counterweightMomentum=0
  for key in ["dashCooldown","dashRefillCooldown","forceMoveTimer","wallBoostTimer","climbNoMove","liftTimer","strikeCooldown","dashFlash","varJump"]:
   if p[key]>0: p[key] -= 1
  MovementTwo.before_player(self,inp)
@@ -707,7 +725,8 @@ func update_entities():
     if e.shaking==0:
      e.broken = true
      e.timer = K.crumbleRespawnFrames
-   elif riding(e): e.shaking = K.crumbleShakeFrames
+   # Cores give cracked stone extra grace (crumbleExtraFrames), as the browser does.
+   elif riding(e): e.shaking = K.crumbleShakeFrames+(max(0,roundi(room.def.get("crumbleExtraFrames",0))) if room.def.get("core",0) else 0)
 func interact():
  for r in range(floori(p.y/8.0),floori((p.y+8)/8.0)+1):
   for c in range(floori(p.x/8.0),floori((p.x+p.w-1)/8.0)+1):
@@ -833,6 +852,7 @@ func finish_devices():
  LightDevices.after(self)
  if p.state=="dead": return
  RopeDevices.after(self)
+ CoreCheckpoints.after(self)
  Fractured.after(self)
  for e in spent_footholds:
   if e.get("gone",false): continue
@@ -923,7 +943,8 @@ func move_solid(e,dx,dy):
   p.liftX = dx*60
   p.liftY = dy*60
   p.liftTimer = K.liftGraceFrames
-func riding(e): return standing(e) or (p.state=="climb" and (p.x+p.w==e.x if p.facing>0 else p.x==e.x+e.w) and p.y<e.y+e.h and p.y+p.h>e.y)
+# Only a live knight rides (the browser's riderOf uses livePlayer): nothing starts under a respawning one.
+func riding(e): return p.state not in ["dead","respawn"] and (standing(e) or (p.state=="climb" and (p.x+p.w==e.x if p.facing>0 else p.x==e.x+e.w) and p.y<e.y+e.h and p.y+p.h>e.y))
 func standing(e): return p.y+p.h==e.y and p.x<e.x+e.w and p.x+p.w>e.x and (p.onGround or p.state=="dash")
 func update_zip(e):
  if e.state=="idle":
