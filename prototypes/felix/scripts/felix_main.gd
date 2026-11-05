@@ -43,6 +43,9 @@ var music_description: Label
 # Developer flags.
 var capture_path=""
 var capture_after=120
+var sweep_dir=""   # --sweep <dir>: save a frame every --sweep-every ticks (debug review)
+var sweep_every=120
+var quit_after=0   # --quit-after <ticks>: quit on its own (sweeps, route checks)
 var script_tape=[]
 var script_frame=0
 var ticks=0
@@ -94,6 +97,9 @@ func _ready():
   match args[i]:
    "--capture": capture_path=args[i+1]
    "--capture-after": capture_after=int(args[i+1])
+   "--sweep": sweep_dir=args[i+1]
+   "--sweep-every": sweep_every=max(1,int(args[i+1]))
+   "--quit-after": quit_after=int(args[i+1])
    "--from":
     story.skip_prologue()
     begin_play()
@@ -272,6 +278,10 @@ func _physics_process(_delta):
  ticks+=1
  if report and ticks%300==0: print("FPS ",Engine.get_frames_per_second()," AT ",world.active_id," p=",Vector2(sim.p.x,sim.p.y)," state=",sim.p.state," deaths=",sim.deaths," tape=",script_frame,"/",script_tape.size()," phase=",story.phase)
  if capture_path!="" and ticks==capture_after: capture.call_deferred()
+ if sweep_dir!="" and ticks%sweep_every==0: sweep_frame.call_deferred(ticks)
+ if quit_after>0 and ticks>=quit_after:
+  print("QUIT-AFTER ",ticks," AT ",world.active_id," deaths=",sim.deaths," phase=",story.phase)
+  get_tree().quit()
  if paused: return
  if story.phase=="black" and not script_tape.is_empty() and ticks==40: begin_play()
  if chain and pending_room!="" and script_frame>=script_tape.size():
@@ -474,6 +484,13 @@ func play_tour():
   for i in range(int(part[0])): script_tape.append(part[1])
  # The recording stops at the overlook's top; walk down the decks to Dad's cabin.
  for i in range(700 if chapter==2 else 240): script_tape.append("l" if chapter==2 else "r")
+
+# One frame of a sweep, named by tick, room and story phase so a contact sheet can label it.
+func sweep_frame(t):
+ await get_tree().process_frame
+ RenderingServer.force_draw(false)
+ var path="%s/%06d_%s_%s.png"%[sweep_dir,t,world.active_id,story.phase]
+ get_viewport().get_texture().get_image().save_png(path)
 
 func capture():
  for i in range(3): await get_tree().process_frame

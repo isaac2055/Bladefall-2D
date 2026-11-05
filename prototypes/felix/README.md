@@ -122,6 +122,15 @@ Run it with `--chapter 3`, or press a button at the end of Chapter Two.
   story-walk-0; `--chapter 3 --reference workshop-borrowed-bridge --chain --report` plays the drive
   to Sunday night (`phase=end`). `tools/phantom-shots.sh <dir>` saves 13 shots.
 
+## Reviewing a whole chapter
+
+`tools/sweep.sh <dir> <every> <quit-after> [flags]` plays with the given flags, saves a frame every
+`<every>` ticks as `<tick>_<room>_<phase>.png`, quits at `<quit-after>` (printing `QUIT-AFTER` with
+room, deaths and phase), and tiles the frames into labelled `sheet-NN.png` contact sheets. Example:
+`tools/sweep.sh shots/sweep-c3 150 8100 --chapter 3 --tour --report`. The game flags `--sweep`,
+`--sweep-every` and `--quit-after` can also be used on their own (`--quit-after` lets route checks end
+without a timeout wrapper). Latest findings: `PLAYTEST-2026-11-05.md`.
+
 ## Developer flags (after `--`)
 
 `--from <room-id>` starts at a room with every gift. `--place x y` moves Felix inside it.
