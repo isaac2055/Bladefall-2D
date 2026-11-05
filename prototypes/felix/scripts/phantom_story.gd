@@ -156,7 +156,14 @@ func tick(world,sim,delta):
   tick_ending(delta)
   return
  if phase!="play": return
- if room in tale_rooms or room.begins_with("story-walk-"): in_drive=true
+ # The drive: Felix is out of the car and playing; Mom, the man and the boy stay at the lot.
+ if room in tale_rooms or room.begins_with("story-walk-"):
+  in_drive=true
+  in_car=false
+  man.lead=false
+  man.visible=false
+  mom.visible=false
+  boy.visible=false
  var origin=world.placements.get(room,Vector2.ZERO)
  # The Causeway, tailing the target.
  if room==CAMP and not done.has("opening") and sim.p.onGround: opening()
