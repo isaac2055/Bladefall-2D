@@ -15,12 +15,13 @@ Commit the PNGs and their `.import` files; no art tools run in the game.
   shadow on the ground. Claude's grounded `stand_spot()` and direct
   `boy_background_target()` are retained, without a clearance search or y-clamp in
   the view. The only story edit is `BOY_TALL=8`: 56 pixels plus one tile of clearance.
-- Dad is a 116-pixel seated figure with shaped shoulders, bent arms, knees and boots,
-  slightly smaller than his original 128-pixel silhouette. His seat and feet still
-  meet the same porch step and ground; the extra height is in his upper body.
+- Dad follows the approved B3 draft: a 126-pixel towering, almost featureless
+  silhouette, round blank head, upright torso, diagonal thigh and slightly shorter
+  legs. His bent arm rests near his hip; only a short rim suggests the hand.
+  His seat and feet still meet the same porch step and ground.
   His warm and cold silhouettes have no facial features. He sits on the existing
   porch step and leaves the doorway visible. The smaller curled-up sleeping sprite
-  rests across his knees. Cabin wall grain, window, rope lights and the
+  rests along his thigh with a drawing-only rotation. Cabin wall grain, window, rope lights and the
   carved sign are visible from the existing porch camera. Exact sign text stays
   in the view. The doorway and bulbs go cold after the power cut, including when
   a reference route starts directly in the flashlight story.
@@ -47,6 +48,12 @@ device state handling, particles and gameplay draw order stay intact.
 ## Review
 
 `art/preview_woods.gd` renders a pose sheet to `shots/ch2-poses.png`.
+For Dad-only changes, capture the cabin at frames 250 and 1250 with the normal
+`--chapter 2 --from cl2-atlas-crossroads` capture flags. Then run
+`Godot --path . --script art/capture_dad_ending.gd -- --from cl2-atlas-crossroads`:
+the art fixture uses the real ending methods and renderer, advancing only its
+temporary scene to the sleeping pose. It saves `shots/b3-implemented/11-ending.png`
+without replaying the route or changing production story code.
 `art/check_chapter_menu.gd` checks the merged chapter menu, music controls and
 selected score across Chapter Two story cuts. The small integration fix in
 `felix_main.gd` preserves the selected stream and its position around the shared

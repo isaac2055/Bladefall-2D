@@ -233,14 +233,18 @@ func dad_point(): return Vector2(CABIN.position.x+236,FLOOR_Y)
 
 func draw_dad():
  var at=dad_point()
- sprite("dad-warm" if power_visible() else "dad-cold",at+Vector2(-41,-116))
- var hand=at+Vector2(24,-50)
+ sprite("dad-warm" if power_visible() else "dad-cold",at+Vector2(-26,-126))
+ var hand=at+Vector2(6,-54)
  if story.dad.flashlight:
   sprite("flashlight",hand+Vector2(-2,-4))
   var tip=hand+Vector2(12,-1)
   var points=PackedVector2Array([tip+Vector2(0,-3),tip+Vector2(0,3),tip+Vector2(155,65),tip+Vector2(155,-50)])
   ink.draw_polygon(points,PackedColorArray([Color.WHITE]),PackedVector2Array([Vector2(0,0),Vector2(1,0),Vector2(1,1),Vector2(0,1)]),SPRITES["beam"])
- if story.dad.lap: boy_asleep(at+Vector2(8,-27))
+ if story.dad.lap:
+  # The boy rests along the rising thigh. This is only a drawing transform.
+  ink.draw_set_transform_matrix(Transform2D(0,-camera)*Transform2D(-.32,at+Vector2(7,-56)))
+  boy_asleep(Vector2.ZERO)
+  ink.draw_set_transform(-camera)
 
 func tale_backdrop(view):
  # Mist sits in the depth, rather than covering the knight or his route.
@@ -339,7 +343,7 @@ func boy_asleep(at):
  sprite("boy-asleep",at+Vector2(-24,-19))
  if fmod(clock,4.0)<2.6:
   var z=fmod(clock,4.0)
-  marker("z",at+Vector2(-18-z*4,-26-z*8),7,Color(.85,.88,1,.6*(1-z/2.6)))
+  marker("z",at+Vector2(18+z*2,-26-z*6),7,Color(.85,.88,1,.6*(1-z/2.6)))
 
 # ---------------------------------------------------------------- Felix
 func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):

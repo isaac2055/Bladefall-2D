@@ -72,41 +72,25 @@ im,d=new(22,5)
 for y,left,right,a in [(0,6,15,16),(1,2,19,38),(2,0,21,65),(3,2,19,42),(4,6,15,18)]:
  d.line([(left,y),(right,y)],fill=(18,27,29,a))
 save(im,'boy-shadow')
-# A 116 px seated adult, slightly smaller than the original 128 px Dad. The doorway silhouettes his profile;
-# the face has no eyes, mouth, skin color or illuminated facial plane.
-for state,rim in [('warm','#d3b582'),('cold','#89a9c4')]:
- im,d=new(84,116)
- outline='#141c27';shirt='#222c36';fold='#2d3742';denim='#263342'
- # Far shoe and bent leg, visible under the near knee.
- d.polygon([(43, 90), (54, 89), (56, 105), (65, 110), (65, 114), (47, 114), (44, 108)], fill=outline)
- d.polygon([(47, 94), (52, 94), (52, 107), (58, 110), (48, 110)], fill='#202c3b')
- # Back, rounded shoulder, shirt hem and seated hip.
- d.polygon([(28, 28), (38, 28), (41, 34), (49, 35), (55, 43), (53, 61), (47, 74), (47, 87), (41, 94), (23, 94), (18, 89), (19, 63), (19, 46), (23, 37)], fill=outline)
- d.polygon([(26, 37), (36, 34), (46, 40), (48, 58), (42, 75), (43, 86), (24, 87), (23, 72), (23, 49)], fill=shirt)
- d.line([(24, 57), (26, 69), (25, 80)], fill=fold)
- d.line([(29, 83), (37, 84)], fill='#3a4149')
- # Thigh turns into the knee, with a distinct shin and grounded boot.
- d.polygon([(35, 81), (49, 81), (65, 87), (72, 92), (73, 99), (72, 110), (80, 111), (83, 114), (82, 115), (61, 115), (59, 111), (60, 99), (55, 97), (37, 96), (29, 93)], fill=outline)
- d.polygon([(38, 84), (50, 86), (65, 92), (67, 95), (65, 108), (61, 109), (62, 97), (55, 94), (37, 93)], fill=denim)
- d.line([(42, 87), (58, 90), (65, 94)], fill='#3b4653')
- d.line([(68, 99), (67, 108)], fill='#414a57')
- d.line([(64, 113), (79, 113)], fill='#3a414a')
- # Neck and slightly bowed, stepped head profile; no facial features.
- d.polygon([(30, 21), (40, 23), (40, 35), (32, 38), (28, 32)], fill=outline)
- d.polygon([(26, 6), (30, 2), (37, 0), (43, 5), (46, 11), (46, 14), (48, 17), (46, 20), (44, 26), (38, 31), (31, 28), (28, 21), (25, 14)], fill=outline)
- d.polygon([(28, 8), (31, 3), (37, 2), (41, 5), (32, 5), (29, 11)], fill='#25303b')
- # Far arm rests on the lap; near arm bends gently to the flashlight hand.
- d.polygon([(23, 43), (28, 44), (26, 67), (34, 75), (42, 78), (42, 83), (31, 83), (22, 75), (20, 67)], fill='#1c2632')
- d.line([(24, 52), (24, 67), (30, 75)], fill='#34404a')
- d.polygon([(43, 40), (49, 41), (53, 49), (52, 60), (55, 64), (65, 63), (68, 66), (66, 71), (53, 72), (47, 67), (43, 55)], fill=outline)
- d.polygon([(46, 44), (48, 46), (49, 57), (48, 61), (53, 67), (62, 66), (62, 69), (52, 69), (46, 63)], fill=shirt)
- d.line([(53, 71), (60, 71)], fill='#40464c')
- # Light catches the back, shoulder seam and edge of the knees, never the face.
- d.line([(28, 6), (26, 11), (26, 17)], fill=rim)
- d.line([(28, 25), (30, 29), (28, 34), (24, 37), (22, 43), (20, 54), (20, 69)], fill=rim)
- d.line([(23, 86), (23, 90), (29, 93)], fill=rim)
- d.line([(42, 83), (52, 84), (64, 89)], fill=rim)
- d.point((66, 92), fill=rim)
+# Approved B3: looming, almost featureless Dad, with a compact hand on his lap.
+# Native pixels preserve the round head, upright slab of torso and diagonal thigh.
+# The knee is slightly lower/closer than the first silhouette; the boot stays grounded.
+for state,rim in [('warm','#e2c98e'),('cold','#8ea8c2')]:
+ im,d=new(80,126)
+ shadow='#171a22'
+ # Upright back, narrow neck and a completely blank, near-round head.
+ d.polygon([(1,42),(5,37),(15,31),(21,26),(27,28),(27,36),(28,44),(27,99),(24,102),(1,102)],fill=shadow)
+ d.polygon([(16,11),(17,7),(20,3),(25,1),(31,0),(37,2),(41,5),(44,10),(44,18),(41,24),(36,28),(29,29),(23,27),(19,23),(17,18)],fill=shadow)
+ # One dark mass: long rising thigh, softened knee, shorter shin and quiet boot.
+ d.polygon([(6,83),(21,78),(38,70),(55,61),(62,58),(66,58),(71,60),(74,64),(75,70),(75,114),(76,120),(75,125),(55,125),(55,120),(56,116),(61,114),(60,75),(48,81),(24,95),(24,102),(1,102)],fill=shadow)
+ # Thin light only: no folds, clothing panels, eyes, nose or mouth.
+ d.line([(17,10),(18,6),(22,3),(27,1),(32,1)],fill=rim)
+ d.line([(2,42),(3,39),(6,36)],fill=rim)
+ d.line([(6,83),(21,78),(38,70),(55,61),(62,58),(66,58),(70,60)],fill=rim)
+ # Bent arm stays against the body. The hand merges into the thigh; its short
+ # upper arc is the only definition, deliberately avoiding an outlined fist.
+ d.polygon([(3,43),(10,47),(8,65),(23,72),(28,70),(32,70),(35,72),(34,76),(26,78),(18,78),(0,71),(0,66)],fill=shadow)
+ d.line([(10,49),(8,65),(23,72),(28,70),(32,70),(34,71)],fill=rim)
  save(im,'dad-'+state)
 # Right-pointing flashlight, small enough to sit inside the curled hand.
 im,d=new(14,6);d.rectangle((0,1,9,4),fill='#364251');d.line([(1,2),(8,2)],fill='#677c90')

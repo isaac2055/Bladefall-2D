@@ -38,8 +38,10 @@ class Gallery extends "res://scripts/woods_view.gd":
   marker("56 px Isaac: stand, run, kneel with the stick",Vector2(16,142),10,Color.WHITE)
   sprite("dad-warm",Vector2(25,184))
   sprite("dad-cold",Vector2(170,184))
-  boy_asleep(Vector2(219,273))
-  marker("116 px seated Dad: doorway / flashlight rim",Vector2(18,333),10,Color.WHITE)
+  ink.draw_set_transform(Vector2(203,254),-.32)
+  boy_asleep(Vector2.ZERO)
+  ink.draw_set_transform(Vector2.ZERO)
+  marker("B3 Dad: towering silhouette / subtle lap hand",Vector2(18,333),10,Color.WHITE)
   for i in range(4):
    var name=["fern","mushroom","leaf","acorn"][i]
    sprite(name,Vector2(350+i*70,240))
