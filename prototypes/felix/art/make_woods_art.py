@@ -21,77 +21,97 @@ pattern('helmet',['....p....','...pr....','...rr....','..hhhhh..','.hhmmmhh.','h
 pattern('helmet-down',['..hhhhh..','.hhmmmhh.','hmmmsmmmh','hdddddddh','.ss...ss.','.........'],card)
 pattern('sword',['..h........','..m........','ddmhhhhhhm.','..dmmmmmmms','..s........'],dict(h='#e6c18d',m='#ad8055',s='#6b554b',d='#7e5e46'))
 pattern('sword-down',['..h.........','ddmhhhhhhhhm','..dmmmmmmmms','..s.........'],dict(h='#e6c18d',m='#ad8055',s='#6b554b',d='#7e5e46'))
-# Isaac at seven: the same hair tuft and warm cheeks, in weekend clothes.
+# Isaac at seven, authored at 56 px tall: tuft, cheeks, stripes and weekend backpack.
 for mood in ['look','asleep']:
- im,d=new(24,28)
- d.polygon([(4,9),(19,9),(21,14),(20,21),(16,25),(9,25),(4,22),(2,16)],fill='#c18f83')
- d.polygon([(5,9),(18,10),(20,14),(18,21),(14,23),(8,22),(4,18)],fill='#e7b99a')
- d.polygon([(5,12),(11,9),(17,12),(17,16),(7,17)],fill='#f7d4ac')
- d.polygon([(2,15),(2,8),(5,4),(10,3),(13,0),(15,4),(19,4),(22,9),(21,16),(17,10),(12,11),(8,8),(5,12)],fill='#50373b')
- d.polygon([(4,9),(7,5),(12,5),(15,6),(18,5),(20,9),(14,8),(10,9),(7,7)],fill='#785249')
- d.line([(6,6),(10,4)],fill='#9c6c53')
- d.rectangle((4,18,6,19),fill='#d99688');d.rectangle((16,18,18,19),fill='#d99688')
+ im,d=new(18,20)
+ d.polygon([(3,6),(14,6),(16,10),(15,15),(12,18),(6,18),(2,14),(1,10)],fill='#c79583')
+ d.polygon([(4,7),(13,7),(15,10),(13,15),(10,17),(5,15),(3,12)],fill='#e7b99a')
+ d.polygon([(4,8),(8,6),(12,8),(12,11),(5,11)],fill='#f7d4ac')
+ d.polygon([(1,10),(1,6),(4,3),(7,2),(10,0),(11,3),(14,3),(17,7),(16,12),(13,7),(9,8),(6,6),(3,10)],fill='#50373b')
+ d.line([(3,6),(6,4),(10,4),(13,5)],fill='#81594c')
+ d.point((6,3),fill='#a27457')
+ for x in [3,13]:d.point((x,13),fill='#d99688')
  if mood=='asleep':
-  d.line([(6,16),(9,16)],fill='#58414a');d.line([(15,16),(18,16)],fill='#58414a')
+  d.line([(4,11),(6,11)],fill='#58414a');d.line([(11,11),(13,11)],fill='#58414a')
  else:
-  for x in [7,16]:
-   d.rectangle((x,14,x+1,16),fill='#403440');d.point((x,14),fill='#fff1d5')
- d.line([(10,20),(12,21),(14,20)],fill='#855251')
+  for x in [5,12]:
+   d.line([(x,10),(x,12)],fill='#403440');d.point((x,10),fill='#fff1d5')
+ d.line([(7,14),(8,15),(10,14)],fill='#855251')
  save(im,'boy-head-'+mood)
-im,d=new(18,25);d.rectangle((0,0,17,24),fill='#ad584b')
-d.rectangle((1,1,14,23),fill='#cf7659');d.rectangle((1,0,3,23),fill='#e4916a')
-for y in [5,13,21]:d.rectangle((1,y,15,y+2),fill='#efdbb2')
-d.polygon([(5,0),(9,3),(13,0)],fill='#b18b77');d.line([(2,24),(16,24)],fill='#92544a');save(im,'boy-shirt')
-im,d=new(6,31);d.rectangle((0,0,5,9),fill='#425b79');d.rectangle((1,0,3,7),fill='#64809a')
-d.rectangle((1,9,4,26),fill='#d5aa8d');d.line([(1,10),(1,24)],fill='#edc4a0')
-d.rectangle((0,26,5,30),fill='#41688d');d.line([(0,29),(5,29)],fill='#bbc3c5');save(im,'boy-leg')
-im,d=new(5,22);d.rectangle((0,0,4,4),fill='#c56f55');d.rectangle((1,5,3,20),fill='#e4b696')
-d.line([(1,5),(1,18)],fill='#f4ccaa');d.rectangle((0,19,3,21),fill='#d2a38e');save(im,'boy-arm')
-im,d=new(11,21);d.rectangle((1,1,9,20),fill='#3b6555');d.rectangle((2,2,7,17),fill='#6d8a62')
-d.line([(3,3),(6,3)],fill='#a6ad7c');d.rectangle((3,12,8,17),fill='#4d7359')
-d.point((5,12),fill='#c6bc8c');save(im,'boy-pack')
-im,d=new(36,37);d.polygon([(9,0),(25,0),(26,23),(8,23)],fill='#c37157')
-for y in [5,13,20]:d.rectangle((9,y,24,y+2),fill='#ead7b0')
-d.rectangle((8,23,26,28),fill='#486582')
-d.polygon([(9,28),(1,34),(0,36),(11,36),(17,29)],fill='#dcb190')
-d.polygon([(22,27),(24,35),(32,35),(31,31),(28,26)],fill='#dcb190')
-d.line([(0,36),(10,36)],fill='#46698c');d.line([(24,36),(33,36)],fill='#46698c');save(im,'boy-kneel')
-im,d=new(64,30)
-# Curled sideways; the face is small, with closed eyes, never a floating giant head.
-d.polygon([(19,10),(42,8),(47,14),(44,23),(19,23)],fill='#ba6a56')
-for y in [13,20]:d.rectangle((22,y,44,y+2),fill='#e6d4b1')
-d.polygon([(44,16),(52,18),(56,23),(53,27),(45,23)],fill='#4b6380')
-d.line([(53,24),(59,25),(61,28)],fill='#cda48c',width=4)
-d.line([(61,28),(63,28)],fill='#567e9c',width=2)
-d.ellipse((1,2,22,23),fill='#d8ad94')
-d.polygon([(1,14),(1,7),(5,2),(13,0),(20,4),(22,10),(16,8),(10,10),(6,7)],fill='#5f4141')
-d.line([(5,13),(8,13)],fill='#5a4249');d.line([(14,13),(17,13)],fill='#5a4249')
-d.point((6,17),fill='#cf9386');d.line([(25,15),(20,22),(13,23)],fill='#e5ba97',width=3)
+im,d=new(12,18);d.polygon([(2,0),(9,0),(11,4),(11,17),(0,17),(0,4)],fill='#ad584b')
+d.rectangle((1,2,9,16),fill='#cf7659');d.line([(1,3),(1,15)],fill='#e4916a')
+for y in [4,10,16]:d.rectangle((1,y,10,y+1),fill='#efdbb2')
+d.polygon([(4,0),(6,2),(8,0)],fill='#d9aa8f');save(im,'boy-shirt')
+im,d=new(4,21);d.rectangle((0,0,3,5),fill='#425b79');d.line([(1,0),(1,4)],fill='#64809a')
+d.rectangle((1,6,2,17),fill='#d5aa8d');d.line([(1,6),(1,15)],fill='#edc4a0')
+d.rectangle((0,18,3,20),fill='#41688d');d.line([(0,19),(3,19)],fill='#bbc3c5');save(im,'boy-leg')
+im,d=new(4,16);d.rectangle((0,0,3,3),fill='#c56f55');d.rectangle((1,4,2,14),fill='#e4b696')
+d.line([(1,4),(1,12)],fill='#f4ccaa');d.rectangle((0,14,2,15),fill='#d2a38e');save(im,'boy-arm')
+im,d=new(8,15);d.rectangle((0,1,6,14),fill='#3b6555');d.rectangle((1,2,5,12),fill='#6d8a62')
+d.line([(2,3),(4,3)],fill='#a6ad7c');d.rectangle((2,9,6,12),fill='#4d7359');d.point((4,9),fill='#c6bc8c');save(im,'boy-pack')
+im,d=new(26,25);d.polygon([(7,0),(18,0),(19,15),(6,15)],fill='#c37157')
+for y in [3,8,13]:d.rectangle((7,y,17,y+1),fill='#ead7b0')
+d.rectangle((6,16,19,19),fill='#486582')
+d.polygon([(7,19),(1,23),(0,24),(9,24),(12,19)],fill='#dcb190')
+d.polygon([(16,18),(17,23),(23,23),(22,20),(20,18)],fill='#dcb190')
+d.line([(0,24),(8,24)],fill='#46698c');d.line([(17,24),(24,24)],fill='#46698c');save(im,'boy-kneel')
+# Right-facing curled pose, at the same native scale as the standing boy.
+im,d=new(47,23)
+d.polygon([(12,7),(31,6),(34,11),(31,18),(11,18)],fill='#ba6a56')
+for y in [10,15]:d.rectangle((12,y,31,y+1),fill='#e6d4b1')
+d.polygon([(11,12),(5,14),(2,18),(5,21),(15,17)],fill='#4b6380')
+d.line([(5,19),(1,21),(4,22)],fill='#cda48c',width=2)
+d.line([(2,22),(5,22)],fill='#567e9c',width=1)
+d.polygon([(33,5),(42,5),(46,10),(45,16),(41,20),(35,20),(31,16),(30,10)],fill='#ddb49b')
+d.polygon([(30,12),(30,7),(33,3),(38,1),(41,3),(44,4),(46,8),(46,12),(42,8),(38,9),(35,7),(32,12)],fill='#5f4141')
+d.line([(33,12),(35,12)],fill='#5a4249');d.line([(41,12),(43,12)],fill='#5a4249')
+d.point((43,16),fill='#cf9386');d.line([(27,12),(29,18),(35,18)],fill='#e5ba97',width=2)
 save(im,'boy-asleep')
-# Dad has no eyes, mouth or face detail: only a seated silhouette and a backlit edge.
-for state,rim in [('warm','#e1b978'),('cold','#8eafcb')]:
- im,d=new(104,128)
- def pts(p):return [(x+66,y+128) for x,y in p]
- body='#171c29';shade='#202637'
- for p in [
-  [(-63,-1),(-63,-10),(-49,-15),(-33,-13),(-32,-1)],
-  [(-51,-12),(-38,-13),(-37,-60),(-49,-65),(-56,-58)],
-  [(-52,-65),(-45,-76),(19,-43),(24,-24),(12,-25),(-41,-57)],
-  [(1,-23),(25,-24),(25,-83),(12,-94),(-5,-88),(-2,-58)],
-  [(-3,-84),(4,-91),(7,-78),(-37,-72),(-50,-75),(-52,-82)],
- ]:d.polygon(pts(p),fill=body)
- d.rectangle((63,27,76,44),fill=body)
- d.ellipse((48,5,74,32),fill=body)
- d.polygon([(54,7),(60,2),(68,4),(73,10),(70,13)],fill=body)
- d.polygon(pts([(12,-83),(19,-82),(21,-35),(14,-33)]),fill=shade)
- d.line(pts([(18,-91),(24,-83),(24,-29)]),fill=rim,width=2)
- d.arc((48,5,74,32),260,45,fill=rim,width=1)
- d.line(pts([(-44,-73),(-19,-61),(17,-42)]),fill=rim,width=1)
- d.line(pts([(-62,-3),(-34,-3)]),fill='#303346')
- d.line(pts([(-50,-15),(-45,-56)]),fill='#2d3448')
+# Stepped translucent ellipse: a contact shadow, drawn above the ground line.
+im,d=new(22,5)
+for y,left,right,a in [(0,6,15,16),(1,2,19,38),(2,0,21,65),(3,2,19,42),(4,6,15,18)]:
+ d.line([(left,y),(right,y)],fill=(18,27,29,a))
+save(im,'boy-shadow')
+# An 84 px seated adult (1.5 x Isaac). The doorway silhouettes his profile;
+# the face has no eyes, mouth, skin color or illuminated facial plane.
+for state,rim in [('warm','#d3b582'),('cold','#89a9c4')]:
+ im,d=new(70,84)
+ outline='#141c27';shirt='#222c36';fold='#2d3742';denim='#263342'
+ # Far shoe and bent leg, visible under the near knee.
+ d.polygon([(36,59),(45,58),(47,73),(54,78),(54,82),(39,82),(37,76)],fill=outline)
+ d.polygon([(39,62),(43,62),(43,75),(48,78),(40,78)],fill='#202c3b')
+ # Back, rounded shoulder, shirt hem and seated hip.
+ d.polygon([(23,18),(32,18),(34,22),(41,23),(46,28),(44,40),(39,48),(39,57),(34,62),(19,62),(15,58),(16,41),(16,30),(19,24)],fill=outline)
+ d.polygon([(22,24),(30,22),(38,26),(40,38),(35,49),(36,56),(20,57),(19,47),(19,32)],fill=shirt)
+ d.line([(20,37),(22,45),(21,52)],fill=fold)
+ d.line([(24,54),(31,55)],fill='#3a4149')
+ # Thigh turns into the knee, with a distinct shin and grounded boot.
+ d.polygon([(29,53),(41,53),(54,57),(60,60),(61,67),(60,78),(67,79),(69,82),(68,83),(51,83),(49,79),(50,67),(46,65),(31,64),(24,61)],fill=outline)
+ d.polygon([(32,55),(42,56),(54,60),(56,63),(54,76),(51,77),(52,65),(46,62),(31,61)],fill=denim)
+ d.line([(35,57),(48,59),(54,62)],fill='#3b4653')
+ d.line([(57,67),(56,76)],fill='#414a57')
+ d.line([(53,81),(66,81)],fill='#3a414a')
+ # Neck and slightly bowed, stepped head profile; no facial features.
+ d.polygon([(25,14),(33,15),(33,23),(27,25),(23,21)],fill=outline)
+ d.polygon([(22,4),(25,1),(31,0),(36,3),(38,7),(38,9),(40,11),(38,13),(37,17),(32,20),(26,18),(23,14),(21,9)],fill=outline)
+ d.polygon([(23,5),(26,2),(31,1),(34,3),(27,3),(24,7)],fill='#25303b')
+ # Far arm rests on the lap; near arm bends gently to the flashlight hand.
+ d.polygon([(19,28),(23,29),(22,44),(28,49),(35,51),(35,54),(26,54),(18,49),(17,44)],fill='#1c2632')
+ d.line([(20,34),(20,44),(25,49)],fill='#34404a')
+ d.polygon([(36,26),(41,27),(44,32),(43,39),(46,42),(54,41),(57,43),(55,46),(44,47),(39,44),(36,36)],fill=outline)
+ d.polygon([(38,29),(40,30),(41,37),(40,40),(44,44),(52,43),(52,45),(43,45),(38,41)],fill=shirt)
+ d.line([(44,46),(50,46)],fill='#40464c')
+ # Light catches the back, shoulder seam and edge of the knees, never the face.
+ d.line([(23,4),(22,7),(22,11)],fill=rim)
+ d.line([(23,16),(25,19),(23,22),(20,24),(18,28),(17,35),(17,45)],fill=rim)
+ d.line([(19,56),(19,59),(24,61)],fill=rim)
+ d.line([(35,54),(43,55),(53,58)],fill=rim)
+ d.point((55,60),fill=rim)
  save(im,'dad-'+state)
-pattern('flashlight',['..hhhh............','hhssshdddddddddddd','hwwwwhmmmmmmmmmmms','hwwwwhmmmmmmmmmmms','hhssshdddddddddddd','..ssss............'],
- dict(h='#b2cad9',s='#647f9b',w='#eff4de',m='#333c50',d='#222b3d'))
+# Right-pointing flashlight, small enough to sit inside the curled hand.
+im,d=new(14,6);d.rectangle((0,1,9,4),fill='#364251');d.line([(1,2),(8,2)],fill='#677c90')
+d.rectangle((9,0,13,5),fill='#7991a5');d.rectangle((10,1,13,4),fill='#cadbe0')
+d.line([(13,1),(13,4)],fill='#f0f2da');save(im,'flashlight')
 # Cabin details are deliberately brought into the porch framing, on the same background wall.
 for lit in [True,False]:
  im,d=new(300,320)
@@ -235,3 +255,64 @@ d.line([(7,10),(8,11),(9,10)],fill='#705a66')
 d.line([(5,12),(4,14)],fill='#705a66');d.line([(10,12),(11,14)],fill='#705a66')
 d.line([(11,10),(15,5)],fill='#a58665');d.line([(3,8),(1,10)],fill='#bd6572')
 save(im,'drawing')
+
+# Twenty native 8x8 tiles, using the base view's exact atlas indices. There are
+# no masonry seams: sparse root strands connect the irregular soil clusters.
+atlas=Image.new('RGBA',(160,8))
+for v in range(20):
+ im,d=new(8,8)
+ if v==15:
+  d.line([(0,1),(3,1),(5,0),(7,0)],fill='#af956a')
+  d.line([(0,2),(4,2),(6,1),(7,1)],fill='#6f5743')
+  d.line([(0,3),(3,3),(5,2),(7,2)],fill='#44392f')
+  d.line([(3,2),(4,4)],fill='#6f5743');d.point((4,3),fill='#b09b6b')
+ else:
+  deep=v>=16
+  base=['#514336','#574838','#4c4035','#544536'][v%4]
+  if deep:base=['#332f2a','#37312b','#302e2a','#39322a'][v%4]
+  d.rectangle((0,0,7,7),fill=base)
+  # Soil clods and leaf litter; deliberately no regular border or mortar line.
+  for x,y in [(1,2),(5,5),(6,1)]:
+   x=(x+v*3)%8;y=(y+v)%8
+   d.line([(x,y),(min(7,x+1),y)],fill='#423a30' if not deep else '#2c2a26')
+   if not deep:d.point(((x+1)%8,(y+1)%8),fill='#756044')
+  if v in [0,1,2,3]:
+   for x in range(8):
+    d.point((x,0),fill=['#8b985b','#a2aa70','#6b8050','#8e9a62'][(x+v)%4])
+    d.point((x,1),fill='#596a43' if (x+v)%3 else '#7a8850')
+    if (x+v)%3==0:d.point((x,2),fill='#55633b')
+   d.line([(1,4),(2,6),(4,7)],fill='#8b714b')
+  elif v in [8,9]:
+   x=0 if v==8 else 7;side=1 if v==8 else -1
+   d.line([(x,0),(x+side,3),(x,6),(x,7)],fill='#9b8055')
+   d.line([(x+side,0),(x+side*2,3),(x+side,7)],fill='#6e573c')
+   d.point((x+side*3,5),fill='#82905b')
+  elif v==10:
+   d.line([(0,6),(3,5),(5,6),(7,5)],fill='#8d724c')
+   d.line([(0,7),(3,6),(5,7),(7,6)],fill='#3c342c')
+  elif v in [4,11,13,17]:
+   root='#776044' if not deep else '#504333'
+   d.line([(2,0),(2,2),(3,4),(2,7)],fill=root)
+   d.line([(3,4),(5,5),(7,5)],fill=root)
+   if not deep:d.point((2,1),fill='#8d724f')
+  elif v in [6,12,14]:
+   d.line([(0,3),(3,3),(5,5),(7,5)],fill='#6a543b')
+   d.point((4,4),fill='#806a4a')
+ atlas.paste(im,(v*8,0))
+save(atlas,'terrain')
+# Wooden foreground rails and a root-bound block, at their original tile size.
+im=atlas.crop((15*8,0,16*8,8));d=ImageDraw.Draw(im)
+d.line([(3,3),(3,7)],fill='#796446');d.point((4,6),fill='#ac9465');save(im,'twig-rail')
+im=atlas.crop((4*8,0,5*8,8));d=ImageDraw.Draw(im)
+d.line([(0,1),(3,2),(5,4),(7,4)],fill='#af8c59')
+d.line([(5,0),(5,3),(4,6),(4,7)],fill='#7d623f');save(im,'bark-block')
+# Thorns retain the two sharp tips and full 8x8 hazard envelope in all directions.
+im,d=new(8,8)
+d.line([(0,7),(3,6),(7,7)],fill='#69504b')
+for x in [0,4]:
+ d.polygon([(x,7),(x+1,4),(x+2,0),(x+2,4),(min(7,x+4),7)],fill='#9d7f70')
+ d.line([(x+2,0),(x+1,5)],fill='#e0c5a1')
+ d.line([(x+2,4),(min(7,x+3),5)],fill='#c6a382')
+ d.point((x+2,6),fill='#55433c')
+save(im,'thorn-3');save(im.transpose(Image.Transpose.FLIP_TOP_BOTTOM),'thorn-4')
+save(im.transpose(Image.Transpose.TRANSPOSE),'thorn-5');save(im.transpose(Image.Transpose.ROTATE_270),'thorn-6')

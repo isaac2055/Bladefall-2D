@@ -15,6 +15,14 @@ const SPRITES={
  "boy-leg":preload("res://art/woods/boy-leg.png"),
  "boy-pack":preload("res://art/woods/boy-pack.png"),
  "boy-shirt":preload("res://art/woods/boy-shirt.png"),
+ "boy-shadow":preload("res://art/woods/boy-shadow.png"),
+ "terrain":preload("res://art/woods/terrain.png"),
+ "twig-rail":preload("res://art/woods/twig-rail.png"),
+ "bark-block":preload("res://art/woods/bark-block.png"),
+ "thorn-3":preload("res://art/woods/thorn-3.png"),
+ "thorn-4":preload("res://art/woods/thorn-4.png"),
+ "thorn-5":preload("res://art/woods/thorn-5.png"),
+ "thorn-6":preload("res://art/woods/thorn-6.png"),
  "cabin-off":preload("res://art/woods/cabin-off.png"),
  "cabin-on":preload("res://art/woods/cabin-on.png"),
  "cloud":preload("res://art/woods/cloud.png"),
@@ -67,6 +75,31 @@ func boy_background_target():
 
 func render_boy_point():
  return boy_draw_point if boy_draw_point.x!=INF else story.boy.position
+
+# Reuse the base view's tile coordinates: moss, earth, roots, bark and a twig
+# occupy the same twenty slots. No physics layers are added to the TileSet.
+func make_tiles():
+ var atlas=TileSetAtlasSource.new()
+ atlas.texture=SPRITES["terrain"]
+ atlas.texture_region_size=Vector2i(8,8)
+ for x in range(20): atlas.create_tile(Vector2i(x,0))
+ var result=TileSet.new()
+ result.tile_size=Vector2i(8,8)
+ result.add_source(atlas,0)
+ return result
+
+func draw_boundary_tiles():
+ super.draw_boundary_tiles()
+ # Mix higher hash bits for soil variations; the base hash's lowest two bits
+ # repeat in a checkerboard. Cell positions, surface lists and solidity stay put.
+ for cell in tiles.get_used_cells():
+  var variant=tiles.get_cell_atlas_coords(cell).x
+  if variant in [4,5,6,7,16,17,18,19]:
+   var base=4 if variant<16 else 16
+   tiles.set_cell(cell,0,Vector2i(base+((hash_at(cell.x,cell.y,19)>>7)%4),0))
+
+func draw_hazard(t,point):
+ sprite("thorn-"+str(t),point)
 
 const FelixBody=preload("res://scripts/felix_body.gd")
 const Story=preload("res://scripts/woods_story.gd")
@@ -195,21 +228,19 @@ func marker(text_value,at,size,color):
  ink.draw_string(ThemeDB.fallback_font,at,text_value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,color*ink_color)
 
 # Dad: a big shape sitting on the porch step, backlit by the door, so we never see his face.
-# Side view, facing out toward Felix (drawn facing left, then mirrored). Later, the boy asleep
-# across his lap.
+# Side view, facing out toward Felix. Later, the boy sleeps across his knees.
 func dad_point(): return Vector2(CABIN.position.x+236,FLOOR_Y)
 
 func draw_dad():
  var at=dad_point()
- backdrop.draw_set_transform_matrix(Transform2D(Vector2(-1,0),Vector2(0,1),Vector2(2*at.x-camera.x,-camera.y)))
- sprite("dad-warm" if power_visible() else "dad-cold",at+Vector2(-66,-128))
- var hand=at+Vector2(-54,-78)
+ sprite("dad-warm" if power_visible() else "dad-cold",at+Vector2(-34,-84))
+ var hand=at+Vector2(20,-41)
  if story.dad.flashlight:
-  sprite("flashlight",hand+Vector2(-18,-3))
-  var points=PackedVector2Array([hand+Vector2(-18,-5),hand+Vector2(-18,5),hand+Vector2(-170,70),hand+Vector2(-170,-50)])
+  sprite("flashlight",hand+Vector2(-2,-4))
+  var tip=hand+Vector2(12,-1)
+  var points=PackedVector2Array([tip+Vector2(0,-3),tip+Vector2(0,3),tip+Vector2(155,65),tip+Vector2(155,-50)])
   ink.draw_polygon(points,PackedColorArray([Color.WHITE]),PackedVector2Array([Vector2(0,0),Vector2(1,0),Vector2(1,1),Vector2(0,1)]),SPRITES["beam"])
- if story.dad.lap: boy_asleep(at+Vector2(-20,-38))
- backdrop.draw_set_transform(-camera)
+ if story.dad.lap: boy_asleep(at+Vector2(4,-24))
 
 func tale_backdrop(view):
  # Mist sits in the depth, rather than covering the knight or his route.
@@ -263,14 +294,15 @@ func draw_boy():
  if story.in_tale or story.room in story.tale_rooms: return
  var at=render_boy_point()
  var keep=ink_color
- ink_color*=Color(.65,.77,.75,.8) if b.follow else Color(.86,.88,.8,.94)
+ var far_path=b.follow or (story.room!=Story.CABIN and b.pose!="kneel")
+ ink_color*=Color(.56,.65,.69,.80) if far_path else Color(.86,.88,.8,.94)
  match b.pose:
   "kneel": boy_kneeling(at,b.facing,b.prop)
   _: boy_standing(at,b.facing,b.pose)
  ink_color=keep
 
 func boy_head(c,face_dir,mood_name):
- sprite("boy-head-"+("asleep" if mood_name=="asleep" else "look"),c+Vector2(-12,-14))
+ sprite("boy-head-"+("asleep" if mood_name=="asleep" else "look"),c+Vector2(-9,-10))
 
 func shirt(rect):
  sprite("boy-shirt",rect.position,rect.size)
@@ -279,21 +311,21 @@ func boy_standing(at,facing,pose):
  var run=pose=="run"
  var t=clock*9
  for side in [-1,1]:
-  var swing=sin(t+(0.0 if side<0 else PI))*(6 if run else 0)
-  sprite_limb("boy-leg",at+Vector2(side*3,-30),at+Vector2(side*3+swing,0),6)
- sprite("boy-pack",at+Vector2(-facing*13-5,-52))
- sprite("boy-shirt",at+Vector2(-9,-53))
+  var swing=sin(t+(0.0 if side<0 else PI))*(4 if run else 0)
+  sprite_limb("boy-leg",at+Vector2(side*3,-21),at+Vector2(side*3+swing,0),4)
+ sprite("boy-pack",at+Vector2(-facing*9-4,-37))
+ sprite("boy-shirt",at+Vector2(-6,-38))
  for side in [-1,1]:
-  var arm=at+Vector2(side*8,-49)
-  var hand=arm+Vector2(side*(3+sin(t)*(4 if run else .5)),20)
-  if pose=="point" and side==1: hand=arm+Vector2(facing*18,-12)
-  sprite_limb("boy-arm",arm,hand,5)
- boy_head(at+Vector2(0,-66),facing,"look")
+  var arm=at+Vector2(side*6,-35)
+  var hand=arm+Vector2(side*(2+sin(t)*(3 if run else .5)),15)
+  if pose=="point" and side==1: hand=arm+Vector2(facing*13,-8)
+  sprite_limb("boy-arm",arm,hand,4)
+ boy_head(at+Vector2(0,-46),facing,"look")
 
 func boy_kneeling(at,facing,prop):
- sprite("boy-kneel",at+Vector2(-18,-37))
- var hand=at+Vector2(facing*15,-29)
- sprite_limb("boy-arm",at+Vector2(facing*7,-34),hand,5)
+ sprite("boy-kneel",at+Vector2(-13,-25))
+ var hand=at+Vector2(facing*11,-20)
+ sprite_limb("boy-arm",at+Vector2(facing*5,-24),hand,4)
  if prop=="stick":
   # Only the drawing changes: the tip still rests on Felix at the original point.
   var tip=actor+Vector2(4,-1+sin(clock*2)*1.5)
@@ -301,10 +333,10 @@ func boy_kneeling(at,facing,prop):
   ink.draw_set_transform_matrix(Transform2D(0,-camera)*Transform2D(angle,hand))
   sprite("sword",Vector2(-2,-1.5),Vector2(hand.distance_to(tip)+3,3))
   ink.draw_set_transform(-camera)
- boy_head(at+Vector2(0,-49),facing,"look")
+ boy_head(at+Vector2(0,-35),facing,"look")
 
 func boy_asleep(at):
- sprite("boy-asleep",at+Vector2(-27,-23))
+ sprite("boy-asleep",at+Vector2(-24,-19))
  if fmod(clock,4.0)<2.6:
   var z=fmod(clock,4.0)
   marker("z",at+Vector2(-18-z*4,-26-z*8),7,Color(.85,.88,1,.6*(1-z/2.6)))
@@ -396,6 +428,10 @@ func draw_play_plane():
  paint_transform=Transform2D(0,-camera)
  ink.draw_set_transform_matrix(paint_transform)
  var view = Rect2(camera-Vector2(20,35),Vector2(360,235))
+ # A soft contact shadow lies on the ground, beneath devices and Felix. The boy
+ # himself remains behind the terrain and foreground branches.
+ if story.boy.visible and story.boy.pose!="lap" and not story.in_tale:
+  sprite("boy-shadow",render_boy_point()+Vector2(-11,-2))
  for surface in surfaces:
   if not view.has_point(surface): continue
   Art.grass(self,surface)
@@ -440,14 +476,11 @@ func draw_play_plane():
     var glyph=scene.room.def.map[r][c]
     if glyph in ["-","(",")"]:
      var rail=origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8)
-     box(rail.x,rail.y,8,2,"#debe82" if glyph!= "-" else "#a9b2be")
-     box(rail.x+2,rail.y+3,3,4,"#585b68")
-     if glyph!= "-": line(rail+Vector2(2,3),rail+Vector2(6,5),"#efac69",1)
+     sprite("twig-rail",rail)
+     if glyph!="-": box(rail.x+3,rail.y+5,1,1,"#c4ac76")
     if glyph=="%":
      var surface=origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8)
-     box(surface.x,surface.y,8,8,"#c8c8cc")
-     box(surface.x+1,surface.y+1,6,1,"#edf0ed")
-     line(surface+Vector2(2,3),surface+Vector2(6,6),"#9d95ad",.8)
+     sprite("bark-block",surface)
     if t>=3:
      if scene.flipped: t=4 if t==3 else (3 if t==4 else t)
      draw_hazard(t,origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8))

@@ -35,11 +35,11 @@ class Gallery extends "res://scripts/woods_view.gd":
     story.gifts.sword=false
    draw_knight()
    marker(["idle","left","swing","upward","slime/climb","set down"][i],actor+Vector2(-12,32),9,Color.WHITE)
-  marker("seven-year-old Isaac: stand, run, kneel with the stick",Vector2(16,142),10,Color.WHITE)
+  marker("56 px Isaac: stand, run, kneel with the stick",Vector2(16,142),10,Color.WHITE)
   sprite("dad-warm",Vector2(25,184))
   sprite("dad-cold",Vector2(170,184))
-  boy_asleep(Vector2(230,266))
-  marker("Dad: doorway / flashlight rim",Vector2(18,333),10,Color.WHITE)
+  boy_asleep(Vector2(208,244))
+  marker("84 px seated Dad: doorway / flashlight rim",Vector2(18,333),10,Color.WHITE)
   for i in range(4):
    var name=["fern","mushroom","leaf","acorn"][i]
    sprite(name,Vector2(350+i*70,240))

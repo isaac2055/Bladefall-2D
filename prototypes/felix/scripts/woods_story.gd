@@ -331,7 +331,7 @@ func tick_boy(world,delta):
 # Somewhere the boy can really stand near x: a solid floor (or a ledge) under his feet, nothing
 # in the 80 px above him, and no spikes or thorns where he stands. Prefers the floor nearest
 # Felix's, then the nearest x. Cached per tile so it is cheap to ask every frame.
-const BOY_TALL=10
+const BOY_TALL=8
 var spot_cache={}
 func stand_spot(world,x,ground_y):
  var key=Vector2i(floori(x/8),roundi(ground_y/8))
