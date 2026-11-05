@@ -248,7 +248,8 @@ func restart_world():
  foot_clock=0
 
 func change_chapter(number):
- var chapter=manifest.chapters.get(str(number),manifest.chapters["1"])
+ # Cores (101-120) play their base world's score and ambience.
+ var chapter=manifest.chapters.get(str(number),manifest.chapters.get(str(number-100),manifest.chapters["1"]))
  music.stream=stream(chapter.music,true)
  music.play()
  ambience.stream=stream(chapter.ambience,true)

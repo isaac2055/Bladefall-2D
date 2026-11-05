@@ -510,6 +510,11 @@ func burst(point,count,color,speed):
   particles.append({"p":point,"v":Vector2(cos(a)*speed,sin(a)*speed*0.6-10),"life":0.3+float(i%4)*0.09,"max":0.57,"color":color})
 func target_camera():
  var look=camera_lead if not reduced_motion else Vector2.ZERO
+ # Core camera zones look ahead (or behind) while the knight is inside them, as the browser view does.
+ for z in sim.room.def.get("cameraZones",[]):
+  if sim.p.x>=z.x0 and sim.p.x<=z.x1 and sim.p.y>=z.y0 and sim.p.y<=z.y1:
+   look.x+=float(z.get("lookX",0))
+   break
  var anchor_x=float(sim.room.def.get("puzzleCameraAnchorX",153))
  if world_data.world.get("workshop",false) or sim.room.def.get("campaignWorkshop",false):
   # Small exercises stay fully framed; larger authored rooms use the same smooth camera.
@@ -1514,6 +1519,16 @@ func draw_key(at):
  box(at.x,at.y+4,3,1,"#e1b973")
 
 func draw_region_devices(scene,origin,view):
+ # Core save lanterns: a post with a lamp; lit once its part is saved (bladefall-pcore-dev-core-checkpoints-view.js).
+ var saves=scene.room.def.get("coreCheckpoints",[])
+ for i in range(saves.size()):
+  var q=saves[i]
+  var base=origin+Vector2(q.c*8+4,(q.r+1)*8)
+  if not view.grow(24).has_point(base): continue
+  var lit=scene.core_run!=null and int(scene.core_run.index)>=i
+  line(base,base+Vector2(0,-14),"#5b5470",2)
+  box(base.x-3,base.y-19,6,6,"#ffd27a" if lit else "#3d3a4c")
+  if lit: circle(base+Vector2(0,-16),9,Color(1,.82,.45,.18))
  if runtime!=null and runtime.seam_closed.get(scene.room.id,false):
   for tile in runtime.seam_tiles[scene.room.id]:
    var at=Vector2(tile.point)*8

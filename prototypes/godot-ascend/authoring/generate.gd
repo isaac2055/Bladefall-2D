@@ -221,7 +221,7 @@ func generate(base):
  return root_node
 func run():
  DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://levels"))
- var numbers=[1,2,3,21,22,23,4]
+ var numbers=[1,2,3,21,22,23,4,101,102,103]
  var args=OS.get_cmdline_user_args()
  if "--world" in args:
   var index=args.find("--world")

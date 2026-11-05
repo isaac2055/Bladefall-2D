@@ -10,7 +10,7 @@ const CampaignWorkshop = preload("res://scripts/campaign_workshop.gd")
 var campaign_up_held=false
 var data
 var world
-const CHAPTERS=[1,2,3,21,22,23,4]
+const CHAPTERS=[1,2,3,21,22,23,4,101,102,103]
 var workshop_completed={}
 var workshop_shards={}
 var puzzle_hint_button:Button
@@ -311,7 +311,7 @@ func create_interface():
  restart_button=button(column,"Start world over",restart_world)
  chapter_picker=OptionButton.new()
  for number in CHAPTERS:
-  chapter_picker.add_item(("Test · " if number==4 else str(number)+" · ")+chapters[number].world.data.world.name)
+  chapter_picker.add_item(("Test · " if number==4 else ("Core %d · "%(number-100) if number>100 else str(number)+" · "))+chapters[number].world.data.world.name)
  chapter_picker.item_selected.connect(func(index):switch_chapter(CHAPTERS[index]);set_paused(false))
  column.add_child(chapter_picker)
  text(column,"EXPLORE A SECTION",12,"#bba984")
@@ -770,6 +770,11 @@ func bearing_caption():
   var shard="SHARD BANKED" if workshop_shards.has(sim.room.id) else ("SHARD FOUND · BRING IT TO THE FLAG" if workshop_has_shard() else "OPTIONAL SHARD")
   return ("FINISH REACHED" if workshop_completed.has(sim.room.id) else "REACH THE GOLD FLAG")+" · "+shard
  if sim.p.get("pollen",0)>0: return "WHITE FLOWER SAP · movement weakened · %.1fs"%(sim.p.pollen/60.0)
+ if chapter_number>100:
+  # A Core is one continuous room in parts; each save lantern keeps the next part.
+  var saves=sim.room.def.get("coreCheckpoints",[])
+  var index=int(sim.core_run.index) if sim.core_run!=null else -1
+  return "CORE · PART %d / %d · %s"%[index+2,saves.size()+1,("last save: "+saves[index].get("name","Save point")) if index>=0 else "Retry returns to your latest lantern"]
  if chapter_number>=21:
   var prefix="♥ %d · "%world.heart_count() if world.heart_count()>0 else ""
   if sim.room.def.get("puzzleStudy",false):return prefix+sim.room.def.question+" · H: hint"
