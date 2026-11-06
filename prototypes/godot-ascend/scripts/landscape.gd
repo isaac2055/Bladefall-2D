@@ -84,10 +84,14 @@ var wall_spark_frame=-100
 var dash_ghost_frame=-100
 var landing_speed=0.0
 var observed_room=""
+# Cores (101-120) wear their base world's scenery; chapter-1 options stay with chapter 1.
+func look_number():
+ var n=int(world_data.world.n)
+ return n-100 if n>100 else n
 func configure_mood():
  var colors={1:["#efbf79","#bac9dc"],2:["#b7e1a0","#a9c4ab"],3:["#f3a66d","#cfb6a7"],21:["#cbb7ff","#b6aedc"],22:["#84e6d8","#98bfc2"],23:["#e8a5dc","#c4a6cf"]}
  var biome=sim.room.def.get("workshopBiome","") if sim!=null else ""
- var pair=colors.get(2 if biome=="woods" else 3 if biome=="causeway" else int(world_data.world.n),colors[1])
+ var pair=colors.get(2 if biome=="woods" else 3 if biome=="causeway" else look_number(),colors[1])
  accent=Color(pair[0])
  mood=Color(pair[1])
  if int(world_data.world.n)==1 and environment_design>0:
@@ -116,9 +120,9 @@ func reset_feel():
  impact_power=0
 func _ready():
  if Engine.is_editor_hint(): return
- fractured=int(world_data.world.n)>=21
- forest=int(world_data.world.n) in [2,22]
- causeway=int(world_data.world.n) in [3,23]
+ fractured=look_number()>=21
+ forest=look_number() in [2,22]
+ causeway=look_number() in [3,23]
  configure_mood()
  var sky=Image.create(1,184,false,Image.FORMAT_RGBA8)
  for y in range(184):
@@ -691,7 +695,7 @@ func _draw():
   line(Vector2(x+4,138),Vector2(x+34,138),Color(0.24,0.3,0.34,0.45),2)
  draw_cpu_us.background=Time.get_ticks_usec()-profile_start
  Art.background_details(self)
- if int(world_data.world.n)==1: Themes.finish_background(self,environment_design,environment_feel)
+ if look_number()==1: Themes.finish_background(self,environment_design,environment_feel)
 
 func draw_front():
  if sim==null: return
@@ -1166,7 +1170,7 @@ func draw_entity_body(e,origin):
     line(Vector2(x+e.w/2,y+2),Vector2(x+e.w/2-3,y+e.h/2),"#312c2d",1.5)
     line(Vector2(x+e.w/2-3,y+e.h/2),Vector2(x+e.w/2+2,y+e.h-2),"#312c2d",1.5)
   "zip":
-   if world_data!=null and int(world_data.world.n) in [1,4]:
+   if world_data!=null and look_number() in [1,4]:
     Styles.lift(self,e,origin)
     return
    line(origin+Vector2(e.ox+e.w/2,e.oy),origin+Vector2(e.tx+e.w/2,e.ty),"#8c967e",0.7)
