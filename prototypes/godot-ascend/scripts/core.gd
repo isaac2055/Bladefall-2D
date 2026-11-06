@@ -43,6 +43,8 @@ var room_frame = 0
 var freeze = 0
 var deaths = 0
 var exited = false
+var puzzle_returned = false
+const PuzzleReturns=preload("res://scripts/puzzle_returns.gd")
 var phase = 0
 var shards = {}
 var events = []
@@ -126,6 +128,7 @@ func load_room(parsed: Dictionary, respawn = false):
  room_frame = 0
  phase = 0
  exited = false
+ puzzle_returned = false
  if respawn:
   p.state = "respawn"
   p.respawnTimer = K.respawnFrames
@@ -664,6 +667,7 @@ func step(raw):
   if p.state!="dead": finish_devices()
  if p.state != "dead":
   sweeper_collision(from)
+ PuzzleReturns.update(self)
  if p.state != "dead" and world_context==null: check_exit()
  MovementTwo.after(self)
 func update_entities():
@@ -691,7 +695,8 @@ func update_entities():
   if e.type=="zip": update_zip(e)
   if e.type=="slide" and e.get("moving",false): update_slide(e)
   if e.type=="gate":
-   if not e.get("open",false) and left==0 and (e.get("devKeyed",false) or ents.any(func(a):return a.type=="stone")) and not Fractured.gate_hold(self):
+   if PuzzleReturns.is_return_gate(self,e): e.open=puzzle_returned
+   elif not e.get("open",false) and left==0 and (e.get("devKeyed",false) or ents.any(func(a):return a.type=="stone")) and not Fractured.gate_hold(self):
     e.open = true
     e.t = 0
    if e.get("open",false): e.t += 1
@@ -846,6 +851,7 @@ func finish_devices():
    e.solid=false
    emit_event("foothold-spent")
 func check_exit():
+ if PuzzleReturns.required(room.def) and not puzzle_returned: return
  var ex = room.exit
  var out = p.x>=room.w-2 if ex=="right" else (p.x<=-p.w+2 if ex=="left" else (p.y<=-3 if ex=="up" else p.y>=room.h-2))
  if ex=="none": out = false

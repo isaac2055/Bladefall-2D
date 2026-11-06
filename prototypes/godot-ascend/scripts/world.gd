@@ -224,7 +224,7 @@ func tick_inactive():
 func collect_progress():
  # The workshop shard is an optional round trip, banked at its finish by the UI.
  # Death/retry resets the pickup along with the room, unlike campaign bearings.
- if data.world.get("workshop",false) or active().room.def.get("campaignWorkshop",false): return
+ if data.world.get("workshop",false) or active().room.def.get("campaignWorkshop",false) or Core.PuzzleReturns.required(active().room.def): return
  # Only the active knight can collect or light a stake. Inactive machinery cannot.
  for id in [active_id]:
   var core=cores[id]

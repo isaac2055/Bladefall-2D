@@ -1,6 +1,14 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.36.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.37.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Woods playtest adjustments · 0.37.0
+
+**Pod and Crossing have more forgiving landings. Wall requires two shards returned home.** Pod has a two-tile wider Amber runway and a closer, wider Blue landing; its sealed canopy remains. Crossing has a wider upper landing, taller pod passage and a closer Blue destination. The sampled powered-clear timing windows improve without adding a resting platform between launch and finish.
+
+Wall has a wider, thicker overhang, an outward shard and a returning shard. Bring **both** to its visible gold home flag to open the exit gate. The HUD shows your collection status; death or retry resets both items and the gate. Its outward rebound and return demonstration have been updated.
+
+Use **Play Fractured Black Woods Rooms.command**, or choose the rooms under **Esc → Explore a section**. Each retains an independent checkpoint, **H** hint and complete **Esc → Watch reference**. Bridge remains banked and unchanged. The signed app passes **25 packaged suites**, including the return-item checks and **1,221 shortcut attempts**; the full Woods tour remains deathless. See [adjustments and verification](research/FRACTURED-WOODS-EASING.md).
 
 ## Close the Woods route bypasses · 0.36.0
 

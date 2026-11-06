@@ -731,8 +731,8 @@ func draw_front():
    line(door+Vector2(0,-13),door+Vector2(0,-20),"#d4f2f7",1)
    line(door+Vector2(0,-20),door+Vector2(-3,-17),"#d4f2f7",1)
    line(door+Vector2(0,-20),door+Vector2(3,-17),"#d4f2f7",1)
-  if scene.room.def.has("workshopGoal"):
-   var goal=scene.room.def.workshopGoal
+  if scene.room.def.has("workshopGoal") or preload("res://scripts/puzzle_returns.gd").required(scene.room.def):
+   var goal=scene.room.def.get("workshopGoal",scene.room.def.get("puzzleGoal",[]))
    var flag=origin+Vector2(goal[0]+goal[2]/2.0,goal[1])
    var pole=min(22,max(10,goal[1]-10))
    line(flag,flag+Vector2(0,-pole),"#e7c881",1)

@@ -15,7 +15,7 @@ func normalized(room):
  return room
 func goal(c):
  var g=c.room.def.puzzleGoal
- return c.p.state not in ["dead","respawn"] and c.p.onGround and Rect2(g[0],g[1]-2,g[2],g[3]+4).has_point(Vector2(c.p.x+4,c.p.y+11))
+ return preload("res://scripts/workshop_pickups.gd").ready(c.room.def,c.ents) and c.p.state not in ["dead","respawn"] and c.p.onGround and Rect2(g[0],g[1]-2,g[2],g[3]+4).has_point(Vector2(c.p.x+4,c.p.y+11))
 func play(app,tape):
  app.journey=[];app.journey_frame=0
  for part in tape:

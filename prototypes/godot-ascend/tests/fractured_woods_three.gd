@@ -63,7 +63,7 @@ func _initialize():
   if index==37:check(q.pods==2 and q.bells==1 and q.loft and q.low,"one pod supplies high and low rebounds around the bell change")
   if index==38:check(q.pods==1 and q.bells==2,"shared bell used from both faces before the momentum-preserving high rebound")
   if index==39:check(q.climbed and q.climb_stamina>5 and q.climb_frames<90 and q.pods==1,"shorter finite-stamina climb connects to an outward pod transfer")
-  for segment in {37:[2,13],38:[18,21],39:[9,16]}[index]:
+  for segment in {37:[2,13],38:[18,21],39:[9,17]}[index]:
    var clears=[]
    for delta in range(-4,5):
     var varied=tape.duplicate(true);varied[segment][0]+=delta
@@ -74,11 +74,11 @@ func _initialize():
  var before=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/fractured-difficulty-before.json"))
  # Departure/cut timing can vary when the player adjusts the return and landing.
  # Do not confuse one fixed end-to-end tape's timing with a one-frame mechanic.
- for sample in [[8,4,16,18],[9,5,14,18],[10,6,14,24],[11,7,10,18],[12,8,12,22]]:
+ for sample in [[9,9,8],[10,8,8],[11,7,8],[11,8,9],[12,7,9]]:
   var varied=b.world.rooms[39].puzzleRoutes[0].tape.duplicate(true)
-  for pair in [[10,sample[0]],[11,sample[1]],[12,sample[2]],[14,sample[3]]]:varied[pair[0]][0]=pair[1]
+  for pair in [[10,sample[0]],[12,sample[1]],[13,sample[2]]]:varied[pair[0]][0]=pair[1]
   var q=play(b,39,varied)
-  check(q.finish and q.deaths==0 and q.pods==1 and q.waves==1,"nearby Wall departure/cut with adjusted return: "+str(sample))
+  check(q.finish and q.deaths==0 and q.pods==1 and q.waves==1,"nearby Wall departure and return steering: "+str(sample))
  for index in [37,38,39]:
   var prior=before.chapters["22"][str(index)]
   check(play(b,index,prior.room.puzzleRoutes[0].tape,"",prior.room).finish and not play(b,index,prior.room.puzzleRoutes[0].tape).finish,"old easy reference clears its original room but misses the revised flag: "+str(index))

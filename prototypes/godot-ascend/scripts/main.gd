@@ -763,7 +763,11 @@ func bearing_caption():
  if sim.p.get("pollen",0)>0: return "WHITE FLOWER SAP · movement weakened · %.1fs"%(sim.p.pollen/60.0)
  if chapter_number>=21:
   var prefix="♥ %d · "%world.heart_count() if world.heart_count()>0 else ""
-  if sim.room.def.get("puzzleStudy",false):return prefix+sim.room.def.question+" · H: hint"
+  if sim.room.def.get("puzzleStudy",false):
+   if sim.room.def.get("workshopRequireAllShards",false):
+    var count=WorkshopPickups.counts(sim.ents)
+    return prefix+("SHARDS RETURNED · EXIT OPEN" if sim.puzzle_returned else "SHARDS %d / %d · BRING ALL TO THE GOLD FLAG"%[count[0],count[1]])+" · H: hint"
+   return prefix+sim.room.def.question+" · H: hint"
   if sim.oath_root!=null and not sim.oath_root.taken:
    return prefix+("OATHBLADE · Press ↑ near the freed blade" if sim.oath_root.released else "OATHBLADE · Stand on the root counterweight to free the blade")
   if sim.root_lash!=null and sim.root_lash.crown!=null and not sim.root_lash.crown.cut: return prefix+"Cut the root crown · the timed roots stop when it falls"

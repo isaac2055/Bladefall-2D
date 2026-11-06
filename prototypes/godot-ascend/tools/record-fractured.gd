@@ -143,8 +143,10 @@ func _initialize():
   if w.active().deaths>0: break
  var ok=visited.size()==expected_count and w.active_id=="cl%d-atlas-crossroads"%number and w.active().deaths==0
  if ok:
+  var all_visited=visited.duplicate()
+  if w.active_id not in all_visited:all_visited.append(w.active_id)
   var file=FileAccess.open(OS.get_cmdline_user_args()[1],FileAccess.WRITE)
-  file.store_string(JSON.stringify({"world":number,"frames":w.frames,"deaths":0,"visited":visited,"tape":recording},"  ")+"\n")
+  file.store_string(JSON.stringify({"world":number,"frames":w.frames,"deaths":0,"visited":all_visited,"tape":recording},"  ")+"\n")
   file.close()
  print("PASS" if ok else "FAIL"," continuous Fractured journey · ",number," · ",w.frames," frames · ",visited.size()," / ",expected_count," road sections · ",w.active().deaths," deaths")
  w.shutdown()
