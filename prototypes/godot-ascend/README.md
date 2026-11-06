@@ -2,6 +2,26 @@
 
 Version **0.36.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
+## Cores 1–3 · Claude, branch `claude/godot-cores`
+
+The browser game's first three Cores are now chapters: **Core 1 · Outskirts**, **Core 2 · Black Woods** and **Core 3 · Causeway** (worlds 101–103, under Esc → chapter). Each is one continuous room in parts. Its save lanterns keep the next part, and death and **Retry** return you to the latest one. **Start world over** clears them. Each Core plays its base world's score, and the bar reads `CORE · PART n / m`.
+
+- **Data:** `node tools/export-world.mjs --world=101` (or 102, 103) exports from `public/bladefall-climb-core-tapes.js` and `bladefall-climb-cores.js`. Those load only for Core exports, so the existing world exports and their `--check` stay unchanged. The scenes are `levels/world101.tscn` to `world103.tscn`, generated with `authoring/generate.gd -- --world 101 --force`.
+- **Engine:** I ported four Core features from the browser:
+  - `scripts/core_checkpoints.gd`, the save lanterns;
+  - `crumbleExtraFrames`, 60 extra frames on cracked stone in Cores;
+  - `counterweightFlow`: a lift-carried hyper keeps its speed and refills the dash, and the momentum resets as the browser's does;
+  - `cameraZones`, a look-ahead in the Black Woods Core.
+  
+  `riding()` now counts only a live knight, matching the browser's `riderOf`. The Woods Core starts on cracked stone, which exposed the difference.
+- **Parity:** `node tools/parity.mjs --world=101` (or 102, 103) compares each Core's full route, Codex's varied-input probe, and two new probes that pass a save lantern and then die. Every frame matches the browser. Worlds 1–3 and 21–23 still match exactly.
+- **App:** `tests/cores.gd` (36 checks) selects each Core and confirms:
+  - Watch clears it without dying and lights every lantern in order (6, 8 and 4);
+  - death in normal play respawns on the earned lantern;
+  - Retry keeps it, and Start world over clears it.
+
+The lanterns are simple posts with a lamp, lit once saved. They are placeholders for real art.
+
 ## Close the Woods route bypasses · 0.36.0
 
 **Bridge is banked and unchanged.** The three Woods studies now use the approved physical route constraints:
