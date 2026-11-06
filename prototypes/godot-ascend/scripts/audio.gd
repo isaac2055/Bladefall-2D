@@ -130,7 +130,8 @@ func effort(name,force = false):
  effect(name,0.58)
 func room_changed(core=null):
  if world_runtime!=null:
-  var chapter=manifest.chapters.get(str(int(world_runtime.data.world.n)),manifest.chapters["1"])
+  var number=int(world_runtime.data.world.n)
+  var chapter=manifest.chapters.get(str(number),manifest.chapters.get(str(number-100),manifest.chapters["1"]))
   var id=core.room.id if core!=null else world_runtime.active_id
   var boss=id in ["cl3-c3-brace","cl3-bank-b68","cl23-fc23-standard","cl23-fc23-west","cl23-fc23-east","cl23-bank-f69"]
   var score=stream(chapter.get("bossMusic",chapter.music) if boss else chapter.music,true)

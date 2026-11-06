@@ -24,6 +24,7 @@ func run():
   check(app.chapter_number==number and w.data.world.name==names[number],"selected "+names[number])
   check(app.chapter_picker.get_item_text(app.CHAPTERS.find(number)).begins_with("Core %d · "%(number-100)),"menu names it Core %d"%(number-100))
   check(app.audio.music.stream==app.audio.stream(app.audio.manifest.chapters[str(number-100)].music,true),"plays its base world's score")
+  check(app.landscape.forest==(number==102) and app.landscape.causeway==(number==103) and not app.landscape.fractured,"wears its base world's backdrop")
   var id=w.data.world.rooms[0].id
   var points=w.data.world.rooms[0].coreCheckpoints
   # Watch: the authored reference clears the whole Core in the continuous world.
