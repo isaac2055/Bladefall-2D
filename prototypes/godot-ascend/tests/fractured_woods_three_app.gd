@@ -69,7 +69,7 @@ func run():
   app.toggle_watch()
   for death in [false,true]:
    app.world.restart();app.load_section(index)
-   play(app,room.puzzleRoutes[0].tape.slice(0,{46:18,37:8,38:3,39:10}[index]))
+   play(app,room.puzzleRoutes[0].tape.slice(0,{46:18,37:8,38:3,39:9}[index]))
    check(app.sim.phase!=0 or app.sim.p.state=="climb" or app.sim.ents.any(func(e):return e.type=="zip" and e.state!="idle"),"interrupted puzzle has changed state: "+room.name)
    if death:app.sim.die()
    else:app.retry_room()

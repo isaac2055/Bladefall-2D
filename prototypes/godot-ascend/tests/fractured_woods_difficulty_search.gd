@@ -27,7 +27,7 @@ func _initialize():
   record(index,"no ordinary route found from before the return, upper bell or wall climb",S.solve(d,index,{"budget":80000,"width":40,"depth":60,"start":tape.slice(0,{37:8,38:7,39:7}[index])}),false)
  for index in [38,39]:
   var tape=d.world.rooms[index].puzzleRoutes[0].tape
-  var options={"start":tape.slice(0,7 if index==38 else 9),"mode_after_start":"no_bells" if index==38 else "no_pods","allow_super":true,"allow_ultra":true,"budget":80000,"width":40,"depth":60}
+  var options={"start":tape.slice(0,7 if index==38 else 8),"mode_after_start":"no_bells" if index==38 else "no_pods","allow_super":true,"allow_ultra":true,"budget":80000,"width":40,"depth":60}
   record(index,"no finish found without the upper bell or outward pod; powered movement remains available",S.solve(d,index,options),false)
  print("FRACTURED WOODS DIFFICULTY SEARCH ","FAILED" if failed else "PASSED")
  quit(1 if failed else 0)

@@ -68,12 +68,12 @@ func _initialize():
  print("CHECKED Crossing ordinary-speed pod/dash envelopes · ",tested)
  t=data.world.rooms[39].puzzleRoutes[0].tape
  # Pod is removed before play; final wavedash remains available in these attempts.
- for climb in [30,45,60,75,83,84,90,105]:
+ for climb in [45,60,75,85,95,100,105,110]:
   for jump in [6,12,18]:
    for aim in ["lx","lux","ux"]:
     for settle in ["l","lgu"]:
      for duration in [8,24]:
-      reject(39,t.slice(0,9)+[[climb,"lgu"],[jump,"rj"],[12,aim],[duration,settle],[7,"lj"],[10,"ldx"],[18,"lj"],[12,"ux"],[14,"l"],[15,""]],"pod-free wall departure",false,true)
+      reject(39,t.slice(0,8)+[[climb,"lgu"],[jump,"rj"],[12,aim],[duration,settle],[7,"lj"],[10,"ldx"],[18,"lj"],[12,"ux"],[14,"l"],[15,""]],"pod-free wall departure",false,true)
  print("CHECKED Wall climb/departure families · ",tested)
  print("FRACTURED WOODS REQUIRED ROUTES ","FAILED" if failed else "PASSED"," · ",tested," attempts plus three historical positive controls")
  quit(1 if failed else 0)

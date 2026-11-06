@@ -56,7 +56,7 @@ func run():
   var items=app.sim.ents.filter(func(e):return e.type=="shard")
   items[missing].x=1000
   play(app,route)
-  check(app.sim.p.onGround and app.sim.p.x>=40 and app.sim.p.x<88 and app.sim.p.y==117 and Pickups.counts(app.sim.ents)==[1,2],"actual home arrival with one missing item: "+str(missing))
+  check(app.sim.p.onGround and app.sim.p.x>=40 and app.sim.p.x<88 and app.sim.p.y==room.puzzleGoal[1]-11 and Pickups.counts(app.sim.ents)==[1,2],"actual home arrival with one missing item: "+str(missing))
   check(not app.sim.puzzle_returned and not gate(app.sim).get("open",false),"either missing shard rejects the return")
   play(app,d.world.tapes[room.id].slice(route.size()))
   check(app.world.active_id==room.id and app.sim.p.x<=536 and app.sim.deaths==0,"closed physical gate blocks onward campaign travel")

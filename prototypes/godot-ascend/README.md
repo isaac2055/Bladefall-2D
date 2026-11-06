@@ -1,6 +1,14 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.37.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.38.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Seed clearance and higher Wall transfer · 0.38.0
+
+**Pod's seed approach has room to move. Wall has a higher, longer return.** The thorn-lined inner partition beside Pod's seed is removed and the stone divider is moved away, opening the drop and low rebound approach. Its later launch and destination retain their 0.37.0 adjustments.
+
+Wall closes the spawn-side climb shortcut, restores an Amber far bank with an airborne bell strike, climbs to a higher cap and jumps farther out to an elevated seed. The first required shard sits on the high return arc, followed by the returning crumble and second shard. Bring both home to open the exit. Its hints, complete Watch and full Woods recording are updated. The signed app passes **26 packaged suites**, including the seed-clearance and reproduced spawn-side shortcut checks. Crossing and the banked Bridge are unchanged.
+
+Use **Play Fractured Black Woods Rooms.command**, or choose the rooms under **Esc → Explore a section**. See [clearance and transfer notes](research/FRACTURED-WOODS-CLEARANCE.md).
 
 ## Woods playtest adjustments · 0.37.0
 
