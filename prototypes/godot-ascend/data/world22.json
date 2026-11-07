@@ -4541,7 +4541,7 @@
           "###########=====.............####################.............................<#",
           "###########..................HH..........########......<BBBBBBB...............<#",
           "###########..................HH........................<......................<#",
-          "###########...#######........HH........................<......................<#",
+          "###########..................HH........................<......................<#",
           "###########..................HH.......AAAAA............<......................<#",
           "###########.................##########.................<......................<#",
           ".......................###..##########.................<......................<#",
@@ -4556,7 +4556,7 @@
           4
         ],
         "question": "What must stay still while you cross the door?",
-        "hint": "Jump and throw the lantern across, then dash over empty-handed. Retrieve it from the receiving shelf and carry it up the two offset ledges to the blue plate. Set it down to hold the door open. At the gap before the door, resist the dash: drop onto the small lower ledge and jump up to the doorway instead. An early dash drops the lantern back onto its receiving shelf and closes the door. The left-hand return platform lets you climb back and retrieve it. Beyond the door, hop and dash down-right onto amber, wavedash beneath the canopy, then dash upward-right to the blue flag.",
+        "hint": "Jump and throw the lantern across, then dash over empty-handed. Retrieve it from the receiving shelf and carry it up the two offset ledges to the blue plate. Set it down to hold the door open. At the gap before the door, resist the dash: drop left past the receiving shelf, steer right onto the short ledge beside the door, and jump up to the doorway instead. An early dash drops the lantern back onto its receiving shelf and closes the door. The left-hand return platform lets you climb back and retrieve it. Beyond the door, hop and dash down-right onto amber, wavedash beneath the canopy, then dash upward-right to the blue flag.",
         "puzzleRoutes": [
           {
             "name": "Throw and set, then take the lower ledge across the door gap",
@@ -4658,15 +4658,15 @@
                 "l"
               ],
               [
-                65,
+                32,
                 ""
               ],
               [
-                32,
+                33,
                 "r"
               ],
               [
-                15,
+                25,
                 ""
               ],
               [
@@ -4678,7 +4678,7 @@
                 ""
               ],
               [
-                30,
+                32,
                 "r"
               ],
               [
@@ -7939,15 +7939,15 @@
           "l"
         ],
         [
-          65,
+          32,
           ""
         ],
         [
-          32,
+          33,
           "r"
         ],
         [
-          15,
+          25,
           ""
         ],
         [
@@ -7959,7 +7959,7 @@
           ""
         ],
         [
-          30,
+          32,
           "r"
         ],
         [

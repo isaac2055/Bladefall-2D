@@ -51,10 +51,10 @@ func _initialize():
  check(tape.slice(tape.size()-6)==old.puzzleRoutes[0].tape.slice(old.puzzleRoutes[0].tape.size()-6),"exact final six inputs preserved")
  var original=before.throw_setup
  check(tape.slice(0,23)==original,"approved throw, retrieval, carrying jumps and set-down inputs restored")
- check(room.map[41].substr(21,7)=="......." and room.map[43].substr(21,7)=="......." and room.map[44].substr(23,3)=="###" and room.map[45].substr(21,7)==".......","real pit before the door with an isolated lower ledge, no continuous floor")
+ check(room.map[41].substr(14,14)==".............." and room.map[43].substr(21,7)=="......." and room.map[44].substr(23,3)=="###" and room.map[45].substr(21,7)==".......","real pit before the door with an isolated lower ledge, no continuous floor")
  var safe=play(d,tape)
  check(safe.air_throw and safe.pickups==2 and safe.finish and safe.deaths==0 and safe.placed and safe.lower and safe.crossed and not safe.early_dash and safe.waves==1,"lower path clears without disturbing the plate before the door")
- var bait=tape.slice(0,25)+[[12,"r"],[10,""],[12,"rx"],[45,"r"],[20,""]]
+ var bait=tape.slice(0,25)+[[20,"r"],[12,"rx"],[30,"r"],[20,""]]
  var bad=play(d,bait);print("BAIT OBSERVATION ",JSON.stringify(bad))
  check(bad.fell and bad.blocked and not bad.crossed and bad.deaths==0,"tempting dash drops the lantern and physically hits the closed door")
  var control=play(d,bait,true)

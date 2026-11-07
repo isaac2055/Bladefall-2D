@@ -1,6 +1,10 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.42.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.42.1** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Single lower ledge · 0.42.1
+
+Lantern's long lower platform on the left is removed. Only the short lower stone ledge beside the door remains; steer onto it during the drop. Throw and set, the final jump and the other rooms are preserved. Watch and the full chapter recording follow the revised descent.
 
 ## Throw and set, then cross the door gap · 0.42.0
 
