@@ -33,7 +33,9 @@ func run():
    check(C.fingerprint(normalized(room))==before.rooms[room.id] and C.fingerprint(d.world.tapes.get(room.id,[]))==before.tapes[room.id],"prior room and reference preserved: "+room.id)
  for section in before.sections:
   if section.room=="cl22-atlas-crossroads":continue
-  check(d.world.sections.filter(func(s):return s.room==section.room)[0]==section,"prior placement and checkpoint preserved: "+section.room)
+  var expected=section.duplicate(true)
+  if section.room=="cl22-puzzle-seed-not-yet":expected.fire={"c":2.0,"r":37.0}
+  check(d.world.sections.filter(func(s):return s.room==section.room)[0]==expected,"prior placement and checkpoint preserved: "+section.room)
  var metadata=d.world.duplicate(true)
  for key in ["rooms","tapes","sections","requiredMainRooms"]:metadata.erase(key)
  check(C.fingerprint(metadata)==before.metadata and C.fingerprint(d.constants)==before.constants and C.fingerprint(d.playerDefaults)==before.defaults,"chapter metadata, quests and shared physics preserved")

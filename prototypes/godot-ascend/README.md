@@ -1,16 +1,15 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.43.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.44.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
-## Woods rooms seven to nine · 0.43.0
+## Woods room revisions · 0.44.0
 
-The six accepted additions are banked and preserved. Three approved rooms are ready for playtesting:
+Seven additions are now accepted and preserved, including **The Branch You Must Stand Beside**. The two revised rooms are ready for playtesting:
 
-- **The Branch You Must Stand Beside:** clear the hinge's destination from a low perch, rotate the branch into a runway, then wavedash beneath its canopy.
-- **The Seed You Cannot Use Yet:** release and retrieve the bound oathblade, then return to the seed for the high rebound over the thorn roof.
-- **The Branch Above Your Head:** rebound through the resin lid as it disappears and transfer to the receiving branch during the same opening.
+- **The Rebound You Must Refuse:** retrieve the nearby oathblade, use a low rebound beneath the thorn canopy, then hold jump for a high rebound up the final shaft.
+- **The Branch You Must Leave:** the original resin landing is now a midpoint. Drop beneath the hanging divider before the phase changes, then use the next phase's runway for a wavedash beneath the canopy and a final upward dash.
 
-Open **Play Woods Rooms Seven to Nine.command**, or choose the rooms by name under **Esc → Explore a section**. Each has an individual checkpoint, optional **H** hint, full Watch reference and native editable scene data. Chapter 22 now has **46 definitions, 22 main challenges and nine added puzzle rooms**. Its complete road reference clears **14,105 frames through 30 regions with zero deaths**, preserving the prior 11,581-frame recording as an exact prefix. See [design and verification notes](research/FRACTURED-WOODS-SEVEN-TO-NINE.md).
+Choose either room by name under **Esc → Explore a section**. Each retains its individual checkpoint, optional **H** hint, complete Watch reference and native editable scene data. Chapter 22 still has **46 definitions, 22 main challenges and nine added puzzle rooms**. See [design and verification notes](research/FRACTURED-WOODS-SEVEN-TO-NINE.md).
 
 ## Single lower ledge · 0.42.2
 

@@ -16,12 +16,16 @@ func _initialize():
   if r.has("puzzleGoal"):r.workshopGoal=r.puzzleGoal
  for i in [43,44,45]:
   var t=d.world.rooms[i].puzzleRoutes[0].tape
-  search(d,i,"positive control finish "+str(i),t.slice(0,{43:12,44:20,45:7}[i]),true)
+  search(d,i,"positive control finish "+str(i),t.slice(0,{43:12,44:16,45:18}[i]),true)
  search(d,43,"upright branch locked; find another route",d.world.rooms[43].puzzleRoutes[0].tape.slice(0,2),false,{"forbid_pose":{"Runway branch":["right","down","left"]}})
  search(d,43,"ordinary movement after preparing the horizontal branch",d.world.rooms[43].puzzleRoutes[0].tape.slice(0,8),false,{"allow_super":false,"allow_hyper":false,"allow_wallbounce":false,"allow_ultra":false})
- search(d,44,"blade retrieved but seed absent",d.world.rooms[44].puzzleRoutes[0].tape.slice(0,16),false,{"mode":"no_pods"})
+ var low=d.duplicate(true);low.world.rooms[44].map[32]=low.world.rooms[44].map[32].replace("b",".")
+ search(low,44,"blade acquired; first low seed absent",d.world.rooms[44].puzzleRoutes[0].tape.slice(0,6),false)
+ var high=d.duplicate(true);high.world.rooms[44].map[26]=high.world.rooms[44].map[26].replace("b",".")
+ search(high,44,"intermediate landing; high seed absent",d.world.rooms[44].puzzleRoutes[0].tape.slice(0,12),false)
  var blocked=d.duplicate(true);blocked.world.rooms[45].resinWind.branches[0].phase=2
  search(blocked,45,"lid never disappears; try another way up",d.world.rooms[45].puzzleRoutes[0].tape.slice(0,2),false)
+ search(d,45,"ordinary movement from the lower pocket",d.world.rooms[45].puzzleRoutes[0].tape.slice(0,12),false,{"allow_super":false,"allow_hyper":false,"allow_wallbounce":false,"allow_ultra":false})
  var ok=results.all(func(r):return r.passed)
  print("WOODS NINE SEARCH ","PASSED" if ok else "FAILED")
  quit(0 if ok else 1)

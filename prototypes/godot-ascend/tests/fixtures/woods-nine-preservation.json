@@ -60,6 +60,7 @@
     "cl22-puzzle-lantern-above-door": "75ebce1b1d5ea3ea8e5f689574dc786f204614ed3a14c2d4e62af0bdfea98a52",
     "cl22-puzzle-late-branch": "43c797c905ebad2f75b813858129b9283523484706528c7544ed6081a2e116fe",
     "cl22-puzzle-runway-under-roots": "73e69add83b1e52128ca75e5d1d9869e0d5ed604942688dc05da110a52aabcf6",
+    "cl22-puzzle-stand-beside-branch": "994b0f22f87cc9811a8b06f3a1c67b133b890b22badf7249aeb71cb79cade16f",
     "cl22-puzzle-two-ceilings": "9b178456c2730eab00833f5715cef770fe791d7709f259934eb67938d097b146",
     "cl22-secret-pv1": "31e1e17c489791137a453c3500faa778b877ce82e4fd8e58151963aa32d28f9b",
     "cl22-walk-1-18": "ab25317266dd16fcd8f55a7420cd65ee23666270a813c782e2226dec8c65eff8",
@@ -307,6 +308,33 @@
       "room": "cl22-atlas-crossroads",
       "x": 495.0,
       "y": -358.0
+    },
+    {
+      "fire": {
+        "c": 5.0,
+        "r": 33.0
+      },
+      "room": "cl22-puzzle-stand-beside-branch",
+      "x": 495.0,
+      "y": -383.0
+    },
+    {
+      "fire": {
+        "c": 5.0,
+        "r": 33.0
+      },
+      "room": "cl22-puzzle-seed-not-yet",
+      "x": 575.0,
+      "y": -411.0
+    },
+    {
+      "fire": {
+        "c": 5.0,
+        "r": 33.0
+      },
+      "room": "cl22-puzzle-branch-above-head",
+      "x": 655.0,
+      "y": -439.0
     }
   ],
   "tapes": {
@@ -346,6 +374,7 @@
     "cl22-puzzle-lantern-above-door": "b19907899e5c4cf1956912e26338e19c2bc68088101ef9f9535153249e72ec27",
     "cl22-puzzle-late-branch": "5ea38e450d7c35432334095de5cf21a363830512c5d3b9a20b729a861623ca88",
     "cl22-puzzle-runway-under-roots": "56c8dbff032ea7244a7e0ab7d080c47f16b295890418749f425261c9c59c85e2",
+    "cl22-puzzle-stand-beside-branch": "74d76986cf2aca68bbdc3b1c4248fb31ba7885719ba0295f51629c3c1d05c74e",
     "cl22-puzzle-two-ceilings": "85cd76ff72c1ff51a92b8c25dccb0fb610d66a8efb152619ff6718b0511cb14f",
     "cl22-secret-pv1": "2c1b0f32064779437fd9b7a2b9a884f2ef1dd6f11b28f6abf6c7bcac993f6e35",
     "cl22-walk-1-18": "948f1c3f36a72fdfe0af0c0f9268588d3387e14b56a1d26bf753835ec3dd5f74",
