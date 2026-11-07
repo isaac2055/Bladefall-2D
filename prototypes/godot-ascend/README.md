@@ -1,6 +1,16 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.38.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.39.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Three more Fractured Woods rooms · 0.39.0
+
+Pod, Crossing and Wall are banked and preserved. Three approved concepts are now built for playtesting:
+
+- **The Branch That Arrives Late**: anticipate the resin landing, wavedash under its canopy and restore the amber finish.
+- **The Lantern Above the Door**: leave cargo on the blue plate, pass the door before changing phase, then launch empty-handed.
+- **The Runway Under the Roots**: rebound to the crown, silence the lashes and use the cleared return runway.
+
+Open **Play Next Fractured Woods Rooms.command**, or select them by name under **Esc → Explore a section**. Each has its own checkpoint, **H** hint, complete Watch reference and editable chapter-22 scene data. Chapter 22 now has **43 definitions and 19 main challenges**, including **six added puzzle rooms**. The signed app passes **29 packaged suites**; its complete road reference is deathless across **11,450 frames**. See [design and verification notes](research/FRACTURED-WOODS-NEXT-THREE.md).
 
 ## Seed clearance and higher Wall transfer · 0.38.0
 

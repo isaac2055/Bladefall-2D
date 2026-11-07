@@ -70,7 +70,9 @@ func run():
  check(Pickups.counts(app.sim.ents)==[2,2] and app.sim.puzzle_returned and gate(app.sim).open and app.sim.deaths==0,"live intended route returns both items and opens the gate")
  check("EXIT OPEN" in app.bearing_caption(),"HUD confirms the successful return")
  play(app,d.world.tapes[room.id].slice(route.size()))
- check(app.world.active_id=="cl22-atlas-crossroads" and app.sim.deaths==0,"returned items allow the actual onward exit")
+ var section_ids=d.world.sections.map(func(section):return section.room)
+ var onward=d.world.sections[section_ids.find(room.id)+1].room
+ check(app.world.active_id==onward and app.sim.deaths==0,"returned items allow the actual onward exit")
  app.world.restart();app.load_section(39);app.toggle_watch()
  var c=app.sim
  for tick in range(app.tape.size()):

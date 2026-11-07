@@ -5,7 +5,7 @@ extends RefCounted
 const Core=preload("res://scripts/core.gd")
 const Loader=preload("res://scripts/room_loader.gd")
 const Routes=preload("res://tests/workshop_routes.gd")
-const FIELDS=["p","ents","prev","buf","frame","room_frame","freeze","phase","shards","foothold_previous","kick_direction","puzzle_returned"]
+const FIELDS=["p","ents","prev","buf","frame","room_frame","freeze","phase","shards","foothold_previous","kick_direction","puzzle_returned","resin_wind","root_lash","awake"]
 static func snapshot(core):
  var state={}
  for field in FIELDS:
@@ -134,7 +134,9 @@ static func solve(data,index,options={}):
      if core.p.onGround and core.ents.any(func(e):return e.type in options.get("forbid_landing",[]) and core.standing(e)):invalid=true;break
      if core.ents.any(func(e):return e.type=="hingeArm" and e.dir in options.get("forbid_pose",{}).get(e.label,[])):invalid=true;break
      if options.get("forbid_weight",false) and core.ents.any(func(e):return e.type=="recoilPlatform" and e.get("loadedBy","")=="lantern"):invalid=true;break
-     var forbidden=["hyper","wallbounce"]
+     var forbidden=[]
+     if not options.get("allow_hyper",false):forbidden.append("hyper")
+     if not options.get("allow_wallbounce",false):forbidden.append("wallbounce")
      if not options.get("allow_super",false):forbidden.append("super")
      if not options.get("allow_ultra",false):forbidden.append("ultra")
      if core.deaths>0 or forbidden.any(func(k):return k in core.events):invalid=true;break
@@ -142,7 +144,7 @@ static func solve(data,index,options={}):
      if Routes.at_goal(core):return {"found":true,"nodes":nodes,"depth":depth,"tape":prefix+parent.tape+[action]}
     if invalid:continue
     var state=snapshot(core)
-    var digest=hash([state.p,state.ents,state.prev,state.buf,state.freeze,state.phase,state.kick_direction,state.puzzle_returned])
+    var digest=hash([state.p,state.ents,state.prev,state.buf,state.freeze,state.phase,state.kick_direction,state.puzzle_returned,state.resin_wind,state.root_lash,state.awake])
     if track_wave:digest=hash([digest,branch_dash])
     if seen.has(digest):continue
     seen[digest]=true

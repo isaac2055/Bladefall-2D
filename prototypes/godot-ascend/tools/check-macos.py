@@ -12,13 +12,13 @@ import re
 import subprocess
 import time
 
-SUITES = """fractured_woods_clearance fractured_woods_easing fractured_woods_routes_required fractured_woods_three
+SUITES = """fractured_woods_next fractured_woods_next_app fractured_woods_clearance fractured_woods_easing fractured_woods_routes_required fractured_woods_three
 fractured_woods_three_app fractured_woods_feel fractured_nine fractured_nine_app
 feel_journey fractured_next fractured section_menu campaign_workshop application
 world_checks world2_journey world3_journey black_woods causeway fractured_next_app
 fractured_puzzles_app fractured_journey workshop six_puzzles_app five_puzzles_app
 editor_play""".split()
-SOURCE_HASH_SUITES = {"fractured_woods_three", "fractured_woods_three_app", "fractured_nine_app"}
+SOURCE_HASH_SUITES = {"fractured_woods_next_app", "fractured_woods_three", "fractured_woods_three_app", "fractured_nine_app"}
 
 
 def verified(code, log, script):
@@ -32,7 +32,7 @@ def verified(code, log, script):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True, type=Path)
-    parser.add_argument("--suite", action="append", choices=SUITES)
+    parser.add_argument("--suite", action="append", choices=SUITES + ["fractured_woods_next_search"])
     args = parser.parse_args()
     project = Path(__file__).resolve().parents[1]
     repo = project.parents[1]
@@ -62,7 +62,7 @@ def main():
         started = time.monotonic()
         try:
             result = subprocess.run(command, cwd=output, env=env, text=True,
-                                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=300)
+                                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=900 if name == "fractured_woods_next_search" else 300)
             code, log = result.returncode, result.stdout
         except subprocess.TimeoutExpired as exc:
             code = -99
