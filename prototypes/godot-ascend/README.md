@@ -2,21 +2,11 @@
 
 Version **0.36.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
-## Nine Fractured Causeway rooms · Claude, branch `claude/fractured-causeway`
+## Fractured Causeway playtest review
 
-The Fractured Causeway now has all nine affixed puzzle studies, between the Quiet Passage and the crossroads. Most ask what else a **tear** is for; the road already taught riding one. Two use the brute as a key, and the last brings back the road's lift. Parry and portal stay locked. Open them with **Play Fractured Causeway Rooms.command** (or `--world 23 --room 37`).
+Eight early added studies were retired and removed from the active game, native editor, room picker, progression and recordings. **The Line Behind the Brittle Wall** is retained unchanged as a promising draft needing a harder revision; it is not approved as finished.
 
-- **The Line That Carries You Away from the Exit:** the only tear leans back toward the entrance. Ride it anyway: it throws you up with your dash returned, and that second dash is the only way into the high corridor.
-- **The Line That Will Not Set You Down:** two lines leave the shelf. The upper one sets you safely on a perch that is a caged dead end; the lower one keeps its full speed and throws you through the slot.
-- **The Line That Only Runs Home:** a one-way tear. Its near end is drawn dark and closed; cross the cracked sills on foot to the lit far end, then ride home and dash up.
-- **The Sill That Starts the Clock:** the tear's mouth is in a shaft under a cracked sill and opens on a 96-frame cycle. Step on the sill at the right moment so its shake and your fall carry you past the mouth while it is lit.
-- **The Line You Must Ride Downhill:** two lines leave the ledge. The climbing one drops its speed and leaves you short under a spiked mass; the falling one keeps its speed, and with the dash it returns you reach the far ledge.
-- **The Weight You Keep Off the Hound:** cross a covered walkway and drop in front of the brittle door so the brute charges you into it. Jump its charge and its wave. The counterweight over it is the trap: drop it and the brute dies with the door still shut.
-- **The Line That Opens on the Beat:** two timed lines with a cracked perch between them. Leave late in the first line's window, or wait on the perch, so you arrive as the second line opens.
-- **The Line Behind the Brittle Wall:** a one-way line starts in an alcove behind a brittle wall. Stand on the ledge beside it so the brute's charge breaks it and passes beneath you. Wait until it charges away again, then ride the line up and dash out.
-- **The Lift That Keeps the Beat:** the road's lift throws you past a blinking mouth. Choose when to step on so the mouth is lit as you fly by; the line carries you back up with your dash.
-
-Each has its own checkpoint, a question on screen, an **H** hint phrased as a question, and **Esc → Watch reference**. Source chapter 23 now has **46 definitions and 22 required challenges**. The continuous Causeway reference covers **12,323 frames and 29 road sections with zero deaths**. The only engine change is drawing: a one-way tear's closed end is dimmed (no existing tear was one-way); the timed tear mouth already existed in the engine. See [notes](research/FRACTURED-CAUSEWAY-STUDIES.md).
+Open **Play Fractured Causeway Rooms.command**, or `--world 23 --room 37`, to play the retained room. It keeps its checkpoint, optional hint and Watch reference. Chapter 23 now has **38 definitions and 14 required challenges**. Its shortened continuous road clears in **9,554 frames with zero deaths**. The proposed revision and two replacement concepts are **not built**. See [playtest review and proposals](research/FRACTURED-CAUSEWAY-REVIEW-AND-PROPOSALS.md).
 
 ## Close the Woods route bypasses · 0.36.0
 

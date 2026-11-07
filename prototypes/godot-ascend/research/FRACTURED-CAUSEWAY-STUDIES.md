@@ -1,3 +1,5 @@
+> Historical construction notes. Eight early studies are retired and removed. Only The Line Behind the Brittle Wall remains, unchanged and awaiting revision approval. See [current review and proposals](FRACTURED-CAUSEWAY-REVIEW-AND-PROPOSALS.md).
+
 # The first three Fractured Causeway studies
 
 2026-11-05, Claude, branch `claude/fractured-causeway` (from `3dd93c0`). Design source: the deep-research report "Celeste style Causeway puzzle rooms" (rooms 1–3 of its seven-room arc; Isaac wants nine in total). Decisions from Isaac: parry and portal locked; required rooms; hints ask a question rather than list inputs.
