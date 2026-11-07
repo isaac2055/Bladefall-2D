@@ -12,7 +12,7 @@ func play(d,tape,permanent=false):
  if permanent:
   for y in range(room.map.size()):room.map[y]=room.map[y].replace("B","#")
  var c=Core.new(d.constants.duplicate(true),d.playerDefaults);c.load_room(L.parse(room))
- var q={"finish":false,"deaths":0,"placed":false,"blocked":false,"crossed":false,"fell":false,"lower":false,"early_dash":false,"waves":0,"pickups":0,"replaced":false}
+ var q={"finish":false,"deaths":0,"placed":false,"blocked":false,"crossed":false,"fell":false,"lower":false,"early_dash":false,"waves":0,"pickups":0,"replaced":false,"air_throw":false}
  for part in tape:
   for tick in range(int(part[0])):
    c.step(R.decode(part[1]))
@@ -20,10 +20,11 @@ func play(d,tape,permanent=false):
    var plate=c.ents.filter(func(e):return e.type=="plate")[0]
    var door=c.ents.filter(func(e):return e.type=="held")[0]
    q.placed=q.placed or plate.down and not lamp.held and not door.solid
-   q.fell=q.fell or q.placed and lamp.y>=352 and not lamp.held
+   q.air_throw=q.air_throw or "throw" in c.events and not c.p.onGround
+   q.fell=q.fell or q.placed and lamp.y>plate.y+10 and not lamp.held
    q.blocked=q.blocked or q.placed and lamp.y>plate.y+2 and door.solid and c.p.x==224 and c.p.y<344 and c.p.y+11>312
    q.crossed=q.crossed or c.p.x>=248 and c.p.y>312
-   q.lower=q.lower or q.placed and c.p.x>176 and c.p.x<224 and c.p.onGround and c.p.y==349
+   q.lower=q.lower or q.placed and c.p.x>168 and c.p.x<224 and c.p.onGround and c.p.y==341
    q.early_dash=q.early_dash or q.placed and c.p.x<248 and "dash-start" in c.events
    if "super" in c.events:q.waves+=1
    if "pickup" in c.events:q.pickups+=1
@@ -48,17 +49,20 @@ func _initialize():
  check(C.fingerprint(d.constants)==before.constants and C.fingerprint(d.playerDefaults)==before.defaults,"shared movement preserved")
  check(range(room.map.size()).all(func(y):return room.map[y].substr(29)==old.map[y].substr(29)) and room.puzzleGoal==old.puzzleGoal,"door and complete final geometry preserved")
  check(tape.slice(tape.size()-6)==old.puzzleRoutes[0].tape.slice(old.puzzleRoutes[0].tape.size()-6),"exact final six inputs preserved")
+ var original=before.throw_setup
+ check(tape.slice(0,23)==original,"approved throw, retrieval, carrying jumps and set-down inputs restored")
+ check(room.map[41].substr(21,7)=="......." and room.map[43].substr(21,7)=="......." and room.map[44].substr(23,3)=="###" and room.map[45].substr(21,7)==".......","real pit before the door with an isolated lower ledge, no continuous floor")
  var safe=play(d,tape)
- check(safe.finish and safe.deaths==0 and safe.placed and safe.lower and safe.crossed and not safe.early_dash and safe.waves==1,"lower path clears without disturbing the plate before the door")
- var bait=tape.slice(0,11)+[[12,"rx"],[45,"r"],[30,""]]
+ check(safe.air_throw and safe.pickups==2 and safe.finish and safe.deaths==0 and safe.placed and safe.lower and safe.crossed and not safe.early_dash and safe.waves==1,"lower path clears without disturbing the plate before the door")
+ var bait=tape.slice(0,25)+[[12,"r"],[10,""],[12,"rx"],[45,"r"],[20,""]]
  var bad=play(d,bait);print("BAIT OBSERVATION ",JSON.stringify(bad))
  check(bad.fell and bad.blocked and not bad.crossed and bad.deaths==0,"tempting dash drops the lantern and physically hits the closed door")
  var control=play(d,bait,true)
  check(control.crossed and not control.fell,"positive control: permanent lantern support lets that dash pass the door")
  var recovery=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/lantern-bait-recovery.json"))
  var repaired=play(d,recovery)
- check(repaired.blocked and repaired.pickups==2 and repaired.replaced and repaired.finish and repaired.deaths==0,"failed dash, retrieve, re-place and finish without death, retry or state reset")
- for segment in [9,11,13]:
+ check(repaired.blocked and repaired.pickups==3 and repaired.replaced and repaired.finish and repaired.deaths==0,"failed dash, retrieve, re-place and finish without death, retry or state reset")
+ for segment in [25,27,29]:
   var wins=[]
   for delta in range(-3,4):
    var adjusted=tape.duplicate(true);adjusted[segment][0]+=delta
