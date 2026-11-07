@@ -19,9 +19,9 @@ func _initialize():
   if room.has("puzzleGoal"):room.workshopGoal=room.puzzleGoal
  for index in [40,41,42]:
   var t=d.world.rooms[index].puzzleRoutes[0].tape
-  search(d,index,"positive control: find a finish from the final transfer",t.slice(0,{40:7,41:17,42:13}[index]),true)
+  search(d,index,"positive control: find a finish from the final transfer",t.slice(0,{40:7,41:t.size()-3,42:13}[index]),true)
  for index in [40,41,42]:
-  search(d,index,"attempt ordinary movement from the prepared departure",d.world.rooms[index].puzzleRoutes[0].tape.slice(0,{40:5,41:14,42:9}[index]),false,true)
+  search(d,index,"attempt ordinary movement from the prepared departure",d.world.rooms[index].puzzleRoutes[0].tape.slice(0,{40:5,41:d.world.rooms[index].puzzleRoutes[0].tape.size()-6,42:9}[index]),false,true)
  var v=d.duplicate(true)
  v.world.rooms[40].resinWind.branches=v.world.rooms[40].resinWind.branches.filter(func(b):return b.phase!=1)
  search(v,40,"resin landing removed, powered alternatives allowed",d.world.rooms[40].puzzleRoutes[0].tape.slice(0,3),false)

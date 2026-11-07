@@ -1,6 +1,12 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.39.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.40.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Lantern's throw-and-retrieve opening · 0.40.0
+
+**The Lantern Above the Door** now begins with a cargo transfer. Throw the lantern to a raised permanent shelf, dash across empty-handed, retrieve it, and make two offset carrying jumps to the blue plate. Drop to the lower bank and pass the door. The redundant opening bell is removed; the final wavedash jump and all geometry from the door onward are preserved.
+
+Branch and Runway are banked alongside Pod, Crossing and Wall. Their layouts, recordings and individual checkpoints are unchanged. Use **Play Lantern Above the Door.command**, or select it under **Esc → Explore a section**. Its hint and complete Watch reference follow the new opening. See [verification notes](research/LANTERN-TRANSFER.md).
 
 ## Three more Fractured Woods rooms · 0.39.0
 

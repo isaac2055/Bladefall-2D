@@ -12,7 +12,7 @@ import re
 import subprocess
 import time
 
-SUITES = """fractured_woods_next fractured_woods_next_app fractured_woods_clearance fractured_woods_easing fractured_woods_routes_required fractured_woods_three
+SUITES = """lantern_transfer fractured_woods_next fractured_woods_next_app fractured_woods_clearance fractured_woods_easing fractured_woods_routes_required fractured_woods_three
 fractured_woods_three_app fractured_woods_feel fractured_nine fractured_nine_app
 feel_journey fractured_next fractured section_menu campaign_workshop application
 world_checks world2_journey world3_journey black_woods causeway fractured_next_app

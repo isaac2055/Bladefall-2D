@@ -35,7 +35,8 @@ func play(d,index,tape,mode=""):
    q.placed=q.placed or c.ents.any(func(e):return e.type=="plate" and e.down) and not lamp.is_empty() and c.p.carrying==null
    q.door=q.door or not door.is_empty() and not door[0].solid and c.p.x>=248 and c.p.y>312
    if "dash-start" in c.events and c.p.x<248 and q.placed:q.early_dash=true
-   q.release=q.release or q.door and not lamp.is_empty() and lamp[0].y>272
+   var plates=c.ents.filter(func(e):return e.type=="plate")
+   q.release=q.release or q.door and not lamp.is_empty() and not plates.is_empty() and lamp[0].y>plates[0].y+2
    if c.deaths>0:q.deaths=c.deaths;return q
  q.first=ever_first
  return q
@@ -55,7 +56,8 @@ func _initialize():
    check(q.pods==1 and q.cut,"pod ascent reaches the crown before the return")
    check(not play(d,index,tape,"no_crown").finish,"live return lashes reject the same route without the crown cut")
    check(not play(d,index,tape,"no_pod").finish,"the demonstrated ascent needs the seed")
-  for segment in {40:[2,5,6],41:[14,15,16],42:[3,11,12]}[index]:
+  var final=tape.size()-6
+  for segment in {40:[2,5,6],41:[final,final+1,final+2],42:[3,11,12]}[index]:
    var wins=[]
    for delta in range(-4,5):
     var t=tape.duplicate(true);t[segment][0]+=delta
