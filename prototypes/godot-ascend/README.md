@@ -1,6 +1,12 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.40.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.41.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Lantern's dash temptation · 0.41.0
+
+Place the lantern on blue to hold the door open. The raised approach invites a dash across the gap, but dashing drops the lantern and shuts the door before you arrive. The visible lower path lets you cross without changing phase. A mistake leaves the lantern reachable below; carry it back up the left-hand steps and try again.
+
+The throw-across opening is replaced. The door, final jump, other rooms and checkpoints are preserved. The hint, complete Watch and full Woods tour follow the new route. Open **Play Lantern Above the Door.command**. See [design and verification](research/LANTERN-BAIT.md).
 
 ## Lantern's throw-and-retrieve opening · 0.40.0
 

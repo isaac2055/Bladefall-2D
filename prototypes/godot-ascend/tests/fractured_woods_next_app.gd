@@ -56,7 +56,7 @@ func run():
   app.toggle_watch()
   for death in [false,true]:
    app.world.restart();app.load_section(index)
-   play(app,room.puzzleRoutes[0].tape.slice(0,{40:6,41:23,42:9}[index]))
+   play(app,room.puzzleRoutes[0].tape.slice(0,{40:6,41:11,42:9}[index]))
    if death:app.sim.die()
    else:app.retry_room()
    play(app,[[90,""]])
