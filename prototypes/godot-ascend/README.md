@@ -1,12 +1,14 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.36.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.37.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `claude/fractured-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
 
-## Fractured Causeway playtest review
+## Three spatial Fractured Causeway puzzles · 0.37.0
 
-Eight early added studies were retired and removed from the active game, native editor, room picker, progression and recordings. **The Line Behind the Brittle Wall** is retained unchanged as a promising draft needing a harder revision; it is not approved as finished.
+The approved replacements are implemented: **The Line Behind the Brittle Wall**, **The Weight You Must Take Back**, and **The Wall You Must Fold After Climbing**. They use the existing brute, lantern, recoil plate, hinged arm and one-way lines. The first directs the same brute into two walls; the second transfers a stored load from lantern to knight before an empty-handed launch; the third turns a climbed wall into the receiving runway for a wavedash finish.
 
-Open **Play Fractured Causeway Rooms.command**, or `--world 23 --room 37`, to play the retained room. It keeps its checkpoint, optional hint and Watch reference. Chapter 23 now has **38 definitions and 14 required challenges**. Its shortened continuous road clears in **9,554 frames with zero deaths**. The proposed revision and two replacement concepts are **not built**. See [playtest review and proposals](research/FRACTURED-CAUSEWAY-REVIEW-AND-PROPOSALS.md).
+Open **Play Fractured Causeway Rooms.command**, or `--world 23 --room 37`. Choose the other two by name under **Esc → Explore a section**. Each has its own checkpoint, optional **H** hint, complete **Watch reference**, and native editable room. Chapter 23 has **40 definitions and 16 required challenges**. The eight retired introductory studies remain absent. Other chapters, browser files, physics, art, voices and quests are unchanged. This Causeway checkout is separate from the approved nine-room Woods checkout.
+
+See [design and verification](research/FRACTURED-CAUSEWAY-THREE-PUZZLES.md). The earlier [proposal](research/FRACTURED-CAUSEWAY-REVIEW-AND-PROPOSALS.md) records the approved design intent.
 
 ## Close the Woods route bypasses · 0.36.0
 

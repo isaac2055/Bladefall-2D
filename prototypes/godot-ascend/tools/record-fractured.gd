@@ -37,6 +37,21 @@ func _initialize():
    for part in seam.get("toFire",[]):
     for i in range(int(part[0])): advance(w,decoded(part[1]))
   var target=w.active().room.spawn
+  if id=="cl23-puzzle-weight-take-back" and w.active().p.y>200:
+   # The checkpoint is upstairs; reach it through the visible entry staircase.
+   for tick in range(360):
+    var p=w.active().p;var dx=316-p.x;var desired=clamp(dx*10,-90,90)
+    if abs(dx)<1 and p.vx==0 and p.onGround:break
+    advance(w,{"r":p.vx<desired-1,"l":p.vx>desired+1})
+   for point in [Vector2(336,248),Vector2(368,224),Vector2(336,200),Vector2(368,176),Vector2(336,152),Vector2(304,144),Vector2(248,144)]:
+    advance(w,{})
+    var jumped=false
+    for tick in range(180):
+     var p=w.active().p;var dx=point.x-(p.x+4);var desired=clamp(dx*10,-90,90)
+     if not jumped and p.onGround:jumped=true
+     advance(w,{"r":p.vx<desired-1,"l":p.vx>desired+1,"jump":jumped,"u":false})
+     if p.onGround and abs(p.y+11-point.y)<1 and abs(dx)<7:break
+   print("WEIGHT APPROACH ",Vector2(w.active().p.x,w.active().p.y))
   if target.x>=w.active().room.w-48 and w.active().p.y>target.y+12:
    for i in range(90):
     var p=w.active().p

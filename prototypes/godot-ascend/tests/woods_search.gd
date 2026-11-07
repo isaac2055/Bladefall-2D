@@ -5,7 +5,7 @@ extends RefCounted
 const Core=preload("res://scripts/core.gd")
 const Loader=preload("res://scripts/room_loader.gd")
 const Routes=preload("res://tests/workshop_routes.gd")
-const FIELDS=["p","ents","prev","buf","frame","room_frame","freeze","phase","shards","foothold_previous","kick_direction"]
+const FIELDS=["p","ents","prev","buf","frame","room_frame","freeze","phase","shards","foothold_previous","kick_direction","awake","combat","brute_waves","exited"]
 static func snapshot(core):
  var state={}
  for field in FIELDS:
@@ -35,6 +35,7 @@ static func actions():
  for keys in ["lxg","rxg","uxg","dxg","luxg","ruxg","ldxg","rdxg"]: values.append([12,keys])
  return values
 static func restrict(core,mode):
+ if mode=="no_lines":core.ents=core.ents.filter(func(e):return e.type!="zipline")
  if mode=="held_open":
   for e in core.ents:
    if e.type=="held":e.latchedOpen=true
@@ -126,12 +127,15 @@ static func solve(data,index,options={}):
      if options.has("forbid_ground_recovery_before_x") and core.p.onGround and core.p.x<options.forbid_ground_recovery_before_x and "refill-dash" in core.events:invalid=true;break
      if options.get("forbid_slide_y",false) and core.ents.any(func(e):return e.type=="slide" and e.y!=e.oy):invalid=true;break
      if options.get("forbid_zip_face","")=="left" and core.ents.any(func(e):return e.type=="zip" and core.p.x+core.p.w<=e.x and e.x-(core.p.x+core.p.w)<=3 and core.p.y<e.y+e.h and core.p.y+core.p.h>e.y):invalid=true;break
+     if options.get("forbid_climb",false) and core.p.state=="climb":invalid=true;break
      if options.get("forbid_recoil_jump",false) and "recoil-jump" in core.events:invalid=true;break
      if options.has("slide_max_x") and core.ents.any(func(e):return e.type=="slide" and e.x>options.slide_max_x):invalid=true;break
      if core.p.onGround and core.ents.any(func(e):return e.type in options.get("forbid_landing",[]) and core.standing(e)):invalid=true;break
      if core.ents.any(func(e):return e.type=="hingeArm" and e.dir in options.get("forbid_pose",{}).get(e.label,[])):invalid=true;break
      if options.get("forbid_weight",false) and core.ents.any(func(e):return e.type=="recoilPlatform" and e.get("loadedBy","")=="lantern"):invalid=true;break
-     var forbidden=["hyper","wallbounce"]
+     var forbidden=[]
+     if not options.get("allow_hyper",false):forbidden.append("hyper")
+     if not options.get("allow_wallbounce",false):forbidden.append("wallbounce")
      if not options.get("allow_super",false):forbidden.append("super")
      if not options.get("allow_ultra",false):forbidden.append("ultra")
      if core.deaths>0 or forbidden.any(func(k):return k in core.events):invalid=true;break

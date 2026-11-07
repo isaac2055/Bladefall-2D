@@ -1,6 +1,8 @@
 # Fractured Causeway: retired studies and three proposed puzzles
 
-Status: eight early studies are removed from the active chapter and native editor. The Line Behind the Brittle Wall remains unchanged as a draft, not a finished approved room. All three designs below are proposals only. No proposed room, geometry revision, art, voice or runtime mechanic has been implemented.
+Historical proposal: these three designs are now implemented. See [current design and verification](FRACTURED-CAUSEWAY-THREE-PUZZLES.md). The original proposal and its pre-build cautions follow.
+
+Original status: eight early studies are removed from the active chapter and native editor. The Line Behind the Brittle Wall remains unchanged as a draft, not a finished approved room. All three designs below are proposals only. No proposed room, geometry revision, art, voice or runtime mechanic has been implemented.
 
 ## Design diagnosis
 
