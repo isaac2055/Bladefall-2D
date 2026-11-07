@@ -38,14 +38,14 @@ func _initialize():
  var before=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/lantern-bait-preservation.json"))
  var room=d.world.rooms[41];var tape=room.puzzleRoutes[0].tape;var old=before.old_lantern
  for current in d.world.rooms:
-  if current.id==room.id:continue
+  if current.id==room.id or not before.rooms.has(current.id):continue
   var normalized=current.duplicate(true)
   if normalized.has("atlasMain"):
    for link in [normalized.atlasMain,normalized.atlasSockets[0]]:link.erase("to");link.erase("toFloor")
   check(C.fingerprint(normalized)==before.rooms[current.id] and C.fingerprint(d.world.tapes.get(current.id,[]))==before.tapes[current.id],"other room and reference preserved: "+current.id)
  var metadata=d.world.duplicate(true)
  for key in ["rooms","tapes","sections","requiredMainRooms"]:metadata.erase(key)
- check(C.fingerprint(metadata)==before.metadata and d.world.sections==before.sections and d.world.requiredMainRooms==before.required,"chapter metadata, placement and checkpoints preserved")
+ check(C.fingerprint(metadata)==before.metadata and before.sections.all(func(s):return s.room=="cl22-atlas-crossroads" or d.world.sections.filter(func(n):return n.room==s.room)[0]==s) and d.world.requiredMainRooms.slice(0,before.required.size())==before.required,"chapter metadata, placement and checkpoints preserved")
  check(C.fingerprint(d.constants)==before.constants and C.fingerprint(d.playerDefaults)==before.defaults,"shared movement preserved")
  check(range(room.map.size()).all(func(y):return room.map[y].substr(29)==old.map[y].substr(29)) and room.puzzleGoal==old.puzzleGoal,"door and complete final geometry preserved")
  check(tape.slice(tape.size()-6)==old.puzzleRoutes[0].tape.slice(old.puzzleRoutes[0].tape.size()-6),"exact final six inputs preserved")

@@ -47,7 +47,7 @@ func run():
   check(edge.pairs.all(func(p):return newer.map[int(p[1])][int(p[0])]=="#" and older.map[int(p[3])][int(p[2])]=="#"),"shared secret-passage wall unchanged: "+edge.old)
  var args=OS.get_cmdline_user_args();var source_root=args[0] if not args.is_empty() else "res://"
  for path in fixture.files:check(FileAccess.get_sha256(source_root.path_join(path))==fixture.files[path],"unrelated native source untouched: "+path)
- check(chapters[22].world.rooms.size()==43 and chapters[22].world.requiredMainRooms.size()==19,"six independent Woods additions follow the existing thirteen challenges")
+ check(chapters[22].world.rooms.size()==46 and chapters[22].world.requiredMainRooms.size()==22,"nine independent Woods additions follow the existing thirteen challenges")
  var app=Main.instantiate();app.test_mode=true;app.initial_world=21;root.add_child(app);await process_frame;app.set_physics_process(false)
  for pair in [[21,46],[22,37],[22,38],[22,39]]:
   var n=pair[0];var index=pair[1]

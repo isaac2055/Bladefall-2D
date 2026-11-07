@@ -35,7 +35,7 @@ func run():
  for key in ["rooms","tapes","sections","requiredMainRooms"]:meta.erase(key)
  check(C.fingerprint(meta)==before.metadata,"quests, secrets and world metadata preserved")
  check(C.fingerprint(d.constants)==before.constants and C.fingerprint(d.playerDefaults)==before.defaults,"movement constants preserved")
- check(d.world.requiredMainRooms.slice(0,16)==before.required and d.world.requiredMainRooms.size()==19 and d.world.rooms.size()==43,"three appended challenges: six additions, nineteen main rooms")
+ check(d.world.requiredMainRooms.slice(0,16)==before.required and d.world.requiredMainRooms.size()==22 and d.world.rooms.size()==46,"nine independent additions, twenty-two main rooms")
  var native=load("res://levels/world22.tscn").instantiate();var base=A.baseline(d)
  check(C.first_difference(base,native.compile_into(base))=="" and native.validate_data(native.compile_into(base)).is_empty(),"native editor data matches source and validates");native.free()
  var args=OS.get_cmdline_user_args();var source_root=args[0] if not args.is_empty() else "res://"
