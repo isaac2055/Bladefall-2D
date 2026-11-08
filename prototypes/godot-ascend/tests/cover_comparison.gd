@@ -23,21 +23,26 @@ func play(d,index,tape,mode=""):
  if mode=="no_brute":c.combat.enemies=[]
  if mode=="no_part":c.ents=c.ents.filter(func(e):return e.type!="shard")
  if mode=="no_lines":c.ents=c.ents.filter(func(e):return e.type!="zipline")
+ if mode=="exit_sealed":c.ents.filter(func(e):return e.type=="brittle")[-1].type="combatGate"
  if mode=="first_sealed":c.ents.filter(func(e):return e.type=="brittle")[0].type="combatGate"
- var q={"finish":false,"exited":false,"deaths":0,"turns":[],"tells":[],"breaches":[],"rides":[],"delivered":false,"final_dash":false,"caught":false,"final_jumps":0,"alive":false,"shard_frame":-1,"shard_pose":"","shard_breaches":0,"delivered_x":-1};var frame=0;var goal_frame=-1;var final_breach=-1
+ var q={"finish":false,"exited":false,"deaths":0,"turns":[],"tells":[],"breaches":[],"rides":[],"delivered":false,"final_dash":false,"caught":false,"final_jumps":0,"alive":false,"shard_frame":-1,"shard_pose":"","shard_breaches":0,"delivered_x":-1,"air_faces":[],"gantry":false,"return_refuge":false};var frame=0;var goal_frame=-1;var final_breach=-1
  for part in tape:
   for tick in range(int(part[0])):
    var raw=R.decode(part[1]);frame+=1
-   if mode=="no_turn" or mode=="no_crossing" and not q.turns.is_empty():raw.strike=false
+   if mode=="no_turn" or mode=="no_crossing":raw.strike=false
    c.step(raw)
    var e=c.combat.enemies[0] if not c.combat.enemies.is_empty() else {}
    if "hinge-turn" in c.events:q.turns.append({"frame":frame,"dir":c.ents.filter(func(x):return x.type=="hingeArm")[0].dir,"enemy":e.duplicate(true)})
    if "enemy-tell" in c.events:q.tells.append({"frame":frame,"face":e.face,"p":[c.p.x,c.p.y]})
    if "breach" in c.events:
     q.breaches.append({"frame":frame,"face":e.face,"p":[c.p.x,c.p.y]})
-    if q.breaches.size()==(3 if index==0 else 1):final_breach=frame
+    if q.breaches.size()==(3 if index==0 else 2):final_breach=frame
    if "zip-in" in c.events:q.rides.append(c.p.ride.li)
-   if index==1 and not e.is_empty() and e.y==368 and q.breaches.is_empty() and q.delivered_x<0:q.delivered_x=e.x;q.delivered=e.x>=224
+   if index==1 and not e.is_empty() and e.y==368 and q.breaches.size()<2 and not q.turns.is_empty() and q.delivered_x<0:q.delivered_x=e.x;q.delivered=e.x>=224
+   if not e.is_empty() and e.state=="attack" and c.p.x<e.x+e.w and c.p.x+c.p.w>e.x and c.p.y+9<=e.y and e.face not in q.air_faces:q.air_faces.append(e.face)
+   if index==1 and q.turns.is_empty() and q.breaches.size()==1:
+    if c.p.onGround and c.p.y+11==176 and c.p.x>=184 and c.p.x<208:q.return_refuge=true
+    if c.p.x>=240 and c.p.x<288 and c.p.y+11<=168:q.gantry=true
    if index==0 and q.shard_frame<0 and R.carried(c):
     q.shard_frame=frame;q.shard_pose=c.ents.filter(func(x):return x.type=="hingeArm")[0].dir;q.shard_breaches=q.breaches.size()
    if final_breach>0 and goal_frame<0:
@@ -69,36 +74,40 @@ func run():
   var r=d.world.rooms[index];var t=r.puzzleRoutes[0].tape;var q=play(d,index,t)
   check(clears(q) and q.exited and q.alive,"deathless ordinary-input flag and physical exit: "+r.name)
   check(not q.final_dash and q.final_jumps>0,"after the final breach, ordinary hops reach the flag without a dash: "+r.name)
-  check(clears(play(d,index,t.slice(0,{0:55,1:37}[index])+[[1200,""]])),"standing at the completed flag stays safe: "+r.name)
+  check(clears(play(d,index,t.slice(0,{0:21,1:39}[index])+[[1200,""]])),"standing at the completed flag stays safe: "+r.name)
   check(d.world.tapes[r.id]==t and r.lock==["parry","portal"],"complete Watch reference with the existing kit: "+r.name)
   if index==0:
-   check(q.turns.map(func(e):return e.dir)==["up","right"] and q.breaches.size()==3,"the same arm stays upright through alcove preparation and becomes the crossing afterward")
-   check(q.breaches.map(func(e):return e.face)==[-1,1,1] and q.shard_frame>q.breaches[1].frame and q.shard_frame<q.turns[1].frame and q.shard_pose=="up","open left alcove, clear its guard right, retrieve shard, then spend shelter in that order")
-   check(q.shard_breaches==2 and q.rides==[0],"the raised tunnel shard is collected before the escape line and final breach")
-   for stage in [4,13,24,46]:
-    var wait=play(d,index,t.slice(0,stage)+[[1200,""]])
-    check(wait.deaths==0 and wait.breaches.size()==(2 if stage==46 else (1 if stage==24 else 0)),"sheltered waiting does not solve the next task at A stage "+str(stage))
-   for mode in ["no_turn","no_crossing","no_lines","first_sealed","no_brute","no_part"]:check(not clears(play(d,index,t,mode)),"A reference dependency: "+mode)
-   var shortcut=play(d,index,t.slice(0,17)+[[18,"j"],[10,""],[32,"lj"],[12,"ux"],[80,""]])
-   check(shortcut.shard_frame<0 and not shortcut.finish,"direct entry while the brute guards the low tunnel cannot grab the shard")
-   var retry=play(d,index,t.slice(0,53)+[[18,"rj"],[60,""],[40,"r"],[12,"rj"],[30,""],[38,"lj"],[30,""]])
-   check(clears(retry) and retry.caught and not retry.final_dash,"A final-hop miss has a local ordinary-jump recovery")
+   check(q.turns.map(func(e):return e.dir)==["right"] and q.breaches.size()==3,"the prepared upright arm is spent only after the encounter and shard retrieval")
+   check(q.breaches.map(func(e):return e.face)==[-1,1,1] and q.air_faces==[-1,1],"both opposed charges pass below the knight in the overhead opening")
+   check(q.shard_breaches==2 and q.shard_pose=="up" and q.shard_frame<q.turns[0].frame and q.rides==[0],"land behind the guard, retrieve the shard, escape, then turn the arm")
+   var wait=play(d,index,[[1,"l"],[300,""]])
+   check(wait.deaths>0,"standing in the encounter cannot replace its airborne dodge")
+   for segment in [2,3,6,7]:
+    var omitted=t.duplicate(true);omitted[segment][1]=""
+    check(not clears(play(d,index,omitted)),"A witnessed airborne dependency at segment "+str(segment))
+   var low=play(d,index,[[1,"l"],[53,""],[18,"j"],[1,"dj"],[100,""]])
+   check(low.deaths>0 and low.shard_frame<0,"the old retreat below the charge is sealed")
+   for mode in ["no_crossing","first_sealed","no_brute","no_part"]:check(not clears(play(d,index,t,mode)),"A reference dependency: "+mode)
+   var retry=play(d,index,t.slice(0,19)+[[18,"rj"],[60,""],[40,"r"],[12,"rj"],[30,""],[38,"lj"],[30,""]])
+   check(clears(retry) and retry.caught and not retry.final_dash,"A final-hop miss still recovers locally with ordinary jumps")
   else:
    var turn=q.turns[0]
-   check(q.turns.size()==1 and turn.dir=="up" and turn.enemy.x==256 and turn.enemy.y==224 and q.delivered and q.delivered_x==256,"return charge stops over the useful bay; folding delivers the living brute there")
-   check(q.tells[0].face==-1 and q.tells[1].face==1 and q.turns[0].frame>q.tells[1].frame,"the upper reference positions the brute with opposed charges before folding")
-   check(q.breaches.size()==1 and q.breaches[0].face==1 and q.rides==[1,2],"separate descent and lower bait open the exit wall")
-   for stage in [7,26]:
-    var wait=play(d,index,t.slice(0,stage)+[[1200,""]])
-    check(wait.deaths==0 and wait.breaches.is_empty(),"the safe perch does not perform the next bait at B stage "+str(stage))
-   for mode in ["no_turn","no_lines","first_sealed","no_brute"]:check(not clears(play(d,index,t,mode)),"B delivery dependency: "+mode)
-   var wrong=play(d,index,t.slice(0,7)+t.slice(13))
-   check(not wrong.finish and not wrong.delivered and wrong.delivered_x==192 and wrong.breaches.is_empty(),"folding after the obvious first stop traps the brute in the wrong bay and cannot open the wall")
-   var retry=play(d,index,t.slice(0,35)+[[4,"r"],[40,""],[24,"rj"],[35,""]])
-   check(clears(retry) and retry.caught and not retry.final_dash,"B final-hop miss has a local ordinary-jump recovery")
-   var recovery=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/cover-comparison-recovery.json"))
-   check(clears(play(d,index,recovery.tape)),"B can wait out the initial opportunity, then reposition and finish without a reset")
-  for segment in {0:[1,7,17,21,28,42,43,49,50,51,53],1:[1,3,4,7,9,10,17,27,28,29,33,35]}[index]:
+   check(q.return_refuge and q.gantry and turn.enemy.x==256 and q.delivered and q.delivered_x==256,"return to the left refuge, cross above the gantry, and deliver from the useful dock position")
+   check(turn.dir=="up" and turn.enemy.state=="tell" and turn.enemy.attackId==3 and turn.enemy.t>0,"the successful fold beats the brute's next charge")
+   check(q.breaches.map(func(e):return e.face)==[1,1] and q.rides==[1,2],"upper buffer breaks first; separate descent and lower bait open the exit")
+   var late=play(d,index,t.slice(0,23)+[[70,""]]+t.slice(23))
+   check(not clears(late) and not late.delivered,"hesitating at the hub loses the delivery opportunity")
+   var no_cross=t.duplicate(true);no_cross[15][1]=""
+   check(not clears(play(d,index,no_cross)),"ordinary movement cannot replace the dash across the gantry")
+   var wrong_tape=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/cover-comparison-wrong-bay.json")).tape
+   var wrong=play(d,index,wrong_tape)
+   check(not wrong.finish and not wrong.delivered and wrong.deaths==0 and wrong.delivered_x==192 and wrong.turns.size()==1,"an early fold commits the living brute to the sealed wrong bay")
+   var wait=play(d,index,t.slice(0,29)+[[1200,""]])
+   check(wait.deaths==0 and wait.breaches.size()==1,"the lower receiving perch does not perform the lower bait")
+   for mode in ["no_turn","exit_sealed","no_brute"]:check(not clears(play(d,index,t,mode)),"B reference dependency: "+mode)
+   var retry=play(d,index,t.slice(0,36)+[[12,"r"],[40,""],[24,"rj"],[35,""]])
+   check(clears(retry) and retry.caught and not retry.final_dash,"B final-hop miss still recovers locally with an ordinary jump")
+  for segment in {0:[1,2,3,5,6,7,9,15,16,17,19],1:[2,3,8,9,10,11,13,14,15,16,17,20,21,30,31,32,37]}[index]:
    var wins=[]
    for delta in range(-2,3):
     var varied=t.duplicate(true);varied[segment][0]=max(1,varied[segment][0]+delta)
@@ -136,11 +145,11 @@ func run():
    if app.workshop_completed.has(id):break
   check(app.workshop_completed.has(id) and app.sim.deaths==0,"actual live play records the gold-flag completion: "+id)
   app.watch=false;app.world.restart();app.load_section(index);app.journey=[];app.journey_frame=0
-  for part in d.world.rooms[index].puzzleRoutes[0].tape.slice(0,{0:46,1:31}[index]):
+  for part in d.world.rooms[index].puzzleRoutes[0].tape.slice(0,{0:12,1:34}[index]):
    for tick in range(int(part[0])):app.journey.append(part[1]);app._physics_process(1.0/60)
   check(app.sim.deaths==0,"live preparation is deathless before retry: "+id)
   app.retry_room()
-  check(app.sim.room.id==id and app.world.checkpoint_id==id and app.sim.ents.filter(func(e):return e.type=="hingeArm").all(func(e):return e.dir=="left" and e.turns==0) and app.sim.ents.filter(func(e):return e.type=="brittle").all(func(e):return not e.open) and app.sim.ents.filter(func(e):return e.type=="shard").all(func(e):return not e.get("gone",false)) and app.sim.combat.enemies.all(func(e):return e.x==e.ox and e.y==e.oy and e.state=="idle"),"retry restores this room's arm, barriers and brute without sending the player back to A: "+id)
+  check(app.sim.room.id==id and app.world.checkpoint_id==id and app.sim.ents.filter(func(e):return e.type=="hingeArm").all(func(e):return e.dir==("up" if index==0 else "left") and e.turns==0) and app.sim.ents.filter(func(e):return e.type=="brittle").all(func(e):return not e.open) and app.sim.ents.filter(func(e):return e.type=="shard").all(func(e):return not e.get("gone",false)) and app.sim.combat.enemies.all(func(e):return e.x==e.ox and e.y==e.oy and e.state=="idle"),"retry restores this room's arm, barriers and brute without sending the player back to A: "+id)
  app.queue_free();await process_frame
  var regular=Main.instantiate();regular.test_mode=true;regular.initial_world=23;root.add_child(regular);await process_frame;regular.set_physics_process(false)
  check(regular.data.world.rooms.size()==43 and regular.data.world.rooms[41].id=="cl23-puzzle-cover-take-away","normal launch still loads the unchanged current chapter")
