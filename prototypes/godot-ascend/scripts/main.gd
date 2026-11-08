@@ -226,6 +226,7 @@ func _ready():
  if watch and tape.is_empty(): next_section()
  sampler.start(world,not watch and initial_room=="" and current==0 and journey.is_empty())
  if "--room" in args or "--watch" in args or "--tour" in args or "--fractured-tour" in args: sampler.invalidate()
+ world.sampler_practice=not sampler.profile.run.eligible
  landscape.sampler=sampler
  sampler_overlay=preload("res://scripts/sampler_overlay.gd").new()
  sampler_overlay.app=self
@@ -492,6 +493,7 @@ func _process(delta):
   if subtitle_time<=0: subtitle_panel.hide();landscape.speaker=""
 func toggle_watch():
  sampler.invalidate()
+ world.sampler_practice=true
  if watch:
   watch = false
   sim.world_context=world
@@ -507,6 +509,7 @@ func toggle_watch():
   if tape.is_empty(): next_section()
 func load_section(index,smooth_join=false):
  sampler.invalidate()
+ world.sampler_practice=true
  if chapter_number!=4: watch_button.disabled=false
  current = index
  var id=data.world.rooms[index].id
@@ -839,6 +842,7 @@ func restart_world():
   workshop_shards.clear()
   rebuild_section_menu()
  world.restart()
+ world.sampler_practice=false
  sampler.start(world,chapter_number!=4)
  if sampler_overlay!=null: sampler_overlay.showing_result=false
  audio.restart_world()
@@ -892,7 +896,7 @@ func switch_chapter(number):
  landscape=chapter.landscape
  viewport=chapter.viewport
  audio.world_runtime=world
- sampler.start(world,world.frames==0 and number!=4)
+ sampler.start(world,world.frames==0 and not world.sampler_practice and world.active_id==world.data.world.get("atlasStart",world.regions[0]) and number!=4)
  landscape.sampler=sampler
  if sampler_overlay!=null: sampler_overlay.showing_result=false
  audio.change_chapter(number)

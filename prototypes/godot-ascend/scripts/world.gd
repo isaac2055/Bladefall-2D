@@ -5,6 +5,7 @@ const Loader = preload("res://scripts/room_loader.gd")
 const Layout = preload("res://scripts/world_layout.gd")
 const CampaignWorkshop=preload("res://scripts/campaign_workshop.gd")
 var campaign_completed={}
+var sampler_practice=false
 var data
 var cores = {}
 var placements = {}

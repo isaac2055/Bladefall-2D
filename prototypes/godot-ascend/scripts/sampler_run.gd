@@ -120,7 +120,8 @@ func tick(world,practice=false):
  elif int(w.n)>=101 and core.p.state not in ["dead","respawn"]:
   # Authored Core exit aperture: near the east edge, at an open row (never a wall).
   var r=clampi(int((core.p.y+core.p.h/2)/8),0,int(core.room.rows)-1)
-  if core.p.x>=core.room.w-20 and core.room.def.map[r][-1] in [".","G"]: complete(world)
+  var blocked=core.ents.any(func(e):return e.type=="gate" and e.x>=core.room.w-24 and not e.get("open",false))
+  if not blocked and core.p.x>=core.room.w-16 and core.room.def.map[r][-1] in [".","G"]: complete(world)
  return ""
 func complete(world):
  var required=world.data.world.get("requiredMainRooms",[]).duplicate()

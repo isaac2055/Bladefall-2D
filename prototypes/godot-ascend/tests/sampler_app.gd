@@ -19,6 +19,9 @@ func run():
  check(app.sampler.profile.run.eligible,"fresh launch is a ranked full-world attempt")
  app.load_section(1)
  check(not app.sampler.profile.run.eligible,"room picker changes to practice")
+ app.switch_chapter(2)
+ app.switch_chapter(1)
+ check(not app.sampler.profile.run.eligible,"chapter switching cannot turn a room jump into an eligible run")
  app.restart_world()
  check(app.sampler.profile.run.eligible,"Start world over restores eligibility")
  app.toggle_watch()
@@ -50,6 +53,13 @@ func run():
   while app.sampler.failure_frames>0: event=app.sampler.tick(app.world)
   app.sync_sampler_scene()
   check(event=="reset" and not app.sampler.carrying() and app.world.active_id==app.world.data.world.atlasStart,"death resets world and drops carried reward: "+str(n))
+ app.switch_chapter(102)
+ app.restart_world()
+ app.sim.p.x=app.sim.room.w-16
+ app.sim.p.y=8
+ app.sim.p.onGround=true
+ app.sampler.tick(app.world)
+ check(app.sampler.result.is_empty(),"standing beside a closed Core exit cannot award a clear")
  app.restart_world()
  app.retry_room()
  check(app.sampler.profile.run.deaths==1,"manual Retry counts in deaths and denies a perfect casual clear")
