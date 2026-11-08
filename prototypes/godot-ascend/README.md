@@ -1,6 +1,10 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.41.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `claude/fractured-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.42.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `claude/fractured-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Two launch puzzles · 0.42.0
+
+Open **Play Two Launch Puzzles.command** to test **The Weight You Must Send Ahead**, then **The Roof You Must Launch Through**. **N** switches rooms, **R** retries the current checkpoint, **H** gives its optional hint, and **Watch solution** plays a complete ordinary-input demonstration. Both have native editable rooms and recovery routes. These are two new playtest candidates; the existing chapter and cover alternatives remain separate and unchanged. See [design and verification](research/CAUSEWAY-LAUNCH-ROOMS.md).
 
 ## Compare both cover ideas · 0.41.0
 

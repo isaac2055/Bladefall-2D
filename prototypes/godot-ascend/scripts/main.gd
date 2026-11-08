@@ -21,6 +21,7 @@ var workshop_next:Button
 var chapters = {}
 var chapter_number = 1
 var cover_comparison=false
+var causeway_launch_rooms=false
 var initial_world=1
 var initial_room=""
 var chapter_picker: OptionButton
@@ -140,10 +141,12 @@ func _ready():
  audio.effect_levels.erase("ui-pause")
  add_child(audio)
  cover_comparison=cover_comparison or "--cover-comparison" in OS.get_cmdline_user_args()
+ causeway_launch_rooms=causeway_launch_rooms or "--causeway-launch-rooms" in OS.get_cmdline_user_args()
  # Construct all chapters before play; selecting a chapter preserves its live state.
  for number in CHAPTERS:
   var chapter_data=data if number==1 else JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d.json"%number))
-  if number==23 and cover_comparison: chapter_data=JSON.parse_string(FileAccess.get_file_as_string("res://data/causeway-cover-comparison.json"))
+  if number==23 and causeway_launch_rooms: chapter_data=JSON.parse_string(FileAccess.get_file_as_string("res://data/causeway-launch-rooms.json"))
+  elif number==23 and cover_comparison: chapter_data=JSON.parse_string(FileAccess.get_file_as_string("res://data/causeway-cover-comparison.json"))
   var chapter_world=world if number==1 else World.new(chapter_data)
   var container = SubViewportContainer.new()
   container.position = Vector2(0,48)
@@ -428,7 +431,7 @@ func _unhandled_input(event):
   get_viewport().set_input_as_handled()
  elif event.is_action_pressed("knight_retry") and not paused: retry_room()
  elif event is InputEventKey and event.pressed:
-  if (chapter_number==4 or cover_comparison and chapter_number==23) and event.physical_keycode==KEY_N: workshop_room(1)
+  if (chapter_number==4 or (cover_comparison or causeway_launch_rooms) and chapter_number==23) and event.physical_keycode==KEY_N: workshop_room(1)
   elif event.physical_keycode==KEY_H and (is_workshop_room() or sim.room.def.get("puzzleStudy",false)): show_workshop_hint()
   elif event.physical_keycode==KEY_F11: toggle_fullscreen()
   elif event.physical_keycode==KEY_M:
@@ -528,7 +531,7 @@ func load_section(index,smooth_join=false):
   quest_label.text=bearing_caption()
 
 func workshop_room(direction):
- if chapter_number!=4 and not (cover_comparison and chapter_number==23): return
+ if chapter_number!=4 and not ((cover_comparison or causeway_launch_rooms) and chapter_number==23): return
  watch=false
  load_section(posmod(current+direction,data.world.rooms.size()))
  set_paused(false)
@@ -559,7 +562,7 @@ func workshop_recording():
 const WorkshopPickups=preload("res://scripts/workshop_pickups.gd")
 
 func is_workshop_room():
- return chapter_number==4 or cover_comparison and chapter_number==23 or sim.room.def.get("campaignWorkshop",false)
+ return chapter_number==4 or (cover_comparison or causeway_launch_rooms) and chapter_number==23 or sim.room.def.get("campaignWorkshop",false)
 
 func workshop_goal_reached():
  return is_workshop_room() and CampaignWorkshop.goal_reached(sim)
@@ -875,9 +878,9 @@ func switch_chapter(number):
  if number>=21: pause_description.text="The remembered road · Fractured Ascend"
  clear_other_room_hint()
  puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false) or sim.room.def.get("campaignWorkshop",false)
- workshop_controls.visible=number==4 or cover_comparison and number==23
+ workshop_controls.visible=number==4 or (cover_comparison or causeway_launch_rooms) and number==23
  workshop_demo_picker.visible=is_workshop_room()
- workshop_previous.visible=(number==4 or cover_comparison and number==23) and data.world.rooms.size()>1
+ workshop_previous.visible=(number==4 or (cover_comparison or causeway_launch_rooms) and number==23) and data.world.rooms.size()>1
  workshop_next.visible=workshop_previous.visible
  if number==4:
   pause_description.text="%d movement rooms · N for next room · H for a hint"%data.world.rooms.size()
