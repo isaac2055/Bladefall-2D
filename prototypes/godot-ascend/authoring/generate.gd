@@ -230,10 +230,11 @@ func run():
    quit(1)
    return
   numbers=[int(args[index+1])]
- if "--cover-comparison" in args or "--causeway-launch-rooms" in args: numbers=[23]
+ if "--cover-comparison" in args or "--causeway-launch-rooms" in args or "--weight-comparison" in args: numbers=[23]
  for number in numbers:
   var base=JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d.json"%number))
-  if "--causeway-launch-rooms" in args: base=JSON.parse_string(FileAccess.get_file_as_string("res://data/causeway-launch-rooms.json"))
+  if "--weight-comparison" in args: base=JSON.parse_string(FileAccess.get_file_as_string("res://data/causeway-weight-comparison.json"))
+  elif "--causeway-launch-rooms" in args: base=JSON.parse_string(FileAccess.get_file_as_string("res://data/causeway-launch-rooms.json"))
   elif "--cover-comparison" in args: base=JSON.parse_string(FileAccess.get_file_as_string("res://data/causeway-cover-comparison.json"))
   base.world=Layout.build(base.world)
   if number==1: base.whiteFlowers=JSON.parse_string(FileAccess.get_file_as_string("res://data/white-flowers.json"))

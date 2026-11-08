@@ -17,7 +17,7 @@ fractured_woods_three_app fractured_woods_feel fractured_nine fractured_nine_app
 feel_journey fractured_next fractured section_menu campaign_workshop application
 world_checks world2_journey world3_journey black_woods causeway fractured_next_app
 fractured_puzzles_app fractured_journey workshop six_puzzles_app five_puzzles_app
-editor_play fractured_causeway_studies causeway_next cover_two_baits cover_comparison causeway_launch_rooms""".split()
+editor_play fractured_causeway_studies causeway_next cover_two_baits cover_comparison causeway_launch_rooms weight_comparison""".split()
 SOURCE_HASH_SUITES = {"fractured_woods_three", "fractured_woods_three_app", "fractured_nine_app"}
 
 

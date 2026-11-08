@@ -1,6 +1,10 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.42.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `claude/fractured-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.43.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `claude/fractured-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Compare two weight fixes · 0.43.0
+
+Open **Play Both Weight Fixes.command** for **A · The Throw During the Launch** and **B · Meet the Weight on Its Way Down**. N switches rooms, R retries the current checkpoint, H gives an optional hint, and Watch solution plays the full reference. A combines an airborne lantern throw with its committed launch; B intercepts a descending receiver and dashes out as removing its load releases it upward. Their lower-right bypasses are closed and their receiving roofs extend to the ceiling. The previous Roof room remains unchanged in **Play Two Launch Puzzles.command**, room 2. See [design and verification](research/WEIGHT-COMPARISON.md).
 
 ## Two launch puzzles · 0.42.0
 
