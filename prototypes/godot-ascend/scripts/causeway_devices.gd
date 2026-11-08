@@ -241,7 +241,12 @@ static func combat_after(g):
     e.t=45
     g.emit_event("enemy-hit")
  for e in g.combat.enemies:
-  if e.get("dead",false) or e.state!="attack": continue
+  if e.get("dead",false): continue
+  if e.get("contactHazard",false) and g.overlap(g.rect(p.x,p.y,p.w,9),e):
+   g.combat.hits+=1
+   g.die()
+   return
+  if e.state!="attack": continue
   if p.parryTimer>0 and g.overlap(g.rect(p.x-5,p.y-5,p.w+10,p.h+10),e):
    g.combat.parries+=1
    g.parry_success()

@@ -120,6 +120,7 @@ static func solve(data,index,options={}):
      if options.has("max_hook_length") and core.p.get("hook")!=null and core.p.hook.len>options.max_hook_length:invalid=true;break
      var was_ground=core.p.onGround
      core.step(Routes.decode(action[1]))
+     if options.has("forbid_enemy_tell_face") and "enemy-tell" in core.events and core.combat.get("enemies",[]).any(func(e):return e.state=="tell" and e.face==options.forbid_enemy_tell_face):invalid=true;break
      if track_wave:
       branch_dash=observe_dash(core,branch_dash)
       if "super" in core.events and branch_dash.get("air",false) and branch_dash.get("down",false):invalid=true;break
