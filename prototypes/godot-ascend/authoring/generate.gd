@@ -230,8 +230,10 @@ func run():
    quit(1)
    return
   numbers=[int(args[index+1])]
+ if "--cover-comparison" in args: numbers=[23]
  for number in numbers:
   var base=JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d.json"%number))
+  if "--cover-comparison" in args: base=JSON.parse_string(FileAccess.get_file_as_string("res://data/causeway-cover-comparison.json"))
   base.world=Layout.build(base.world)
   if number==1: base.whiteFlowers=JSON.parse_string(FileAccess.get_file_as_string("res://data/white-flowers.json"))
   var scene=generate(base)
@@ -242,7 +244,7 @@ func run():
    errors+=1
   else:
    print("PASS World %d: %d rooms preserve all native data"%[number,base.world.rooms.size()])
-   var path="res://levels/world%d.tscn"%number
+   var path=base.get("nativeScene","res://levels/world%d.tscn"%number)
    if not FileAccess.file_exists(path) or "--force" in OS.get_cmdline_user_args():
     var packed=PackedScene.new()
     var packed_error=packed.pack(scene)

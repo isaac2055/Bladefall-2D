@@ -1,6 +1,12 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.38.1** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `claude/fractured-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.39.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `claude/fractured-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Compare both cover ideas · 0.39.0
+
+Open **Play Both Cover Ideas.command** to test **A · Spend the Shelter**, followed by **B · Deliver the Brute**. A uses one arm as cover, an upright wall, and the return crossing, with a required shard inside the first breach. B asks you to park the brute on the loading dock, fold it into the lower corridor, then bait it toward the flag wall. Both end in ordinary hops with catch shelves and local retries.
+
+Walk out of A to reach B, press **N** for the next test, or use **Esc → Explore a section** to select either room. Each has its own checkpoint, **H** hint, full **Watch reference**, and editable native room in `levels/causeway-cover-comparison.tscn`. The comparison loads only with `--cover-comparison`; the current chapter and its 43 definitions remain unchanged. See [design and verification](research/COVER-COMPARISON.md).
 
 ## Two-stage cover puzzle · 0.38.1
 

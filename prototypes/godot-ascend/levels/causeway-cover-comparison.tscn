@@ -1,0 +1,1033 @@
+[gd_scene load_steps=40 format=4]
+
+[ext_resource type="Script" path="res://authoring/world.gd" id="1_d5xpl"]
+[ext_resource type="Script" path="res://authoring/room.gd" id="2_6x3rc"]
+[ext_resource type="Script" path="res://authoring/item.gd" id="3_20ada"]
+
+[sub_resource type="Image" id="Image_0onq0"]
+data = {
+"data": PackedByteArray("bneC/253gv9ud4L/bneC/253gv9ud4L/bneC/253gv9ud4L/bneC/253gv9ud4L/bneC/253gv9ud4L/bneC/7qrh/+6q4f/uquH/7qrh/+6q4f/uquH/7qrh/+6q4f/////AP///wD///8A////AP///wD///8A////AP///wDmyMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/////wD///8A////AP///wD///8A////AP///wDmyMv/5sjL/////wD///8A////AP///wD///8A////AP///wDj5YnM4+WJzOPliczj5YnM4+WJzOPliczj5YnM4+WJzNXliczV5YnM1eWJzNXliczV5YnM1eWJzNXliczV5YnMyOWJzMjliczI5YnMyOWJzMjliczI5YnMyOWJzMjlicy65YnMuuWJzLrlicy65YnMuuWJzLrlicy65YnMuuWJzK3licyt5YnMreWJzK3licyt5YnMreWJzK3licyt5YnMoOWJzKDlicyg5YnMoOWJzKDlicyg5YnMoOWJzKDlicyS5YnMkuWJzJLlicyS5YnMkuWJzJLlicyS5YnMkuWJzInljsyJ5Y7MieWOzInljsyJ5Y7MieWOzInljsyJ5Y7MieWbzInlm8yJ5ZvMieWbzInlm8yJ5ZvMieWbzInlm8yJ5anMieWpzInlqcyJ5anMieWpzInlqcyJ5anMieWpzInltsyJ5bbMieW2zInltsyJ5bbMieW2zInltsyJ5bbMieXDzInlw8yJ5cPMieXDzInlw8yJ5cPMieXDzInlw8yJ5dHMieXRzInl0cyJ5dHMieXRzInl0cyJ5dHMieXRzInl3syJ5d7MieXezInl3syJ5d7MieXezInl3syJ5d7Mid7lzIne5cyJ3uXMid7lzIne5cyJ3uXMid7lzIne5cyJ0eXMidHlzInR5cyJ0eXMidHlzInR5cyJ0eXMidHlzInD5cyJw+XMicPlzInD5cyJw+XMicPlzInD5cyJw+XMibblzIm25cyJtuXMibblzIm25cyJtuXMibblzIm25cyJqeXMianlzImp5cyJqeXMianlzImp5cyJqeXMianlzImb5cyJm+XMiZvlzImb5cyJm+XMiZvlzImb5cyJm+XMiY7lzImO5cyJjuXMiY7lzImO5cyJjuXMiY7lzImO5cySieXMkonlzJKJ5cySieXMkonlzJKJ5cySieXMkonlzKCJ5cygieXMoInlzKCJ5cygieXMoInlzKCJ5cygieXMrYnlzK2J5cytieXMrYnlzK2J5cytieXMrYnlzK2J5cy6ieXMuonlzLqJ5cy6ieXMuonlzLqJ5cy6ieXMuonlzMiJ5czIieXMyInlzMiJ5czIieXMyInlzMiJ5czIieXM1YnlzNWJ5czVieXM1YnlzNWJ5czVieXM1YnlzNWJ5czjieXM44nlzOOJ5czjieXM44nlzOOJ5czjieXM44nlzOWJ2szlidrM5YnazOWJ2szlidrM5YnazOWJ2szlidrM5YnMzOWJzMzliczM5YnMzOWJzMzliczM5YnMzOWJzMzlib/M5Ym/zOWJv8zlib/M5Ym/zOWJv8zlib/M5Ym/zOWJsszlibLM5YmyzOWJsszlibLM5YmyzOWJsszlibLM5YmkzOWJpMzliaTM5YmkzOWJpMzliaTM5YmkzOWJpMzliZfM5YmXzOWJl8zliZfM5YmXzOWJl8zliZfM5YmXzG53gv9ibHj/Ymx4/2JseP9bZnL/Ymx4/2JseP9ibHj/bneC/2JseP9ibHj/Ymx4/1tmcv9ibHj/Ymx4/2JseP+6q4f/uquH/7qrh/+6q4f/uquH/7qrh/+6q4f/uquH/////wD///8A////AObIy//myMv/////AP///wD///8A////AObIy//myMv/5sjL/+bIy//myMv/5sjL/////wD///8A////AP///wD///8A////AObIy//myMv/5sjL/+bIy//myMv/5sjL/////wD///8A////AP///wD///8A4+WJzOPlicz///8A////AP///wD///8A////AOPliczV5YnM1eWJzP///wD///8A////AP///wD///8A1eWJzMjliczI5YnM////AP///wD///8A////AP///wDI5YnMuuWJzLrlicz///8A////AP///wD///8A////ALrlicyt5YnMreWJzP///wD///8A////AP///wD///8AreWJzKDlicyg5YnM////AP///wD///8A////AP///wCg5YnMkuWJzJLlicz///8A////AP///wD///8A////AJLlicyJ5Y7MieWOzP///wD///8A////AP///wD///8AieWOzInlm8yJ5ZvM////AP///wD///8A////AP///wCJ5ZvMieWpzInlqcz///8A////AP///wD///8A////AInlqcyJ5bbMieW2zP///wD///8A////AP///wD///8AieW2zInlw8yJ5cPM////AP///wD///8A////AP///wCJ5cPMieXRzInl0cz///8A////AP///wD///8A////AInl0cyJ5d7MieXezP///wD///8A////AP///wD///8AieXezIne5cyJ3uXM////AP///wD///8A////AP///wCJ3uXMidHlzInR5cz///8A////AP///wD///8A////AInR5cyJw+XMicPlzP///wD///8A////AP///wD///8AicPlzIm25cyJtuXM////AP///wD///8A////AP///wCJtuXMianlzImp5cz///8A////AP///wD///8A////AImp5cyJm+XMiZvlzP///wD///8A////AP///wD///8AiZvlzImO5cyJjuXM////AP///wD///8A////AP///wCJjuXMkonlzJKJ5cz///8A////AP///wD///8A////AJKJ5cygieXMoInlzP///wD///8A////AP///wD///8AoInlzK2J5cytieXM////AP///wD///8A////AP///wCtieXMuonlzLqJ5cz///8A////AP///wD///8A////ALqJ5czIieXMyInlzP///wD///8A////AP///wD///8AyInlzNWJ5czVieXM////AP///wD///8A////AP///wDVieXM44nlzOOJ5cz///8A////AP///wD///8A////AOOJ5czlidrM5YnazP///wD///8A////AP///wD///8A5YnazOWJzMzliczM////AP///wD///8A////AP///wDliczM5Ym/zOWJv8z///8A////AP///wD///8A////AOWJv8zlibLM5YmyzP///wD///8A////AP///wD///8A5YmyzOWJpMzliaTM////AP///wD///8A////AP///wDliaTM5YmXzOWJl8z///8A////AP///wD///8A////AOWJl8xud4L/Ymx4/2JseP9bZnL/Ymx4/2JseP9ibHj/Ymx4/253gv9ibHj/Ymx4/1tmcv9ibHj/Ymx4/2JseP9ibHj/////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wDmyMv/5sjL/////wD///8A////AP///wDmyMv/5sjL/+bIy//myMv/5sjL/+bIy/////8A////AP///wD///8A5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/////wD///8A////AOPlicz///8A4+WJzP///wD///8A////AP///wDj5YnM1eWJzP///wDV5YnM////AP///wD///8A////ANXliczI5YnM////AMjlicz///8A////AP///wD///8AyOWJzLrlicz///8AuuWJzP///wD///8A////AP///wC65YnMreWJzP///wCt5YnM////AP///wD///8A////AK3licyg5YnM////AKDlicz///8A////AP///wD///8AoOWJzJLlicz///8AkuWJzP///wD///8A////AP///wCS5YnMieWOzP///wCJ5Y7M////AP///wD///8A////AInljsyJ5ZvM////AInlm8z///8A////AP///wD///8AieWbzInlqcz///8AieWpzP///wD///8A////AP///wCJ5anMieW2zP///wCJ5bbM////AP///wD///8A////AInltsyJ5cPM////AInlw8z///8A////AP///wD///8AieXDzInl0cz///8AieXRzP///wD///8A////AP///wCJ5dHMieXezP///wCJ5d7M////AP///wD///8A////AInl3syJ3uXM////AIne5cz///8A////AP///wD///8Aid7lzInR5cz///8AidHlzP///wD///8A////AP///wCJ0eXMicPlzP///wCJw+XM////AP///wD///8A////AInD5cyJtuXM////AIm25cz///8A////AP///wD///8AibblzImp5cz///8AianlzP///wD///8A////AP///wCJqeXMiZvlzP///wCJm+XM////AP///wD///8A////AImb5cyJjuXM////AImO5cz///8A////AP///wD///8AiY7lzJKJ5cz///8AkonlzP///wD///8A////AP///wCSieXMoInlzP///wCgieXM////AP///wD///8A////AKCJ5cytieXM////AK2J5cz///8A////AP///wD///8ArYnlzLqJ5cz///8AuonlzP///wD///8A////AP///wC6ieXMyInlzP///wDIieXM////AP///wD///8A////AMiJ5czVieXM////ANWJ5cz///8A////AP///wD///8A1YnlzOOJ5cz///8A44nlzP///wD///8A////AP///wDjieXM5YnazP///wDlidrM////AP///wD///8A////AOWJ2szliczM////AOWJzMz///8A////AP///wD///8A5YnMzOWJv8z///8A5Ym/zP///wD///8A////AP///wDlib/M5YmyzP///wDlibLM////AP///wD///8A////AOWJsszliaTM////AOWJpMz///8A////AP///wD///8A5YmkzOWJl8z///8A5YmXzP///wD///8A////AP///wDliZfMbneC/2JseP9bZnL/Ymx4/2JseP9ibHj/Ymx4/1tmcv9ud4L/Ymx4/1tmcv9ibHj/Ymx4/2JseP9ibHj/W2Zy/////wD///8A////AP///wD///8A////AP///wD///8A////AP///wDmyMv/5sjL/+bIy//myMv/////AP///wD///8A////AObIy//myMv/5sjL/+bIy/////8A////AP///wDmyMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/////wDj5YnM////AP///wDj5YnM////AP///wD///8A4+WJzNXlicz///8A////ANXlicz///8A////AP///wDV5YnMyOWJzP///wD///8AyOWJzP///wD///8A////AMjlicy65YnM////AP///wC65YnM////AP///wD///8AuuWJzK3licz///8A////AK3licz///8A////AP///wCt5YnMoOWJzP///wD///8AoOWJzP///wD///8A////AKDlicyS5YnM////AP///wCS5YnM////AP///wD///8AkuWJzInljsz///8A////AInljsz///8A////AP///wCJ5Y7MieWbzP///wD///8AieWbzP///wD///8A////AInlm8yJ5anM////AP///wCJ5anM////AP///wD///8AieWpzInltsz///8A////AInltsz///8A////AP///wCJ5bbMieXDzP///wD///8AieXDzP///wD///8A////AInlw8yJ5dHM////AP///wCJ5dHM////AP///wD///8AieXRzInl3sz///8A////AInl3sz///8A////AP///wCJ5d7Mid7lzP///wD///8Aid7lzP///wD///8A////AIne5cyJ0eXM////AP///wCJ0eXM////AP///wD///8AidHlzInD5cz///8A////AInD5cz///8A////AP///wCJw+XMibblzP///wD///8AibblzP///wD///8A////AIm25cyJqeXM////AP///wCJqeXM////AP///wD///8AianlzImb5cz///8A////AImb5cz///8A////AP///wCJm+XMiY7lzP///wD///8AiY7lzP///wD///8A////AImO5cySieXM////AP///wCSieXM////AP///wD///8AkonlzKCJ5cz///8A////AKCJ5cz///8A////AP///wCgieXMrYnlzP///wD///8ArYnlzP///wD///8A////AK2J5cy6ieXM////AP///wC6ieXM////AP///wD///8AuonlzMiJ5cz///8A////AMiJ5cz///8A////AP///wDIieXM1YnlzP///wD///8A1YnlzP///wD///8A////ANWJ5czjieXM////AP///wDjieXM////AP///wD///8A44nlzOWJ2sz///8A////AOWJ2sz///8A////AP///wDlidrM5YnMzP///wD///8A5YnMzP///wD///8A////AOWJzMzlib/M////AP///wDlib/M////AP///wD///8A5Ym/zOWJssz///8A////AOWJssz///8A////AP///wDlibLM5YmkzP///wD///8A5YmkzP///wD///8A////AOWJpMzliZfM////AP///wDliZfM////AP///wD///8A5YmXzG53gv9bZnL/Ymx4/2JseP9ibHj/Ymx4/1tmcv9ibHj/bneC/1tmcv9ibHj/Ymx4/2JseP9ibHj/W2Zy/2JseP////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A5sjL/+bIy//myMv/5sjL/////wD///8A////AP///wDmyMv/5sjL/+bIy//myMv/////AP///wD///8A5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy/////8A4+WJzP///wD///8A////AOPlicz///8A////AOPliczV5YnM////AP///wD///8A1eWJzP///wD///8A1eWJzMjlicz///8A////AP///wDI5YnM////AP///wDI5YnMuuWJzP///wD///8A////ALrlicz///8A////ALrlicyt5YnM////AP///wD///8AreWJzP///wD///8AreWJzKDlicz///8A////AP///wCg5YnM////AP///wCg5YnMkuWJzP///wD///8A////AJLlicz///8A////AJLlicyJ5Y7M////AP///wD///8AieWOzP///wD///8AieWOzInlm8z///8A////AP///wCJ5ZvM////AP///wCJ5ZvMieWpzP///wD///8A////AInlqcz///8A////AInlqcyJ5bbM////AP///wD///8AieW2zP///wD///8AieW2zInlw8z///8A////AP///wCJ5cPM////AP///wCJ5cPMieXRzP///wD///8A////AInl0cz///8A////AInl0cyJ5d7M////AP///wD///8AieXezP///wD///8AieXezIne5cz///8A////AP///wCJ3uXM////AP///wCJ3uXMidHlzP///wD///8A////AInR5cz///8A////AInR5cyJw+XM////AP///wD///8AicPlzP///wD///8AicPlzIm25cz///8A////AP///wCJtuXM////AP///wCJtuXMianlzP///wD///8A////AImp5cz///8A////AImp5cyJm+XM////AP///wD///8AiZvlzP///wD///8AiZvlzImO5cz///8A////AP///wCJjuXM////AP///wCJjuXMkonlzP///wD///8A////AJKJ5cz///8A////AJKJ5cygieXM////AP///wD///8AoInlzP///wD///8AoInlzK2J5cz///8A////AP///wCtieXM////AP///wCtieXMuonlzP///wD///8A////ALqJ5cz///8A////ALqJ5czIieXM////AP///wD///8AyInlzP///wD///8AyInlzNWJ5cz///8A////AP///wDVieXM////AP///wDVieXM44nlzP///wD///8A////AOOJ5cz///8A////AOOJ5czlidrM////AP///wD///8A5YnazP///wD///8A5YnazOWJzMz///8A////AP///wDliczM////AP///wDliczM5Ym/zP///wD///8A////AOWJv8z///8A////AOWJv8zlibLM////AP///wD///8A5YmyzP///wD///8A5YmyzOWJpMz///8A////AP///wDliaTM////AP///wDliaTM5YmXzP///wD///8A////AOWJl8z///8A////AOWJl8xud4L/Ymx4/2JseP9ibHj/Ymx4/1tmcv9ibHj/Ymx4/253gv9ibHj/Ymx4/2JseP9ibHj/W2Zy/2JseP9ibHj/////AP///wD///8A////AP///wD///8A////AP///wD///8A5sjL/+bIy//myMv/5sjL/+bIy//myMv/////AP///wD///8A////AObIy//myMv/////AP///wD///8A////AP///wD///8A5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/////wD///8A////AOPlicz///8A////AP///wD///8A4+WJzP///wDj5YnM1eWJzP///wD///8A////AP///wDV5YnM////ANXliczI5YnM////AP///wD///8A////AMjlicz///8AyOWJzLrlicz///8A////AP///wD///8AuuWJzP///wC65YnMreWJzP///wD///8A////AP///wCt5YnM////AK3licyg5YnM////AP///wD///8A////AKDlicz///8AoOWJzJLlicz///8A////AP///wD///8AkuWJzP///wCS5YnMieWOzP///wD///8A////AP///wCJ5Y7M////AInljsyJ5ZvM////AP///wD///8A////AInlm8z///8AieWbzInlqcz///8A////AP///wD///8AieWpzP///wCJ5anMieW2zP///wD///8A////AP///wCJ5bbM////AInltsyJ5cPM////AP///wD///8A////AInlw8z///8AieXDzInl0cz///8A////AP///wD///8AieXRzP///wCJ5dHMieXezP///wD///8A////AP///wCJ5d7M////AInl3syJ3uXM////AP///wD///8A////AIne5cz///8Aid7lzInR5cz///8A////AP///wD///8AidHlzP///wCJ0eXMicPlzP///wD///8A////AP///wCJw+XM////AInD5cyJtuXM////AP///wD///8A////AIm25cz///8AibblzImp5cz///8A////AP///wD///8AianlzP///wCJqeXMiZvlzP///wD///8A////AP///wCJm+XM////AImb5cyJjuXM////AP///wD///8A////AImO5cz///8AiY7lzJKJ5cz///8A////AP///wD///8AkonlzP///wCSieXMoInlzP///wD///8A////AP///wCgieXM////AKCJ5cytieXM////AP///wD///8A////AK2J5cz///8ArYnlzLqJ5cz///8A////AP///wD///8AuonlzP///wC6ieXMyInlzP///wD///8A////AP///wDIieXM////AMiJ5czVieXM////AP///wD///8A////ANWJ5cz///8A1YnlzOOJ5cz///8A////AP///wD///8A44nlzP///wDjieXM5YnazP///wD///8A////AP///wDlidrM////AOWJ2szliczM////AP///wD///8A////AOWJzMz///8A5YnMzOWJv8z///8A////AP///wD///8A5Ym/zP///wDlib/M5YmyzP///wD///8A////AP///wDlibLM////AOWJsszliaTM////AP///wD///8A////AOWJpMz///8A5YmkzOWJl8z///8A////AP///wD///8A5YmXzP///wDliZfMbneC/2JseP9ibHj/Ymx4/1tmcv9ibHj/Ymx4/2JseP9ud4L/Ymx4/2JseP9ibHj/W2Zy/2JseP9ibHj/Ymx4/////wD///8A////AP///wD///8A////AP///wD///8A////AObIy//myMv/5sjL/+bIy//myMv/5sjL/////wD///8A////AP///wDmyMv/5sjL/////wD///8A////AP///wD///8A////AP///wD///8A5sjL/+bIy//myMv/5sjL/+bIy//myMv/////AP///wD///8A////AP///wDj5YnM////AP///wD///8A////AP///wDj5YnM4+WJzNXlicz///8A////AP///wD///8A////ANXliczV5YnMyOWJzP///wD///8A////AP///wD///8AyOWJzMjlicy65YnM////AP///wD///8A////AP///wC65YnMuuWJzK3licz///8A////AP///wD///8A////AK3licyt5YnMoOWJzP///wD///8A////AP///wD///8AoOWJzKDlicyS5YnM////AP///wD///8A////AP///wCS5YnMkuWJzInljsz///8A////AP///wD///8A////AInljsyJ5Y7MieWbzP///wD///8A////AP///wD///8AieWbzInlm8yJ5anM////AP///wD///8A////AP///wCJ5anMieWpzInltsz///8A////AP///wD///8A////AInltsyJ5bbMieXDzP///wD///8A////AP///wD///8AieXDzInlw8yJ5dHM////AP///wD///8A////AP///wCJ5dHMieXRzInl3sz///8A////AP///wD///8A////AInl3syJ5d7Mid7lzP///wD///8A////AP///wD///8Aid7lzIne5cyJ0eXM////AP///wD///8A////AP///wCJ0eXMidHlzInD5cz///8A////AP///wD///8A////AInD5cyJw+XMibblzP///wD///8A////AP///wD///8AibblzIm25cyJqeXM////AP///wD///8A////AP///wCJqeXMianlzImb5cz///8A////AP///wD///8A////AImb5cyJm+XMiY7lzP///wD///8A////AP///wD///8AiY7lzImO5cySieXM////AP///wD///8A////AP///wCSieXMkonlzKCJ5cz///8A////AP///wD///8A////AKCJ5cygieXMrYnlzP///wD///8A////AP///wD///8ArYnlzK2J5cy6ieXM////AP///wD///8A////AP///wC6ieXMuonlzMiJ5cz///8A////AP///wD///8A////AMiJ5czIieXM1YnlzP///wD///8A////AP///wD///8A1YnlzNWJ5czjieXM////AP///wD///8A////AP///wDjieXM44nlzOWJ2sz///8A////AP///wD///8A////AOWJ2szlidrM5YnMzP///wD///8A////AP///wD///8A5YnMzOWJzMzlib/M////AP///wD///8A////AP///wDlib/M5Ym/zOWJssz///8A////AP///wD///8A////AOWJsszlibLM5YmkzP///wD///8A////AP///wD///8A5YmkzOWJpMzliZfM////AP///wD///8A////AP///wDliZfM5YmXzG53gv9ibHj/Ymx4/1tmcv9ibHj/Ymx4/2JseP9ibHj/bneC/2JseP9ibHj/W2Zy/2JseP9ibHj/Ymx4/2JseP////8A////AP///wD///8A////AP///wD///8A////AObIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A5sjL/+bIy/////8A////AP///wD///8A////AP///wD///8A4+WJzOPliczj5YnM4+WJzOPliczj5YnM4+WJzOPliczV5YnM1eWJzNXliczV5YnM1eWJzNXliczV5YnM1eWJzMjliczI5YnMyOWJzMjliczI5YnMyOWJzMjliczI5YnMuuWJzLrlicy65YnMuuWJzLrlicy65YnMuuWJzLrlicyt5YnMreWJzK3licyt5YnMreWJzK3licyt5YnMreWJzKDlicyg5YnMoOWJzKDlicyg5YnMoOWJzKDlicyg5YnMkuWJzJLlicyS5YnMkuWJzJLlicyS5YnMkuWJzJLlicyJ5Y7MieWOzInljsyJ5Y7MieWOzInljsyJ5Y7MieWOzInlm8yJ5ZvMieWbzInlm8yJ5ZvMieWbzInlm8yJ5ZvMieWpzInlqcyJ5anMieWpzInlqcyJ5anMieWpzInlqcyJ5bbMieW2zInltsyJ5bbMieW2zInltsyJ5bbMieW2zInlw8yJ5cPMieXDzInlw8yJ5cPMieXDzInlw8yJ5cPMieXRzInl0cyJ5dHMieXRzInl0cyJ5dHMieXRzInl0cyJ5d7MieXezInl3syJ5d7MieXezInl3syJ5d7MieXezIne5cyJ3uXMid7lzIne5cyJ3uXMid7lzIne5cyJ3uXMidHlzInR5cyJ0eXMidHlzInR5cyJ0eXMidHlzInR5cyJw+XMicPlzInD5cyJw+XMicPlzInD5cyJw+XMicPlzIm25cyJtuXMibblzIm25cyJtuXMibblzIm25cyJtuXMianlzImp5cyJqeXMianlzImp5cyJqeXMianlzImp5cyJm+XMiZvlzImb5cyJm+XMiZvlzImb5cyJm+XMiZvlzImO5cyJjuXMiY7lzImO5cyJjuXMiY7lzImO5cyJjuXMkonlzJKJ5cySieXMkonlzJKJ5cySieXMkonlzJKJ5cygieXMoInlzKCJ5cygieXMoInlzKCJ5cygieXMoInlzK2J5cytieXMrYnlzK2J5cytieXMrYnlzK2J5cytieXMuonlzLqJ5cy6ieXMuonlzLqJ5cy6ieXMuonlzLqJ5czIieXMyInlzMiJ5czIieXMyInlzMiJ5czIieXMyInlzNWJ5czVieXM1YnlzNWJ5czVieXM1YnlzNWJ5czVieXM44nlzOOJ5czjieXM44nlzOOJ5czjieXM44nlzOOJ5czlidrM5YnazOWJ2szlidrM5YnazOWJ2szlidrM5YnazOWJzMzliczM5YnMzOWJzMzliczM5YnMzOWJzMzliczM5Ym/zOWJv8zlib/M5Ym/zOWJv8zlib/M5Ym/zOWJv8zlibLM5YmyzOWJsszlibLM5YmyzOWJsszlibLM5YmyzOWJpMzliaTM5YmkzOWJpMzliaTM5YmkzOWJpMzliaTM5YmXzOWJl8zliZfM5YmXzOWJl8zliZfM5YmXzOWJl8w="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 328
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_j41jf"]
+image = SubResource("Image_0onq0")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpwj6"]
+texture = SubResource("ImageTexture_j41jf")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/custom_data_0 = "#"
+1:0/0 = 0
+1:0/0/custom_data_0 = "%"
+2:0/0 = 0
+2:0/0/custom_data_0 = "="
+3:0/0 = 0
+3:0/0/custom_data_0 = "^"
+4:0/0 = 0
+4:0/0/custom_data_0 = "v"
+5:0/0 = 0
+5:0/0/custom_data_0 = "<"
+6:0/0 = 0
+6:0/0/custom_data_0 = ">"
+7:0/0 = 0
+7:0/0/custom_data_0 = "-"
+8:0/0 = 0
+8:0/0/custom_data_0 = "("
+9:0/0 = 0
+9:0/0/custom_data_0 = ")"
+10:0/0 = 0
+10:0/0/custom_data_0 = "I"
+11:0/0 = 0
+11:0/0/custom_data_0 = "{"
+12:0/0 = 0
+12:0/0/custom_data_0 = "}"
+13:0/0 = 0
+13:0/0/custom_data_0 = "A"
+14:0/0 = 0
+14:0/0/custom_data_0 = "B"
+15:0/0 = 0
+15:0/0/custom_data_0 = "K"
+16:0/0 = 0
+16:0/0/custom_data_0 = "Z"
+17:0/0 = 0
+17:0/0/custom_data_0 = "G"
+18:0/0 = 0
+18:0/0/custom_data_0 = "H"
+19:0/0 = 0
+19:0/0/custom_data_0 = "M"
+20:0/0 = 0
+20:0/0/custom_data_0 = "~"
+21:0/0 = 0
+21:0/0/custom_data_0 = "V"
+22:0/0 = 0
+22:0/0/custom_data_0 = "X"
+23:0/0 = 0
+23:0/0/custom_data_0 = "Q"
+24:0/0 = 0
+24:0/0/custom_data_0 = "C"
+25:0/0 = 0
+25:0/0/custom_data_0 = "Y"
+26:0/0 = 0
+26:0/0/custom_data_0 = "o"
+27:0/0 = 0
+27:0/0/custom_data_0 = "c"
+28:0/0 = 0
+28:0/0/custom_data_0 = "b"
+29:0/0 = 0
+29:0/0/custom_data_0 = "x"
+30:0/0 = 0
+30:0/0/custom_data_0 = "s"
+31:0/0 = 0
+31:0/0/custom_data_0 = "*"
+32:0/0 = 0
+32:0/0/custom_data_0 = "l"
+33:0/0 = 0
+33:0/0/custom_data_0 = "_"
+34:0/0 = 0
+34:0/0/custom_data_0 = "N"
+35:0/0 = 0
+35:0/0/custom_data_0 = "f"
+36:0/0 = 0
+36:0/0/custom_data_0 = "/"
+37:0/0 = 0
+37:0/0/custom_data_0 = "\\"
+38:0/0 = 0
+38:0/0/custom_data_0 = "O"
+39:0/0 = 0
+39:0/0/custom_data_0 = "k"
+40:0/0 = 0
+40:0/0/custom_data_0 = "P"
+
+[sub_resource type="TileSet" id="TileSet_gbjc5"]
+tile_size = Vector2i(8, 8)
+custom_data_layer_0/name = "glyph"
+custom_data_layer_0/type = 4
+sources/0 = SubResource("TileSetAtlasSource_kpwj6")
+
+[sub_resource type="Image" id="Image_b6sqe"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_imbpk"]
+image = SubResource("Image_b6sqe")
+
+[sub_resource type="Image" id="Image_atvrk"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_lbw2j"]
+image = SubResource("Image_atvrk")
+
+[sub_resource type="Image" id="Image_d6ojk"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_0kt3q"]
+image = SubResource("Image_d6ojk")
+
+[sub_resource type="Image" id="Image_7pc5q"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_nyfw6"]
+image = SubResource("Image_7pc5q")
+
+[sub_resource type="Curve2D" id="Curve2D_w1t4o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 104, -64)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_crl4q"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_1fkd3"]
+image = SubResource("Image_crl4q")
+
+[sub_resource type="Image" id="Image_11412"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_bawd8"]
+image = SubResource("Image_11412")
+
+[sub_resource type="Image" id="Image_bk4ac"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_adtjt"]
+image = SubResource("Image_bk4ac")
+
+[sub_resource type="Image" id="Image_6rqsu"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_toggp"]
+image = SubResource("Image_6rqsu")
+
+[sub_resource type="Image" id="Image_8okf1"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_8bj4s"]
+image = SubResource("Image_8okf1")
+
+[sub_resource type="Image" id="Image_57tlh"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_dv7ys"]
+image = SubResource("Image_57tlh")
+
+[sub_resource type="Curve2D" id="Curve2D_joqr6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 240, 104)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_s1t6x"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_use8f"]
+image = SubResource("Image_s1t6x")
+
+[sub_resource type="Curve2D" id="Curve2D_rna1v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -48, 96)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_cxjyp"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_2d577"]
+image = SubResource("Image_cxjyp")
+
+[sub_resource type="Curve2D" id="Curve2D_spq1o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 32)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_dob3q"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_h3i5y"]
+image = SubResource("Image_dob3q")
+
+[sub_resource type="Image" id="Image_u1d81"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_0eexm"]
+image = SubResource("Image_u1d81")
+
+[node name="Ascend_23" type="Node2D"]
+script = ExtResource("1_d5xpl")
+world_number = 23
+chapter_title = "Causeway · Cover comparison"
+ambient_color = Color(0.76862746, 0.6509804, 0.8117647, 1)
+accent_color = Color(0.9098039, 0.64705884, 0.8627451, 1)
+flowers_color = Color(0.8627451, 0.69098043, 0.57098037, 1)
+world_settings = {
+"atlasStart": "cl23-cover-comparison-shelter",
+"blurb": "Two separate, checkpointed alternatives to the cover puzzle. Play A, then B.",
+"checkpointLinks": [],
+"coverComparison": true,
+"folk": {
+"oren": {
+"cap": true,
+"cloak": "#5b4a3a",
+"skin": "#cfa07e",
+"trim": "#c8883a"
+},
+"sable": {
+"cloak": "#3e4a52",
+"hood": true,
+"skin": "#b98d6c",
+"staff": true,
+"trim": "#d8d2c0"
+},
+"silas": {
+"cloak": "#6a5038",
+"helm": true,
+"skin": "#c9b9a0",
+"trim": "#d59a68"
+}
+},
+"key": "cover-comparison",
+"kit": ["dash", "strike", "parry", "portal"],
+"n": 23.0,
+"name": "Causeway · Cover comparison",
+"outro": "Three counterweights lie across three silent courts. The Iron Echo has stopped trying. The wind beyond the causeway blows uphill.",
+"palette": "fractured",
+"palettes": {},
+"passages": [],
+"props": {
+"cw-chain": [[3.0, -6.0, 2.0, 5.0, "#7d7466"], [3.0, -6.0, 1.0, 1.0, "#b0a48e"], [3.0, -12.0, 2.0, 5.0, "#7d7466"], [3.0, -12.0, 1.0, 1.0, "#b0a48e"], [3.0, -18.0, 2.0, 5.0, "#7d7466"], [3.0, -18.0, 1.0, 1.0, "#b0a48e"], [3.0, -24.0, 2.0, 5.0, "#7d7466"], [3.0, -24.0, 1.0, 1.0, "#b0a48e"], [3.0, -30.0, 2.0, 5.0, "#7d7466"], [3.0, -30.0, 1.0, 1.0, "#b0a48e"]],
+"cw-chain-long": [[3.0, -6.0, 2.0, 5.0, "#7d7466"], [3.0, -6.0, 1.0, 1.0, "#b0a48e"], [3.0, -12.0, 2.0, 5.0, "#7d7466"], [3.0, -12.0, 1.0, 1.0, "#b0a48e"], [3.0, -18.0, 2.0, 5.0, "#7d7466"], [3.0, -18.0, 1.0, 1.0, "#b0a48e"], [3.0, -24.0, 2.0, 5.0, "#7d7466"], [3.0, -24.0, 1.0, 1.0, "#b0a48e"], [3.0, -30.0, 2.0, 5.0, "#7d7466"], [3.0, -30.0, 1.0, 1.0, "#b0a48e"], [3.0, -36.0, 2.0, 5.0, "#7d7466"], [3.0, -36.0, 1.0, 1.0, "#b0a48e"], [3.0, -42.0, 2.0, 5.0, "#7d7466"], [3.0, -42.0, 1.0, 1.0, "#b0a48e"], [3.0, -48.0, 2.0, 5.0, "#7d7466"], [3.0, -48.0, 1.0, 1.0, "#b0a48e"], [3.0, -54.0, 2.0, 5.0, "#7d7466"], [3.0, -54.0, 1.0, 1.0, "#b0a48e"], [3.0, -60.0, 2.0, 5.0, "#7d7466"], [3.0, -60.0, 1.0, 1.0, "#b0a48e"], [3.0, -66.0, 2.0, 5.0, "#7d7466"], [3.0, -66.0, 1.0, 1.0, "#b0a48e"], [3.0, -72.0, 2.0, 5.0, "#7d7466"], [3.0, -72.0, 1.0, 1.0, "#b0a48e"]],
+"cw-crate": [[0.0, -8.0, 8.0, 8.0, "#6a5032"], [0.0, -8.0, 8.0, 1.0, "#8a6a42"], [1.0, -5.0, 6.0, 1.0, "#4a3622"], [3.0, -8.0, 1.0, 8.0, "#4a3622"]],
+"cw-gear": [[2.0, -14.0, 12.0, 12.0, "#6a5a3a"], [4.0, -16.0, 8.0, 16.0, "#6a5a3a"], [0.0, -12.0, 16.0, 8.0, "#6a5a3a"], [5.0, -11.0, 6.0, 6.0, "#2e281e"], [7.0, -9.0, 2.0, 2.0, "#c8a060"], [3.0, -13.0, 10.0, 1.0, "#9a8458"]],
+"cw-standard": [[3.0, -34.0, 2.0, 34.0, "#5a4a3a"], [5.0, -33.0, 9.0, 7.0, "#7a2a2a"], [5.0, -26.0, 6.0, 3.0, "#5a1e1e"], [12.0, -26.0, 2.0, 2.0, "#5a1e1e"], [1.0, -35.0, 6.0, 1.0, "#c8a060"]],
+"cw-stretcher": [[0.0, -3.0, 15.0, 1.0, "#8a6a40"], [1.0, -2.0, 1.0, 2.0, "#5a4632"], [13.0, -2.0, 1.0, 2.0, "#5a4632"], [2.0, -5.0, 11.0, 2.0, "#c8c0a8"], [3.0, -6.0, 3.0, 1.0, "#c8c0a8"]],
+"cw-winch": [[0.0, -12.0, 1.0, 12.0, "#4a3a2c"], [11.0, -12.0, 1.0, 12.0, "#4a3a2c"], [0.0, -13.0, 12.0, 1.0, "#6a5a48"], [2.0, -10.0, 8.0, 6.0, "#6e5236"], [2.0, -8.0, 8.0, 1.0, "#c8a060"], [5.0, -15.0, 2.0, 3.0, "#c8a060"], [1.0, -1.0, 10.0, 1.0, "#3a2e24"]]
+},
+"quests": [],
+"requiredMainRooms": ["cl23-cover-comparison-shelter", "cl23-cover-comparison-dock"],
+"secrets": [],
+"sections": [{
+"fire": {
+"c": 37.0,
+"r": 34.0
+},
+"room": "cl23-cover-comparison-shelter",
+"x": 0.0,
+"y": 0.0
+}, {
+"fire": {
+"c": 34.0,
+"r": 28.0
+},
+"room": "cl23-cover-comparison-dock",
+"x": 64.0,
+"y": 16.0
+}],
+"tapes": {
+"cl23-cover-comparison-dock": [[10.0, ""], [34.0, "l"], [10.0, ""], [18.0, "rj"], [12.0, "rux"], [65.0, ""], [9.0, "l"], [38.0, ""], [1.0, "ls"], [90.0, ""], [16.0, "r"], [12.0, "ldx"], [100.0, ""], [1.0, "dj"], [34.0, ""], [7.0, "j"], [12.0, "ux"], [100.0, ""], [1.0, "dj"], [32.0, "r"], [20.0, "rj"], [10.0, ""], [42.0, "r"], [18.0, "rj"], [35.0, ""], [12.0, "rx"], [80.0, ""], [70.0, "r"]],
+"cl23-cover-comparison-shelter": [[10.0, ""], [18.0, "j"], [25.0, ""], [1.0, "us"], [20.0, ""], [1.0, "dj"], [25.0, ""], [44.0, "l"], [10.0, ""], [14.0, "l"], [25.0, ""], [18.0, "j"], [25.0, ""], [18.0, "j"], [8.0, ""], [1.0, "dj"], [35.0, ""], [22.0, "l"], [10.0, ""], [12.0, "ux"], [100.0, ""], [1.0, "dj"], [20.0, ""], [1.0, "rs"], [12.0, "rx"], [23.0, "r"], [18.0, "j"], [65.0, ""], [38.0, "rj"], [20.0, ""], [90.0, "r"]]
+}
+}
+gameplay_settings = {
+"branchRewards": [],
+"constants": {
+"airMult": 0.65,
+"bufferFrames": 5.0,
+"carryMaxFall": 45.0,
+"climbAccel": 900.0,
+"climbCheck": 2.0,
+"climbDownSpeed": 80.0,
+"climbHopForceFrames": 12.0,
+"climbHopX": 100.0,
+"climbHopY": -120.0,
+"climbJumpBoostFrames": 12.0,
+"climbJumpCost": 27.5,
+"climbMaxStamina": 110.0,
+"climbNoMoveFrames": 6.0,
+"climbSlipSpeed": 30.0,
+"climbStillCost": 10.0,
+"climbTired": 20.0,
+"climbUpCost": 45.45454545454545,
+"climbUpSpeed": -45.0,
+"crumbleRespawnFrames": 120.0,
+"crumbleShakeFrames": 24.0,
+"dashCooldownFrames": 12.0,
+"dashCorner": 4.0,
+"dashFrames": 9.0,
+"dashFreezeFrames": 3.0,
+"dashRefillCooldownFrames": 6.0,
+"dashSpeed": 240.0,
+"deathFrames": 24.0,
+"endDashSpeed": 160.0,
+"endDashUpMult": 0.75,
+"fastMaxAccel": 300.0,
+"fastMaxFall": 240.0,
+"flingMaxFall": 420.0,
+"gravity": 900.0,
+"halfGravThreshold": 40.0,
+"hyperXMult": 1.25,
+"hyperYMult": 0.5,
+"jumpGraceFrames": 6.0,
+"jumpHBoost": 40.0,
+"jumpSpeed": -105.0,
+"liftGraceFrames": 10.0,
+"liftXCap": 250.0,
+"liftYCap": -130.0,
+"maxFall": 160.0,
+"maxRun": 90.0,
+"podDown": 150.0,
+"podSide": 190.0,
+"podSpeed": -210.0,
+"refillRespawnFrames": 150.0,
+"respawnFrames": 10.0,
+"runAccel": 1000.0,
+"runReduce": 400.0,
+"springSpeed": -185.0,
+"stoneAccel": 600.0,
+"stoneMax": 240.0,
+"strikeCooldownFrames": 15.0,
+"strikeFrames": 5.0,
+"superJumpH": 260.0,
+"superWallJumpCheck": 5.0,
+"superWallJumpH": 170.0,
+"superWallJumpSpeed": -160.0,
+"superWallVarFrames": 15.0,
+"throwX": 200.0,
+"throwY": -80.0,
+"touchClimbUpSpeed": -60.0,
+"ultraMult": 1.2,
+"upwardCorner": 4.0,
+"varJumpFrames": 12.0,
+"wallJumpCheck": 3.0,
+"wallJumpForceFrames": 10.0,
+"wallJumpH": 130.0,
+"wallSlideFrames": 72.0,
+"wallSlideStartMax": 20.0,
+"wallSpeedRetentionFrames": 4.0
+},
+"nativeScene": "res://levels/causeway-cover-comparison.tscn",
+"playerDefaults": {
+"airJumps": 0.0,
+"autoJump": false,
+"beforeDash": {
+"x": 0.0,
+"y": 0.0
+},
+"carrying": null,
+"climbNoMove": 0.0,
+"dashAim": false,
+"dashCooldown": 0.0,
+"dashDir": {
+"x": 1.0,
+"y": 0.0
+},
+"dashFlash": 0.0,
+"dashRefillCooldown": 0.0,
+"dashTimer": 0.0,
+"dashes": 1.0,
+"deadTimer": 0.0,
+"ducking": false,
+"facing": 1.0,
+"fling": false,
+"forceMoveTimer": 0.0,
+"forceMoveX": 0.0,
+"h": 11.0,
+"hook": null,
+"jumpGrace": 0.0,
+"lastRing": null,
+"liftTimer": 0.0,
+"liftX": 0.0,
+"liftY": 0.0,
+"maxDashes": 1.0,
+"maxFall": 160.0,
+"onGround": true,
+"parryCooldown": 0.0,
+"parryTimer": 0.0,
+"portalCool": 0.0,
+"remX": 0.0,
+"remY": 0.0,
+"respawnTimer": 0.0,
+"retainTimer": 0.0,
+"retained": 0.0,
+"seat": null,
+"seenT": 0.0,
+"stamina": 110.0,
+"state": "normal",
+"strikeCooldown": 0.0,
+"strikeDir": {
+"x": 1.0,
+"y": 0.0
+},
+"strikeHit": {},
+"strikeTimer": 0.0,
+"varJump": 0.0,
+"varJumpSpeed": 0.0,
+"vx": 0.0,
+"vy": 0.0,
+"w": 8.0,
+"wallBoostDir": 0.0,
+"wallBoostTimer": 0.0,
+"wallSlide": 72.0,
+"wasGround": true,
+"x": 24.0,
+"y": 85.0
+},
+"source": "public/bladefall-climb-worlds.js",
+"sources": {
+"bladefall-climb-atlas.js": "41d208f88fdef5069b91b41ffb4ebc16d1f465c446750c0c490ab33b79370120",
+"bladefall-climb-passages.js": "28f67db4bd03bebd97cfc8769b71f8c244b5cb87dedba84edd3e65f50e6cb852",
+"bladefall-climb-worlds.js": "14716d5994f1cee3330f626064ab52c42a75dc43407ef25f0df43252d0c57eea",
+"bladefall-climb.js": "85b5633cb4b6588cb147db26388eb3a32abc83f51f42eee06a1ff5db59a12200",
+"bladefall-pcore-combat.js": "af94f9287344104bf39de174ca48a0e4c562d4db7d2a90825c776af2f0d39f56",
+"bladefall-pcore-dev-beam.js": "055c49c55cd007f3064384805672ed39ddc9c54b206e508920621d8e3e5f1be7",
+"bladefall-pcore-dev-cargo-clasp.js": "011d345e45213da639eca9c2e5bafc8bb8d20bc8e2d57989eb3b162b49794b2e",
+"bladefall-pcore-dev-citadel.js": "060cbcab64ebc11e08bff7aeee6342dbdcc9ec3f5a4ed8b963555f78da7483fe",
+"bladefall-pcore-dev-core-checkpoints.js": "b045e97c55c652d59f52a9ccc864eb78c79a8fda04c34714b034ea706bace3f2",
+"bladefall-pcore-dev-ember.js": "ae4d44a2fb82306ffdde2ff09670c629d3fc08debc640920f7f2fa6daf54b0b2",
+"bladefall-pcore-dev-fault.js": "52074477e34debbc8109089c7351ce863b15f54e752b7085dea6b530648e7936",
+"bladefall-pcore-dev-finale.js": "a2d985c81fa5dc55f496b5de2efd2d3bdcf7c56d8e13ffcbe5b110465f78c06b",
+"bladefall-pcore-dev-foundry.js": "ec9d5e32beaa0711be0ee080396204874b05789051938fe0f8a6e6ce5c1cb56f",
+"bladefall-pcore-dev-frost.js": "76e8c10101774e51defb1f4ec052f3f05c93c5bec0f5e336d0b53a971aab324f",
+"bladefall-pcore-dev-gaol.js": "a93ffc17c3f49f8f82491299f0249640d6dd3531ff2846eb249251d7e1559dd4",
+"bladefall-pcore-dev-gravity.js": "6d57f63aafd7c840c83b94b793141c666aa14e9c74bb93d385a00348a98acdc1",
+"bladefall-pcore-dev-hinge.js": "e618f38e2ffa59fe77b806b682840872cc6cbaac87e4e85e509d74b037110999",
+"bladefall-pcore-dev-hook.js": "c9db5eae750394019089fd3fe77a93ea994e548e736dd0cb71747d6187a2219c",
+"bladefall-pcore-dev-impulse.js": "170326213c861f3ad17919780ba5415e0f9a50da335b4ba0440daccbdf35687b",
+"bladefall-pcore-dev-mirror.js": "563abf8bc89187972e554d8995f7ab9909d3e8c19b13f3585bb197b9fe885f24",
+"bladefall-pcore-dev-moving-hook.js": "b29478501ea795c63d523cf9cbb12210d0d1e923cb7d120cf18b788425618c77",
+"bladefall-pcore-dev-rail.js": "5969523a5a26e8e49a5bbcb632fcbf96f4cd104e5796da36592ceaf0818a7534",
+"bladefall-pcore-dev-rbr-causeway.js": "9545f02ef8fe72017aba71f5042b28f7a4c3ef1f994e19d2e5805db96f883297",
+"bladefall-pcore-dev-rbr-cliffs.js": "d05cbd477a9275936d9e3ebcb9ffd8f9d78f22663d68affea3bc3d24311da22c",
+"bladefall-pcore-dev-rbr-colossus.js": "eba18ead4c1d3dad8226162cb4920e7c64b1a79b97c63d9ffd5e8a6e026e5c23",
+"bladefall-pcore-dev-rbr-deepline.js": "16b1b8a513dabbf0303bb04e4ef7272c2dad814d424a68da0f8a4f49fb980fc1",
+"bladefall-pcore-dev-rbr-emberdeep.js": "e9d235ad02ac5bf4a49162ca1ed23ffc8cf71c763bbebab4d5c964f2c14184d6",
+"bladefall-pcore-dev-rbr-f-outskirts.js": "b8aa716319a729fec8682c89f6343bf24f09252055c7608c1266c69e8da19b19",
+"bladefall-pcore-dev-rbr-f-updrafts.js": "4eaa5d5ccfc418b59766ae289dd51bb2e979057d85aad7b8c7912e60d250fce7",
+"bladefall-pcore-dev-rbr-f-woods.js": "410c4e1d3888b68e7c097642ed2e0a1372adfa5aab7a19420ba11b43c6c35853",
+"bladefall-pcore-dev-rbr-frostfell.js": "956618773e9c654415974ef4130adb4fdd095ba742242c952dd0391527a121a2",
+"bladefall-pcore-dev-rbr-gaol.js": "e71c25446cb99a308481842d263f1959c311085776f40ff5a3767b7b7826fca4",
+"bladefall-pcore-dev-rbr-keep.js": "b8a0765cca2ee332da17ae8557773d77daad04c045394ed7b12084ee580d04c0",
+"bladefall-pcore-dev-rbr-king.js": "320ed0ff1722a618b0d5c56a038a2f68187a2bb5f80b2c34d8adb8d9fe5a8b37",
+"bladefall-pcore-dev-rbr-marksman.js": "b0938eddf47a372e5d84537a01575fca52f9b022e47f7fe72561a6d5ac4450f0",
+"bladefall-pcore-dev-rbr-path.js": "39f7621b1c41cdf268d4f03acc1b4844db4ff6f063b02d8b81c550dfe9a3eca4",
+"bladefall-pcore-dev-rbr-sorcerer.js": "28a177f81421f7fa88d40996b2c8a6ece14563d55e7464d914e0dba7a3db6c57",
+"bladefall-pcore-dev-rbr-sunspire.js": "edcd9a5494c8987f6f923601335172436216c7f72fad4e227491f627847b2672",
+"bladefall-pcore-dev-rbr-tyrant.js": "65547056703c182193c6f967d4d0e150891e5627f0d0f863e7fddc476c75b8c3",
+"bladefall-pcore-dev-rbr-updrafts.js": "b1739991e1efde3713ab51522d6dcd196b21ceddbedeb03e9961ba60ca3ec37f",
+"bladefall-pcore-dev-recoil.js": "52ffad00770606c45e0e4150e20498f76db4a7737012b26b79b9d928d6c1e30e",
+"bladefall-pcore-dev-relay.js": "671a635ca4d0e10ef5adeb714a2474469bda9c18c406b3c3129e8d7ab2512a10",
+"bladefall-pcore-dev-run9-base.js": "aa1a42c86b327fbdc5a2641fb63d29e84ff0b2b4a0a73410c8ed147ac748f983",
+"bladefall-pcore-dev-shade.js": "83eab516773d1043db146fbe1c5f19e60b8eeb2c6ca6ff47e3293c7b4ec84ae4",
+"bladefall-pcore-dev-spent-thorn.js": "047fffbb3355c8da5bd30fb6509a4094e4452b9910044938a86d4c5d1f6272ec",
+"bladefall-pcore-dev-step-relay.js": "50faa5b503c8a48b60f1d8238fa19981bbcf7a6af863ca800bf276bbeef3775c",
+"bladefall-pcore-dev-superrooms-base.js": "206d66c75e88580bddda79ec9601704b2a1962140fa533590468243f0c372fde",
+"bladefall-pcore-dev-superrooms-colossus.js": "cc683a4c2b01c15c5347ee593c31a283af69b4b6b2b5ad02c7aca7e58c70c79c",
+"bladefall-pcore-dev-superrooms-fractured.js": "f45fafabd6c85bcd3c66510c54ff644ef75cd1ad1a9d1f63fbec16fc0d715039",
+"bladefall-pcore-dev-superrooms-fractured9.js": "da2023d53c98c79e166ad08e822c679eb65a11f21f65c2c24e5462b55ef5e2df",
+"bladefall-pcore-dev-sweeper.js": "98544dd105f7895c2c64d7df4688c18980659a77a6b378bbca757e4ba031c47a",
+"bladefall-pcore-dev-throne.js": "b1df4a78ec4261555a3ddf80edb0bc0e52e08e7054357b41e02b8ba21f5a6ccc",
+"bladefall-pcore-dev-vector-refill.js": "5a67b1bbd37a7976014edf3f89b88e1b81efbc976b119c6a07f07ad0d391bffc",
+"bladefall-pcore-dev-void.js": "c0d3042145ad9bee79bbaf673282635d0ed075164909df21101116052857f7a7",
+"bladefall-pcore-dev-watch.js": "a4649ca5435a061628f1bed65862ab00153d0f50f0f01b46768e706d468626e7",
+"bladefall-pcore-dev-water.js": "1a4848a3208fc4d5ba8d28f42b595f9e92987161b462e877e728bae886537c7c",
+"bladefall-pcore-dev-workshop-room.js": "b7c90947fd50c9243bade7986628cb5bcd68c8c037c37db3e91df62a24a40e6e",
+"bladefall-pcore-dev-zipline.js": "0322a7b5e34b43f38756c307b5678f7cbd7c7936d697102f834baa8968df3c68",
+"bladefall-pcore-foes.js": "ba8d86f09dcc286f12e35cb7c916b317b86e503e6e628c0aee7e3b361e97b3f5",
+"bladefall-pcore-portals.js": "91a6f18f401d5e227a21cbcd2a886b66a6893c1fa3a6ca37defd850a3d219a04",
+"bladefall-pcore.js": "ced41090f3e9b56ae660b7035aba7d635337d9a8c7c93251d0846776b66b2fc4"
+}
+}
+original_palette = {
+"accent": "e8a5dcff",
+"ambient": "c4a6cfff",
+"bunnies": "ffffffff",
+"flowers": "dcb092ff"
+}
+source_fingerprint = "d47c531c98a39602324c9ade8e9cde454144140f0a1a49941a5501ab5639e858"
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="cl23-cover-comparison-shelter" type="Node2D" parent="Rooms"]
+script = ExtResource("2_6x3rc")
+room_id = "cl23-cover-comparison-shelter"
+room_title = "A · Spend the Shelter"
+map_width = 64
+map_height = 64
+settings = {
+"aim8": true,
+"cols": 64.0,
+"combat": {
+"doors": [],
+"enemies": [],
+"receivers": [],
+"waitForMove": true
+},
+"dashes": 1.0,
+"dropThru": true,
+"exit": "right",
+"exitSpan": [28.0, 32.0],
+"hingeArms": [],
+"hint": "From the lower right shelf, strike up to turn the cover into an upright wall. Use the two small left steps to rise above the low beam and bait the brute left, then drop back below its charge. Collect the shard inside the breach, then take its line to the sheltered upper pocket. The flag requires that shard, so both tasks matter. Drop to its operating ledge and strike right to lay the crossing; then cross ahead of the returning charge and jump onto the small refuge. The second breach opens the broad flag platform. A lower catch shelf lets you retry the final ordinary hop.",
+"id": "cl23-cover-comparison-shelter",
+"lines": [],
+"lock": ["parry", "portal"],
+"movement": "survive-2",
+"name": "A · Spend the Shelter",
+"palette": "fractured",
+"puzzleCameraAnchorX": 180.0,
+"puzzleCameraAnchorY": 70.0,
+"puzzleEntranceFloor": 36.0,
+"puzzleExitFloor": 32.0,
+"puzzleGoal": [400.0, 224.0, 48.0, 4.0],
+"puzzleRoutes": [{
+"name": "Reference",
+"tape": [[10.0, ""], [18.0, "j"], [25.0, ""], [1.0, "us"], [20.0, ""], [1.0, "dj"], [25.0, ""], [44.0, "l"], [10.0, ""], [14.0, "l"], [25.0, ""], [18.0, "j"], [25.0, ""], [18.0, "j"], [8.0, ""], [1.0, "dj"], [35.0, ""], [22.0, "l"], [10.0, ""], [12.0, "ux"], [100.0, ""], [1.0, "dj"], [20.0, ""], [1.0, "rs"], [12.0, "rx"], [23.0, "r"], [18.0, "j"], [65.0, ""], [38.0, "rj"], [20.0, ""], [90.0, "r"]]
+}],
+"puzzleStudy": true,
+"question": "What does the same arm need to become before each bait?",
+"rbr": 23.0,
+"rows": 64.0,
+"study": true,
+"workshopCompleteText": "A COMPLETE · WALK RIGHT FOR B",
+"workshopGoal": [400.0, 224.0, 48.0, 4.0],
+"workshopObjective": "OPEN BOTH WALLS · BRING THE ALCOVE SHARD TO THE FLAG",
+"workshopRequireShard": true,
+"workshopReturnText": "ALCOVE SHARD FOUND · FINISH THE CROSSING"
+}
+original_fields = ["id", "name", "cols", "rows", "exit", "exitSpan", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "study", "movement", "decor", "people", "zips", "lines", "puzzleRoutes", "dropThru", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleCameraAnchorY", "map", "hingeArms", "combat", "puzzleGoal", "question", "hint", "puzzleCameraAnchorX", "workshopRequireShard", "workshopObjective", "workshopReturnText", "workshopCompleteText", "workshopGoal"]
+array_fields = [["hingeArms"], ["lines"], ["combat", "enemies"], ["combat", "doors"]]
+original_spawn = Vector2(296, 272)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-cover-comparison-shelter"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAFAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA5AAAAAAAAAAAAAAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAATAAEAAAAAAAAAAAAlAAEAAAAFAAAAAAAmAAEAAAAAAAAAAAAnAAEAAAAAAAAAAAA/AAEAAAAAAAAAAAAAAAIAAAAAAAAAAAATAAIAAAAAAAAAAAAlAAIAAAAFAAAAAAAmAAIAAAAAAAAAAAAnAAIAAAAAAAAAAAA/AAIAAAAAAAAAAAAAAAMAAAAAAAAAAAATAAMAAAAAAAAAAAAlAAMAAAAFAAAAAAAmAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAA/AAMAAAAAAAAAAAAAAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAlAAQAAAAFAAAAAAAmAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAA/AAQAAAAAAAAAAAAAAAUAAAAAAAAAAAATAAUAAAAAAAAAAAAlAAUAAAAFAAAAAAAmAAUAAAAAAAAAAAAnAAUAAAAAAAAAAAA/AAUAAAAAAAAAAAAAAAYAAAAAAAAAAAATAAYAAAAAAAAAAAAlAAYAAAAFAAAAAAAmAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAA/AAYAAAAAAAAAAAAAAAcAAAAAAAAAAAATAAcAAAAAAAAAAAAlAAcAAAAFAAAAAAAmAAcAAAAAAAAAAAAnAAcAAAAAAAAAAAA/AAcAAAAAAAAAAAAAAAgAAAAAAAAAAAATAAgAAAAAAAAAAAAlAAgAAAAFAAAAAAAmAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAA/AAgAAAAAAAAAAAAAAAkAAAAAAAAAAAATAAkAAAAAAAAAAAAlAAkAAAAFAAAAAAAmAAkAAAAAAAAAAAAnAAkAAAAAAAAAAAA/AAkAAAAAAAAAAAAAAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAlAAoAAAAFAAAAAAAmAAoAAAAAAAAAAAAnAAoAAAAAAAAAAAA/AAoAAAAAAAAAAAAAAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAlAAsAAAAFAAAAAAAmAAsAAAAAAAAAAAAnAAsAAAAAAAAAAAA/AAsAAAAAAAAAAAAAAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAlAAwAAAAFAAAAAAAmAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAA/AAwAAAAAAAAAAAAAAA0AAAAAAAAAAAATAA0AAAAAAAAAAAAlAA0AAAAFAAAAAAAmAA0AAAAAAAAAAAAnAA0AAAAAAAAAAAA/AA0AAAAAAAAAAAAAAA4AAAAAAAAAAAATAA4AAAAAAAAAAAAlAA4AAAAFAAAAAAAmAA4AAAAAAAAAAAAnAA4AAAAAAAAAAAA/AA4AAAAAAAAAAAAAAA8AAAAAAAAAAAATAA8AAAAAAAAAAAAlAA8AAAAFAAAAAAAmAA8AAAAAAAAAAAAnAA8AAAAAAAAAAAA/AA8AAAAAAAAAAAAAABAAAAAAAAAAAAATABAAAAAAAAAAAAAlABAAAAAFAAAAAAAmABAAAAAAAAAAAAAnABAAAAAAAAAAAAA/ABAAAAAAAAAAAAAAABEAAAAAAAAAAAATABEAAAAAAAAAAAAlABEAAAAFAAAAAAAmABEAAAAAAAAAAAAnABEAAAAAAAAAAAA/ABEAAAAAAAAAAAAAABIAAAAAAAAAAAATABIAAAAAAAAAAAAlABIAAAAFAAAAAAAmABIAAAAAAAAAAAAnABIAAAAAAAAAAAA/ABIAAAAAAAAAAAAAABMAAAAAAAAAAAATABMAAAAAAAAAAAAlABMAAAAFAAAAAAAmABMAAAAAAAAAAAAnABMAAAAAAAAAAAA/ABMAAAAAAAAAAAAAABQAAAAAAAAAAAATABQAAAAAAAAAAAAlABQAAAAFAAAAAAAmABQAAAAAAAAAAAAnABQAAAAAAAAAAAA/ABQAAAAAAAAAAAAAABUAAAAAAAAAAAATABUAAAAAAAAAAAAlABUAAAAFAAAAAAAmABUAAAAAAAAAAAAnABUAAAAAAAAAAAA/ABUAAAAAAAAAAAAAABYAAAAAAAAAAAATABYAAAAAAAAAAAAlABYAAAAFAAAAAAAmABYAAAAAAAAAAAAnABYAAAAAAAAAAAA/ABYAAAAAAAAAAAAAABcAAAAAAAAAAAATABcAAAAAAAAAAAAlABcAAAAFAAAAAAAmABcAAAAAAAAAAAAnABcAAAAAAAAAAAA/ABcAAAAAAAAAAAAAABgAAAAAAAAAAAATABgAAAAAAAAAAAAlABgAAAAFAAAAAAAmABgAAAAAAAAAAAAnABgAAAAAAAAAAAA/ABgAAAAAAAAAAAAAABkAAAAAAAAAAAATABkAAAAAAAAAAAAlABkAAAAFAAAAAAAmABkAAAAAAAAAAAAnABkAAAAAAAAAAAA/ABkAAAAAAAAAAAAAABoAAAAAAAAAAAATABoAAAAAAAAAAAAaABoAAAAAAAAAAAAbABoAAAAAAAAAAAAcABoAAAAAAAAAAAAdABoAAAAAAAAAAAAeABoAAAAAAAAAAAAfABoAAAAAAAAAAAAgABoAAAAAAAAAAAAlABoAAAAFAAAAAAAmABoAAAAAAAAAAAAnABoAAAAAAAAAAAA/ABoAAAAAAAAAAAAAABsAAAAAAAAAAAATABsAAAAAAAAAAAAaABsAAAAAAAAAAAAbABsAAAAAAAAAAAAcABsAAAAAAAAAAAAdABsAAAAAAAAAAAAeABsAAAAAAAAAAAAfABsAAAAAAAAAAAAgABsAAAAAAAAAAAArABsAAAACAAAAAAAsABsAAAACAAAAAAAtABsAAAACAAAAAAA/ABsAAAAAAAAAAAAAABwAAAAAAAAAAAATABwAAAAAAAAAAAAaABwAAAAEAAAAAAAbABwAAAAEAAAAAAAcABwAAAAEAAAAAAAdABwAAAAEAAAAAAAeABwAAAAEAAAAAAAfABwAAAAEAAAAAAAgABwAAAAFAAAAAAAhABwAAAACAAAAAAAiABwAAAACAAAAAAAjABwAAAACAAAAAAAyABwAAAAAAAAAAAAzABwAAAAAAAAAAAA0ABwAAAAAAAAAAAA1ABwAAAAAAAAAAAA2ABwAAAAAAAAAAAA3ABwAAAAAAAAAAAAAAB0AAAAAAAAAAAATAB0AAAAAAAAAAAAgAB0AAAAFAAAAAAAAAB4AAAAAAAAAAAATAB4AAAAAAAAAAAAUAB4AAAACAAAAAAAVAB4AAAACAAAAAAAWAB4AAAACAAAAAAAXAB4AAAACAAAAAAAYAB4AAAACAAAAAAAZAB4AAAACAAAAAAAaAB4AAAACAAAAAAAbAB4AAAACAAAAAAAcAB4AAAACAAAAAAAfAB4AAAACAAAAAAAgAB4AAAAFAAAAAAAhAB4AAAACAAAAAAAiAB4AAAACAAAAAAAjAB4AAAACAAAAAAA6AB4AAAAAAAAAAAA7AB4AAAAAAAAAAAAAAB8AAAAAAAAAAAATAB8AAAAAAAAAAAAaAB8AAAACAAAAAAAbAB8AAAACAAAAAAAcAB8AAAAAAAAAAAAdAB8AAAAAAAAAAAAeAB8AAAAAAAAAAAAfAB8AAAAAAAAAAAAgAB8AAAAAAAAAAAAhAB8AAAAAAAAAAAAiAB8AAAAAAAAAAAAjAB8AAAAAAAAAAAAkAB8AAAAAAAAAAAAAACAAAAAAAAAAAAATACAAAAAAAAAAAAAcACAAAAAAAAAAAAAdACAAAAAAAAAAAAAeACAAAAAAAAAAAAAfACAAAAAAAAAAAAAgACAAAAAAAAAAAAAhACAAAAAAAAAAAAAiACAAAAAAAAAAAAAjACAAAAAAAAAAAAAkACAAAAAAAAAAAAAwACAAAAAAAAAAAAAxACAAAAAAAAAAAAAyACAAAAAAAAAAAAAzACAAAAAAAAAAAAA0ACAAAAAAAAAAAAA1ACAAAAAAAAAAAAA2ACAAAAAAAAAAAAA3ACAAAAAAAAAAAAA4ACAAAAAAAAAAAAA5ACAAAAAAAAAAAAA6ACAAAAAAAAAAAAA7ACAAAAAAAAAAAAA8ACAAAAAAAAAAAAA9ACAAAAAAAAAAAAA+ACAAAAAAAAAAAAA/ACAAAAAAAAAAAAAAACEAAAAAAAAAAAATACEAAAAAAAAAAAAcACEAAAAAAAAAAAAdACEAAAAAAAAAAAAeACEAAAAAAAAAAAAfACEAAAAAAAAAAAAgACEAAAAAAAAAAAAhACEAAAAAAAAAAAAiACEAAAAAAAAAAAAjACEAAAAAAAAAAAAkACEAAAAAAAAAAAAlACEAAAACAAAAAAAmACEAAAACAAAAAAAwACEAAAAAAAAAAAAxACEAAAAAAAAAAAAyACEAAAAAAAAAAAAzACEAAAAAAAAAAAA0ACEAAAAAAAAAAAA1ACEAAAAAAAAAAAA2ACEAAAAAAAAAAAA3ACEAAAAAAAAAAAA4ACEAAAAAAAAAAAA5ACEAAAAAAAAAAAA6ACEAAAAAAAAAAAA7ACEAAAAAAAAAAAA8ACEAAAAAAAAAAAA9ACEAAAAAAAAAAAA+ACEAAAAAAAAAAAA/ACEAAAAAAAAAAAAAACIAAAAAAAAAAAATACIAAAAAAAAAAAAaACIAAAACAAAAAAAbACIAAAACAAAAAAAwACIAAAAAAAAAAAAxACIAAAAAAAAAAAAyACIAAAAAAAAAAAAzACIAAAAAAAAAAAA0ACIAAAAAAAAAAAA1ACIAAAAAAAAAAAA2ACIAAAAAAAAAAAA3ACIAAAAAAAAAAAA4ACIAAAAAAAAAAAA5ACIAAAAAAAAAAAA6ACIAAAAAAAAAAAA7ACIAAAAAAAAAAAA8ACIAAAAAAAAAAAA9ACIAAAAAAAAAAAA+ACIAAAAAAAAAAAA/ACIAAAAAAAAAAAAAACMAAAAAAAAAAAATACMAAAAAAAAAAAA/ACMAAAAAAAAAAAAAACQAAAAAAAAAAAATACQAAAAAAAAAAAAUACQAAAAAAAAAAAAVACQAAAAAAAAAAAAWACQAAAAAAAAAAAAXACQAAAAAAAAAAAAYACQAAAAAAAAAAAAZACQAAAAAAAAAAAAaACQAAAAAAAAAAAAbACQAAAAAAAAAAAAcACQAAAAAAAAAAAAdACQAAAAAAAAAAAAeACQAAAAAAAAAAAAfACQAAAAAAAAAAAAgACQAAAAAAAAAAAAhACQAAAAAAAAAAAAiACQAAAAAAAAAAAAjACQAAAAAAAAAAAAkACQAAAAAAAAAAAAlACQAAAAAAAAAAAAmACQAAAAAAAAAAAAnACQAAAAAAAAAAAA/ACQAAAAAAAAAAAAAACUAAAAAAAAAAAATACUAAAAAAAAAAAAUACUAAAAAAAAAAAAVACUAAAAAAAAAAAAWACUAAAAAAAAAAAAXACUAAAAAAAAAAAAYACUAAAAAAAAAAAAZACUAAAAAAAAAAAAaACUAAAAAAAAAAAAbACUAAAAAAAAAAAAcACUAAAAAAAAAAAAdACUAAAAAAAAAAAAeACUAAAAAAAAAAAAfACUAAAAAAAAAAAAgACUAAAAAAAAAAAAhACUAAAAAAAAAAAAiACUAAAAAAAAAAAAjACUAAAAAAAAAAAAkACUAAAAAAAAAAAAlACUAAAAAAAAAAAAmACUAAAAAAAAAAAAnACUAAAAAAAAAAAA/ACUAAAAAAAAAAAAAACYAAAAAAAAAAAA/ACYAAAAAAAAAAAAAACcAAAAAAAAAAAA/ACcAAAAAAAAAAAAAACgAAAAAAAAAAAAvACgAAAAFAAAAAAA/ACgAAAAAAAAAAAAAACkAAAAAAAAAAAAvACkAAAAFAAAAAAA/ACkAAAAAAAAAAAAAACoAAAAAAAAAAAAvACoAAAAFAAAAAAA/ACoAAAAAAAAAAAAAACsAAAAAAAAAAAAvACsAAAAFAAAAAAA/ACsAAAAAAAAAAAAAACwAAAAAAAAAAAAvACwAAAAFAAAAAAA/ACwAAAAAAAAAAAAAAC0AAAAAAAAAAAAvAC0AAAAFAAAAAAA/AC0AAAAAAAAAAAAAAC4AAAAAAAAAAAAvAC4AAAAFAAAAAAA/AC4AAAAAAAAAAAAAAC8AAAAAAAAAAAAvAC8AAAAFAAAAAAA/AC8AAAAAAAAAAAAAADAAAAAAAAAAAAAvADAAAAAFAAAAAAA/ADAAAAAAAAAAAAAAADEAAAAAAAAAAAAvADEAAAAFAAAAAAA/ADEAAAAAAAAAAAAAADIAAAAAAAAAAAAvADIAAAAFAAAAAAA/ADIAAAAAAAAAAAAAADMAAAAAAAAAAAAvADMAAAAFAAAAAAA/ADMAAAAAAAAAAAAAADQAAAAAAAAAAAAvADQAAAAFAAAAAAA/ADQAAAAAAAAAAAAAADUAAAAAAAAAAAAvADUAAAAFAAAAAAA/ADUAAAAAAAAAAAAAADYAAAAAAAAAAAAvADYAAAAFAAAAAAA/ADYAAAAAAAAAAAAAADcAAAAAAAAAAAAvADcAAAAFAAAAAAA/ADcAAAAAAAAAAAAAADgAAAAAAAAAAAAvADgAAAAFAAAAAAA/ADgAAAAAAAAAAAAAADkAAAAAAAAAAAAvADkAAAAFAAAAAAA/ADkAAAAAAAAAAAAAADoAAAAAAAAAAAAvADoAAAAFAAAAAAA/ADoAAAAAAAAAAAAAADsAAAAAAAAAAAAvADsAAAAFAAAAAAA/ADsAAAAAAAAAAAAAADwAAAAAAAAAAAAvADwAAAAFAAAAAAA/ADwAAAAAAAAAAAAAAD0AAAAAAAAAAAAvAD0AAAAFAAAAAAA/AD0AAAAAAAAAAAAAAD4AAAAAAAAAAAAvAD4AAAAFAAAAAAA/AD4AAAAAAAAAAAAAAD8AAAAAAAAAAAABAD8AAAAAAAAAAAACAD8AAAAAAAAAAAADAD8AAAAAAAAAAAAEAD8AAAAAAAAAAAAFAD8AAAAAAAAAAAAGAD8AAAAAAAAAAAAHAD8AAAAAAAAAAAAIAD8AAAAAAAAAAAAJAD8AAAAAAAAAAAAKAD8AAAAAAAAAAAALAD8AAAAAAAAAAAAMAD8AAAAAAAAAAAANAD8AAAAAAAAAAAAOAD8AAAAAAAAAAAAPAD8AAAAAAAAAAAAQAD8AAAAAAAAAAAARAD8AAAAAAAAAAAASAD8AAAAAAAAAAAATAD8AAAAAAAAAAAAUAD8AAAAAAAAAAAAVAD8AAAAAAAAAAAAWAD8AAAAAAAAAAAAXAD8AAAAAAAAAAAAYAD8AAAAAAAAAAAAZAD8AAAAAAAAAAAAaAD8AAAAAAAAAAAAbAD8AAAAAAAAAAAAcAD8AAAAAAAAAAAAdAD8AAAAAAAAAAAAeAD8AAAAAAAAAAAAfAD8AAAAAAAAAAAAgAD8AAAAAAAAAAAAhAD8AAAAAAAAAAAAiAD8AAAAAAAAAAAAjAD8AAAAAAAAAAAAkAD8AAAAAAAAAAAAlAD8AAAAAAAAAAAAmAD8AAAAAAAAAAAAnAD8AAAAAAAAAAAAoAD8AAAAAAAAAAAApAD8AAAAAAAAAAAAqAD8AAAAAAAAAAAArAD8AAAAAAAAAAAAsAD8AAAAAAAAAAAAtAD8AAAAAAAAAAAAuAD8AAAAAAAAAAAAvAD8AAAAAAAAAAAAwAD8AAAAAAAAAAAAxAD8AAAAAAAAAAAAyAD8AAAAAAAAAAAAzAD8AAAAAAAAAAAA0AD8AAAAAAAAAAAA1AD8AAAAAAAAAAAA2AD8AAAAAAAAAAAA3AD8AAAAAAAAAAAA4AD8AAAAAAAAAAAA5AD8AAAAAAAAAAAA6AD8AAAAAAAAAAAA7AD8AAAAAAAAAAAA8AD8AAAAAAAAAAAA9AD8AAAAAAAAAAAA+AD8AAAAAAAAAAAA/AD8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_gbjc5")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter"]
+
+[node name="Fixture_*_22_34" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(176, 272)
+script = ExtResource("3_20ada")
+kind = "Fixture"
+glyph = "*"
+original_position = Vector2(176, 272)
+preview_entity = {
+"h": 8,
+"id": 0,
+"ox": 176,
+"oy": 272,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "shard",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 176,
+"y": 272
+}
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/Fixture_*_22_34"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_imbpk")
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(296, 272)
+script = ExtResource("3_20ada")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(296, 272)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_lbw2j")
+
+[node name="hingeArms_0" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(288, 240)
+script = ExtResource("3_20ada")
+kind = "Mechanism"
+parameters = {
+"c": 36.0,
+"dir": "left",
+"id": "Cover and crossing",
+"length": 12.0,
+"r": 30.0
+}
+original_position = Vector2(288, 240)
+field_path = ["hingeArms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/hingeArms_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_0kt3q")
+
+[node name="lines_0" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(176, 272)
+script = ExtResource("3_20ada")
+kind = "Mechanism"
+parameters = {
+"a": [22.0, 34.0],
+"b": [35.0, 26.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(176, 272)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/lines_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_nyfw6")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/lines_0"]
+curve = SubResource("Curve2D_w1t4o")
+
+[node name="enemies_0" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(256, 224)
+script = ExtResource("3_20ada")
+kind = "Mechanism"
+parameters = {
+"brute": true,
+"crush": 1.0,
+"face": -1.0,
+"kind": "hound",
+"stamp": "always",
+"x": 256.0,
+"y": 224.0
+}
+original_position = Vector2(256, 224)
+field_path = ["combat", "enemies"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/enemies_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_1fkd3")
+
+[node name="doors_0" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(184, 0)
+script = ExtResource("3_20ada")
+kind = "Mechanism"
+parameters = {
+"brittle": true,
+"h": 288.0,
+"w": 8.0,
+"x": 184.0,
+"y": 0.0
+}
+original_position = Vector2(184, 0)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/doors_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_bawd8")
+
+[node name="doors_1" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(384, 0)
+script = ExtResource("3_20ada")
+kind = "Mechanism"
+parameters = {
+"brittle": true,
+"h": 320.0,
+"w": 8.0,
+"x": 384.0,
+"y": 0.0
+}
+original_position = Vector2(384, 0)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/doors_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_adtjt")
+
+[node name="cl23-cover-comparison-dock" type="Node2D" parent="Rooms"]
+position = Vector2(512, 128)
+script = ExtResource("2_6x3rc")
+room_id = "cl23-cover-comparison-dock"
+room_title = "B · Deliver the Brute"
+map_width = 64
+map_height = 64
+settings = {
+"aim8": true,
+"cols": 64.0,
+"combat": {
+"doors": [],
+"enemies": [],
+"receivers": [],
+"waitForMove": true
+},
+"dashes": 1.0,
+"dropThru": true,
+"exit": "right",
+"exitSpan": [45.0, 50.0],
+"hingeArms": [],
+"hint": "Draw the upper brute left onto the dock and jump up-right onto the refuge. Return to the right-hand hub and strike left while the brute is recovering to fold the dock upright and drop it into the lower corridor. Dash down-left into the separate descent line. The receiving perch hides you: drop until the brute commits right, then jump and dash up to safety. Its breach opens the raised walkway and an ordinary hop to the flag; the catch floor lets you retry locally.",
+"id": "cl23-cover-comparison-dock",
+"lines": [],
+"lock": ["parry", "portal"],
+"movement": "survive-2",
+"name": "B · Deliver the Brute",
+"palette": "fractured",
+"puzzleCameraAnchorX": 180.0,
+"puzzleCameraAnchorY": 24.0,
+"puzzleEntranceFloor": 30.0,
+"puzzleExitFloor": 50.0,
+"puzzleGoal": [360.0, 368.0, 40.0, 4.0],
+"puzzleRoutes": [{
+"name": "Reference",
+"tape": [[10.0, ""], [34.0, "l"], [10.0, ""], [18.0, "rj"], [12.0, "rux"], [65.0, ""], [9.0, "l"], [38.0, ""], [1.0, "ls"], [90.0, ""], [16.0, "r"], [12.0, "ldx"], [100.0, ""], [1.0, "dj"], [34.0, ""], [7.0, "j"], [12.0, "ux"], [100.0, ""], [1.0, "dj"], [32.0, "r"], [20.0, "rj"], [10.0, ""], [42.0, "r"], [18.0, "rj"], [35.0, ""], [12.0, "rx"], [80.0, ""], [70.0, "r"]]
+}],
+"puzzleStudy": true,
+"question": "How can you deliver the brute to the wall downstairs?",
+"rbr": 23.0,
+"rows": 64.0,
+"study": true,
+"workshopGoal": [360.0, 368.0, 40.0, 4.0]
+}
+original_fields = ["id", "name", "cols", "rows", "exit", "exitSpan", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "study", "movement", "decor", "people", "zips", "lines", "puzzleRoutes", "dropThru", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleCameraAnchorY", "map", "hingeArms", "combat", "puzzleGoal", "question", "hint", "puzzleCameraAnchorX", "workshopGoal"]
+array_fields = [["hingeArms"], ["lines"], ["combat", "enemies"], ["combat", "doors"]]
+original_spawn = Vector2(272, 224)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-cover-comparison-dock"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA5AAAAAAAAAAAAAAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAyAAEAAAAAAAAAAAA/AAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAyAAIAAAAAAAAAAAA/AAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAyAAMAAAAAAAAAAAA/AAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAyAAQAAAAAAAAAAAA/AAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAyAAUAAAAAAAAAAAA/AAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAyAAYAAAAAAAAAAAA/AAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAyAAcAAAAAAAAAAAA/AAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAyAAgAAAAAAAAAAAA/AAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAyAAkAAAAAAAAAAAA/AAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAyAAoAAAAAAAAAAAA/AAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAyAAsAAAAAAAAAAAA/AAsAAAAAAAAAAAAyAAwAAAAAAAAAAAA/AAwAAAAAAAAAAAAyAA0AAAAAAAAAAAA/AA0AAAAAAAAAAAAyAA4AAAAAAAAAAAA/AA4AAAAAAAAAAAAyAA8AAAAAAAAAAAA/AA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdABAAAAAAAAAAAAAeABAAAAAAAAAAAAAfABAAAAAAAAAAAAAgABAAAAAAAAAAAAAhABAAAAAAAAAAAAAiABAAAAAAAAAAAAAjABAAAAAAAAAAAAAkABAAAAAAAAAAAAAlABAAAAAAAAAAAAAmABAAAAAAAAAAAAAnABAAAAAAAAAAAAAyABAAAAAAAAAAAAA/ABAAAAAAAAAAAAAAABEAAAAAAAAAAAAyABEAAAAAAAAAAAA/ABEAAAAAAAAAAAAAABIAAAAAAAAAAAAyABIAAAAAAAAAAAA/ABIAAAAAAAAAAAAAABMAAAAAAAAAAAAyABMAAAAAAAAAAAA/ABMAAAAAAAAAAAAAABQAAAAAAAAAAAAyABQAAAAAAAAAAAA/ABQAAAAAAAAAAAAAABUAAAAAAAAAAAAyABUAAAAAAAAAAAA/ABUAAAAAAAAAAAAAABYAAAAAAAAAAAAyABYAAAAAAAAAAAA/ABYAAAAAAAAAAAAAABcAAAAAAAAAAAAyABcAAAAAAAAAAAA/ABcAAAAAAAAAAAAAABgAAAAAAAAAAAAiABgAAAAAAAAAAAAjABgAAAAAAAAAAAAkABgAAAAAAAAAAAAlABgAAAAAAAAAAAAmABgAAAAAAAAAAAAyABgAAAAAAAAAAAA/ABgAAAAAAAAAAAAAABkAAAAAAAAAAAAWABkAAAADAAAAAAAXABkAAAADAAAAAAAyABkAAAAAAAAAAAA/ABkAAAAAAAAAAAAAABoAAAAAAAAAAAAWABoAAAAAAAAAAAAXABoAAAAAAAAAAAAyABoAAAAAAAAAAAA/ABoAAAAAAAAAAAAAABsAAAAAAAAAAAAWABsAAAAAAAAAAAAXABsAAAAAAAAAAAAyABsAAAAAAAAAAAA/ABsAAAAAAAAAAAAAABwAAAAAAAAAAAAWABwAAAAAAAAAAAAXABwAAAAAAAAAAAAyABwAAAAAAAAAAAA/ABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAWAB0AAAAAAAAAAAAXAB0AAAAAAAAAAAAyAB0AAAAAAAAAAAA/AB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAgAB4AAAAAAAAAAAAhAB4AAAAAAAAAAAAiAB4AAAAAAAAAAAAjAB4AAAAAAAAAAAAkAB4AAAAAAAAAAAAlAB4AAAAAAAAAAAAmAB4AAAAAAAAAAAAnAB4AAAAAAAAAAAAoAB4AAAAAAAAAAAApAB4AAAAAAAAAAAAqAB4AAAAAAAAAAAArAB4AAAAAAAAAAAAsAB4AAAAAAAAAAAAtAB4AAAAAAAAAAAAuAB4AAAAAAAAAAAAvAB4AAAAAAAAAAAAwAB4AAAAAAAAAAAAxAB4AAAAAAAAAAAAyAB4AAAAAAAAAAAA/AB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAfAB8AAAAAAAAAAAAyAB8AAAAAAAAAAAA/AB8AAAAAAAAAAAAAACAAAAAAAAAAAAAfACAAAAAAAAAAAAAyACAAAAAAAAAAAAA/ACAAAAAAAAAAAAAAACEAAAAAAAAAAAAfACEAAAAAAAAAAAAyACEAAAAAAAAAAAA/ACEAAAAAAAAAAAAAACIAAAAAAAAAAAATACIAAAAAAAAAAAAfACIAAAAAAAAAAAAyACIAAAAAAAAAAAA/ACIAAAAAAAAAAAAAACMAAAAAAAAAAAATACMAAAAAAAAAAAAfACMAAAAAAAAAAAAyACMAAAAAAAAAAAA/ACMAAAAAAAAAAAAAACQAAAAAAAAAAAATACQAAAAAAAAAAAAfACQAAAAAAAAAAAAyACQAAAAAAAAAAAA/ACQAAAAAAAAAAAAAACUAAAAAAAAAAAATACUAAAAAAAAAAAAfACUAAAAAAAAAAAAyACUAAAAAAAAAAAA/ACUAAAAAAAAAAAAAACYAAAAAAAAAAAATACYAAAAAAAAAAAAfACYAAAAAAAAAAAAyACYAAAAAAAAAAAA/ACYAAAAAAAAAAAAAACcAAAAAAAAAAAATACcAAAAAAAAAAAAfACcAAAAAAAAAAAAyACcAAAAAAAAAAAA/ACcAAAAAAAAAAAAAACgAAAAAAAAAAAATACgAAAAAAAAAAAAfACgAAAAAAAAAAAAyACgAAAAAAAAAAAA/ACgAAAAAAAAAAAAAACkAAAAAAAAAAAATACkAAAAAAAAAAAAfACkAAAAAAAAAAAAyACkAAAAAAAAAAAA/ACkAAAAAAAAAAAAAACoAAAAAAAAAAAATACoAAAAAAAAAAAAcACoAAAACAAAAAAAdACoAAAACAAAAAAAeACoAAAACAAAAAAAfACoAAAAAAAAAAAAyACoAAAAAAAAAAAA/ACoAAAAAAAAAAAAAACsAAAAAAAAAAAATACsAAAAAAAAAAAAfACsAAAAAAAAAAAAyACsAAAAAAAAAAAA/ACsAAAAAAAAAAAAAACwAAAAAAAAAAAATACwAAAAAAAAAAAAbACwAAAAAAAAAAAAyACwAAAAAAAAAAAA/ACwAAAAAAAAAAAAAAC0AAAAAAAAAAAATAC0AAAAAAAAAAAAbAC0AAAAAAAAAAAAyAC0AAAAAAAAAAAAAAC4AAAAAAAAAAAATAC4AAAAAAAAAAAAgAC4AAAAAAAAAAAAhAC4AAAAAAAAAAAAiAC4AAAAAAAAAAAAjAC4AAAAAAAAAAAAkAC4AAAAAAAAAAAAlAC4AAAAAAAAAAAAmAC4AAAAAAAAAAAAnAC4AAAAAAAAAAAAoAC4AAAAAAAAAAAApAC4AAAAAAAAAAAAsAC4AAAAAAAAAAAAtAC4AAAAAAAAAAAAuAC4AAAAAAAAAAAAvAC4AAAAAAAAAAAAwAC4AAAAAAAAAAAAxAC4AAAAAAAAAAAAyAC4AAAAAAAAAAAAAAC8AAAAAAAAAAAATAC8AAAAAAAAAAAAyAC8AAAAAAAAAAAAAADAAAAAAAAAAAAATADAAAAAAAAAAAAAUADAAAAAAAAAAAAAVADAAAAAAAAAAAAAWADAAAAAAAAAAAAAXADAAAAAAAAAAAAAYADAAAAAAAAAAAAAZADAAAAAAAAAAAAAaADAAAAAAAAAAAAAbADAAAAAAAAAAAAAcADAAAAAAAAAAAAAdADAAAAAAAAAAAAAeADAAAAAAAAAAAAAfADAAAAAAAAAAAAAgADAAAAAAAAAAAAAhADAAAAAAAAAAAAAiADAAAAAAAAAAAAAjADAAAAAAAAAAAAAkADAAAAAAAAAAAAAlADAAAAAAAAAAAAAmADAAAAAAAAAAAAAnADAAAAAAAAAAAAAoADAAAAAAAAAAAAApADAAAAAAAAAAAAAqADAAAAAAAAAAAAArADAAAAAAAAAAAAAsADAAAAAAAAAAAAAtADAAAAAAAAAAAAAuADAAAAAAAAAAAAAvADAAAAAAAAAAAAAwADAAAAAAAAAAAAAxADAAAAAAAAAAAAAyADAAAAAAAAAAAAAAADEAAAAAAAAAAAATADEAAAAAAAAAAAAUADEAAAAAAAAAAAAVADEAAAAAAAAAAAAWADEAAAAAAAAAAAAXADEAAAAAAAAAAAAYADEAAAAAAAAAAAAZADEAAAAAAAAAAAAaADEAAAAAAAAAAAAbADEAAAAAAAAAAAAcADEAAAAAAAAAAAAdADEAAAAAAAAAAAAeADEAAAAAAAAAAAAfADEAAAAAAAAAAAAgADEAAAAAAAAAAAAhADEAAAAAAAAAAAAiADEAAAAAAAAAAAAjADEAAAAAAAAAAAAkADEAAAAAAAAAAAAlADEAAAAAAAAAAAAmADEAAAAAAAAAAAAnADEAAAAAAAAAAAAoADEAAAAAAAAAAAApADEAAAAAAAAAAAAqADEAAAAAAAAAAAArADEAAAAAAAAAAAAsADEAAAAAAAAAAAAtADEAAAAAAAAAAAAuADEAAAAAAAAAAAAvADEAAAAAAAAAAAAwADEAAAAAAAAAAAAxADEAAAAAAAAAAAAyADEAAAAAAAAAAAAAADIAAAAAAAAAAAAyADIAAAAAAAAAAAAzADIAAAAAAAAAAAA0ADIAAAAAAAAAAAA1ADIAAAAAAAAAAAA2ADIAAAAAAAAAAAA3ADIAAAAAAAAAAAA4ADIAAAAAAAAAAAA5ADIAAAAAAAAAAAA6ADIAAAAAAAAAAAA7ADIAAAAAAAAAAAA8ADIAAAAAAAAAAAA9ADIAAAAAAAAAAAA+ADIAAAAAAAAAAAA/ADIAAAAAAAAAAAAAADMAAAAAAAAAAAAyADMAAAAAAAAAAAA/ADMAAAAAAAAAAAAAADQAAAAAAAAAAAA/ADQAAAAAAAAAAAAAADUAAAAAAAAAAAA/ADUAAAAAAAAAAAAAADYAAAAAAAAAAAA/ADYAAAAAAAAAAAAAADcAAAAAAAAAAAA/ADcAAAAAAAAAAAAAADgAAAAAAAAAAAA/ADgAAAAAAAAAAAAAADkAAAAAAAAAAAA/ADkAAAAAAAAAAAAAADoAAAAAAAAAAAA/ADoAAAAAAAAAAAAAADsAAAAAAAAAAAA/ADsAAAAAAAAAAAAAADwAAAAAAAAAAAA/ADwAAAAAAAAAAAAAAD0AAAAAAAAAAAA/AD0AAAAAAAAAAAAAAD4AAAAAAAAAAAA/AD4AAAAAAAAAAAAAAD8AAAAAAAAAAAABAD8AAAAAAAAAAAACAD8AAAAAAAAAAAADAD8AAAAAAAAAAAAEAD8AAAAAAAAAAAAFAD8AAAAAAAAAAAAGAD8AAAAAAAAAAAAHAD8AAAAAAAAAAAAIAD8AAAAAAAAAAAAJAD8AAAAAAAAAAAAKAD8AAAAAAAAAAAALAD8AAAAAAAAAAAAMAD8AAAAAAAAAAAANAD8AAAAAAAAAAAAOAD8AAAAAAAAAAAAPAD8AAAAAAAAAAAAQAD8AAAAAAAAAAAARAD8AAAAAAAAAAAASAD8AAAAAAAAAAAATAD8AAAAAAAAAAAAUAD8AAAAAAAAAAAAVAD8AAAAAAAAAAAAWAD8AAAAAAAAAAAAXAD8AAAAAAAAAAAAYAD8AAAAAAAAAAAAZAD8AAAAAAAAAAAAaAD8AAAAAAAAAAAAbAD8AAAAAAAAAAAAcAD8AAAAAAAAAAAAdAD8AAAAAAAAAAAAeAD8AAAAAAAAAAAAfAD8AAAAAAAAAAAAgAD8AAAAAAAAAAAAhAD8AAAAAAAAAAAAiAD8AAAAAAAAAAAAjAD8AAAAAAAAAAAAkAD8AAAAAAAAAAAAlAD8AAAAAAAAAAAAmAD8AAAAAAAAAAAAnAD8AAAAAAAAAAAAoAD8AAAAAAAAAAAApAD8AAAAAAAAAAAAqAD8AAAAAAAAAAAArAD8AAAAAAAAAAAAsAD8AAAAAAAAAAAAtAD8AAAAAAAAAAAAuAD8AAAAAAAAAAAAvAD8AAAAAAAAAAAAwAD8AAAAAAAAAAAAxAD8AAAAAAAAAAAAyAD8AAAAAAAAAAAAzAD8AAAAAAAAAAAA0AD8AAAAAAAAAAAA1AD8AAAAAAAAAAAA2AD8AAAAAAAAAAAA3AD8AAAAAAAAAAAA4AD8AAAAAAAAAAAA5AD8AAAAAAAAAAAA6AD8AAAAAAAAAAAA7AD8AAAAAAAAAAAA8AD8AAAAAAAAAAAA9AD8AAAAAAAAAAAA+AD8AAAAAAAAAAAA/AD8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_gbjc5")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-cover-comparison-dock"]
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(272, 224)
+script = ExtResource("3_20ada")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(272, 224)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_toggp")
+
+[node name="hingeArms_0" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(248, 240)
+script = ExtResource("3_20ada")
+kind = "Mechanism"
+parameters = {
+"c": 31.0,
+"dir": "left",
+"id": "Loading dock",
+"length": 13.0,
+"r": 30.0
+}
+original_position = Vector2(248, 240)
+field_path = ["hingeArms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/hingeArms_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_8bj4s")
+
+[node name="lines_0" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(32, 120)
+script = ExtResource("3_20ada")
+kind = "Mechanism"
+parameters = {
+"a": [4.0, 15.0],
+"b": [34.0, 28.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(32, 120)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/lines_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_dv7ys")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-cover-comparison-dock/Objects/lines_0"]
+curve = SubResource("Curve2D_joqr6")
+
+[node name="lines_1" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(280, 232)
+script = ExtResource("3_20ada")
+kind = "Mechanism"
+parameters = {
+"a": [35.0, 29.0],
+"b": [29.0, 41.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(280, 232)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/lines_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_use8f")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-cover-comparison-dock/Objects/lines_1"]
+curve = SubResource("Curve2D_rna1v")
+
+[node name="lines_2" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(384, 360)
+script = ExtResource("3_20ada")
+kind = "Mechanism"
+parameters = {
+"a": [48.0, 45.0],
+"b": [58.0, 49.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(384, 360)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/lines_2"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_2d577")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-cover-comparison-dock/Objects/lines_2"]
+curve = SubResource("Curve2D_spq1o")
+
+[node name="enemies_0" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(336, 224)
+script = ExtResource("3_20ada")
+kind = "Mechanism"
+parameters = {
+"brute": true,
+"crush": 1.0,
+"face": -1.0,
+"kind": "hound",
+"stamp": "always",
+"x": 336.0,
+"y": 224.0
+}
+original_position = Vector2(336, 224)
+field_path = ["combat", "enemies"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/enemies_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_h3i5y")
+
+[node name="doors_0" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(248, 352)
+script = ExtResource("3_20ada")
+kind = "Mechanism"
+parameters = {
+"brittle": true,
+"h": 32.0,
+"w": 8.0,
+"x": 248.0,
+"y": 352.0
+}
+original_position = Vector2(248, 352)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/doors_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_0eexm")
