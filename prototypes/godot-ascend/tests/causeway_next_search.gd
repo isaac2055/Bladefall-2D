@@ -18,10 +18,10 @@ func _initialize():
  var t=d.world.rooms[42].puzzleRoutes[0].tape
  for index in [40,41,42]:
   var ref=d.world.rooms[index].puzzleRoutes[0].tape
-  search(d,index,"prepared finish "+str(index),ref.slice(0,{40:35,41:16,42:18}[index]),true)
+  search(d,index,"prepared finish "+str(index),ref.slice(0,{40:35,41:35,42:18}[index]),true)
  for index in [40,41,42]:
   var ref=d.world.rooms[index].puzzleRoutes[0].tape
-  search(d,index,"ordinary finish "+str(index),ref.slice(0,{40:35,41:16,42:18}[index]),false,{"allow_super":false,"allow_hyper":false,"allow_wallbounce":false,"allow_ultra":false})
+  search(d,index,"ordinary finish "+str(index),ref.slice(0,{40:35,41:35,42:18}[index]),false,{"allow_super":false,"allow_hyper":false,"allow_wallbounce":false,"allow_ultra":false})
  search(d,40,"far bridge not restored",b.slice(0,20),false,{"forbid_pose":{"Far bridge":["left"]}})
  search(d,40,"near bridge not completed",b.slice(0,10),false,{"forbid_pose":{"Near bridge":["right"]}})
  search(d,40,"return line removed",b.slice(0,20),false,{"mode_after_start":"no_lines"})

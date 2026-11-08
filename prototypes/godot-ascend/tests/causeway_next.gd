@@ -96,14 +96,14 @@ func run():
    advance(c,ref.slice(14,16))
    check(c.Causeway.obstruction(c,far,c.Causeway.pose(far,"left"))==null,"the completed near bridge frees the far bridge's final pose")
   if index==41:
-   check(q.first_turn>0 and q.first_tell>q.first_turn and q.breach>q.first_tell and q.alive and q.rides==2,"removing sight cover reveals the bait; living brute opens the lower route")
+   check(q.first_turn>0 and q.first_tell>q.first_turn and q.breach>q.first_tell and q.alive and q.rides==3,"removing sight cover reveals the bait; living brute opens the lower route")
    var wait=play(d,index,ref.slice(0,2)+[[1200,""]])
    check(wait.deaths==0 and wait.first_tell<0 and wait.breach<0,"waiting under the intact cover never alerts the brute")
    for mode in ["no_turn","no_brute","no_lines"]:check(not clears(play(d,index,ref,mode)),"covered-court dependency: "+mode)
   if index==42:
    check(q.sent_separately and q.delivery>0 and q.delivery<q.first_turn and q.rides==2 and q.lamp_holds_finish,"lantern goes through the chute first, dock becomes an open hatch, knight rides separately and weight stays on runway")
    for mode in ["no_lantern","no_turn","no_lines","keep_lantern"]:check(not clears(play(d,index,ref,mode)),"split-delivery dependency: "+mode)
-  for segment in {40:[6,28,35,37],41:[3,8,12,16,18],42:[4,18,20]}[index]:
+  for segment in {40:[6,28,35,37],41:[12,14,26,35,37],42:[4,18,20]}[index]:
    var wins=[]
    for delta in range(-2,3):
     var t=ref.duplicate(true);t[segment][0]=max(1,t[segment][0]+delta)
@@ -127,7 +127,7 @@ func run():
   check(sim.exited and sim.deaths==0,"complete application Watch exits the room: "+id)
   app.watch=false;app.world.restart();app.load_section(index)
   app.journey=[];app.journey_frame=0
-  for part in d.world.rooms[index].puzzleRoutes[0].tape.slice(0,{40:28,41:4,42:12}[index]):
+  for part in d.world.rooms[index].puzzleRoutes[0].tape.slice(0,{40:28,41:30,42:12}[index]):
    for tick in range(int(part[0])):
     app.journey.append(part[1]);app._physics_process(1.0/60)
   check(app.sim.deaths==0,"live preparation before retry is deathless: "+id)

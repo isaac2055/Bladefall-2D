@@ -1,6 +1,10 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.38.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `claude/fractured-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.38.1** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `claude/fractured-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
+
+## Two-stage cover puzzle · 0.38.1
+
+**The Cover You Must Take Away** now requires separate leftward and rightward brute lures. Folding the cover opens the descent; it no longer opens the route automatically. Escape each charge onto a sheltered perch and use the first breach to cross to the opposite bait pocket. The final jump and other rooms retain their accepted geometry. Open room 41 with `--world 23 --room 41`, or select its name under **Esc → Explore a section**.
 
 ## Next three Fractured Causeway rooms · 0.38.0
 
@@ -8,7 +12,7 @@ Version **0.38.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black W
 
 Open **Play Next Fractured Causeway Rooms.command**, or `--world 23 --room 40`. Use **Esc → Explore a section** for rooms 41 and 42. Every room has its own checkpoint, optional **H** hint, complete **Watch reference**, and native editable data. The prior three accepted Causeway rooms are unchanged; their original launcher still opens room 37. The chapter now has **43 definitions and 19 required main challenges**. The eight retired studies remain absent.
 
-The entire road clears **26 sections in 16,121 normal-input frames with zero deaths**, preserving all **12,775 earlier input frames** as an exact prefix. Shared physics, art, voices, quests, browser files and other chapters are unchanged. The approved Woods additions remain in their separate checkout. See [design and verification](research/FRACTURED-CAUSEWAY-NEXT-THREE.md).
+The entire road clears **26 sections in 16,492 normal-input frames with zero deaths**, preserving all **12,775 earlier input frames** as an exact prefix. Shared physics, art, voices, quests, browser files and other chapters are unchanged. The approved Woods additions remain in their separate checkout. See [design and verification](research/FRACTURED-CAUSEWAY-NEXT-THREE.md).
 
 ## Three spatial Fractured Causeway puzzles · 0.37.0
 
