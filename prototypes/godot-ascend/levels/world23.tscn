@@ -1,4 +1,4 @@
-[gd_scene load_steps=366 format=4]
+[gd_scene load_steps=415 format=4]
 
 [ext_resource type="Script" path="res://authoring/world.gd" id="1_yurgf"]
 [ext_resource type="Script" path="res://authoring/room.gd" id="2_incbt"]
@@ -2256,6 +2256,300 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Image" id="Image_68shl"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_c41cs"]
+image = SubResource("Image_68shl")
+
+[sub_resource type="Image" id="Image_edu7v"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_iaa26"]
+image = SubResource("Image_edu7v")
+
+[sub_resource type="Image" id="Image_bj0bc"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_4lxhf"]
+image = SubResource("Image_bj0bc")
+
+[sub_resource type="Image" id="Image_s3hsd"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_cw0e6"]
+image = SubResource("Image_s3hsd")
+
+[sub_resource type="Image" id="Image_cno0p"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_j4lae"]
+image = SubResource("Image_cno0p")
+
+[sub_resource type="Curve2D" id="Curve2D_omu8v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 56, -120)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_3n8up"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_thb6l"]
+image = SubResource("Image_3n8up")
+
+[sub_resource type="Curve2D" id="Curve2D_17iwq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 168, 128)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_ie5cb"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_iss13"]
+image = SubResource("Image_ie5cb")
+
+[sub_resource type="Curve2D" id="Curve2D_d2wdy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 120, 0)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_e04o3"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_0xg0k"]
+image = SubResource("Image_e04o3")
+
+[sub_resource type="Image" id="Image_8sdve"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_f17cj"]
+image = SubResource("Image_8sdve")
+
+[sub_resource type="Image" id="Image_4uxit"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_2ubrh"]
+image = SubResource("Image_4uxit")
+
+[sub_resource type="Image" id="Image_378ey"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_mp0iy"]
+image = SubResource("Image_378ey")
+
+[sub_resource type="Curve2D" id="Curve2D_5bnwl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 376, -24)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_fa8s1"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_l45u3"]
+image = SubResource("Image_fa8s1")
+
+[sub_resource type="Curve2D" id="Curve2D_bsofh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 184, 0)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_76e2m"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_nb673"]
+image = SubResource("Image_76e2m")
+
+[sub_resource type="Image" id="Image_qw6w6"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ofy38"]
+image = SubResource("Image_qw6w6")
+
+[sub_resource type="Image" id="Image_javv1"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_af5gp"]
+image = SubResource("Image_javv1")
+
+[sub_resource type="Image" id="Image_6ewu2"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_cjfmq"]
+image = SubResource("Image_6ewu2")
+
+[sub_resource type="Image" id="Image_hclda"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_rsc2k"]
+image = SubResource("Image_hclda")
+
+[sub_resource type="Image" id="Image_ab628"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_jgapi"]
+image = SubResource("Image_ab628")
+
+[sub_resource type="Image" id="Image_u0xqn"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_bt3sa"]
+image = SubResource("Image_u0xqn")
+
+[sub_resource type="Image" id="Image_kps35"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_lcsos"]
+image = SubResource("Image_kps35")
+
+[sub_resource type="Curve2D" id="Curve2D_a6dx0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 144, 8)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_bfacw"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_7m3d4"]
+image = SubResource("Image_bfacw")
+
+[sub_resource type="Curve2D" id="Curve2D_7fgs5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 304, 0)
+}
+point_count = 2
+
 [node name="Ascend_23" type="Node2D"]
 script = ExtResource("1_yurgf")
 world_number = 23
@@ -2441,7 +2735,7 @@ world_settings = {
 "title": "The Forty-First Pace"
 }],
 "requiredBankRooms": ["cl23-bank-b46", "cl23-bank-f23", "cl23-bank-f69"],
-"requiredMainRooms": ["cl23-fc23-camp", "cl23-fc23-yard", "cl23-fc23-relay", "cl23-fc23-silas", "cl23-bank-b46", "cl23-bank-f23", "cl23-fc23-counterpoise", "cl23-fc23-chainwalk", "cl23-fc23-gantry", "cl23-fc23-standard", "cl23-fc23-west", "cl23-fc23-east", "cl23-bank-f69", "cl23-puzzle-line-behind-wall", "cl23-puzzle-weight-take-back", "cl23-puzzle-fold-after-climb"],
+"requiredMainRooms": ["cl23-fc23-camp", "cl23-fc23-yard", "cl23-fc23-relay", "cl23-fc23-silas", "cl23-bank-b46", "cl23-bank-f23", "cl23-fc23-counterpoise", "cl23-fc23-chainwalk", "cl23-fc23-gantry", "cl23-fc23-standard", "cl23-fc23-west", "cl23-fc23-east", "cl23-bank-f69", "cl23-puzzle-line-behind-wall", "cl23-puzzle-weight-take-back", "cl23-puzzle-fold-after-climb", "cl23-puzzle-bridge-backwards", "cl23-puzzle-cover-take-away", "cl23-puzzle-delivery-cannot-ride"],
 "retiredRoomDetails": [{
 "dialogueMoved": [],
 "evidence": "A descending solid staircase with no hazard glyph, enemy or device; the entire saved route is [200, left]. The hint explicitly calls it a breath before the courts. This is the clearest Fractured low-complexity slot, but keep some safe boss preparation rather than filling every breather.",
@@ -2717,14 +3011,38 @@ world_settings = {
 "x": 514.0,
 "y": -278.0
 }, {
+"fire": {
+"c": 24.0,
+"r": 25.0
+},
+"room": "cl23-puzzle-bridge-backwards",
+"x": 594.0,
+"y": -298.0
+}, {
+"fire": {
+"c": 34.0,
+"r": 25.0
+},
+"room": "cl23-puzzle-cover-take-away",
+"x": 690.0,
+"y": -273.0
+}, {
+"fire": {
+"c": 12.0,
+"r": 25.0
+},
+"room": "cl23-puzzle-delivery-cannot-ride",
+"x": 802.0,
+"y": -262.0
+}, {
 "atlasJunction": true,
 "fire": {
 "c": 44.0,
 "r": 21.0
 },
 "room": "cl23-atlas-crossroads",
-"x": 594.0,
-"y": -290.0
+"x": 914.0,
+"y": -252.0
 }],
 "tapes": {
 "cl23-bank-b46": [[17.0, "r"], [15.0, "rj"], [1.0, "r"], [8.0, "rj"], [1.0, "rjds"], [16.0, "rj"], [80.0, "r"]],
@@ -2762,6 +3080,9 @@ world_settings = {
 "cl23-pass-27#through": [[43.0, "l"]],
 "cl23-pass-28#through": [[100.0, ""], [10.0, "u"]],
 "cl23-pass-29#through": [[24.0, "rgu"]],
+"cl23-puzzle-bridge-backwards": [[105.0, "r"], [25.0, ""], [5.0, "l"], [10.0, ""], [1.0, "us"], [20.0, ""], [60.0, "lj"], [50.0, ""], [14.0, "r"], [10.0, ""], [1.0, "us"], [20.0, ""], [1.0, "us"], [20.0, ""], [1.0, "us"], [20.0, ""], [16.0, "r"], [10.0, ""], [12.0, "ux"], [100.0, ""], [5.0, "l"], [10.0, ""], [1.0, "us"], [20.0, ""], [1.0, "us"], [20.0, ""], [1.0, "us"], [20.0, ""], [14.0, "j"], [12.0, "lux"], [30.0, ""], [99.0, "l"], [10.0, ""], [12.0, "rx"], [100.0, ""], [7.0, "rj"], [10.0, "rdx"], [19.0, "rj"], [12.0, "rux"], [30.0, "r"], [20.0, ""], [12.0, "ux"], [100.0, ""], [85.0, "r"]],
+"cl23-puzzle-cover-take-away": [[58.0, "l"], [15.0, ""], [1.0, "ds"], [180.0, ""], [15.0, "r"], [45.0, ""], [1.0, "dj"], [20.0, "l"], [20.0, "lj"], [25.0, ""], [35.0, "lj"], [15.0, ""], [12.0, "l"], [10.0, ""], [12.0, "ux"], [100.0, ""], [7.0, "rj"], [10.0, "rdx"], [21.0, "rj"], [12.0, "rux"], [30.0, "r"], [20.0, ""], [12.0, "ux"], [100.0, ""], [85.0, "r"]],
+"cl23-puzzle-delivery-cannot-ride": [[10.0, ""], [1.0, "g"], [18.0, "rj"], [10.0, ""], [58.0, "r"], [12.0, ""], [1.0, "g"], [100.0, ""], [56.0, "l"], [12.0, ""], [1.0, "ds"], [20.0, ""], [36.0, "rj"], [30.0, ""], [16.0, "r"], [12.0, ""], [12.0, "rux"], [100.0, ""], [7.0, "rj"], [10.0, "rdx"], [21.0, "rj"], [12.0, "rux"], [16.0, "r"], [20.0, ""], [12.0, "ux"], [100.0, ""], [85.0, "r"]],
 "cl23-puzzle-fold-after-climb": [[39.0, "r"], [10.0, ""], [40.0, "j"], [1.0, ""], [12.0, "ljg"], [95.0, "lgu"], [3.0, "r"], [20.0, ""], [1.0, "us"], [20.0, ""], [24.0, "r"], [20.0, ""], [12.0, "ux"], [45.0, ""], [7.0, "lj"], [10.0, "ldx"], [20.0, "lj"], [12.0, "lux"], [30.0, "l"], [20.0, ""], [1.0, ""], [1.0, "lj"], [7.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [2.0, "lj"], [2.0, "rj"], [1.0, "lj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [7.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, ""], [4.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [8.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [7.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, ""], [4.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [8.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [8.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, ""], [4.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [8.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [8.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [4.0, "lj"], [1.0, "rj"], [3.0, "lj"], [1.0, "rj"], [1.0, ""], [3.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [2.0, "j"], [1.0, "rj"], [6.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [5.0, "lj"], [1.0, "rj"], [3.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [2.0, "rj"], [1.0, "lj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [6.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [2.0, "lj"], [2.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [6.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [2.0, "rj"], [1.0, "lj"], [271.0, "r"]],
 "cl23-puzzle-line-behind-wall": [[37.0, "r"], [10.0, ""], [25.0, "rj"], [15.0, ""], [180.0, ""], [18.0, "l"], [40.0, ""], [120.0, ""], [30.0, "r"], [20.0, "rj"], [10.0, ""], [12.0, "ux"], [180.0, ""], [14.0, "l"], [20.0, ""], [22.0, "l"], [10.0, "lj"], [12.0, "lux"], [15.0, "l"], [20.0, ""], [12.0, "ux"], [110.0, ""], [100.0, "r"]],
 "cl23-puzzle-weight-take-back": [[10.0, ""], [8.0, "l"], [10.0, ""], [1.0, "g"], [24.0, "lj"], [30.0, ""], [1.0, "dg"], [45.0, ""], [44.0, "l"], [20.0, ""], [1.0, "us"], [20.0, ""], [1.0, "us"], [20.0, ""], [40.0, "rj"], [15.0, ""], [1.0, "dg"], [10.0, "ld"], [30.0, "d"], [1.0, "ld"], [1.0, "g"], [11.0, ""], [26.0, "lj"], [12.0, "lux"], [30.0, "l"], [20.0, ""], [12.0, "ux"], [100.0, ""], [85.0, "r"]],
@@ -3005,7 +3326,7 @@ original_palette = {
 "bunnies": "ffffffff",
 "flowers": "dcb092ff"
 }
-source_fingerprint = "6d4a7e64627389f22ab96de447b008111427f2f9ad5bea2f3c39cbb3de2253be"
+source_fingerprint = "0e1cfde83e85024c142a85f7473fd40adba25e239323886a004e9484a653078c"
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -7420,7 +7741,7 @@ position = Vector2(4, 4)
 texture = SubResource("ImageTexture_s5mdt")
 
 [node name="cl23-atlas-crossroads" type="Node2D" parent="Rooms"]
-position = Vector2(4752, -2320)
+position = Vector2(7312, -2016)
 script = ExtResource("2_incbt")
 room_id = "cl23-atlas-crossroads"
 room_title = "The Last Count"
@@ -7457,8 +7778,8 @@ settings = {
 "edge": "left",
 "floor": 18.0,
 "height": 4.0,
-"to": "cl23-puzzle-fold-after-climb",
-"toFloor": 6.0
+"to": "cl23-puzzle-delivery-cannot-ride",
+"toFloor": 28.0
 },
 "atlasRegion": 23.0,
 "atlasRoads": [{
@@ -7499,8 +7820,8 @@ settings = {
 "floor": 18.0,
 "height": 4.0,
 "kind": "room",
-"to": "cl23-puzzle-fold-after-climb",
-"toFloor": 6.0
+"to": "cl23-puzzle-delivery-cannot-ride",
+"toFloor": 28.0
 }, {
 "edge": "right",
 "floor": 18.0,
@@ -8831,3 +9152,628 @@ texture = SubResource("ImageTexture_s30ka")
 
 [node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-fold-after-climb/Objects/lines_0"]
 curve = SubResource("Curve2D_n3dvg")
+
+[node name="cl23-puzzle-bridge-backwards" type="Node2D" parent="Rooms"]
+position = Vector2(4752, -2384)
+script = ExtResource("2_incbt")
+room_id = "cl23-puzzle-bridge-backwards"
+room_title = "The Bridge You Must Build Backwards"
+map_width = 96
+map_height = 68
+settings = {
+"aim8": true,
+"cols": 96.0,
+"dashes": 1.0,
+"dropThru": true,
+"exit": "right",
+"exitSpan": [37.0, 41.0],
+"hingeArms": [],
+"hint": "Park the far bridge upright. Its service ledge stays put. Visit the low hub and turn the near arm through left and up to right. Ride back to the far hub and restore its left bridge. Cross beneath the upper roof to the return line, then wavedash from the completed lower runway and dash up-right after clearing the canopy.",
+"id": "cl23-puzzle-bridge-backwards",
+"lines": [],
+"lock": ["parry", "portal"],
+"movement": "survive-2",
+"name": "The Bridge You Must Build Backwards",
+"palette": "fractured",
+"puzzleCameraAnchorY": 100.0,
+"puzzleEntranceFloor": 26.0,
+"puzzleExitFloor": 41.0,
+"puzzleGoal": [528.0, 328.0, 48.0, 4.0],
+"puzzleRoutes": [{
+"name": "Reference",
+"tape": [[105.0, "r"], [25.0, ""], [5.0, "l"], [10.0, ""], [1.0, "us"], [20.0, ""], [60.0, "lj"], [50.0, ""], [14.0, "r"], [10.0, ""], [1.0, "us"], [20.0, ""], [1.0, "us"], [20.0, ""], [1.0, "us"], [20.0, ""], [16.0, "r"], [10.0, ""], [12.0, "ux"], [100.0, ""], [5.0, "l"], [10.0, ""], [1.0, "us"], [20.0, ""], [1.0, "us"], [20.0, ""], [1.0, "us"], [20.0, ""], [14.0, "j"], [12.0, "lux"], [30.0, ""], [99.0, "l"], [10.0, ""], [12.0, "rx"], [100.0, ""], [7.0, "rj"], [10.0, "rdx"], [19.0, "rj"], [12.0, "rux"], [30.0, "r"], [20.0, ""], [12.0, "ux"], [100.0, ""], [85.0, "r"]]
+}],
+"puzzleStudy": true,
+"question": "Which bridge must leave its useful position so the other can pass?",
+"rbr": 23.0,
+"rows": 68.0,
+"study": true
+}
+original_fields = ["id", "name", "cols", "rows", "exit", "exitSpan", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "study", "movement", "decor", "people", "zips", "lines", "puzzleRoutes", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleCameraAnchorY", "dropThru", "hingeArms", "puzzleGoal", "question", "hint", "map"]
+array_fields = [["hingeArms"], ["lines"]]
+original_spawn = Vector2(192, 200)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-puzzle-bridge-backwards"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA5AAAAAAAAAAAAAAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAABAAAAAAAAAAAAAAABBAAAAAAAAAAAAAABCAAAAAAAAAAAAAABDAAAAAAAAAAAAAABEAAAAAAAAAAAAAABFAAAAAAAAAAAAAABGAAAAAAAAAAAAAABHAAAAAAAAAAAAAABIAAAAAAAAAAAAAABJAAAAAAAAAAAAAABKAAAAAAAAAAAAAABLAAAAAAAAAAAAAABMAAAAAAAAAAAAAABNAAAAAAAAAAAAAABOAAAAAAAAAAAAAABPAAAAAAAAAAAAAABQAAAAAAAAAAAAAABRAAAAAAAAAAAAAABSAAAAAAAAAAAAAABTAAAAAAAAAAAAAABUAAAAAAAAAAAAAABVAAAAAAAAAAAAAABWAAAAAAAAAAAAAABXAAAAAAAAAAAAAABYAAAAAAAAAAAAAABZAAAAAAAAAAAAAABaAAAAAAAAAAAAAABbAAAAAAAAAAAAAABcAAAAAAAAAAAAAABdAAAAAAAAAAAAAABeAAAAAAAAAAAAAABfAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAGAAAAAAA6AAEAAAAFAAAAAAA7AAEAAAAAAAAAAABMAAEAAAAAAAAAAABfAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAGAAAAAAA6AAIAAAAFAAAAAAA7AAIAAAAAAAAAAABMAAIAAAAAAAAAAABfAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAGAAAAAAA6AAMAAAAFAAAAAAA7AAMAAAAAAAAAAABMAAMAAAAAAAAAAABfAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAGAAAAAAA6AAQAAAAFAAAAAAA7AAQAAAAAAAAAAABMAAQAAAAAAAAAAABfAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAGAAAAAAA6AAUAAAAFAAAAAAA7AAUAAAAAAAAAAABMAAUAAAAAAAAAAABfAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAGAAAAAAA6AAYAAAAFAAAAAAA7AAYAAAAAAAAAAABMAAYAAAAAAAAAAABfAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAGAAAAAAA6AAcAAAAFAAAAAAA7AAcAAAAAAAAAAABMAAcAAAAAAAAAAABfAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAGAAAAAAA6AAgAAAAFAAAAAAA7AAgAAAAAAAAAAABMAAgAAAAAAAAAAABfAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAGAAAAAAA6AAkAAAAFAAAAAAA7AAkAAAAAAAAAAABMAAkAAAAAAAAAAABfAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAABAAoAAAAGAAAAAAA6AAoAAAAFAAAAAAA7AAoAAAAAAAAAAABMAAoAAAAAAAAAAABfAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAGAAAAAAArAAsAAAAFAAAAAAA6AAsAAAAFAAAAAAA7AAsAAAAAAAAAAABMAAsAAAAAAAAAAABfAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAABAAwAAAAGAAAAAAArAAwAAAAFAAAAAAA6AAwAAAAFAAAAAAA7AAwAAAAAAAAAAABMAAwAAAAAAAAAAABfAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAABAA0AAAAGAAAAAAArAA0AAAAFAAAAAAA6AA0AAAAFAAAAAAA7AA0AAAAAAAAAAABMAA0AAAAAAAAAAABfAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAABAA4AAAAGAAAAAAArAA4AAAAFAAAAAAA6AA4AAAAFAAAAAAA7AA4AAAAAAAAAAABMAA4AAAAAAAAAAABfAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAABAA8AAAAGAAAAAAArAA8AAAAFAAAAAAA6AA8AAAAFAAAAAAA7AA8AAAAAAAAAAABMAA8AAAAAAAAAAABfAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAGAAAAAAArABAAAAAFAAAAAAA6ABAAAAAFAAAAAAA7ABAAAAAAAAAAAABMABAAAAAAAAAAAABfABAAAAAAAAAAAAAAABEAAAAAAAAAAAABABEAAAAGAAAAAAArABEAAAAFAAAAAAA6ABEAAAAFAAAAAAA7ABEAAAAAAAAAAABMABEAAAAAAAAAAABfABEAAAAAAAAAAAAAABIAAAAAAAAAAAABABIAAAAGAAAAAAArABIAAAAFAAAAAAA6ABIAAAAFAAAAAAA7ABIAAAAAAAAAAABMABIAAAAAAAAAAABfABIAAAAAAAAAAAAAABMAAAAAAAAAAAABABMAAAAGAAAAAAArABMAAAAFAAAAAAA6ABMAAAAFAAAAAAA7ABMAAAAAAAAAAABMABMAAAAAAAAAAABfABMAAAAAAAAAAAAAABQAAAAAAAAAAAABABQAAAAGAAAAAAArABQAAAAFAAAAAAA6ABQAAAAFAAAAAAA7ABQAAAAAAAAAAABMABQAAAAAAAAAAABfABQAAAAAAAAAAAAAABUAAAAAAAAAAAABABUAAAAGAAAAAAAbABUAAAADAAAAAAAcABUAAAADAAAAAAAdABUAAAADAAAAAAAeABUAAAADAAAAAAAfABUAAAADAAAAAAAgABUAAAADAAAAAAAhABUAAAADAAAAAAAiABUAAAADAAAAAAAjABUAAAADAAAAAAAkABUAAAADAAAAAAAlABUAAAADAAAAAAAmABUAAAADAAAAAAAnABUAAAADAAAAAAAoABUAAAADAAAAAAApABUAAAADAAAAAAArABUAAAAFAAAAAAA6ABUAAAAFAAAAAAA7ABUAAAAAAAAAAABMABUAAAAAAAAAAABfABUAAAAAAAAAAAAbABYAAAAAAAAAAAAcABYAAAAAAAAAAAAdABYAAAAAAAAAAAAeABYAAAAAAAAAAAAfABYAAAAAAAAAAAAgABYAAAAAAAAAAAAhABYAAAAAAAAAAAAiABYAAAAAAAAAAAAjABYAAAAAAAAAAAAkABYAAAAAAAAAAAAlABYAAAAAAAAAAAAmABYAAAAAAAAAAAAnABYAAAAAAAAAAAAoABYAAAAAAAAAAAApABYAAAAAAAAAAAArABYAAAAFAAAAAAA6ABYAAAAFAAAAAAA7ABYAAAAAAAAAAABMABYAAAAAAAAAAABfABYAAAAAAAAAAAAbABcAAAAAAAAAAAAcABcAAAAAAAAAAAAdABcAAAAAAAAAAAAeABcAAAAAAAAAAAAfABcAAAAAAAAAAAAgABcAAAAAAAAAAAAhABcAAAAAAAAAAAAiABcAAAAAAAAAAAAjABcAAAAAAAAAAAAkABcAAAAAAAAAAAAlABcAAAAAAAAAAAAmABcAAAAAAAAAAAAnABcAAAAAAAAAAAAoABcAAAAAAAAAAAApABcAAAAAAAAAAAArABcAAAAFAAAAAAA6ABcAAAAFAAAAAAA7ABcAAAAAAAAAAABMABcAAAAAAAAAAABfABcAAAAAAAAAAAA6ABgAAAAFAAAAAAA7ABgAAAAAAAAAAABMABgAAAAAAAAAAABfABgAAAAAAAAAAAA6ABkAAAAFAAAAAAA7ABkAAAAAAAAAAABMABkAAAAAAAAAAABfABkAAAAAAAAAAAAAABoAAAAAAAAAAAABABoAAAAAAAAAAAACABoAAAAAAAAAAAADABoAAAAAAAAAAAAEABoAAAAAAAAAAAAFABoAAAAAAAAAAAAGABoAAAAAAAAAAAAHABoAAAAAAAAAAAAIABoAAAAAAAAAAAAJABoAAAAAAAAAAAAKABoAAAAAAAAAAAALABoAAAAAAAAAAAAMABoAAAAAAAAAAAANABoAAAAAAAAAAAAOABoAAAAAAAAAAAAPABoAAAAAAAAAAAAQABoAAAAAAAAAAAARABoAAAAAAAAAAAASABoAAAAAAAAAAAATABoAAAAAAAAAAAAUABoAAAAAAAAAAAAVABoAAAAAAAAAAAAWABoAAAAAAAAAAAAXABoAAAAAAAAAAAAYABoAAAAAAAAAAAAZABoAAAAAAAAAAAAaABoAAAAAAAAAAAA6ABoAAAAFAAAAAAA7ABoAAAAAAAAAAABMABoAAAAAAAAAAABfABoAAAAAAAAAAAAAABsAAAAAAAAAAAA6ABsAAAAFAAAAAAA7ABsAAAAAAAAAAABMABsAAAAAAAAAAABfABsAAAAAAAAAAAAAABwAAAAAAAAAAAA6ABwAAAAFAAAAAAA7ABwAAAAAAAAAAABMABwAAAAAAAAAAABfABwAAAAAAAAAAAAAAB0AAAAAAAAAAAA6AB0AAAAFAAAAAAA7AB0AAAAAAAAAAABMAB0AAAAAAAAAAABfAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAArAB4AAAACAAAAAAAsAB4AAAACAAAAAAAtAB4AAAACAAAAAAAuAB4AAAACAAAAAAA6AB4AAAAFAAAAAAA7AB4AAAAAAAAAAABMAB4AAAAAAAAAAABfAB4AAAAAAAAAAAAAAB8AAAAAAAAAAAA6AB8AAAAFAAAAAAA7AB8AAAAAAAAAAABMAB8AAAAAAAAAAABfAB8AAAAAAAAAAAAAACAAAAAAAAAAAAA6ACAAAAAFAAAAAAA7ACAAAAAAAAAAAABMACAAAAAAAAAAAABfACAAAAAAAAAAAAAAACEAAAAAAAAAAAA6ACEAAAAFAAAAAAA7ACEAAAAAAAAAAABMACEAAAAAAAAAAABfACEAAAAAAAAAAAAAACIAAAAAAAAAAAA6ACIAAAAFAAAAAAA7ACIAAAAAAAAAAABMACIAAAAAAAAAAABfACIAAAAAAAAAAAAAACMAAAAAAAAAAAA6ACMAAAAFAAAAAAA7ACMAAAAAAAAAAABMACMAAAAAAAAAAABfACMAAAAAAAAAAAAAACQAAAAAAAAAAAA6ACQAAAAFAAAAAAA7ACQAAAAAAAAAAABMACQAAAAAAAAAAABfACQAAAAAAAAAAAAAACUAAAAAAAAAAAA6ACUAAAAFAAAAAAA7ACUAAAAAAAAAAABMACUAAAAAAAAAAAAAACYAAAAAAAAAAAAkACYAAAADAAAAAAAlACYAAAADAAAAAAAmACYAAAADAAAAAAAnACYAAAADAAAAAAAoACYAAAADAAAAAAApACYAAAADAAAAAAArACYAAAADAAAAAAAsACYAAAADAAAAAAAtACYAAAADAAAAAAAuACYAAAADAAAAAAAvACYAAAADAAAAAAAwACYAAAADAAAAAAAxACYAAAADAAAAAAAyACYAAAADAAAAAAAzACYAAAADAAAAAAA0ACYAAAADAAAAAAA1ACYAAAADAAAAAAA2ACYAAAADAAAAAAA3ACYAAAADAAAAAAA4ACYAAAADAAAAAAA5ACYAAAADAAAAAAA6ACYAAAAFAAAAAAA7ACYAAAAAAAAAAABMACYAAAAAAAAAAAAAACcAAAAAAAAAAAAjACcAAAADAAAAAAAkACcAAAAAAAAAAAAlACcAAAAAAAAAAAAmACcAAAAAAAAAAAAnACcAAAAAAAAAAAAoACcAAAAAAAAAAAApACcAAAAAAAAAAAAqACcAAAADAAAAAAArACcAAAAAAAAAAAAsACcAAAAAAAAAAAAtACcAAAAAAAAAAAAuACcAAAAAAAAAAAAvACcAAAAAAAAAAAAwACcAAAAAAAAAAAAxACcAAAAAAAAAAAAyACcAAAAAAAAAAAAzACcAAAAAAAAAAAA0ACcAAAAAAAAAAAA1ACcAAAAAAAAAAAA2ACcAAAAAAAAAAAA3ACcAAAAAAAAAAAA4ACcAAAAAAAAAAAA5ACcAAAAAAAAAAAA6ACcAAAAAAAAAAAA7ACcAAAAAAAAAAABMACcAAAAAAAAAAAAAACgAAAAAAAAAAABMACgAAAAAAAAAAAAAACkAAAAAAAAAAAAiACkAAAAFAAAAAABBACkAAAAFAAAAAABCACkAAAAAAAAAAABDACkAAAAAAAAAAABEACkAAAAAAAAAAABFACkAAAAAAAAAAABGACkAAAAAAAAAAABHACkAAAAAAAAAAABMACkAAAAAAAAAAABQACkAAAAAAAAAAABRACkAAAAAAAAAAABSACkAAAAAAAAAAABTACkAAAAAAAAAAABUACkAAAAAAAAAAABVACkAAAAAAAAAAABWACkAAAAAAAAAAABXACkAAAAAAAAAAABYACkAAAAAAAAAAABZACkAAAAAAAAAAABaACkAAAAAAAAAAABbACkAAAAAAAAAAABcACkAAAAAAAAAAABdACkAAAAAAAAAAABeACkAAAAAAAAAAABfACkAAAAAAAAAAAAAACoAAAAAAAAAAAAiACoAAAAFAAAAAABBACoAAAAFAAAAAABCACoAAAAEAAAAAABDACoAAAAEAAAAAABEACoAAAAEAAAAAABFACoAAAAEAAAAAABGACoAAAAEAAAAAABHACoAAAAEAAAAAABMACoAAAAAAAAAAABeACoAAAAFAAAAAABfACoAAAAAAAAAAAAAACsAAAAAAAAAAABBACsAAAAFAAAAAABMACsAAAAAAAAAAABeACsAAAAFAAAAAABfACsAAAAAAAAAAAAAACwAAAAAAAAAAABBACwAAAAFAAAAAABMACwAAAAAAAAAAABeACwAAAAFAAAAAABfACwAAAAAAAAAAAAAAC0AAAAAAAAAAAAfAC0AAAACAAAAAAAgAC0AAAACAAAAAAAhAC0AAAACAAAAAAAiAC0AAAACAAAAAAAjAC0AAAACAAAAAAAkAC0AAAACAAAAAAAlAC0AAAACAAAAAAAmAC0AAAACAAAAAABBAC0AAAAFAAAAAABMAC0AAAAAAAAAAABeAC0AAAAFAAAAAABfAC0AAAAAAAAAAAAAAC4AAAAAAAAAAABBAC4AAAAFAAAAAABMAC4AAAAAAAAAAABeAC4AAAAFAAAAAABfAC4AAAAAAAAAAAAAAC8AAAAAAAAAAABBAC8AAAAFAAAAAABMAC8AAAAAAAAAAABeAC8AAAAFAAAAAABfAC8AAAAAAAAAAAAAADAAAAAAAAAAAABBADAAAAAFAAAAAABMADAAAAAAAAAAAABeADAAAAAFAAAAAABfADAAAAAAAAAAAAAAADEAAAAAAAAAAABBADEAAAAFAAAAAABMADEAAAAAAAAAAABeADEAAAAFAAAAAABfADEAAAAAAAAAAAAAADIAAAAAAAAAAABBADIAAAAFAAAAAABMADIAAAAAAAAAAABeADIAAAAFAAAAAABfADIAAAAAAAAAAAAAADMAAAAAAAAAAABMADMAAAAAAAAAAABeADMAAAAFAAAAAABfADMAAAAAAAAAAAAAADQAAAAAAAAAAABMADQAAAAAAAAAAABeADQAAAAFAAAAAABfADQAAAAAAAAAAAAAADUAAAAAAAAAAABMADUAAAAAAAAAAABeADUAAAAFAAAAAABfADUAAAAAAAAAAAAAADYAAAAAAAAAAABMADYAAAAAAAAAAABeADYAAAAFAAAAAABfADYAAAAAAAAAAAAAADcAAAAAAAAAAABMADcAAAAAAAAAAABeADcAAAAFAAAAAABfADcAAAAAAAAAAAAAADgAAAAAAAAAAABMADgAAAAAAAAAAABeADgAAAAFAAAAAABfADgAAAAAAAAAAAAAADkAAAAAAAAAAABMADkAAAAAAAAAAABeADkAAAAFAAAAAABfADkAAAAAAAAAAAAAADoAAAAAAAAAAABMADoAAAAAAAAAAABeADoAAAAFAAAAAABfADoAAAAAAAAAAAAAADsAAAAAAAAAAABMADsAAAAAAAAAAABeADsAAAAFAAAAAABfADsAAAAAAAAAAAAAADwAAAAAAAAAAABMADwAAAAAAAAAAABeADwAAAAFAAAAAABfADwAAAAAAAAAAAAAAD0AAAAAAAAAAABMAD0AAAAAAAAAAABeAD0AAAAFAAAAAABfAD0AAAAAAAAAAAAAAD4AAAAAAAAAAABMAD4AAAAAAAAAAABeAD4AAAAFAAAAAABfAD4AAAAAAAAAAAAAAD8AAAAAAAAAAABMAD8AAAAAAAAAAABeAD8AAAAFAAAAAABfAD8AAAAAAAAAAAAAAEAAAAAAAAAAAABMAEAAAAAAAAAAAABeAEAAAAAFAAAAAABfAEAAAAAAAAAAAAAAAEEAAAAAAAAAAABMAEEAAAAAAAAAAABeAEEAAAAFAAAAAABfAEEAAAAAAAAAAAAAAEIAAAAAAAAAAAABAEIAAAADAAAAAAACAEIAAAADAAAAAAADAEIAAAADAAAAAAAEAEIAAAADAAAAAAAFAEIAAAADAAAAAAAGAEIAAAADAAAAAAAHAEIAAAADAAAAAAAIAEIAAAADAAAAAAAJAEIAAAADAAAAAAAKAEIAAAADAAAAAAALAEIAAAADAAAAAAAMAEIAAAADAAAAAAANAEIAAAADAAAAAAAOAEIAAAADAAAA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")
+tile_set = SubResource("TileSet_sr5nf")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-puzzle-bridge-backwards"]
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects"]
+position = Vector2(192, 200)
+script = ExtResource("3_gwymu")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(192, 200)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_c41cs")
+
+[node name="milestone" type="Node2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects"]
+position = Vector2(544, 328)
+script = ExtResource("3_gwymu")
+petal_color = Color(0.8627451, 0.69098043, 0.57098037, 1)
+parameters = {
+"c": 68.0,
+"k": "milestone",
+"r": 40.0
+}
+original_position = Vector2(544, 328)
+original_petal_color = Color(0.8627451, 0.69098043, 0.57098037, 1)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects/milestone"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(11, -20)
+scale = Vector2(4.75, 5)
+texture = SubResource("ImageTexture_iaa26")
+
+[node name="hingeArms_0" type="Node2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects"]
+position = Vector2(280, 336)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 35.0,
+"dir": "down",
+"id": "Near bridge",
+"length": 19.0,
+"r": 42.0
+}
+original_position = Vector2(280, 336)
+field_path = ["hingeArms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects/hingeArms_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_4lxhf")
+
+[node name="hingeArms_1" type="Node2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects"]
+position = Vector2(336, 208)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 42.0,
+"dir": "left",
+"id": "Far bridge",
+"length": 16.0,
+"r": 26.0
+}
+original_position = Vector2(336, 208)
+field_path = ["hingeArms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects/hingeArms_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_cw0e6")
+
+[node name="lines_0" type="Node2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects"]
+position = Vector2(296, 352)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [37.0, 44.0],
+"b": [44.0, 29.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(296, 352)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects/lines_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_j4lae")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects/lines_0"]
+curve = SubResource("Curve2D_omu8v")
+
+[node name="lines_1" type="Node2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects"]
+position = Vector2(184, 200)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [23.0, 25.0],
+"b": [44.0, 41.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(184, 200)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects/lines_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_thb6l")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects/lines_1"]
+curve = SubResource("Curve2D_17iwq")
+
+[node name="lines_2" type="Node2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects"]
+position = Vector2(552, 312)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [69.0, 39.0],
+"b": [84.0, 39.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(552, 312)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects/lines_2"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_iss13")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-bridge-backwards/Objects/lines_2"]
+curve = SubResource("Curve2D_d2wdy")
+
+[node name="cl23-puzzle-cover-take-away" type="Node2D" parent="Rooms"]
+position = Vector2(5520, -2184)
+script = ExtResource("2_incbt")
+room_id = "cl23-puzzle-cover-take-away"
+room_title = "The Cover You Must Take Away"
+map_width = 112
+map_height = 64
+settings = {
+"aim8": true,
+"cols": 112.0,
+"combat": {
+"doors": [],
+"enemies": [],
+"receivers": [],
+"waitForMove": true
+},
+"dashes": 1.0,
+"dropThru": true,
+"exit": "right",
+"exitSpan": [33.0, 37.0],
+"hingeArms": [],
+"hint": "Cross the covered bridge to its hub and strike downward to fold the cover away. The permanent perch keeps you above the charge. Let the brute open the left wall, descend on the right of the hanging arm, and jump past the recovering brute into the alcove. Its line delivers to the finishing runway: land a down-right dash, jump out with speed, then dash up-right beyond the canopy.",
+"id": "cl23-puzzle-cover-take-away",
+"lines": [],
+"lock": ["parry", "portal"],
+"movement": "survive-2",
+"name": "The Cover You Must Take Away",
+"palette": "fractured",
+"puzzleCameraAnchorY": 55.0,
+"puzzleEntranceFloor": 16.0,
+"puzzleExitFloor": 37.0,
+"puzzleGoal": [624.0, 296.0, 48.0, 4.0],
+"puzzleRoutes": [{
+"name": "Reference",
+"tape": [[58.0, "l"], [15.0, ""], [1.0, "ds"], [180.0, ""], [15.0, "r"], [45.0, ""], [1.0, "dj"], [20.0, "l"], [20.0, "lj"], [25.0, ""], [35.0, "lj"], [15.0, ""], [12.0, "l"], [10.0, ""], [12.0, "ux"], [100.0, ""], [7.0, "rj"], [10.0, "rdx"], [21.0, "rj"], [12.0, "rux"], [30.0, "r"], [20.0, ""], [12.0, "ux"], [100.0, ""], [85.0, "r"]]
+}],
+"puzzleStudy": true,
+"question": "What is keeping the brute from seeing the bait it needs to chase?",
+"rbr": 23.0,
+"rows": 64.0,
+"study": true
+}
+original_fields = ["id", "name", "cols", "rows", "exit", "exitSpan", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "study", "movement", "decor", "people", "zips", "lines", "puzzleRoutes", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleCameraAnchorY", "dropThru", "hingeArms", "combat", "puzzleGoal", "question", "hint", "map"]
+array_fields = [["hingeArms"], ["lines"], ["combat", "enemies"], ["combat", "doors"]]
+original_spawn = Vector2(272, 200)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-puzzle-cover-take-away"]
+tile_map_data = PackedByteArray("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AAAAAAMAAAAAAAAAAAABAAMAAAAGAAAAAAAkAAMAAAAAAAAAAAAwAAMAAAAAAAAAAAA7AAMAAAAAAAAAAAA8AAMAAAAAAAAAAAA9AAMAAAAAAAAAAAA+AAMAAAAAAAAAAAA/AAMAAAAAAAAAAABAAAMAAAAAAAAAAABBAAMAAAAAAAAAAABCAAMAAAAAAAAAAABDAAMAAAAAAAAAAABEAAMAAAAAAAAAAABFAAMAAAAAAAAAAABGAAMAAAAAAAAAAABHAAMAAAAFAAAAAABcAAMAAAAAAAAAAABvAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAGAAAAAAAkAAQAAAAAAAAAAAAwAAQAAAAAAAAAAAA7AAQAAAAAAAAAAAA8AAQAAAAAAAAAAAA9AAQAAAAAAAAAAAA+AAQAAAAAAAAAAAA/AAQAAAAAAAAAAABAAAQAAAAAAAAAAABBAAQAAAAAAAAAAABCAAQAAAAAAAAAAABDAAQAAAAAAAAAAABEAAQAAAAAAAAAAABFAAQAAAAAAAAAAABGAAQAAAAAAAAAAABHAAQAAAAFAAAAAABcAAQAAAAAAAAAAABvAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAGAAAAAAAkAAUAAAAAAAAAAAAwAAUAAAAAAAAAAAA7AAUAAAAAAAAAAAA8AAUAAAAAAAAAAAA9AAUAAAAAAAAAAAA+AAUAAAAAAAAAAAA/AAUAAAAAAAAAAABAAAUAAAAAAAAAAABBAAUAAAAAAAAAAABCAAUAAAAAAAAAAABDAAUAAAAAAAAAAABEAAUAAAAAAAAAAABFAAUAAAAAAAAAAABGAAUAAAAAAAAAAABHAAUAAAAFAAAAAABcAAUAAAAAAAAAAABvAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAGAAAAAAAkAAYAAAAAAAAAAAAwAAYAAAAAAAAAAAA7AAYAAAAAAAAAAAA8AAYAAAAAAAAAAAA9AAYAAAAAAAAAAAA+AAYAAAAAAAAAAAA/AAYAAAAAAAAAAABAAAYAAAAAAAAAAABBAAYAAAAAAAAAAABCAAYAAAAAAAAAAABDAAYAAAAAAAAAAABEAAYAAAAAAAAAAABFAAYAAAAAAAAAAABGAAYAAAAAAAAAAABHAAYAAAAFAAAAAABcAAYAAAAAAAAAAABvAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAGAAAAAAAkAAcAAAAAAAAAAAAwAAcAAAAAAAAAAAA7AAcAAAAAAAAAAAA8AAcAAAAAAAAAAAA9AAcAAAAAAAAAAAA+AAcAAAAAAAAAAAA/AAcAAAAAAAAAAABAAAcAAAAAAAAAAABBAAcAAAAAAAAAAABCAAcAAAAAAAAAAABDAAcAAAAAAAAAAABEAAcAAAAAAAAAAABFAAcAAAAAAAAAAABGAAcAAAAAAAAAAABHAAcAAAAFAAAAAABcAAcAAAAAAAAAAABvAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAGAAAAAAAkAAgAAAAAAAAAAAAwAAgAAAAAAAAAAAA7AAgAAAAAAAAAAAA8AAgAAAAAAAAAAAA9AAgAAAAAAAAAAAA+AAgAAAAAAAAAAAA/AAgAAAAAAAAAAABAAAgAAAAAAAAAAABBAAgAAAAAAAAAAABCAAgAAAAAAAAAAABDAAgAAAAAAAAAAABEAAgAAAAAAAAAAABFAAgAAAAAAAAAAABGAAgAAAAAAAAAAABHAAgAAAAFAAAAAABcAAgAAAAAAAAAAABvAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAGAAAAAAAkAAkAAAAAAAAAAAAwAAkAAAAAAAAAAAA7AAkAAAAAAAAAAAA8AAkAAAAAAAAAAAA9AAkAAAAAAAAAAAA+AAkAAAAAAAAAAAA/AAkAAAAAAAAAAABAAAkAAAAAAAAAAABBAAkAAAAAAAAAAABCAAkAAAAAAAAAAABDAAkAAAAAAAAAAABEAAkAAAAAAAAAAABFAAkAAAAAAAAAAABGAAkAAAAAAAAAAABHAAkAAAAFAAAAAABcAAkAAAAAAAAAAABvAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAABAAoAAAAGAAAAAAAkAAoAAAAAAAAAAAAwAAoAAAAAAAAAAAA7AAoAAAAAAAAAAAA8AAoAAAAAAAAAAAA9AAoAAAAAAAAAAAA+AAoAAAAAAAAAAAA/AAoAAAAAAAAAAABAAAoAAAAAAAAAAABBAAoAAAAAAAAAAABCAAoAAAAAAAAAAABDAAoAAAAAAAAAAABEAAoAAAAAAAAAAABFAAoAAAAAAAAAAABGAAoAAAAAAAAAAABHAAoAAAAFAAAAAABcAAoAAAAAAAAAAABvAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAGAAAAAAAkAAsAAAAAAAAAAAAwAAsAAAAAAAAAAAA7AAsAAAAAAAAAAAA8AAsAAAAAAAAAAAA9AAsAAAAAAAAAAAA+AAsAAAAAAAAAAAA/AAsAAAAAAAAAAABAAAsAAAAAAAAAAABBAAsAAAAAAAAAAABCAAsAAAAAAAAAAABDAAsAAAAAAAAAAABEAAsAAAAAAAAAAABFAAsAAAAAAAAAAABGAAsAAAAAAAAAAABHAAsAAAAFAAAAAABcAAsAAAAAAAAAAABvAAsAAAAAAAAAAAAkAAwAAAAAAAAAAAAwAAwAAAAAAAAAAAA7AAwAAAAAAAAAAAA8AAwAAAAAAAAAAAA9AAwAAAAAAAAAAAA+AAwAAAAAAAAAAAA/AAwAAAAAAAAAAABAAAwAAAAAAAAAAABBAAwAAAAAAAAAAABCAAwAAAAAAAAAAABDAAwAAAAAAAAAAABEAAwAAAAAAAAAAABFAAwAAAAAAAAAAABGAAwAAAAAAAAAAABHAAwAAAAFAAAAAABcAAwAAAAAAAAAAABvAAwAAAAAAAAAAAAkAA0AAAAAAAAAAAAwAA0AAAAAAAAAAAA7AA0AAAAAAAAAAAA8AA0AAAAAAAAAAAA9AA0AAAAAAAAAAAA+AA0AAAAAAAAAAAA/AA0AAAAAAAAAAABAAA0AAAAAAAAAAABBAA0AAAAAAAAAAABCAA0AAAAAAAAAAABDAA0AAAAAAAAAAABEAA0AAAAAAAAAAABFAA0AAAAAAAAAAABGAA0AAAAAAAAAAABHAA0AAAAFAAAAAABcAA0AAAAAAAAAAABvAA0AAAAAAAAAAAAkAA4AAAAAAAAAAAAwAA4AAAAAAAAAAAA7AA4AAAAAAAAAAAA8AA4AAAAAAAAAAAA9AA4AAAAAAAAAAAA+AA4AAAAAAAAAAAA/AA4AAAAAAAAAAABAAA4AAAAAAAAAAABBAA4AAAAAAAAAAABCAA4AAAAAAAAAAABDAA4AAAAAAAAAAABEAA4AAAAAAAAAAABFAA4AAAAAAAAAAABGAA4AAAAAAAAAAABHAA4AAAAFAAAAAABcAA4AAAAAAAAAAABvAA4AAAAAAAAAAAAkAA8AAAAAAAAAAAAwAA8AAAAAAAAAAAA7AA8AAAAAAAAAAAA8AA8AAAAAAAAAAAA9AA8AAAAAAAAAAAA+AA8AAAAAAAAAAAA/AA8AAAAAAAAAAABAAA8AAAAAAAAAAABBAA8AAAAAAAAAAABCAA8AAAAAAAAAAABDAA8AAAAAAAAAAABEAA8AAAAAAAAAAABFAA8AAAAAAAAAAABGAA8AAAAAAAAAAABHAA8AAAAFAAAAAABcAA8AAAAAAAAAAABvAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdABAAAAAAAAAAAAAeABAAAAAAAAAAAAAfABAAAAAAAAAAAAAgABAAAAAAAAAAAAAhABAAAAACAAAAAAAiABAAAAACAAAAAAAjABAAAAAAAAAAAAAkABAAAAAAAAAAAAAwABAAAAAAAAAAAAA7ABAAAAAAAAAAAAA8ABAAAAAAAAAAAAA9ABAAAAAAAAAAAAA+ABAAAAAAAAAAAAA/ABAAAAAAAAAAAABAABAAAAAAAAAAAABBABAAAAAAAAAAAABCABAAAAAAAAAAAABDABAAAAAAAAAAAABEABAAAAAAAAAAAABFABAAAAAAAAAAAABGABAAAAAAAAAAAABHABAAAAAFAAAAAABcABAAAAAAAAAAAABvABAAAAAAAAAAAAAAABEAAAAAAAAAAAABABEAAAAGAAAAAAAVABEAAAAAAAAAAAAkABEAAAAAAAAAAAAwABEAAAAAAAAAAAA7ABEAAAAAAAAAAAA8ABEAAAAAAAAAAAA9ABEAAAAAAAAAAAA+ABEAAAAAAAAAAAA/ABEAAAAAAAAAAABAABEAAAAAAAAAAABBABEAAAAAAAAAAABCABEAAAAAAAAAAABDABEAAAAAAAAAAABEABEAAAAAAAAAAABFABEAAAAAAAAAAABGABEAAAAAAAAAAABHABEAAAAFAAAAAABcABEAAAAAAAAAAABvABEAAAAAAAAAAAAAABIAAAAAAAAAAAABABIAAAAGAAAAAAAVABIAAAAAAAAAAAAkABIAAAAAAAAAAAAwABIAAAAAAAAAAAA7ABIAAAAAAAAAAAA8ABIAAAAAAAAAAAA9ABIAAAAAAAAAAAA+ABIAAAAAAAAAAAA/ABIAAAAAAAAAAABAABIAAAAAAAAAAABBABIAAAAAAAAAAABCABIAAAAAAAAAAABDABIAAAAAAAAAAABEABIAAAAAAAAAAABFABIAAAAAAAAAAABGABIAAAAAAAAAAABHABIAAAAFAAAAAABcABIAAAAAAAAAAABvABIAAAAAAAAAAAAAABMAAAAAAAAAAAABABMAAAAGAAAAAAAVABMAAAAAAAAAAAAkABMAAAAAAAAAAAAwABMAAAAAAAAAAAA7ABMAAAAAAAAAAAA8ABMAAAAAAAAAAAA9ABMAAAAAAAAAAAA+ABMAAAAAAAAAAAA/ABMAAAAAAAAAAABAABMAAAAAAAAAAABBABMAAAAAAAAAAABCABMAAAAAAAAAAABDABMAAAAAAAAAAABEABMAAAAAAAAAAABFABMAAAAAAAAAAABGABMAAAAAAAAAAABHABMAAAAFAAAAAABcABMAAAAAAAAAAABvABMAAAAAAAAAAAAAABQAAAAAAAAAAAABABQAAAAGAAAAAAAVABQAAAAAAAAAAAAkABQAAAAAAAAAAAAwABQAAAAAAAAAAAA7ABQAAAAAAAAAAAA8ABQAAAAAAAAAAAA9ABQAAAAAAAAAAAA+ABQAAAAAAAAAAAA/ABQAAAAAAAAAAABAABQAAAAAAAAAAABBABQAAAAAAAAAAABCABQAAAAAAAAAAABDABQAAAAAAAAAAABEABQAAAAAAAAAAABFABQAAAAAAAAAAABGABQAAAAAAAAAAABHABQAAAAFAAAAAABcABQAAAAAAAAAAABvABQAAAAAAAAAAAAAABUAAAAAAAAAAAABABUAAAAGAAAAAAAVABUAAAAAAAAAAAAkABUAAAAAAAAAAAAwABUAAAAAAAAAAAA7ABUAAAAAAAAAAAA8ABUAAAAAAAAAAAA9ABUAAAAAAAAAAAA+ABUAAAAAAAAAAAA/ABUAAAAAAAAAAABAABUAAAAAAAAAAABBABUAAAAAAAAAAABCABUAAAAAAAAAAABDABUAAAAAAAAAAABEABUAAAAAAAAAAABFABUAAAAAAAAAAABGABUAAAAAAAAAAABHABUAAAAFAAAAAABcABUAAAAAAAAAAABvABUAAAAAAAAAAAAAABYAAAAAAAAAAAAVABYAAAAAAAAAAAAkABYAAAAAAAAAAAAwABYAAAAAAAAAAAA7ABYAAAAAAAAAAAA8ABYAAAAAAAAAAAA9ABYAAAAAAAAAAAA+ABYAAAAAAAAAAAA/ABYAAAAAAAAAAABAABYAAAAAAAAAAABBABYAAAAAAAAAAABCABYAAAAAAAAAAABDABYAAAAAAAAAAABEABYAAAAAAAAAAABFABYAAAAAAAAAAABGABYAAAAAAAAAAABHABYAAAAFAAAAAABcABYAAAAAAAAAAABvABYAAAAAAAAAAAAAABcAAAAAAAAAAAAVABcAAAAAAAAAAAAkABcAAAAAAAAAAAAwABcAAAAAAAAAAAA7ABcAAAAAAAAAAAA8ABcAAAAAAAAAAAA9ABcAAAAAAAAAAAA+ABcAAAAAAAAAAAA/ABcAAAAAAAAAAABAABcAAAAAAAAAAABBABcAAAAAAAAAAABCABcAAAAAAAAAAABDABcAAAAAAAAAAABEABcAAAAAAAAAAABFABcAAAAAAAAAAABGABcAAAAAAAAAAABHABcAAAAFAAAAAABcABcAAAAAAAAAAABvABcAAAAAAAAAAAAAABgAAAAAAAAAAAAVABgAAAAAAAAAAAAkABgAAAAAAAAAAAAwABgAAAAAAAAAAAA7ABgAAAAAAAAAAAA8ABgAAAAAAAAAAAA9ABgAAAAAAAAAAAA+ABgAAAAAAAAAAAA/ABgAAAAAAAAAAABAABgAAAAAAAAAAABBABgAAAAAAAAAAABCABgAAAAAAAAAAABDABgAAAAAAAAAAABEABgAAAAAAAAAAABFABgAAAAAAAAAAABGABgAAAAAAAAAAABHABgAAAAFAAAAAABcABgAAAAAAAAAAABvABgAAAAAAAAAAAAAABkAAAAAAAAAAAAVABkAAAAAAAAAAAAkABkAAAAAAAAAAAAwABkAAAAAAAAAAAA7ABkAAAAAAAAAAAA8ABkAAAAAAAAAAAA9ABkAAAAAAAAAAAA+ABkAAAAAAAAAAAA/ABkAAAAAAAAAAABAABkAAAAAAAAAAABBABkAAAAAAAAAAABCABkAAAAAAAAAAABDABkAAAAAAAAAAABEABkAAAAAAAAAAABFABkAAAAAAAAAAABGABkAAAAAAAAAAABHABkAAAAFAAAAAABcABkAAAAAAAAAAABvABkAAAAAAAAAAAAAABoAAAAAAAAAAAABABoAAAAAAAAAAAACABoAAAAAAAAAAAADABoAAAAAAAAAAAAVABoAAAAAAAAAAAAWABoAAAACAAAAAAAXABoAAAACAAAAAAAgABoAAAAAAAAAAAAhABoAAAAAAAAAAAAiABoAAAAAAAAAAAAjABoAAAAAAAAAAAAwABoAAAAAAAAAAAA7ABoAAAAAAAAAAAA8ABoAAAAAAAAAAAA9ABoAAAAAAAAAAAA+ABoAAAAAAAAAAAA/ABoAAAAAAAAAAABAABoAAAAAAAAAAABBABoAAAAAAAAAAABCABoAAAAAAAAAAABDABoAAAAAAAAAAABEABoAAAAAAAAAAABFABoAAAAAAAAAAABGABoAAAAAAAAAAABHABoAAAAFAAAAAABcABoAAAAAAAAAAABvABoAAAAAAAAAAAAAABsAAAAAAAAAAAAVABsAAAAAAAAAAAAwABsAAAAAAAAAAAA7ABsAAAAAAAAAAAA8ABsAAAAAAAAAAAA9ABsAAAAAAAAAAAA+ABsAAAAAAAAAAAA/ABsAAAAAAAAAAABAABsAAAAAAAAAAABBABsAAAAAAAAAAABCABsAAAAAAAAAAABDABsAAAAAAAAAAABEABsAAAAAAAAAAABFABsAAAAAAAAAAABGABsAAAAAAAAAAABHABsAAAAFAAAAAABcABsAAAAAAAAAAABvABsAAAAAAAAAAAAAABwAAAAAAAAAAAAVABwAAAAAAAAAAAAwABwAAAAAAAAAAAA7ABwAAAAAAAAAAAA8ABwAAAAAAAAAAAA9ABwAAAAAAAAAAAA+ABwAAAAAAAAAAAA/ABwAAAAAAAAAAABAABwAAAAAAAAAAABBABwAAAAAAAAAAABCABwAAAAAAAAAAABDABwAAAAAAAAAAABEABwAAAAAAAAAAABFABwAAAAAAAAAAABGABwAAAAAAAAAAABHABwAAAAFAAAAAABcABwAAAAAAAAAAABvABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAVAB0AAAAAAAAAAAAwAB0AAAAAAAAAAAA7AB0AAAAAAAAAAAA8AB0AAAAAAAAAAAA9AB0AAAAAAAAAAAA+AB0AAAAAAAAAAAA/AB0AAAAAAAAAAABAAB0AAAAAAAAAAABBAB0AAAAAAAAAAABCAB0AAAAAAAAAAABDAB0AAAAAAAAAAABEAB0AAAAAAAAAAABFAB0AAAAAAAAAAABGAB0AAAAAAAAAAABHAB0AAAAFAAAAAABcAB0AAAAAAAAAAABvAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAVAB4AAAAAAAAAAAAwAB4AAAAAAAAAAAA7AB4AAAAAAAAAAAA8AB4AAAAAAAAAAAA9AB4AAAAAAAAAAAA+AB4AAAAAAAAAAAA/AB4AAAAAAAAAAABAAB4AAAAAAAAAAABBAB4AAAAAAAAAAABCAB4AAAAAAAAAAABDAB4AAAAAAAAAAABEAB4AAAAAAAAAAABFAB4AAAAAAAAAAABGAB4AAAAAAAAAAABHAB4AAAAFAAAAAABcAB4AAAAAAAAAAABvAB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAVAB8AAAAAAAAAAAAwAB8AAAAAAAAAAAA7AB8AAAAAAAAAAAA8AB8AAAAAAAAAAAA9AB8AAAAAAAAAAAA+AB8AAAAAAAAAAAA/AB8AAAAAAAAAAABAAB8AAAAAAAAAAABBAB8AAAAAAAAAAABCAB8AAAAAAAAAAABDAB8AAAAAAAAAAABEAB8AAAAAAAAAAABFAB8AAAAAAAAAAABGAB8AAAAAAAAAAABHAB8AAAAFAAAAAABcAB8AAAAAAAAAAABvAB8AAAAAAAAAAAAAACAAAAAAAAAAAAAVACAAAAAAAAAAAAAwACAAAAAAAAAAAAA7ACAAAAAAAAAAAAA8ACAAAAAAAAAAAAA9ACAAAAAAAAAAAAA+ACAAAAAAAAAAAAA/ACAAAAAAAAAAAABAACAAAAAAAAAAAABBACAAAAAAAAAAAABCACAAAAAAAAAAAABDACAAAAAAAAAAAABEACAAAAAAAAAAAABFACAAAAAAAAAAAABGACAAAAAAAAAAAABHACAAAAAFAAAAAABcACAAAAAAAAAAAABvACAAAAAAAAAAAAAAACEAAAAAAAAAAAAEACEAAAAAAAAAAAAFACEAAAAAAAAAAAAGACEAAAAAAAAAAAAHACEAAAAAAAAAAAAIACEAAAAAAAAAAAAJACEAAAAAAAAAAAAKACEAAAAAAAAAAAALACEAAAAAAAAAAAAVACEAAAAAAAAAAAAwACEAAAAAAAAAAAA7ACEAAAAAAAAAAAA8ACEAAAAAAAAAAAA9ACEAAAAAAAAAAAA+ACEAAAAAAAAAAAA/ACEAAAAAAAAAAABAACEAAAAAAAAAAABBACEAAAAAAAAAAABCACEAAAAAAAAAAABDACEAAAAAAAAAAABEACEAAAAAAAAAAABFACEAAAAAAAAAAABGACEAAAAAAAAAAABHACEAAAAFAAAAAABcACEAAAAAAAAAAAAAACIAAAAAAAAAAAAEACIAAAAAAAAAAAAFACIAAAAAAAAAAAAGACIAAAAAAAAAAAAHACIAAAAAAAAAAAAIACIAAAAAAAAAAAAJACIAAAAAAAAAAAAKACIAAAAAAAAAAAALACIAAAAAAAAAAAAVACIAAAAAAAAAAAAwACIAAAAAAAAAAAA7ACIAAAAAAAAAAAA8ACIAAAAAAAAAAAA9ACIAAAAAAAAAAAA+ACIAAAAAAAAAAAA/ACIAAAAAAAAAAABAACIAAAAAAAAAAABBACIAAAAAAAAAAABCACIAAAAAAAAAAABDACIAAAAAAAAAAABEACIAAAAAAAAAAABFACIAAAAAAAAAAABGACIAAAAAAAAAAABHACIAAAAFAAAAAABcACIAAAAAAAAAAAAAACMAAAAAAAAAAAAEACMAAAAAAAAAAAAVACMAAAAAAAAAAAAwACMAAAAAAAAAAAA7ACMAAAAAAAAAAAA8ACMAAAAAAAAAAAA9ACMAAAAAAAAAAAA+ACMAAAAAAAAAAAA/ACMAAAAAAAAAAABAACMAAAAAAAAAAABBACMAAAAAAAAAAABCACMAAAAAAAAAAABDACMAAAAAAAAAAABEACMAAAAAAAAAAABFACMAAAAAAAAAAABGACMAAAAAAAAAAABHACMAAAAFAAAAAABcACMAAAAAAAAAAAAAACQAAAAAAAAAAAAEACQAAAAAAAAAAAAwACQAAAAAAAAAAABcACQAAAAAAAAAAAAAACUAAAAAAAAAAAAEACUAAAAAAAAAAAARACUAAAACAAAAAAASACUAAAACAAAAAAATACUAAAACAAAAAAAXACUAAAACAAAAAAAYACUAAAACAAAAAAAZACUAAAACAAAAAAAwACUAAAAAAAAAAABNACUAAAAFAAAAAABOACUAAAAAAAAAAABPACUAAAAAAAAAAABQACUAAAAAAAAAAABRACUAAAAAAAAAAABSACUAAAAAAAAAAABTACUAAAAAAAAAAABcACUAAAAAAAAAAABkACUAAAAAAAAAAABlACUAAAAAAAAAAABmACUAAAAAAAAAAABnACUAAAAAAAAAAABoACUAAAAAAAAAAABpACUAAAAAAAAAAABqACUAAAAAAAAAAABrACUAAAAAAAAAAABsACUAAAAAAAAAAABtACUAAAAAAAAAAABuACUAAAAAAAAAAABvACUAAAAAAAAAAAAAACYAAAAAAAAAAAAEACYAAAAAAAAAAAAwACYAAAAAAAAAAAA2ACYAAAAAAAAAAAA3ACYAAAAAAAAAAAA4ACYAAAAAAAAAAAA5ACYAAAAAAAAAAAA6ACYAAAAAAAAAAAA7ACYAAAAAAAAAAAA8ACYAAAAAAAAAAAA9ACYAAAAAAAAAAAA+ACYAAAAAAAAAAAA/ACYAAAAAAAAAAABAACYAAAAAAAAAAABBACYAAAAAAAAAAABNACYAAAAFAAAAAABOACYAAAAEAAAAAABPACYAAAAEAAAAAABQACYAAAAEAAAAAABRACYAAAAEAAAAAABSACYAAAAEAAAAAABTACYAAAAEAAAAAABcACYAAAAAAAAAAABuACYAAAAFAAAAAABvACYAAAAAAAAAAAAAACcAAAAAAAAAAAAEACcAAAAAAAAAAAAwACcAAAAAAAAAAABNACcAAAAFAAAAAABcACcAAAAAAAAAAABuACcAAAAFAAAAAABvACcAAAAAAAAAAAAAACgAAAAAAAAAAAAEACgAAAAAAAAAAAAFACgAAAAAAAAAAAAGACgAAAAAAAAAAAAHACgAAAAAAAAAAAAIACgAAAAAAAAAAAAJACgAAAAAAAAAAAAKACgAAAAAAAAAAAALACgAAAAAAAAAAAAMACgAAAAAAAAAAAANACgAAAAAAAAAAAAOACgAAAAAAAAAAAAPACgAAAAAAAAAAAAQACgAAAAAAAAAAAARACgAAAAAAAAAAAASACgAAAAAAAAAAAATACgAAAAAAAAAAAAUACgAAAAAAAAAAAAVACgAAAAAAAAAAAAWACgAAAAAAAAAAAAXACgAAAAAAAAAAAAYACgAAAAAAAAAAAAZACgAAAAAAAAAAAAaACgAAAAAAAAAAAAbACgAAAAAAAAAAAAcACgAAAAAAAAAAAAdACgAAAAAAAAAAAAeACgAAAAAAAAAAAAfACgAAAAAAAAAAAAgACgAAAAAAAAAAAAhACgAAAAAAAAAAAAiACgAAAAAAAAAAAAjACgAAAAAAAAAAAAkACgAAAAAAAAAAAAlACgAAAAAAAAAAAAmACgAAAAAAAAAAAAnACgAAAAAAAAAAAAoACgAAAAAAAAAAAApACgAAAAAAAAAAAAqACgAAAAAAAAAAAArACgAAAAAAAAAAAAwACgAAAAAAAAAAABNACgAAAAFAAAAAABcACgAAAAAAAAAAABuACgAAAAFAAAAAABvACgAAAAAAAAAAAAAACkAAAAAAAAAAAAEACkAAAAAAAAAAAAFACkAAAAAAAAAAAAGACkAAAAAAAAAAAAHACkAAAAAAAAAAAAIACkAAAAAAAAAAAAJACkAAAAAAAAAAAAKACkAAAAAAAAAAAALACkAAAAAAAAAAAAMACkAAAAAAAAAAAANACkAAAAAAAAAAAAOACkAAAAAAAAAAAAPACkAAAAAAAAAAAAQACkAAAAAAAAAAAARACkAAAAAAAAAAAASACkAAAAAAAAAAAATACkAAAAAAAAAAAAUACkAAAAAAAAAAAAVACkAAAAAAAAAAAAWACkAAAAAAAAAAAAXACkAAAAAAAAAAAAYACkAAAAAAAAAAAAZACkAAAAAAAAAAAAaACkAAAAAAAAAAAAbACkAAAAAAAAAAAAcACkAAAAAAAAAAAAdACkAAAAAAAAAAAAeACkAAAAAAAAAAAAfACkAAAAAAAAAAAAgACkAAAAAAAAAAAAhACkAAAAAAAAAAAAiACkAAAAAAAAAAAAjACkAAAAAAAAAAAAkACkAAAAAAAAAAAAlACkAAAAAAAAAAAAmACkAAAAAAAAAAAAnACkAAAAAAAAAAAAoACkAAAAAAAAAAAApACkAAAAAAAAAAAAqACkAAAAAAAAAAAArACkAAAAAAAAAAAAwACkAAAAAAAAAAABNACkAAAAFAAAAAABcACkAAAAAAAAAAABuACkAAAAFAAAAAABvACkAAAAAAAAAAAAAACoAAAAAAAAAAAAEACoAAAAAAAAAAAAFACoAAAAAAAAAAAAGACoAAAAAAAAAAAAHACoAAAAAAAAAAAAIACoAAAAAAAAAAAAJACoAAAAAAAAAAAAKACoAAAAAAAAAAAALACoAAAAAAAAAAAAMACoAAAAAAAAAAAANACoAAAAAAAAAAAAOACoAAAAAAAAAAAAPACoAAAAAAAAAAAAQACoAAAAAAAAAAAARACoAAAAAAAAAAAASACoAAAAAAAAAAAATACoAAAAAAAAAAAAUACoAAAAAAAAAAAAVACoAAAAAAAAAAAAWACoAAAAAAAAAAAAXACoAAAAAAAAAAAAYACoAAAAAAAAAAAAZACoAAAAAAAAAAAAaACoAAAAAAAAAAAAbACoAAAAAAAAAAAAcACoAAAAAAAAAAAAdACoAAAAAAAAAAAAeACoAAAAAAAAAAAAfACoAAAAAAAAAAAAgACoAAAAAAAAAAAAhACoAAAAAAAAAAAAiACoAAAAAAAAAAAAjACoAAAAAAAAAAAAkACoAAAAAAAAAAAAlACoAAAAAAAAAAAAmACoAAAAAAAAAAAAnACoAAAAAAAAAAAAoACoAAAAAAAAAAAApACoAAAAAAAAAAAAqACoAAAAAAAAAAAArACoAAAAAAAAAAAAwACoAAAAAAAAAAABNACoAAAAFAAAAAABcACoAAAAAAAAAAABuACoAAAAFAAAAAABvACoAAAAAAAAAAAAAACsAAAAAAAAAAAAEACsAAAAAAAAAAAAFACsAAAAAAAAAAAAGACsAAAAAAAAAAAAHACsAAAAAAAAAAAAIACsAAAAAAAAAAAAJACsAAAAAAAAAAAAKACsAAAAAAAAAAAALACsAAAAAAAAAAAAMACsAAAAAAAAAAAANACsAAAAAAAAAAAAOACsAAAAAAAAAAAAPACsAAAAAAAAAAAAQACsAAAAAAAAAAAARACsAAAAAAAAAAAASACsAAAAAAAAAAAATACsAAAAAAAAAAAAUACsAAAAAAAAAAAAVACsAAAAAAAAAAAAWACsAAAAAAAAAAAAXACsAAAAAAAAAAAAYACsAAAAAAAAAAAAZACsAAAAAAAAAAAAaACsAAAAAAAAAAAAbACsAAAAAAAAAAAAcACsAAAAAAAAA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AABcADQAAAAAAAAAAABuADQAAAAFAAAAAABvADQAAAAAAAAAAAAAADUAAAAAAAAAAAAwADUAAAAAAAAAAABcADUAAAAAAAAAAABuADUAAAAFAAAAAABvADUAAAAAAAAAAAAAADYAAAAAAAAAAAAwADYAAAAAAAAAAABcADYAAAAAAAAAAABuADYAAAAFAAAAAABvADYAAAAAAAAAAAAAADcAAAAAAAAAAAAwADcAAAAAAAAAAABcADcAAAAAAAAAAABuADcAAAAFAAAAAABvADcAAAAAAAAAAAAAADgAAAAAAAAAAAAwADgAAAAAAAAAAABcADgAAAAAAAAAAABuADgAAAAFAAAAAABvADgAAAAAAAAAAAAAADkAAAAAAAAAAAAwADkAAAAAAAAAAABcADkAAAAAAAAAAABuADkAAAAFAAAAAABvADkAAAAAAAAAAAAAADoAAAAAAAAAAAAwADoAAAAAAAAAAABcADoAAAAAAAAAAABuADoAAAAFAAAAAABvADoAAAAAAAAAAAAAADsAAAAAAAAAAAAwADsAAAAAAAAAAABcADsAAAAAAAAAAABuADsAAAAFAAAAAABvADsAAAAAAAAAAAAAADwAAAAAAAAAAAAwADwAAAAAAAAAAABcADwAAAAAAAAAAABuADwAAAAFAAAAAABvADwAAAAAAAAAAAAAAD0AAAAAAAAAAAAwAD0AAAAAAAAAAABcAD0AAAAAAAAAAABuAD0AAAAFAAAAAABvAD0AAAAAAAAAAAAAAD4AAAAAAAAAAAABAD4AAAADAAAAAAACAD4AAAADAAAAAAADAD4AAAADAAAAAAAEAD4AAAADAAAAAAAFAD4AAAADAAAAAAAGAD4AAAADAAAAAAAHAD4AAAADAAAAAAAIAD4AAAADAAAAAAAJAD4AAAADAAAAAAAKAD4AAAADAAAAAAALAD4AAAADAAAAAAAMAD4AAAADAAAAAAANAD4AAAADAAAAAAAOAD4AAAADAAAAAAAPAD4AAAADAAAAAAAQAD4AAAADAAAAAAARAD4AAAADAAAAAAASAD4AAAADAAAAAAATAD4AAAADAAAAAAAUAD4AAAADAAAAAAAVAD4AAAADAAAAAAAWAD4AAAADAAAAAAAXAD4AAAADAAAAAAAYAD4AAAADAAAAAAAZAD4AAAADAAAAAAAaAD4AAAADAAAAAAAbAD4AAAADAAAAAAAcAD4AAAADAAAAAAAdAD4AAAADAAAAAAAeAD4AAAADAAAAAAAfAD4AAAADAAAAAAAgAD4AAAADAAAAAAAhAD4AAAADAAAAAAAiAD4AAAADAAAAAAAjAD4AAAADAAAAAAAkAD4AAAADAAAAAAAlAD4AAAADAAAAAAAmAD4AAAADAAAAAAAnAD4AAAADAAAAAAAoAD4AAAADAAAAAAApAD4AAAADAAAAAAAqAD4AAAADAAAAAAArAD4AAAADAAAAAAAsAD4AAAADAAAAAAAtAD4AAAADAAAAAAAuAD4AAAADAAAAAAAvAD4AAAADAAAAAAAwAD4AAAADAAAAAAAxAD4AAAADAAAAAAAyAD4AAAADAAAAAAAzAD4AAAADAAAAAAA0AD4AAAADAAAAAAA1AD4AAAADAAAAAAA2AD4AAAADAAAAAAA3AD4AAAADAAAAAAA4AD4AAAADAAAAAAA5AD4AAAADAAAAAAA6AD4AAAADAAAAAAA7AD4AAAADAAAAAAA8AD4AAAADAAAAAAA9AD4AAAADAAAAAAA+AD4AAAADAAAAAAA/AD4AAAADAAAAAABAAD4AAAADAAAAAABBAD4AAAADAAAAAABCAD4AAAADAAAAAABDAD4AAAADAAAAAABEAD4AAAADAAAAAABFAD4AAAADAAAAAABGAD4AAAADAAAAAABHAD4AAAADAAAAAABIAD4AAAADAAAAAABJAD4AAAADAAAAAABKAD4AAAADAAAAAABLAD4AAAADAAAAAABMAD4AAAADAAAAAABNAD4AAAADAAAAAABOAD4AAAADAAAAAABPAD4AAAADAAAAAABQAD4AAAADAAAAAABRAD4AAAADAAAAAABSAD4AAAADAAAAAABTAD4AAAADAAAAAABUAD4AAAADAAAAAABVAD4AAAADAAAAAABWAD4AAAADAAAAAABXAD4AAAADAAAAAABYAD4AAAADAAAAAABZAD4AAAADAAAAAABaAD4AAAADAAAAAABbAD4AAAADAAAAAABcAD4AAAADAAAAAABdAD4AAAADAAAAAABeAD4AAAADAAAAAABfAD4AAAADAAAAAABgAD4AAAADAAAAAABhAD4AAAADAAAAAABiAD4AAAADAAAAAABjAD4AAAADAAAAAABkAD4AAAADAAAAAABlAD4AAAADAAAAAABmAD4AAAADAAAAAABnAD4AAAADAAAAAABoAD4AAAADAAAAAABpAD4AAAADAAAAAABqAD4AAAADAAAAAABrAD4AAAADAAAAAABsAD4AAAADAAAAAABtAD4AAAADAAAAAABuAD4AAAAFAAAAAABvAD4AAAAAAAAAAAAAAD8AAAAAAAAAAAABAD8AAAAAAAAAAAACAD8AAAAAAAAAAAADAD8AAAAAAAAAAAAEAD8AAAAAAAAAAAAFAD8AAAAAAAAAAAAGAD8AAAAAAAAAAAAHAD8AAAAAAAAAAAAIAD8AAAAAAAAAAAAJAD8AAAAAAAAAAAAKAD8AAAAAAAAAAAALAD8AAAAAAAAAAAAMAD8AAAAAAAAAAAANAD8AAAAAAAAAAAAOAD8AAAAAAAAAAAAPAD8AAAAAAAAAAAAQAD8AAAAAAAAAAAARAD8AAAAAAAAAAAASAD8AAAAAAAAAAAATAD8AAAAAAAAAAAAUAD8AAAAAAAAAAAAVAD8AAAAAAAAAAAAWAD8AAAAAAAAAAAAXAD8AAAAAAAAAAAAYAD8AAAAAAAAAAAAZAD8AAAAAAAAAAAAaAD8AAAAAAAAAAAAbAD8AAAAAAAAAAAAcAD8AAAAAAAAAAAAdAD8AAAAAAAAAAAAeAD8AAAAAAAAAAAAfAD8AAAAAAAAAAAAgAD8AAAAAAAAAAAAhAD8AAAAAAAAAAAAiAD8AAAAAAAAAAAAjAD8AAAAAAAAAAAAkAD8AAAAAAAAAAAAlAD8AAAAAAAAAAAAmAD8AAAAAAAAAAAAnAD8AAAAAAAAAAAAoAD8AAAAAAAAAAAApAD8AAAAAAAAAAAAqAD8AAAAAAAAAAAArAD8AAAAAAAAAAAAsAD8AAAAAAAAAAAAtAD8AAAAAAAAAAAAuAD8AAAAAAAAAAAAvAD8AAAAAAAAAAAAwAD8AAAAAAAAAAAAxAD8AAAAAAAAAAAAyAD8AAAAAAAAAAAAzAD8AAAAAAAAAAAA0AD8AAAAAAAAAAAA1AD8AAAAAAAAAAAA2AD8AAAAAAAAAAAA3AD8AAAAAAAAAAAA4AD8AAAAAAAAAAAA5AD8AAAAAAAAAAAA6AD8AAAAAAAAAAAA7AD8AAAAAAAAAAAA8AD8AAAAAAAAAAAA9AD8AAAAAAAAAAAA+AD8AAAAAAAAAAAA/AD8AAAAAAAAAAABAAD8AAAAAAAAAAABBAD8AAAAAAAAAAABCAD8AAAAAAAAAAABDAD8AAAAAAAAAAABEAD8AAAAAAAAAAABFAD8AAAAAAAAAAABGAD8AAAAAAAAAAABHAD8AAAAAAAAAAABIAD8AAAAAAAAAAABJAD8AAAAAAAAAAABKAD8AAAAAAAAAAABLAD8AAAAAAAAAAABMAD8AAAAAAAAAAABNAD8AAAAAAAAAAABOAD8AAAAAAAAAAABPAD8AAAAAAAAAAABQAD8AAAAAAAAAAABRAD8AAAAAAAAAAABSAD8AAAAAAAAAAABTAD8AAAAAAAAAAABUAD8AAAAAAAAAAABVAD8AAAAAAAAAAABWAD8AAAAAAAAAAABXAD8AAAAAAAAAAABYAD8AAAAAAAAAAABZAD8AAAAAAAAAAABaAD8AAAAAAAAAAABbAD8AAAAAAAAAAABcAD8AAAAAAAAAAABdAD8AAAAAAAAAAABeAD8AAAAAAAAAAABfAD8AAAAAAAAAAABgAD8AAAAAAAAAAABhAD8AAAAAAAAAAABiAD8AAAAAAAAAAABjAD8AAAAAAAAAAABkAD8AAAAAAAAAAABlAD8AAAAAAAAAAABmAD8AAAAAAAAAAABnAD8AAAAAAAAAAABoAD8AAAAAAAAAAABpAD8AAAAAAAAAAABqAD8AAAAAAAAAAABrAD8AAAAAAAAAAABsAD8AAAAAAAAAAABtAD8AAAAAAAAAAABuAD8AAAAAAAAAAABvAD8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_sr5nf")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-puzzle-cover-take-away"]
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects"]
+position = Vector2(272, 200)
+script = ExtResource("3_gwymu")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(272, 200)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_0xg0k")
+
+[node name="milestone" type="Node2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects"]
+position = Vector2(640, 296)
+script = ExtResource("3_gwymu")
+petal_color = Color(0.8627451, 0.69098043, 0.57098037, 1)
+parameters = {
+"c": 80.0,
+"k": "milestone",
+"r": 36.0
+}
+original_position = Vector2(640, 296)
+original_petal_color = Color(0.8627451, 0.69098043, 0.57098037, 1)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/milestone"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(11, -20)
+scale = Vector2(4.75, 5)
+texture = SubResource("ImageTexture_f17cj")
+
+[node name="hingeArms_0" type="Node2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects"]
+position = Vector2(176, 208)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 22.0,
+"dir": "right",
+"id": "Sight cover",
+"length": 10.0,
+"r": 26.0
+}
+original_position = Vector2(176, 208)
+field_path = ["hingeArms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/hingeArms_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_2ubrh")
+
+[node name="lines_0" type="Node2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects"]
+position = Vector2(72, 304)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [9.0, 38.0],
+"b": [56.0, 35.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(72, 304)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/lines_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_mp0iy")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/lines_0"]
+curve = SubResource("Curve2D_5bnwl")
+
+[node name="lines_1" type="Node2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects"]
+position = Vector2(648, 280)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [81.0, 35.0],
+"b": [104.0, 35.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(648, 280)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/lines_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_l45u3")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/lines_1"]
+curve = SubResource("Curve2D_bsofh")
+
+[node name="enemies_0" type="Node2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects"]
+position = Vector2(224, 304)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brute": true,
+"crush": 1.0,
+"face": -1.0,
+"kind": "hound",
+"stamp": "always",
+"x": 224.0,
+"y": 304.0
+}
+original_position = Vector2(224, 304)
+field_path = ["combat", "enemies"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/enemies_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_nb673")
+
+[node name="doors_0" type="Node2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects"]
+position = Vector2(96, 280)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brittle": true,
+"h": 40.0,
+"w": 16.0,
+"x": 96.0,
+"y": 280.0
+}
+original_position = Vector2(96, 280)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/doors_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_ofy38")
+
+[node name="cl23-puzzle-delivery-cannot-ride" type="Node2D" parent="Rooms"]
+position = Vector2(6416, -2096)
+script = ExtResource("2_incbt")
+room_id = "cl23-puzzle-delivery-cannot-ride"
+room_title = "The Delivery You Cannot Ride With"
+map_width = 112
+map_height = 64
+settings = {
+"aim8": true,
+"cols": 112.0,
+"dashes": 1.0,
+"dropThru": true,
+"exit": "right",
+"exitSpan": [24.0, 28.0],
+"hingeArms": [],
+"hint": "Take the lantern onto the throwing dock and send it right beneath the low guide. The chute carries it through the narrow opening to lower the distant runway. Return to the hub and fold the dock down to uncover the line chamber. Ride across empty-handed; leave the lantern working while you wavedash from the lowered runway and dash up-right beyond the overhang.",
+"id": "cl23-puzzle-delivery-cannot-ride",
+"lines": [],
+"lock": ["parry", "portal"],
+"movement": "survive-2",
+"name": "The Delivery You Cannot Ride With",
+"palette": "fractured",
+"puzzleCameraAnchorY": 100.0,
+"puzzleEntranceFloor": 26.0,
+"puzzleExitFloor": 28.0,
+"puzzleGoal": [520.0, 224.0, 48.0, 4.0],
+"puzzleRoutes": [{
+"name": "Reference",
+"tape": [[10.0, ""], [1.0, "g"], [18.0, "rj"], [10.0, ""], [58.0, "r"], [12.0, ""], [1.0, "g"], [100.0, ""], [56.0, "l"], [12.0, ""], [1.0, "ds"], [20.0, ""], [36.0, "rj"], [30.0, ""], [16.0, "r"], [12.0, ""], [12.0, "rux"], [100.0, ""], [7.0, "rj"], [10.0, "rdx"], [21.0, "rj"], [12.0, "rux"], [16.0, "r"], [20.0, ""], [12.0, "ux"], [100.0, ""], [85.0, "r"]]
+}],
+"puzzleStudy": true,
+"question": "Which route delivers the lantern, and which route delivers you?",
+"rbr": 23.0,
+"recoilPlatforms": [],
+"rows": 64.0,
+"study": true
+}
+original_fields = ["id", "name", "cols", "rows", "exit", "exitSpan", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "study", "movement", "decor", "people", "zips", "lines", "puzzleRoutes", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleCameraAnchorY", "dropThru", "hingeArms", "recoilPlatforms", "puzzleGoal", "question", "hint", "map"]
+array_fields = [["recoilPlatforms"], ["hingeArms"], ["lines"]]
+original_spawn = Vector2(96, 200)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-puzzle-delivery-cannot-ride"]
+tile_map_data = PackedByteArray("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AAAzAAQAAAAAAAAAAAA0AAQAAAAAAAAAAAA1AAQAAAAAAAAAAAA2AAQAAAAAAAAAAABcAAQAAAAAAAAAAABvAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAGAAAAAAAjAAUAAAAAAAAAAAAxAAUAAAAFAAAAAAAyAAUAAAAAAAAAAAAzAAUAAAAAAAAAAAA0AAUAAAAAAAAAAAA1AAUAAAAAAAAAAAA2AAUAAAAAAAAAAABcAAUAAAAAAAAAAABvAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAGAAAAAAAjAAYAAAAAAAAAAAAxAAYAAAAFAAAAAAAyAAYAAAAAAAAAAAAzAAYAAAAAAAAAAAA0AAYAAAAAAAAAAAA1AAYAAAAAAAAAAAA2AAYAAAAAAAAAAABcAAYAAAAAAAAAAABvAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAGAAAAAAAjAAcAAAAAAAAAAAAxAAcAAAAFAAAAAAAyAAcAAAAAAAAAAAAzAAcAAAAAAAAAAAA0AAcAAAAAAAAAAAA1AAcAAAAAAAAAAAA2AAcAAAAAAAAAAABcAAcAAAAAAAAAAABvAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAGAAAAAAAjAAgAAAAAAAAAAAAxAAgAAAAFAAAAAAAyAAgAAAAAAAAAAAAzAAgAAAAAAAAAAAA0AAgAAAAAAAAAAAA1AAgAAAAAAAAAAAA2AAgAAAAAAAAAAABcAAgAAAAAAAAAAABvAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAGAAAAAAAjAAkAAAAAAAAAAAAxAAkAAAAFAAAAAAAyAAkAAAAAAAAAAAAzAAkAAAAAAAAAAAA0AAkAAAAAAAAAAAA1AAkAAAAAAAAAAAA2AAkAAAAAAAAAAABcAAkAAAAAAAAAAABvAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAABAAoAAAAGAAAAAAAjAAoAAAAAAAAAAAAxAAoAAAAFAAAAAAAyAAoAAAAAAAAAAAAzAAoAAAAAAAAAAAA0AAoAAAAAAAAAAAA1AAoAAAAAAAAAAAA2AAoAAAAAAAAAAABcAAoAAAAAAAAAAABvAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAGAAAAAAAjAAsAAAAAAAAAAAAxAAsAAAAFAAAAAAAyAAsAAAAAAAAAAAAzAAsAAAAAAAAAAAA0AAsAAAAAAAAAAAA1AAsAAAAAAAAAAAA2AAsAAAAAAAAAAABcAAsAAAAAAAAAAABvAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAABAAwAAAAGAAAAAAAjAAwAAAAAAAAAAAAxAAwAAAAFAAAAAAAyAAwAAAAAAAAAAAAzAAwAAAAAAAAAAAA0AAwAAAAAAAAAAAA1AAwAAAAAAAAAAAA2AAwAAAAAAAAAAABcAAwAAAAAAAAAAABvAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAABAA0AAAAGAAAAAAAjAA0AAAAAAAAAAAAxAA0AAAAFAAAAAAAyAA0AAAAAAAAAAAAzAA0AAAAAAAAAAAA0AA0AAAAAAAAAAAA1AA0AAAAAAAAAAAA2AA0AAAAAAAAAAABcAA0AAAAAAAAAAABvAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAABAA4AAAAGAAAAAAAjAA4AAAAAAAAAAAAxAA4AAAAFAAAAAAAyAA4AAAAAAAAAAAAzAA4AAAAAAAAAAAA0AA4AAAAAAAAAAAA1AA4AAAAAAAAAAAA2AA4AAAAAAAAAAABcAA4AAAAAAAAAAABvAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAABAA8AAAAGAAAAAAAjAA8AAAAAAAAAAAAxAA8AAAAFAAAAAAAyAA8AAAAAAAAAAAAzAA8AAAAAAAAAAAA0AA8AAAAAAAAAAAA1AA8AAAAAAAAAAAA2AA8AAAAAAAAAAABcAA8AAAAAAAAAAABvAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAGAAAAAAAjABAAAAAAAAAAAAAxABAAAAAFAAAAAAAyABAAAAAAAAAAAAAzABAAAAAAAAAAAAA0ABAAAAAAAAAAAAA1ABAAAAAAAAAAAAA2ABAAAAAAAAAAAABcABAAAAAAAAAAAABvABAAAAAAAAAAAAAAABEAAAAAAAAAAAABABEAAAAGAAAAAAAjABEAAAAAAAAAAAAxABEAAAAFAAAAAAAyABEAAAAAAAAAAAAzABEAAAAAAAAAAAA0ABEAAAAAAAAAAAA1ABEAAAAAAAAAAAA2ABEAAAAAAAAAAABcABEAAAAAAAAAAABvABEAAAAAAAAAAAAAABIAAAAAAAAAAAABABIAAAAGAAAAAAAjABIAAAAAAAAAAAAxABIAAAAFAAAAAAAyABIAAAAAAAAAAAAzABIAAAAAAAAAAAA0ABIAAAAAAAAAAAA1ABIAAAAAAAAAAAA2ABIAAAAAAAAAAABcABIAAAAAAAAAAABvABIAAAAAAAAAAAAAABMAAAAAAAAAAAABABMAAAAGAAAAAAAjABMAAAAAAAAAAAAxABMAAAAFAAAAAAAyABMAAAAAAAAAAAAzABMAAAAAAAAAAAA0ABMAAAAAAAAAAAA1ABMAAAAAAAAAAAA2ABMAAAAAAAAAAABcABMAAAAAAAAAAABvABMAAAAAAAAAAAAAABQAAAAAAAAAAAABABQAAAAGAAAAAAAjABQAAAAAAAAAAAAxABQAAAAFAAAAAAAyABQAAAAAAAAAAAAzABQAAAAAAAAAAAA0ABQAAAAAAAAAAAA1ABQAAAAAAAAAAAA2ABQAAAAAAAAAAABcABQAAAAAAAAAAABvABQAAAAAAAAAAAAAABUAAAAAAAAAAAABABUAAAAGAAAAAAAjABUAAAAAAAAAAAAxABUAAAAFAAAAAAAyABUAAAAAAAAAAAAzABUAAAAAAAAAAAA0ABUAAAAAAAAAAAA1ABUAAAAAAAAAAAA2ABUAAAAAAAAAAABcABUAAAAAAAAAAABvABUAAAAAAAAAAAAWABYAAAAAAAAAAAAXABYAAAAAAAAAAAAYABYAAAAAAAAAAAAZABYAAAAAAAAAAAAaABYAAAAAAAAAAAAbABYAAAAAAAAAAAAcABYAAAAAAAAAAAAdABYAAAAAAAAAAAAeABYAAAAAAAAAAAAfABYAAAAAAAAAAAAgABYAAAAAAAAAAAAhABYAAAAAAAAAAAAiABYAAAAAAAAAAAAjABYAAAAAAAAAAAAxABYAAAAFAAAAAAAyABYAAAAAAAAAAAAzABYAAAAAAAAAAAA0ABYAAAAAAAAAAAA1ABYAAAAAAAAAAAA2ABYAAAAAAAAAAABcABYAAAAAAAAAAABvABYAAAAAAAAAAAAWABcAAAAAAAAAAAAXABcAAAAAAAAAAAAYABcAAAAAAAAAAAAZABcAAAAAAAAAAAAaABcAAAAAAAAAAAAbABcAAAAAAAAAAAAcABcAAAAAAAAAAAAdABcAAAAAAAAAAAAeABcAAAAAAAAAAAAfABcAAAAAAAAAAAAgABcAAAAAAAAAAAAhABcAAAAAAAAAAAAiABcAAAAAAAAAAAAjABcAAAAAAAAAAAAxABcAAAAFAAAAAAAyABcAAAAAAAAAAAAzABcAAAAAAAAAAAA0ABcAAAAAAAAAAAA1ABcAAAAAAAAAAAA2ABcAAAAAAAAAAABcABcAAAAAAAAAAABvABcAAAAAAAAAAAAjABgAAAAAAAAAAAAkABgAAAAAAAAAAAAlABgAAAAAAAAAAAAmABgAAAAAAAAAAAAnABgAAAAAAAAAAAAoABgAAAAAAAAAAAApABgAAAAAAAAAAAAqABgAAAAAAAAAAAArABgAAAAAAAAAAAAsABgAAAAAAAAAAAAtABgAAAAAAAAAAAAuABgAAAAAAAAAAAAvABgAAAAAAAAAAAAwABgAAAAAAAAAAAAxABgAAAAAAAAAAAAyABgAAAAAAAAAAAAzABgAAAAAAAAAAAA0ABgAAAAAAAAAAAA1ABgAAAAAAAAAAAA2ABgAAAAAAAAAAABcABgAAAAAAAAAAAAjABkAAAAAAAAAAAAkABkAAAAAAAAAAAAlABkAAAAAAAAAAAAmABkAAAAAAAAAAAAnABkAAAAAAAAAAAAoABkAAAAAAAAAAAApABkAAAAAAAAAAAAqABkAAAAAAAAAAAArABkAAAAAAAAAAAAsABkAAAAAAAAAAAAtABkAAAAAAAAAAAAuABkAAAAAAAAAAAAvABkAAAAAAAAAAAAwABkAAAAAAAAAAAAxABkAAAAAAAAAAAAyABkAAAAAAAAAAAAzABkAAAAAAAAAAAA0ABkAAAAAAAAAAAA1ABkAAAAAAAAAAAA2ABkAAAAAAAAAAABcABkAAAAAAAAAAAAAABoAAAAAAAAAAAABABoAAAAAAAAAAAACABoAAAAAAAAAAAADABoAAAAAAAAAAAAEABoAAAAAAAAAAAAFABoAAAAAAAAAAAAGABoAAAAAAAAAAAAHABoAAAAAAAAAAAAIABoAAAAAAAAAAAAJABoAAAAAAAAAAAAKABoAAAAAAAAAAAALABoAAAAAAAAAAAAMABoAAAAAAAAAAAANABoAAAAAAAAAAAAvABoAAAAAAAAAAABcABoAAAAAAAAAAAAAABsAAAAAAAAAAAAUABsAAAAAAAAAAAAbABsAAAAAAAAAAAAcABsAAAAAAAAAAAAdABsAAAAAAAAAAAAeABsAAAAAAAAAAAAfABsAAAAAAAAAAAAgABsAAAAAAAAAAAAhABsAAAAAAAAAAAAiABsAAAAAAAAAAAAjABsAAAAAAAAAAAAkABsAAAAAAAAAAAAlABsAAAAAAAAAAAAvABsAAAAAAAAAAABcABsAAAAAAAAAAAAAABwAAAAAAAAAAAAUABwAAAAAAAAAAAAbABwAAAAAAAAAAABAABwAAAAFAAAAAABBABwAAAAAAAAAAABCABwAAAAAAAAAAABDABwAAAAAAAAAAABEABwAAAAAAAAAAABFABwAAAAAAAAAAABGABwAAAAAAAAAAABcABwAAAAAAAAAAABkABwAAAAAAAAAAABlABwAAAAAAAAAAABmABwAAAAAAAAAAABnABwAAAAAAAAAAABoABwAAAAAAAAAAABpABwAAAAAAAAAAABqABwAAAAAAAAAAABrABwAAAAAAAAAAABsABwAAAAAAAAAAABtABwAAAAAAAAAAABuABwAAAAAAAAAAABvABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAUAB0AAAAAAAAAAAAbAB0AAAAAAAAAAAAjAB0AAAAAAAAAAABAAB0AAAAFAAAAAABBAB0AAAAEAAAAAABCAB0AAAAEAAAAAABDAB0AAAAEAAAAAABEAB0AAAAEAAAAAABFAB0AAAAEAAAAAABGAB0AAAAEAAAAAABcAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAUAB4AAAAAAAAAAAAbAB4AAAAAAAAAAAAjAB4AAAAAAAAAAABAAB4AAAAFAAAAAABcAB4AAAAAAAAAAABuAB4AAAAFAAAAAABvAB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAUAB8AAAAAAAAAAAAVAB8AAAAAAAAAAAAWAB8AAAAAAAAAAAAXAB8AAAAAAAAAAAAYAB8AAAAAAAAAAAAZAB8AAAAAAAAAAAAaAB8AAAAAAAAAAAAbAB8AAAAAAAAAAAAjAB8AAAAAAAAAAABAAB8AAAAFAAAAAABcAB8AAAAAAAAAAABuAB8AAAAFAAAAAABvAB8AAAAAAAAAAAAAACAAAAAAAAAAAAAjACAAAAAAAAAAAAAkACAAAAADAAAAAAAlACAAAAADAAAAAAAmACAAAAADAAAAAAAnACAAAAADAAAAAAAoACAAAAADAAAAAAApACAAAAADAAAAAAAqACAAAAADAAAAAAArACAAAAADAAAAAAAsACAAAAADAAAAAAAtACAAAAADAAAAAAAuACAAAAADAAAAAAAvACAAAAADAAAAAAAwACAAAAADAAAAAAAxACAAAAADAAAAAAAyACAAAAADAAAAAABAACAAAAAFAAAAAABcACAAAAAAAAAAAABuACAAAAAFAAAAAABvACAAAAAAAAAAAAAAACEAAAAAAAAAAAAjACEAAAAAAAAAAABAACEAAAAFAAAAAABcACEAAAAAAAAAAABuACEAAAAFAAAAAABvACEAAAAAAAAAAAAAACIAAAAAAAAAAAAjACIAAAAAAAAAAABAACIAAAAFAAAAAABcACIAAAAAAAAAAABuACIAAAAFAAAAAABvACIAAAAAAAAAAAAAACMAAAAAAAAAAAAjACMAAAAAAAAAAABAACMAAAAFAAAAAABcACMAAAAAAAAAAABuACMAAAAFAAAAAABvACMAAAAAAAAAAAAAACQAAAAAAAAAAAAjACQAAAAAAAAAAABAACQAAAAFAAAAAABcACQAAAAAAAAAAABuACQAAAAFAAAAAABvACQAAAAAAAAAAAAAACUAAAAAAAAAAAAjACUAAAAAAAAAAABcACUAAAAAAAAAAABuACUAAAAFAAAAAABvACUAAAAAAAAAAAAAACYAAAAAAAAAAAAjACYAAAAAAAAAAABcACYAAAAAAAAAAABuACYAAAAFAAAAAABvACYAAAAAAAAAAAAAACcAAAAAAAAAAAAjACcAAAAAAAAAAABcACcAAAAAAAAAAABuACcAAAAFAAAAAABvACcAAAAAAAAAAAAAACgAAAAAAAAAAAAjACgAAAAAAAAAAABcACgAAAAAAAAAAABuACgAAAAFAAAAAABvACgAAAAAAAAAAAAAACkAAAAAAAAAAAAjACkAAAAAAAAAAABcACkAAAAAAAAAAABuACkAAAAFAAAAAABvACkAAAAAAAAAAAAAACoAAAAAAAAAAAAjACoAAAAAAAAAAABcACoAAAAAAAAAAABuACoAAAAFAAAAAABvACoAAAAAAAAAAAAAACsAAAAAAAAAAAAjACsAAAAAAAAAAABcACsAAAAAAAAAAABuACsAAAAFAAAAAABvACsAAAAAAAAAAAAAACwAAAAAAAAAAAAjACwAAAAAAAAAAABcACwAAAAAAAAAAABuACwAAAAFAAAAAABvACwAAAAAAAAAAAAAAC0AAAAAAAAAAAAjAC0AAAAAAAAAAABcAC0AAAAAAAAAAABuAC0AAAAFAAAAAABvAC0AAAAAAAAAAAAAAC4AAAAAAAAAAAAjAC4AAAAAAAAAAABcAC4AAAAAAAAAAABuAC4AAAAFAAAAAABvAC4AAAAAAAAAAAAAAC8AAAAAAAAAAAAjAC8AAAAAAAAAAABcAC8AAAAAAAAAAABuAC8AAAAFAAAAAABvAC8AAAAAAAAAAAAAADAAAAAAAAAAAAAjADAAAAAAAAAAAABcADAAAAAAAAAAAABuADAAAAAFAAAAAABvADAAAAAAAAAAAAAAADEAAAAAAAAAAAAjADEAAAAAAAAAAABcADEAAAAAAAAAAABuADEAAAAFAAAAAABvADEAAAAAAAAAAAAAADIAAAAAAAAAAAAjADIAAAAAAAAAAABcADIAAAAAAAAAAABuADIAAAAFAAAAAABvADIAAAAAAAAAAAAAADMAAAAAAAAAAAAjADMAAAAAAAAAAABcADMAAAAAAAAAAABuADMAAAAFAAAAAABvADMAAAAAAAAAAAAAADQAAAAAAAAAAAAjADQAAAAAAAAAAABcADQAAAAAAAAAAABuADQAAAAFAAAAAABvADQAAAAAAAAAAAAAADUAAAAAAAAAAAAjADUAAAAAAAAAAABcADUAAAAAAAAAAABuADUAAAAFAAAAAABvADUAAAAAAAAAAAAAADYAAAAAAAAAAAAjADYAAAAAAAAAAABcADYAAAAAAAAAAABuADYAAAAFAAAAAABvADYAAAAAAAAAAAAAADcAAAAAAAAAAAAjADcAAAAAAAAAAABcADcAAAAAAAAAAABuADcAAAAFAAAAAABvADcAAAAAAAAAAAAAADgAAAAAAAAAAAAjADgAAAAAAAAAAABcADgAAAAAAAAAAABuADgAAAAFAAAAAABvADgAAAAAAAAAAAAAADkAAAAAAAAAAAAjADkAAAAAAAAAAABcADkAAAAAAAAAAABuADkAAAAFAAAAAABvADkAAAAAAAAAAAAAADoAAAAAAAAAAAAjADoAAAAAAAAAAABcADoAAAAAAAAAAABuADoAAAAFAAAAAABvADoAAAAAAAAAAAAAADsAAAAAAAAAAAAjADsAAAAAAAAAAABcADsAAAAAAAAA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")
+tile_set = SubResource("TileSet_sr5nf")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride"]
+
+[node name="Fixture_l_11_25" type="Node2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects"]
+position = Vector2(88, 200)
+script = ExtResource("3_gwymu")
+kind = "Fixture"
+glyph = "l"
+original_position = Vector2(88, 200)
+preview_entity = {
+"h": 8,
+"id": 0,
+"ox": 88,
+"oy": 200,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "lantern",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 88,
+"y": 200
+}
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects/Fixture_l_11_25"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_af5gp")
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects"]
+position = Vector2(96, 200)
+script = ExtResource("3_gwymu")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(96, 200)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_cjfmq")
+
+[node name="milestone" type="Node2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects"]
+position = Vector2(536, 224)
+script = ExtResource("3_gwymu")
+petal_color = Color(0.8627451, 0.69098043, 0.57098037, 1)
+parameters = {
+"c": 67.0,
+"k": "milestone",
+"r": 27.0
+}
+original_position = Vector2(536, 224)
+original_petal_color = Color(0.8627451, 0.69098043, 0.57098037, 1)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects/milestone"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(11, -20)
+scale = Vector2(4.75, 5)
+texture = SubResource("ImageTexture_rsc2k")
+
+[node name="recoilPlatforms_0" type="Node2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects"]
+position = Vector2(304, 216)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 38.0,
+"depth": 3.0,
+"id": "Receiving runway",
+"loadFrames": 30.0,
+"r": 27.0,
+"releaseSpeed": 120.0,
+"w": 9.0
+}
+original_position = Vector2(304, 216)
+field_path = ["recoilPlatforms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects/recoilPlatforms_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_jgapi")
+
+[node name="hingeArms_0" type="Node2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects"]
+position = Vector2(128, 208)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 16.0,
+"dir": "right",
+"id": "Throwing dock",
+"length": 12.0,
+"r": 26.0
+}
+original_position = Vector2(128, 208)
+field_path = ["hingeArms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects/hingeArms_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_bt3sa")
+
+[node name="lines_0" type="Node2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects"]
+position = Vector2(192, 224)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [24.0, 28.0],
+"b": [42.0, 29.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(192, 224)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects/lines_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_lcsos")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects/lines_0"]
+curve = SubResource("Curve2D_a6dx0")
+
+[node name="lines_1" type="Node2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects"]
+position = Vector2(528, 208)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [66.0, 26.0],
+"b": [104.0, 26.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(528, 208)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects/lines_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_7m3d4")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects/lines_1"]
+curve = SubResource("Curve2D_7fgs5")

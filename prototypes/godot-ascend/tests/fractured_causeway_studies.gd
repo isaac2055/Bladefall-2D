@@ -54,13 +54,13 @@ func _initialize():run.call_deferred()
 func run():
  var d=JSON.parse_string(FileAccess.get_file_as_string("res://data/world23.json"))
  var old=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/causeway-three-preservation.json"))
- check(d.world.rooms.size()==40 and d.world.requiredMainRooms.size()==16,"40 definitions, 16 independent main requirements")
+ check(d.world.rooms.size()==43 and d.world.requiredMainRooms.size()==19,"43 definitions, 19 independent main requirements")
  for id in old.rooms:
   check(d.world.rooms.any(func(r):return r.id==id and JSON.stringify(r).sha256_text()==old.rooms[id]),"preserved room: "+id)
  check(old.tapes.keys().all(func(id):return JSON.stringify(d.world.tapes[id]).sha256_text()==old.tapes[id]),"all prior road recordings preserved")
  check(d.world.sections.slice(0,old.sections.size())==old.sections and d.world.requiredMainRooms.slice(0,old.required.size())==old.required,"prior placements, checkpoints and main requirements preserved")
  var crossroads=d.world.rooms.filter(func(r):return r.id=="cl23-atlas-crossroads")[0].duplicate(true)
- var incoming=crossroads.atlasMain.to==d.world.rooms[39].id and crossroads.atlasSockets[0].to==d.world.rooms[39].id and crossroads.atlasMain.toFloor==6 and crossroads.atlasSockets[0].toFloor==6
+ var incoming=crossroads.atlasMain.to==d.world.rooms[42].id and crossroads.atlasSockets[0].to==d.world.rooms[42].id and crossroads.atlasMain.toFloor==28 and crossroads.atlasSockets[0].toFloor==28
  crossroads.atlasMain=old.crossroads.atlasMain;crossroads.atlasSockets[0]=old.crossroads.atlasSockets[0]
  check(incoming and crossroads==old.crossroads,"crossroads changes only its incoming link to the last new room")
  var metadata=d.world.duplicate(true)
@@ -113,7 +113,7 @@ func run():
  var bypasses=JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/causeway-three-bypasses.json"))
  for witness in bypasses:check(not clears(play(d,int(witness.i),witness.tape)),"reproduced edge-grab shortcut rejected: "+witness.label)
  var native=load("res://levels/world23.tscn").instantiate();var base=Authoring.baseline(d);var compiled=native.compile_into(base)
- check(Codec.first_difference(base,compiled)=="" and native.validate_data(compiled).is_empty(),"all 40 native rooms round-trip and validate")
+ check(Codec.first_difference(base,compiled)=="" and native.validate_data(compiled).is_empty(),"all 43 native rooms round-trip and validate")
  native.free()
  var app=Main.instantiate();app.test_mode=true;app.initial_world=23;root.add_child(app)
  await process_frame;app.set_physics_process(false)

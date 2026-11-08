@@ -37,6 +37,14 @@ func _initialize():
    for part in seam.get("toFire",[]):
     for i in range(int(part[0])): advance(w,decoded(part[1]))
   var target=w.active().room.spawn
+  if id=="cl23-puzzle-cover-take-away" and w.active().p.y<160:
+   # Enter above the covered court, then drop through its marked upper opening.
+   for tick in range(360):
+    var p=w.active().p;var dx=268-p.x;var desired=clamp(dx*10,-90,90)
+    if abs(dx)<1 and p.vx==0 and p.onGround:break
+    advance(w,{"r":p.vx<desired-1,"l":p.vx>desired+1})
+   advance(w,{"d":true,"jump":true})
+   for tick in range(45):advance(w,{})
   if id=="cl23-puzzle-weight-take-back" and w.active().p.y>200:
    # The checkpoint is upstairs; reach it through the visible entry staircase.
    for tick in range(360):

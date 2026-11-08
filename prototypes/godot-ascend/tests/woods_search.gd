@@ -5,7 +5,7 @@ extends RefCounted
 const Core=preload("res://scripts/core.gd")
 const Loader=preload("res://scripts/room_loader.gd")
 const Routes=preload("res://tests/workshop_routes.gd")
-const FIELDS=["p","ents","prev","buf","frame","room_frame","freeze","phase","shards","foothold_previous","kick_direction","awake","combat","brute_waves","exited"]
+const FIELDS=["p","ents","prev","buf","frame","room_frame","freeze","phase","shards","foothold_previous","kick_direction","awake","combat","brute_waves","exited","actor_bounds"]
 static func snapshot(core):
  var state={}
  for field in FIELDS:
@@ -143,7 +143,7 @@ static func solve(data,index,options={}):
      if Routes.at_goal(core):return {"found":true,"nodes":nodes,"depth":depth,"tape":prefix+parent.tape+[action]}
     if invalid:continue
     var state=snapshot(core)
-    var digest=hash([state.p,state.ents,state.prev,state.buf,state.freeze,state.phase,state.kick_direction])
+    var digest=hash([state.p,state.ents,state.prev,state.buf,state.freeze,state.phase,state.kick_direction,state.combat,state.brute_waves,state.awake])
     if track_wave:digest=hash([digest,branch_dash])
     if seen.has(digest):continue
     seen[digest]=true
