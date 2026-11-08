@@ -12,12 +12,13 @@ import re
 import subprocess
 import time
 
+CURRENT_SUITES = "sampler sampler_app run_profile cores world2_journey world3_journey fractured_journey woods_nine".split()
 SUITES = """fractured_woods_routes_required fractured_woods_three
 fractured_woods_three_app fractured_woods_feel fractured_nine fractured_nine_app
 feel_journey fractured_next fractured section_menu campaign_workshop application
 world_checks world2_journey world3_journey black_woods causeway fractured_next_app
 fractured_puzzles_app fractured_journey workshop six_puzzles_app five_puzzles_app
-editor_play fractured_causeway_studies causeway_next cover_two_baits cover_comparison causeway_launch_rooms weight_comparison""".split()
+editor_play fractured_causeway_studies causeway_next cover_two_baits cover_comparison causeway_launch_rooms weight_comparison""".split() + CURRENT_SUITES
 SOURCE_HASH_SUITES = {"fractured_woods_three", "fractured_woods_three_app", "fractured_nine_app"}
 
 
@@ -76,7 +77,7 @@ def main():
         raise SystemExit("FAIL missing-script negative control was accepted")
     print("PASS missing-script negative control rejected", flush=True)
     results = []
-    for name in args.suite or SUITES:
+    for name in args.suite or CURRENT_SUITES:
         result, log = run(name, [project] if name in SOURCE_HASH_SUITES else [])
         results.append(result)
         (output / "pack-results.json").write_text(json.dumps(results, indent=2) + "\n")

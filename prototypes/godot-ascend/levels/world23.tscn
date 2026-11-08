@@ -1,4 +1,4 @@
-[gd_scene load_steps=420 format=4]
+[gd_scene load_steps=478 format=4]
 
 [ext_resource type="Script" path="res://authoring/world.gd" id="1_yurgf"]
 [ext_resource type="Script" path="res://authoring/room.gd" id="2_incbt"]
@@ -2580,6 +2580,354 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Image" id="Image_o3o44"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_3vote"]
+image = SubResource("Image_o3o44")
+
+[sub_resource type="Image" id="Image_615s0"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_u7ljp"]
+image = SubResource("Image_615s0")
+
+[sub_resource type="Image" id="Image_f1p0f"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_fxbpm"]
+image = SubResource("Image_f1p0f")
+
+[sub_resource type="Image" id="Image_ag0fb"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_npild"]
+image = SubResource("Image_ag0fb")
+
+[sub_resource type="Curve2D" id="Curve2D_hyi3e"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112, -64)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_3vpww"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_nwk5x"]
+image = SubResource("Image_3vpww")
+
+[sub_resource type="Image" id="Image_1sdur"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_i418t"]
+image = SubResource("Image_1sdur")
+
+[sub_resource type="Image" id="Image_8io7d"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_h2h1q"]
+image = SubResource("Image_8io7d")
+
+[sub_resource type="Image" id="Image_sn65b"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_owsdo"]
+image = SubResource("Image_sn65b")
+
+[sub_resource type="Image" id="Image_lbsya"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_80dj0"]
+image = SubResource("Image_lbsya")
+
+[sub_resource type="Image" id="Image_n8r4q"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_frps4"]
+image = SubResource("Image_n8r4q")
+
+[sub_resource type="Image" id="Image_by63g"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_hj36a"]
+image = SubResource("Image_by63g")
+
+[sub_resource type="Curve2D" id="Curve2D_23q1u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 160, 40)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_tivmb"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_m85lu"]
+image = SubResource("Image_tivmb")
+
+[sub_resource type="Curve2D" id="Curve2D_73o1o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -8, 64)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_tduch"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_f30pm"]
+image = SubResource("Image_tduch")
+
+[sub_resource type="Curve2D" id="Curve2D_p6tad"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 32)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_jnlfy"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ii7eb"]
+image = SubResource("Image_jnlfy")
+
+[sub_resource type="Image" id="Image_sxevu"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_imkdd"]
+image = SubResource("Image_sxevu")
+
+[sub_resource type="Image" id="Image_mkxp0"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ya4jj"]
+image = SubResource("Image_mkxp0")
+
+[sub_resource type="Image" id="Image_7u1kg"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_exeb3"]
+image = SubResource("Image_7u1kg")
+
+[sub_resource type="Image" id="Image_u1sf2"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_4mjny"]
+image = SubResource("Image_u1sf2")
+
+[sub_resource type="Image" id="Image_0tnx2"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_62yga"]
+image = SubResource("Image_0tnx2")
+
+[sub_resource type="Image" id="Image_fuh3t"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_xomda"]
+image = SubResource("Image_fuh3t")
+
+[sub_resource type="Image" id="Image_080nq"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_bn6jm"]
+image = SubResource("Image_080nq")
+
+[sub_resource type="Image" id="Image_lhihb"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_flc3n"]
+image = SubResource("Image_lhihb")
+
+[sub_resource type="Image" id="Image_csio2"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ns70i"]
+image = SubResource("Image_csio2")
+
+[sub_resource type="Image" id="Image_6dkpu"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_41qip"]
+image = SubResource("Image_6dkpu")
+
+[sub_resource type="Image" id="Image_asy0m"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ykj5o"]
+image = SubResource("Image_asy0m")
+
+[sub_resource type="Image" id="Image_8obp2"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_375rg"]
+image = SubResource("Image_8obp2")
+
+[sub_resource type="Image" id="Image_m6cue"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_h7nt6"]
+image = SubResource("Image_m6cue")
+
 [node name="Ascend_23" type="Node2D"]
 script = ExtResource("1_yurgf")
 world_number = 23
@@ -2791,6 +3139,7 @@ world_settings = {
 "cl23-fc23-rise": "cl23-fc23-counterpoise",
 "cl23-fc23-well": "cl23-fc23-gantry"
 },
+"samplerAppendedRooms": ["cl23-cover-comparison-shelter", "cl23-cover-comparison-dock", "cl23-puzzle-roof-launch", "cl23-weight-airborne", "cl23-weight-intercept"],
 "saved": [],
 "secrets": [{
 "host": "cl23-fc23-middle",
@@ -3073,6 +3422,31 @@ world_settings = {
 "room": "cl23-atlas-crossroads",
 "x": 914.0,
 "y": -252.0
+}, {
+"fire": null,
+"room": "cl23-cover-comparison-shelter",
+"x": 1100.0,
+"y": -260.0
+}, {
+"fire": null,
+"room": "cl23-cover-comparison-dock",
+"x": 1200.0,
+"y": -260.0
+}, {
+"fire": null,
+"room": "cl23-puzzle-roof-launch",
+"x": 1300.0,
+"y": -260.0
+}, {
+"fire": null,
+"room": "cl23-weight-airborne",
+"x": 1400.0,
+"y": -260.0
+}, {
+"fire": null,
+"room": "cl23-weight-intercept",
+"x": 1500.0,
+"y": -260.0
 }],
 "tapes": {
 "cl23-bank-b46": [[17.0, "r"], [15.0, "rj"], [1.0, "r"], [8.0, "rj"], [1.0, "rjds"], [16.0, "rj"], [80.0, "r"]],
@@ -3083,6 +3457,8 @@ world_settings = {
 "cl23-conn-3": [[12.0, "rj"], [5.0, "ux"], [6.0, "r"], [12.0, "j"], [12.0, "j"], [20.0, "lgu"], [12.0, "rj"], [20.0, "rgu"], [12.0, "rj"], [20.0, "lgu"], [12.0, "rj"], [20.0, "rgu"], [16.0, "gu"], [20.0, "rgu"]],
 "cl23-conn-4": [[6.0, "r"], [12.0, "rj"], [5.0, "ux"], [6.0, "r"], [12.0, "j"], [20.0, "rgu"], [12.0, "j"], [20.0, "lgu"], [12.0, "rj"], [20.0, "rgu"], [12.0, "rj"], [20.0, "lgu"], [12.0, "j"], [20.0, "rgu"], [12.0, "j"], [12.0, "j"]],
 "cl23-conn-5": [[20.0, "lgu"], [12.0, "lj"], [5.0, "ux"], [6.0, "r"], [12.0, "j"], [20.0, "rgu"], [12.0, "j"], [20.0, "lgu"], [12.0, "rj"], [20.0, "rgu"], [12.0, "rj"], [20.0, "lgu"], [12.0, "j"], [20.0, "rgu"], [12.0, "j"], [12.0, "j"]],
+"cl23-cover-comparison-dock": [[1.0, "l"], [53.0, ""], [18.0, "lj"], [12.0, "ux"], [10.0, "l"], [100.0, ""], [18.0, "r"], [50.0, ""], [8.0, "j"], [14.0, "lj"], [12.0, "ux"], [18.0, "l"], [10.0, ""], [8.0, "r"], [24.0, "rj"], [12.0, "rx"], [14.0, "r"], [6.0, "l"], [10.0, ""], [1.0, "dj"], [25.0, ""], [6.0, "l"], [1.0, ""], [1.0, "ls"], [90.0, ""], [1.0, "dj"], [35.0, ""], [12.0, "dx"], [100.0, ""], [1.0, "dj"], [34.0, ""], [7.0, "j"], [12.0, "ux"], [100.0, ""], [1.0, "dj"], [32.0, "r"], [10.0, "r"], [24.0, "rj"], [35.0, ""], [12.0, "rx"], [80.0, ""], [70.0, "r"]],
+"cl23-cover-comparison-shelter": [[1.0, "l"], [53.0, ""], [18.0, "j"], [12.0, "ux"], [100.0, ""], [17.0, ""], [18.0, "j"], [12.0, "ux"], [60.0, ""], [44.0, "l"], [12.0, "ux"], [130.0, ""], [1.0, "dj"], [20.0, ""], [1.0, "rs"], [12.0, "rx"], [23.0, "r"], [18.0, "j"], [90.0, ""], [38.0, "rj"], [20.0, ""], [90.0, "r"]],
 "cl23-fc23-camp": [[5.0, "rx"], [40.0, "ru"], [3.0, "j"], [20.0, "ru"], [5.0, "rdx"], [12.0, "rj"], [6.0, "r"]],
 "cl23-fc23-camp#door": [[12.0, "lj"], [5.0, "ux"], [16.0, "u"], [12.0, "j"], [6.0, "r"]],
 "cl23-fc23-chainwalk": [[5.0, "rdx"], [12.0, "rj"], [12.0, "lu"], [8.0, "rj"], [5.0, "rx"], [20.0, "ru"], [5.0, "rx"], [20.0, "ru"], [2.0, "rux"], [20.0, "ru"], [12.0, "l"], [5.0, "ldx"], [12.0, "j"], [12.0, "ru"], [5.0, "lx"], [5.0, "ldx"], [12.0, "lj"], [12.0, "lj"], [20.0, "lu"]],
@@ -3115,9 +3491,12 @@ world_settings = {
 "cl23-puzzle-delivery-cannot-ride": [[10.0, ""], [1.0, "g"], [18.0, "rj"], [10.0, ""], [58.0, "r"], [12.0, ""], [1.0, "g"], [100.0, ""], [56.0, "l"], [12.0, ""], [1.0, "ds"], [20.0, ""], [36.0, "rj"], [30.0, ""], [16.0, "r"], [12.0, ""], [12.0, "rux"], [100.0, ""], [7.0, "rj"], [10.0, "rdx"], [21.0, "rj"], [12.0, "rux"], [16.0, "r"], [20.0, ""], [12.0, "ux"], [100.0, ""], [85.0, "r"]],
 "cl23-puzzle-fold-after-climb": [[39.0, "r"], [10.0, ""], [40.0, "j"], [1.0, ""], [12.0, "ljg"], [95.0, "lgu"], [3.0, "r"], [20.0, ""], [1.0, "us"], [20.0, ""], [24.0, "r"], [20.0, ""], [12.0, "ux"], [45.0, ""], [7.0, "lj"], [10.0, "ldx"], [20.0, "lj"], [12.0, "lux"], [30.0, "l"], [20.0, ""], [1.0, ""], [1.0, "lj"], [7.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [2.0, "lj"], [2.0, "rj"], [1.0, "lj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [7.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, ""], [4.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [8.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [7.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, ""], [4.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [8.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [8.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, ""], [4.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [1.0, "j"], [1.0, "lj"], [8.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [8.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [4.0, "lj"], [1.0, "rj"], [3.0, "lj"], [1.0, "rj"], [1.0, ""], [3.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [2.0, "j"], [1.0, "rj"], [6.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [5.0, "lj"], [1.0, "rj"], [3.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [2.0, "rj"], [1.0, "lj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [6.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [2.0, "lj"], [2.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, ""], [4.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [1.0, "j"], [1.0, "rj"], [6.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [1.0, "rj"], [2.0, "lj"], [1.0, "rj"], [1.0, "lj"], [2.0, "rj"], [1.0, "lj"], [271.0, "r"]],
 "cl23-puzzle-line-behind-wall": [[37.0, "r"], [10.0, ""], [25.0, "rj"], [15.0, ""], [180.0, ""], [18.0, "l"], [40.0, ""], [120.0, ""], [30.0, "r"], [20.0, "rj"], [10.0, ""], [12.0, "ux"], [180.0, ""], [14.0, "l"], [20.0, ""], [22.0, "l"], [10.0, "lj"], [12.0, "lux"], [15.0, "l"], [20.0, ""], [12.0, "ux"], [110.0, ""], [100.0, "r"]],
+"cl23-puzzle-roof-launch": [[72.0, "l"], [12.0, ""], [40.0, "d"], [7.0, "j"], [1.0, "us"], [8.0, "ux"], [28.0, "rj"], [15.0, "r"], [20.0, ""]],
 "cl23-puzzle-weight-take-back": [[10.0, ""], [8.0, "l"], [10.0, ""], [1.0, "g"], [24.0, "lj"], [30.0, ""], [1.0, "dg"], [45.0, ""], [44.0, "l"], [20.0, ""], [1.0, "us"], [20.0, ""], [1.0, "us"], [20.0, ""], [40.0, "rj"], [15.0, ""], [1.0, "dg"], [10.0, "ld"], [30.0, "d"], [1.0, "ld"], [1.0, "g"], [11.0, ""], [26.0, "lj"], [12.0, "lux"], [30.0, "l"], [20.0, ""], [12.0, "ux"], [100.0, ""], [85.0, "r"]],
 "cl23-secret-p117": [[30.0, "r"], [10.0, "rj"], [5.0, "rux"], [28.0, "r"], [1.0, "us"], [14.0, "r"], [14.0, "rj"], [1.0, "us"], [28.0, "r"], [5.0, "rx"], [14.0, "r"], [5.0, "rux"], [14.0, "rj"]],
-"cl23-walk-6-9": [[12.0, "r"], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""]]
+"cl23-walk-6-9": [[12.0, "r"], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""], [20.0, "j"], [18.0, ""]],
+"cl23-weight-airborne": [[1.0, "r"], [40.0, ""], [31.0, "r"], [10.0, ""], [1.0, "dg"], [28.0, "rd"], [8.0, "d"], [11.0, "rj"], [1.0, "rjg"], [21.0, "rj"], [12.0, "rux"], [18.0, "r"], [8.0, "l"], [40.0, ""], [1.0, "dj"], [2.0, ""], [51.0, "r"], [10.0, ""], [28.0, "rj"], [10.0, "r"], [25.0, ""]],
+"cl23-weight-intercept": [[10.0, "r"], [1.0, "g"], [54.0, "r"], [10.0, ""], [1.0, "g"], [32.0, "d"], [24.0, "rj"], [12.0, "rux"], [8.0, "r"], [8.0, "l"], [30.0, ""], [1.0, "dj"], [20.0, ""], [16.0, "rj"], [1.0, "dg"], [1.0, "d"], [1.0, "g"], [5.0, ""], [12.0, "rx"], [14.0, "r"], [50.0, ""], [25.0, "rj"], [15.0, ""]]
 }
 }
 gameplay_settings = {
@@ -3161,7 +3540,7 @@ gameplay_settings = {
 "climbSlipSpeed": 30.0,
 "climbStillCost": 10.0,
 "climbTired": 20.0,
-"climbUpCost": 45.45454545454545,
+"climbUpCost": 45.4545454545455,
 "climbUpSpeed": -45.0,
 "crumbleRespawnFrames": 120.0,
 "crumbleShakeFrames": 24.0,
@@ -3356,7 +3735,7 @@ original_palette = {
 "bunnies": "ffffffff",
 "flowers": "dcb092ff"
 }
-source_fingerprint = "074fae998067ba68af1c3e6599f104ff5af12234fe5a990b61dede02ba7ab0dc"
+source_fingerprint = "69175bec2c005709a00866c2d4cc97446a36a1131ddd935795b8b28acce3b99b"
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -3391,7 +3770,7 @@ settings = {
 "question": "The lift throws you straight at the roof, and the sill under it is cracked. How do you get under it without losing the speed?",
 "rbr": 23.0
 }
-original_fields = ["id", "name", "exit", "hint", "question", "decor", "zips", "map", "rbr", "palette", "origin", "doors", "entry", "atlasMouth", "atlasSockets"]
+original_fields = ["atlasMouth", "atlasSockets", "decor", "doors", "entry", "exit", "hint", "id", "map", "name", "origin", "palette", "question", "rbr", "zips"]
 original_spawn = Vector2(24, 88)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-fc23-camp"]
@@ -3544,7 +3923,7 @@ settings = {
 "rbr": 23.0,
 "seam": [[0.0, 14.0, "#"], [0.0, 15.0, "#"], [0.0, 16.0, "#"], [0.0, 17.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "hint", "question", "zips", "map", "rbr", "palette", "seam", "origin", "decor"]
+original_fields = ["decor", "exit", "hint", "id", "map", "name", "origin", "palette", "question", "rbr", "seam", "zips"]
 original_spawn = Vector2(24, 136)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-fc23-yard"]
@@ -3656,7 +4035,7 @@ settings = {
 "rbr": 23.0,
 "seam": [[0.0, 14.0, "#"], [0.0, 15.0, "#"], [0.0, 16.0, "#"], [0.0, 17.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "hint", "question", "lines", "zips", "map", "rbr", "palette", "seam", "origin", "decor"]
+original_fields = ["decor", "exit", "hint", "id", "lines", "map", "name", "origin", "palette", "question", "rbr", "seam", "zips"]
 array_fields = [["lines"]]
 original_spawn = Vector2(16, 136)
 
@@ -3831,7 +4210,7 @@ settings = {
 "rbr": 23.0,
 "seam": [[0.0, 10.0, "#"], [0.0, 11.0, "#"], [0.0, 12.0, "#"], [0.0, 13.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "hint", "question", "people", "decor", "zips", "map", "rbr", "palette", "seam", "origin", "closeWhilePlayed"]
+original_fields = ["closeWhilePlayed", "decor", "exit", "hint", "id", "map", "name", "origin", "palette", "people", "question", "rbr", "seam", "zips"]
 original_spawn = Vector2(32, 104)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-fc23-silas"]
@@ -4021,7 +4400,7 @@ settings = {
 "rbr": 23.0,
 "seam": [[0.0, 12.0, "#"], [0.0, 13.0, "#"], [0.0, 14.0, "#"], [0.0, 15.0, "#"], [1.0, 12.0, ">"], [1.0, 13.0, ">"], [1.0, 14.0, ">"], [1.0, 15.0, ">"]]
 }
-original_fields = ["id", "name", "exit", "hint", "question", "lines", "zips", "map", "rbr", "palette", "seam", "origin", "decor"]
+original_fields = ["decor", "exit", "hint", "id", "lines", "map", "name", "origin", "palette", "question", "rbr", "seam", "zips"]
 array_fields = [["lines"]]
 original_spawn = Vector2(16, 120)
 
@@ -4226,7 +4605,7 @@ settings = {
 "rows": 32.0,
 "seam": [[0.0, 27.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "palette", "connector", "cols", "rows", "map", "hint", "question", "seam", "origin", "decor"]
+original_fields = ["cols", "connector", "decor", "exit", "hint", "id", "map", "name", "origin", "palette", "question", "rows", "seam"]
 original_spawn = Vector2(8, 240)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-conn-1"]
@@ -4267,7 +4646,7 @@ settings = {
 "rbr": 23.0,
 "seam": [[0.0, 14.0, "#"], [0.0, 15.0, "#"], [0.0, 16.0, "#"], [0.0, 17.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "hint", "question", "lines", "map", "rbr", "palette", "seam", "origin", "decor"]
+original_fields = ["decor", "exit", "hint", "id", "lines", "map", "name", "origin", "palette", "question", "rbr", "seam"]
 array_fields = [["lines"]]
 original_spawn = Vector2(16, 136)
 
@@ -4500,7 +4879,7 @@ settings = {
 "rows": 6.0,
 "seam": [[47.0, 0.0, "#"], [46.0, 0.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "palette", "connector", "cols", "rows", "map", "hint", "question", "seam", "origin", "decor"]
+original_fields = ["cols", "connector", "decor", "exit", "hint", "id", "map", "name", "origin", "palette", "question", "rows", "seam"]
 original_spawn = Vector2(360, 24)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-conn-2"]
@@ -4541,7 +4920,7 @@ settings = {
 "rbr": 23.0,
 "seam": [[39.0, 14.0, "#"], [39.0, 15.0, "#"], [39.0, 16.0, "#"], [39.0, 17.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "hint", "question", "lines", "zips", "map", "rbr", "palette", "seam", "origin", "decor"]
+original_fields = ["decor", "exit", "hint", "id", "lines", "map", "name", "origin", "palette", "question", "rbr", "seam", "zips"]
 array_fields = [["lines"]]
 original_spawn = Vector2(296, 136)
 
@@ -4739,14 +5118,14 @@ settings = {
 "hint": "",
 "id": "cl23-conn-3",
 "name": "",
-&"nativeOpenLeftShaft": true,
+"nativeOpenLeftShaft": true,
 "origin": "conn-3",
 "palette": "fractured",
 "question": "",
 "rows": 32.0,
 "seam": [[0.0, 31.0, "#"], [1.0, 31.0, "#"], [0.0, 30.0, "#"], [1.0, 30.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "palette", "connector", "cols", "rows", "map", "hint", "question", "seam", "origin", "decor", &"nativeOpenLeftShaft"]
+original_fields = ["cols", "connector", "decor", "exit", "hint", "id", "map", "name", "nativeOpenLeftShaft", "origin", "palette", "question", "rows", "seam"]
 original_spawn = Vector2(16, 232)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-conn-3"]
@@ -4792,8 +5171,8 @@ settings = {
 "rbr": 23.0,
 "seam": []
 }
-original_fields = ["id", "name", "exit", "hint", "question", "decor", "combat", "map", "rbr", "palette", "seam", "origin"]
-array_fields = [["combat", "enemies"], ["combat", "doors"]]
+original_fields = ["combat", "decor", "exit", "hint", "id", "map", "name", "origin", "palette", "question", "rbr", "seam"]
+array_fields = [["combat", "doors"], ["combat", "enemies"]]
 original_spawn = Vector2(24, 64)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-fc23-standard"]
@@ -4859,6 +5238,29 @@ position = Vector2(11, -20)
 scale = Vector2(4.75, 5)
 texture = SubResource("ImageTexture_o732y")
 
+[node name="doors_0" type="Node2D" parent="Rooms/cl23-fc23-standard/Objects"]
+position = Vector2(240, 8)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brittle": true,
+"h": 136.0,
+"w": 16.0,
+"x": 240.0,
+"y": 8.0
+}
+original_position = Vector2(240, 8)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-fc23-standard/Objects/doors_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_m4b4h")
+
 [node name="enemies_0" type="Node2D" parent="Rooms/cl23-fc23-standard/Objects"]
 position = Vector2(24, 128)
 script = ExtResource("3_gwymu")
@@ -4878,29 +5280,6 @@ world_number = 23
 metadata/_edit_group_ = true
 
 [node name="Selection" type="Sprite2D" parent="Rooms/cl23-fc23-standard/Objects/enemies_0"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-scale = Vector2(1.25, 1.25)
-texture = SubResource("ImageTexture_m4b4h")
-
-[node name="doors_0" type="Node2D" parent="Rooms/cl23-fc23-standard/Objects"]
-position = Vector2(240, 8)
-script = ExtResource("3_gwymu")
-kind = "Mechanism"
-parameters = {
-"brittle": true,
-"h": 136.0,
-"w": 16.0,
-"x": 240.0,
-"y": 8.0
-}
-original_position = Vector2(240, 8)
-field_path = ["combat", "doors"]
-array_element = true
-world_number = 23
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/cl23-fc23-standard/Objects/doors_0"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 scale = Vector2(1.25, 1.25)
@@ -4929,8 +5308,8 @@ settings = {
 "seam": [[0.0, 14.0, "#"], [0.0, 15.0, "#"], [0.0, 16.0, "#"], [0.0, 17.0, "#"]],
 "study": true
 }
-original_fields = ["id", "name", "exit", "study", "hint", "question", "decor", "combat", "map", "rbr", "palette", "seam", "origin"]
-array_fields = [["combat", "enemies"], ["combat", "doors"]]
+original_fields = ["combat", "decor", "exit", "hint", "id", "map", "name", "origin", "palette", "question", "rbr", "seam", "study"]
+array_fields = [["combat", "doors"], ["combat", "enemies"]]
 original_spawn = Vector2(48, 136)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-fc23-west"]
@@ -5104,6 +5483,29 @@ position = Vector2(11, -20)
 scale = Vector2(4.75, 5)
 texture = SubResource("ImageTexture_sbm05")
 
+[node name="doors_0" type="Node2D" parent="Rooms/cl23-fc23-west/Objects"]
+position = Vector2(296, 8)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"h": 136.0,
+"w": 8.0,
+"ward": "brute",
+"x": 296.0,
+"y": 8.0
+}
+original_position = Vector2(296, 8)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-fc23-west/Objects/doors_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_n76xn")
+
 [node name="enemies_0" type="Node2D" parent="Rooms/cl23-fc23-west/Objects"]
 position = Vector2(200, 128)
 script = ExtResource("3_gwymu")
@@ -5128,29 +5530,6 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 scale = Vector2(1.25, 1.25)
-texture = SubResource("ImageTexture_n76xn")
-
-[node name="doors_0" type="Node2D" parent="Rooms/cl23-fc23-west/Objects"]
-position = Vector2(296, 8)
-script = ExtResource("3_gwymu")
-kind = "Mechanism"
-parameters = {
-"h": 136.0,
-"w": 8.0,
-"ward": "brute",
-"x": 296.0,
-"y": 8.0
-}
-original_position = Vector2(296, 8)
-field_path = ["combat", "doors"]
-array_element = true
-world_number = 23
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/cl23-fc23-west/Objects/doors_0"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-scale = Vector2(1.25, 1.25)
 texture = SubResource("ImageTexture_knyh4")
 
 [node name="cl23-conn-4" type="Node2D" parent="Rooms"]
@@ -5172,7 +5551,7 @@ settings = {
 "rows": 32.0,
 "seam": []
 }
-original_fields = ["id", "name", "exit", "palette", "connector", "cols", "rows", "map", "hint", "question", "seam", "origin", "decor"]
+original_fields = ["cols", "connector", "decor", "exit", "hint", "id", "map", "name", "origin", "palette", "question", "rows", "seam"]
 original_spawn = Vector2(8, 240)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-conn-4"]
@@ -5219,8 +5598,8 @@ settings = {
 "seam": [[31.0, 19.0, "#"], [32.0, 19.0, "#"], [31.0, 20.0, "#"], [32.0, 20.0, "#"], [31.0, 21.0, "#"], [32.0, 21.0, "#"], [31.0, 22.0, "#"], [32.0, 22.0, "#"], [31.0, 18.0, "#"], [32.0, 18.0, "#"]],
 "study": true
 }
-original_fields = ["id", "name", "exit", "study", "hint", "question", "decor", "combat", "map", "rbr", "palette", "seam", "origin"]
-array_fields = [["combat", "enemies"], ["combat", "doors"]]
+original_fields = ["combat", "decor", "exit", "hint", "id", "map", "name", "origin", "palette", "question", "rbr", "seam", "study"]
+array_fields = [["combat", "doors"], ["combat", "enemies"]]
 original_spawn = Vector2(264, 136)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-fc23-east"]
@@ -5394,6 +5773,29 @@ position = Vector2(11, -20)
 scale = Vector2(4.75, 5)
 texture = SubResource("ImageTexture_o1deu")
 
+[node name="doors_0" type="Node2D" parent="Rooms/cl23-fc23-east/Objects"]
+position = Vector2(16, 8)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"h": 136.0,
+"w": 8.0,
+"ward": "brute",
+"x": 16.0,
+"y": 8.0
+}
+original_position = Vector2(16, 8)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-fc23-east/Objects/doors_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_27p6x")
+
 [node name="enemies_0" type="Node2D" parent="Rooms/cl23-fc23-east/Objects"]
 position = Vector2(96, 128)
 script = ExtResource("3_gwymu")
@@ -5418,29 +5820,6 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 scale = Vector2(1.25, 1.25)
-texture = SubResource("ImageTexture_27p6x")
-
-[node name="doors_0" type="Node2D" parent="Rooms/cl23-fc23-east/Objects"]
-position = Vector2(16, 8)
-script = ExtResource("3_gwymu")
-kind = "Mechanism"
-parameters = {
-"h": 136.0,
-"w": 8.0,
-"ward": "brute",
-"x": 16.0,
-"y": 8.0
-}
-original_position = Vector2(16, 8)
-field_path = ["combat", "doors"]
-array_element = true
-world_number = 23
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/cl23-fc23-east/Objects/doors_0"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-scale = Vector2(1.25, 1.25)
 texture = SubResource("ImageTexture_0qht8")
 
 [node name="cl23-conn-5" type="Node2D" parent="Rooms"]
@@ -5462,7 +5841,7 @@ settings = {
 "rows": 32.0,
 "seam": []
 }
-original_fields = ["id", "name", "exit", "palette", "connector", "cols", "rows", "map", "hint", "question", "seam", "origin", "decor"]
+original_fields = ["cols", "connector", "decor", "exit", "hint", "id", "map", "name", "origin", "palette", "question", "rows", "seam"]
 original_spawn = Vector2(56, 240)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-conn-5"]
@@ -5522,7 +5901,7 @@ settings = {
 "rows": 23.0,
 "seam": [[20.0, 19.0, "#"], [21.0, 19.0, "#"], [20.0, 20.0, "#"], [21.0, 20.0, "#"], [20.0, 21.0, "#"], [21.0, 21.0, "#"], [20.0, 22.0, "#"], [21.0, 22.0, "#"], [20.0, 18.0, "#"], [21.0, 18.0, "#"]]
 }
-original_fields = ["id", "name", "origin", "exit", "cols", "rows", "map", "palette", "connector", "retiredChallenge", "seam", "doors", "returns", "people", "atlasSockets"]
+original_fields = ["atlasSockets", "cols", "connector", "doors", "exit", "id", "map", "name", "origin", "palette", "people", "retiredChallenge", "returns", "rows", "seam"]
 original_spawn = Vector2(176, 136)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-fc23-middle"]
@@ -5564,7 +5943,7 @@ settings = {
 "rbr": 23.0,
 "seam": [[4.0, 21.0, "#"], [5.0, 21.0, "#"], [4.0, 22.0, "#"], [5.0, 22.0, "#"], [4.0, 20.0, "#"], [5.0, 20.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "hint", "question", "lines", "zips", "map", "rbr", "palette", "quest", "seam", "origin", "decor"]
+original_fields = ["decor", "exit", "hint", "id", "lines", "map", "name", "origin", "palette", "quest", "question", "rbr", "seam", "zips"]
 array_fields = [["lines"]]
 original_spawn = Vector2(24, 152)
 
@@ -5794,7 +6173,7 @@ settings = {
 "id": "cl23-fc23-q-governor",
 "lines": [],
 "name": "A Gear That No Longer Turns",
-&"nativeOpenLeftShaft": true,
+"nativeOpenLeftShaft": true,
 "origin": "fc23-q-governor",
 "palette": "fractured",
 "quest": "silas-echo",
@@ -5807,7 +6186,7 @@ settings = {
 }],
 "seam": [[0.0, 17.0, "#"], [1.0, 17.0, "#"], [0.0, 18.0, "#"], [1.0, 18.0, "#"], [0.0, 19.0, "#"], [1.0, 19.0, "#"], [0.0, 20.0, "#"], [1.0, 20.0, "#"], [0.0, 21.0, "#"], [1.0, 21.0, "#"], [0.0, 22.0, "#"], [1.0, 22.0, "#"], [0.0, 16.0, "#"], [1.0, 16.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "hint", "question", "lines", "people", "decor", "zips", "map", "rbr", "palette", "quest", "seam", "origin", "returns", &"nativeOpenLeftShaft"]
+original_fields = ["decor", "exit", "hint", "id", "lines", "map", "name", "nativeOpenLeftShaft", "origin", "palette", "people", "quest", "question", "rbr", "returns", "seam", "zips"]
 array_fields = [["lines"]]
 original_spawn = Vector2(16, 120)
 
@@ -6156,7 +6535,7 @@ settings = {
 "rows": 5.0,
 "seam": [[0.0, 2.0, "#"], [0.0, 3.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "entry", "seam", "palette", "passage", "cols", "rows", "map", "hint", "question", "origin"]
+original_fields = ["cols", "entry", "exit", "hint", "id", "map", "name", "origin", "palette", "passage", "question", "rows", "seam"]
 original_spawn = Vector2(0, 24)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-pass-19"]
@@ -6233,7 +6612,7 @@ settings = {
 "rows": 6.0,
 "seam": [[2.0, 5.0, "#"], [3.0, 5.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "entry", "seam", "palette", "passage", "cols", "rows", "map", "hint", "question", "origin"]
+original_fields = ["cols", "entry", "exit", "hint", "id", "map", "name", "origin", "palette", "passage", "question", "rows", "seam"]
 original_spawn = Vector2(0, 16)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-pass-20"]
@@ -6277,7 +6656,7 @@ settings = {
 "rows": 4.0,
 "seam": [[34.0, 1.0, "#"], [34.0, 2.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "entry", "seam", "palette", "passage", "cols", "rows", "map", "hint", "question", "origin"]
+original_fields = ["cols", "entry", "exit", "hint", "id", "map", "name", "origin", "palette", "passage", "question", "rows", "seam"]
 original_spawn = Vector2(272, 16)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-pass-21"]
@@ -6321,7 +6700,7 @@ settings = {
 "rows": 6.0,
 "seam": [[4.0, 1.0, "#"], [4.0, 2.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "entry", "seam", "palette", "passage", "cols", "rows", "map", "hint", "question", "origin"]
+original_fields = ["cols", "entry", "exit", "hint", "id", "map", "name", "origin", "palette", "passage", "question", "rows", "seam"]
 original_spawn = Vector2(32, 16)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-pass-22"]
@@ -6355,14 +6734,14 @@ settings = {
 "id": "cl23-secret-p117",
 "lock": [],
 "name": "Pogo Up",
-&"nativeOpenLeftShaft": true,
+"nativeOpenLeftShaft": true,
 "origin": "p117",
 "palette": "fractured",
 "question": "The roof is thorns and the pods hang just under it. Which way do you cut to bounce off them?",
 "seam": [[0.0, 21.0, "#"], [1.0, 21.0, "#"], [0.0, 22.0, "#"], [1.0, 22.0, "#"], [0.0, 20.0, "#"], [1.0, 20.0, "#"]],
 "secret": true
 }
-original_fields = ["id", "name", "hint", "question", "map", "lock", "palette", "seam", "origin", "decor", "secret", &"nativeOpenLeftShaft"]
+original_fields = ["decor", "hint", "id", "lock", "map", "name", "nativeOpenLeftShaft", "origin", "palette", "question", "seam", "secret"]
 original_spawn = Vector2(16, 152)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-secret-p117"]
@@ -6497,7 +6876,7 @@ settings = {
 "rows": 5.0,
 "seam": [[0.0, 2.0, "#"], [0.0, 3.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "entry", "seam", "palette", "lock", "passage", "cols", "rows", "map", "hint", "question", "origin"]
+original_fields = ["cols", "entry", "exit", "hint", "id", "lock", "map", "name", "origin", "palette", "passage", "question", "rows", "seam"]
 original_spawn = Vector2(0, 24)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-pass-23"]
@@ -6575,7 +6954,7 @@ settings = {
 "rows": 14.0,
 "seam": [[1.0, 13.0, "#"], [2.0, 13.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "entry", "seam", "palette", "lock", "passage", "cols", "rows", "map", "hint", "question", "origin"]
+original_fields = ["cols", "entry", "exit", "hint", "id", "lock", "map", "name", "origin", "palette", "passage", "question", "rows", "seam"]
 original_spawn = Vector2(8, 0)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-pass-24"]
@@ -6620,7 +6999,7 @@ settings = {
 "rows": 5.0,
 "seam": [[2.0, 4.0, "#"], [3.0, 4.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "entry", "seam", "palette", "lock", "passage", "cols", "rows", "map", "hint", "question", "origin"]
+original_fields = ["cols", "entry", "exit", "hint", "id", "lock", "map", "name", "origin", "palette", "passage", "question", "rows", "seam"]
 original_spawn = Vector2(0, 16)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-pass-25"]
@@ -6665,7 +7044,7 @@ settings = {
 "rows": 4.0,
 "seam": [[43.0, 1.0, "#"], [43.0, 2.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "entry", "seam", "palette", "lock", "passage", "cols", "rows", "map", "hint", "question", "origin"]
+original_fields = ["cols", "entry", "exit", "hint", "id", "lock", "map", "name", "origin", "palette", "passage", "question", "rows", "seam"]
 original_spawn = Vector2(344, 16)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-pass-26"]
@@ -6710,7 +7089,7 @@ settings = {
 "rows": 5.0,
 "seam": [[4.0, 1.0, "#"], [4.0, 2.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "entry", "seam", "palette", "lock", "passage", "cols", "rows", "map", "hint", "question", "origin"]
+original_fields = ["cols", "entry", "exit", "hint", "id", "lock", "map", "name", "origin", "palette", "passage", "question", "rows", "seam"]
 original_spawn = Vector2(32, 16)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-pass-27"]
@@ -6755,7 +7134,7 @@ settings = {
 "rows": 36.0,
 "seam": [[1.0, 0.0, "#"], [2.0, 0.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "entry", "seam", "palette", "lock", "passage", "cols", "rows", "map", "hint", "question", "origin"]
+original_fields = ["cols", "entry", "exit", "hint", "id", "lock", "map", "name", "origin", "palette", "passage", "question", "rows", "seam"]
 original_spawn = Vector2(8, 0)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-pass-28"]
@@ -6800,7 +7179,7 @@ settings = {
 "rows": 5.0,
 "seam": [[1.0, 0.0, "#"], [2.0, 0.0, "#"]]
 }
-original_fields = ["id", "name", "exit", "entry", "seam", "palette", "lock", "passage", "cols", "rows", "map", "hint", "question", "origin"]
+original_fields = ["cols", "entry", "exit", "hint", "id", "lock", "map", "name", "origin", "palette", "passage", "question", "rows", "seam"]
 original_spawn = Vector2(8, 24)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-pass-29"]
@@ -6856,7 +7235,7 @@ settings = {
 "seam": [[0.0, 12.0, "#"], [0.0, 13.0, "#"], [0.0, 14.0, "#"], [0.0, 15.0, "#"]],
 "study": true
 }
-original_fields = ["id", "name", "palette", "study", "dashes", "lock", "map", "hint", "question", "beams", "shutters", "origin", "bankOrigin", "rbr", "bank", "campaignImport", "seam"]
+original_fields = ["bank", "bankOrigin", "beams", "campaignImport", "dashes", "hint", "id", "lock", "map", "name", "origin", "palette", "question", "rbr", "seam", "shutters", "study"]
 array_fields = [["beams"]]
 original_spawn = Vector2(48, 120)
 
@@ -7214,7 +7593,7 @@ settings = {
 "seam": [[0.0, 4.0, "#"], [0.0, 5.0, "#"], [0.0, 6.0, "#"], [0.0, 7.0, "#"]],
 "study": true
 }
-original_fields = ["id", "name", "palette", "study", "exit", "lock", "map", "hint", "question", "sweepers", "origin", "bankOrigin", "rbr", "bank", "campaignImport", "seam"]
+original_fields = ["bank", "bankOrigin", "campaignImport", "exit", "hint", "id", "lock", "map", "name", "origin", "palette", "question", "rbr", "seam", "study", "sweepers"]
 original_spawn = Vector2(24, 56)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-bank-f23"]
@@ -7451,8 +7830,8 @@ settings = {
 "seam": [[31.0, 35.0, "#"], [32.0, 35.0, "#"], [31.0, 34.0, "#"], [32.0, 34.0, "#"]],
 "study": true
 }
-original_fields = ["id", "name", "palette", "rbr", "study", "movement", "aim8", "cols", "rows", "exit", "zips", "lock", "combat", "hint", "question", "map", "anvilSleds", "origin", "bankOrigin", "bank", "campaignImport", "seam"]
-array_fields = [["combat", "enemies"], ["combat", "doors"], ["anvilSleds"]]
+original_fields = ["aim8", "anvilSleds", "bank", "bankOrigin", "campaignImport", "cols", "combat", "exit", "hint", "id", "lock", "map", "movement", "name", "origin", "palette", "question", "rbr", "rows", "seam", "study", "zips"]
+array_fields = [["combat", "doors"], ["combat", "enemies"], ["anvilSleds"]]
 original_spawn = Vector2(264, 264)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-bank-f69"]
@@ -7656,6 +8035,29 @@ show_behind_parent = true
 position = Vector2(4, 4)
 texture = SubResource("ImageTexture_5nnvt")
 
+[node name="doors_0" type="Node2D" parent="Rooms/cl23-bank-f69/Objects"]
+position = Vector2(448, 8)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"h": 264.0,
+"w": 8.0,
+"ward": "brute",
+"x": 448.0,
+"y": 8.0
+}
+original_position = Vector2(448, 8)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-bank-f69/Objects/doors_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_6dt1q")
+
 [node name="enemies_0" type="Node2D" parent="Rooms/cl23-bank-f69/Objects"]
 position = Vector2(320, 256)
 script = ExtResource("3_gwymu")
@@ -7677,29 +8079,6 @@ world_number = 23
 metadata/_edit_group_ = true
 
 [node name="Selection" type="Sprite2D" parent="Rooms/cl23-bank-f69/Objects/enemies_0"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-scale = Vector2(1.25, 1.25)
-texture = SubResource("ImageTexture_6dt1q")
-
-[node name="doors_0" type="Node2D" parent="Rooms/cl23-bank-f69/Objects"]
-position = Vector2(448, 8)
-script = ExtResource("3_gwymu")
-kind = "Mechanism"
-parameters = {
-"h": 264.0,
-"w": 8.0,
-"ward": "brute",
-"x": 448.0,
-"y": 8.0
-}
-original_position = Vector2(448, 8)
-field_path = ["combat", "doors"]
-array_element = true
-world_number = 23
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/cl23-bank-f69/Objects/doors_0"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 scale = Vector2(1.25, 1.25)
@@ -7746,7 +8125,7 @@ settings = {
 "rows": 16.0,
 "seam": [[0.0, 11.0, "#"]]
 }
-original_fields = ["id", "name", "connector", "cols", "rows", "map", "exit", "palette", "origin", "campaignWalk", "entry", "seam"]
+original_fields = ["campaignWalk", "cols", "connector", "entry", "exit", "id", "map", "name", "origin", "palette", "rows", "seam"]
 original_spawn = Vector2(8, 112)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-walk-6-9"]
@@ -7870,7 +8249,7 @@ settings = {
 "palette": "fractured",
 "rows": 23.0
 }
-original_fields = ["id", "name", "map", "cols", "rows", "exit", "entry", "dashes", "palette", "atlasJunction", "connector", "atlasSockets", "atlasMain", "atlasRegion", "atlasRoads", "atlasDecks", "atlasFloor"]
+original_fields = ["atlasDecks", "atlasFloor", "atlasJunction", "atlasMain", "atlasRegion", "atlasRoads", "atlasSockets", "cols", "connector", "dashes", "entry", "exit", "id", "map", "name", "palette", "rows"]
 original_spawn = Vector2(352, 168)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-atlas-crossroads"]
@@ -8237,7 +8616,7 @@ settings = {
 "palette": "fractured",
 "rows": 23.0
 }
-original_fields = ["id", "name", "map", "cols", "rows", "exit", "entry", "dashes", "palette", "connector", "atlasJunction", "atlasSockets", "atlasMain", "atlasRegion", "atlasRoads", "atlasDecks", "atlasFloor"]
+original_fields = ["atlasDecks", "atlasFloor", "atlasJunction", "atlasMain", "atlasRegion", "atlasRoads", "atlasSockets", "cols", "connector", "dashes", "entry", "exit", "id", "map", "name", "palette", "rows"]
 original_spawn = Vector2(352, 168)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-atlas-arrival"]
@@ -8635,7 +9014,7 @@ settings = {
 "palette": "fractured",
 "rows": 64.0
 }
-original_fields = ["id", "name", "cols", "rows", "map", "exit", "dashes", "connector", "palette", "atlasTransit", "atlasSockets"]
+original_fields = ["atlasSockets", "atlasTransit", "cols", "connector", "dashes", "exit", "id", "map", "name", "palette", "rows"]
 original_spawn = Vector2(32, 464)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-passage-23-25"]
@@ -8699,8 +9078,8 @@ settings = {
 "rows": 32.0,
 "study": true
 }
-original_fields = ["id", "name", "cols", "rows", "exit", "exitSpan", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "study", "movement", "decor", "people", "zips", "puzzleGoal", "puzzleCameraAnchorY", "puzzleEntranceFloor", "puzzleExitFloor", "lines", "combat", "question", "hint", "map", "puzzleRoutes"]
-array_fields = [["lines"], ["combat", "enemies"], ["combat", "doors"]]
+original_fields = ["aim8", "cols", "combat", "dashes", "decor", "exit", "exitSpan", "hint", "id", "lines", "lock", "map", "movement", "name", "palette", "people", "puzzleCameraAnchorY", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleGoal", "puzzleRoutes", "puzzleStudy", "question", "rbr", "rows", "study", "zips"]
+array_fields = [["lines"], ["combat", "doors"], ["combat", "enemies"]]
 original_spawn = Vector2(344, 96)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-puzzle-line-behind-wall"]
@@ -8795,31 +9174,6 @@ texture = SubResource("ImageTexture_ytutr")
 [node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects/lines_1"]
 curve = SubResource("Curve2D_vdk8x")
 
-[node name="enemies_0" type="Node2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects"]
-position = Vector2(224, 160)
-script = ExtResource("3_gwymu")
-kind = "Mechanism"
-parameters = {
-"brute": true,
-"crush": 1.0,
-"face": 1.0,
-"kind": "hound",
-"stamp": "always",
-"x": 224.0,
-"y": 160.0
-}
-original_position = Vector2(224, 160)
-field_path = ["combat", "enemies"]
-array_element = true
-world_number = 23
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects/enemies_0"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-scale = Vector2(1.25, 1.25)
-texture = SubResource("ImageTexture_5wrxj")
-
 [node name="doors_0" type="Node2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects"]
 position = Vector2(416, 144)
 script = ExtResource("3_gwymu")
@@ -8841,7 +9195,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 scale = Vector2(1.25, 1.25)
-texture = SubResource("ImageTexture_8jwgi")
+texture = SubResource("ImageTexture_5wrxj")
 
 [node name="doors_1" type="Node2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects"]
 position = Vector2(128, 136)
@@ -8861,6 +9215,31 @@ world_number = 23
 metadata/_edit_group_ = true
 
 [node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects/doors_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_8jwgi")
+
+[node name="enemies_0" type="Node2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects"]
+position = Vector2(224, 160)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brute": true,
+"crush": 1.0,
+"face": 1.0,
+"kind": "hound",
+"stamp": "always",
+"x": 224.0,
+"y": 160.0
+}
+original_position = Vector2(224, 160)
+field_path = ["combat", "enemies"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-line-behind-wall/Objects/enemies_0"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 scale = Vector2(1.25, 1.25)
@@ -8902,7 +9281,7 @@ settings = {
 "rows": 48.0,
 "study": true
 }
-original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "dashes", "lock", "palette", "decor", "people", "zips", "recoilPlatforms", "hingeArms", "question", "hint", "map", "exitSpan", "rbr", "study", "puzzleStudy", "movement", "puzzleGoal", "puzzleCameraAnchorY", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleRoutes", "lines"]
+original_fields = ["aim8", "cols", "dashes", "decor", "exit", "exitSpan", "hingeArms", "hint", "id", "lines", "lock", "map", "movement", "name", "palette", "people", "puzzleCameraAnchorY", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleGoal", "puzzleRoutes", "puzzleStudy", "question", "rbr", "recoilPlatforms", "rows", "study", "zips"]
 array_fields = [["recoilPlatforms"], ["hingeArms"], ["lines"]]
 original_spawn = Vector2(224, 136)
 
@@ -9089,7 +9468,7 @@ settings = {
 "rows": 56.0,
 "study": true
 }
-original_fields = ["id", "name", "cols", "rows", "exit", "exitSpan", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "study", "movement", "dropThru", "decor", "people", "zips", "lines", "puzzleRoutes", "hingeArms", "puzzleGoal", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleCameraAnchorY", "question", "hint", "map"]
+original_fields = ["aim8", "cols", "dashes", "decor", "dropThru", "exit", "exitSpan", "hingeArms", "hint", "id", "lines", "lock", "map", "movement", "name", "palette", "people", "puzzleCameraAnchorY", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleGoal", "puzzleRoutes", "puzzleStudy", "question", "rbr", "rows", "study", "zips"]
 array_fields = [["hingeArms"], ["lines"]]
 original_spawn = Vector2(224, 392)
 
@@ -9219,7 +9598,7 @@ settings = {
 "rows": 68.0,
 "study": true
 }
-original_fields = ["id", "name", "cols", "rows", "exit", "exitSpan", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "study", "movement", "decor", "people", "zips", "lines", "puzzleRoutes", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleCameraAnchorY", "dropThru", "hingeArms", "puzzleGoal", "question", "hint", "map"]
+original_fields = ["aim8", "cols", "dashes", "decor", "dropThru", "exit", "exitSpan", "hingeArms", "hint", "id", "lines", "lock", "map", "movement", "name", "palette", "people", "puzzleCameraAnchorY", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleGoal", "puzzleRoutes", "puzzleStudy", "question", "rbr", "rows", "study", "zips"]
 array_fields = [["hingeArms"], ["lines"]]
 original_spawn = Vector2(192, 200)
 
@@ -9429,8 +9808,8 @@ settings = {
 "rows": 64.0,
 "study": true
 }
-original_fields = ["id", "name", "cols", "rows", "exit", "exitSpan", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "study", "movement", "decor", "people", "zips", "lines", "puzzleRoutes", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleCameraAnchorY", "dropThru", "hingeArms", "combat", "puzzleGoal", "question", "hint", "map", "puzzleCameraAnchorX"]
-array_fields = [["hingeArms"], ["lines"], ["combat", "enemies"], ["combat", "doors"]]
+original_fields = ["aim8", "cols", "combat", "dashes", "decor", "dropThru", "exit", "exitSpan", "hingeArms", "hint", "id", "lines", "lock", "map", "movement", "name", "palette", "people", "puzzleCameraAnchorX", "puzzleCameraAnchorY", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleGoal", "puzzleRoutes", "puzzleStudy", "question", "rbr", "rows", "study", "zips"]
+array_fields = [["hingeArms"], ["lines"], ["combat", "doors"], ["combat", "enemies"]]
 original_spawn = Vector2(272, 200)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-puzzle-cover-take-away"]
@@ -9573,31 +9952,6 @@ texture = SubResource("ImageTexture_nb673")
 [node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/lines_2"]
 curve = SubResource("Curve2D_qw6w6")
 
-[node name="enemies_0" type="Node2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects"]
-position = Vector2(224, 384)
-script = ExtResource("3_gwymu")
-kind = "Mechanism"
-parameters = {
-"brute": true,
-"crush": 1.0,
-"face": -1.0,
-"kind": "hound",
-"stamp": "always",
-"x": 224.0,
-"y": 384.0
-}
-original_position = Vector2(224, 384)
-field_path = ["combat", "enemies"]
-array_element = true
-world_number = 23
-metadata/_edit_group_ = true
-
-[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/enemies_0"]
-modulate = Color(1, 1, 1, 0.025)
-show_behind_parent = true
-scale = Vector2(1.25, 1.25)
-texture = SubResource("ImageTexture_javv1")
-
 [node name="doors_0" type="Node2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects"]
 position = Vector2(112, 320)
 script = ExtResource("3_gwymu")
@@ -9619,7 +9973,7 @@ metadata/_edit_group_ = true
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 scale = Vector2(1.25, 1.25)
-texture = SubResource("ImageTexture_6ewu2")
+texture = SubResource("ImageTexture_javv1")
 
 [node name="doors_1" type="Node2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects"]
 position = Vector2(320, 368)
@@ -9639,6 +9993,31 @@ world_number = 23
 metadata/_edit_group_ = true
 
 [node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/doors_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_6ewu2")
+
+[node name="enemies_0" type="Node2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects"]
+position = Vector2(224, 384)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brute": true,
+"crush": 1.0,
+"face": -1.0,
+"kind": "hound",
+"stamp": "always",
+"x": 224.0,
+"y": 384.0
+}
+original_position = Vector2(224, 384)
+field_path = ["combat", "enemies"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-cover-take-away/Objects/enemies_0"]
 modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 scale = Vector2(1.25, 1.25)
@@ -9681,7 +10060,7 @@ settings = {
 "rows": 64.0,
 "study": true
 }
-original_fields = ["id", "name", "cols", "rows", "exit", "exitSpan", "aim8", "dashes", "lock", "palette", "rbr", "puzzleStudy", "study", "movement", "decor", "people", "zips", "lines", "puzzleRoutes", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleCameraAnchorY", "dropThru", "hingeArms", "recoilPlatforms", "puzzleGoal", "question", "hint", "map"]
+original_fields = ["aim8", "cols", "dashes", "decor", "dropThru", "exit", "exitSpan", "hingeArms", "hint", "id", "lines", "lock", "map", "movement", "name", "palette", "people", "puzzleCameraAnchorY", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleGoal", "puzzleRoutes", "puzzleStudy", "question", "rbr", "recoilPlatforms", "rows", "study", "zips"]
 array_fields = [["recoilPlatforms"], ["hingeArms"], ["lines"]]
 original_spawn = Vector2(96, 200)
 
@@ -9856,3 +10235,879 @@ texture = SubResource("ImageTexture_ggovd")
 
 [node name="MotionPath" type="Path2D" parent="Rooms/cl23-puzzle-delivery-cannot-ride/Objects/lines_1"]
 curve = SubResource("Curve2D_ekuei")
+
+[node name="cl23-cover-comparison-shelter" type="Node2D" parent="Rooms"]
+position = Vector2(8800, -2080)
+script = ExtResource("2_incbt")
+room_id = "cl23-cover-comparison-shelter"
+room_title = "Spend the Shelter"
+map_width = 64
+map_height = 64
+settings = {
+"aim8": true,
+"cols": 64.0,
+"combat": {
+"doors": [],
+"enemies": [],
+"receivers": [],
+"waitForMove": true
+},
+"dashes": 1.0,
+"dropThru": true,
+"exit": "right",
+"exitSpan": [28.0, 32.0],
+"hingeArms": [],
+"hint": "The arm starts upright. Move to wake the brute. When it commits left, jump and dash straight up through the narrow opening; stay centered to avoid its thorned sides and remain above the stamp wave. Land in the opening. Draw the guard back right and repeat the airborne dodge, landing behind it. Walk left for the shard and dash up into its escape line. From the upper pocket, turn the upright arm right and cross ahead of the next charge. The last transfer is still an ordinary hop with a catch shelf.",
+"id": "cl23-cover-comparison-shelter",
+"lines": [],
+"lock": ["parry", "portal"],
+"movement": "survive-2",
+"name": "Spend the Shelter",
+"palette": "fractured",
+"puzzleCameraAnchorX": 180.0,
+"puzzleCameraAnchorY": 70.0,
+"puzzleEntranceFloor": 36.0,
+"puzzleExitFloor": 32.0,
+"puzzleGoal": [400.0, 224.0, 48.0, 4.0],
+"puzzleRoutes": [{
+"name": "Cross over the charge and retrieve the shard",
+"tape": [[1.0, "l"], [53.0, ""], [18.0, "j"], [12.0, "ux"], [100.0, ""], [17.0, ""], [18.0, "j"], [12.0, "ux"], [60.0, ""], [44.0, "l"], [12.0, "ux"], [130.0, ""], [1.0, "dj"], [20.0, ""], [1.0, "rs"], [12.0, "rx"], [23.0, "r"], [18.0, "j"], [90.0, ""], [38.0, "rj"], [20.0, ""], [90.0, "r"]]
+}],
+"puzzleStudy": true,
+"question": "Can you stay in the opening while the charge passes beneath you?",
+"rbr": 23.0,
+"rows": 64.0,
+"study": true,
+"workshopCompleteText": "A COMPLETE · WALK RIGHT FOR B",
+"workshopGoal": [400.0, 224.0, 48.0, 4.0],
+"workshopObjective": "DODGE ABOVE THE CHARGES · RETRIEVE THE SHARD",
+"workshopRequireShard": true,
+"workshopReturnText": "SHARD RETRIEVED · SPEND THE SHELTER"
+}
+original_fields = ["aim8", "cols", "combat", "dashes", "decor", "dropThru", "exit", "exitSpan", "hingeArms", "hint", "id", "lines", "lock", "map", "movement", "name", "palette", "people", "puzzleCameraAnchorX", "puzzleCameraAnchorY", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleGoal", "puzzleRoutes", "puzzleStudy", "question", "rbr", "rows", "study", "workshopCompleteText", "workshopGoal", "workshopObjective", "workshopRequireShard", "workshopReturnText", "zips"]
+array_fields = [["hingeArms"], ["lines"], ["combat", "doors"], ["combat", "enemies"]]
+original_spawn = Vector2(232, 224)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-cover-comparison-shelter"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAFAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA5AAAAAAAAAAAAAAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAATAAEAAAAAAAAAAAAlAAEAAAAFAAAAAAAmAAEAAAAAAAAAAAAnAAEAAAAAAAAAAAA/AAEAAAAAAAAAAAAAAAIAAAAAAAAAAAATAAIAAAAAAAAAAAAlAAIAAAAFAAAAAAAmAAIAAAAAAAAAAAAnAAIAAAAAAAAAAAA/AAIAAAAAAAAAAAAAAAMAAAAAAAAAAAATAAMAAAAAAAAAAAAlAAMAAAAFAAAAAAAmAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAA/AAMAAAAAAAAAAAAAAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAlAAQAAAAFAAAAAAAmAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAA/AAQAAAAAAAAAAAAAAAUAAAAAAAAAAAATAAUAAAAAAAAAAAAlAAUAAAAFAAAAAAAmAAUAAAAAAAAAAAAnAAUAAAAAAAAAAAA/AAUAAAAAAAAAAAAAAAYAAAAAAAAAAAATAAYAAAAAAAAAAAAlAAYAAAAFAAAAAAAmAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAA/AAYAAAAAAAAAAAAAAAcAAAAAAAAAAAATAAcAAAAAAAAAAAAlAAcAAAAFAAAAAAAmAAcAAAAAAAAAAAAnAAcAAAAAAAAAAAA/AAcAAAAAAAAAAAAAAAgAAAAAAAAAAAATAAgAAAAAAAAAAAAlAAgAAAAFAAAAAAAmAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAA/AAgAAAAAAAAAAAAAAAkAAAAAAAAAAAATAAkAAAAAAAAAAAAlAAkAAAAFAAAAAAAmAAkAAAAAAAAAAAAnAAkAAAAAAAAAAAA/AAkAAAAAAAAAAAAAAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAlAAoAAAAFAAAAAAAmAAoAAAAAAAAAAAAnAAoAAAAAAAAAAAA/AAoAAAAAAAAAAAAAAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAlAAsAAAAFAAAAAAAmAAsAAAAAAAAAAAAnAAsAAAAAAAAAAAA/AAsAAAAAAAAAAAAAAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAlAAwAAAAFAAAAAAAmAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAA/AAwAAAAAAAAAAAAAAA0AAAAAAAAAAAATAA0AAAAAAAAAAAAlAA0AAAAFAAAAAAAmAA0AAAAAAAAAAAAnAA0AAAAAAAAAAAA/AA0AAAAAAAAAAAAAAA4AAAAAAAAAAAATAA4AAAAAAAAAAAAlAA4AAAAFAAAAAAAmAA4AAAAAAAAAAAAnAA4AAAAAAAAAAAA/AA4AAAAAAAAAAAAAAA8AAAAAAAAAAAATAA8AAAAAAAAAAAAlAA8AAAAFAAAAAAAmAA8AAAAAAAAAAAAnAA8AAAAAAAAAAAA/AA8AAAAAAAAAAAAAABAAAAAAAAAAAAATABAAAAAAAAAAAAAlABAAAAAFAAAAAAAmABAAAAAAAAAAAAAnABAAAAAAAAAAAAA/ABAAAAAAAAAAAAAAABEAAAAAAAAAAAATABEAAAAAAAAAAAAlABEAAAAFAAAAAAAmABEAAAAAAAAAAAAnABEAAAAAAAAAAAA/ABEAAAAAAAAAAAAAABIAAAAAAAAAAAATABIAAAAAAAAAAAAlABIAAAAFAAAAAAAmABIAAAAAAAAAAAAnABIAAAAAAAAAAAA/ABIAAAAAAAAAAAAAABMAAAAAAAAAAAATABMAAAAAAAAAAAAUABMAAAAAAAAAAAAVABMAAAAAAAAAAAAWABMAAAAAAAAAAAAXABMAAAAAAAAAAAAYABMAAAAAAAAAAAAZABMAAAAAAAAAAAAaABMAAAAGAAAAAAAeABMAAAAFAAAAAAAfABMAAAAAAAAAAAAgABMAAAAAAAAAAAAlABMAAAAFAAAAAAAmABMAAAAAAAAAAAAnABMAAAAAAAAAAAA/ABMAAAAAAAAAAAAAABQAAAAAAAAAAAATABQAAAAAAAAAAAAUABQAAAAAAAAAAAAVABQAAAAAAAAAAAAWABQAAAAAAAAAAAAXABQAAAAAAAAAAAAYABQAAAAAAAAAAAAZABQAAAAAAAAAAAAaABQAAAAGAAAAAAAeABQAAAAFAAAAAAAfABQAAAAAAAAAAAAgABQAAAAAAAAAAAAlABQAAAAFAAAAAAAmABQAAAAAAAAAAAAnABQAAAAAAAAAAAA/ABQAAAAAAAAAAAAAABUAAAAAAAAAAAATABUAAAAAAAAAAAAUABUAAAAAAAAAAAAVABUAAAAAAAAAAAAWABUAAAAAAAAAAAAXABUAAAAAAAAAAAAYABUAAAAAAAAAAAAZABUAAAAAAAAAAAAaABUAAAAGAAAAAAAeABUAAAAFAAAAAAAfABUAAAAAAAAAAAAgABUAAAAAAAAAAAAlABUAAAAFAAAAAAAmABUAAAAAAAAAAAAnABUAAAAAAAAAAAA/ABUAAAAAAAAAAAAAABYAAAAAAAAAAAATABYAAAAAAAAAAAAUABYAAAAAAAAAAAAVABYAAAAAAAAAAAAWABYAAAAAAAAAAAAXABYAAAAAAAAAAAAYABYAAAAAAAAAAAAZABYAAAAAAAAAAAAaABYAAAAGAAAAAAAeABYAAAAFAAAAAAAfABYAAAAAAAAAAAAgABYAAAAAAAAAAAAlABYAAAAFAAAAAAAmABYAAAAAAAAAAAAnABYAAAAAAAAAAAA/ABYAAAAAAAAAAAAAABcAAAAAAAAAAAATABcAAAAAAAAAAAAUABcAAAAAAAAAAAAVABcAAAAAAAAAAAAWABcAAAAAAAAAAAAXABcAAAAAAAAAAAAYABcAAAAAAAAAAAAZABcAAAAAAAAAAAAaABcAAAAGAAAAAAAeABcAAAAFAAAAAAAfABcAAAAAAAAAAAAgABcAAAAAAAAAAAAlABcAAAAFAAAAAAAmABcAAAAAAAAAAAAnABcAAAAAAAAAAAA/ABcAAAAAAAAAAAAAABgAAAAAAAAAAAATABgAAAAAAAAAAAAUABgAAAAAAAAAAAAVABgAAAAAAAAAAAAWABgAAAAAAAAAAAAXABgAAAAAAAAAAAAYABgAAAAAAAAAAAAZABgAAAAAAAAAAAAaABgAAAAGAAAAAAAeABgAAAAFAAAAAAAfABgAAAAAAAAAAAAgABgAAAAAAAAAAAAlABgAAAAFAAAAAAAmABgAAAAAAAAAAAAnABgAAAAAAAAAAAA/ABgAAAAAAAAAAAAAABkAAAAAAAAAAAATABkAAAAAAAAAAAAUABkAAAAAAAAAAAAVABkAAAAAAAAAAAAWABkAAAAAAAAAAAAXABkAAAAAAAAAAAAYABkAAAAAAAAAAAAZABkAAAAAAAAAAAAaABkAAAAGAAAAAAAeABkAAAAFAAAAAAAfABkAAAAAAAAAAAAgABkAAAAAAAAAAAAlABkAAAAFAAAAAAAmABkAAAAAAAAAAAAnABkAAAAAAAAAAAA/ABkAAAAAAAAAAAAAABoAAAAAAAAAAAATABoAAAAAAAAAAAAUABoAAAAAAAAAAAAVABoAAAAAAAAAAAAWABoAAAAAAAAAAAAXABoAAAAAAAAAAAAYABoAAAAAAAAAAAAZABoAAAAAAAAAAAAaABoAAAAGAAAAAAAeABoAAAAFAAAAAAAfABoAAAAAAAAAAAAgABoAAAAAAAAAAAAlABoAAAAFAAAAAAAmABoAAAAAAAAAAAAnABoAAAAAAAAAAAA/ABoAAAAAAAAAAAAAABsAAAAAAAAAAAATABsAAAAAAAAAAAAUABsAAAAAAAAAAAAVABsAAAAAAAAAAAAWABsAAAAAAAAAAAAXABsAAAAAAAAAAAAYABsAAAAAAAAAAAAZABsAAAAAAAAAAAAaABsAAAAGAAAAAAAeABsAAAAFAAAAAAAfABsAAAAAAAAAAAAgABsAAAAAAAAAAAArABsAAAACAAAAAAAsABsAAAACAAAAAAAtABsAAAACAAAAAAA/ABsAAAAAAAAAAAAAABwAAAAAAAAAAAATABwAAAAAAAAAAAAeABwAAAAEAAAAAAAhABwAAAACAAAAAAAiABwAAAACAAAAAAAjABwAAAACAAAAAAAyABwAAAAAAAAAAAAzABwAAAAAAAAAAAA0ABwAAAAAAAAAAAA1ABwAAAAAAAAAAAA2ABwAAAAAAAAAAAA3ABwAAAAAAAAAAAAAAB0AAAAAAAAAAAATAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAATAB4AAAAAAAAAAAAUAB4AAAAAAAAAAAAVAB4AAAAAAAAAAAAWAB4AAAAAAAAAAAAXAB4AAAAAAAAAAAAYAB4AAAAAAAAAAAAZAB4AAAAAAAAAAAAaAB4AAAAAAAAAAAAbAB4AAAAAAAAAAAAcAB4AAAAAAAAAAAAdAB4AAAAAAAAAAAAeAB4AAAAAAAAAAAAfAB4AAAAAAAAAAAAgAB4AAAAAAAAAAAAhAB4AAAAAAAAAAAAiAB4AAAAAAAAAAAAjAB4AAAACAAAAAAA6AB4AAAAAAAAAAAA7AB4AAAAAAAAAAAAAAB8AAAAAAAAAAAATAB8AAAAAAAAAAAAUAB8AAAAAAAAAAAAVAB8AAAAAAAAAAAAWAB8AAAAAAAAAAAAXAB8AAAAAAAAAAAAYAB8AAAAAAAAAAAAZAB8AAAAAAAAAAAAaAB8AAAAAAAAAAAAbAB8AAAAAAAAAAAAcAB8AAAAAAAAAAAAdAB8AAAAAAAAAAAAeAB8AAAAAAAAAAAAfAB8AAAAAAAAAAAAgAB8AAAAAAAAAAAAhAB8AAAAAAAAAAAAiAB8AAAAAAAAAAAAkAB8AAAAAAAAAAAAAACAAAAAAAAAAAAATACAAAAAAAAAAAAAUACAAAAAAAAAAAAAVACAAAAAAAAAAAAAWACAAAAAAAAAAAAAXACAAAAAAAAAAAAAYACAAAAAAAAAAAAAZACAAAAAAAAAAAAAaACAAAAAAAAAAAAAbACAAAAAAAAAAAAAcACAAAAAAAAAAAAAdACAAAAAAAAAAAAAeACAAAAAAAAAAAAAfACAAAAAAAAAAAAAgACAAAAAAAAAAAAAhACAAAAAAAAAAAAAiACAAAAAAAAAAAAAkACAAAAAAAAAAAAAwACAAAAAAAAAAAAAxACAAAAAAAAAAAAAyACAAAAAAAAAAAAAzACAAAAAAAAAAAAA0ACAAAAAAAAAAAAA1ACAAAAAAAAAAAAA2ACAAAAAAAAAAAAA3ACAAAAAAAAAAAAA4ACAAAAAAAAAAAAA5ACAAAAAAAAAAAAA6ACAAAAAAAAAAAAA7ACAAAAAAAAAAAAA8ACAAAAAAAAAAAAA9ACAAAAAAAAAAAAA+ACAAAAAAAAAAAAA/ACAAAAAAAAAAAAAAACEAAAAAAAAAAAATACEAAAAAAAAAAAAUACEAAAAAAAAAAAAVACEAAAAAAAAAAAAWACEAAAAAAAAAAAAXACEAAAAAAAAAAAAYACEAAAAAAAAAAAAZACEAAAAAAAAAAAAaACEAAAAAAAAAAAAbACEAAAAAAAAAAAAcACEAAAAAAAAAAAAdACEAAAAAAAAAAAAeACEAAAAAAAAAAAAfACEAAAAAAAAAAAAgACEAAAAAAAAAAAAhACEAAAAAAAAAAAAiACEAAAAAAAAAAAAkACEAAAAAAAAAAAAlACEAAAACAAAAAAAmACEAAAACAAAAAAAwACEAAAAAAAAAAAAxACEAAAAAAAAAAAAyACEAAAAAAAAAAAAzACEAAAAAAAAAAAA0ACEAAAAAAAAAAAA1ACEAAAAAAAAAAAA2ACEAAAAAAAAAAAA3ACEAAAAAAAAAAAA4ACEAAAAAAAAAAAA5ACEAAAAAAAAAAAA6ACEAAAAAAAAAAAA7ACEAAAAAAAAAAAA8ACEAAAAAAAAAAAA9ACEAAAAAAAAAAAA+ACEAAAAAAAAAAAA/ACEAAAAAAAAAAAAAACIAAAAAAAAAAAATACIAAAAAAAAAAAAUACIAAAAAAAAAAAAVACIAAAAAAAAAAAAWACIAAAAAAAAAAAAXACIAAAAAAAAAAAAYACIAAAAAAAAAAAAZACIAAAAAAAAAAAAaACIAAAAAAAAAAAAbACIAAAAAAAAAAAAcACIAAAAAAAAAAAAdACIAAAAAAAAAAAAeACIAAAAAAAAAAAAfACIAAAAAAAAAAAAgACIAAAAAAAAAAAAhACIAAAAAAAAAAAAiACIAAAAAAAAAAAAwACIAAAAAAAAAAAAxACIAAAAAAAAAAAAyACIAAAAAAAAAAAAzACIAAAAAAAAAAAA0ACIAAAAAAAAAAAA1ACIAAAAAAAAAAAA2ACIAAAAAAAAAAAA3ACIAAAAAAAAAAAA4ACIAAAAAAAAAAAA5ACIAAAAAAAAAAAA6ACIAAAAAAAAAAAA7ACIAAAAAAAAAAAA8ACIAAAAAAAAAAAA9ACIAAAAAAAAAAAA+ACIAAAAAAAAAAAA/ACIAAAAAAAAAAAAAACMAAAAAAAAAAAATACMAAAAAAAAAAAAUACMAAAAAAAAAAAAVACMAAAAAAAAAAAAWACMAAAAAAAAAAAAXACMAAAAAAAAAAAAYACMAAAAAAAAAAAAZACMAAAAAAAAAAAAaACMAAAAAAAAAAAAbACMAAAAAAAAAAAAcACMAAAAAAAAAAAAdACMAAAAAAAAAAAAeACMAAAAAAAAAAAAfACMAAAAAAAAAAAAgACMAAAAAAAAAAAAhACMAAAAAAAAAAAAiACMAAAAAAAAAAAA/ACMAAAAAAAAAAAAAACQAAAAAAAAAAAATACQAAAAAAAAAAAAUACQAAAAAAAAAAAAVACQAAAAAAAAAAAAWACQAAAAAAAAAAAAXACQAAAAAAAAAAAAYACQAAAAAAAAAAAAZACQAAAAAAAAAAAAaACQAAAAAAAAAAAAbACQAAAAAAAAAAAAcACQAAAAAAAAAAAAdACQAAAAAAAAAAAAeACQAAAAAAAAAAAAfACQAAAAAAAAAAAAgACQAAAAAAAAAAAAhACQAAAAAAAAAAAAiACQAAAAAAAAAAAAjACQAAAAAAAAAAAAkACQAAAAAAAAAAAAlACQAAAAAAAAAAAAmACQAAAAAAAAAAAAnACQAAAAAAAAAAAA/ACQAAAAAAAAAAAAAACUAAAAAAAAAAAATACUAAAAAAAAAAAAUACUAAAAAAAAAAAAVACUAAAAAAAAAAAAWACUAAAAAAAAAAAAXACUAAAAAAAAAAAAYACUAAAAAAAAAAAAZACUAAAAAAAAAAAAaACUAAAAAAAAAAAAbACUAAAAAAAAAAAAcACUAAAAAAAAAAAAdACUAAAAAAAAAAAAeACUAAAAAAAAAAAAfACUAAAAAAAAAAAAgACUAAAAAAAAAAAAhACUAAAAAAAAAAAAiACUAAAAAAAAAAAAjACUAAAAAAAAAAAAkACUAAAAAAAAAAAAlACUAAAAAAAAAAAAmACUAAAAAAAAAAAAnACUAAAAAAAAAAAA/ACUAAAAAAAAAAAAAACYAAAAAAAAAAAA/ACYAAAAAAAAAAAAAACcAAAAAAAAAAAA/ACcAAAAAAAAAAAAAACgAAAAAAAAAAAAvACgAAAAFAAAAAAA/ACgAAAAAAAAAAAAAACkAAAAAAAAAAAAvACkAAAAFAAAAAAA/ACkAAAAAAAAAAAAAACoAAAAAAAAAAAAvACoAAAAFAAAAAAA/ACoAAAAAAAAAAAAAACsAAAAAAAAAAAAvACsAAAAFAAAAAAA/ACsAAAAAAAAAAAAAACwAAAAAAAAAAAAvACwAAAAFAAAAAAA/ACwAAAAAAAAAAAAAAC0AAAAAAAAAAAAvAC0AAAAFAAAAAAA/AC0AAAAAAAAAAAAAAC4AAAAAAAAAAAAvAC4AAAAFAAAAAAA/AC4AAAAAAAAAAAAAAC8AAAAAAAAAAAAvAC8AAAAFAAAAAAA/AC8AAAAAAAAAAAAAADAAAAAAAAAAAAAvADAAAAAFAAAAAAA/ADAAAAAAAAAAAAAAADEAAAAAAAAAAAAvADEAAAAFAAAAAAA/ADEAAAAAAAAAAAAAADIAAAAAAAAAAAAvADIAAAAFAAAAAAA/ADIAAAAAAAAAAAAAADMAAAAAAAAAAAAvADMAAAAFAAAAAAA/ADMAAAAAAAAAAAAAADQAAAAAAAAAAAAvADQAAAAFAAAAAAA/ADQAAAAAAAAAAAAAADUAAAAAAAAAAAAvADUAAAAFAAAAAAA/ADUAAAAAAAAAAAAAADYAAAAAAAAAAAAvADYAAAAFAAAAAAA/ADYAAAAAAAAAAAAAADcAAAAAAAAAAAAvADcAAAAFAAAAAAA/ADcAAAAAAAAAAAAAADgAAAAAAAAAAAAvADgAAAAFAAAAAAA/ADgAAAAAAAAAAAAAADkAAAAAAAAAAAAvADkAAAAFAAAAAAA/ADkAAAAAAAAAAAAAADoAAAAAAAAAAAAvADoAAAAFAAAAAAA/ADoAAAAAAAAAAAAAADsAAAAAAAAAAAAvADsAAAAFAAAAAAA/ADsAAAAAAAAAAAAAADwAAAAAAAAAAAAvADwAAAAFAAAAAAA/ADwAAAAAAAAAAAAAAD0AAAAAAAAAAAAvAD0AAAAFAAAAAAA/AD0AAAAAAAAAAAAAAD4AAAAAAAAAAAAvAD4AAAAFAAAAAAA/AD4AAAAAAAAAAAAAAD8AAAAAAAAAAAABAD8AAAAAAAAAAAACAD8AAAAAAAAAAAADAD8AAAAAAAAAAAAEAD8AAAAAAAAAAAAFAD8AAAAAAAAAAAAGAD8AAAAAAAAAAAAHAD8AAAAAAAAAAAAIAD8AAAAAAAAAAAAJAD8AAAAAAAAAAAAKAD8AAAAAAAAAAAALAD8AAAAAAAAAAAAMAD8AAAAAAAAAAAANAD8AAAAAAAAAAAAOAD8AAAAAAAAAAAAPAD8AAAAAAAAAAAAQAD8AAAAAAAAAAAARAD8AAAAAAAAAAAASAD8AAAAAAAAAAAATAD8AAAAAAAAAAAAUAD8AAAAAAAAAAAAVAD8AAAAAAAAAAAAWAD8AAAAAAAAAAAAXAD8AAAAAAAAAAAAYAD8AAAAAAAAAAAAZAD8AAAAAAAAAAAAaAD8AAAAAAAAAAAAbAD8AAAAAAAAAAAAcAD8AAAAAAAAAAAAdAD8AAAAAAAAAAAAeAD8AAAAAAAAAAAAfAD8AAAAAAAAAAAAgAD8AAAAAAAAAAAAhAD8AAAAAAAAAAAAiAD8AAAAAAAAAAAAjAD8AAAAAAAAAAAAkAD8AAAAAAAAAAAAlAD8AAAAAAAAAAAAmAD8AAAAAAAAAAAAnAD8AAAAAAAAAAAAoAD8AAAAAAAAAAAApAD8AAAAAAAAAAAAqAD8AAAAAAAAAAAArAD8AAAAAAAAAAAAsAD8AAAAAAAAAAAAtAD8AAAAAAAAAAAAuAD8AAAAAAAAAAAAvAD8AAAAAAAAAAAAwAD8AAAAAAAAAAAAxAD8AAAAAAAAAAAAyAD8AAAAAAAAAAAAzAD8AAAAAAAAAAAA0AD8AAAAAAAAAAAA1AD8AAAAAAAAAAAA2AD8AAAAAAAAAAAA3AD8AAAAAAAAAAAA4AD8AAAAAAAAAAAA5AD8AAAAAAAAAAAA6AD8AAAAAAAAAAAA7AD8AAAAAAAAAAAA8AD8AAAAAAAAAAAA9AD8AAAAAAAAAAAA+AD8AAAAAAAAAAAA/AD8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_sr5nf")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter"]
+
+[node name="Fixture_*_21_28" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(168, 224)
+script = ExtResource("3_gwymu")
+kind = "Fixture"
+glyph = "*"
+original_position = Vector2(168, 224)
+preview_entity = {
+"h": 8,
+"id": 0,
+"ox": 168,
+"oy": 224,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "shard",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 168,
+"y": 224
+}
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/Fixture_*_21_28"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_3vote")
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(232, 224)
+script = ExtResource("3_gwymu")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(232, 224)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_u7ljp")
+
+[node name="hingeArms_0" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(288, 240)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 36.0,
+"dir": "up",
+"id": "Cover and crossing",
+"length": 12.0,
+"r": 30.0
+}
+original_position = Vector2(288, 240)
+field_path = ["hingeArms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/hingeArms_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_fxbpm")
+
+[node name="lines_0" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(168, 224)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [21.0, 28.0],
+"b": [35.0, 20.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(168, 224)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/lines_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_npild")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/lines_0"]
+curve = SubResource("Curve2D_hyi3e")
+
+[node name="doors_0" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(184, 0)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brittle": true,
+"h": 288.0,
+"w": 8.0,
+"x": 184.0,
+"y": 0.0
+}
+original_position = Vector2(184, 0)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/doors_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_nwk5x")
+
+[node name="doors_1" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(272, 224)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brittle": true,
+"h": 24.0,
+"w": 8.0,
+"x": 272.0,
+"y": 224.0
+}
+original_position = Vector2(272, 224)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/doors_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_i418t")
+
+[node name="doors_2" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(384, 0)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brittle": true,
+"h": 320.0,
+"w": 8.0,
+"x": 384.0,
+"y": 0.0
+}
+original_position = Vector2(384, 0)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/doors_2"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_h2h1q")
+
+[node name="enemies_0" type="Node2D" parent="Rooms/cl23-cover-comparison-shelter/Objects"]
+position = Vector2(248, 224)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brute": true,
+"contactHazard": true,
+"crush": 1.0,
+"face": -1.0,
+"kind": "hound",
+"stamp": "always",
+"x": 248.0,
+"y": 224.0
+}
+original_position = Vector2(248, 224)
+field_path = ["combat", "enemies"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-shelter/Objects/enemies_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_owsdo")
+
+[node name="cl23-cover-comparison-dock" type="Node2D" parent="Rooms"]
+position = Vector2(9600, -2080)
+script = ExtResource("2_incbt")
+room_id = "cl23-cover-comparison-dock"
+room_title = "Deliver the Brute"
+map_width = 64
+map_height = 64
+settings = {
+"aim8": true,
+"cols": 64.0,
+"combat": {
+"doors": [],
+"enemies": [],
+"receivers": [],
+"waitForMove": true
+},
+"dashes": 1.0,
+"dropThru": true,
+"exit": "right",
+"exitSpan": [45.0, 50.0],
+"hingeArms": [],
+"hint": "Jump left to expose yourself to the upper brute, dash up beside the high left refuge and steer onto it. After its first leftward charge stops, step right into view to draw a return charge. Jump, steer left and dash up to regain the refuge. Its charge breaks the right buffer. Use a short run-up, jump and dash right over the spiked gantry. Brake on the small upper bank, drop through to the hub ledge, and strike left promptly: another charge carries the brute off the useful part of the dock. After folding, drop to the separate descent line. Bait the lower wall from below the receiving perch, then retreat. The finish is an ordinary hop.",
+"id": "cl23-cover-comparison-dock",
+"lines": [],
+"lock": ["parry", "portal"],
+"movement": "survive-2",
+"name": "Deliver the Brute",
+"palette": "fractured",
+"puzzleCameraAnchorX": 180.0,
+"puzzleCameraAnchorY": 40.0,
+"puzzleEntranceFloor": 30.0,
+"puzzleExitFloor": 50.0,
+"puzzleGoal": [360.0, 368.0, 40.0, 4.0],
+"puzzleRoutes": [{
+"name": "Return left, cross the gantry and fold promptly",
+"tape": [[1.0, "l"], [53.0, ""], [18.0, "lj"], [12.0, "ux"], [10.0, "l"], [100.0, ""], [18.0, "r"], [50.0, ""], [8.0, "j"], [14.0, "lj"], [12.0, "ux"], [18.0, "l"], [10.0, ""], [8.0, "r"], [24.0, "rj"], [12.0, "rx"], [14.0, "r"], [6.0, "l"], [10.0, ""], [1.0, "dj"], [25.0, ""], [6.0, "l"], [1.0, ""], [1.0, "ls"], [90.0, ""], [1.0, "dj"], [35.0, ""], [12.0, "dx"], [100.0, ""], [1.0, "dj"], [34.0, ""], [7.0, "j"], [12.0, "ux"], [100.0, ""], [1.0, "dj"], [32.0, "r"], [10.0, "r"], [24.0, "rj"], [35.0, ""], [12.0, "rx"], [80.0, ""], [70.0, "r"]]
+}],
+"puzzleStudy": true,
+"question": "Can you get back across the dock before the brute charges again?",
+"rbr": 23.0,
+"rows": 64.0,
+"study": true,
+"workshopCompleteText": "B COMPLETE · BOTH ALTERNATIVES TESTED",
+"workshopGoal": [360.0, 368.0, 40.0, 4.0],
+"workshopObjective": "BAIT · RETURN LEFT · CROSS THE GANTRY · FOLD BEFORE THE NEXT CHARGE"
+}
+original_fields = ["aim8", "cols", "combat", "dashes", "decor", "dropThru", "exit", "exitSpan", "hingeArms", "hint", "id", "lines", "lock", "map", "movement", "name", "palette", "people", "puzzleCameraAnchorX", "puzzleCameraAnchorY", "puzzleEntranceFloor", "puzzleExitFloor", "puzzleGoal", "puzzleRoutes", "puzzleStudy", "question", "rbr", "rows", "study", "workshopCompleteText", "workshopGoal", "workshopObjective", "zips"]
+array_fields = [["hingeArms"], ["lines"], ["combat", "doors"], ["combat", "enemies"]]
+original_spawn = Vector2(232, 224)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-cover-comparison-dock"]
+tile_map_data = PackedByteArray("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AAA/ABMAAAAAAAAAAAAAABQAAAAAAAAAAAAyABQAAAAAAAAAAAA/ABQAAAAAAAAAAAAAABUAAAAAAAAAAAAeABUAAAADAAAAAAAfABUAAAADAAAAAAAgABUAAAADAAAAAAAhABUAAAADAAAAAAAiABUAAAADAAAAAAAjABUAAAADAAAAAAAyABUAAAAAAAAAAAA/ABUAAAAAAAAAAAAAABYAAAAAAAAAAAAXABYAAAAAAAAAAAAYABYAAAAAAAAAAAAZABYAAAAAAAAAAAAeABYAAAAAAAAAAAAfABYAAAAAAAAAAAAgABYAAAAAAAAAAAAhABYAAAAAAAAAAAAiABYAAAAAAAAAAAAjABYAAAAAAAAAAAAyABYAAAAAAAAAAAA/ABYAAAAAAAAAAAAAABcAAAAAAAAAAAAeABcAAAAEAAAAAAAfABcAAAAEAAAAAAAgABcAAAAEAAAAAAAhABcAAAAEAAAAAAAiABcAAAAEAAAAAAAjABcAAAAEAAAAAAAyABcAAAAAAAAAAAA/ABcAAAAAAAAAAAAAABgAAAAAAAAAAAAyABgAAAAAAAAAAAA/ABgAAAAAAAAAAAAAABkAAAAAAAAAAAAWABkAAAADAAAAAAAXABkAAAADAAAAAAAyABkAAAAAAAAAAAA/ABkAAAAAAAAAAAAAABoAAAAAAAAAAAAWABoAAAAAAAAAAAAXABoAAAAAAAAAAAAlABoAAAACAAAAAAAnABoAAAACAAAAAAAoABoAAAAAAAAAAAApABoAAAACAAAAAAAqABoAAAACAAAAAAArABoAAAACAAAAAAAsABoAAAACAAAAAAAtABoAAAACAAAAAAAuABoAAAACAAAAAAAvABoAAAACAAAAAAAwABoAAAACAAAAAAAxABoAAAACAAAAAAAyABoAAAAAAAAAAAA/ABoAAAAAAAAAAAAAABsAAAAAAAAAAAAWABsAAAAAAAAAAAAXABsAAAAAAAAAAAAoABsAAAAAAAAAAAAyABsAAAAAAAAAAAA/ABsAAAAAAAAAAAAAABwAAAAAAAAAAAAWABwAAAAAAAAAAAAXABwAAAAAAAAAAAAoABwAAAAAAAAAAAAyABwAAAAAAAAAAAA/ABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAWAB0AAAAAAAAAAAAXAB0AAAAAAAAAAAAoAB0AAAAAAAAAAAAyAB0AAAAAAAAAAAA/AB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAjAB4AAAAAAAAAAAAlAB4AAAACAAAAAAAmAB4AAAACAAAAAAAnAB4AAAACAAAAAAAoAB4AAAAAAAAAAAAyAB4AAAAAAAAAAAA/AB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAbAB8AAAAAAAAAAAAjAB8AAAAAAAAAAAAyAB8AAAAAAAAAAAA/AB8AAAAAAAAAAAAAACAAAAAAAAAAAAAbACAAAAAAAAAAAAAjACAAAAAAAAAAAAAyACAAAAAAAAAAAAA/ACAAAAAAAAAAAAAAACEAAAAAAAAAAAAbACEAAAAAAAAAAAAjACEAAAAAAAAAAAAlACEAAAACAAAAAAAmACEAAAACAAAAAAAnACEAAAACAAAAAAAyACEAAAAAAAAAAAA/ACEAAAAAAAAAAAAAACIAAAAAAAAAAAATACIAAAAAAAAAAAAbACIAAAAAAAAAAAAjACIAAAAAAAAAAAAoACIAAAAAAAAAAAApACIAAAAAAAAAAAAqACIAAAAAAAAAAAArACIAAAAAAAAAAAAsACIAAAAAAAAAAAAtACIAAAAAAAAAAAAuACIAAAAAAAAAAAAvACIAAAAAAAAAAAAwACIAAAAAAAAAAAAxACIAAAAAAAAAAAAyACIAAAAAAAAAAAA/ACIAAAAAAAAAAAAAACMAAAAAAAAAAAATACMAAAAAAAAAAAAbACMAAAAAAAAAAAAjACMAAAAAAAAAAAAoACMAAAAAAAAAAAAyACMAAAAAAAAAAAA/ACMAAAAAAAAAAAAAACQAAAAAAAAAAAATACQAAAAAAAAAAAAbACQAAAAAAAAAAAAjACQAAAAAAAAAAAAoACQAAAAAAAAAAAAyACQAAAAAAAAAAAA/ACQAAAAAAAAAAAAAACUAAAAAAAAAAAATACUAAAAAAAAAAAAbACUAAAAAAAAAAAAjACUAAAAAAAAAAAAoACUAAAAAAAAAAAAyACUAAAAAAAAAAAA/ACUAAAAAAAAAAAAAACYAAAAAAAAAAAATACYAAAAAAAAAAAAbACYAAAAAAAAAAAAjACYAAAAAAAAAAAAoACYAAAAAAAAAAAAyACYAAAAAAAAAAAA/ACYAAAAAAAAAAAAAACcAAAAAAAAAAAATACcAAAAAAAAAAAAbACcAAAAAAAAAAAAjACcAAAAAAAAAAAAoACcAAAAAAAAAAAAyACcAAAAAAAAAAAA/ACcAAAAAAAAAAAAAACgAAAAAAAAAAAATACgAAAAAAAAAAAAbACgAAAAAAAAAAAAjACgAAAAAAAAAAAAoACgAAAAAAAAAAAAyACgAAAAAAAAAAAA/ACgAAAAAAAAAAAAAACkAAAAAAAAAAAATACkAAAAAAAAAAAAbACkAAAAAAAAAAAAjACkAAAAAAAAAAAAoACkAAAAAAAAAAAAyACkAAAAAAAAAAAA/ACkAAAAAAAAAAAAAACoAAAAAAAAAAAATACoAAAAAAAAAAAAbACoAAAAAAAAAAAAjACoAAAAAAAAAAAAlACoAAAACAAAAAAAmACoAAAACAAAAAAAnACoAAAACAAAAAAAoACoAAAAAAAAAAAAyACoAAAAAAAAAAAA/ACoAAAAAAAAAAAAAACsAAAAAAAAAAAATACsAAAAAAAAAAAAbACsAAAAAAAAAAAAjACsAAAAAAAAAAAAoACsAAAAAAAAAAAAyACsAAAAAAAAAAAA/ACsAAAAAAAAAAAAAACwAAAAAAAAAAAATACwAAAAAAAAAAAAbACwAAAAAAAAAAAAjACwAAAAAAAAAAAAyACwAAAAAAAAAAAA/ACwAAAAAAAAAAAAAAC0AAAAAAAAAAAATAC0AAAAAAAAAAAAbAC0AAAAAAAAAAAAjAC0AAAAAAAAAAAAyAC0AAAAAAAAAAAAAAC4AAAAAAAAAAAATAC4AAAAAAAAAAAAbAC4AAAAAAAAAAAAoAC4AAAACAAAAAAApAC4AAAAAAAAAAAAqAC4AAAAAAAAAAAAtAC4AAAAAAAAAAAAuAC4AAAAAAAAAAAAvAC4AAAAAAAAAAAAwAC4AAAAAAAAAAAAxAC4AAAAAAAAAAAAyAC4AAAAAAAAAAAAAAC8AAAAAAAAAAAATAC8AAAAAAAAAAAAbAC8AAAAAAAAAAAApAC8AAAAAAAAAAAAqAC8AAAAAAAAAAAAyAC8AAAAAAAAAAAAAADAAAAAAAAAAAAATADAAAAAAAAAAAAAUADAAAAAAAAAAAAAVADAAAAAAAAAAAAAWADAAAAAAAAAAAAAXADAAAAAAAAAAAAAYADAAAAAAAAAAAAAZADAAAAAAAAAAAAAaADAAAAAAAAAAAAAbADAAAAAAAAAAAAAcADAAAAAAAAAA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")
+tile_set = SubResource("TileSet_sr5nf")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-cover-comparison-dock"]
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(232, 224)
+script = ExtResource("3_gwymu")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(232, 224)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_80dj0")
+
+[node name="hingeArms_0" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(288, 240)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 36.0,
+"dir": "left",
+"id": "Loading dock",
+"length": 18.0,
+"r": 30.0
+}
+original_position = Vector2(288, 240)
+field_path = ["hingeArms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/hingeArms_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_frps4")
+
+[node name="lines_0" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(32, 120)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [4.0, 15.0],
+"b": [24.0, 20.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(32, 120)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/lines_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_hj36a")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-cover-comparison-dock/Objects/lines_0"]
+curve = SubResource("Curve2D_23q1u")
+
+[node name="lines_1" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(312, 264)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [39.0, 33.0],
+"b": [38.0, 41.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(312, 264)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/lines_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_m85lu")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-cover-comparison-dock/Objects/lines_1"]
+curve = SubResource("Curve2D_73o1o")
+
+[node name="lines_2" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(384, 360)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"a": [48.0, 45.0],
+"b": [58.0, 49.0],
+"oneWay": true,
+"setDown": true
+}
+original_position = Vector2(384, 360)
+field_path = ["lines"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/lines_2"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_f30pm")
+
+[node name="MotionPath" type="Path2D" parent="Rooms/cl23-cover-comparison-dock/Objects/lines_2"]
+curve = SubResource("Curve2D_p6tad")
+
+[node name="doors_0" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(280, 208)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brittle": true,
+"h": 32.0,
+"w": 8.0,
+"x": 280.0,
+"y": 208.0
+}
+original_position = Vector2(280, 208)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/doors_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_ii7eb")
+
+[node name="doors_1" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(320, 352)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brittle": true,
+"h": 32.0,
+"w": 8.0,
+"x": 320.0,
+"y": 352.0
+}
+original_position = Vector2(320, 352)
+field_path = ["combat", "doors"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/doors_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_imkdd")
+
+[node name="enemies_0" type="Node2D" parent="Rooms/cl23-cover-comparison-dock/Objects"]
+position = Vector2(336, 192)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"brute": true,
+"contactHazard": true,
+"crush": 1.0,
+"face": -1.0,
+"kind": "hound",
+"stamp": "always",
+"x": 336.0,
+"y": 192.0
+}
+original_position = Vector2(336, 192)
+field_path = ["combat", "enemies"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-cover-comparison-dock/Objects/enemies_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_ya4jj")
+
+[node name="cl23-puzzle-roof-launch" type="Node2D" parent="Rooms"]
+position = Vector2(10400, -2080)
+script = ExtResource("2_incbt")
+room_id = "cl23-puzzle-roof-launch"
+room_title = "The Roof You Must Launch Through"
+map_width = 64
+map_height = 48
+settings = {
+"aim8": true,
+"cols": 64.0,
+"dashes": 1.0,
+"dropThru": true,
+"exit": "none",
+"hingeArms": [],
+"hint": "From the entrance corridor, walk left onto the recoil plate. Charge it with Down near the left hub. Release and jump, then strike upward during the rise to fold the roof down. Dash upward beside the new hanging wall and jump again during that dash to bounce right onto the broad upper landing. A miss returns to the operating chamber; the side shelves let you board the plate again.",
+"id": "cl23-puzzle-roof-launch",
+"lock": ["parry", "portal"],
+"movement": "survive-2",
+"name": "The Roof You Must Launch Through",
+"palette": "fractured",
+"puzzleCameraAnchorY": 100.0,
+"puzzleGoal": [296.0, 184.0, 72.0, 4.0],
+"puzzleRoutes": [{
+"name": "Reference",
+"tape": [[72.0, "l"], [12.0, ""], [40.0, "d"], [7.0, "j"], [1.0, "us"], [8.0, "ux"], [28.0, "rj"], [15.0, "r"], [20.0, ""]]
+}],
+"puzzleStudy": true,
+"question": "What if your entrance bridge became the wall beside your launch?",
+"rbr": 23.0,
+"recoilPlatforms": [],
+"rows": 48.0,
+"study": true,
+"workshopGoal": [296.0, 184.0, 72.0, 4.0]
+}
+original_fields = ["aim8", "cols", "dashes", "decor", "dropThru", "exit", "hingeArms", "hint", "id", "lock", "map", "movement", "name", "palette", "people", "puzzleCameraAnchorY", "puzzleGoal", "puzzleRoutes", "puzzleStudy", "question", "rbr", "recoilPlatforms", "rows", "study", "workshopGoal", "zips"]
+array_fields = [["recoilPlatforms"], ["hingeArms"]]
+original_spawn = Vector2(344, 248)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-puzzle-roof-launch"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA5AAAAAAAAAAAAAAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAbAAEAAAAAAAAAAAAcAAEAAAAGAAAAAAAmAAEAAAAAAAAAAAAnAAEAAAAAAAAAAAAvAAEAAAAAAAAAAAA/AAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAbAAIAAAAAAAAAAAAcAAIAAAAGAAAAAAAmAAIAAAAAAAAAAAAnAAIAAAAAAAAAAAAvAAIAAAAAAAAAAAA/AAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAbAAMAAAAAAAAAAAAcAAMAAAAGAAAAAAAmAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAvAAMAAAAAAAAAAAA/AAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAbAAQAAAAAAAAAAAAcAAQAAAAGAAAAAAAmAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAAvAAQAAAAAAAAAAAA/AAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAbAAUAAAAAAAAAAAAcAAUAAAAGAAAAAAAmAAUAAAAAAAAAAAAnAAUAAAAAAAAAAAAvAAUAAAAAAAAAAAA/AAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAbAAYAAAAAAAAAAAAcAAYAAAAGAAAAAAAmAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAvAAYAAAAAAAAAAAA/AAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAbAAcAAAAAAAAAAAAcAAcAAAAGAAAAAAAmAAcAAAAAAAAAAAAnAAcAAAAAAAAAAAAvAAcAAAAAAAAAAAA/AAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAbAAgAAAAAAAAAAAAcAAgAAAAGAAAAAAAmAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAAvAAgAAAAAAAAAAAA/AAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAbAAkAAAAAAAAAAAAcAAkAAAAGAAAAAAAmAAkAAAAAAAAAAAAnAAkAAAAAAAAAAAAvAAkAAAAAAAAAAAA/AAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAbAAoAAAAAAAAAAAAcAAoAAAAGAAAAAAAmAAoAAAAAAAAAAAAnAAoAAAAAAAAAAAAvAAoAAAAAAAAAAAA/AAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAbAAsAAAAAAAAAAAAcAAsAAAAGAAAAAAAmAAsAAAAAAAAAAAAnAAsAAAAAAAAAAAAvAAsAAAAAAAAAAAA/AAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAcAAwAAAAGAAAAAAAmAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAvAAwAAAAAAAAAAAA/AAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAbAA0AAAAAAAAAAAAcAA0AAAAGAAAAAAAvAA0AAAAAAAAAAAA/AA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAbAA4AAAAAAAAAAAAcAA4AAAAGAAAAAAAvAA4AAAAAAAAAAAA/AA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAGAAAAAAAvAA8AAAAAAAAAAAA/AA8AAAAAAAAAAAAAABAAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAGAAAAAAAvABAAAAAAAAAAAAA/ABAAAAAAAAAAAAAAABEAAAAAAAAAAAAbABEAAAAAAAAAAAAcABEAAAAGAAAAAAAvABEAAAAAAAAAAAA/ABEAAAAAAAAAAAAAABIAAAAAAAAAAAAbABIAAAAAAAAAAAAcABIAAAAGAAAAAAAvABIAAAAAAAAAAAA/ABIAAAAAAAAAAAAAABMAAAAAAAAAAAAbABMAAAAAAAAAAAAcABMAAAAGAAAAAAAvABMAAAAAAAAAAAA/ABMAAAAAAAAAAAAAABQAAAAAAAAAAAAbABQAAAAAAAAAAAAcABQAAAAGAAAAAAAvABQAAAAAAAAAAAA/ABQAAAAAAAAAAAAAABUAAAAAAAAAAAAbABUAAAAAAAAAAAAcABUAAAAGAAAAAAAvABUAAAAAAAAAAAA/ABUAAAAAAAAAAAAAABYAAAAAAAAAAAAbABYAAAAAAAAAAAAcABYAAAAGAAAAAAAvABYAAAAAAAAAAAA/ABYAAAAAAAAAAAAAABcAAAAAAAAAAAAbABcAAAAAAAAAAAAcABcAAAAGAAAAAAAlABcAAAAAAAAAAAAmABcAAAAAAAAAAAAnABcAAAAAAAAAAAAoABcAAAAAAAAAAAApABcAAAAAAAAAAAAqABcAAAAAAAAAAAArABcAAAAAAAAAAAAsABcAAAAAAAAAAAAtABcAAAAAAAAAAAAuABcAAAAAAAAAAAAvABcAAAAAAAAAAAA/ABcAAAAAAAAAAAAAABgAAAAAAAAAAAAbABgAAAAAAAAAAAAcABgAAAAGAAAAAAAkABgAAAAFAAAAAAAlABgAAAAAAAAAAAAmABgAAAAAAAAAAAAnABgAAAAAAAAAAAAoABgAAAAAAAAAAAApABgAAAAAAAAAAAAqABgAAAAAAAAAAAArABgAAAAAAAAAAAAsABgAAAAAAAAAAAAtABgAAAAAAAAAAAAuABgAAAAAAAAAAAAvABgAAAAAAAAAAAA/ABgAAAAAAAAAAAAAABkAAAAAAAAAAAAbABkAAAAAAAAAAAAcABkAAAAGAAAAAAAkABkAAAAFAAAAAAAlABkAAAAAAAAAAAAmABkAAAAAAAAAAAAnABkAAAAAAAAAAAAoABkAAAAAAAAAAAApABkAAAAAAAAAAAAqABkAAAAAAAAAAAArABkAAAAAAAAAAAAsABkAAAAAAAAAAAAtABkAAAAAAAAAAAAuABkAAAAAAAAAAAAvABkAAAAAAAAAAAA/ABkAAAAAAAAAAAAAABoAAAAAAAAAAAAbABoAAAAAAAAAAAAkABoAAAAFAAAAAAAlABoAAAAAAAAAAAAmABoAAAAAAAAAAAAnABoAAAAAAAAAAAAoABoAAAAAAAAAAAApABoAAAAAAAAAAAAqABoAAAAAAAAAAAArABoAAAAAAAAAAAAsABoAAAAAAAAAAAAtABoAAAAAAAAAAAAuABoAAAAAAAAAAAAvABoAAAAAAAAAAAA/ABoAAAAAAAAAAAAAABsAAAAAAAAAAAAbABsAAAAAAAAAAAAkABsAAAAFAAAAAAAlABsAAAAAAAAAAAAmABsAAAAAAAAAAAAnABsAAAAAAAAAAAAoABsAAAAAAAAAAAApABsAAAAAAAAAAAAqABsAAAAAAAAAAAArABsAAAAAAAAAAAAsABsAAAAAAAAAAAAtABsAAAAAAAAAAAAuABsAAAAAAAAAAAAvABsAAAAAAAAAAAA/ABsAAAAAAAAAAAAAABwAAAAAAAAAAAAbABwAAAAAAAAAAAAkABwAAAAFAAAAAAAlABwAAAAAAAAAAAAmABwAAAAAAAAAAAAnABwAAAAAAAAAAAAoABwAAAAAAAAAAAApABwAAAAAAAAAAAAqABwAAAAAAAAAAAArABwAAAAAAAAAAAAsABwAAAAAAAAAAAAtABwAAAAAAAAAAAAuABwAAAAAAAAAAAAvABwAAAAAAAAAAAA/ABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAbAB0AAAAAAAAAAAAoAB0AAAAAAAAAAAApAB0AAAAAAAAAAAAqAB0AAAAAAAAAAAArAB0AAAAAAAAAAAAsAB0AAAAAAAAAAAAtAB0AAAAAAAAAAAAuAB0AAAAAAAAAAAAvAB0AAAAAAAAAAAA/AB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAbAB4AAAAAAAAAAAAvAB4AAAAAAAAAAAA/AB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAbAB8AAAAAAAAAAAAvAB8AAAAAAAAAAAA/AB8AAAAAAAAAAAAAACAAAAAAAAAAAAAbACAAAAAAAAAAAAAmACAAAAACAAAAAAAnACAAAAACAAAAAAAoACAAAAACAAAAAAApACAAAAACAAAAAAAqACAAAAACAAAAAAArACAAAAACAAAAAAAsACAAAAACAAAAAAAtACAAAAACAAAAAAAuACAAAAACAAAAAAAvACAAAAAAAAAAAAA/ACAAAAAAAAAAAAAAACEAAAAAAAAAAAAbACEAAAAAAAAAAAAmACEAAAACAAAAAAAnACEAAAACAAAAAAAoACEAAAACAAAAAAApACEAAAACAAAAAAAvACEAAAAAAAAAAAA/ACEAAAAAAAAAAAAAACIAAAAAAAAAAAAbACIAAAAAAAAAAAAvACIAAAAAAAAAAAA/ACIAAAAAAAAAAAAAACMAAAAAAAAAAAAbACMAAAAAAAAAAAAvACMAAAAAAAAAAAA/ACMAAAAAAAAAAAAAACQAAAAAAAAAAAAbACQAAAAAAAAAAAAoACQAAAACAAAAAAApACQAAAACAAAAAAAqACQAAAACAAAAAAArACQAAAACAAAAAAAvACQAAAAAAAAAAAA/ACQAAAAAAAAAAAAAACUAAAAAAAAAAAAbACUAAAAAAAAAAAAvACUAAAAAAAAAAAA/ACUAAAAAAAAAAAAAACYAAAAAAAAAAAAbACYAAAAAAAAAAAAvACYAAAAAAAAAAAA/ACYAAAAAAAAAAAAAACcAAAAAAAAAAAAbACcAAAAAAAAAAAAnACcAAAACAAAAAAAoACcAAAACAAAAAAApACcAAAACAAAAAAAqACcAAAACAAAAAAAvACcAAAAAAAAAAAA/ACcAAAAAAAAAAAAAACgAAAAAAAAAAAAbACgAAAAAAAAAAAAvACgAAAAAAAAAAAA/ACgAAAAAAAAAAAAAACkAAAAAAAAAAAAbACkAAAAAAAAAAAAvACkAAAAAAAAAAAA/ACkAAAAAAAAAAAAAACoAAAAAAAAAAAAbACoAAAAAAAAAAAAcACoAAAAAAAAAAAAdACoAAAAAAAAAAAAeACoAAAAAAAAAAAAfACoAAAAAAAAAAAAgACoAAAAAAAAAAAAhACoAAAAAAAAAAAAiACoAAAAAAAAAAAAjACoAAAAAAAAAAAAkACoAAAAAAAAAAAAlACoAAAAAAAAAAAAmACoAAAAAAAAAAAAnACoAAAAAAAAAAAAoACoAAAAAAAAAAAApACoAAAAAAAAAAAAqACoAAAAAAAAAAAArACoAAAAAAAAAAAAsACoAAAAAAAAAAAAtACoAAAAAAAAAAAAuACoAAAAAAAAAAAAvACoAAAAAAAAAAAA/ACoAAAAAAAAAAAAAACsAAAAAAAAAAAA/ACsAAAAAAAAAAAAAACwAAAAAAAAAAAA/ACwAAAAAAAAAAAAAAC0AAAAAAAAAAAA/AC0AAAAAAAAAAAAAAC4AAAAAAAAAAAA/AC4AAAAAAAAAAAAAAC8AAAAAAAAAAAABAC8AAAAAAAAAAAACAC8AAAAAAAAAAAADAC8AAAAAAAAAAAAEAC8AAAAAAAAAAAAFAC8AAAAAAAAAAAAGAC8AAAAAAAAAAAAHAC8AAAAAAAAAAAAIAC8AAAAAAAAAAAAJAC8AAAAAAAAAAAAKAC8AAAAAAAAAAAALAC8AAAAAAAAAAAAMAC8AAAAAAAAAAAANAC8AAAAAAAAAAAAOAC8AAAAAAAAAAAAPAC8AAAAAAAAAAAAQAC8AAAAAAAAAAAARAC8AAAAAAAAAAAASAC8AAAAAAAAAAAATAC8AAAAAAAAAAAAUAC8AAAAAAAAAAAAVAC8AAAAAAAAAAAAWAC8AAAAAAAAAAAAXAC8AAAAAAAAAAAAYAC8AAAAAAAAAAAAZAC8AAAAAAAAAAAAaAC8AAAAAAAAAAAAbAC8AAAAAAAAAAAAcAC8AAAAAAAAAAAAdAC8AAAAAAAAAAAAeAC8AAAAAAAAAAAAfAC8AAAAAAAAAAAAgAC8AAAAAAAAAAAAhAC8AAAAAAAAAAAAiAC8AAAAAAAAAAAAjAC8AAAAAAAAAAAAkAC8AAAAAAAAAAAAlAC8AAAAAAAAAAAAmAC8AAAAAAAAAAAAnAC8AAAAAAAAAAAAoAC8AAAAAAAAAAAApAC8AAAAAAAAAAAAqAC8AAAAAAAAAAAArAC8AAAAAAAAAAAAsAC8AAAAAAAAAAAAtAC8AAAAAAAAAAAAuAC8AAAAAAAAAAAAvAC8AAAAAAAAAAAAwAC8AAAAAAAAAAAAxAC8AAAAAAAAAAAAyAC8AAAAAAAAAAAAzAC8AAAAAAAAAAAA0AC8AAAAAAAAAAAA1AC8AAAAAAAAAAAA2AC8AAAAAAAAAAAA3AC8AAAAAAAAAAAA4AC8AAAAAAAAAAAA5AC8AAAAAAAAAAAA6AC8AAAAAAAAAAAA7AC8AAAAAAAAAAAA8AC8AAAAAAAAAAAA9AC8AAAAAAAAAAAA+AC8AAAAAAAAAAAA/AC8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_sr5nf")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-puzzle-roof-launch"]
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-puzzle-roof-launch/Objects"]
+position = Vector2(344, 248)
+script = ExtResource("3_gwymu")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(344, 248)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-roof-launch/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_exeb3")
+
+[node name="recoilPlatforms_0" type="Node2D" parent="Rooms/cl23-puzzle-roof-launch/Objects"]
+position = Vector2(232, 256)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 29.0,
+"depth": 3.0,
+"id": "Launch",
+"loadFrames": 30.0,
+"r": 32.0,
+"releaseSpeed": 120.0,
+"w": 9.0
+}
+original_position = Vector2(232, 256)
+field_path = ["recoilPlatforms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-roof-launch/Objects/recoilPlatforms_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_4mjny")
+
+[node name="hingeArms_0" type="Node2D" parent="Rooms/cl23-puzzle-roof-launch/Objects"]
+position = Vector2(224, 224)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 28.0,
+"dir": "right",
+"id": "Roof",
+"length": 10.0,
+"r": 28.0
+}
+original_position = Vector2(224, 224)
+field_path = ["hingeArms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-puzzle-roof-launch/Objects/hingeArms_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_62yga")
+
+[node name="cl23-weight-airborne" type="Node2D" parent="Rooms"]
+position = Vector2(11200, -2080)
+script = ExtResource("2_incbt")
+room_id = "cl23-weight-airborne"
+room_title = "The Throw During the Launch"
+map_width = 72
+map_height = 44
+settings = {
+"aim8": true,
+"cols": 72.0,
+"dashes": 1.0,
+"dropThru": true,
+"exit": "none",
+"hint": "The lantern already holds the launch plate below its low roof. Hold Down while picking it up and walking to the plate's right end. Launch right, throw the lantern during the ascent into the raised trough, then dash up-right over the guarded divider. Brake into the gap beside the receiving roof, drop through the shelf, and move right onto the lowered receiver. Leave the lantern working and take an ordinary hop from the uncovered end to the flag. After release, the first plate closes beneath its roof, so plan the throw and crossing together.",
+"id": "cl23-weight-airborne",
+"lock": ["parry", "portal"],
+"movement": "survive-2",
+"name": "The Throw During the Launch",
+"palette": "fractured",
+"puzzleCameraAnchorY": 100.0,
+"puzzleGoal": [472.0, 184.0, 40.0, 4.0],
+"puzzleRoutes": [{
+"name": "Reference",
+"tape": [[1.0, "r"], [40.0, ""], [31.0, "r"], [10.0, ""], [1.0, "dg"], [28.0, "rd"], [8.0, "d"], [11.0, "rj"], [1.0, "rjg"], [21.0, "rj"], [12.0, "rux"], [18.0, "r"], [8.0, "l"], [40.0, ""], [1.0, "dj"], [2.0, ""], [51.0, "r"], [10.0, ""], [28.0, "rj"], [10.0, "r"], [25.0, ""]]
+}],
+"puzzleStudy": true,
+"question": "When must you let go of the lantern to earn your dash?",
+"rbr": 23.0,
+"recoilPlatforms": [],
+"rows": 44.0,
+"study": true,
+"workshopGoal": [472.0, 184.0, 40.0, 4.0]
+}
+original_fields = ["aim8", "cols", "dashes", "decor", "dropThru", "exit", "hint", "id", "lock", "map", "movement", "name", "palette", "people", "puzzleCameraAnchorY", "puzzleGoal", "puzzleRoutes", "puzzleStudy", "question", "rbr", "recoilPlatforms", "rows", "study", "workshopGoal", "zips"]
+array_fields = [["recoilPlatforms"]]
+original_spawn = Vector2(160, 224)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-weight-airborne"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA5AAAAAAAAAAAAAAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAABAAAAAAAAAAAAAAABBAAAAAAAAAAAAAABCAAAAAAAAAAAAAABDAAAAAAAAAAAAAABEAAAAAAAAAAAAAABFAAAAAAAAAAAAAABGAAAAAAAAAAAAAABHAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAuAAEAAAAAAAAAAAAvAAEAAAAAAAAAAAAwAAEAAAAAAAAAAAAxAAEAAAAAAAAAAAAyAAEAAAAAAAAAAAAzAAEAAAAAAAAAAAA0AAEAAAAAAAAAAAA1AAEAAAAAAAAAAABHAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAuAAIAAAAAAAAAAAAvAAIAAAAAAAAAAAAwAAIAAAAAAAAAAAAxAAIAAAAAAAAAAAAyAAIAAAAAAAAAAAAzAAIAAAAAAAAAAAA0AAIAAAAAAAAAAAA1AAIAAAAAAAAAAABHAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAuAAMAAAAAAAAAAAAvAAMAAAAAAAAAAAAwAAMAAAAAAAAAAAAxAAMAAAAAAAAAAAAyAAMAAAAAAAAAAAAzAAMAAAAAAAAAAAA0AAMAAAAAAAAAAAA1AAMAAAAAAAAAAABHAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAuAAQAAAAAAAAAAAAvAAQAAAAAAAAAAAAwAAQAAAAAAAAAAAAxAAQAAAAAAAAAAAAyAAQAAAAAAAAAAAAzAAQAAAAAAAAAAAA0AAQAAAAAAAAAAAA1AAQAAAAAAAAAAABHAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAuAAUAAAAAAAAAAAAvAAUAAAAAAAAAAAAwAAUAAAAAAAAAAAAxAAUAAAAAAAAAAAAyAAUAAAAAAAAAAAAzAAUAAAAAAAAAAAA0AAUAAAAAAAAAAAA1AAUAAAAAAAAAAABHAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAuAAYAAAAAAAAAAAAvAAYAAAAAAAAAAAAwAAYAAAAAAAAAAAAxAAYAAAAAAAAAAAAyAAYAAAAAAAAAAAAzAAYAAAAAAAAAAAA0AAYAAAAAAAAAAAA1AAYAAAAAAAAAAABHAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAuAAcAAAAAAAAAAAAvAAcAAAAAAAAAAAAwAAcAAAAAAAAAAAAxAAcAAAAAAAAAAAAyAAcAAAAAAAAAAAAzAAcAAAAAAAAAAAA0AAcAAAAAAAAAAAA1AAcAAAAAAAAAAABHAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAuAAgAAAAAAAAAAAAvAAgAAAAAAAAAAAAwAAgAAAAAAAAAAAAxAAgAAAAAAAAAAAAyAAgAAAAAAAAAAAAzAAgAAAAAAAAAAAA0AAgAAAAAAAAAAAA1AAgAAAAAAAAAAABHAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAuAAkAAAAAAAAAAAAvAAkAAAAAAAAAAAAwAAkAAAAAAAAAAAAxAAkAAAAAAAAAAAAyAAkAAAAAAAAAAAAzAAkAAAAAAAAAAAA0AAkAAAAAAAAAAAA1AAkAAAAAAAAAAABHAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAuAAoAAAAAAAAAAAAvAAoAAAAAAAAAAAAwAAoAAAAAAAAAAAAxAAoAAAAAAAAAAAAyAAoAAAAAAAAAAAAzAAoAAAAAAAAAAAA0AAoAAAAAAAAAAAA1AAoAAAAAAAAAAABHAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAuAAsAAAAAAAAAAAAvAAsAAAAAAAAAAAAwAAsAAAAAAAAAAAAxAAsAAAAAAAAAAAAyAAsAAAAAAAAAAAAzAAsAAAAAAAAAAAA0AAsAAAAAAAAAAAA1AAsAAAAAAAAAAABHAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAuAAwAAAAAAAAAAAAvAAwAAAAAAAAAAAAwAAwAAAAAAAAAAAAxAAwAAAAAAAAAAAAyAAwAAAAAAAAAAAAzAAwAAAAAAAAAAAA0AAwAAAAAAAAAAAA1AAwAAAAAAAAAAABHAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAuAA0AAAAAAAAAAAAvAA0AAAAAAAAAAAAwAA0AAAAAAAAAAAAxAA0AAAAAAAAAAAAyAA0AAAAAAAAAAAAzAA0AAAAAAAAAAAA0AA0AAAAAAAAAAAA1AA0AAAAAAAAAAABHAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAuAA4AAAAAAAAAAAAvAA4AAAAAAAAAAAAwAA4AAAAAAAAAAAAxAA4AAAAAAAAAAAAyAA4AAAAAAAAAAAAzAA4AAAAAAAAAAAA0AA4AAAAAAAAAAAA1AA4AAAAAAAAAAABHAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAuAA8AAAAAAAAAAAAvAA8AAAAAAAAAAAAwAA8AAAAAAAAAAAAxAA8AAAAAAAAAAAAyAA8AAAAAAAAAAAAzAA8AAAAAAAAAAAA0AA8AAAAAAAAAAAA1AA8AAAAAAAAAAABHAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAuABAAAAAAAAAAAAAvABAAAAAAAAAAAAAwABAAAAAAAAAAAAAxABAAAAAAAAAAAAAyABAAAAAAAAAAAAAzABAAAAAAAAAAAAA0ABAAAAAAAAAAAAA1ABAAAAAAAAAAAABHABAAAAAAAAAAAAAAABEAAAAAAAAAAAAuABEAAAAAAAAAAAAvABEAAAAAAAAAAAAwABEAAAAAAAAAAAAxABEAAAAAAAAAAAAyABEAAAAAAAAAAAAzABEAAAAAAAAAAAA0ABEAAAAAAAAAAAA1ABEAAAAAAAAAAABHABEAAAAAAAAAAAAAABIAAAAAAAAAAAAqABIAAAADAAAAAAAuABIAAAAAAAAAAAAvABIAAAAAAAAAAAAwABIAAAAAAAAAAAAxABIAAAAAAAAAAAAyABIAAAAAAAAAAAAzABIAAAAAAAAAAAA0ABIAAAAAAAAAAAA1ABIAAAAAAAAAAABHABIAAAAAAAAAAAAAABMAAAAAAAAAAAApABMAAAAFAAAAAAAqABMAAAAAAAAAAAArABMAAAAGAAAAAAAuABMAAAAAAAAAAAAvABMAAAAAAAAAAAAwABMAAAAAAAAAAAAxABMAAAAAAAAAAAAyABMAAAAAAAAAAAAzABMAAAAAAAAAAAA0ABMAAAAAAAAAAAA1ABMAAAAAAAAAAABHABMAAAAAAAAAAAAAABQAAAAAAAAAAAAYABQAAAADAAAAAAAZABQAAAADAAAAAAAaABQAAAADAAAAAAAbABQAAAADAAAAAAAcABQAAAADAAAAAAAdABQAAAADAAAAAAAeABQAAAADAAAAAAAfABQAAAADAAAAAAApABQAAAAFAAAAAAAqABQAAAAAAAAAAAArABQAAAAGAAAAAAAuABQAAAAAAAAAAAAvABQAAAAAAAAAAAAwABQAAAAAAAAAAAAxABQAAAAAAAAAAAAyABQAAAAAAAAAAAAzABQAAAAAAAAAAAA0ABQAAAAAAAAAAAA1ABQAAAAAAAAAAABHABQAAAAAAAAAAAAAABUAAAAAAAAAAAAYABUAAAAAAAAAAAAZABUAAAAAAAAAAAAaABUAAAAAAAAAAAAbABUAAAAAAAAAAAAcABUAAAAAAAAAAAAdABUAAAAAAAAAAAAeABUAAAAAAAAAAAAfABUAAAAAAAAAAAAgABUAAAAGAAAAAAApABUAAAAFAAAAAAAqABUAAAAAAAAAAAArABUAAAAGAAAAAAAuABUAAAAAAAAAAAAvABUAAAAAAAAAAAAwABUAAAAAAAAAAAAxABUAAAAAAAAAAAAyABUAAAAAAAAAAAAzABUAAAAAAAAAAAA0ABUAAAAAAAAAAAA1ABUAAAAAAAAAAABHABUAAAAAAAAAAAAAABYAAAAAAAAAAAAYABYAAAAAAAAAAAAZABYAAAAAAAAAAAAaABYAAAAAAAAAAAAbABYAAAAAAAAAAAAcABYAAAAAAAAAAAAdABYAAAAAAAAAAAAeABYAAAAAAAAAAAAfABYAAAAAAAAAAAAgABYAAAAGAAAAAABHABYAAAAAAAAAAAAAABcAAAAAAAAAAAAYABcAAAAAAAAAAAAZABcAAAAAAAAAAAAaABcAAAAAAAAAAAAbABcAAAAAAAAAAAAcABcAAAAAAAAAAAAdABcAAAAAAAAAAAAeABcAAAAAAAAAAAAfABcAAAAAAAAAAAAgABcAAAAGAAAAAAAnABcAAAACAAAAAAAoABcAAAACAAAAAAApABcAAAACAAAAAAAqABcAAAAAAAAAAAArABcAAAACAAAAAAAsABcAAAACAAAAAAAtABcAAAACAAAAAAA5ABcAAAAAAAAAAAA7ABcAAAAAAAAAAAA8ABcAAAAAAAAAAAA9ABcAAAAAAAAAAAA+ABcAAAAAAAAAAAA/ABcAAAAAAAAAAABAABcAAAAAAAAAAABHABcAAAAAAAAAAAAAABgAAAAAAAAAAAAYABgAAAAAAAAAAAAZABgAAAAAAAAAAAAaABgAAAAAAAAAAAAbABgAAAAAAAAAAAAcABgAAAAAAAAAAAAdABgAAAAAAAAAAAAeABgAAAAAAAAAAAAfABgAAAAAAAAAAAAgABgAAAAGAAAAAAAqABgAAAAAAAAAAAA5ABgAAAAAAAAAAAA6ABgAAAAFAAAAAAA7ABgAAAAAAAAAAAA8ABgAAAAAAAAAAAA9ABgAAAAAAAAAAAA+ABgAAAAAAAAAAAA/ABgAAAAAAAAAAABAABgAAAAAAAAAAABHABgAAAAAAAAAAAAAABkAAAAAAAAAAAAqABkAAAAAAAAAAAA5ABkAAAAAAAAAAAA6ABkAAAAFAAAAAAA7ABkAAAAAAAAAAAA8ABkAAAAAAAAAAAA9ABkAAAAAAAAAAAA+ABkAAAAAAAAAAAA/ABkAAAAAAAAAAABAABkAAAAAAAAAAABHABkAAAAAAAAAAAAAABoAAAAAAAAAAAAqABoAAAAAAAAAAAA5ABoAAAAAAAAAAAA6ABoAAAAFAAAAAAA7ABoAAAAAAAAAAAA8ABoAAAAAAAAAAAA9ABoAAAAAAAAAAAA+ABoAAAAAAAAAAAA/ABoAAAAAAAAAAABAABoAAAAAAAAAAABHABoAAAAAAAAAAAAAABsAAAAAAAAAAAAqABsAAAAAAAAAAAA5ABsAAAAAAAAAAAA6ABsAAAAFAAAAAAA7ABsAAAAAAAAAAAA8ABsAAAAAAAAAAAA9ABsAAAAAAAAAAAA+ABsAAAAAAAAAAAA/ABsAAAAAAAAAAABAABsAAAAAAAAAAABHABsAAAAAAAAAAAAAABwAAAAAAAAAAAAqABwAAAAAAAAAAAA5ABwAAAAAAAAAAAA6ABwAAAAFAAAAAAA7ABwAAAAAAAAAAAA8ABwAAAAAAAAAAAA9ABwAAAAAAAAAAAA+ABwAAAAAAAAAAAA/ABwAAAAAAAAAAABAABwAAAAAAAAAAABHABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAOAB0AAAAAAAAAAAAPAB0AAAAAAAAAAAAQAB0AAAAAAAAAAAARAB0AAAAAAAAAAAASAB0AAAAAAAAAAAATAB0AAAAAAAAAAAAUAB0AAAAAAAAAAAAVAB0AAAAAAAAAAAAWAB0AAAAAAAAAAAAXAB0AAAAAAAAAAAAqAB0AAAAAAAAAAAA5AB0AAAAAAAAAAAA6AB0AAAAFAAAAAAA7AB0AAAAAAAAAAAA8AB0AAAAAAAAAAAA9AB0AAAAAAAAAAAA+AB0AAAAAAAAAAAA/AB0AAAAAAAAAAABAAB0AAAAAAAAAAABHAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAqAB4AAAAAAAAAAAA5AB4AAAAAAAAAAAA6AB4AAAAFAAAAAAA7AB4AAAAAAAAAAAA8AB4AAAAAAAAAAAA9AB4AAAAAAAAAAAA+AB4AAAAAAAAAAAA/AB4AAAAAAAAAAABAAB4AAAAAAAAAAABHAB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAqAB8AAAAAAAAAAAA5AB8AAAAAAAAAAAA6AB8AAAAFAAAAAAA7AB8AAAAAAAAAAAA8AB8AAAAAAAAAAAA9AB8AAAAAAAAAAAA+AB8AAAAAAAAAAAA/AB8AAAAAAAAAAABAAB8AAAAAAAAAAABHAB8AAAAAAAAAAAAAACAAAAAAAAAAAAAqACAAAAAAAAAAAAA5ACAAAAAAAAAAAAA6ACAAAAAFAAAAAAA7ACAAAAAAAAAAAAA8ACAAAAAAAAAAAAA9ACAAAAAAAAAAAAA+ACAAAAAAAAAAAAA/ACAAAAAAAAAAAABAACAAAAAAAAAAAABHACAAAAAAAAAAAAAAACEAAAAAAAAAAAAQACEAAAACAAAAAAARACEAAAACAAAAAAASACEAAAACAAAAAAATACEAAAACAAAAAAAqACEAAAAAAAAAAAA5ACEAAAAAAAAAAAA6ACEAAAAFAAAAAAA7ACEAAAAAAAAAAAA8ACEAAAAAAAAAAAA9ACEAAAAAAAAAAAA+ACEAAAAAAAAAAAA/ACEAAAAAAAAAAABAACEAAAAAAAAAAABHACEAAAAAAAAAAAAAACIAAAAAAAAAAAAqACIAAAAAAAAAAAA5ACIAAAAAAAAAAAA6ACIAAAAFAAAAAAA7ACIAAAAAAAAAAAA8ACIAAAAAAAAAAAA9ACIAAAAAAAAAAAA+ACIAAAAAAAAAAAA/ACIAAAAAAAAAAABAACIAAAAAAAAAAABHACIAAAAAAAAAAAAAACMAAAAAAAAAAAAqACMAAAAAAAAAAAA5ACMAAAAAAAAAAAA6ACMAAAAFAAAAAAA7ACMAAAAAAAAAAAA8ACMAAAAAAAAAAAA9ACMAAAAAAAAAAAA+ACMAAAAAAAAAAAA/ACMAAAAAAAAAAABAACMAAAAAAAAAAABHACMAAAAAAAAAAAAAACQAAAAAAAAAAAAOACQAAAACAAAAAAAPACQAAAACAAAAAAAQACQAAAACAAAAAAARACQAAAACAAAAAAASACQAAAACAAAAAAATACQAAAACAAAAAAAUACQAAAACAAAAAAAVACQAAAACAAAAAAAWACQAAAACAAAAAAAXACQAAAACAAAAAAAYACQAAAACAAAAAAAZACQAAAACAAAAAAAaACQAAAACAAAAAAAbACQAAAACAAAAAAAcACQAAAACAAAAAAAdACQAAAACAAAAAAAeACQAAAACAAAAAAAfACQAAAACAAAAAAAgACQAAAACAAAAAAAhACQAAAACAAAAAAAiACQAAAACAAAAAAAjACQAAAACAAAAAAAkACQAAAACAAAAAAAnACQAAAACAAAAAAAoACQAAAACAAAAAAAqACQAAAAAAAAAAAA5ACQAAAAAAAAAAAA6ACQAAAAFAAAAAAA7ACQAAAAAAAAAAAA8ACQAAAAAAAAAAAA9ACQAAAAAAAAAAAA+ACQAAAAAAAAAAAA/ACQAAAAAAAAAAABAACQAAAAAAAAAAABHACQAAAAAAAAAAAAAACUAAAAAAAAAAAAqACUAAAAAAAAAAAA5ACUAAAAAAAAAAAA6ACUAAAAFAAAAAAA7ACUAAAAAAAAAAAA8ACUAAAAAAAAAAAA9ACUAAAAAAAAAAAA+ACUAAAAAAAAAAAA/ACUAAAAAAAAAAABAACUAAAAAAAAAAABHACUAAAAAAAAAAAAAACYAAAAAAAAAAAAqACYAAAAAAAAAAAA5ACYAAAAAAAAAAAA6ACYAAAAFAAAAAAA7ACYAAAAAAAAAAAA8ACYAAAAAAAAAAAA9ACYAAAAAAAAAAAA+ACYAAAAAAAAAAAA/ACYAAAAAAAAAAABAACYAAAAAAAAAAABHACYAAAAAAAAAAAAAACcAAAAAAAAAAAAqACcAAAAAAAAAAAA5ACcAAAAAAAAAAAA6ACcAAAAFAAAAAAA7ACcAAAAAAAAAAAA8ACcAAAAAAAAAAAA9ACcAAAAAAAAAAAA+ACcAAAAAAAAAAAA/ACcAAAAAAAAAAABAACcAAAAAAAAAAABHACcAAAAAAAAAAAAAACgAAAAAAAAAAAAqACgAAAAAAAAAAAA5ACgAAAAAAAAAAAA6ACgAAAAFAAAAAAA7ACgAAAAAAAAAAAA8ACgAAAAAAAAAAAA9ACgAAAAAAAAAAAA+ACgAAAAAAAAAAAA/ACgAAAAAAAAAAABAACgAAAAAAAAAAABHACgAAAAAAAAAAAAAACkAAAAAAAAAAAAqACkAAAAAAAAAAAA5ACkAAAAAAAAAAAA6ACkAAAAFAAAAAAA7ACkAAAAAAAAAAAA8ACkAAAAAAAAAAAA9ACkAAAAAAAAAAAA+ACkAAAAAAAAAAAA/ACkAAAAAAAAAAABAACkAAAAAAAAAAABHACkAAAAAAAAAAAAAACoAAAAAAAAAAAABACoAAAADAAAAAAACACoAAAADAAAAAAADACoAAAADAAAAAAAEACoAAAADAAAAAAAFACoAAAADAAAAAAAGACoAAAADAAAAAAAHACoAAAADAAAAAAAIACoAAAADAAAAAAAJACoAAAADAAAAAAAKACoAAAADAAAAAAALACoAAAADAAAAAAAMACoAAAADAAAAAAANACoAAAADAAAAAAAOACoAAAADAAAAAAAPACoAAAADAAAAAAAQACoAAAADAAAAAAARACoAAAADAAAAAAASACoAAAADAAAAAAATACoAAAADAAAAAAAUACoAAAADAAAAAAAVACoAAAADAAAAAAAWACoAAAADAAAAAAAXACoAAAADAAAAAAAYACoAAAADAAAAAAAZACoAAAADAAAAAAAaACoAAAADAAAAAAAbACoAAAADAAAAAAAcACoAAAADAAAAAAAdACoAAAADAAAAAAAeACoAAAADAAAAAAAfACoAAAADAAAAAAAgACoAAAADAAAAAAAhACoAAAADAAAAAAAiACoAAAADAAAAAAAjACoAAAADAAAAAAAkACoAAAADAAAAAAAlACoAAAADAAAAAAAmACoAAAADAAAAAAAnACoAAAADAAAAAAAoACoAAAADAAAAAAApACoAAAADAAAAAAAqACoAAAADAAAAAAArACoAAAADAAAAAAAsACoAAAADAAAAAAAtACoAAAADAAAAAAAuACoAAAADAAAAAAAvACoAAAADAAAAAAAwACoAAAADAAAAAAAxACoAAAADAAAAAAAyACoAAAADAAAAAAAzACoAAAADAAAAAAA0ACoAAAADAAAAAAA1ACoAAAADAAAAAAA2ACoAAAADAAAAAAA3ACoAAAADAAAAAAA4ACoAAAADAAAAAAA5ACoAAAADAAAAAAA6ACoAAAADAAAAAAA7ACoAAAADAAAAAAA8ACoAAAADAAAAAAA9ACoAAAADAAAAAAA+ACoAAAADAAAAAAA/ACoAAAADAAAAAABAACoAAAADAAAAAABBACoAAAADAAAAAABCACoAAAADAAAAAABDACoAAAADAAAAAABEACoAAAADAAAAAABFACoAAAADAAAAAABGACoAAAADAAAAAABHACoAAAAAAAAAAAAAACsAAAAAAAAAAAABACsAAAAAAAAAAAACACsAAAAAAAAAAAADACsAAAAAAAAAAAAEACsAAAAAAAAAAAAFACsAAAAAAAAAAAAGACsAAAAAAAAAAAAHACsAAAAAAAAAAAAIACsAAAAAAAAAAAAJACsAAAAAAAAAAAAKACsAAAAAAAAAAAALACsAAAAAAAAAAAAMACsAAAAAAAAAAAANACsAAAAAAAAAAAAOACsAAAAAAAAAAAAPACsAAAAAAAAAAAAQACsAAAAAAAAAAAARACsAAAAAAAAAAAASACsAAAAAAAAAAAATACsAAAAAAAAAAAAUACsAAAAAAAAAAAAVACsAAAAAAAAAAAAWACsAAAAAAAAAAAAXACsAAAAAAAAAAAAYACsAAAAAAAAAAAAZACsAAAAAAAAAAAAaACsAAAAAAAAAAAAbACsAAAAAAAAAAAAcACsAAAAAAAAAAAAdACsAAAAAAAAAAAAeACsAAAAAAAAAAAAfACsAAAAAAAAAAAAgACsAAAAAAAAAAAAhACsAAAAAAAAAAAAiACsAAAAAAAAAAAAjACsAAAAAAAAAAAAkACsAAAAAAAAAAAAlACsAAAAAAAAAAAAmACsAAAAAAAAAAAAnACsAAAAAAAAAAAAoACsAAAAAAAAAAAApACsAAAAAAAAAAAAqACsAAAAAAAAAAAArACsAAAAAAAAAAAAsACsAAAAAAAAAAAAtACsAAAAAAAAAAAAuACsAAAAAAAAAAAAvACsAAAAAAAAAAAAwACsAAAAAAAAAAAAxACsAAAAAAAAAAAAyACsAAAAAAAAAAAAzACsAAAAAAAAAAAA0ACsAAAAAAAAAAAA1ACsAAAAAAAAAAAA2ACsAAAAAAAAAAAA3ACsAAAAAAAAAAAA4ACsAAAAAAAAAAAA5ACsAAAAAAAAAAAA6ACsAAAAAAAAAAAA7ACsAAAAAAAAAAAA8ACsAAAAAAAAAAAA9ACsAAAAAAAAAAAA+ACsAAAAAAAAAAAA/ACsAAAAAAAAAAABAACsAAAAAAAAAAABBACsAAAAAAAAAAABCACsAAAAAAAAAAABDACsAAAAAAAAAAABEACsAAAAAAAAAAABFACsAAAAAAAAAAABGACsAAAAAAAAAAABHACsAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_sr5nf")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-weight-airborne"]
+
+[node name="Fixture_l_27_25" type="Node2D" parent="Rooms/cl23-weight-airborne/Objects"]
+position = Vector2(216, 200)
+script = ExtResource("3_gwymu")
+kind = "Fixture"
+glyph = "l"
+original_position = Vector2(216, 200)
+preview_entity = {
+"h": 8,
+"id": 0,
+"ox": 216,
+"oy": 200,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "lantern",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 216,
+"y": 200
+}
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-weight-airborne/Objects/Fixture_l_27_25"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_xomda")
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-weight-airborne/Objects"]
+position = Vector2(160, 224)
+script = ExtResource("3_gwymu")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(160, 224)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-weight-airborne/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_bn6jm")
+
+[node name="recoilPlatforms_0" type="Node2D" parent="Rooms/cl23-weight-airborne/Objects"]
+position = Vector2(192, 208)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 24.0,
+"depth": 3.0,
+"id": "Launch",
+"loadFrames": 30.0,
+"r": 26.0,
+"releaseSpeed": 120.0,
+"w": 8.0
+}
+original_position = Vector2(192, 208)
+field_path = ["recoilPlatforms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-weight-airborne/Objects/recoilPlatforms_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_flc3n")
+
+[node name="recoilPlatforms_1" type="Node2D" parent="Rooms/cl23-weight-airborne/Objects"]
+position = Vector2(368, 184)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 46.0,
+"depth": 3.0,
+"id": "Receiver",
+"loadFrames": 30.0,
+"r": 23.0,
+"releaseSpeed": 120.0,
+"w": 11.0
+}
+original_position = Vector2(368, 184)
+field_path = ["recoilPlatforms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-weight-airborne/Objects/recoilPlatforms_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_ns70i")
+
+[node name="cl23-weight-intercept" type="Node2D" parent="Rooms"]
+position = Vector2(12000, -2080)
+script = ExtResource("2_incbt")
+room_id = "cl23-weight-intercept"
+room_title = "Meet the Weight on Its Way Down"
+map_width = 72
+map_height = 48
+settings = {
+"aim8": true,
+"cols": 72.0,
+"dashes": 1.0,
+"dropThru": true,
+"exit": "none",
+"hint": "Throw the lantern right from the starting plate while it is still raised. Charge the plate yourself and launch over the double-sided thorn divider. Brake on the small shelf, drop to the lower sill, then jump right through the side opening to meet the descending receiver. Hold Down while taking the lantern, throw it clear and dash right promptly before the rising plate pins you against its roof. The landing beyond needs only an ordinary hop to the flag.",
+"id": "cl23-weight-intercept",
+"lock": ["parry", "portal"],
+"movement": "survive-2",
+"name": "Meet the Weight on Its Way Down",
+"palette": "fractured",
+"puzzleCameraAnchorY": 100.0,
+"puzzleGoal": [376.0, 224.0, 32.0, 4.0],
+"puzzleRoutes": [{
+"name": "Reference",
+"tape": [[10.0, "r"], [1.0, "g"], [54.0, "r"], [10.0, ""], [1.0, "g"], [32.0, "d"], [24.0, "rj"], [12.0, "rux"], [8.0, "r"], [8.0, "l"], [30.0, ""], [1.0, "dj"], [20.0, ""], [16.0, "rj"], [1.0, "dg"], [1.0, "d"], [1.0, "g"], [5.0, ""], [12.0, "rx"], [14.0, "r"], [50.0, ""], [25.0, "rj"], [15.0, ""]]
+}],
+"puzzleStudy": true,
+"question": "Where will the plate be when you reach its opening?",
+"rbr": 23.0,
+"recoilPlatforms": [],
+"rows": 48.0,
+"study": true,
+"workshopGoal": [376.0, 224.0, 32.0, 4.0]
+}
+original_fields = ["aim8", "cols", "dashes", "decor", "dropThru", "exit", "hint", "id", "lock", "map", "movement", "name", "palette", "people", "puzzleCameraAnchorY", "puzzleGoal", "puzzleRoutes", "puzzleStudy", "question", "rbr", "recoilPlatforms", "rows", "study", "workshopGoal", "zips"]
+array_fields = [["recoilPlatforms"]]
+original_spawn = Vector2(128, 224)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/cl23-weight-intercept"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA5AAAAAAAAAAAAAAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAABAAAAAAAAAAAAAAABBAAAAAAAAAAAAAABCAAAAAAAAAAAAAABDAAAAAAAAAAAAAABEAAAAAAAAAAAAAABFAAAAAAAAAAAAAABGAAAAAAAAAAAAAABHAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAoAAEAAAAAAAAAAAApAAEAAAAAAAAAAAAqAAEAAAAAAAAAAAArAAEAAAAAAAAAAAAsAAEAAAAAAAAAAAAzAAEAAAAAAAAAAABHAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAoAAIAAAAAAAAAAAApAAIAAAAAAAAAAAAqAAIAAAAAAAAAAAArAAIAAAAAAAAAAAAsAAIAAAAAAAAAAAAzAAIAAAAAAAAAAABHAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAoAAMAAAAAAAAAAAApAAMAAAAAAAAAAAAqAAMAAAAAAAAAAAArAAMAAAAAAAAAAAAsAAMAAAAAAAAAAAAzAAMAAAAAAAAAAABHAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAoAAQAAAAAAAAAAAApAAQAAAAAAAAAAAAqAAQAAAAAAAAAAAArAAQAAAAAAAAAAAAsAAQAAAAAAAAAAAAzAAQAAAAAAAAAAABHAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAoAAUAAAAAAAAAAAApAAUAAAAAAAAAAAAqAAUAAAAAAAAAAAArAAUAAAAAAAAAAAAsAAUAAAAAAAAAAAAzAAUAAAAAAAAAAABHAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAoAAYAAAAAAAAAAAApAAYAAAAAAAAAAAAqAAYAAAAAAAAAAAArAAYAAAAAAAAAAAAsAAYAAAAAAAAAAAAzAAYAAAAAAAAAAABHAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAoAAcAAAAAAAAAAAApAAcAAAAAAAAAAAAqAAcAAAAAAAAAAAArAAcAAAAAAAAAAAAsAAcAAAAAAAAAAAAzAAcAAAAAAAAAAABHAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAoAAgAAAAAAAAAAAApAAgAAAAAAAAAAAAqAAgAAAAAAAAAAAArAAgAAAAAAAAAAAAsAAgAAAAAAAAAAAAzAAgAAAAAAAAAAABHAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAoAAkAAAAAAAAAAAApAAkAAAAAAAAAAAAqAAkAAAAAAAAAAAArAAkAAAAAAAAAAAAsAAkAAAAAAAAAAAAzAAkAAAAAAAAAAABHAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAoAAoAAAAAAAAAAAApAAoAAAAAAAAAAAAqAAoAAAAAAAAAAAArAAoAAAAAAAAAAAAsAAoAAAAAAAAAAAAzAAoAAAAAAAAAAABHAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAoAAsAAAAAAAAAAAApAAsAAAAAAAAAAAAqAAsAAAAAAAAAAAArAAsAAAAAAAAAAAAsAAsAAAAAAAAAAAAzAAsAAAAAAAAAAABHAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAApAAwAAAAAAAAAAAAqAAwAAAAAAAAAAAArAAwAAAAAAAAAAAAsAAwAAAAAAAAAAAAzAAwAAAAAAAAAAABHAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAoAA0AAAAAAAAAAAApAA0AAAAAAAAAAAAqAA0AAAAAAAAAAAArAA0AAAAAAAAAAAAsAA0AAAAAAAAAAAAzAA0AAAAAAAAAAABHAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAoAA4AAAAAAAAAAAApAA4AAAAAAAAAAAAqAA4AAAAAAAAAAAArAA4AAAAAAAAAAAAsAA4AAAAAAAAAAAAzAA4AAAAAAAAAAABHAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAoAA8AAAAAAAAAAAApAA8AAAAAAAAAAAAqAA8AAAAAAAAAAAArAA8AAAAAAAAAAAAsAA8AAAAAAAAAAAAzAA8AAAAAAAAAAABHAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAoABAAAAAAAAAAAAApABAAAAAAAAAAAAAqABAAAAAAAAAAAAArABAAAAAAAAAAAAAsABAAAAAAAAAAAAAzABAAAAAAAAAAAABHABAAAAAAAAAAAAAAABEAAAAAAAAAAAAoABEAAAAAAAAAAAApABEAAAAAAAAAAAAqABEAAAAAAAAAAAArABEAAAAAAAAAAAAsABEAAAAAAAAAAAAzABEAAAAAAAAAAABHABEAAAAAAAAAAAAAABIAAAAAAAAAAAAoABIAAAAAAAAAAAApABIAAAAAAAAAAAAqABIAAAAAAAAAAAArABIAAAAAAAAAAAAsABIAAAAAAAAAAAAzABIAAAAAAAAAAABHABIAAAAAAAAAAAAAABMAAAAAAAAAAAAoABMAAAAAAAAAAAApABMAAAAAAAAAAAAqABMAAAAAAAAAAAArABMAAAAAAAAAAAAsABMAAAAAAAAAAAAzABMAAAAAAAAAAABHABMAAAAAAAAAAAAAABQAAAAAAAAAAAAoABQAAAAAAAAAAAApABQAAAAAAAAAAAAqABQAAAAAAAAAAAArABQAAAAAAAAAAAAsABQAAAAAAAAAAAAzABQAAAAAAAAAAABHABQAAAAAAAAAAAAAABUAAAAAAAAAAAAoABUAAAAAAAAAAAApABUAAAAAAAAAAAAqABUAAAAAAAAAAAArABUAAAAAAAAAAAAsABUAAAAAAAAAAAAzABUAAAAAAAAAAABHABUAAAAAAAAAAAAAABYAAAAAAAAAAAAjABYAAAADAAAAAAAoABYAAAAAAAAAAAApABYAAAAAAAAAAAAqABYAAAAAAAAAAAArABYAAAAAAAAAAAAsABYAAAAAAAAAAAAzABYAAAAAAAAAAABHABYAAAAAAAAAAAAAABcAAAAAAAAAAAAiABcAAAAFAAAAAAAjABcAAAAAAAAAAAAkABcAAAAGAAAAAAAoABcAAAAAAAAAAAApABcAAAAAAAAAAAAqABcAAAAAAAAAAAArABcAAAAAAAAAAAAsABcAAAAAAAAAAAAzABcAAAAAAAAAAABHABcAAAAAAAAAAAAAABgAAAAAAAAAAAAiABgAAAAFAAAAAAAjABgAAAAAAAAAAAAkABgAAAAGAAAAAAAoABgAAAAAAAAAAAApABgAAAAAAAAAAAAqABgAAAAAAAAAAAArABgAAAAAAAAAAAAsABgAAAAAAAAAAAAzABgAAAAAAAAAAABHABgAAAAAAAAAAAAAABkAAAAAAAAAAAAiABkAAAAFAAAAAAAjABkAAAAAAAAAAAAkABkAAAAGAAAAAAAoABkAAAAAAAAAAAApABkAAAAAAAAAAAAqABkAAAAAAAAAAAArABkAAAAAAAAAAAAsABkAAAAAAAAAAAAzABkAAAAAAAAAAABHABkAAAAAAAAAAAAAABoAAAAAAAAAAAAjABoAAAAAAAAAAAAoABoAAAAAAAAAAAApABoAAAAAAAAAAAAqABoAAAAAAAAAAAArABoAAAAAAAAAAAAsABoAAAAAAAAAAAAzABoAAAAAAAAAAABHABoAAAAAAAAAAAAAABsAAAAAAAAAAAAzABsAAAAAAAAAAABHABsAAAAAAAAAAAAAABwAAAAAAAAAAAAfABwAAAACAAAAAAAgABwAAAACAAAAAAAhABwAAAACAAAAAAAiABwAAAACAAAAAAAjABwAAAAAAAAAAAAkABwAAAACAAAAAAAlABwAAAACAAAAAAAmABwAAAACAAAAAAAnABwAAAAAAAAAAAAvABwAAAAAAAAAAAAwABwAAAAAAAAAAAAxABwAAAAAAAAAAAAyABwAAAAAAAAAAAAzABwAAAAAAAAAAABHABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAMAB0AAAAAAAAAAAANAB0AAAAAAAAAAAAOAB0AAAAAAAAAAAAPAB0AAAAAAAAAAAAQAB0AAAAAAAAAAAARAB0AAAAAAAAAAAASAB0AAAAAAAAAAAATAB0AAAAAAAAAAAAUAB0AAAAAAAAAAAAVAB0AAAAAAAAAAAAWAB0AAAAAAAAAAAAXAB0AAAAAAAAAAAAYAB0AAAAAAAAAAAAZAB0AAAAAAAAAAAAjAB0AAAAAAAAAAAAsAB0AAAAAAAAAAAAvAB0AAAAAAAAAAAAwAB0AAAAAAAAAAAAxAB0AAAAAAAAAAAAyAB0AAAAAAAAAAAAzAB0AAAAAAAAAAABHAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAjAB4AAAAAAAAAAAAsAB4AAAAAAAAAAAAvAB4AAAAAAAAAAAAwAB4AAAAAAAAAAAAxAB4AAAAAAAAAAAAyAB4AAAAAAAAAAAAzAB4AAAAAAAAAAABHAB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAjAB8AAAAAAAAAAAAsAB8AAAAAAAAAAAAtAB8AAAAAAAAAAAAuAB8AAAAAAAAAAAAvAB8AAAAAAAAAAAAwAB8AAAAAAAAAAAAxAB8AAAAAAAAAAAAyAB8AAAAAAAAAAAAzAB8AAAAAAAAAAABHAB8AAAAAAAAAAAAAACAAAAAAAAAAAAAjACAAAAAAAAAAAAAmACAAAAAAAAAAAAAnACAAAAAAAAAAAAAoACAAAAADAAAAAAApACAAAAADAAAAAAAqACAAAAADAAAAAAArACAAAAADAAAAAAAsACAAAAAAAAAAAAAzACAAAAAAAAAAAABHACAAAAAAAAAAAAAAACEAAAAAAAAAAAAjACEAAAAAAAAAAAAmACEAAAAAAAAAAAAnACEAAAAAAAAAAAAsACEAAAAAAAAAAAAzACEAAAAAAAAAAABHACEAAAAAAAAAAAAAACIAAAAAAAAAAAAjACIAAAAAAAAAAAAmACIAAAAAAAAAAAAnACIAAAAAAAAAAAAsACIAAAAAAAAAAAAzACIAAAAAAAAAAABHACIAAAAAAAAAAAAAACMAAAAAAAAAAAAjACMAAAAAAAAAAAAmACMAAAAAAAAAAAAnACMAAAAAAAAAAAAsACMAAAAAAAAAAAAzACMAAAAAAAAAAABHACMAAAAAAAAAAAAAACQAAAAAAAAAAAAjACQAAAAAAAAAAAAmACQAAAAAAAAAAAAnACQAAAAAAAAAAAAsACQAAAAAAAAAAAAzACQAAAAAAAAAAABHACQAAAAAAAAAAAAAACUAAAAAAAAAAAAjACUAAAAAAAAAAAAmACUAAAAAAAAAAAAnACUAAAAAAAAAAAAsACUAAAAAAAAAAAAzACUAAAAAAAAAAABHACUAAAAAAAAAAAAAACYAAAAAAAAAAAAjACYAAAAAAAAAAAAmACYAAAAAAAAAAAAnACYAAAAAAAAAAAAsACYAAAAAAAAAAAAzACYAAAAAAAAAAABHACYAAAAAAAAAAAAAACcAAAAAAAAAAAAjACcAAAAAAAAAAAAmACcAAAAAAAAAAAAnACcAAAAAAAAAAAAsACcAAAAAAAAAAAAzACcAAAAAAAAAAABHACcAAAAAAAAAAAAAACgAAAAAAAAAAAAjACgAAAAAAAAAAAAmACgAAAAAAAAAAAAnACgAAAAAAAAAAAAsACgAAAAAAAAAAAAzACgAAAAAAAAAAABHACgAAAAAAAAAAAAAACkAAAAAAAAAAAAjACkAAAAAAAAAAAAmACkAAAAAAAAAAAAnACkAAAAAAAAAAAAsACkAAAAAAAAAAAAzACkAAAAAAAAAAABHACkAAAAAAAAAAAAAACoAAAAAAAAAAAAjACoAAAAAAAAAAAAmACoAAAAAAAAAAAAnACoAAAAAAAAAAAAsACoAAAAAAAAAAAAzACoAAAAAAAAAAABHACoAAAAAAAAAAAAAACsAAAAAAAAAAAAjACsAAAAAAAAAAAAmACsAAAAAAAAAAAAnACsAAAAAAAAAAAAsACsAAAAAAAAAAAAzACsAAAAAAAAAAABHACsAAAAAAAAAAAAAACwAAAAAAAAAAAAjACwAAAAAAAAAAAAmACwAAAAAAAAAAAAnACwAAAAAAAAAAAAsACwAAAAAAAAAAAAzACwAAAAAAAAAAABHACwAAAAAAAAAAAAAAC0AAAAAAAAAAAAjAC0AAAAAAAAAAAAmAC0AAAAAAAAAAAAnAC0AAAAAAAAAAAAsAC0AAAAAAAAAAAAzAC0AAAAAAAAAAABHAC0AAAAAAAAAAAAAAC4AAAAAAAAAAAABAC4AAAADAAAAAAACAC4AAAADAAAAAAADAC4AAAADAAAAAAAEAC4AAAADAAAAAAAFAC4AAAADAAAAAAAGAC4AAAADAAAAAAAHAC4AAAADAAAAAAAIAC4AAAADAAAAAAAJAC4AAAADAAAAAAAKAC4AAAADAAAAAAALAC4AAAADAAAAAAAMAC4AAAADAAAAAAANAC4AAAADAAAAAAAOAC4AAAADAAAAAAAPAC4AAAADAAAAAAAQAC4AAAADAAAAAAARAC4AAAADAAAAAAASAC4AAAADAAAAAAATAC4AAAADAAAAAAAUAC4AAAADAAAAAAAVAC4AAAADAAAAAAAWAC4AAAADAAAAAAAXAC4AAAADAAAAAAAYAC4AAAADAAAAAAAZAC4AAAADAAAAAAAaAC4AAAADAAAAAAAbAC4AAAADAAAAAAAcAC4AAAADAAAAAAAdAC4AAAADAAAAAAAeAC4AAAADAAAAAAAfAC4AAAADAAAAAAAgAC4AAAADAAAAAAAhAC4AAAADAAAAAAAiAC4AAAADAAAAAAAjAC4AAAADAAAAAAAkAC4AAAADAAAAAAAlAC4AAAADAAAAAAAmAC4AAAADAAAAAAAnAC4AAAADAAAAAAAoAC4AAAADAAAAAAApAC4AAAADAAAAAAAqAC4AAAADAAAAAAArAC4AAAADAAAAAAAsAC4AAAADAAAAAAAtAC4AAAADAAAAAAAuAC4AAAADAAAAAAAvAC4AAAADAAAAAAAwAC4AAAADAAAAAAAxAC4AAAADAAAAAAAyAC4AAAADAAAAAAAzAC4AAAADAAAAAAA0AC4AAAADAAAAAAA1AC4AAAADAAAAAAA2AC4AAAADAAAAAAA3AC4AAAADAAAAAAA4AC4AAAADAAAAAAA5AC4AAAADAAAAAAA6AC4AAAADAAAAAAA7AC4AAAADAAAAAAA8AC4AAAADAAAAAAA9AC4AAAADAAAAAAA+AC4AAAADAAAAAAA/AC4AAAADAAAAAABAAC4AAAADAAAAAABBAC4AAAADAAAAAABCAC4AAAADAAAAAABDAC4AAAADAAAAAABEAC4AAAADAAAAAABFAC4AAAADAAAAAABGAC4AAAADAAAAAABHAC4AAAAAAAAAAAAAAC8AAAAAAAAAAAABAC8AAAAAAAAAAAACAC8AAAAAAAAAAAADAC8AAAAAAAAAAAAEAC8AAAAAAAAAAAAFAC8AAAAAAAAAAAAGAC8AAAAAAAAAAAAHAC8AAAAAAAAAAAAIAC8AAAAAAAAAAAAJAC8AAAAAAAAAAAAKAC8AAAAAAAAAAAALAC8AAAAAAAAAAAAMAC8AAAAAAAAAAAANAC8AAAAAAAAAAAAOAC8AAAAAAAAAAAAPAC8AAAAAAAAAAAAQAC8AAAAAAAAAAAARAC8AAAAAAAAAAAASAC8AAAAAAAAAAAATAC8AAAAAAAAAAAAUAC8AAAAAAAAAAAAVAC8AAAAAAAAAAAAWAC8AAAAAAAAAAAAXAC8AAAAAAAAAAAAYAC8AAAAAAAAAAAAZAC8AAAAAAAAAAAAaAC8AAAAAAAAAAAAbAC8AAAAAAAAAAAAcAC8AAAAAAAAAAAAdAC8AAAAAAAAAAAAeAC8AAAAAAAAAAAAfAC8AAAAAAAAAAAAgAC8AAAAAAAAAAAAhAC8AAAAAAAAAAAAiAC8AAAAAAAAAAAAjAC8AAAAAAAAAAAAkAC8AAAAAAAAAAAAlAC8AAAAAAAAAAAAmAC8AAAAAAAAAAAAnAC8AAAAAAAAAAAAoAC8AAAAAAAAAAAApAC8AAAAAAAAAAAAqAC8AAAAAAAAAAAArAC8AAAAAAAAAAAAsAC8AAAAAAAAAAAAtAC8AAAAAAAAAAAAuAC8AAAAAAAAAAAAvAC8AAAAAAAAAAAAwAC8AAAAAAAAAAAAxAC8AAAAAAAAAAAAyAC8AAAAAAAAAAAAzAC8AAAAAAAAAAAA0AC8AAAAAAAAAAAA1AC8AAAAAAAAAAAA2AC8AAAAAAAAAAAA3AC8AAAAAAAAAAAA4AC8AAAAAAAAAAAA5AC8AAAAAAAAAAAA6AC8AAAAAAAAAAAA7AC8AAAAAAAAAAAA8AC8AAAAAAAAAAAA9AC8AAAAAAAAAAAA+AC8AAAAAAAAAAAA/AC8AAAAAAAAAAABAAC8AAAAAAAAAAABBAC8AAAAAAAAAAABCAC8AAAAAAAAAAABDAC8AAAAAAAAAAABEAC8AAAAAAAAAAABFAC8AAAAAAAAAAABGAC8AAAAAAAAAAABHAC8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_sr5nf")
+
+[node name="Objects" type="Node2D" parent="Rooms/cl23-weight-intercept"]
+
+[node name="Spawn" type="Node2D" parent="Rooms/cl23-weight-intercept/Objects"]
+position = Vector2(128, 224)
+script = ExtResource("3_gwymu")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(128, 224)
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-weight-intercept/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_41qip")
+
+[node name="Fixture_l_18_28" type="Node2D" parent="Rooms/cl23-weight-intercept/Objects"]
+position = Vector2(144, 224)
+script = ExtResource("3_gwymu")
+kind = "Fixture"
+glyph = "l"
+original_position = Vector2(144, 224)
+preview_entity = {
+"h": 8,
+"id": 0,
+"ox": 144,
+"oy": 224,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "lantern",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 144,
+"y": 224
+}
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-weight-intercept/Objects/Fixture_l_18_28"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_ykj5o")
+
+[node name="recoilPlatforms_0" type="Node2D" parent="Rooms/cl23-weight-intercept/Objects"]
+position = Vector2(208, 232)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 26.0,
+"depth": 3.0,
+"id": "Launch",
+"loadFrames": 30.0,
+"r": 29.0,
+"releaseSpeed": 120.0,
+"w": 6.0
+}
+original_position = Vector2(208, 232)
+field_path = ["recoilPlatforms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-weight-intercept/Objects/recoilPlatforms_0"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_375rg")
+
+[node name="recoilPlatforms_1" type="Node2D" parent="Rooms/cl23-weight-intercept/Objects"]
+position = Vector2(320, 224)
+script = ExtResource("3_gwymu")
+kind = "Mechanism"
+parameters = {
+"c": 40.0,
+"depth": 8.0,
+"id": "Receiver",
+"loadFrames": 300.0,
+"r": 28.0,
+"releaseSpeed": 120.0,
+"w": 4.0
+}
+original_position = Vector2(320, 224)
+field_path = ["recoilPlatforms"]
+array_element = true
+world_number = 23
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/cl23-weight-intercept/Objects/recoilPlatforms_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+scale = Vector2(1.25, 1.25)
+texture = SubResource("ImageTexture_h7nt6")

@@ -7,6 +7,8 @@ const Controls = preload("res://scripts/controls.gd")
 const Sound = preload("res://scripts/audio.gd")
 const SectionMenu = preload("res://scripts/section_menu.gd")
 const CampaignWorkshop = preload("res://scripts/campaign_workshop.gd")
+var sampler=preload("res://scripts/sampler_run.gd").new()
+var sampler_overlay
 var campaign_up_held=false
 var data
 var world
@@ -222,6 +224,12 @@ func _ready():
   elif args[i]=="--room" and i+1<args.size(): current = int(args[i+1])
  load_section(current)
  if watch and tape.is_empty(): next_section()
+ sampler.start(world,not watch and initial_room=="" and current==0 and journey.is_empty())
+ if "--room" in args or "--watch" in args or "--tour" in args or "--fractured-tour" in args: sampler.invalidate()
+ landscape.sampler=sampler
+ sampler_overlay=preload("res://scripts/sampler_overlay.gd").new()
+ sampler_overlay.app=self
+ root_ui.add_child(sampler_overlay)
 func create_interface():
  root_ui = Control.new()
  root_ui.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -429,7 +437,8 @@ func toggle_fullscreen():
 func _unhandled_input(event):
  if event.is_echo(): return
  if event.is_action_pressed("knight_pause"):
-  if mixer_panel!=null and mixer_panel.visible: close_mixer()
+  if sampler_overlay!=null and sampler_overlay.panel.visible: sampler_overlay.close()
+  elif mixer_panel!=null and mixer_panel.visible: close_mixer()
   else: set_paused(not paused)
   get_viewport().set_input_as_handled()
  elif event.is_action_pressed("knight_retry") and not paused: retry_room()
@@ -482,6 +491,7 @@ func _process(delta):
   subtitle_panel.modulate.a = min(1.0,subtitle_age*5)*min(1.0,subtitle_time*3)
   if subtitle_time<=0: subtitle_panel.hide();landscape.speaker=""
 func toggle_watch():
+ sampler.invalidate()
  if watch:
   watch = false
   sim.world_context=world
@@ -496,6 +506,7 @@ func toggle_watch():
   load_section(current)
   if tape.is_empty(): next_section()
 func load_section(index,smooth_join=false):
+ sampler.invalidate()
  if chapter_number!=4: watch_button.disabled=false
  current = index
  var id=data.world.rooms[index].id
@@ -602,6 +613,15 @@ func _physics_process(_delta):
  if sim==null or paused: return
  var physics_start=Time.get_ticks_usec()
  ticks += 1
+ if (not sampler.ride.is_empty() or sampler.failure_frames>0) and not watch:
+  var state=sampler.tick(world)
+  sync_sampler_scene()
+  if state=="ride":
+   var at=sampler.ride_point()
+   landscape.current_actor=at
+   landscape.previous_actor=at
+   landscape.actor=at
+  return
  if hold>0:
   landscape.previous_actor = landscape.current_actor
   hold -= 1
@@ -639,7 +659,9 @@ func _physics_process(_delta):
    room_banner.text=sim.room.name.to_upper()
    banner_time=1.4
   if is_workshop_room() and not watch: tick_workshop()
-  if not watch: campaign_travel(live_input)
+  if not watch:
+   var event=sampler.tick(world,not journey.is_empty())
+   if event in ["reset","landed"]: sync_sampler_scene()
   quest_label.text=bearing_caption()
 
  dash_label.text = "◆ DASH" if sim.p.dashes>0 else "◇ DASH"
@@ -744,10 +766,10 @@ func close_app(code=0):
 
 func bearing_caption():
  if data.world.has("campaignWorkshop") and sim.room.id==data.world.campaignWorkshop.entry:
-  return "%d / %d PUZZLES COMPLETE · UP AT THE BLUE ARCH TO ENTER"%[world.campaign_completed.size(),data.world.campaignWorkshop.rooms.size()]
+  return "%d / %d PUZZLES COMPLETE · STEP ONTO THE LANTERN HOIST"%[world.campaign_completed.size(),data.world.campaignWorkshop.rooms.size()]
  if is_workshop_room():
   if sim.room.def.get("campaignWorkshop",false):
-   if workshop_goal_reached(): return "ROOM COMPLETE · UP AT THE FLAG TO CONTINUE"
+   if workshop_goal_reached(): return "ROOM COMPLETE · THE HOIST IS ARRIVING"
    if sim.room.def.get("workshopRequireAllShards",false):
     var counts=WorkshopPickups.counts(sim.ents)
     return "SHARDS %d / %d · COLLECT ALL AND RETURN TO THE FLAG"%[counts[0],counts[1]]
@@ -755,7 +777,7 @@ func bearing_caption():
    if sim.room.def.get("workshopRequireStakes",false):
     var stakes=sim.ents.filter(func(e):return e.type=="stone")
     return "STAKES %d / %d · REACH THE GOLD FLAG"%[stakes.filter(func(e):return e.get("lit",false)).size(),stakes.size()]
-   return "REACH THE GOLD FLAG · UP TO CONTINUE"
+   return "REACH THE GOLD FLAG · THE HOIST WILL CARRY YOU ON"
   if sim.room.def.get("workshopRequireStakes",false):
    var stakes=sim.ents.filter(func(e):return e.type=="stone")
    var lit_stakes=stakes.filter(func(e):return e.get("lit",false)).size()
@@ -802,10 +824,13 @@ func bearing_caption():
  for name in ["ASH","GLASS","IRON"]: parts.append(("◆ " if world.bearings.has(name) else "◇ ")+name)
  return "MARA · "+"   ".join(parts)
 func retry_room():
+ if not sampler.result.is_empty():
+  restart_world()
+  return
  if watch:
   load_section(current)
   return
- world.retry()
+ sampler.retry(world)
  sim=world.active()
  landscape.snap_actor()
 func restart_world():
@@ -814,6 +839,8 @@ func restart_world():
   workshop_shards.clear()
   rebuild_section_menu()
  world.restart()
+ sampler.start(world,chapter_number!=4)
+ if sampler_overlay!=null: sampler_overlay.showing_result=false
  audio.restart_world()
  subtitle_panel.hide()
  subtitle_time=0
@@ -840,6 +867,12 @@ func restart_world():
 
 func switch_chapter(number):
  if number==chapter_number or not chapters.has(number): return
+ if number>=101 and not test_mode and not sampler.profile.core_open(number-100):
+  notice_label.text="Earn the base root and Fractured crown to unlock this Core."
+  notice_time=5
+  chapter_picker.select(CHAPTERS.find(chapter_number))
+  return
+ sampler.invalidate()
  var old=chapters[chapter_number]
  old.container.hide()
  old.viewport.render_target_update_mode=SubViewport.UPDATE_DISABLED
@@ -859,6 +892,9 @@ func switch_chapter(number):
  landscape=chapter.landscape
  viewport=chapter.viewport
  audio.world_runtime=world
+ sampler.start(world,world.frames==0 and number!=4)
+ landscape.sampler=sampler
+ if sampler_overlay!=null: sampler_overlay.showing_result=false
  audio.change_chapter(number)
  chapter.container.show()
  viewport.render_target_update_mode=SubViewport.UPDATE_ALWAYS
@@ -883,7 +919,8 @@ func switch_chapter(number):
  title.text=data.world.name.to_upper()+" · ASCEND"
  pause_title.text=data.world.name.to_upper()
  pause_description.text="A road through the old watch · Ascend" if number==1 else ("Moths, pale resin and the lantern tree · Ascend" if number==2 else "Iron, counterweights and the toll road · Ascend")
- if number>=21: pause_description.text="The remembered road · Fractured Ascend"
+ if number in [21,22,23]: pause_description.text="The remembered road · Fractured Ascend"
+ if number>=101: pause_description.text="The heart of the world · Core Ascend"
  clear_other_room_hint()
  puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false) or sim.room.def.get("campaignWorkshop",false)
  workshop_controls.visible=number==4 or (cover_comparison or causeway_launch_rooms or weight_comparison) and number==23
@@ -1013,3 +1050,11 @@ func build_mixer():
   save_preferences(),false)
  update_effect_mixer()
  mixer_panel.hide()
+
+func sync_sampler_scene():
+ sim=world.active()
+ current=world.regions.find(world.active_id)
+ landscape.sim=sim
+ landscape.active_position=world.placements[world.active_id]
+ landscape.snap_actor()
+ select_section_menu()

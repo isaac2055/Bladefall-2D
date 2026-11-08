@@ -1,5 +1,6 @@
 @tool
 extends Node2D
+var sampler
 ## Presentation is interpolated and layered; the integer simulation is never modified here.
 const KnightStyles=preload("res://scripts/knight_styles.gd")
 const Styles=preload("res://scripts/character_styles.gd")
@@ -513,6 +514,7 @@ func burst(point,count,color,speed):
   var a = float(i)*TAU/count+clock
   particles.append({"p":point,"v":Vector2(cos(a)*speed,sin(a)*speed*0.6-10),"life":0.3+float(i%4)*0.09,"max":0.57,"color":color})
 func target_camera():
+ if sampler!=null and not sampler.ride.is_empty(): return actor-Vector2(153,100)
  var look=camera_lead if not reduced_motion else Vector2.ZERO
  # Core camera zones look ahead (or behind) while the knight is inside them, as the browser view does.
  for z in sim.room.def.get("cameraZones",[]):
@@ -734,12 +736,13 @@ func draw_front():
   if not Rect2(origin,Vector2(scene.room.w,scene.room.h)).intersects(view): continue
   if world_data.world.has("campaignWorkshop") and scene.room.id==world_data.world.campaignWorkshop.entry:
    var door=origin+Vector2(scene.room.spawn.x+scene.p.w/2.0,scene.room.spawn.y+scene.p.h)
-   line(door+Vector2(-10,0),door+Vector2(-10,-25),"#87c9dc",2)
-   line(door+Vector2(10,0),door+Vector2(10,-25),"#87c9dc",2)
-   line(door+Vector2(-10,-25),door+Vector2(10,-25),"#87c9dc",2)
-   line(door+Vector2(0,-13),door+Vector2(0,-20),"#d4f2f7",1)
-   line(door+Vector2(0,-20),door+Vector2(-3,-17),"#d4f2f7",1)
-   line(door+Vector2(0,-20),door+Vector2(3,-17),"#d4f2f7",1)
+   box(door.x-11,door.y,22,2,"#b7a17e")
+   line(door+Vector2(0,-8),door+Vector2(0,-46),"#94866d",1)
+   Styles.lantern(self,door+Vector2(-4,-28))
+  if scene.room.def.get("gallery",false):
+   var dock=origin+Vector2(scene.room.def.galleryDock*8,48)
+   box(dock.x-3,dock.y-2,14,2,"#b7a17e")
+   Styles.lantern(self,dock+Vector2(0,-18))
   if scene.room.def.has("workshopGoal"):
    var goal=scene.room.def.workshopGoal
    var flag=origin+Vector2(goal[0]+goal[2]/2.0,goal[1])
@@ -805,6 +808,7 @@ func draw_front():
   if int(world_data.world.n)==2: draw_elsie_quest()
   if causeway and int(world_data.world.n)==3: draw_silas_quest()
   draw_world_hearts()
+ draw_sampler_rewards()
  if sim.p.state!="dead":
   if sim.flipped: ink.draw_set_transform(Vector2(-camera.x,-camera.y+actor.y*2+sim.p.h),0,Vector2(1,-1))
   draw_knight()
@@ -1613,3 +1617,35 @@ func draw_region_devices(scene,origin,view):
   var ring=sim.p.hook.ring
   var at=origin+Vector2(ring.x+4,scene.room.h-ring.y-4 if scene.flipped else ring.y+4)
   line(at,actor+Vector2(4,4),"#a6c4ce",.8)
+
+func draw_sampler_rewards():
+ if sampler==null or sampler.profile.run.is_empty(): return
+ var number=int(world_data.world.n)
+ var home=sampler.profile.home(number)
+ if home not in [1,2,3]: return
+ var art=preload("res://scripts/reward_art.gd")
+ var core_reward=number>=101
+ var item=sampler.profile.garden(home)
+ var shiny=item.core_shiny if core_reward else item.flower_shiny
+ if sampler.carrying():
+  # Held overhead, with the knight's movement and machinery interactions unchanged.
+  art.draw(ink,actor+Vector2(4,-9),home,core_reward,shiny,clock)
+  for side in [-1,1]: line(actor+Vector2(4+side*3,5),actor+Vector2(4+side*3,-4),"#b6c5ce",.7)
+ elif sampler.profile.can_carry(number) and sim.room.id==world_data.world.get("atlasStart",""):
+  var at=sampler.pickup_origin+Vector2(4,2)
+  art.draw(ink,at,home,core_reward,shiny,clock)
+  line(at+Vector2(-6,8),at+Vector2(6,8),"#718b67",1)
+ if sampler.pickup_drop>0:
+  art.draw(ink,sampler.drop_origin+Vector2(12,4+sin(sampler.pickup_drop*3)*5),home,core_reward,false,clock)
+ if not sampler.ride.is_empty():
+  # Bladefall's lantern hoist: brass cage, suspension chain and warm light.
+  var at=actor+Vector2(-3,sim.p.h)
+  box(at.x,at.y,14,2,"#b7a17e")
+  for side in [0,13]: line(at+Vector2(side,0),at+Vector2(side,-7),"#8c8168",1)
+  line(at+Vector2(7,-8),at+Vector2(7,-180),"#94866d",.7)
+  circle(at+Vector2(7,-9),2,Color("e9c17a"))
+ if not sampler.result.is_empty():
+  var t=sampler.award_age
+  var at=actor+Vector2(4,-20-minf(12,t*4))
+  if core_reward: art.draw(ink,at,home,true,shiny,clock)
+  else: art.draw_part(ink,at,home,item.root,item.top,shiny,clock)

@@ -1,6 +1,18 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.43.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `claude/fractured-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.44.0** · The Bladefall sampler: Outskirts, Black Woods and Broken Causeway, their Fractured routes, Cores 1–3 and the practice workshop. Approved additions are assembled on `codex/bladefall-complete`; the browser game and Felix are separate.
+
+## Complete sampler · 0.44.0
+
+Each normal world includes its ten approved workshop rooms, reached automatically at the end of the original road. Walk along each stone gallery to its lantern dock; a hoist lowers the knight to the puzzle's original spawn and collects him only after its finish requirements are met. Fractured routes retain their original physical passages and the nine Outskirts / nine Woods / ten Causeway additions. The five newest Causeway additions now live in the native World 23 scene; the superseded cover draft is bypassed. Individual room checkpoints remain available during ordinary play.
+
+The active-play clock runs through the whole world, including the extensions and hoists. Completing the required route opens a results card and saves time and deaths to this Mac's leaderboard, separately for normal and carried shiny attempts. Pause time is excluded. Retry counts as a death during ordinary runs. Watch, direct room selection and recorded developer tours are practice and cannot award records or rewards. Start world over begins a fresh eligible attempt. Changing chapter cancels the previous attempt; returning to a partly played chapter is practice until restarted.
+
+Garden / Records displays the three world plants and animated Core rewards. A deathless normal clear earns the root; any Fractured clear earns the crown. Both halves unlock that world's Core. Any Core clear earns its animated Trumpet Sprite, Oak Wisp or Clockwork Seed. On later Fractured and Core replays, walk left a little from the world spawn to collect the owned reward and begin a fresh carried attempt. Death or Retry drops it and resets the entire world, including every Core lantern. Carrying never changes movement or machinery interactions. Complete that attempt without deaths to make the corresponding reward shiny. Ownership and local records persist; active attempts do not resume from saves.
+
+Editable sources: normal extensions remain shared with `levels/world4.tscn`; Fractured additions are in `world21.tscn`, `world22.tscn`, `world23.tscn`. Cores are `world101.tscn`–`world103.tscn`. The player's edited World 1 scene is preserved byte for byte. The chapter editor includes all ten chapters. Room geometry and interactions remain separate from procedural reward visuals.
+
+Earlier entries below describe development history and isolated comparison launchers. Their historical room counts and proposed drafts are superseded by this sampler.
 
 ## Compare two weight fixes · 0.43.0
 

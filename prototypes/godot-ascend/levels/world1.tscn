@@ -1,10 +1,10 @@
-[gd_scene load_steps=267 format=4]
+[gd_scene load_steps=267 format=4 uid="uid://0p1cw7pgbdw8"]
 
-[ext_resource type="Script" path="res://authoring/world.gd" id="1_mgg4a"]
-[ext_resource type="Script" path="res://authoring/room.gd" id="2_21dob"]
-[ext_resource type="Script" path="res://authoring/item.gd" id="3_jqneo"]
+[ext_resource type="Script" uid="uid://b4nmo3vprnta8" path="res://authoring/world.gd" id="1_mgg4a"]
+[ext_resource type="Script" uid="uid://edx8yslf5yw4" path="res://authoring/room.gd" id="2_21dob"]
+[ext_resource type="Script" uid="uid://dkfuj0mqonyr7" path="res://authoring/item.gd" id="3_jqneo"]
 
-[sub_resource type="Image" id="Image_byeqp"]
+[sub_resource type="Image" id="Image_mgg4a"]
 data = {
 "data": PackedByteArray("bneC/253gv9ud4L/bneC/253gv9ud4L/bneC/253gv9ud4L/bneC/253gv9ud4L/bneC/253gv9ud4L/bneC/7qrh/+6q4f/uquH/7qrh/+6q4f/uquH/7qrh/+6q4f/////AP///wD///8A////AP///wD///8A////AP///wDmyMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/////wD///8A////AP///wD///8A////AP///wDmyMv/5sjL/////wD///8A////AP///wD///8A////AP///wDj5YnM4+WJzOPliczj5YnM4+WJzOPliczj5YnM4+WJzNXliczV5YnM1eWJzNXliczV5YnM1eWJzNXliczV5YnMyOWJzMjliczI5YnMyOWJzMjliczI5YnMyOWJzMjlicy65YnMuuWJzLrlicy65YnMuuWJzLrlicy65YnMuuWJzK3licyt5YnMreWJzK3licyt5YnMreWJzK3licyt5YnMoOWJzKDlicyg5YnMoOWJzKDlicyg5YnMoOWJzKDlicyS5YnMkuWJzJLlicyS5YnMkuWJzJLlicyS5YnMkuWJzInljsyJ5Y7MieWOzInljsyJ5Y7MieWOzInljsyJ5Y7MieWbzInlm8yJ5ZvMieWbzInlm8yJ5ZvMieWbzInlm8yJ5anMieWpzInlqcyJ5anMieWpzInlqcyJ5anMieWpzInltsyJ5bbMieW2zInltsyJ5bbMieW2zInltsyJ5bbMieXDzInlw8yJ5cPMieXDzInlw8yJ5cPMieXDzInlw8yJ5dHMieXRzInl0cyJ5dHMieXRzInl0cyJ5dHMieXRzInl3syJ5d7MieXezInl3syJ5d7MieXezInl3syJ5d7Mid7lzIne5cyJ3uXMid7lzIne5cyJ3uXMid7lzIne5cyJ0eXMidHlzInR5cyJ0eXMidHlzInR5cyJ0eXMidHlzInD5cyJw+XMicPlzInD5cyJw+XMicPlzInD5cyJw+XMibblzIm25cyJtuXMibblzIm25cyJtuXMibblzIm25cyJqeXMianlzImp5cyJqeXMianlzImp5cyJqeXMianlzImb5cyJm+XMiZvlzImb5cyJm+XMiZvlzImb5cyJm+XMiY7lzImO5cyJjuXMiY7lzImO5cyJjuXMiY7lzImO5cySieXMkonlzJKJ5cySieXMkonlzJKJ5cySieXMkonlzKCJ5cygieXMoInlzKCJ5cygieXMoInlzKCJ5cygieXMrYnlzK2J5cytieXMrYnlzK2J5cytieXMrYnlzK2J5cy6ieXMuonlzLqJ5cy6ieXMuonlzLqJ5cy6ieXMuonlzMiJ5czIieXMyInlzMiJ5czIieXMyInlzMiJ5czIieXM1YnlzNWJ5czVieXM1YnlzNWJ5czVieXM1YnlzNWJ5czjieXM44nlzOOJ5czjieXM44nlzOOJ5czjieXM44nlzOWJ2szlidrM5YnazOWJ2szlidrM5YnazOWJ2szlidrM5YnMzOWJzMzliczM5YnMzOWJzMzliczM5YnMzOWJzMzlib/M5Ym/zOWJv8zlib/M5Ym/zOWJv8zlib/M5Ym/zOWJsszlibLM5YmyzOWJsszlibLM5YmyzOWJsszlibLM5YmkzOWJpMzliaTM5YmkzOWJpMzliaTM5YmkzOWJpMzliZfM5YmXzOWJl8zliZfM5YmXzOWJl8zliZfM5YmXzG53gv9ibHj/Ymx4/2JseP9bZnL/Ymx4/2JseP9ibHj/bneC/2JseP9ibHj/Ymx4/1tmcv9ibHj/Ymx4/2JseP+6q4f/uquH/7qrh/+6q4f/uquH/7qrh/+6q4f/uquH/////wD///8A////AObIy//myMv/////AP///wD///8A////AObIy//myMv/5sjL/+bIy//myMv/5sjL/////wD///8A////AP///wD///8A////AObIy//myMv/5sjL/+bIy//myMv/5sjL/////wD///8A////AP///wD///8A4+WJzOPlicz///8A////AP///wD///8A////AOPliczV5YnM1eWJzP///wD///8A////AP///wD///8A1eWJzMjliczI5YnM////AP///wD///8A////AP///wDI5YnMuuWJzLrlicz///8A////AP///wD///8A////ALrlicyt5YnMreWJzP///wD///8A////AP///wD///8AreWJzKDlicyg5YnM////AP///wD///8A////AP///wCg5YnMkuWJzJLlicz///8A////AP///wD///8A////AJLlicyJ5Y7MieWOzP///wD///8A////AP///wD///8AieWOzInlm8yJ5ZvM////AP///wD///8A////AP///wCJ5ZvMieWpzInlqcz///8A////AP///wD///8A////AInlqcyJ5bbMieW2zP///wD///8A////AP///wD///8AieW2zInlw8yJ5cPM////AP///wD///8A////AP///wCJ5cPMieXRzInl0cz///8A////AP///wD///8A////AInl0cyJ5d7MieXezP///wD///8A////AP///wD///8AieXezIne5cyJ3uXM////AP///wD///8A////AP///wCJ3uXMidHlzInR5cz///8A////AP///wD///8A////AInR5cyJw+XMicPlzP///wD///8A////AP///wD///8AicPlzIm25cyJtuXM////AP///wD///8A////AP///wCJtuXMianlzImp5cz///8A////AP///wD///8A////AImp5cyJm+XMiZvlzP///wD///8A////AP///wD///8AiZvlzImO5cyJjuXM////AP///wD///8A////AP///wCJjuXMkonlzJKJ5cz///8A////AP///wD///8A////AJKJ5cygieXMoInlzP///wD///8A////AP///wD///8AoInlzK2J5cytieXM////AP///wD///8A////AP///wCtieXMuonlzLqJ5cz///8A////AP///wD///8A////ALqJ5czIieXMyInlzP///wD///8A////AP///wD///8AyInlzNWJ5czVieXM////AP///wD///8A////AP///wDVieXM44nlzOOJ5cz///8A////AP///wD///8A////AOOJ5czlidrM5YnazP///wD///8A////AP///wD///8A5YnazOWJzMzliczM////AP///wD///8A////AP///wDliczM5Ym/zOWJv8z///8A////AP///wD///8A////AOWJv8zlibLM5YmyzP///wD///8A////AP///wD///8A5YmyzOWJpMzliaTM////AP///wD///8A////AP///wDliaTM5YmXzOWJl8z///8A////AP///wD///8A////AOWJl8xud4L/Ymx4/2JseP9bZnL/Ymx4/2JseP9ibHj/Ymx4/253gv9ibHj/Ymx4/1tmcv9ibHj/Ymx4/2JseP9ibHj/////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wDmyMv/5sjL/////wD///8A////AP///wDmyMv/5sjL/+bIy//myMv/5sjL/+bIy/////8A////AP///wD///8A5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/////wD///8A////AOPlicz///8A4+WJzP///wD///8A////AP///wDj5YnM1eWJzP///wDV5YnM////AP///wD///8A////ANXliczI5YnM////AMjlicz///8A////AP///wD///8AyOWJzLrlicz///8AuuWJzP///wD///8A////AP///wC65YnMreWJzP///wCt5YnM////AP///wD///8A////AK3licyg5YnM////AKDlicz///8A////AP///wD///8AoOWJzJLlicz///8AkuWJzP///wD///8A////AP///wCS5YnMieWOzP///wCJ5Y7M////AP///wD///8A////AInljsyJ5ZvM////AInlm8z///8A////AP///wD///8AieWbzInlqcz///8AieWpzP///wD///8A////AP///wCJ5anMieW2zP///wCJ5bbM////AP///wD///8A////AInltsyJ5cPM////AInlw8z///8A////AP///wD///8AieXDzInl0cz///8AieXRzP///wD///8A////AP///wCJ5dHMieXezP///wCJ5d7M////AP///wD///8A////AInl3syJ3uXM////AIne5cz///8A////AP///wD///8Aid7lzInR5cz///8AidHlzP///wD///8A////AP///wCJ0eXMicPlzP///wCJw+XM////AP///wD///8A////AInD5cyJtuXM////AIm25cz///8A////AP///wD///8AibblzImp5cz///8AianlzP///wD///8A////AP///wCJqeXMiZvlzP///wCJm+XM////AP///wD///8A////AImb5cyJjuXM////AImO5cz///8A////AP///wD///8AiY7lzJKJ5cz///8AkonlzP///wD///8A////AP///wCSieXMoInlzP///wCgieXM////AP///wD///8A////AKCJ5cytieXM////AK2J5cz///8A////AP///wD///8ArYnlzLqJ5cz///8AuonlzP///wD///8A////AP///wC6ieXMyInlzP///wDIieXM////AP///wD///8A////AMiJ5czVieXM////ANWJ5cz///8A////AP///wD///8A1YnlzOOJ5cz///8A44nlzP///wD///8A////AP///wDjieXM5YnazP///wDlidrM////AP///wD///8A////AOWJ2szliczM////AOWJzMz///8A////AP///wD///8A5YnMzOWJv8z///8A5Ym/zP///wD///8A////AP///wDlib/M5YmyzP///wDlibLM////AP///wD///8A////AOWJsszliaTM////AOWJpMz///8A////AP///wD///8A5YmkzOWJl8z///8A5YmXzP///wD///8A////AP///wDliZfMbneC/2JseP9bZnL/Ymx4/2JseP9ibHj/Ymx4/1tmcv9ud4L/Ymx4/1tmcv9ibHj/Ymx4/2JseP9ibHj/W2Zy/////wD///8A////AP///wD///8A////AP///wD///8A////AP///wDmyMv/5sjL/+bIy//myMv/////AP///wD///8A////AObIy//myMv/5sjL/+bIy/////8A////AP///wDmyMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/////wDj5YnM////AP///wDj5YnM////AP///wD///8A4+WJzNXlicz///8A////ANXlicz///8A////AP///wDV5YnMyOWJzP///wD///8AyOWJzP///wD///8A////AMjlicy65YnM////AP///wC65YnM////AP///wD///8AuuWJzK3licz///8A////AK3licz///8A////AP///wCt5YnMoOWJzP///wD///8AoOWJzP///wD///8A////AKDlicyS5YnM////AP///wCS5YnM////AP///wD///8AkuWJzInljsz///8A////AInljsz///8A////AP///wCJ5Y7MieWbzP///wD///8AieWbzP///wD///8A////AInlm8yJ5anM////AP///wCJ5anM////AP///wD///8AieWpzInltsz///8A////AInltsz///8A////AP///wCJ5bbMieXDzP///wD///8AieXDzP///wD///8A////AInlw8yJ5dHM////AP///wCJ5dHM////AP///wD///8AieXRzInl3sz///8A////AInl3sz///8A////AP///wCJ5d7Mid7lzP///wD///8Aid7lzP///wD///8A////AIne5cyJ0eXM////AP///wCJ0eXM////AP///wD///8AidHlzInD5cz///8A////AInD5cz///8A////AP///wCJw+XMibblzP///wD///8AibblzP///wD///8A////AIm25cyJqeXM////AP///wCJqeXM////AP///wD///8AianlzImb5cz///8A////AImb5cz///8A////AP///wCJm+XMiY7lzP///wD///8AiY7lzP///wD///8A////AImO5cySieXM////AP///wCSieXM////AP///wD///8AkonlzKCJ5cz///8A////AKCJ5cz///8A////AP///wCgieXMrYnlzP///wD///8ArYnlzP///wD///8A////AK2J5cy6ieXM////AP///wC6ieXM////AP///wD///8AuonlzMiJ5cz///8A////AMiJ5cz///8A////AP///wDIieXM1YnlzP///wD///8A1YnlzP///wD///8A////ANWJ5czjieXM////AP///wDjieXM////AP///wD///8A44nlzOWJ2sz///8A////AOWJ2sz///8A////AP///wDlidrM5YnMzP///wD///8A5YnMzP///wD///8A////AOWJzMzlib/M////AP///wDlib/M////AP///wD///8A5Ym/zOWJssz///8A////AOWJssz///8A////AP///wDlibLM5YmkzP///wD///8A5YmkzP///wD///8A////AOWJpMzliZfM////AP///wDliZfM////AP///wD///8A5YmXzG53gv9bZnL/Ymx4/2JseP9ibHj/Ymx4/1tmcv9ibHj/bneC/1tmcv9ibHj/Ymx4/2JseP9ibHj/W2Zy/2JseP////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A5sjL/+bIy//myMv/5sjL/////wD///8A////AP///wDmyMv/5sjL/+bIy//myMv/////AP///wD///8A5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy/////8A4+WJzP///wD///8A////AOPlicz///8A////AOPliczV5YnM////AP///wD///8A1eWJzP///wD///8A1eWJzMjlicz///8A////AP///wDI5YnM////AP///wDI5YnMuuWJzP///wD///8A////ALrlicz///8A////ALrlicyt5YnM////AP///wD///8AreWJzP///wD///8AreWJzKDlicz///8A////AP///wCg5YnM////AP///wCg5YnMkuWJzP///wD///8A////AJLlicz///8A////AJLlicyJ5Y7M////AP///wD///8AieWOzP///wD///8AieWOzInlm8z///8A////AP///wCJ5ZvM////AP///wCJ5ZvMieWpzP///wD///8A////AInlqcz///8A////AInlqcyJ5bbM////AP///wD///8AieW2zP///wD///8AieW2zInlw8z///8A////AP///wCJ5cPM////AP///wCJ5cPMieXRzP///wD///8A////AInl0cz///8A////AInl0cyJ5d7M////AP///wD///8AieXezP///wD///8AieXezIne5cz///8A////AP///wCJ3uXM////AP///wCJ3uXMidHlzP///wD///8A////AInR5cz///8A////AInR5cyJw+XM////AP///wD///8AicPlzP///wD///8AicPlzIm25cz///8A////AP///wCJtuXM////AP///wCJtuXMianlzP///wD///8A////AImp5cz///8A////AImp5cyJm+XM////AP///wD///8AiZvlzP///wD///8AiZvlzImO5cz///8A////AP///wCJjuXM////AP///wCJjuXMkonlzP///wD///8A////AJKJ5cz///8A////AJKJ5cygieXM////AP///wD///8AoInlzP///wD///8AoInlzK2J5cz///8A////AP///wCtieXM////AP///wCtieXMuonlzP///wD///8A////ALqJ5cz///8A////ALqJ5czIieXM////AP///wD///8AyInlzP///wD///8AyInlzNWJ5cz///8A////AP///wDVieXM////AP///wDVieXM44nlzP///wD///8A////AOOJ5cz///8A////AOOJ5czlidrM////AP///wD///8A5YnazP///wD///8A5YnazOWJzMz///8A////AP///wDliczM////AP///wDliczM5Ym/zP///wD///8A////AOWJv8z///8A////AOWJv8zlibLM////AP///wD///8A5YmyzP///wD///8A5YmyzOWJpMz///8A////AP///wDliaTM////AP///wDliaTM5YmXzP///wD///8A////AOWJl8z///8A////AOWJl8xud4L/Ymx4/2JseP9ibHj/Ymx4/1tmcv9ibHj/Ymx4/253gv9ibHj/Ymx4/2JseP9ibHj/W2Zy/2JseP9ibHj/////AP///wD///8A////AP///wD///8A////AP///wD///8A5sjL/+bIy//myMv/5sjL/+bIy//myMv/////AP///wD///8A////AObIy//myMv/////AP///wD///8A////AP///wD///8A5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/5sjL/////wD///8A////AOPlicz///8A////AP///wD///8A4+WJzP///wDj5YnM1eWJzP///wD///8A////AP///wDV5YnM////ANXliczI5YnM////AP///wD///8A////AMjlicz///8AyOWJzLrlicz///8A////AP///wD///8AuuWJzP///wC65YnMreWJzP///wD///8A////AP///wCt5YnM////AK3licyg5YnM////AP///wD///8A////AKDlicz///8AoOWJzJLlicz///8A////AP///wD///8AkuWJzP///wCS5YnMieWOzP///wD///8A////AP///wCJ5Y7M////AInljsyJ5ZvM////AP///wD///8A////AInlm8z///8AieWbzInlqcz///8A////AP///wD///8AieWpzP///wCJ5anMieW2zP///wD///8A////AP///wCJ5bbM////AInltsyJ5cPM////AP///wD///8A////AInlw8z///8AieXDzInl0cz///8A////AP///wD///8AieXRzP///wCJ5dHMieXezP///wD///8A////AP///wCJ5d7M////AInl3syJ3uXM////AP///wD///8A////AIne5cz///8Aid7lzInR5cz///8A////AP///wD///8AidHlzP///wCJ0eXMicPlzP///wD///8A////AP///wCJw+XM////AInD5cyJtuXM////AP///wD///8A////AIm25cz///8AibblzImp5cz///8A////AP///wD///8AianlzP///wCJqeXMiZvlzP///wD///8A////AP///wCJm+XM////AImb5cyJjuXM////AP///wD///8A////AImO5cz///8AiY7lzJKJ5cz///8A////AP///wD///8AkonlzP///wCSieXMoInlzP///wD///8A////AP///wCgieXM////AKCJ5cytieXM////AP///wD///8A////AK2J5cz///8ArYnlzLqJ5cz///8A////AP///wD///8AuonlzP///wC6ieXMyInlzP///wD///8A////AP///wDIieXM////AMiJ5czVieXM////AP///wD///8A////ANWJ5cz///8A1YnlzOOJ5cz///8A////AP///wD///8A44nlzP///wDjieXM5YnazP///wD///8A////AP///wDlidrM////AOWJ2szliczM////AP///wD///8A////AOWJzMz///8A5YnMzOWJv8z///8A////AP///wD///8A5Ym/zP///wDlib/M5YmyzP///wD///8A////AP///wDlibLM////AOWJsszliaTM////AP///wD///8A////AOWJpMz///8A5YmkzOWJl8z///8A////AP///wD///8A5YmXzP///wDliZfMbneC/2JseP9ibHj/Ymx4/1tmcv9ibHj/Ymx4/2JseP9ud4L/Ymx4/2JseP9ibHj/W2Zy/2JseP9ibHj/Ymx4/////wD///8A////AP///wD///8A////AP///wD///8A////AObIy//myMv/5sjL/+bIy//myMv/5sjL/////wD///8A////AP///wDmyMv/5sjL/////wD///8A////AP///wD///8A////AP///wD///8A5sjL/+bIy//myMv/5sjL/+bIy//myMv/////AP///wD///8A////AP///wDj5YnM////AP///wD///8A////AP///wDj5YnM4+WJzNXlicz///8A////AP///wD///8A////ANXliczV5YnMyOWJzP///wD///8A////AP///wD///8AyOWJzMjlicy65YnM////AP///wD///8A////AP///wC65YnMuuWJzK3licz///8A////AP///wD///8A////AK3licyt5YnMoOWJzP///wD///8A////AP///wD///8AoOWJzKDlicyS5YnM////AP///wD///8A////AP///wCS5YnMkuWJzInljsz///8A////AP///wD///8A////AInljsyJ5Y7MieWbzP///wD///8A////AP///wD///8AieWbzInlm8yJ5anM////AP///wD///8A////AP///wCJ5anMieWpzInltsz///8A////AP///wD///8A////AInltsyJ5bbMieXDzP///wD///8A////AP///wD///8AieXDzInlw8yJ5dHM////AP///wD///8A////AP///wCJ5dHMieXRzInl3sz///8A////AP///wD///8A////AInl3syJ5d7Mid7lzP///wD///8A////AP///wD///8Aid7lzIne5cyJ0eXM////AP///wD///8A////AP///wCJ0eXMidHlzInD5cz///8A////AP///wD///8A////AInD5cyJw+XMibblzP///wD///8A////AP///wD///8AibblzIm25cyJqeXM////AP///wD///8A////AP///wCJqeXMianlzImb5cz///8A////AP///wD///8A////AImb5cyJm+XMiY7lzP///wD///8A////AP///wD///8AiY7lzImO5cySieXM////AP///wD///8A////AP///wCSieXMkonlzKCJ5cz///8A////AP///wD///8A////AKCJ5cygieXMrYnlzP///wD///8A////AP///wD///8ArYnlzK2J5cy6ieXM////AP///wD///8A////AP///wC6ieXMuonlzMiJ5cz///8A////AP///wD///8A////AMiJ5czIieXM1YnlzP///wD///8A////AP///wD///8A1YnlzNWJ5czjieXM////AP///wD///8A////AP///wDjieXM44nlzOWJ2sz///8A////AP///wD///8A////AOWJ2szlidrM5YnMzP///wD///8A////AP///wD///8A5YnMzOWJzMzlib/M////AP///wD///8A////AP///wDlib/M5Ym/zOWJssz///8A////AP///wD///8A////AOWJsszlibLM5YmkzP///wD///8A////AP///wD///8A5YmkzOWJpMzliZfM////AP///wD///8A////AP///wDliZfM5YmXzG53gv9ibHj/Ymx4/1tmcv9ibHj/Ymx4/2JseP9ibHj/bneC/2JseP9ibHj/W2Zy/2JseP9ibHj/Ymx4/2JseP////8A////AP///wD///8A////AP///wD///8A////AObIy//myMv/5sjL/+bIy//myMv/5sjL/+bIy//myMv/////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A5sjL/+bIy/////8A////AP///wD///8A////AP///wD///8A4+WJzOPliczj5YnM4+WJzOPliczj5YnM4+WJzOPliczV5YnM1eWJzNXliczV5YnM1eWJzNXliczV5YnM1eWJzMjliczI5YnMyOWJzMjliczI5YnMyOWJzMjliczI5YnMuuWJzLrlicy65YnMuuWJzLrlicy65YnMuuWJzLrlicyt5YnMreWJzK3licyt5YnMreWJzK3licyt5YnMreWJzKDlicyg5YnMoOWJzKDlicyg5YnMoOWJzKDlicyg5YnMkuWJzJLlicyS5YnMkuWJzJLlicyS5YnMkuWJzJLlicyJ5Y7MieWOzInljsyJ5Y7MieWOzInljsyJ5Y7MieWOzInlm8yJ5ZvMieWbzInlm8yJ5ZvMieWbzInlm8yJ5ZvMieWpzInlqcyJ5anMieWpzInlqcyJ5anMieWpzInlqcyJ5bbMieW2zInltsyJ5bbMieW2zInltsyJ5bbMieW2zInlw8yJ5cPMieXDzInlw8yJ5cPMieXDzInlw8yJ5cPMieXRzInl0cyJ5dHMieXRzInl0cyJ5dHMieXRzInl0cyJ5d7MieXezInl3syJ5d7MieXezInl3syJ5d7MieXezIne5cyJ3uXMid7lzIne5cyJ3uXMid7lzIne5cyJ3uXMidHlzInR5cyJ0eXMidHlzInR5cyJ0eXMidHlzInR5cyJw+XMicPlzInD5cyJw+XMicPlzInD5cyJw+XMicPlzIm25cyJtuXMibblzIm25cyJtuXMibblzIm25cyJtuXMianlzImp5cyJqeXMianlzImp5cyJqeXMianlzImp5cyJm+XMiZvlzImb5cyJm+XMiZvlzImb5cyJm+XMiZvlzImO5cyJjuXMiY7lzImO5cyJjuXMiY7lzImO5cyJjuXMkonlzJKJ5cySieXMkonlzJKJ5cySieXMkonlzJKJ5cygieXMoInlzKCJ5cygieXMoInlzKCJ5cygieXMoInlzK2J5cytieXMrYnlzK2J5cytieXMrYnlzK2J5cytieXMuonlzLqJ5cy6ieXMuonlzLqJ5cy6ieXMuonlzLqJ5czIieXMyInlzMiJ5czIieXMyInlzMiJ5czIieXMyInlzNWJ5czVieXM1YnlzNWJ5czVieXM1YnlzNWJ5czVieXM44nlzOOJ5czjieXM44nlzOOJ5czjieXM44nlzOOJ5czlidrM5YnazOWJ2szlidrM5YnazOWJ2szlidrM5YnazOWJzMzliczM5YnMzOWJzMzliczM5YnMzOWJzMzliczM5Ym/zOWJv8zlib/M5Ym/zOWJv8zlib/M5Ym/zOWJv8zlibLM5YmyzOWJsszlibLM5YmyzOWJsszlibLM5YmyzOWJpMzliaTM5YmkzOWJpMzliaTM5YmkzOWJpMzliaTM5YmXzOWJl8zliZfM5YmXzOWJl8zliZfM5YmXzOWJl8w="),
 "format": "RGBA8",
@@ -14,7 +14,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_lm4ka"]
-image = SubResource("Image_byeqp")
+image = SubResource("Image_mgg4a")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s78ln"]
 texture = SubResource("ImageTexture_lm4ka")
@@ -108,7 +108,7 @@ custom_data_layer_0/name = "glyph"
 custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_s78ln")
 
-[sub_resource type="Image" id="Image_gmib8"]
+[sub_resource type="Image" id="Image_21dob"]
 data = {
 "data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
 "format": "RGBA8",
@@ -118,7 +118,91 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_o254s"]
+image = SubResource("Image_21dob")
+
+[sub_resource type="Image" id="Image_jqneo"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_2qi3o"]
+image = SubResource("Image_jqneo")
+
+[sub_resource type="Image" id="Image_byeqp"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_hhoix"]
+image = SubResource("Image_byeqp")
+
+[sub_resource type="Image" id="Image_lm4ka"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_yleef"]
+image = SubResource("Image_lm4ka")
+
+[sub_resource type="Image" id="Image_s78ln"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_pxbvy"]
+image = SubResource("Image_s78ln")
+
+[sub_resource type="Image" id="Image_qan4i"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_m4uu8"]
+image = SubResource("Image_qan4i")
+
+[sub_resource type="Image" id="Image_gmib8"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_f61kw"]
 image = SubResource("Image_gmib8")
+
+[sub_resource type="Image" id="Image_o254s"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_8r1fp"]
+image = SubResource("Image_o254s")
 
 [sub_resource type="Image" id="Image_o8q6b"]
 data = {
@@ -129,8 +213,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_2qi3o"]
+[sub_resource type="ImageTexture" id="ImageTexture_fs7ce"]
 image = SubResource("Image_o8q6b")
+
+[sub_resource type="Image" id="Image_2qi3o"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_u78s0"]
+image = SubResource("Image_2qi3o")
 
 [sub_resource type="Image" id="Image_oni7j"]
 data = {
@@ -141,8 +237,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_hhoix"]
+[sub_resource type="ImageTexture" id="ImageTexture_ltwiq"]
 image = SubResource("Image_oni7j")
+
+[sub_resource type="Image" id="Image_hhoix"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_xwfal"]
+image = SubResource("Image_hhoix")
 
 [sub_resource type="Image" id="Image_qbw47"]
 data = {
@@ -153,8 +261,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_yleef"]
+[sub_resource type="ImageTexture" id="ImageTexture_6s2x3"]
 image = SubResource("Image_qbw47")
+
+[sub_resource type="Image" id="Image_yleef"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_j52ud"]
+image = SubResource("Image_yleef")
 
 [sub_resource type="Image" id="Image_kgv6w"]
 data = {
@@ -165,8 +285,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_pxbvy"]
+[sub_resource type="ImageTexture" id="ImageTexture_h6d40"]
 image = SubResource("Image_kgv6w")
+
+[sub_resource type="Image" id="Image_pxbvy"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_2j2by"]
+image = SubResource("Image_pxbvy")
 
 [sub_resource type="Image" id="Image_uvi1e"]
 data = {
@@ -177,8 +309,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_m4uu8"]
+[sub_resource type="ImageTexture" id="ImageTexture_ra4ap"]
 image = SubResource("Image_uvi1e")
+
+[sub_resource type="Image" id="Image_m4uu8"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_u0qs5"]
+image = SubResource("Image_m4uu8")
 
 [sub_resource type="Image" id="Image_2ed58"]
 data = {
@@ -189,8 +333,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_f61kw"]
+[sub_resource type="ImageTexture" id="ImageTexture_b0hnd"]
 image = SubResource("Image_2ed58")
+
+[sub_resource type="Image" id="Image_f61kw"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_0resi"]
+image = SubResource("Image_f61kw")
 
 [sub_resource type="Image" id="Image_jwcrw"]
 data = {
@@ -201,8 +357,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_8r1fp"]
+[sub_resource type="ImageTexture" id="ImageTexture_sqiak"]
 image = SubResource("Image_jwcrw")
+
+[sub_resource type="Image" id="Image_8r1fp"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_7o6lj"]
+image = SubResource("Image_8r1fp")
 
 [sub_resource type="Image" id="Image_jubbj"]
 data = {
@@ -213,8 +381,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_fs7ce"]
+[sub_resource type="ImageTexture" id="ImageTexture_dmn37"]
 image = SubResource("Image_jubbj")
+
+[sub_resource type="Image" id="Image_fs7ce"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_svflq"]
+image = SubResource("Image_fs7ce")
 
 [sub_resource type="Image" id="Image_mbsmd"]
 data = {
@@ -225,8 +405,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_u78s0"]
+[sub_resource type="ImageTexture" id="ImageTexture_63vj4"]
 image = SubResource("Image_mbsmd")
+
+[sub_resource type="Image" id="Image_u78s0"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_3nijj"]
+image = SubResource("Image_u78s0")
 
 [sub_resource type="Image" id="Image_s2yha"]
 data = {
@@ -237,8 +429,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_ltwiq"]
+[sub_resource type="ImageTexture" id="ImageTexture_j2rm5"]
 image = SubResource("Image_s2yha")
+
+[sub_resource type="Image" id="Image_ltwiq"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_un8d5"]
+image = SubResource("Image_ltwiq")
 
 [sub_resource type="Image" id="Image_i4yyp"]
 data = {
@@ -249,8 +453,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_xwfal"]
+[sub_resource type="ImageTexture" id="ImageTexture_b4lrw"]
 image = SubResource("Image_i4yyp")
+
+[sub_resource type="Image" id="Image_xwfal"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_5wca1"]
+image = SubResource("Image_xwfal")
 
 [sub_resource type="Image" id="Image_o26uq"]
 data = {
@@ -261,8 +477,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_6s2x3"]
+[sub_resource type="ImageTexture" id="ImageTexture_3agjf"]
 image = SubResource("Image_o26uq")
+
+[sub_resource type="Image" id="Image_6s2x3"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_td8lg"]
+image = SubResource("Image_6s2x3")
 
 [sub_resource type="Image" id="Image_opqqi"]
 data = {
@@ -273,8 +501,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_j52ud"]
+[sub_resource type="ImageTexture" id="ImageTexture_3pqqg"]
 image = SubResource("Image_opqqi")
+
+[sub_resource type="Image" id="Image_j52ud"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_8gjxl"]
+image = SubResource("Image_j52ud")
 
 [sub_resource type="Image" id="Image_t6dpo"]
 data = {
@@ -285,8 +525,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_h6d40"]
+[sub_resource type="ImageTexture" id="ImageTexture_bvpus"]
 image = SubResource("Image_t6dpo")
+
+[sub_resource type="Image" id="Image_h6d40"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_8vpng"]
+image = SubResource("Image_h6d40")
 
 [sub_resource type="Image" id="Image_opeem"]
 data = {
@@ -297,8 +549,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_2j2by"]
+[sub_resource type="ImageTexture" id="ImageTexture_eesmq"]
 image = SubResource("Image_opeem")
+
+[sub_resource type="Image" id="Image_2j2by"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_urvyg"]
+image = SubResource("Image_2j2by")
 
 [sub_resource type="Image" id="Image_u0wlo"]
 data = {
@@ -309,8 +573,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_ra4ap"]
+[sub_resource type="ImageTexture" id="ImageTexture_a5kjn"]
 image = SubResource("Image_u0wlo")
+
+[sub_resource type="Image" id="Image_ra4ap"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_2gu67"]
+image = SubResource("Image_ra4ap")
 
 [sub_resource type="Image" id="Image_rwatw"]
 data = {
@@ -321,8 +597,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_u0qs5"]
+[sub_resource type="ImageTexture" id="ImageTexture_frx53"]
 image = SubResource("Image_rwatw")
+
+[sub_resource type="Image" id="Image_u0qs5"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_6ccrc"]
+image = SubResource("Image_u0qs5")
 
 [sub_resource type="Image" id="Image_dtapd"]
 data = {
@@ -333,8 +621,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_b0hnd"]
+[sub_resource type="ImageTexture" id="ImageTexture_pf4yb"]
 image = SubResource("Image_dtapd")
+
+[sub_resource type="Image" id="Image_b0hnd"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_orvxj"]
+image = SubResource("Image_b0hnd")
 
 [sub_resource type="Image" id="Image_sqnwl"]
 data = {
@@ -345,8 +645,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_0resi"]
+[sub_resource type="ImageTexture" id="ImageTexture_x1bsv"]
 image = SubResource("Image_sqnwl")
+
+[sub_resource type="Image" id="Image_0resi"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ck60j"]
+image = SubResource("Image_0resi")
 
 [sub_resource type="Image" id="Image_uk12i"]
 data = {
@@ -357,8 +669,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_sqiak"]
+[sub_resource type="ImageTexture" id="ImageTexture_2wkf6"]
 image = SubResource("Image_uk12i")
+
+[sub_resource type="Image" id="Image_sqiak"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_a4eab"]
+image = SubResource("Image_sqiak")
 
 [sub_resource type="Image" id="Image_58x8o"]
 data = {
@@ -369,8 +693,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_7o6lj"]
+[sub_resource type="ImageTexture" id="ImageTexture_vn3ko"]
 image = SubResource("Image_58x8o")
+
+[sub_resource type="Image" id="Image_7o6lj"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_3lc1n"]
+image = SubResource("Image_7o6lj")
 
 [sub_resource type="Image" id="Image_yo446"]
 data = {
@@ -381,8 +717,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_dmn37"]
+[sub_resource type="ImageTexture" id="ImageTexture_i8qyp"]
 image = SubResource("Image_yo446")
+
+[sub_resource type="Image" id="Image_dmn37"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_my0vh"]
+image = SubResource("Image_dmn37")
 
 [sub_resource type="Image" id="Image_ypq1q"]
 data = {
@@ -393,8 +741,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_svflq"]
+[sub_resource type="ImageTexture" id="ImageTexture_1i8ta"]
 image = SubResource("Image_ypq1q")
+
+[sub_resource type="Image" id="Image_svflq"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_1x5fb"]
+image = SubResource("Image_svflq")
 
 [sub_resource type="Image" id="Image_cd25p"]
 data = {
@@ -405,8 +765,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_63vj4"]
+[sub_resource type="ImageTexture" id="ImageTexture_afelw"]
 image = SubResource("Image_cd25p")
+
+[sub_resource type="Image" id="Image_63vj4"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_lh1do"]
+image = SubResource("Image_63vj4")
 
 [sub_resource type="Image" id="Image_t6ryc"]
 data = {
@@ -417,8 +789,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_3nijj"]
+[sub_resource type="ImageTexture" id="ImageTexture_bnb35"]
 image = SubResource("Image_t6ryc")
+
+[sub_resource type="Image" id="Image_3nijj"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_n6mhw"]
+image = SubResource("Image_3nijj")
 
 [sub_resource type="Image" id="Image_h7rvq"]
 data = {
@@ -429,8 +813,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_j2rm5"]
+[sub_resource type="ImageTexture" id="ImageTexture_r1a8k"]
 image = SubResource("Image_h7rvq")
+
+[sub_resource type="Image" id="Image_j2rm5"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_fsc8k"]
+image = SubResource("Image_j2rm5")
 
 [sub_resource type="Image" id="Image_7lt0a"]
 data = {
@@ -441,8 +837,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_un8d5"]
+[sub_resource type="ImageTexture" id="ImageTexture_s7q3y"]
 image = SubResource("Image_7lt0a")
+
+[sub_resource type="Image" id="Image_un8d5"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_pl532"]
+image = SubResource("Image_un8d5")
 
 [sub_resource type="Image" id="Image_qx3kk"]
 data = {
@@ -453,8 +861,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_b4lrw"]
+[sub_resource type="ImageTexture" id="ImageTexture_dgdcp"]
 image = SubResource("Image_qx3kk")
+
+[sub_resource type="Image" id="Image_b4lrw"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_djf17"]
+image = SubResource("Image_b4lrw")
 
 [sub_resource type="Image" id="Image_2gymf"]
 data = {
@@ -465,8 +885,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_5wca1"]
+[sub_resource type="ImageTexture" id="ImageTexture_lrf43"]
 image = SubResource("Image_2gymf")
+
+[sub_resource type="Image" id="Image_5wca1"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_26bpg"]
+image = SubResource("Image_5wca1")
 
 [sub_resource type="Image" id="Image_4bopd"]
 data = {
@@ -477,8 +909,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_3agjf"]
+[sub_resource type="ImageTexture" id="ImageTexture_psh3q"]
 image = SubResource("Image_4bopd")
+
+[sub_resource type="Image" id="Image_3agjf"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_mbsjx"]
+image = SubResource("Image_3agjf")
 
 [sub_resource type="Image" id="Image_qvgb5"]
 data = {
@@ -489,8 +933,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_td8lg"]
+[sub_resource type="ImageTexture" id="ImageTexture_dg4et"]
 image = SubResource("Image_qvgb5")
+
+[sub_resource type="Image" id="Image_td8lg"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_0abhw"]
+image = SubResource("Image_td8lg")
 
 [sub_resource type="Image" id="Image_rhrew"]
 data = {
@@ -501,8 +957,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_3pqqg"]
+[sub_resource type="ImageTexture" id="ImageTexture_dtap3"]
 image = SubResource("Image_rhrew")
+
+[sub_resource type="Image" id="Image_3pqqg"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_irg50"]
+image = SubResource("Image_3pqqg")
 
 [sub_resource type="Image" id="Image_jsdi6"]
 data = {
@@ -513,8 +981,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_8gjxl"]
+[sub_resource type="ImageTexture" id="ImageTexture_as22q"]
 image = SubResource("Image_jsdi6")
+
+[sub_resource type="Image" id="Image_8gjxl"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_yp2k2"]
+image = SubResource("Image_8gjxl")
 
 [sub_resource type="Image" id="Image_ejjs0"]
 data = {
@@ -525,8 +1005,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_bvpus"]
+[sub_resource type="ImageTexture" id="ImageTexture_ak6kv"]
 image = SubResource("Image_ejjs0")
+
+[sub_resource type="Image" id="Image_bvpus"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_sdtk7"]
+image = SubResource("Image_bvpus")
 
 [sub_resource type="Image" id="Image_0lwom"]
 data = {
@@ -537,8 +1029,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_8vpng"]
+[sub_resource type="ImageTexture" id="ImageTexture_j2a78"]
 image = SubResource("Image_0lwom")
+
+[sub_resource type="Image" id="Image_8vpng"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_yi54x"]
+image = SubResource("Image_8vpng")
 
 [sub_resource type="Image" id="Image_r1vu7"]
 data = {
@@ -549,8 +1053,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_eesmq"]
+[sub_resource type="ImageTexture" id="ImageTexture_3vmm1"]
 image = SubResource("Image_r1vu7")
+
+[sub_resource type="Image" id="Image_eesmq"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_dmj54"]
+image = SubResource("Image_eesmq")
 
 [sub_resource type="Image" id="Image_w2vl3"]
 data = {
@@ -561,8 +1077,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_urvyg"]
+[sub_resource type="ImageTexture" id="ImageTexture_iulvx"]
 image = SubResource("Image_w2vl3")
+
+[sub_resource type="Image" id="Image_urvyg"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_mrsfu"]
+image = SubResource("Image_urvyg")
 
 [sub_resource type="Image" id="Image_crc0q"]
 data = {
@@ -573,8 +1101,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_a5kjn"]
+[sub_resource type="ImageTexture" id="ImageTexture_6meet"]
 image = SubResource("Image_crc0q")
+
+[sub_resource type="Image" id="Image_a5kjn"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_xl7ua"]
+image = SubResource("Image_a5kjn")
 
 [sub_resource type="Image" id="Image_lohwj"]
 data = {
@@ -585,8 +1125,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_2gu67"]
+[sub_resource type="ImageTexture" id="ImageTexture_2nxgt"]
 image = SubResource("Image_lohwj")
+
+[sub_resource type="Image" id="Image_2gu67"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_f1376"]
+image = SubResource("Image_2gu67")
 
 [sub_resource type="Image" id="Image_qurwm"]
 data = {
@@ -597,8 +1149,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_frx53"]
+[sub_resource type="ImageTexture" id="ImageTexture_vnlyw"]
 image = SubResource("Image_qurwm")
+
+[sub_resource type="Image" id="Image_frx53"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_6ueqh"]
+image = SubResource("Image_frx53")
 
 [sub_resource type="Image" id="Image_g17d2"]
 data = {
@@ -609,8 +1173,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_6ccrc"]
+[sub_resource type="ImageTexture" id="ImageTexture_8olw5"]
 image = SubResource("Image_g17d2")
+
+[sub_resource type="Image" id="Image_6ccrc"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_88j28"]
+image = SubResource("Image_6ccrc")
 
 [sub_resource type="Image" id="Image_mmh3h"]
 data = {
@@ -621,8 +1197,32 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_pf4yb"]
+[sub_resource type="ImageTexture" id="ImageTexture_l67we"]
 image = SubResource("Image_mmh3h")
+
+[sub_resource type="Curve2D" id="Curve2D_idq0b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 0)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_pf4yb"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_qcco3"]
+image = SubResource("Image_pf4yb")
+
+[sub_resource type="Curve2D" id="Curve2D_3gkus"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 88, 0)
+}
+point_count = 2
 
 [sub_resource type="Image" id="Image_5qyox"]
 data = {
@@ -633,8 +1233,26 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_orvxj"]
+[sub_resource type="ImageTexture" id="ImageTexture_liyc8"]
 image = SubResource("Image_5qyox")
+
+[sub_resource type="Image" id="Image_orvxj"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ir3ae"]
+image = SubResource("Image_orvxj")
+
+[sub_resource type="Curve2D" id="Curve2D_1t70e"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0)
+}
+point_count = 2
 
 [sub_resource type="Image" id="Image_5vogx"]
 data = {
@@ -645,8 +1263,26 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_x1bsv"]
+[sub_resource type="ImageTexture" id="ImageTexture_3ygtj"]
 image = SubResource("Image_5vogx")
+
+[sub_resource type="Curve2D" id="Curve2D_16xmh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_x1bsv"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_obf4d"]
+image = SubResource("Image_x1bsv")
 
 [sub_resource type="Image" id="Image_mfg8f"]
 data = {
@@ -657,8 +1293,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_ck60j"]
+[sub_resource type="ImageTexture" id="ImageTexture_cegwc"]
 image = SubResource("Image_mfg8f")
+
+[sub_resource type="Image" id="Image_ck60j"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_uu0mv"]
+image = SubResource("Image_ck60j")
 
 [sub_resource type="Image" id="Image_yjx2n"]
 data = {
@@ -669,8 +1317,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_2wkf6"]
+[sub_resource type="ImageTexture" id="ImageTexture_fiftb"]
 image = SubResource("Image_yjx2n")
+
+[sub_resource type="Image" id="Image_2wkf6"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_v4pfw"]
+image = SubResource("Image_2wkf6")
 
 [sub_resource type="Image" id="Image_5ygat"]
 data = {
@@ -681,8 +1341,26 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_a4eab"]
+[sub_resource type="ImageTexture" id="ImageTexture_rwfx0"]
 image = SubResource("Image_5ygat")
+
+[sub_resource type="Curve2D" id="Curve2D_b231d"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -72)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_a4eab"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_s1mnf"]
+image = SubResource("Image_a4eab")
 
 [sub_resource type="Image" id="Image_nbksw"]
 data = {
@@ -693,8 +1371,26 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_vn3ko"]
+[sub_resource type="ImageTexture" id="ImageTexture_y08kh"]
 image = SubResource("Image_nbksw")
+
+[sub_resource type="Image" id="Image_vn3ko"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_rtqa3"]
+image = SubResource("Image_vn3ko")
+
+[sub_resource type="Curve2D" id="Curve2D_2vlhl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 40, 40, 0, 0, 0, 0, 0, 40)
+}
+point_count = 4
 
 [sub_resource type="Image" id="Image_lqfnp"]
 data = {
@@ -705,8 +1401,26 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_3lc1n"]
+[sub_resource type="ImageTexture" id="ImageTexture_ta1y3"]
 image = SubResource("Image_lqfnp")
+
+[sub_resource type="Curve2D" id="Curve2D_g11en"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 56, 0)
+}
+point_count = 2
+
+[sub_resource type="Image" id="Image_3lc1n"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_we0hd"]
+image = SubResource("Image_3lc1n")
 
 [sub_resource type="Image" id="Image_fk881"]
 data = {
@@ -717,8 +1431,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_i8qyp"]
+[sub_resource type="ImageTexture" id="ImageTexture_22juv"]
 image = SubResource("Image_fk881")
+
+[sub_resource type="Image" id="Image_i8qyp"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_bnnvd"]
+image = SubResource("Image_i8qyp")
 
 [sub_resource type="Image" id="Image_0riyu"]
 data = {
@@ -729,8 +1455,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_my0vh"]
+[sub_resource type="ImageTexture" id="ImageTexture_maofm"]
 image = SubResource("Image_0riyu")
+
+[sub_resource type="Image" id="Image_my0vh"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_rj5nq"]
+image = SubResource("Image_my0vh")
 
 [sub_resource type="Image" id="Image_1dl8o"]
 data = {
@@ -741,8 +1479,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_1i8ta"]
+[sub_resource type="ImageTexture" id="ImageTexture_qn6bp"]
 image = SubResource("Image_1dl8o")
+
+[sub_resource type="Image" id="Image_1i8ta"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_egabm"]
+image = SubResource("Image_1i8ta")
 
 [sub_resource type="Image" id="Image_du4d7"]
 data = {
@@ -753,8 +1503,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_1x5fb"]
+[sub_resource type="ImageTexture" id="ImageTexture_2piun"]
 image = SubResource("Image_du4d7")
+
+[sub_resource type="Image" id="Image_1x5fb"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_d3da3"]
+image = SubResource("Image_1x5fb")
 
 [sub_resource type="Image" id="Image_ipxni"]
 data = {
@@ -765,8 +1527,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_afelw"]
+[sub_resource type="ImageTexture" id="ImageTexture_2e1q2"]
 image = SubResource("Image_ipxni")
+
+[sub_resource type="Image" id="Image_afelw"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_wwbhf"]
+image = SubResource("Image_afelw")
 
 [sub_resource type="Image" id="Image_lwq1p"]
 data = {
@@ -777,8 +1551,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_lh1do"]
+[sub_resource type="ImageTexture" id="ImageTexture_wfb21"]
 image = SubResource("Image_lwq1p")
+
+[sub_resource type="Image" id="Image_lh1do"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_shsqj"]
+image = SubResource("Image_lh1do")
 
 [sub_resource type="Image" id="Image_xr3cg"]
 data = {
@@ -789,8 +1575,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_bnb35"]
+[sub_resource type="ImageTexture" id="ImageTexture_jaam2"]
 image = SubResource("Image_xr3cg")
+
+[sub_resource type="Image" id="Image_bnb35"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_1x0di"]
+image = SubResource("Image_bnb35")
 
 [sub_resource type="Image" id="Image_svlhx"]
 data = {
@@ -801,8 +1599,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_n6mhw"]
+[sub_resource type="ImageTexture" id="ImageTexture_iv71l"]
 image = SubResource("Image_svlhx")
+
+[sub_resource type="Image" id="Image_n6mhw"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_m87ep"]
+image = SubResource("Image_n6mhw")
 
 [sub_resource type="Image" id="Image_l53a1"]
 data = {
@@ -813,8 +1623,20 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_r1a8k"]
+[sub_resource type="ImageTexture" id="ImageTexture_ue6jo"]
 image = SubResource("Image_l53a1")
+
+[sub_resource type="Image" id="Image_r1a8k"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_k5v4g"]
+image = SubResource("Image_r1a8k")
 
 [sub_resource type="Image" id="Image_rxpms"]
 data = {
@@ -825,832 +1647,10 @@ data = {
 "width": 8
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_fsc8k"]
+[sub_resource type="ImageTexture" id="ImageTexture_bop73"]
 image = SubResource("Image_rxpms")
 
-[sub_resource type="Image" id="Image_yvlql"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_s7q3y"]
-image = SubResource("Image_yvlql")
-
-[sub_resource type="Image" id="Image_mfj66"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_pl532"]
-image = SubResource("Image_mfj66")
-
-[sub_resource type="Image" id="Image_fisnh"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_dgdcp"]
-image = SubResource("Image_fisnh")
-
-[sub_resource type="Image" id="Image_xp7cw"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_djf17"]
-image = SubResource("Image_xp7cw")
-
-[sub_resource type="Image" id="Image_iapg1"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_lrf43"]
-image = SubResource("Image_iapg1")
-
-[sub_resource type="Image" id="Image_74475"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_26bpg"]
-image = SubResource("Image_74475")
-
-[sub_resource type="Image" id="Image_lllms"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_psh3q"]
-image = SubResource("Image_lllms")
-
-[sub_resource type="Image" id="Image_0pqd5"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_mbsjx"]
-image = SubResource("Image_0pqd5")
-
-[sub_resource type="Image" id="Image_anllg"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_dg4et"]
-image = SubResource("Image_anllg")
-
-[sub_resource type="Image" id="Image_sble6"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_0abhw"]
-image = SubResource("Image_sble6")
-
-[sub_resource type="Image" id="Image_vtmmh"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_dtap3"]
-image = SubResource("Image_vtmmh")
-
-[sub_resource type="Image" id="Image_flk57"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_irg50"]
-image = SubResource("Image_flk57")
-
-[sub_resource type="Image" id="Image_nvd77"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_as22q"]
-image = SubResource("Image_nvd77")
-
-[sub_resource type="Image" id="Image_y8rww"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_yp2k2"]
-image = SubResource("Image_y8rww")
-
-[sub_resource type="Image" id="Image_sth12"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_ak6kv"]
-image = SubResource("Image_sth12")
-
-[sub_resource type="Image" id="Image_f1me6"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_sdtk7"]
-image = SubResource("Image_f1me6")
-
-[sub_resource type="Image" id="Image_enh6v"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_j2a78"]
-image = SubResource("Image_enh6v")
-
-[sub_resource type="Image" id="Image_nai78"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_yi54x"]
-image = SubResource("Image_nai78")
-
-[sub_resource type="Image" id="Image_q1gq0"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_3vmm1"]
-image = SubResource("Image_q1gq0")
-
-[sub_resource type="Image" id="Image_xwwkf"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_dmj54"]
-image = SubResource("Image_xwwkf")
-
-[sub_resource type="Image" id="Image_xuegj"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_iulvx"]
-image = SubResource("Image_xuegj")
-
-[sub_resource type="Image" id="Image_5xblc"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_mrsfu"]
-image = SubResource("Image_5xblc")
-
-[sub_resource type="Image" id="Image_3jn3u"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_6meet"]
-image = SubResource("Image_3jn3u")
-
-[sub_resource type="Image" id="Image_vliy2"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_xl7ua"]
-image = SubResource("Image_vliy2")
-
-[sub_resource type="Image" id="Image_775fg"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_2nxgt"]
-image = SubResource("Image_775fg")
-
-[sub_resource type="Image" id="Image_0qsrt"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_f1376"]
-image = SubResource("Image_0qsrt")
-
-[sub_resource type="Image" id="Image_lva76"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_vnlyw"]
-image = SubResource("Image_lva76")
-
-[sub_resource type="Image" id="Image_frh68"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_6ueqh"]
-image = SubResource("Image_frh68")
-
-[sub_resource type="Image" id="Image_hiapy"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_8olw5"]
-image = SubResource("Image_hiapy")
-
-[sub_resource type="Image" id="Image_fepf6"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_88j28"]
-image = SubResource("Image_fepf6")
-
-[sub_resource type="Image" id="Image_ie05g"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_l67we"]
-image = SubResource("Image_ie05g")
-
-[sub_resource type="Curve2D" id="Curve2D_idq0b"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 0)
-}
-point_count = 2
-
-[sub_resource type="Image" id="Image_wfnlu"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_qcco3"]
-image = SubResource("Image_wfnlu")
-
-[sub_resource type="Curve2D" id="Curve2D_3gkus"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 88, 0)
-}
-point_count = 2
-
-[sub_resource type="Image" id="Image_80gaa"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_liyc8"]
-image = SubResource("Image_80gaa")
-
-[sub_resource type="Image" id="Image_1xkil"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_ir3ae"]
-image = SubResource("Image_1xkil")
-
-[sub_resource type="Curve2D" id="Curve2D_1t70e"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0)
-}
-point_count = 2
-
-[sub_resource type="Image" id="Image_4h50u"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_3ygtj"]
-image = SubResource("Image_4h50u")
-
-[sub_resource type="Curve2D" id="Curve2D_16xmh"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0)
-}
-point_count = 2
-
-[sub_resource type="Image" id="Image_6n52w"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_obf4d"]
-image = SubResource("Image_6n52w")
-
-[sub_resource type="Image" id="Image_5ynk5"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_cegwc"]
-image = SubResource("Image_5ynk5")
-
-[sub_resource type="Image" id="Image_2oji1"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_uu0mv"]
-image = SubResource("Image_2oji1")
-
-[sub_resource type="Image" id="Image_pvajn"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_fiftb"]
-image = SubResource("Image_pvajn")
-
-[sub_resource type="Image" id="Image_0nrnd"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_v4pfw"]
-image = SubResource("Image_0nrnd")
-
-[sub_resource type="Image" id="Image_qirei"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_rwfx0"]
-image = SubResource("Image_qirei")
-
-[sub_resource type="Curve2D" id="Curve2D_b231d"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -72)
-}
-point_count = 2
-
-[sub_resource type="Image" id="Image_6sovy"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_s1mnf"]
-image = SubResource("Image_6sovy")
-
-[sub_resource type="Image" id="Image_gpgmu"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_y08kh"]
-image = SubResource("Image_gpgmu")
-
-[sub_resource type="Image" id="Image_ul4fn"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_rtqa3"]
-image = SubResource("Image_ul4fn")
-
-[sub_resource type="Curve2D" id="Curve2D_2vlhl"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 40, 40, 0, 0, 0, 0, 0, 40)
-}
-point_count = 4
-
-[sub_resource type="Image" id="Image_sc4w5"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_ta1y3"]
-image = SubResource("Image_sc4w5")
-
-[sub_resource type="Curve2D" id="Curve2D_g11en"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 56, 0)
-}
-point_count = 2
-
-[sub_resource type="Image" id="Image_d4et7"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_we0hd"]
-image = SubResource("Image_d4et7")
-
-[sub_resource type="Image" id="Image_tquja"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_22juv"]
-image = SubResource("Image_tquja")
-
-[sub_resource type="Image" id="Image_8icdk"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_bnnvd"]
-image = SubResource("Image_8icdk")
-
-[sub_resource type="Image" id="Image_n60m0"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_maofm"]
-image = SubResource("Image_n60m0")
-
-[sub_resource type="Image" id="Image_51ld2"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_rj5nq"]
-image = SubResource("Image_51ld2")
-
-[sub_resource type="Image" id="Image_43vwc"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_qn6bp"]
-image = SubResource("Image_43vwc")
-
-[sub_resource type="Image" id="Image_ivofr"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_egabm"]
-image = SubResource("Image_ivofr")
-
-[sub_resource type="Image" id="Image_q3pno"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_2piun"]
-image = SubResource("Image_q3pno")
-
-[sub_resource type="Image" id="Image_ka1lo"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_d3da3"]
-image = SubResource("Image_ka1lo")
-
-[sub_resource type="Image" id="Image_lhrnn"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_2e1q2"]
-image = SubResource("Image_lhrnn")
-
-[sub_resource type="Image" id="Image_1frhj"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_wwbhf"]
-image = SubResource("Image_1frhj")
-
-[sub_resource type="Image" id="Image_6au8y"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_wfb21"]
-image = SubResource("Image_6au8y")
-
-[sub_resource type="Image" id="Image_oe4m6"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_shsqj"]
-image = SubResource("Image_oe4m6")
-
-[sub_resource type="Image" id="Image_osoi7"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_jaam2"]
-image = SubResource("Image_osoi7")
-
-[sub_resource type="Image" id="Image_ogo40"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_1x0di"]
-image = SubResource("Image_ogo40")
-
-[sub_resource type="Image" id="Image_nwvsv"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_iv71l"]
-image = SubResource("Image_nwvsv")
-
-[sub_resource type="Image" id="Image_wr485"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_m87ep"]
-image = SubResource("Image_wr485")
-
-[sub_resource type="Image" id="Image_a2yu4"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_ue6jo"]
-image = SubResource("Image_a2yu4")
-
-[sub_resource type="Image" id="Image_xjj8u"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_k5v4g"]
-image = SubResource("Image_xjj8u")
-
-[sub_resource type="Image" id="Image_fi2by"]
-data = {
-"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
-"format": "RGBA8",
-"height": 8,
-"mipmaps": false,
-"width": 8
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_bop73"]
-image = SubResource("Image_fi2by")
-
-[sub_resource type="Image" id="Image_b7ogs"]
+[sub_resource type="Image" id="Image_fsc8k"]
 data = {
 "data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
 "format": "RGBA8",
@@ -1660,7 +1660,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_t4823"]
-image = SubResource("Image_b7ogs")
+image = SubResource("Image_fsc8k")
 
 [node name="Ascend_1" type="Node2D"]
 script = ExtResource("1_mgg4a")
@@ -1668,6 +1668,7 @@ chapter_title = "The Outskirts"
 ambient_color = Color(0.7294118, 0.7882353, 0.8627451, 1)
 accent_color = Color(0.9372549, 0.7490196, 0.4745098, 1)
 flowers_color = Color(0.76862746, 0.6745098, 0.8352941, 1)
+play_room_id = "cl1-o1-road"
 world_settings = {
 "atlasEnd": "cl1-bank-b62",
 "atlasMiddle": "cl1-o1-cracked",
@@ -2330,7 +2331,7 @@ original_fields = ["id", "name", "exit", "hint", "question", "people", "decor", 
 original_spawn = Vector2(24, 136)
 
 [node name="Tiles" type="TileMapLayer" parent="Rooms/cl1-o1-road"]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAnAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAnAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAnAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAnAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAnAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAnAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAnAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAADAAAAAAAbABAAAAADAAAAAAAcABAAAAADAAAAAAAdABAAAAADAAAAAAAeABAAAAAAAAAAAAAfABAAAAAAAAAAAAAgABAAAAAAAAAAAAAhABAAAAAAAAAAAAAAABEAAAAAAAAAAAAUABEAAAAAAAAAAAAVABEAAAAAAAAAAAAWABEAAAAAAAAAAAAXABEAAAAAAAAAAAAYABEAAAAAAAAAAAAZABEAAAAAAAAAAAAaABEAAAAAAAAAAAAbABEAAAAAAAAAAAAcABEAAAAAAAAAAAAdABEAAAAAAAAAAAAeABEAAAAAAAAAAAAfABEAAAAAAAAAAAAgABEAAAAAAAAAAAAhABEAAAAAAAAAAAAAABIAAAAAAAAAAAABABIAAAAAAAAAAAACABIAAAAAAAAAAAADABIAAAAAAAAAAAAEABIAAAAAAAAAAAAFABIAAAAAAAAAAAAGABIAAAAAAAAAAAAHABIAAAAAAAAAAAAIABIAAAAAAAAAAAAJABIAAAAAAAAAAAAKABIAAAAAAAAAAAALABIAAAADAAAAAAAMABIAAAADAAAAAAANABIAAAAAAAAAAAAOABIAAAAAAAAAAAAPABIAAAAAAAAAAAAQABIAAAAAAAAAAAARABIAAAAAAAAAAAASABIAAAAAAAAAAAATABIAAAAAAAAAAAAUABIAAAAAAAAAAAAVABIAAAAAAAAAAAAWABIAAAAAAAAAAAAXABIAAAAAAAAAAAAYABIAAAAAAAAAAAAZABIAAAAAAAAAAAAaABIAAAAAAAAAAAAbABIAAAAAAAAAAAAcABIAAAAAAAAAAAAdABIAAAAAAAAAAAAeABIAAAAAAAAAAAAfABIAAAAAAAAAAAAgABIAAAAAAAAAAAAhABIAAAAAAAAAAAAiABIAAAAAAAAAAAAjABIAAAAAAAAAAAAkABIAAAAAAAAAAAAlABIAAAAAAAAAAAAmABIAAAAAAAAAAAAnABIAAAAAAAAAAAAAABMAAAAAAAAAAAABABMAAAAAAAAAAAACABMAAAAAAAAAAAADABMAAAAAAAAAAAAEABMAAAAAAAAAAAAFABMAAAAAAAAAAAAGABMAAAAAAAAAAAAHABMAAAAAAAAAAAAIABMAAAAAAAAAAAAJABMAAAAAAAAAAAAKABMAAAAAAAAAAAALABMAAAAAAAAAAAAMABMAAAAAAAAAAAANABMAAAAAAAAAAAAOABMAAAAAAAAAAAAPABMAAAAAAAAAAAAQABMAAAAAAAAAAAARABMAAAAAAAAAAAASABMAAAAAAAAAAAATABMAAAAAAAAAAAAUABMAAAAAAAAAAAAVABMAAAAAAAAAAAAWABMAAAAAAAAAAAAXABMAAAAAAAAAAAAYABMAAAAAAAAAAAAZABMAAAAAAAAAAAAaABMAAAAAAAAAAAAbABMAAAAAAAAAAAAcABMAAAAAAAAAAAAdABMAAAAAAAAAAAAeABMAAAAAAAAAAAAfABMAAAAAAAAAAAAgABMAAAAAAAAAAAAhABMAAAAAAAAAAAAiABMAAAAAAAAAAAAjABMAAAAAAAAAAAAkABMAAAAAAAAAAAAlABMAAAAAAAAAAAAmABMAAAAAAAAAAAAnABMAAAAAAAAAAAAAABQAAAAAAAAAAAABABQAAAAAAAAAAAACABQAAAAAAAAAAAADABQAAAAAAAAAAAAEABQAAAAAAAAAAAAFABQAAAAAAAAAAAAGABQAAAAAAAAAAAAHABQAAAAAAAAAAAAIABQAAAAAAAAAAAAJABQAAAAAAAAAAAAKABQAAAAAAAAAAAALABQAAAAAAAAAAAAMABQAAAAAAAAAAAANABQAAAAAAAAAAAAOABQAAAAAAAAAAAAPABQAAAAAAAAAAAAQABQAAAAAAAAAAAARABQAAAAAAAAAAAASABQAAAAAAAAAAAATABQAAAAAAAAAAAAUABQAAAAAAAAAAAAVABQAAAAAAAAAAAAWABQAAAAAAAAAAAAXABQAAAAAAAAAAAAYABQAAAAAAAAAAAAZABQAAAAAAAAAAAAaABQAAAAAAAAAAAAbABQAAAAAAAAAAAAcABQAAAAAAAAAAAAdABQAAAAAAAAAAAAeABQAAAAAAAAAAAAfABQAAAAAAAAAAAAgABQAAAAAAAAAAAAhABQAAAAAAAAAAAAiABQAAAAAAAAAAAAjABQAAAAAAAAAAAAkABQAAAAAAAAAAAAlABQAAAAAAAAAAAAmABQAAAAAAAAAAAAnABQAAAAAAAAAAAAAABUAAAAAAAAAAAABABUAAAAAAAAAAAACABUAAAAAAAAAAAADABUAAAAAAAAAAAAEABUAAAAAAAAAAAAFABUAAAAAAAAAAAAGABUAAAAAAAAAAAAHABUAAAAAAAAAAAAIABUAAAAAAAAAAAAJABUAAAAAAAAAAAAKABUAAAAAAAAAAAALABUAAAAAAAAAAAAMABUAAAAAAAAAAAANABUAAAAAAAAAAAAOABUAAAAAAAAAAAAPABUAAAAAAAAAAAAQABUAAAAAAAAAAAARABUAAAAAAAAAAAASABUAAAAAAAAAAAATABUAAAAAAAAAAAAUABUAAAAAAAAAAAAVABUAAAAAAAAAAAAWABUAAAAAAAAAAAAXABUAAAAAAAAAAAAYABUAAAAAAAAAAAAZABUAAAAAAAAAAAAaABUAAAAAAAAAAAAbABUAAAAAAAAAAAAcABUAAAAAAAAAAAAdABUAAAAAAAAAAAAeABUAAAAAAAAAAAAfABUAAAAAAAAAAAAgABUAAAAAAAAAAAAhABUAAAAAAAAAAAAiABUAAAAAAAAAAAAjABUAAAAAAAAAAAAkABUAAAAAAAAAAAAlABUAAAAAAAAAAAAmABUAAAAAAAAAAAAnABUAAAAAAAAAAAAAABYAAAAAAAAAAAABABYAAAAAAAAAAAACABYAAAAAAAAAAAADABYAAAAAAAAAAAAEABYAAAAAAAAAAAAFABYAAAAAAAAAAAAGABYAAAAAAAAAAAAHABYAAAAAAAAAAAAIABYAAAAAAAAAAAAJABYAAAAAAAAAAAAKABYAAAAAAAAAAAALABYAAAAAAAAAAAAMABYAAAAAAAAAAAANABYAAAAAAAAAAAAOABYAAAAAAAAAAAAPABYAAAAAAAAAAAAQABYAAAAAAAAAAAARABYAAAAAAAAAAAASABYAAAAAAAAAAAATABYAAAAAAAAAAAAUABYAAAAAAAAAAAAVABYAAAAAAAAAAAAWABYAAAAAAAAAAAAXABYAAAAAAAAAAAAYABYAAAAAAAAAAAAZABYAAAAAAAAAAAAaABYAAAAAAAAAAAAbABYAAAAAAAAAAAAcABYAAAAAAAAAAAAdABYAAAAAAAAAAAAeABYAAAAAAAAAAAAfABYAAAAAAAAAAAAgABYAAAAAAAAAAAAhABYAAAAAAAAAAAAiABYAAAAAAAAAAAAjABYAAAAAAAAAAAAkABYAAAAAAAAAAAAlABYAAAAAAAAAAAAmABYAAAAAAAAAAAAnABYAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAnAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAnAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAnAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAnAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAnAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAnAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAnAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAnAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAADAAAAAAAbABAAAAADAAAAAAAcABAAAAADAAAAAAAdABAAAAADAAAAAAAeABAAAAAAAAAAAAAfABAAAAAAAAAAAAAgABAAAAAAAAAAAAAhABAAAAAAAAAAAAAAABEAAAAAAAAAAAAUABEAAAAAAAAAAAAVABEAAAAAAAAAAAAWABEAAAAAAAAAAAAXABEAAAAAAAAAAAAYABEAAAAAAAAAAAAZABEAAAAAAAAAAAAaABEAAAAAAAAAAAAbABEAAAAAAAAAAAAcABEAAAAAAAAAAAAdABEAAAAAAAAAAAAeABEAAAAAAAAAAAAfABEAAAAAAAAAAAAgABEAAAAAAAAAAAAhABEAAAAAAAAAAAAAABIAAAAAAAAAAAABABIAAAAAAAAAAAACABIAAAAAAAAAAAADABIAAAAAAAAAAAAEABIAAAAAAAAAAAAFABIAAAAAAAAAAAAGABIAAAAAAAAAAAAKABIAAAAAAAAAAAALABIAAAADAAAAAAAMABIAAAADAAAAAAANABIAAAAAAAAAAAAOABIAAAAAAAAAAAAPABIAAAAAAAAAAAAQABIAAAAAAAAAAAARABIAAAAAAAAAAAASABIAAAAAAAAAAAATABIAAAAAAAAAAAAUABIAAAAAAAAAAAAVABIAAAAAAAAAAAAWABIAAAAAAAAAAAAXABIAAAAAAAAAAAAYABIAAAAAAAAAAAAZABIAAAAAAAAAAAAaABIAAAAAAAAAAAAbABIAAAAAAAAAAAAcABIAAAAAAAAAAAAdABIAAAAAAAAAAAAeABIAAAAAAAAAAAAfABIAAAAAAAAAAAAgABIAAAAAAAAAAAAhABIAAAAAAAAAAAAiABIAAAAAAAAAAAAjABIAAAAAAAAAAAAkABIAAAAAAAAAAAAlABIAAAAAAAAAAAAmABIAAAAAAAAAAAAnABIAAAAAAAAAAAAAABMAAAAAAAAAAAABABMAAAAAAAAAAAACABMAAAAAAAAAAAADABMAAAAAAAAAAAAEABMAAAAAAAAAAAAFABMAAAAAAAAAAAAGABMAAAAAAAAAAAAHABMAAAAAAAAAAAAJABMAAAAAAAAAAAAKABMAAAAAAAAAAAALABMAAAAAAAAAAAAMABMAAAAAAAAAAAANABMAAAAAAAAAAAAOABMAAAAAAAAAAAAPABMAAAAAAAAAAAAQABMAAAAAAAAAAAARABMAAAAAAAAAAAASABMAAAAAAAAAAAATABMAAAAAAAAAAAAUABMAAAAAAAAAAAAVABMAAAAAAAAAAAAWABMAAAAAAAAAAAAXABMAAAAAAAAAAAAYABMAAAAAAAAAAAAZABMAAAAAAAAAAAAaABMAAAAAAAAAAAAbABMAAAAAAAAAAAAcABMAAAAAAAAAAAAdABMAAAAAAAAAAAAeABMAAAAAAAAAAAAfABMAAAAAAAAAAAAgABMAAAAAAAAAAAAhABMAAAAAAAAAAAAiABMAAAAAAAAAAAAjABMAAAAAAAAAAAAkABMAAAAAAAAAAAAlABMAAAAAAAAAAAAmABMAAAAAAAAAAAAnABMAAAAAAAAAAAAAABQAAAAAAAAAAAABABQAAAAAAAAAAAACABQAAAAAAAAAAAADABQAAAAAAAAAAAAEABQAAAAAAAAAAAAFABQAAAAAAAAAAAAGABQAAAAAAAAAAAAHABQAAAAAAAAAAAAIABQAAAAAAAAAAAAJABQAAAAAAAAAAAAKABQAAAAAAAAAAAALABQAAAAAAAAAAAAMABQAAAAAAAAAAAANABQAAAAAAAAAAAAOABQAAAAAAAAAAAAPABQAAAAAAAAAAAAQABQAAAAAAAAAAAARABQAAAAAAAAAAAASABQAAAAAAAAAAAATABQAAAAAAAAAAAAUABQAAAAAAAAAAAAVABQAAAAAAAAAAAAWABQAAAAAAAAAAAAXABQAAAAAAAAAAAAYABQAAAAAAAAAAAAZABQAAAAAAAAAAAAaABQAAAAAAAAAAAAbABQAAAAAAAAAAAAcABQAAAAAAAAAAAAdABQAAAAAAAAAAAAeABQAAAAAAAAAAAAfABQAAAAAAAAAAAAgABQAAAAAAAAAAAAhABQAAAAAAAAAAAAiABQAAAAAAAAAAAAjABQAAAAAAAAAAAAkABQAAAAAAAAAAAAlABQAAAAAAAAAAAAmABQAAAAAAAAAAAAnABQAAAAAAAAAAAAAABUAAAAAAAAAAAABABUAAAAAAAAAAAACABUAAAAAAAAAAAADABUAAAAAAAAAAAAEABUAAAAAAAAAAAAFABUAAAAAAAAAAAAGABUAAAAAAAAAAAAHABUAAAAAAAAAAAAIABUAAAAAAAAAAAAJABUAAAAAAAAAAAAKABUAAAAAAAAAAAALABUAAAAAAAAAAAAMABUAAAAAAAAAAAANABUAAAAAAAAAAAAOABUAAAAAAAAAAAAPABUAAAAAAAAAAAAQABUAAAAAAAAAAAARABUAAAAAAAAAAAASABUAAAAAAAAAAAATABUAAAAAAAAAAAAUABUAAAAAAAAAAAAVABUAAAAAAAAAAAAWABUAAAAAAAAAAAAXABUAAAAAAAAAAAAYABUAAAAAAAAAAAAZABUAAAAAAAAAAAAaABUAAAAAAAAAAAAbABUAAAAAAAAAAAAcABUAAAAAAAAAAAAdABUAAAAAAAAAAAAeABUAAAAAAAAAAAAfABUAAAAAAAAAAAAgABUAAAAAAAAAAAAhABUAAAAAAAAAAAAiABUAAAAAAAAAAAAjABUAAAAAAAAAAAAkABUAAAAAAAAAAAAlABUAAAAAAAAAAAAmABUAAAAAAAAAAAAnABUAAAAAAAAAAAAAABYAAAAAAAAAAAABABYAAAAAAAAAAAACABYAAAAAAAAAAAADABYAAAAAAAAAAAAEABYAAAAAAAAAAAAFABYAAAAAAAAAAAAGABYAAAAAAAAAAAAHABYAAAAAAAAAAAAIABYAAAAAAAAAAAAJABYAAAAAAAAAAAAKABYAAAAAAAAAAAALABYAAAAAAAAAAAAMABYAAAAAAAAAAAANABYAAAAAAAAAAAAOABYAAAAAAAAAAAAPABYAAAAAAAAAAAAQABYAAAAAAAAAAAARABYAAAAAAAAAAAASABYAAAAAAAAAAAATABYAAAAAAAAAAAAUABYAAAAAAAAAAAAVABYAAAAAAAAAAAAWABYAAAAAAAAAAAAXABYAAAAAAAAAAAAYABYAAAAAAAAAAAAZABYAAAAAAAAAAAAaABYAAAAAAAAAAAAbABYAAAAAAAAAAAAcABYAAAAAAAAAAAAdABYAAAAAAAAAAAAeABYAAAAAAAAAAAAfABYAAAAAAAAAAAAgABYAAAAAAAAAAAAhABYAAAAAAAAAAAAiABYAAAAAAAAAAAAjABYAAAAAAAAAAAAkABYAAAAAAAAAAAAlABYAAAAAAAAAAAAmABYAAAAAAAAAAAAnABYAAAAAAAAAAAAHABIAAAAAAAAAAAAJABIAAAAAAAAAAAAIABMAAAAAAAAAAAAIABIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_qan4i")
 
 [node name="Objects" type="Node2D" parent="Rooms/cl1-o1-road"]
@@ -2370,7 +2371,7 @@ scale = Vector2(4.75, 5)
 texture = SubResource("ImageTexture_2qi3o")
 
 [node name="watchfire" type="Node2D" parent="Rooms/cl1-o1-road/Objects"]
-position = Vector2(64, 144)
+position = Vector2(45, 144)
 script = ExtResource("3_jqneo")
 petal_color = Color(0.76862746, 0.6745098, 0.8352941, 1)
 parameters = {
@@ -2390,7 +2391,7 @@ scale = Vector2(4.75, 5)
 texture = SubResource("ImageTexture_hhoix")
 
 [node name="trumpets" type="Node2D" parent="Rooms/cl1-o1-road/Objects"]
-position = Vector2(88, 144)
+position = Vector2(110, 143)
 script = ExtResource("3_jqneo")
 petal_color = Color(0.76862746, 0.6745098, 0.8352941, 1)
 parameters = {
@@ -2430,7 +2431,7 @@ scale = Vector2(4.75, 5)
 texture = SubResource("ImageTexture_pxbvy")
 
 [node name="vey" type="Node2D" parent="Rooms/cl1-o1-road/Objects"]
-position = Vector2(48, 144)
+position = Vector2(31, 144)
 script = ExtResource("3_jqneo")
 kind = "NPC"
 parameters = {
@@ -2451,7 +2452,7 @@ scale = Vector2(3.5, 2.75)
 texture = SubResource("ImageTexture_m4uu8")
 
 [node name="White_flower" type="Node2D" parent="Rooms/cl1-o1-road/Objects"]
-position = Vector2(64, 137)
+position = Vector2(75, 137)
 script = ExtResource("3_jqneo")
 kind = "White flower"
 footprint = Vector2i(8, 7)

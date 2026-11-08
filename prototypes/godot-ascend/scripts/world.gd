@@ -49,6 +49,7 @@ func _init(source):
  if int(data.world.n) in [1,2,3]:
   var workshop_source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"))
   CampaignWorkshop.append(data,preload("res://scripts/authoring_data.gd").read(workshop_source))
+ preload("res://scripts/affixed_route.gd").prepare(data)
  var sections=data.world.sections.duplicate(true)
  for q in data.world.quests: sections.append_array(q.sections)
  for q in data.world.get("secrets",[]): sections.append_array(q.sections)
@@ -224,7 +225,7 @@ func tick_inactive():
 func collect_progress():
  # The workshop shard is an optional round trip, banked at its finish by the UI.
  # Death/retry resets the pickup along with the room, unlike campaign bearings.
- if data.world.get("workshop",false) or data.world.get("coverComparison",false) or active().room.def.get("campaignWorkshop",false): return
+ if data.world.get("workshop",false) or data.world.get("coverComparison",false) or active().room.def.get("campaignWorkshop",false) or Core.PuzzleReturns.required(active().room.def): return
  # Only the active knight can collect or light a stake. Inactive machinery cannot.
  for id in [active_id]:
   var core=cores[id]

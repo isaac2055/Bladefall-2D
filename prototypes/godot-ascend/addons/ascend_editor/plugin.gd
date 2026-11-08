@@ -2,8 +2,8 @@
 extends EditorPlugin
 const Codec=preload("res://authoring/codec.gd")
 const Authoring=preload("res://scripts/authoring_data.gd")
-const NUMBERS=[1,2,3,21,22,23,4]
-const TITLES=["The Outskirts","Black Woods","Broken Causeway","Fractured Outskirts","Fractured Woods","Fractured Causeway","Movement Workshop · test level"]
+const NUMBERS=[1,2,3,21,22,23,4,101,102,103]
+const TITLES=["The Outskirts","Black Woods","Broken Causeway","Fractured Outskirts","Fractured Woods","Fractured Causeway","Movement Workshop · test level","Outskirts · Core","Black Woods · Core","Causeway · Core"]
 var dock:ScrollContainer
 var body:VBoxContainer
 var chapter:OptionButton
