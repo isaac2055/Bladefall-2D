@@ -20,6 +20,10 @@ var settings_back:Button
 var settings_card:PanelContainer
 var settings_scroll:ScrollContainer
 const SaveState=preload("res://scripts/world_save.gd")
+const SaveTransfer=preload("res://scripts/save_transfer.gd")
+var transfer_status:Label
+var transfer_dialog:FileDialog
+var web_import_callback
 var game_started=false
 var save_room=""
 var save_frame=0
@@ -349,6 +353,12 @@ func create_interface():
  column.add_child(row)
  focus_resume=button(row,"Resume",func():set_paused(false),false)
  gameplay_settings_nodes.append(row)
+ var save_row=HBoxContainer.new()
+ column.add_child(save_row)
+ button(save_row,"Export Save",export_portable_save,false)
+ button(save_row,"Import Save",import_portable_save,false)
+ transfer_status=text(column,"Move progress between browser and app. Import replaces this device’s save.",13,"#90a6ac")
+ transfer_status.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  settings_back=button(column,"Back",func():set_paused(false),false)
  button(row,"Retry · R",func():retry_room();set_paused(false))
  watch_button = button(row,"Watch reference",func():toggle_watch();set_paused(false))
@@ -1377,3 +1387,51 @@ func developer_next():
  if story!=null: story.check_begin()
  discover_current()
  maybe_autosave(true)
+
+func export_portable_save():
+ maybe_autosave(true)
+ sampler.profile.save_profile()
+ var bundle=SaveTransfer.export_bundle()
+ if OS.has_feature("web"):
+  JavaScriptBridge.download_buffer(bundle.to_utf8_buffer(),"Bladefall-save.json","application/json")
+  transfer_status.text="Save exported. Keep this file to move or back up your progress."
+ else:
+  open_transfer_dialog(true,bundle)
+func import_portable_save():
+ if OS.has_feature("web"):
+  web_import_callback=JavaScriptBridge.create_callback(func(args):receive_portable_save(str(args[0])))
+  var browser=JavaScriptBridge.get_interface("window")
+  browser.bladefallImportSave=web_import_callback
+  JavaScriptBridge.eval("""(() => { const input=document.createElement('input'); input.type='file'; input.accept='.json,application/json'; input.onchange=async()=>{const file=input.files[0];if(!file)return;if(file.size>33554432){window.bladefallImportSave('');return;}window.bladefallImportSave(await file.text());}; input.click(); })()""",true)
+ else:
+  open_transfer_dialog(false)
+func open_transfer_dialog(exporting,bundle=""):
+ if is_instance_valid(transfer_dialog): transfer_dialog.queue_free()
+ transfer_dialog=FileDialog.new()
+ transfer_dialog.use_native_dialog=true
+ transfer_dialog.access=FileDialog.ACCESS_FILESYSTEM
+ transfer_dialog.file_mode=FileDialog.FILE_MODE_SAVE_FILE if exporting else FileDialog.FILE_MODE_OPEN_FILE
+ transfer_dialog.filters=PackedStringArray(["*.json ; Bladefall save"])
+ transfer_dialog.title="Export Bladefall save" if exporting else "Import Bladefall save"
+ if exporting: transfer_dialog.current_file="Bladefall-save.json"
+ transfer_dialog.file_selected.connect(func(path):
+  if exporting:
+   var file=FileAccess.open(path,FileAccess.WRITE)
+   if file==null: transfer_status.text="Cannot write the save file."
+   else:
+    file.store_string(bundle);file.close()
+    transfer_status.text="Save exported."
+  else:
+   var file=FileAccess.open(path,FileAccess.READ)
+   if file==null or file.get_length()>SaveTransfer.LIMIT: transfer_status.text="Cannot read this save file."
+   else: receive_portable_save(file.get_as_text()))
+ add_child(transfer_dialog)
+ transfer_dialog.popup_centered_ratio(0.7)
+func receive_portable_save(source):
+ var error=SaveTransfer.import_bundle(source)
+ if error!="":
+  transfer_status.text=error
+  return
+ # Reload from the imported files without saving the outgoing in-memory run.
+ game_started=false
+ get_tree().reload_current_scene()

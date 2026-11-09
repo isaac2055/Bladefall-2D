@@ -1,0 +1,6 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "bladefall2dsample",
+  "pages_build_output_dir": "./exports/web",
+  "compatibility_date": "2026-11-09"
+}

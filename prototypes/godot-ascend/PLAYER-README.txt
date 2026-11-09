@@ -1,5 +1,5 @@
 BLADEFALL — ASCEND
-Willow Studios · Prototype 0.50.0
+Willow Studios · Prototype 0.51.0
 
 This app includes the game, engine, artwork and audio. No Godot installation,
 project checkout, download tool or online account is needed. Move Bladefall.app
@@ -50,3 +50,10 @@ removing unlocks or collected rewards. Practice and reference runs cannot replac
 a legitimate saved attempt. Records are local to this prototype, not shared online.
 
 This is a locally signed prototype, not an Apple-notarized public release.
+
+WEB & PORTABLE SAVES
+Play online at https://bladefall2dsample.pages.dev
+Settings > Export Save creates a portable backup of your Garden, checkpoints and preferences.
+Use Settings > Import Save in either the browser or Mac app to continue there.
+Import replaces progress on that device. A prior-save backup is kept locally.
+Browser progress belongs to this browser and this site; clearing site data removes it.
