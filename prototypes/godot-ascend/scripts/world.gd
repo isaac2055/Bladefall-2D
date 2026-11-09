@@ -16,6 +16,12 @@ var cells = {}
 var regions = []
 var active_id = ""
 var checkpoint_id = ""
+var transport_legacy_signature=""
+var transport_legacy_bonus_signature=""
+var road_revision=0
+var road_opened={}
+var road_base={}
+var road_entered={}
 var bearings = {}
 var mara_complete = false
 var notices = []
@@ -53,6 +59,9 @@ func _init(source):
   var workshop_source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"))
   CampaignWorkshop.append(data,preload("res://scripts/authoring_data.gd").read(workshop_source))
  preload("res://scripts/bonus_rewards.gd").prepare(data)
+ var legacy_transport=data.duplicate(true)
+ preload("res://scripts/legacy_affixed_route.gd").prepare(legacy_transport)
+ transport_legacy_signature=preload("res://authoring/codec.gd").fingerprint(legacy_transport)
  preload("res://scripts/affixed_route.gd").prepare(data)
  content_signature=preload("res://authoring/codec.gd").fingerprint(data)
  if int(data.world.n)==1:
@@ -63,6 +72,12 @@ func _init(source):
   if legacy.secretRewards.is_empty(): legacy.erase("secretRewards")
   if legacy.branchRewards.is_empty(): legacy.erase("branchRewards")
   legacy_content_signature=preload("res://authoring/codec.gd").fingerprint(legacy)
+  var old_bonus=legacy_transport.duplicate(true)
+  old_bonus.secretRewards=old_bonus.get("secretRewards",[]).filter(func(r):return r.id!="secret-1")
+  old_bonus.branchRewards=old_bonus.get("branchRewards",[]).filter(func(r):return r.id!="rowan-bonus")
+  if old_bonus.secretRewards.is_empty(): old_bonus.erase("secretRewards")
+  if old_bonus.branchRewards.is_empty(): old_bonus.erase("branchRewards")
+  transport_legacy_bonus_signature=preload("res://authoring/codec.gd").fingerprint(old_bonus)
  var sections=data.world.sections.duplicate(true)
  for q in data.world.quests: sections.append_array(q.sections)
  for q in data.world.get("secrets",[]): sections.append_array(q.sections)
@@ -116,8 +131,21 @@ func _init(source):
     var key=Vector2i(placements[id]/8)+local
     var value={"#":1,"%":1,"=":2,"^":3,"v":4,"<":5,">":6}.get(tile[2],0)
     seam_tiles[id].append({"local":local,"point":key,"open":cells.get(key,0),"closed":value})
+ for id in regions:
+  var room=parsed[id]
+  var patches=room.def.get("roadExit",[])+room.def.get("roadEntrance",[])
+  if patches.is_empty(): continue
+  road_base[id]=[]
+  for patch in patches: road_base[id].append([int(patch[0]),int(patch[1]),int(room.grid[int(patch[1])*int(room.cols)+int(patch[0])])])
  restart()
 func restart():
+ for id in road_base:
+  for tile in road_base[id]:
+   cells[Vector2i(placements[id]/8)+Vector2i(tile[0],tile[1])]=tile[2]
+   parsed[id].grid[tile[1]*int(parsed[id].cols)+tile[0]]=tile[2]
+ road_opened.clear()
+ road_entered.clear()
+ road_revision+=1
  campaign_completed.clear()
  for old in cores.values(): old.world_context=null
  cores.clear()
@@ -163,6 +191,7 @@ func restart():
   cores[id]=core
  active_id=data.world.get("atlasStart",data.world.sections[0].room)
  checkpoint_id=active_id
+ for id in road_base: apply_road_patches(id,parsed[id].def.get("roadEntrance",[]))
 func configure_live_core(core):
  core.autonomous_sweepers=int(data.world.n)==1
  if data.has("whiteFlowers"):
@@ -189,6 +218,7 @@ func blocker(core,x,y,w,h,ignore):
   for i in range(other.ents.size()):
    if other==core and i==ignore: continue
    var e=other.ents[i]
+   if road_entity_hidden(id,e): continue
    if other.solid_entity(e) and area.intersects(Rect2(e.x+shift.x,(other.room.h-e.y-e.h if other.flipped else e.y)+shift.y,e.w,e.h)):
     return i if other==core else -2
  return -1
@@ -208,6 +238,9 @@ func thru_global(core,a):
  return false
 func step(raw):
  var current=active()
+ if current.room.def.has("roadEntrance") and not road_entered.has(active_id) and current.p.x>=current.room.spawn.x and current.p.onGround:
+  activate_road_puzzle(active_id)
+ if road_opened.has(active_id): open_road_exit(active_id)
  update_seams(raw)
  var old_state=current.p.state
  if old_state=="dead" and current.p.deadTimer<=1 and current.freeze==0: return_extra_objects(current)
@@ -270,10 +303,16 @@ func restore_progress(core):
  for i in range(core.ents.size()):
   if not core.ents[i].id is String: core.ents[i].id=i
 func retry():
+ if active().room.def.get("roadConnector",false) and checkpoint_id!=active_id:
+  var deaths=active().deaths
+  enter(checkpoint_id,true)
+  active().deaths=deaths
+  return
  var core=active()
  var deaths=core.deaths
  return_extra_objects(core)
  core.load_room(parsed[active_id],true)
+ if road_opened.has(active_id): open_road_exit(active_id)
  core.deaths=deaths
  restore_progress(core)
 func enter(id,practice=false):
@@ -296,6 +335,7 @@ func enter(id,practice=false):
  var point=position()
  var motion=old.p
  if practice:
+  close_road_entrance(id)
   active_id=id
   checkpoint_id=id
   var destination=active()
@@ -343,7 +383,7 @@ func enter(id,practice=false):
  destination.buf=old.buf.duplicate()
  destination.freeze=old.freeze
  destination.deaths=old.deaths
- checkpoint_id=id
+ if not destination.room.def.get("roadConnector",false): checkpoint_id=id
  return true
 func update_region():
  var point=position()+Vector2(4,5)
@@ -531,3 +571,53 @@ func watch_room(id):
   row[int(tile[0])]=tile[2]
   def.map[int(tile[1])]=row
  return Loader.parse(def)
+
+func apply_road_patches(id,patches):
+ for patch in patches:
+  var local=Vector2i(patch[0],patch[1])
+  cells[Vector2i(placements[id]/8)+local]=int(patch[2])
+ road_revision+=1
+func close_road_entrance(id):
+ if road_entered.has(id) or not road_base.has(id): return
+ road_entered[id]=true
+ apply_road_patches(id,road_base[id])
+ if road_opened.has(id): apply_road_patches(id,parsed[id].def.get("roadExit",[]))
+func open_road_exit(id):
+ if not parsed.has(id): return
+ var room=parsed[id]
+ var patches=room.def.get("roadExit",[])
+ if patches.is_empty(): return
+ var newly_opened=not road_opened.has(id)
+ if newly_opened:
+  road_opened[id]=true
+  for patch in patches:
+   var local=Vector2i(patch[0],patch[1])
+   cells[Vector2i(placements[id]/8)+local]=int(patch[2])
+   room.grid[local.y*int(room.cols)+local.x]=int(patch[2])
+   if cores.has(id): cores[id].room.grid[local.y*int(room.cols)+local.x]=int(patch[2])
+ for entity in cores[id].ents:
+  if entity.type=="roadRetired" or entity==cores[id].p.carrying: continue
+  if entity.get("dev",false) or entity.type in ["gate","combatGate","brittle","crumble","toggle","held","slide","zip"]:
+   entity.road_original_type=entity.type
+   entity.type="roadRetired"
+   entity.solid=false
+   entity.dev=false
+   entity.gone=true
+ if newly_opened: road_revision+=1
+func road_entity_hidden(id,entity):
+ if road_entered.has(id): return false
+ var a=parsed[id].def.get("roadApproach",[])
+ return a.size()==4 and Rect2(a[0],a[1],a[2],a[3]).intersects(Rect2(entity.x,entity.y,entity.get("w",0),entity.get("h",0)))
+func activate_road_puzzle(id):
+ var core=cores[id]
+ var motion={}
+ for key in ["x","y","vx","vy","facing","onGround","wasGround"]: motion[key]=core.p[key]
+ var deaths=core.deaths
+ return_extra_objects(core)
+ core.load_room(parsed[id])
+ for key in motion: core.p[key]=motion[key]
+ core.deaths=deaths
+ restore_progress(core)
+ close_road_entrance(id)
+func road_approach_active(id):
+ return parsed[id].def.has("roadEntrance") and not road_entered.has(id)

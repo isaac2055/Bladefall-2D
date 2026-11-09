@@ -108,24 +108,31 @@ func tick(world,practice=false):
    start(world,true,true)
    return "reset"
  var w=world.data.world
+ if int(w.n)==23 and core.room.id=="cl23-puzzle-delivery-cannot-ride" and Route.at_goal(core):
+  profile.mark_clear(core.room.id)
+  world.open_road_exit(core.room.id)
  # Remove the superseded cover challenge from the road without touching its editable study.
  if int(w.n)==23 and core.room.id=="cl23-puzzle-bridge-backwards" and Route.at_goal(core):
   profile.mark_clear(core.room.id)
-  begin_ride(world,"cl23-puzzle-delivery-cannot-ride")
-  return "ride"
+  # Its existing physical exit now leads into the safe freight bypass.
  if w.has("campaignWorkshop"):
   var route=w.campaignWorkshop
   if core.room.id==route.entry:
+   if route.get("geometry",false): return ""
    if core.p.onGround and core.p.state not in ["dead","respawn"]:
-    begin_ride(world,route.rooms[0])
+    if not route.get("geometry",false): begin_ride(world,route.rooms[0])
     return "ride"
-  elif route.walkTargets.has(core.room.id):
+  elif not route.get("geometry",false) and route.walkTargets.has(core.room.id):
    if core.p.onGround:
     begin_ride(world,route.walkTargets[core.room.id])
     return "ride"
   elif core.room.id in route.rooms and Route.at_goal(core):
    profile.mark_clear(core.room.id)
    world.campaign_completed[core.room.id]=true
+   if route.get("geometry",false):
+    world.open_road_exit(core.room.id)
+    if core.room.id==route.rooms[-1]: complete(world)
+    return ""
    var next=route.landing[core.room.id]
    if next!="":
     begin_ride(world,route.walkTargets.get(next,next))
@@ -191,9 +198,11 @@ func dev_next(world):
  last_deaths=core.deaths
  if not route.is_empty() and core.room.id in route.rooms:
   world.campaign_completed[core.room.id]=true
+  if route.get("geometry",false): world.open_road_exit(core.room.id)
   if index==order.size()-1:
    dev_finish_pose(core)
    complete(world)
+  elif route.get("geometry",false): world.enter(order[index+1],true)
   else: begin_ride(world,order[index+1])
  elif index+1<order.size():
   var count=core.deaths

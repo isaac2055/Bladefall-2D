@@ -62,13 +62,11 @@ func run():
     app.sync_sampler_scene()
     check(app.world.active_id==target and not app.world.active_id.begins_with("bladefall-gallery"),"single ride docks directly in next challenge")
     check(app.world.checkpoint_id==target and max_jump<30,"continuous movement retains the destination checkpoint")
-  check(intros==1 and not app.sampler.result.is_empty(),"developer N completes the full base route with one establishing scene: "+str(n))
+  check(intros==0 and not app.sampler.result.is_empty(),"developer N completes the connected base route without cutscenes: "+str(n))
   check(app.sampler.profile.garden(n).root_shiny and app.sampler.profile.board(n).size()==1,"developer skips award real perfects and records: "+str(n))
-  app.story.begin_ending()
-  check(app.sampler.profile.completed.get(str(n),false) and not app.sampler_overlay.panel.visible,"world is saved before ending presentation, with result card delayed")
-  for i in range(290): app.story.physics_tick(1.0/60)
-  check(app.story.ending_ready and app.sampler_overlay.panel.visible and app.paused,"ending fades into actual completion menu: "+str(n))
-  check(app.landscape.story.get("phase","")=="ending","results retain the exact in-world ending tableau")
+  app.sampler_overlay._process(0)
+  check(app.sampler.profile.completed.get(str(n),false) and app.sampler_overlay.panel.visible and app.paused,"earned results open immediately on the connected road: "+str(n))
+  check(not app.story.active() and app.landscape.story.is_empty(),"no transport or ending cutscene: "+str(n))
  check(app.sampler.profile.all_bases_clear() and app.sampler.profile.available(21),"N follows normal three-base unlock progression")
  for n in [21,22,23]:
   for carrying in [false,true]:
@@ -110,7 +108,7 @@ func run():
   app.sampler.profile.collect_hearts(w)
   w.shutdown()
  var reloaded=Run.new(path)
- check(reloaded.profile.heart_count()>=10 and reloaded.profile.story_seen.get("lift-1",false),"bonus hearts and story reveals survive profile reload")
+ check(reloaded.profile.heart_count()>=10,"bonus hearts survive profile reload")
  clear_panel();app.switch_chapter(23);app.restart_world()
  app.cover_comparison=true
  var comparison_index=app.current

@@ -726,7 +726,7 @@ func tick_workshop():
   if not world.campaign_completed.has(sim.room.id):
    world.campaign_completed[sim.room.id]=true
    rebuild_section_menu()
-   notice_label.text="Room complete · Up at the flag to continue"
+   notice_label.text="Room complete · Follow the passage to the right"
    notice_time=8
    audio.effect("gem",.6)
   return
@@ -822,27 +822,6 @@ func _physics_process(_delta):
  if chapter_number==4 and watch: status.text="DEMONSTRATION · Esc opens the menu"
  if capture_path!="" and ticks>30: measured_physics.append((Time.get_ticks_usec()-physics_start)/1000.0)
  if capture_path!="" and ticks==screenshot_after: capture.call_deferred()
-func campaign_travel(raw):
- var pressed=raw.get("u",false)
- var rising=pressed and not campaign_up_held
- campaign_up_held=pressed
- if not rising or not data.world.has("campaignWorkshop"): return
- var route=data.world.campaignWorkshop
- var target=""
- if sim.room.id==route.entry:
-  var feet=Vector2(sim.p.x+sim.p.w/2.0,sim.p.y+sim.p.h)
-  var spawn=Vector2(sim.room.spawn.x+sim.p.w/2.0,sim.room.spawn.y+sim.p.h)
-  if sim.p.onGround and sim.p.state not in ["dead","respawn"] and feet.distance_to(spawn)<=24: target=route.rooms[0]
- elif sim.room.def.get("campaignWorkshop",false) and workshop_goal_reached():
-  var index=route.rooms.find(sim.room.id)
-  target=route.rooms[index+1] if index+1<route.rooms.size() else route.entry
- if target=="": return
- watch=false
- for i in range(data.world.rooms.size()):
-  if data.world.rooms[i].id==target:
-   load_section(i)
-   break
-
 func next_section():
  if not dev_mode: return
  var sections = data.world.sections
@@ -921,7 +900,7 @@ func close_app(code=0):
 
 func bearing_caption():
  if data.world.has("campaignWorkshop") and sim.room.id==data.world.campaignWorkshop.entry:
-  return "%d / %d PUZZLES COMPLETE · STEP ONTO THE LANTERN HOIST"%[world.campaign_completed.size(),data.world.campaignWorkshop.rooms.size()]
+  return "%d / %d PUZZLES COMPLETE · FOLLOW THE ROAD"%[world.campaign_completed.size(),data.world.campaignWorkshop.rooms.size()]
  if is_workshop_room():
   if sim.room.def.get("campaignWorkshop",false):
    if workshop_goal_reached(): return "ROOM COMPLETE · THE HOIST IS ARRIVING"

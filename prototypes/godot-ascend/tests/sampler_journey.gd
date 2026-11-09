@@ -1,16 +1,19 @@
 extends SceneTree
 const World=preload("res://scripts/world.gd")
+const Route=preload("res://scripts/affixed_route.gd")
 const Run=preload("res://scripts/sampler_run.gd")
 const Inputs=preload("res://tests/workshop_routes.gd")
 const Authoring=preload("res://scripts/authoring_data.gd")
+const Connected=preload("res://tests/connected_route_inputs.gd")
 const Codec=preload("res://authoring/codec.gd")
 var failed=0
+var chapter_override=0
 func check(ok,label):
  print("PASS " if ok else "FAIL ",label)
  if not ok: failed+=1
 func _initialize():
  var args=OS.get_cmdline_user_args()
- var n=int(args[0]) if not args.is_empty() else 2
+ var n=chapter_override if chapter_override>0 else int(args[0]) if not args.is_empty() else 2
  var path="user://sampler-journey-%d.json"%n
  DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
  var run=Run.new(path)
@@ -51,29 +54,45 @@ func _initialize():
    w.update_region()
    run.tick(w)
    frame+=1
+   if n==23 and w.active_id=="cl23-puzzle-cover-take-away": diverted=true;break
   if diverted or not run.result.is_empty(): break
- # The discarded cover's obsolete tape is replaced by the already-approved delivery route.
- if n==23 and not run.ride.is_empty() and run.ride.target=="cl23-puzzle-delivery-cannot-ride":
-  while not run.ride.is_empty(): run.tick(w)
-  for part in w.data.world.tapes[w.active_id]:
-   for f in range(int(part[0])):
-    w.step(Inputs.decode(part[1]));w.update_region();run.tick(w)
-  # Walk the delivery's rightward physical exit into the existing crossroads.
-  for f in range(1200):
-   if not run.ride.is_empty(): break
-   w.step(Inputs.decode("r"));w.update_region();run.tick(w)
+ if n==23:
+  check(w.active_id=="cl23-puzzle-cover-take-away" and run.profile.run.cleared.has("cl23-puzzle-bridge-backwards"),"original road crosses the completed bridge into the bypass")
+  for f in range(2400):
+   if w.active_id=="cl23-puzzle-delivery-cannot-ride": break
+   Connected.tick(w,run,"r")
+  check(w.active_id=="cl23-puzzle-delivery-cannot-ride" and run.ride.is_empty(),"normal inputs walk the retired cover bypass without a cradle")
+  if w.active_id=="cl23-puzzle-delivery-cannot-ride":
+   check(Connected.settle_spawn(w,run),"physical bypass reaches the delivery checkpoint")
+   var solved=false
+   for part in w.data.world.tapes[w.active_id]:
+    for f in range(int(part[0])):
+     Connected.tick(w,run,part[1])
+     if Route.at_goal(w.active()): solved=true;break
+    if solved: break
+   check(solved,"original delivery puzzle remains required and solvable")
+   for f in range(1800):
+    if w.active_id==w.data.world.campaignWorkshop.entry: break
+    Connected.tick(w,run,"r")
+ # At the old crossroads the route continues through ordinary geometry.
  if w.data.world.has("campaignWorkshop"):
   var route=w.data.world.campaignWorkshop
-  for id in route.rooms:
-   while not run.ride.is_empty(): run.tick(w)
-   check(w.active_id==id and w.checkpoint_id==id,"continuous hoist enters the next puzzle directly with its checkpoint")
+  check(w.active_id==route.entry,"original road reaches its junction before appended rooms")
+  check(Connected.approach(w,run),"normal inputs climb the approach to the first appended checkpoint")
+  for i in range(route.rooms.size()):
+   var id=route.rooms[i]
+   check(w.active_id==id and w.checkpoint_id==id,"physical road enters each puzzle checkpoint")
+   if w.active_id!=id: break
+   check(Connected.settle_spawn(w,run),"normal inputs reach the original puzzle start: "+id)
    var solved=false
    for part in w.data.world.tapes[id]:
     for f in range(int(part[0])):
-     w.step(Inputs.decode(part[1]));run.tick(w)
-     if not run.ride.is_empty() or not run.result.is_empty(): solved=true;break
+     Connected.tick(w,run,part[1])
+     if w.campaign_completed.has(id): solved=true;break
     if solved: break
-   check(solved,"actual preloaded-world inputs complete puzzle: "+id)
+   check(solved and run.ride.is_empty(),"original inputs complete the puzzle without transport: "+id)
+   if not solved: break
+   if i+1<route.rooms.size(): check(Connected.next_puzzle(w,run,route.rooms[i+1]),"walk from the flag to the next puzzle")
  check(not run.result.is_empty(),"full world completion awards a real result: "+str(n))
  if run.result.is_empty():
   print("AT ",w.active_id," deaths=",w.active().deaths," pos=",w.position()," missing required:")

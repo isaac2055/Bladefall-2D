@@ -1,6 +1,6 @@
 extends RefCounted
 ## Atomic, checked, object-free world snapshots. Shiny challenges never resume checkpoints.
-const WORLD_FIELDS=["active_id","checkpoint_id","frames","cells","parsed","progress","bearings","campaign_completed","mara_complete","mara_registered","silas_met","silas_step","quest_key","quest_striking","governor_flash","elsie_met","elsie_perch","quest_lantern","quest_complete","quest_award_frame","quest_deaths","seam_closed","branch_hearts","branch_entered","portal_rooms","portal_cells","secret_hearts","secret_front_entry","award_color","restore_count","notices","sampler_practice"]
+const WORLD_FIELDS=["active_id","checkpoint_id","frames","cells","parsed","progress","bearings","campaign_completed","mara_complete","mara_registered","silas_met","silas_step","quest_key","quest_striking","governor_flash","elsie_met","elsie_perch","quest_lantern","quest_complete","quest_award_frame","quest_deaths","seam_closed","branch_hearts","branch_entered","portal_rooms","portal_cells","secret_hearts","secret_front_entry","award_color","restore_count","notices","sampler_practice","road_entered"]
 const RUN_FIELDS=["ride","last_deaths","pickup_origin","pickup_left","pickup_drop","failure_frames","drop_origin","award_age"]
 static func path(profile,chapter): return profile.path+".world-%d.save"%chapter
 static func exists(profile,chapter): return FileAccess.file_exists(path(profile,chapter))
@@ -34,7 +34,9 @@ static func capture(world,sampler,audio=null):
  if sampler.carrying() or sampler.failure_frames>0:
   out.challenge=true
   return out
- for field in WORLD_FIELDS: out.world[field]=world.get(field)
+ for field in WORLD_FIELDS:
+  var value=world.get(field)
+  if value!=null: out.world[field]=value
  for id in world.cores:
   var core=world.cores[id]
   var state={}
@@ -85,7 +87,10 @@ static func read(profile,chapter,signature):
 static func restore(world,sampler,audio=null):
  var data=read(sampler.profile,int(world.data.world.n),world.content_signature)
  if data.is_empty() and world.legacy_content_signature!="": data=read(sampler.profile,int(world.data.world.n),world.legacy_content_signature)
+ if data.is_empty() and world.transport_legacy_signature!="": data=read(sampler.profile,int(world.data.world.n),world.transport_legacy_signature)
+ if data.is_empty() and world.transport_legacy_bonus_signature!="": data=read(sampler.profile,int(world.data.world.n),world.transport_legacy_bonus_signature)
  if data.is_empty(): return false
+ var migrated=data.get("signature","")!=world.content_signature
  world.restart()
  if data.get("challenge",false):
   sampler.start(world,true,false)
@@ -93,7 +98,7 @@ static func restore(world,sampler,audio=null):
   return true
  if not data.get("world",{}).has("active_id") or not world.cores.has(data.world.active_id): return false
  for field in WORLD_FIELDS:
-  if data.world.has(field): world.set(field,data.world[field])
+  if data.world.has(field) and not (migrated and field in ["cells","parsed"]): world.set(field,data.world[field])
  for id in data.cores:
   if not world.cores.has(id): continue
   var core=world.cores[id]
@@ -103,17 +108,40 @@ static func restore(world,sampler,audio=null):
   for field in state:
    if field!="ents": core.set(field,unlinks(state[field],core.ents))
   core.world_context=world
+  core.world_origin=world.placements[id]
   if not core.flipped:
    core.room=world.parsed[id]
    core.upright_room=core.room
  sampler.profile.run=data.run
  for field in RUN_FIELDS:
   if data.ride.has(field): sampler.set(field,data.ride[field])
+ if migrated:
+  for id in world.data.world.get("campaignWorkshop",{}).get("rooms",[]):
+   if data.run.visited.has(id) or id==world.active_id: world.close_road_entrance(id)
+  if world.active_id in world.data.world.get("retiredSamplerRooms",[]):
+   var deaths=world.active().deaths
+   world.active().load_room(world.parsed[world.active_id])
+   world.enter(world.active_id,true)
+   world.active().deaths=deaths
+   sampler.last_deaths=deaths
  # Older active saves may still target the removed intermediate gallery stop.
  var targets=world.data.world.get("campaignWorkshop",{}).get("walkTargets",{})
  if not sampler.ride.is_empty() and targets.has(sampler.ride.target):
   var point=sampler.ride_point()
   sampler.begin_ride(world,targets[sampler.ride.target],point)
+ if migrated and world.active_id in targets and sampler.ride.is_empty(): world.enter(targets[world.active_id],true)
+ if world.data.world.get("campaignWorkshop",{}).get("geometry",false) and not sampler.ride.is_empty():
+  var target=sampler.ride.target
+  target=targets.get(target,target)
+  sampler.ride={}
+  if world.cores.has(target):
+   var deaths=world.active().deaths
+   world.enter(target,true)
+   world.active().deaths=deaths
+   sampler.last_deaths=deaths
+ for id in world.campaign_completed: world.open_road_exit(id)
+ for id in sampler.profile.run.get("cleared",{}): world.open_road_exit(id)
+ for id in world.seam_closed: world.set_seam(id,world.seam_closed[id])
  sampler.result={}
  if audio!=null:
   audio.heard=data.audio.get("heard",{}).duplicate(true)

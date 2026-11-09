@@ -41,7 +41,7 @@ func _process(_delta):
  if run.is_empty(): return
  clock_label.text=app.sampler.profile.duration(run.frames)+(" · SHINY" if run.carrying else " · PRACTICE" if not run.eligible else "")
  if not app.sampler.result.is_empty() and not showing_result:
-  if app.story!=null and not app.story.ending_ready:
+  if app.story!=null and not app.story.ending_ready and not app.world.data.world.get("campaignWorkshop",{}).get("geometry",false):
    app.story.begin_ending()
   else:
    showing_result=true

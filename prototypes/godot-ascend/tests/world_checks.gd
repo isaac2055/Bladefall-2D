@@ -21,7 +21,7 @@ func start(id,x=-1,y=-100000):
 func _initialize(): run.call_deferred()
 func run():
  world=World.new(JSON.parse_string(FileAccess.get_file_as_string("res://data/world1.json")))
- if not check(world.cores.size()==40+world.data.world.campaignWorkshop.walks.size(),"all authored rooms, repaired watch stair and ten approved puzzles are preloaded"): return
+ if not check(world.cores.size()==41+world.data.world.campaignWorkshop.walks.size(),"all authored rooms, both approach stairs and ten approved puzzles are preloaded"): return
  var gate=world.cores["cl1-o1-gate"]
  var lamp=gate.ents.filter(func(e):return e.type=="lantern")[0]
  var same=gate.get_instance_id()

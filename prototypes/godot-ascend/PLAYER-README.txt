@@ -1,5 +1,5 @@
 BLADEFALL — ASCEND
-Willow Studios · Prototype 0.49.0
+Willow Studios · Prototype 0.50.0
 
 This app includes the game, engine, artwork and audio. No Godot installation,
 project checkout, download tool or online account is needed. Move Bladefall.app
@@ -21,11 +21,12 @@ On later Fractured/Core runs, collect the reward near the start and carry it
 through without dying to make it shiny. These attempts always restart the whole
 world after death, Retry or resuming from a saved challenge.
 
-The sealed watch gate, root-bound ranger trail and freight barrier each introduce
-their own service route with a short in-world scene.
-Each transfer is one uninterrupted ride into the next puzzle. World endings
-present the reward in-world before fading into results. Reduced motion shortens
-these scenes.
+The three base worlds and Fractured Causeway continue through connected stairs
+and passages into their added puzzles. Walk between rooms; there are no cradle
+rides or cutscenes on these routes. Each puzzle keeps its own checkpoint. Its
+approach closes behind you, restoring the authored puzzle, and its completed
+flag opens the service passage to the next room. Earned results open directly.
+Older in-flight saves resume at the intended next puzzle checkpoint.
 
 After clearing Outskirts, Garden & records appears in Settings. It displays earned
 rewards, persistent purple bonus hearts and this Mac's local leaderboard.

@@ -590,7 +590,8 @@ func step(raw):
  MovementTwo.before_read(self)
  var inp = read_input(raw)
  room_frame += 1
- update_entities()
+ var road_approach=world_context!=null and world_context.has_method("road_approach_active") and world_context.road_approach_active(room.id)
+ if not road_approach: update_entities()
  if p.state == "dead":
   p.deadTimer -= 1
   if p.deadTimer<=0:
@@ -602,9 +603,9 @@ func step(raw):
   if p.respawnTimer<=0: p.state = "normal"
   return
  if not awake and (inp.mx!=0 or inp.my!=0 or inp.jump or inp.dash or inp.grab or inp.strike or inp.parry): awake = true
- if awake and (not combat.is_empty() or foes!=null): parry_step(inp)
+ if not road_approach and awake and (not combat.is_empty() or foes!=null): parry_step(inp)
  var from = {"x":p.x,"y":p.y}
- update_devices(inp)
+ if not road_approach: update_devices(inp)
  if not autonomous_sweepers: advance_sweepers(sweeper_clock+(1 if awake else 0))
  if ents.any(func(e):return e.type=="stone") and ents.filter(func(e):return e.type=="stone").all(func(e):return e.get("lit",false)):
   for d in room.def.get("bearingLifts",[]):
@@ -667,11 +668,12 @@ func step(raw):
   "climb": climb_update(intent)
   "dash": dash_update(intent)
  if p.state=="dead": return
- RopeDevices.forces(self,inp)
- RailDevice.forces(self)
- Causeway.brute_forces(self)
- Fractured.forces(self)
- ItemDevices.forces(self)
+ if not road_approach:
+  RopeDevices.forces(self,inp)
+  RailDevice.forces(self)
+  Causeway.brute_forces(self)
+  Fractured.forces(self)
+  ItemDevices.forces(self)
  move_axis(p,p.vx*DT+p.get("pushX",0),true,-1,true,collide_h)
  p.pushX = 0
  if p.state!="dead": move_axis(p,p.vy*DT,false,-1,not p.get("dropT",0)>0,collide_v)
@@ -680,10 +682,10 @@ func step(raw):
   p.carrying.x = p.x
   p.carrying.y = p.y-8
  if p.strikeTimer>0: p.strikeTimer -= 1
- if p.state!="dead":
+ if p.state!="dead" and not road_approach:
   interact()
   if p.state!="dead": finish_devices()
- if p.state != "dead":
+ if p.state != "dead" and not road_approach:
   sweeper_collision(from)
  PuzzleReturns.update(self)
  if p.state != "dead" and world_context==null: check_exit()

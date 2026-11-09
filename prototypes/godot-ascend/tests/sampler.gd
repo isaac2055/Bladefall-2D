@@ -36,12 +36,7 @@ func run():
    w.enter(route.entry,true)
    tracker.start(w)
    tracker.tick(w)
-   check(not tracker.ride.is_empty(),"automatic hoist at old world ending")
-   var limit=0
-   while not tracker.ride.is_empty() and limit<20000:
-    tracker.tick(w)
-    limit+=1
-   check(w.active_id==route.rooms[0] and w.checkpoint_id==route.rooms[0],"one uninterrupted ride arrives at the puzzle checkpoint")
+   check(route.geometry and tracker.ride.is_empty() and w.active_id==route.entry,"old world ending remains under player control on the connected road")
 
   if n in [21,22,23]:
    var count=0

@@ -2,6 +2,7 @@
 extends Node2D
 var sampler
 var story={}
+var road_revision=-1
 var player_styles_locked=false
 ## Presentation is interpolated and layered; the integer simulation is never modified here.
 const KnightStyles=preload("res://scripts/knight_styles.gd")
@@ -582,6 +583,9 @@ func tick_feel(delta):
  rings=rings.filter(func(r):return r.life>0)
 func _process(delta):
  if Engine.is_editor_hint(): return
+ if runtime!=null and road_revision!=runtime.road_revision:
+  refresh_road_terrain()
+  road_revision=runtime.road_revision
  var profile_start=Time.get_ticks_usec()
  clock += delta
  if sim==null: return
@@ -753,7 +757,7 @@ func draw_front():
  for scene in scenes:
   var origin=scene.world_origin if runtime!=null else active_position
   if not Rect2(origin,Vector2(scene.room.w,scene.room.h)).intersects(view): continue
-  if world_data.world.has("campaignWorkshop") and scene.room.id==world_data.world.campaignWorkshop.entry:
+  if world_data.world.has("campaignWorkshop") and not world_data.world.campaignWorkshop.get("geometry",false) and scene.room.id==world_data.world.campaignWorkshop.entry:
    var door=origin+Vector2(scene.room.spawn.x+scene.p.w/2.0,scene.room.spawn.y+scene.p.h)
    box(door.x-11,door.y,22,2,"#b7a17e")
    line(door+Vector2(0,-8),door+Vector2(0,-46),"#94866d",1)
@@ -787,6 +791,7 @@ func draw_front():
      if scene.flipped: t=4 if t==3 else (3 if t==4 else t)
      draw_hazard(t,origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8))
   for e in scene.ents:
+   if e.type=="roadRetired" or runtime!=null and runtime.road_entity_hidden(scene.room.id,e): continue
    var painted=e
    if scene.flipped:
     painted=e.duplicate(true)
@@ -1362,6 +1367,7 @@ func build_shadows(d,origin,cols,rows):
    var point = origin+Vector2(c*8,r*8)
    shape.polygon = PackedVector2Array([point,point+Vector2(w*8,0),point+Vector2(w*8,h*8),point+Vector2(0,h*8)])
    shadow.occluder = shape
+   shadow.set_meta("room",d.id)
    occluders.add_child(shadow)
    occluder_count += 1
 
@@ -1778,3 +1784,16 @@ func draw_transport_station(origin,t,home):
   for i in range(4):
    var steam=origin+Vector2(58+i*4,-12-fposmod(t*8+i*7,30))
    circle(steam,3,Color(.65,.7,.72,.15))
+
+func refresh_road_terrain():
+ if tiles==null or runtime==null: return
+ var route=world_data.world.get("campaignWorkshop",{})
+ for id in runtime.road_base:
+  var room=runtime.parsed[id]
+  var origin=Vector2i(placements[id]/8)
+  for patch in room.def.get("roadExit",[])+room.def.get("roadEntrance",[]):
+   var cell=origin+Vector2i(patch[0],patch[1])
+   var value=runtime.cells.get(cell,0)
+   if value==1: tiles.set_cell(cell,0,Vector2i(hash_at(cell.x,cell.y)%4,0))
+   elif value==2: tiles.set_cell(cell,0,Vector2i(15,0))
+   else: tiles.erase_cell(cell)

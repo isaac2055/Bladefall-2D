@@ -77,8 +77,8 @@ func run():
  for i in range(30): a.tick(w)
  var point=a.ride_point()
  Save.write(w,a);Save.restore(restored,b)
- check(b.ride_point().distance_to(point)<.0001,"in-flight travel resumes at the same point")
- check(b.ride.target==w.data.world.campaignWorkshop.rooms[0],"older gallery-bound saves migrate into one continuous puzzle transfer")
+ check(b.ride.is_empty(),"old in-flight transport resumes on foot")
+ check(restored.active_id==w.data.world.campaignWorkshop.rooms[0] and restored.checkpoint_id==restored.active_id,"older gallery-bound saves migrate to their intended individual puzzle checkpoint")
  # Shiny attempts have no resumable partial world.
  a.profile.garden(1).root=true;a.profile.garden(1).top=true;a.profile.garden(1).core=true;base_unlocks(a.profile)
  var core_world=make(101);a.start(core_world,true,true);core_world.active().core_run.index=2

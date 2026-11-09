@@ -27,6 +27,7 @@ func active(): return phase!=""
 func check_begin():
  if active() or app.watch or not app.game_started or not app.sampler.result.is_empty(): return false
  var route=app.world.data.world.get("campaignWorkshop",{})
+ if route.get("geometry",false): return false
  if route.is_empty() or app.world.active_id!=route.entry or not app.sim.p.onGround: return false
  if not app.sampler.ride.is_empty(): return false
  var key="lift-%d"%app.chapter_number

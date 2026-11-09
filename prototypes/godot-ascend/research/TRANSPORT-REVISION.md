@@ -1,5 +1,7 @@
 # Transport revision — 0.49.0
 
+Superseded by the user-requested connected geometry in 0.50.0; see `CONNECTED-ROADS.md`. This file records the prior ride implementation.
+
 Implemented at the user's explicit request following `TRANSPORT-STORY-NEXT-LLM.md`.
 
 ## Presentation

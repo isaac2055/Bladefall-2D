@@ -2,7 +2,8 @@ extends SceneTree
 const World=preload("res://scripts/world.gd")
 func _initialize():
  var ok=true
- for number in [21,22,23]:
+ # World 23 now uses the connected_fractured_journey witness, including its retired-cover bypass.
+ for number in [21,22]:
   var w=World.new(JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d.json"%number)))
   var tour=JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d-tour.json"%number))
   var visited={w.active_id:true}
