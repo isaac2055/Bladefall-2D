@@ -15,7 +15,7 @@ From the repository root, with `GODOT` pointing to the 4.5.1 executable:
 ```
 node prototypes/godot-ascend/tools/build-web.mjs
 node prototypes/godot-ascend/tools/check-web.mjs http://localhost:8765
-npx wrangler pages deploy prototypes/godot-ascend/exports/web --config prototypes/godot-ascend/wrangler.web.jsonc --branch main
+npx wrangler pages deploy --cwd prototypes/godot-ascend --branch main
 ```
 
 Serve `prototypes/godot-ascend/exports/web` locally on port 8765 for the browser check.
