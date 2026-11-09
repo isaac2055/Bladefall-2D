@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.53.0** · Player-facing Bladefall sampler for mobile web, Android, Windows and macOS: Outskirts, Woods and Causeway, their Fractured routes and Cores 1–3. Open `exports/Bladefall.app`, or share `exports/Bladefall-macOS.zip`. The app includes its own engine and all game resources.
+Version **0.53.1** · Player-facing Bladefall sampler for mobile web, Android, Windows and macOS: Outskirts, Woods and Causeway, their Fractured routes and Cores 1–3. Open `exports/Bladefall.app`, or share `exports/Bladefall-macOS.zip`. The app includes its own engine and all game resources.
 
 ## Sequential advanced worlds · 0.48.0
 
@@ -536,10 +536,12 @@ Silas’s hook hand-in plays his existing closing recording immediately and remo
 0.5.1 fixes invisible dash-movable stones: the renderer now draws their actual simulated rectangles before and after movement. `tests/sliding_block_render.gd` checks GPU-rendered pixels from an authored Causeway block in both states.
 
 
-## Mobile and native exports (0.53.0)
+## Mobile and native exports (0.53.1)
 
 The browser and Android builds share multi-touch movement/aim and action controls. Landscape phone menus use larger targets; rotation, focus loss and pause cancel held touches. Physical keyboard/controller input remains independent. Browser sizing honors the header and safe areas. Android Back pauses the game.
 
-Build with `tools/build-web.mjs`, `tools/build-windows.sh`, `tools/build-macos.sh` and `tools/build-android.sh`. Android requirements and signing environment are in `ANDROID-README.txt`. Outputs are ignored under `exports/`; signing secrets and keys are never added to the export preset.
+Build with `tools/build-web.mjs`, `tools/build-windows.sh`, `tools/build-macos.sh` and `tools/build-android.sh`. Android requirements and signing environment are in `ANDROID-README.txt`. The Android export uses Godot 4.6.1 for scoped save-file access in an isolated staging project; desktop and web stay on 4.5.1. Outputs are ignored under `exports/`; signing secrets and keys are never added to the export preset.
 
 `tests/touch_controls.gd` exercises real game movement, simultaneous jump/dash, action buttons and cleanup. `tests/sequential_unlocks.gd` checks legacy discoveries, third-Fractured result navigation and preserved Core rewards. Use `tools/check-macos.py --suite touch_controls --suite sequential_unlocks` with an output folder to test the packaged game. `tools/check-web.mjs` verifies browser/native save round trips; `tools/check-web-audio.mjs` measures actual speaker-bound audio. `tools/check-web-mobile.mjs URL webkit` checks phone menus, save downloads and rotation; select `chromium` to also exercise simultaneous trusted touch input. Install the Playwright WebKit runtime with `npx playwright install webkit`.
+
+`tests/fingerprint_compat.gd` freezes the original content IDs for all ten worlds and verifies native scene fingerprints across engines. `tools/check-android.py --output DIR` repacks the actual APK assets for regression checks on the matching desktop host, separate from emulator/device play tests.

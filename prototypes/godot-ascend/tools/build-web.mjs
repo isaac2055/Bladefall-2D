@@ -14,7 +14,7 @@ for(const args of [['--editor','--import','--quit'],['--export-release','Web','e
  const run=spawnSync(godot,['--headless','--path',project,...args],{encoding:'utf8'});
  if(run.status!==0 || /SCRIPT ERROR|Parse Error|ERROR:/.test(run.stdout+run.stderr)) throw Error(run.stdout+run.stderr);
 }
-const manifest={version:'0.53.0',downloadBytes:0,files:{}};
+const manifest={version:'0.53.1',downloadBytes:0,files:{}};
 for(const name of ['index.wasm','index.pck']) {
  const bytes=await fs.readFile(path.join(out,'play',name));
  const sha256=createHash('sha256').update(bytes).digest('hex');

@@ -28,8 +28,8 @@ try {
  async function checkpoint(){return page.evaluate(()=>new Promise((resolve,reject)=>{const req=indexedDB.open('/userfs');req.onerror=()=>reject(req.error);req.onsuccess=()=>{const db=req.result;const store=db.transaction('FILE_DATA').objectStore('FILE_DATA');const request=store.getAll();const keys=store.getAllKeys();request.onerror=()=>reject(request.error);keys.onsuccess=()=>{const i=keys.result.findIndex(x=>x.endsWith('/bladefall-garden.json.world-1.save'));resolve(i<0?null:Array.from(request.result[i].contents));db.close();};};}));}
  await page.goto(base,{waitUntil:'networkidle0'});
  assert.match(await page.title(),/Bladefall/);
- assert.match(await page.$eval('a.secondary:not(.windows)',a=>a.href),/ascend-v0\.53\.0\/Bladefall-macOS.zip$/);
- assert.match(await page.$eval('a.windows',a=>a.href),/ascend-v0\.53\.0\/Bladefall-Windows.zip$/);
+ assert.match(await page.$eval('a.secondary:not(.windows)',a=>a.href),/ascend-v0\.53\.1\/Bladefall-macOS.zip$/);
+ assert.match(await page.$eval('a.windows',a=>a.href),/ascend-v0\.53\.1\/Bladefall-Windows.zip$/);
  await page.screenshot({path:path.join(out,'landing.png'),fullPage:true});
  await page.setViewport({width:390,height:844,deviceScaleFactor:1});
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'mobile layout overflows');

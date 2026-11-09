@@ -1,9 +1,9 @@
 BLADEFALL — ASCEND
-Willow Studios · Sample 0.53.0 · Android
+Willow Studios · Sample 0.53.1 · Android
 
 Download Bladefall-Android.apk from https://bladefall2dsample.pages.dev
 Open the download and allow your browser to install this app when Android asks.
-Requires Android 7.0 or later, an ARMv7/ARM64 device and OpenGL ES 3.0 support.
+Requires Android 10 or later, an ARMv7/ARM64 device and OpenGL ES 3.0 support.
 This is a signed APK for direct installation. No Play Store account is needed.
 It uses a separate app identifier from the older browser-based Bladefall APK.
 
@@ -23,13 +23,15 @@ puzzle checkpoints are preserved. Connected passages and their reveals match
 the browser, Windows and Mac builds.
 
 BUILDING
-Use Godot 4.5.1, its Android export templates, JDK 17, Android SDK platform 35,
-build-tools 35.0.0 and platform-tools. Set GODOT, ANDROID_SDK_ROOT and JAVA_HOME
+Use Godot 4.6.1, its Android export templates, JDK 17, Android SDK platform 35,
+build-tools 35.0.0 and platform-tools. Set ANDROID_GODOT, ANDROID_SDK_ROOT and JAVA_HOME
 as needed. tools/build-android.sh uses the persistent release keystore specified
 by GODOT_ANDROID_KEYSTORE_RELEASE_PATH and GODOT_ANDROID_KEYSTORE_RELEASE_USER.
 Supply GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD in the environment; never commit it.
 Keep the same signing key and increase version/code for future updates.
 The helper configures Android tool paths in the matching host Godot editor settings.
+Android uses Godot 4.6.1 for permission-free scoped save import/export; desktop
+and web remain on 4.5.1. Android imports run in an isolated ignored staging project.
 
 MOBILE WEB
 On iPhone, use https://bladefall2dsample.pages.dev and choose Play in browser.
