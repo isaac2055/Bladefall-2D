@@ -557,7 +557,12 @@ func tick_feel(delta):
  var desired=Vector2(clamp(sim.p.vx*.17,-25,25),clamp(sim.p.vy*.1,-9,17))
  if sim.p.onGround: desired.y=0
  camera_lead=camera_lead.lerp(desired,1-exp(-dt*5))
- if render_hold<=0: spring_camera(target_camera(),dt)
+ if sampler!=null and not sampler.ride.is_empty():
+  if not sampler.ride.has("camera_from"): sampler.ride.camera_from=camera_float
+  var blend=smoothstep(0,1,minf(1,float(sampler.ride.frame)/24))
+  camera_float=sampler.ride.camera_from.lerp(target_camera(),blend)
+  camera_velocity=Vector2.ZERO
+ elif render_hold<=0: spring_camera(target_camera(),dt)
  kick_velocity+=(-camera_kick*210-kick_velocity*22)*dt
  camera_kick+=kick_velocity*dt
  if reduced_motion:
@@ -1414,7 +1419,7 @@ func draw_world_hearts():
   var point=runtime.placements[reward.room]+Vector2(reward.x,reward.y+sin(clock*3))
   if not Rect2(camera-Vector2(15,15),Vector2(350,214)).has_point(point): continue
   var taken=runtime.secret_hearts.has(reward.id) or runtime.branch_hearts.has(reward.id)
-  var color=Color(reward.color)
+  var color=Color("#ba82e6")
   if taken: color.a=0.25
   else: circle(point,11,Color(color,0.08))
   pixel_heart(point,color)
@@ -1630,7 +1635,7 @@ func draw_sampler_rewards():
  var art=preload("res://scripts/reward_art.gd")
  var core_reward=number>=101
  var item=sampler.profile.garden(home)
- var shiny=item.core_shiny if core_reward else item.flower_shiny
+ var shiny=item.core_shiny if core_reward else item.root_shiny if number in [1,2,3] else item.flower_shiny
  if sampler.carrying():
   # Held overhead, with the knight's movement and machinery interactions unchanged.
   art.draw(ink,actor+Vector2(4,-9),home,core_reward,shiny,clock)
@@ -1644,12 +1649,23 @@ func draw_sampler_rewards():
  if not sampler.ride.is_empty():
   # Bladefall's lantern hoist: brass cage, suspension chain and warm light.
   var at=actor+Vector2(-3,sim.p.h)
-  box(at.x,at.y,14,2,"#b7a17e")
-  for side in [0,13]: line(at+Vector2(side,0),at+Vector2(side,-7),"#8c8168",1)
-  line(at+Vector2(7,-8),at+Vector2(7,-180),"#94866d",.7)
-  circle(at+Vector2(7,-9),2,Color("e9c17a"))
+  var saved_color=ink_color
+  var arrival=1-smoothstep(maxf(0,sampler.ride_duration()-.3),sampler.ride_duration(),float(sampler.ride.frame)/60)
+  ink_color*=Color(1,1,1,arrival)
+  var boarding=1-smoothstep(0,.35,float(sampler.ride.frame)/60)
+  at.y+=boarding*5
+  box(at.x,at.y,14,3,"#b7a17e")
+  box(at.x+1,at.y+2,12,1,"#526458")
+  for side in [0,13]:
+   line(at+Vector2(side,0),at+Vector2(side,-14),"#8c8168",.8)
+   circle(at+Vector2(side,0),.8,Color("#d8c997"))
+  line(at+Vector2(0,-14),at+Vector2(13,-14),"#b7a17e",.8)
+  line(at+Vector2(7,-14),at+Vector2(7,-180),"#94866d",.6)
+  circle(at+Vector2(7,-11),5,Color(.95,.77,.39,.07))
+  circle(at+Vector2(7,-11),1.3,Color("#edcf86"))
+  ink_color=saved_color
  if not sampler.result.is_empty():
   var t=sampler.award_age
   var at=actor+Vector2(4,-20-minf(12,t*4))
   if core_reward: art.draw(ink,at,home,true,shiny,clock)
-  else: art.draw_part(ink,at,home,item.root,item.top,shiny,clock)
+  else: art.draw_part(ink,at,home,item.root,item.top if number not in [1,2,3] else false,shiny,clock)

@@ -6,12 +6,10 @@ var reduced_motion=false
 var age=0.0
 var phase="studio"
 var menu:VBoxContainer
-var skip:Button
 var back:Button
 var play:Button
 var routes:HBoxContainer
 var worlds:OptionButton
-var tagline:Label
 var scene_time=0.0
 var first_focus=true
 func _ready():
@@ -20,22 +18,19 @@ func _ready():
  menu=VBoxContainer.new();menu.position=Vector2(740,380);menu.custom_minimum_size.x=360;menu.add_theme_constant_override("separation",12);add_child(menu)
  play=app.button(menu,"Start journey",start_selected,false)
  worlds=OptionButton.new();worlds.focus_mode=Control.FOCUS_ALL;worlds.custom_minimum_size.y=42;menu.add_child(worlds)
- worlds.item_selected.connect(func(_index):play.text="Play "+app.world_label(worlds.get_selected_id());refresh_routes())
+ worlds.item_selected.connect(func(_index):refresh_play();refresh_routes())
  routes=HBoxContainer.new();routes.add_theme_constant_override("separation",8);menu.add_child(routes)
  app.button(menu,"Controls and remapping",func():app.controls_menu.open(),false)
  app.button(menu,"Settings",func():
   app.root_ui.show();app.root_ui.move_to_front();app.set_paused(true);app.pause_panel.show();app.focus_pause(),false)
  app.button(menu,"Quit",func():app.close_app(),false)
- tagline=app.text(menu,"Discover the road. Bring something back.",14,"#91a8a1")
  menu.hide()
- skip=app.button(self,"Skip · Enter / A",show_title,false);skip.position=Vector2(1030,754)
  back=app.button(self,"Return to journey",func():hide();app.root_ui.show();app.set_paused(false),false);back.position=Vector2(740,750);back.hide()
 func open(intro=false):
  intro=intro and not app.landscape.reduced_motion
  show();move_to_front();age=0
  phase="studio" if intro else "title"
  menu.visible=not intro
- skip.visible=intro
  back.visible=not intro and app.world.frames>0
  refresh_worlds()
  app.set_paused(true);app.pause_panel.hide()
@@ -45,7 +40,7 @@ func show_title():
  app.pause_panel.hide()
  app.root_ui.hide()
  move_to_front()
- phase="title";age=0;menu.show();skip.hide()
+ phase="title";age=0;menu.show()
  app.audio.music.stream_paused=false
  refresh_worlds();play.grab_focus()
 func refresh_worlds():
@@ -57,19 +52,20 @@ func refresh_worlds():
  var desired=worlds.get_item_index(app.sampler.profile.last_world)
  worlds.select(maxi(0,desired))
  if worlds.item_count>0:
-  play.text="Start journey" if app.sampler.profile.completed.is_empty() else "Play "+app.world_label(worlds.get_selected_id())
+  refresh_play()
  refresh_routes()
 func start_selected():
  if worlds.item_count==0: return
  var n=worlds.get_selected_id()
  hide();app.root_ui.show()
- app.switch_chapter(n)
- app.restart_world()
+ if app.SaveState.exists(app.sampler.profile,n): app.resume_world(n)
+ else:
+  app.switch_chapter(n)
+  app.restart_world()
  app.discover_current()
 func _input(event):
  if not visible or app.controls_menu!=null and app.controls_menu.visible: return
- if phase!="title" and (event.is_action_pressed("ui_accept") or event.is_action_pressed("knight_pause") or event is InputEventMouseButton and event.pressed):
-  show_title();get_viewport().set_input_as_handled()
+ if phase!="title": get_viewport().set_input_as_handled()
 func _process(delta):
  if not visible: return
  age+=delta
@@ -170,3 +166,8 @@ func box(x,y,width,height,color):
  draw_rect(Rect2(x,y,width,height),Color(color) if color is String else color)
 func polygon(points,color):
  draw_colored_polygon(PackedVector2Array(points),Color(color) if color is String else color)
+
+func refresh_play():
+ var n=worlds.get_selected_id()
+ play.text=("Continue " if app.SaveState.exists(app.sampler.profile,n) else "Play ")+app.world_label(n)
+ if not app.SaveState.exists(app.sampler.profile,n) and app.sampler.profile.completed.is_empty(): play.text="Start journey"

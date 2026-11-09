@@ -1,7 +1,7 @@
 extends RefCounted
-## Persistent rewards and local records. Run state is deliberately never checkpoint-saved.
+## Persistent rewards, unlocks and local records; active worlds use a separate atomic resume file.
 const VERSION=1
-const ROUTE_VERSION="sampler-1"
+const ROUTE_VERSION="sampler-2"
 const PLANTS=["Outskirts Trumpet","Black Woods Oak","Causeway Ivy"]
 const CORES=["Trumpet Sprite","Oak Wisp","Clockwork Seed"]
 var path="user://bladefall-garden.json"
@@ -9,6 +9,7 @@ var plants={}
 var records={}
 var discovered={"1":{}}
 var completed={}
+var hearts={}
 var last_world=1
 var run={}
 var last_result={}
@@ -23,6 +24,7 @@ func load_profile():
  plants=value.get("plants",{}) if value.get("plants") is Dictionary else {}
  records=value.get("records",{}) if value.get("records") is Dictionary else {}
  discovered=value.get("discovered",{"1":{}})
+ hearts=value.get("hearts",{}) if value.get("hearts") is Dictionary else {}
  completed=value.get("completed",{})
  last_world=int(value.get("last_world",1))
  if not discovered is Dictionary: discovered={"1":{}}
@@ -33,13 +35,16 @@ func load_profile():
    var n=int(entry.get("chapter",0))
    if n in [1,2,3,21,22,23,101,102,103]:
     completed[str(n)]=true
+    if n in [1,2,3] and entry.get("deaths",1)==0: garden(n).root_shiny=true
     if not discovered.has(str(n)): discovered[str(n)]={}
+ for chapter in [1,2,3]:
+  if completed.get(str(chapter),false): garden(chapter).root=true
 func save_profile():
  var file=FileAccess.open(path+".tmp",FileAccess.WRITE)
  if file==null:
   save_error="Cannot save Garden: "+error_string(FileAccess.get_open_error())
   return false
- file.store_string(JSON.stringify({"version":VERSION,"plants":plants,"records":records,"discovered":discovered,"completed":completed,"last_world":last_world}))
+ file.store_string(JSON.stringify({"version":VERSION,"plants":plants,"records":records,"discovered":discovered,"completed":completed,"last_world":last_world,"hearts":hearts}))
  file.close()
  var error=DirAccess.rename_absolute(ProjectSettings.globalize_path(path+".tmp"),ProjectSettings.globalize_path(path))
  save_error="" if error==OK else "Cannot save Garden: "+error_string(error)
@@ -48,11 +53,13 @@ static func home(chapter):
  return chapter-100 if chapter>=101 else chapter-20 if chapter>=21 else chapter
 func garden(number):
  var key=str(number)
- if not plants.has(key): plants[key]={"root":false,"top":false,"core":false,"flower_shiny":false,"core_shiny":false}
+ if not plants.has(key): plants[key]={}
+ for field in ["root","top","core","root_shiny","flower_shiny","core_shiny"]:
+  if not plants[key].has(field): plants[key][field]=false
  return plants[key]
 func core_open(number):
  var item=garden(number)
- return item.root and item.top
+ return all_bases_clear() and item.root and item.top
 func can_carry(chapter):
  var number=home(chapter)
  if number not in [1,2,3]: return false
@@ -81,9 +88,17 @@ func finish(required=[]):
  var n=home(run.chapter)
  var item=garden(n)
  var award=""
- if run.chapter in [1,2,3] and run.deaths==0:
+ if run.chapter in [1,2,3]:
   item.root=true
   award="Flower root earned"
+  if run.deaths==0:
+   item.root_shiny=true
+   award="Shiny flower root earned"
+  if run.chapter<3 and not discovered.has(str(run.chapter+1)): discovered[str(run.chapter+1)]={}
+  if all_bases_clear():
+   for chapter in [21,22,23]:
+    if not discovered.has(str(chapter)): discovered[str(chapter)]={}
+
  elif run.chapter in [21,22,23]:
   item.top=true
   award="Flower crown earned"
@@ -104,6 +119,13 @@ func finish(required=[]):
  board.sort_custom(func(a,b):return a.frames<b.frames if a.frames!=b.frames else a.deaths<b.deaths)
  if board.size()>20: board.resize(20)
  records[key]=board
+ if run.chapter in [1,2,3] and run.deaths==0:
+  var shiny_key="%s:%d:shiny"%[ROUTE_VERSION,run.chapter]
+  var perfect=entry.duplicate(true);perfect.mode="shiny"
+  var perfect_board=records.get(shiny_key,[]);perfect_board.append(perfect)
+  perfect_board.sort_custom(func(a,b):return a.frames<b.frames)
+  if perfect_board.size()>20: perfect_board.resize(20)
+  records[shiny_key]=perfect_board
  last_result=entry.duplicate(true)
  last_result.first_clear=first_clear
  last_result.award=award
@@ -115,7 +137,12 @@ static func duration(frames):
  var cs=int(frames*100/60)
  return "%02d:%02d.%02d"%[cs/6000,(cs/100)%60,cs%100]
 
-func has_world(chapter): return discovered.has(str(chapter))
+func all_bases_clear(): return completed.get("1",false) and completed.get("2",false) and completed.get("3",false)
+func has_world(chapter):
+ if chapter in [21,22,23]: return all_bases_clear()
+ if chapter in [101,102,103]: return core_open(chapter-100) and discovered.has(str(chapter))
+ if chapter in [2,3]: return completed.get(str(chapter-1),false) or discovered.has(str(chapter))
+ return discovered.has(str(chapter))
 func has_room(chapter,room): return discovered.get(str(chapter),{}).has(room)
 func discover(chapter,room,remember=true):
  if chapter not in [1,2,3,21,22,23,101,102,103]: return false
@@ -128,8 +155,25 @@ func discover(chapter,room,remember=true):
  if fresh or moved: save_profile()
  return fresh
 func available(chapter):
+ if chapter in [21,22,23]: return all_bases_clear()
+ if chapter in [101,102,103]: return core_open(chapter-100)
  if has_world(chapter): return true
  if chapter in [2,3]: return completed.get(str(chapter-1),false)
  if chapter in [21,22,23]: return completed.get(str(chapter-20),false)
  if chapter in [101,102,103]: return core_open(chapter-100)
  return chapter==1
+
+func collect_hearts(world):
+ var chapter=int(world.data.world.n)
+ var key=str(chapter)
+ if not hearts.has(key): hearts[key]={}
+ var before=hearts[key].size()
+ for id in world.branch_hearts: hearts[key]["branch:"+str(id)]=true
+ for id in world.secret_hearts: hearts[key]["secret:"+str(id)]=true
+ if world.quest_complete: hearts[key]["quest"]=true
+ if hearts[key].size()!=before: save_profile()
+func heart_count(chapter=0):
+ if chapter!=0: return hearts.get(str(chapter),{}).size()
+ var count=0
+ for earned in hearts.values(): count+=earned.size()
+ return count

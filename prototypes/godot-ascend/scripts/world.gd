@@ -6,6 +6,7 @@ const Layout = preload("res://scripts/world_layout.gd")
 const CampaignWorkshop=preload("res://scripts/campaign_workshop.gd")
 var campaign_completed={}
 var sampler_practice=false
+var content_signature=""
 var data
 var cores = {}
 var placements = {}
@@ -44,13 +45,14 @@ var portal_rooms={}
 var portal_cells={}
 var secret_hearts={}
 var secret_front_entry=false
-var award_color="#ff9fc8"
+var award_color="#ba82e6"
 func _init(source):
  data=preload("res://scripts/authoring_data.gd").read(source)
  if int(data.world.n) in [1,2,3]:
   var workshop_source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"))
   CampaignWorkshop.append(data,preload("res://scripts/authoring_data.gd").read(workshop_source))
  preload("res://scripts/affixed_route.gd").prepare(data)
+ content_signature=preload("res://authoring/codec.gd").fingerprint(data)
  var sections=data.world.sections.duplicate(true)
  for q in data.world.quests: sections.append_array(q.sections)
  for q in data.world.get("secrets",[]): sections.append_array(q.sections)
@@ -129,7 +131,7 @@ func restart():
  portal_cells.clear()
  secret_hearts.clear()
  secret_front_entry=false
- award_color="#ff9fc8"
+ award_color="#ba82e6"
  mara_complete=false
  mara_registered=false
  dormant=data.playerDefaults.duplicate(true)
@@ -388,7 +390,7 @@ func tick_elsie():
    quest_lantern=false
    quest_complete=true
    quest_award_frame=frames
-   award_color="#ff9fc8"
+   award_color="#ba82e6"
    notices.append("♥ Heart · A Place for Supper")
   return
  var perch=data.quest.perches[elsie_perch]
@@ -407,7 +409,7 @@ func claim_secret(reward):
  if secret_hearts.has(reward.id): return
  secret_hearts[reward.id]=true
  quest_award_frame=frames
- award_color=reward.color
+ award_color="#ba82e6"
  notices.append("♥ "+reward.name+" · "+reward.title)
 func tick_secret_hearts():
  if not secret_front_entry or active().p.state in ["dead","respawn"]: return
@@ -453,7 +455,7 @@ func tick_silas():
    quest_complete=true
    silas_step=2
    quest_award_frame=frames
-   award_color="#ff9fc8"
+   award_color="#ba82e6"
    notices.append("♥ Heart · The Clockwork Defector")
 
 func set_portal_holes(core,holes):
@@ -468,7 +470,7 @@ func claim_branch(reward):
  if branch_hearts.has(reward.id): return
  branch_hearts[reward.id]=true
  quest_award_frame=frames
- award_color=reward.color
+ award_color="#ba82e6"
  notices.append("♥ Heart · "+reward.title)
 func tick_branch_rewards():
  var core=active()

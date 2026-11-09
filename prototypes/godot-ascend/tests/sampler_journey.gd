@@ -23,6 +23,7 @@ func _initialize():
  var w=World.new(raw)
  var shiny=args.size()>1 and args[1]=="shiny"
  if shiny:
+  for base in [1,2,3]: run.profile.completed[str(base)]=true
   var plant=run.profile.garden(run.profile.home(n))
   plant.root=true;plant.top=true;plant.core=true
  run.start(w,true,shiny)

@@ -29,3 +29,8 @@ func _draw():
     var a=i*TAU/5
     draw_circle(Vector2(cos(a)*3,sin(a)*3)-Vector2(0,4),2,Color("#caddaa"))
   if not root and not top: draw_line(Vector2(-5,6),Vector2(5,6),Color("#455954"),1)
+
+ if shiny and not core_reward and not (root and top):
+  var point=Vector2(cos(clock*2)*7,sin(clock*2)*5)
+  draw_line(point-Vector2(2,0),point+Vector2(2,0),Color("#f3e3a7"),.6)
+  draw_line(point-Vector2(0,2),point+Vector2(0,2),Color("#f3e3a7"),.6)

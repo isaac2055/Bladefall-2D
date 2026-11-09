@@ -34,6 +34,7 @@ func run():
  check(app.chapter_number==1,"Core locked until both flower parts")
  app.test_mode=true
  app.dev_mode=true
+ for base in [1,2,3]: app.sampler.profile.completed[str(base)]=true
  for n in [1,2,3]:
   var p=app.sampler.profile.garden(n)
   p.root=true;p.top=true;p.core=true

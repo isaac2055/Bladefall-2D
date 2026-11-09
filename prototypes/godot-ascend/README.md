@@ -1,6 +1,16 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.45.0** · Player-facing Bladefall sampler for macOS: Outskirts, Woods and Causeway, their Fractured routes and Cores 1–3. Open `exports/Bladefall.app`, or share `exports/Bladefall-macOS.zip`. The app includes its own engine and all game resources.
+Version **0.46.0** · Player-facing Bladefall sampler for macOS: Outskirts, Woods and Causeway, their Fractured routes and Cores 1–3. Open `exports/Bladefall.app`, or share `exports/Bladefall-macOS.zip`. The app includes its own engine and all game resources.
+
+## Saves and progression · 0.46.0
+
+Title Settings now contains audio, reduced motion, fullscreen, controls and quit; gameplay actions appear only while playing. The opening advances automatically, without a Skip control. Spoken dialogue defaults off with subtitles on. Continue restores eligible world attempts, including live machinery, inventory, route travel, time and deaths. Autosaves are atomic and content-versioned. Practice cannot overwrite eligible saves; carried shiny challenges always restart the world when resumed.
+
+Any base clear earns a root; a deathless base clear makes it shiny. Black Woods and Causeway unlock persistently after the preceding base clear. All three base worlds must be complete before any Fractured route opens. Fractured crowns and Core keepsakes retain their carried deathless shiny challenges. Purple bonus hearts persist in the collection. Garden & records lives in Settings after Outskirts is complete; records remain local. Route version sampler-2 separates the changed transfer timing from older records.
+
+Affixed-room hoists use a continuous eased arc, interpolated actor/camera movement and a lantern cradle. Existing room geometry and individual checkpoints remain intact. See [verification](research/SAVES-AND-PROGRESSION.md) and the [unimplemented story proposal](research/WATCH-STAIRS-AND-ENDINGS-PROPOSAL.md).
+
+Earlier release entries below describe historical behavior superseded above.
 
 ## Player release · 0.45.0
 

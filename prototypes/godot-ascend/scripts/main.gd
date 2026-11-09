@@ -11,6 +11,20 @@ var sampler=preload("res://scripts/sampler_run.gd").new()
 var sampler_overlay
 var dev_mode=false
 var dev_nodes=[]
+var gameplay_settings_nodes=[]
+var hud_nodes=[]
+var title_subtitle_visible=false
+var garden_button:Button
+var settings_back:Button
+var settings_card:PanelContainer
+var settings_scroll:ScrollContainer
+const SaveState=preload("res://scripts/world_save.gd")
+var game_started=false
+var save_room=""
+var save_frame=0
+var save_deaths=-1
+var save_checkpoint=-2
+var save_riding=false
 var basic_volume_sliders={}
 var dev_taps=0
 var dev_last_tap=0
@@ -153,7 +167,8 @@ func _ready():
  sim=world.active()
  audio = Sound.new()
  for bus in audio.levels: audio.levels[bus] = float(preferences.get_value("audio",bus,audio.levels[bus]))
- audio.voices_enabled = preferences.get_value("audio","voices",true)
+ audio.voices_enabled = preferences.get_value("audio","voices",false) if preferences.get_value("audio","speech_default_v46",false) else false
+ preferences.set_value("audio","speech_default_v46",true)
  audio.effect_levels=preferences.get_value("audio_effects","levels",{}).duplicate(true)
  audio.effect_levels.erase("ui-pause")
  add_child(audio)
@@ -249,6 +264,7 @@ func _ready():
  title_screen.app=self
  add_child(title_screen)
  controls_menu.move_to_front()
+ game_started=test_mode
  apply_player_visibility()
  if not dev_mode:
   sampler.profile.discover(chapter_number,world.active_id,false)
@@ -308,11 +324,13 @@ func create_interface():
  scrim.size = Vector2(1280,832)
  pause_panel.add_child(scrim)
  var card = PanelContainer.new()
+ settings_card=card
  card.position = Vector2(330,24)
  card.size = Vector2(620,784)
  card.add_theme_stylebox_override("panel",style("#14232e","#697b77",10))
  pause_panel.add_child(card)
  var scroll=ScrollContainer.new()
+ settings_scroll=scroll
  scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
  scroll.custom_minimum_size=Vector2(600,760)
  card.add_child(scroll)
@@ -326,6 +344,8 @@ func create_interface():
  row.add_theme_constant_override("separation",8)
  column.add_child(row)
  focus_resume=button(row,"Resume",func():set_paused(false),false)
+ gameplay_settings_nodes.append(row)
+ settings_back=button(column,"Back",func():set_paused(false),false)
  button(row,"Retry · R",func():retry_room();set_paused(false))
  watch_button = button(row,"Watch reference",func():toggle_watch();set_paused(false))
  puzzle_hint_button=button(row,"Hint · H",func():show_workshop_hint();set_paused(false))
@@ -343,12 +363,15 @@ func create_interface():
  workshop_demo_picker.hide()
  dev_nodes.append(button(column,"Sound mixer · channels and individual effects",open_mixer,false))
  restart_button=button(column,"Start world over",restart_world)
+ gameplay_settings_nodes.append(restart_button)
  chapter_picker=OptionButton.new()
  chapter_picker.focus_mode=Control.FOCUS_ALL
  rebuild_world_menu()
  chapter_picker.item_selected.connect(func(index):switch_chapter(chapter_picker.get_item_id(index));set_paused(false))
  column.add_child(chapter_picker)
+ gameplay_settings_nodes.append(chapter_picker)
  section_heading=text(column,"EXPLORE A SECTION · PRACTICE",12,"#bba984")
+ gameplay_settings_nodes.append(section_heading)
  room_picker = OptionButton.new()
  room_picker.custom_minimum_size = Vector2(560,40)
  room_picker.focus_mode = Control.FOCUS_ALL
@@ -361,6 +384,7 @@ func create_interface():
   notice_time=5
   set_paused(false))
  column.add_child(room_picker)
+ gameplay_settings_nodes.append(room_picker)
  dev_nodes.append(text(column,"APPEARANCE",12,"#bba984"))
  dev_nodes.append(text(column,"Walking · Measured",14,"#a6b7bb"))
  design_picker=OptionButton.new()
@@ -421,6 +445,7 @@ func create_interface():
  dev_nodes.append(button(light_row,"Lighting on / off",func():landscape.lit = not landscape.lit))
  button(light_row,"Fullscreen · F11",toggle_fullscreen)
  var controls_hint=text(column,"",14,"#b5c0bd")
+ dev_nodes.append(controls_hint)
  controls_hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  controls_hint.text="Use Controls and remapping to see or change your bindings. Controller menus: stick / D-pad, A to select, B to go back."
  var basic_audio=HBoxContainer.new()
@@ -434,9 +459,11 @@ func create_interface():
   basic_audio.add_child(slider)
   basic_volume_sliders[bus]=slider
  button(column,"Controls and remapping",func():controls_menu.open(),false)
- button(column,"Title menu",func():title_screen.open(false),false)
+ garden_button=button(column,"Garden & records",func():sampler_overlay.open_garden(),false)
+ gameplay_settings_nodes.append(button(column,"Title menu",func():title_screen.open(false),false))
  button(column,"Quit game",func():close_app(),false)
  dev_nodes.append(button(column,"Leave developer mode",func():set_dev_mode(false),false))
+ hud_nodes=[header,quest_label,notice_label,room_banner,status]
  pause_panel.hide()
  build_mixer()
 func apply_character_settings(design,npc):
@@ -511,6 +538,7 @@ func _unhandled_input(event):
    save_preferences()
 func set_paused(value):
  if not value and watch and not dev_mode and (sim.exited or tape_frame>=tape.size()): value=true
+ if value: maybe_autosave(true)
  if title_screen!=null and title_screen.visible and not value:
   paused=true
   pause_panel.hide()
@@ -529,6 +557,7 @@ func set_paused(value):
   focus_pause()
   for bus in volume_sliders: volume_sliders[bus].set_value_no_signal(audio.levels[bus])
   for bus in basic_volume_sliders: basic_volume_sliders[bus].set_value_no_signal(audio.levels[bus])
+ apply_player_visibility()
  landscape.set_process(not value)
  audio.set_paused(value)
 
@@ -606,6 +635,7 @@ func load_section(index,smooth_join=false):
  var id=data.world.rooms[index].id
  if not dev_mode and not sampler.profile.has_room(chapter_number,id) and id!=world.data.world.get("atlasStart",""): return
  if not watch:
+  maybe_autosave(true)
   sampler.invalidate()
   world.sampler_practice=true
  if chapter_number!=4: watch_button.disabled=false
@@ -716,13 +746,13 @@ func _physics_process(_delta):
  var physics_start=Time.get_ticks_usec()
  ticks += 1
  if (not sampler.ride.is_empty() or sampler.failure_frames>0) and not watch:
+  landscape.previous_actor=landscape.current_actor
   var state=sampler.tick(world)
-  sync_sampler_scene()
+  if state in ["landed","reset"]: sync_sampler_scene()
   if state=="ride":
    var at=sampler.ride_point()
    landscape.current_actor=at
-   landscape.previous_actor=at
-   landscape.actor=at
+  maybe_autosave()
   return
  if hold>0:
   landscape.previous_actor = landscape.current_actor
@@ -766,6 +796,8 @@ func _physics_process(_delta):
    if not dev_mode: discover_current()
    var event=sampler.tick(world,not journey.is_empty())
    if event in ["reset","landed"]: sync_sampler_scene()
+  if not dev_mode: sampler.profile.collect_hearts(world)
+  maybe_autosave()
   quest_label.text=bearing_caption()
 
  dash_label.text = "◆ DASH" if sim.p.dashes>0 else "◇ DASH"
@@ -867,6 +899,7 @@ func _notification(what):
  elif what==NOTIFICATION_APPLICATION_FOCUS_OUT and is_node_ready() and not paused: set_paused(true)
 func close_app(code=0):
  if closing: return
+ maybe_autosave(true)
  closing = true
  paused = true
  set_physics_process(false)
@@ -944,6 +977,8 @@ func retry_room():
  sim=world.active()
  landscape.snap_actor()
 func restart_world():
+ SaveState.clear(sampler.profile,chapter_number)
+ game_started=true
  if chapter_number==4:
   workshop_completed.clear()
   workshop_shards.clear()
@@ -974,7 +1009,11 @@ func restart_world():
  quest_label.text=bearing_caption()
  notice_label.text="A new journey · "+data.world.name
  notice_time=3
+ rebuild_world_menu()
+ rebuild_section_menu()
+ apply_player_visibility()
  set_paused(false)
+ maybe_autosave(true)
 
 func switch_chapter(number):
  if number==chapter_number or not chapters.has(number): return
@@ -984,6 +1023,7 @@ func switch_chapter(number):
   notice_time=5
   select_world_menu()
   return
+ maybe_autosave(true)
  sampler.invalidate()
  var old=chapters[chapter_number]
  old.landscape.runtime=old.world
@@ -1213,6 +1253,24 @@ func set_dev_mode(value):
  notice_label.text="Developer mode enabled" if value else "Player mode"
  notice_time=4
 func apply_player_visibility():
+ var from_title=title_screen!=null and title_screen.visible
+ for node in hud_nodes: node.visible=not from_title
+ if sampler_overlay!=null: sampler_overlay.clock_label.visible=not from_title
+ if from_title:
+  if subtitle_panel.visible: title_subtitle_visible=true
+  subtitle_panel.hide()
+ elif title_subtitle_visible:
+  subtitle_panel.visible=subtitle_time>0
+  title_subtitle_visible=false
+ for node in gameplay_settings_nodes: node.visible=not from_title
+ if settings_card!=null:
+  settings_scroll.custom_minimum_size=Vector2(600,470 if from_title else 760)
+  settings_card.position=Vector2(330,166 if from_title else 24)
+  settings_card.set_deferred("size",Vector2(620,500 if from_title else 784))
+ if settings_back!=null: settings_back.visible=from_title
+ if pause_title!=null: pause_title.text="SETTINGS" if from_title else data.world.name.to_upper()
+ if pause_description!=null: pause_description.visible=not from_title
+ if garden_button!=null: garden_button.visible=sampler.profile.completed.get("1",false)
  for node in dev_nodes: node.visible=dev_mode
  workshop_controls.visible=dev_mode and chapter_number==4
  workshop_demo_picker.visible=dev_mode and is_workshop_room()
@@ -1242,6 +1300,9 @@ func travel_to_world(number):
   sampler_overlay.panel.hide()
   sampler_overlay.scrim.hide()
 func focus_pause():
+ if title_screen!=null and title_screen.visible and settings_back!=null and settings_back.is_visible_in_tree():
+  settings_back.grab_focus()
+  return
  if focus_resume!=null and pause_panel.is_visible_in_tree(): focus_resume.grab_focus()
 func _input(event):
  if event is InputEventJoypadButton and event.pressed or event is InputEventJoypadMotion and absf(event.axis_value)>.5: Controls.using_controller=true
@@ -1266,3 +1327,31 @@ func focus_first(node):
 func world_label(number):
  var label=chapters[number].world.data.world.name
  return "Core %d · %s"%[number-100,label.trim_suffix(" · Core")] if number>=101 else label
+
+func maybe_autosave(force=false):
+ if not game_started or dev_mode or watch or sampler.profile.run.is_empty(): return
+ sampler.profile.collect_hearts(world)
+ var checkpoint=int(sim.core_run.index) if sim!=null and sim.core_run!=null else -1
+ var riding=not sampler.ride.is_empty()
+ var frames=int(sampler.profile.run.frames)
+ if not force and world.active_id==save_room and sim.deaths==save_deaths and checkpoint==save_checkpoint and riding==save_riding and frames-save_frame<600: return
+ if SaveState.write(world,sampler,audio):
+  save_room=world.active_id;save_deaths=sim.deaths;save_checkpoint=checkpoint;save_frame=frames;save_riding=riding
+func resume_world(number):
+ if not sampler.profile.has_world(number): return false
+ switch_chapter(number)
+ if not SaveState.restore(world,sampler,audio):
+  restart_world()
+  return false
+ game_started=true
+ watch=false;hold=0;tape=[];journey=[]
+ sync_sampler_scene()
+ landscape.runtime=world
+ landscape.load_scene(sim)
+ if not sampler.ride.is_empty():
+  var point=sampler.ride_point()
+  landscape.current_actor=point;landscape.previous_actor=point;landscape.actor=point
+  landscape.camera_float=point-Vector2(153,100)
+ if sampler_overlay!=null: sampler_overlay.showing_result=false
+ set_paused(false)
+ return true

@@ -13,6 +13,7 @@ func _initialize():
  p.tick("end")
  check(not p.finish(["end"]).is_empty() and p.garden(1).root,"base perfect earns root")
  check(p.finish().is_empty() and p.board(1).size()==1,"finish is idempotent")
+ p.completed["2"]=true;p.completed["3"]=true
  p.start(21)
  p.tick("end",3)
  p.finish()
@@ -32,7 +33,7 @@ func _initialize():
  p.start(2)
  p.tick("end",1)
  p.finish()
- check(not p.garden(2).root,"base death denies root")
+ check(p.garden(2).root and not p.garden(2).root_shiny,"base death grants plain root")
  p.start(22)
  p.invalidate()
  p.tick("end")

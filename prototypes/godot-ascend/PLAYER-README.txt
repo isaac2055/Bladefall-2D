@@ -1,16 +1,26 @@
 BLADEFALL — ASCEND
-Willow Studios · Prototype 0.45.0
+Willow Studios · Prototype 0.46.0
 
 This app includes the game, engine, artwork and audio. No Godot installation,
 project checkout, download tool or online account is needed. Move Bladefall.app
 wherever you like and open it. This build contains Intel and Apple Silicon
 executables and requires macOS 11 or later. Tested on Apple Silicon.
 
-Press Enter / A or click Skip to move past the opening. The title menu starts a
-fresh journey in your selected discovered world. Only worlds and sections you
-have actually reached appear in player navigation. The completion screen leads
-into the next world and the Fractured route. Newly opened Next road, Fractured
-and Core routes also remain available from the title, even before first arrival.
+The opening leads into the title menu automatically. Reduced motion bypasses it.
+Continue resumes the selected world's saved position, machinery, inventory, time
+and deaths. With no saved attempt, Play begins at the start. Reached sections
+remain available as practice. Spoken dialogue starts off; subtitles remain on.
+Settings provides audio, reduced motion, fullscreen and controls.
+
+Clearing a base world earns its root; a deathless full clear makes it shiny.
+Complete all three base worlds to open Fractured. Each Fractured clear earns the
+flower crown and opens that world's Core. Core clears award animated keepsakes.
+On later Fractured/Core runs, collect the reward near the start and carry it
+through without dying to make it shiny. These attempts always restart the whole
+world after death, Retry or resuming from a saved challenge.
+
+After clearing Outskirts, Garden & records appears in Settings. It displays earned
+rewards, persistent purple bonus hearts and this Mac's local leaderboard.
 
 Keyboard defaults: arrows move/aim, Space jumps, D dashes, A climbs/carries,
 W strikes, R retries and Escape pauses. Controllers work with the left stick or
@@ -25,8 +35,9 @@ shiny attempt this resets the whole world. Section selection is labelled Practic
 use Start world over for a full eligible journey and its rewards/records.
 
 Discovered places, rewards, audio settings, control bindings and local records
-save on this Mac. The title's Play button starts the selected world from its
-beginning; current room machinery and active challenge attempts are not resumed
-after quitting. Golden/shiny attempts always begin at the world's start.
+save on this Mac. Ordinary eligible attempts also autosave during play and when
+pausing or quitting. Start world over clears that world's active save without
+removing unlocks or collected rewards. Practice and reference runs cannot replace
+a legitimate saved attempt. Records are local to this prototype, not shared online.
 
 This is a locally signed prototype, not an Apple-notarized public release.

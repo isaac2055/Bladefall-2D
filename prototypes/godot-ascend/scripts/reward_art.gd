@@ -65,3 +65,8 @@ static func draw_part(canvas,at,number,root,top,shiny,time):
   for i in range(5):
    var a=i*TAU/5
    canvas.draw_circle(at+Vector2(cos(a)*3,sin(a)*3-4),2,color)
+
+ if shiny:
+  var point=at+Vector2(cos(time*2)*7,sin(time*2)*5)
+  canvas.draw_line(point-Vector2(2,0),point+Vector2(2,0),Color("#f0dda4"),.7)
+  canvas.draw_line(point-Vector2(0,2),point+Vector2(0,2),Color("#f0dda4"),.7)

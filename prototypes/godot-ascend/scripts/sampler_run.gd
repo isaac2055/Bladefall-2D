@@ -31,23 +31,17 @@ func invalidate():
 func carrying(): return not profile.run.is_empty() and profile.run.carrying
 func begin_ride(world,target):
  var spawn=world.parsed[target].spawn
- ride={"from":world.position(),"to":world.placements[target]+Vector2(spawn.x,spawn.y),"target":target,"frame":0}
+ var from=world.position()
+ var to=world.placements[target]+Vector2(spawn.x,spawn.y)
+ var height=clampf(absf(to.x-from.x)*.18+32,48,120)
+ var top=minf(from.y,to.y)-height
+ ride={"from":from,"to":to,"target":target,"frame":0,"c1":Vector2(from.x,top),"c2":Vector2(to.x,top),"duration":clampf((from.distance_to(to)+height)/250.0,1.4,9.0)}
 func ride_point():
- var a=ride.from
- var b=ride.to
- var top=minf(a.y,b.y)-32
- var up=maxf(.4,absf(a.y-top)/100)
- var across=maxf(.3,absf(a.x-b.x)/180)
- var down=maxf(.4,absf(b.y-top)/100)
- var t=float(ride.frame)/60
- if t<up: return a.lerp(Vector2(a.x,top),smoothstep(0,up,t))
- t-=up
- if t<across: return Vector2(lerpf(a.x,b.x,smoothstep(0,across,t)),top)
- t-=across
- return Vector2(b.x,lerpf(top,b.y,smoothstep(0,down,t)))
-func ride_duration():
- var top=minf(ride.from.y,ride.to.y)-32
- return maxf(.4,absf(ride.from.y-top)/100)+maxf(.3,absf(ride.from.x-ride.to.x)/180)+maxf(.4,absf(ride.to.y-top)/100)
+ var t=clampf(float(ride.frame)/60/ride_duration(),0,1)
+ t=t*t*t*(t*(t*6-15)+10)
+ var u=1-t
+ return u*u*u*ride.from+3*u*u*t*ride.c1+3*u*t*t*ride.c2+t*t*t*ride.to
+func ride_duration(): return ride.get("duration",2.0)
 func tick(world,practice=false):
  if profile.run.is_empty(): start(world,not practice)
  if practice: profile.invalidate()

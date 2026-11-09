@@ -6,12 +6,11 @@ var scrim:ColorRect
 var panel:PanelContainer
 var content:VBoxContainer
 var showing_result=false
+var panel_mode="result"
 func _ready():
  mouse_filter=Control.MOUSE_FILTER_IGNORE
  clock_label=app.text(self,"",14,"#d8dfbc")
  clock_label.position=Vector2(690,14)
- var garden=app.button(self,"Garden / Records",open_garden,false)
- garden.position=Vector2(1040,744)
  scrim=ColorRect.new()
  scrim.color=Color(0.02,0.04,0.06,.7)
  scrim.size=Vector2(1280,832)
@@ -47,55 +46,70 @@ func _process(_delta):
 func close():
  scrim.hide()
  panel.hide()
- app.set_paused(false)
-func open_garden():
+ if panel_mode=="result": app.set_paused(false)
+ else:
+  app.set_paused(true)
+  app.focus_pause()
+func prepare_panel(mode):
+ panel_mode=mode
  app.set_paused(true)
  app.pause_panel.hide()
  scrim.show()
  clear_content()
- app.text(content,"THE GARDEN",28,"#e4d5a7")
- var profile=app.sampler.profile
- var beds=HBoxContainer.new()
- beds.add_theme_constant_override("separation",12)
- content.add_child(beds)
- for n in [1,2,3]:
-  var p=profile.garden(n)
-  var bed=VBoxContainer.new()
-  bed.custom_minimum_size.x=235
-  beds.add_child(bed)
-  var icons=HBoxContainer.new()
-  bed.add_child(icons)
-  for is_core in [false,true]:
-   var icon=preload("res://scripts/reward_icon.gd").new()
-   icon.number=n
-   icon.core_reward=is_core
-   icon.owned=p.core
-   icon.root=p.root
-   icon.top=p.top
-   icon.shiny=p.core_shiny if is_core else p.flower_shiny
-   icons.add_child(icon)
-  app.text(bed,profile.PLANTS[n-1],18)
-  app.text(bed,("Root ✓" if p.root else "Root · missing")+"  /  "+("Crown ✓" if p.top else "Crown · missing"),14)
-  app.text(bed,"✦ Shiny plant" if p.flower_shiny else "Plant · normal" if p.root and p.top else "Plant · incomplete",14)
-  app.text(bed,profile.CORES[n-1]+(" ✦" if p.core_shiny else " ✓" if p.core else " · missing"),16)
-  app.text(bed,"Core unlocked" if profile.core_open(n) else "Core locked",14)
- app.text(content,"LOCAL RECORDS · "+app.data.world.name,22,"#e4d5a7")
- for mode in ["normal","shiny"]:
-  app.text(content,mode.capitalize()+" · fastest 20 · deaths break equal times",15)
-  var board=profile.board(app.chapter_number,mode)
-  if board.is_empty(): app.text(content,"No completed runs yet.",14)
-  for i in range(board.size()):
-   var r=board[i]
-   app.text(content,"%d.   %s     %d deaths     %s"%[i+1,profile.duration(r.frames),r.deaths,r.date.substr(0,10)],15)
- var instructions=app.text(content,"",15)
- instructions.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
- instructions.text="For a shiny, backtrack to the start patch on a replay and carry your reward through the whole world. Death or Retry restarts the world."
- if profile.save_error!="": app.text(content,profile.save_error,15,"#efa2a2")
- app.button(content,"Back to game",close,false)
+func finish_panel():
  panel.size=Vector2(800,590)
  panel.show()
  app.focus_first.call_deferred(panel)
+func open_garden():
+ if not app.sampler.profile.completed.get("1",false): return
+ prepare_panel("garden")
+ var profile=app.sampler.profile
+ app.text(content,"GARDEN",28,"#e4d5a7")
+ var tabs=HBoxContainer.new();content.add_child(tabs)
+ app.button(tabs,"Records",open_records,false)
+ app.text(tabs,"♥ %d"%profile.heart_count(),21,"#c38aeb")
+ var beds=HBoxContainer.new();beds.add_theme_constant_override("separation",12);content.add_child(beds)
+ for n in [1,2,3]:
+  var plant=profile.garden(n)
+  var hearts=profile.heart_count(n)+profile.heart_count(n+20)+profile.heart_count(n+100)
+  if not plant.root and not plant.top and not plant.core and hearts==0: continue
+  var bed=VBoxContainer.new();bed.custom_minimum_size.x=235;beds.add_child(bed)
+  app.text(bed,app.chapters[n].world.data.world.name,18)
+  for part in ["root","top","core"]:
+   if not plant[part]: continue
+   var row=HBoxContainer.new();bed.add_child(row)
+   var icon=preload("res://scripts/reward_icon.gd").new()
+   icon.number=n;icon.root=true;icon.top=part=="top";icon.core_reward=part=="core";icon.owned=plant.core
+   icon.shiny=plant.root_shiny if part=="root" else plant.flower_shiny if part=="top" else plant.core_shiny
+   row.add_child(icon)
+   app.text(row,({"root":"Root","top":"Flower","core":"Core"}[part])+(" ✦" if icon.shiny else ""),17)
+  app.text(bed,"♥ %d"%hearts,19,"#c38aeb")
+ app.button(content,"Back",close,false)
+ finish_panel()
+func open_records(number=0,mode="normal"):
+ if not app.sampler.profile.completed.get("1",false): return
+ if number==0: number=app.chapter_number
+ prepare_panel("records")
+ app.text(content,"LOCAL RECORDS",28,"#e4d5a7")
+ var row=HBoxContainer.new();content.add_child(row)
+ var picker=OptionButton.new()
+ for chapter in app.CHAPTERS:
+  if chapter!=4 and profile_visible(chapter): picker.add_item(app.world_label(chapter),chapter)
+ picker.select(picker.get_item_index(number));row.add_child(picker)
+ picker.item_selected.connect(func(index):open_records(picker.get_item_id(index),mode))
+ app.button(row,"Normal" if mode=="shiny" else "Shiny",func():open_records(number,"normal" if mode=="shiny" else "shiny"),false)
+ app.text(content,"Shiny runs" if mode=="shiny" else "All runs",16)
+ var board=app.sampler.profile.board(number,mode)
+ if board.is_empty(): app.text(content,"No times yet.",17)
+ for i in range(board.size()):
+  var result=board[i]
+  app.text(content,"%d.   %s     %d deaths"%[i+1,app.sampler.profile.duration(result.frames),result.deaths],17)
+ app.button(content,"Garden",open_garden,false)
+ app.button(content,"Back",close,false)
+ finish_panel()
+func profile_visible(chapter): return app.sampler.profile.has_world(chapter)
 func show_result():
+ panel_mode="result"
  app.set_paused(true)
  app.pause_panel.hide()
  scrim.show()
@@ -111,20 +125,20 @@ func show_result():
  var plant=app.sampler.profile.garden(icon.number)
  icon.owned=plant.core
  icon.root=plant.root
- icon.top=plant.top
- icon.shiny=plant.core_shiny if icon.core_reward else plant.flower_shiny
+ icon.top=plant.top and app.chapter_number not in [1,2,3]
+ icon.shiny=plant.core_shiny if icon.core_reward else plant.root_shiny if app.chapter_number in [1,2,3] else plant.flower_shiny
  if icon.root or icon.top or icon.core_reward and icon.owned: content.add_child(icon)
  else: icon.free()
- app.text(content,r.award if r.award!="" else "Journey recorded · clear without deaths for the flower root",20)
- app.text(content,"Saved to this Mac's "+r.mode+" leaderboard." if r.saved else app.sampler.profile.save_error,16)
+ app.text(content,r.award,20)
  if app.chapter_number==1 and r.get("first_clear",false):
   var hint=app.text(content,"",17,"#cadbab")
   hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-  hint.text="A flower root waits for a journey through the entire Outskirts without a single death. You found it!" if r.deaths==0 else "The Outskirts holds a secret reward: return and complete the entire world without a single death to earn a flower root."
+  hint.text="Garden & records is now in Settings."
+ if app.chapter_number==3 and app.sampler.profile.all_bases_clear(): app.text(content,"Fractured worlds are now open.",17,"#cadbab")
  var destinations=[]
  if app.chapter_number in [1,2]: destinations.append(app.chapter_number+1)
  if app.chapter_number in [1,2,3]:
-  destinations.append(app.chapter_number+20)
+  if app.sampler.profile.available(app.chapter_number+20): destinations.append(app.chapter_number+20)
   if app.sampler.profile.core_open(app.chapter_number): destinations.append(app.chapter_number+100)
  if app.chapter_number in [21,22,23] and app.sampler.profile.core_open(app.chapter_number-20): destinations.append(app.chapter_number+80)
  for destination in destinations:
