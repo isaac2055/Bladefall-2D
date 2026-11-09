@@ -3,6 +3,8 @@ extends Node2D
 var sampler
 var story={}
 var road_revision=-1
+var road_cells_cache={}
+const PassageReveal=preload("res://scripts/passage_reveal.gd")
 var player_styles_locked=false
 ## Presentation is interpolated and layered; the integer simulation is never modified here.
 const KnightStyles=preload("res://scripts/knight_styles.gd")
@@ -528,6 +530,9 @@ func target_camera(ignore_ride=false):
    return sampler.ride.camera_handoff_target.lerp(travel,smoothstep(0,60,float(sampler.ride.frame)))
   return travel
  var look=camera_lead if not reduced_motion else Vector2.ZERO
+ if runtime!=null and runtime.road_opening.has(sim.room.id) and not reduced_motion:
+  var age=float(runtime.road_opening[sim.room.id].age)
+  look.x+=14*sin(clampf(age/90.0,0,1)*PI)
  # Core camera zones look ahead (or behind) while the knight is inside them, as the browser view does.
  for z in sim.room.def.get("cameraZones",[]):
   if sim.p.x>=z.x0 and sim.p.x<=z.x1 and sim.p.y>=z.y0 and sim.p.y<=z.y1:
@@ -776,13 +781,14 @@ func draw_front():
   for r in range(max(0,floori((view.position.y-origin.y)/8)),min(int(scene.room.rows),ceili((view.end.y-origin.y)/8))):
    for c in range(max(0,floori((view.position.x-origin.x)/8)),min(int(scene.room.cols),ceili((view.end.x-origin.x)/8))):
     var t=scene.room.grid[r*int(scene.room.cols)+c]
+    if runtime!=null: t=PassageReveal.visual_value(runtime,scene.room.id,Vector2i(c,r),t)
     var glyph=scene.room.def.map[r][c]
     if glyph in ["-","(",")"]:
      var rail=origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8)
      box(rail.x,rail.y,8,2,"#debe82" if glyph!= "-" else "#a9b2be")
      box(rail.x+2,rail.y+3,3,4,"#585b68")
      if glyph!= "-": line(rail+Vector2(2,3),rail+Vector2(6,5),"#efac69",1)
-    if glyph=="%":
+    if glyph=="%" and t==1:
      var surface=origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8)
      box(surface.x,surface.y,8,8,"#c8c8cc")
      box(surface.x+1,surface.y+1,6,1,"#edf0ed")
@@ -810,6 +816,7 @@ func draw_front():
   for e in scene.sweepers:
    var point=origin+Vector2(e.x,e.y)
    Art.dust_bunny(self,e,origin)
+ PassageReveal.draw(self,view)
  for trail in trails:
   var alpha = trail.life/trail.max*(.15 if reduced_motion else .48)
   var col=Color(trail.color,alpha)
@@ -1793,7 +1800,9 @@ func refresh_road_terrain():
   var origin=Vector2i(placements[id]/8)
   for patch in room.def.get("roadExit",[])+room.def.get("roadEntrance",[]):
    var cell=origin+Vector2i(patch[0],patch[1])
-   var value=runtime.cells.get(cell,0)
+   var value=PassageReveal.visual_value(runtime,id,Vector2i(patch[0],patch[1]),runtime.cells.get(cell,0))
+   if road_cells_cache.get(cell,-1)==value: continue
+   road_cells_cache[cell]=value
    if value==1: tiles.set_cell(cell,0,Vector2i(hash_at(cell.x,cell.y)%4,0))
    elif value==2: tiles.set_cell(cell,0,Vector2i(15,0))
    else: tiles.erase_cell(cell)

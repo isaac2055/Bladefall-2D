@@ -1,5 +1,5 @@
 BLADEFALL — ASCEND
-Willow Studios · Prototype 0.51.0
+Willow Studios · Prototype 0.52.0
 
 This app includes the game, engine, artwork and audio. No Godot installation,
 project checkout, download tool or online account is needed. Move Bladefall.app
@@ -25,7 +25,9 @@ The three base worlds and Fractured Causeway continue through connected stairs
 and passages into their added puzzles. Walk between rooms; there are no cradle
 rides or cutscenes on these routes. Each puzzle keeps its own checkpoint. Its
 approach closes behind you, restoring the authored puzzle, and its completed
-flag opens the service passage to the next room. Earned results open directly.
+flag opens the service passage to the next room. Exit panels retract in sequence,
+with warm lamps and framed galleries guiding you onward. You retain control;
+reduced motion uses a quiet dissolve. Earned results open directly.
 Older in-flight saves resume at the intended next puzzle checkpoint.
 
 After clearing Outskirts, Garden & records appears in Settings. It displays earned

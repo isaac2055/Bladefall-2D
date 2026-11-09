@@ -25,12 +25,20 @@ try {
  assert.equal(await page.$eval('#error',x=>x.textContent),'');await sleep(14000);
  async function peak(){let maximum=0;for(let i=0;i<20;i++){maximum=Math.max(maximum,await page.evaluate(()=>Math.max(0,...audioWitness.meters.map(m=>{const b=new Float32Array(m.fftSize);m.getFloatTimeDomainData(b);return Math.max(...b.map(Math.abs))}))));await sleep(50);}return maximum;}
  const titlePeak=await peak();assert(titlePeak>0.0001,`Title music is silent: ${titlePeak}`);
- await page.keyboard.press('Enter');await sleep(2000);
+ // Intro presentation advances in rendered frames; a loaded page can still be
+ // in the opening on a busy GPU. Enter is harmless during play, so retry the
+ // genuine Start/jump inputs until the actual short gameplay clip starts.
+ let started=false;let effectPeak=0;
+ for(let attempt=0;attempt<8 && !started;attempt++) {
+  await page.keyboard.press('Enter');await sleep(1500);
+  const before=await page.evaluate(()=>audioWitness.shortStarts);
+  await page.keyboard.press('Space');await sleep(100);
+  effectPeak=Math.max(effectPeak,await peak());
+  started=(await page.evaluate(()=>audioWitness.shortStarts))>before;
+  if(!started)await sleep(1500);
+ }
+ assert(started,'Jump did not start a short sound effect');
  const gamePeak=await peak();assert(gamePeak>0.0001,`Gameplay audio is silent: ${gamePeak}`);
- const before=await page.evaluate(()=>audioWitness.shortStarts);
- await page.keyboard.press('Space');await sleep(150);
- const effectPeak=await peak();
- assert(await page.evaluate(()=>audioWitness.shortStarts)>before,'Jump did not start a short sound effect');
  assert(effectPeak>0.0001,'No output during the sound effect');
  assert.deepEqual(errors,[]);
  const result={url,titlePeak,gamePeak,effectPeak,errors};

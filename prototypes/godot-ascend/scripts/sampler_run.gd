@@ -110,7 +110,7 @@ func tick(world,practice=false):
  var w=world.data.world
  if int(w.n)==23 and core.room.id=="cl23-puzzle-delivery-cannot-ride" and Route.at_goal(core):
   profile.mark_clear(core.room.id)
-  world.open_road_exit(core.room.id)
+  world.open_road_exit(core.room.id,true)
  # Remove the superseded cover challenge from the road without touching its editable study.
  if int(w.n)==23 and core.room.id=="cl23-puzzle-bridge-backwards" and Route.at_goal(core):
   profile.mark_clear(core.room.id)
@@ -130,7 +130,7 @@ func tick(world,practice=false):
    profile.mark_clear(core.room.id)
    world.campaign_completed[core.room.id]=true
    if route.get("geometry",false):
-    world.open_road_exit(core.room.id)
+    world.open_road_exit(core.room.id,true)
     if core.room.id==route.rooms[-1]: complete(world)
     return ""
    var next=route.landing[core.room.id]
@@ -198,7 +198,7 @@ func dev_next(world):
  last_deaths=core.deaths
  if not route.is_empty() and core.room.id in route.rooms:
   world.campaign_completed[core.room.id]=true
-  if route.get("geometry",false): world.open_road_exit(core.room.id)
+  if route.get("geometry",false): world.open_road_exit(core.room.id,true)
   if index==order.size()-1:
    dev_finish_pose(core)
    complete(world)

@@ -736,8 +736,8 @@ func tick_workshop():
   if not world.campaign_completed.has(sim.room.id):
    world.campaign_completed[sim.room.id]=true
    rebuild_section_menu()
-   notice_label.text="Room complete · Follow the passage to the right"
-   notice_time=8
+   notice_label.text="Passage unlocked · Follow the lanterns"
+   notice_time=3
    audio.effect("gem",.6)
   return
  var first_clear=not workshop_completed.has(sim.room.id)
@@ -817,6 +817,9 @@ func _physics_process(_delta):
   if not watch:
    if not dev_mode: discover_current()
    var event=sampler.tick(world,not journey.is_empty())
+   if world.road_opening.has(world.active_id) and world.road_opening[world.active_id].age==0:
+    audio.effect("lever",.32)
+    audio.effect("gate",.18)
    if event in ["reset","landed"]: sync_sampler_scene()
   if not dev_mode: sampler.profile.collect_hearts(world)
   maybe_autosave()
@@ -913,7 +916,7 @@ func bearing_caption():
   return "%d / %d PUZZLES COMPLETE · FOLLOW THE ROAD"%[world.campaign_completed.size(),data.world.campaignWorkshop.rooms.size()]
  if is_workshop_room():
   if sim.room.def.get("campaignWorkshop",false):
-   if workshop_goal_reached(): return "ROOM COMPLETE · THE HOIST IS ARRIVING"
+   if world.road_opened.has(sim.room.id): return "PASSAGE OPEN · FOLLOW THE LANTERNS"
    if sim.room.def.get("workshopRequireAllShards",false):
     var counts=WorkshopPickups.counts(sim.ents)
     return "SHARDS %d / %d · COLLECT ALL AND RETURN TO THE FLAG"%[counts[0],counts[1]]
@@ -921,7 +924,7 @@ func bearing_caption():
    if sim.room.def.get("workshopRequireStakes",false):
     var stakes=sim.ents.filter(func(e):return e.type=="stone")
     return "STAKES %d / %d · REACH THE GOLD FLAG"%[stakes.filter(func(e):return e.get("lit",false)).size(),stakes.size()]
-   return "REACH THE GOLD FLAG · THE HOIST WILL CARRY YOU ON"
+   return "REACH THE GOLD FLAG · OPEN THE WAY FORWARD"
   if sim.room.def.get("workshopRequireStakes",false):
    var stakes=sim.ents.filter(func(e):return e.type=="stone")
    var lit_stakes=stakes.filter(func(e):return e.get("lit",false)).size()

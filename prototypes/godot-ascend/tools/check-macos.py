@@ -18,7 +18,7 @@ fractured_woods_three_app fractured_woods_feel fractured_nine fractured_nine_app
 feel_journey fractured_next fractured section_menu campaign_workshop application
 world_checks world2_journey world3_journey black_woods causeway fractured_next_app
 fractured_puzzles_app fractured_journey workshop six_puzzles_app five_puzzles_app
-editor_play fractured_causeway_studies causeway_next cover_two_baits cover_comparison causeway_launch_rooms weight_comparison""".split() + CURRENT_SUITES + ["save_transfer"]
+editor_play fractured_causeway_studies causeway_next cover_two_baits cover_comparison causeway_launch_rooms weight_comparison""".split() + CURRENT_SUITES + ["save_transfer", "passage_reveal", "passage_shots"]
 SOURCE_HASH_SUITES = {"fractured_woods_three", "fractured_woods_three_app", "fractured_nine_app"}
 
 
@@ -33,6 +33,7 @@ def verified(code, log, script):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--gpu", action="store_true", help="Run the real renderer for presentation capture suites")
     parser.add_argument("--suite", action="append", choices=SUITES)
     args = parser.parse_args()
     project = Path(__file__).resolve().parents[1]
@@ -57,7 +58,7 @@ def main():
         script = f"res://tests/{name}.gd"
         env = os.environ.copy()
         env.update(ASCEND_TEST_OVERLAY=str(overlay), ASCEND_TEST_SCRIPT=script)
-        command = [str(app), "--headless", "--script", str(bootstrap)]
+        command = [str(app), *([] if args.gpu else ["--headless"]), "--script", str(bootstrap)]
         if extra:
             command += ["--", *map(str, extra)]
         started = time.monotonic()

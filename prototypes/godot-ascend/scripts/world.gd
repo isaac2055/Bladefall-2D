@@ -20,6 +20,8 @@ var transport_legacy_signature=""
 var transport_legacy_bonus_signature=""
 var road_revision=0
 var road_opened={}
+var road_opening={}
+const PassageReveal=preload("res://scripts/passage_reveal.gd")
 var road_base={}
 var road_entered={}
 var bearings = {}
@@ -144,6 +146,7 @@ func restart():
    cells[Vector2i(placements[id]/8)+Vector2i(tile[0],tile[1])]=tile[2]
    parsed[id].grid[tile[1]*int(parsed[id].cols)+tile[0]]=tile[2]
  road_opened.clear()
+ road_opening.clear()
  road_entered.clear()
  road_revision+=1
  campaign_completed.clear()
@@ -237,6 +240,7 @@ func thru_global(core,a):
    if edge==y and x<e.x+other.world_origin.x+e.w and x+a.w>e.x+other.world_origin.x: return true
  return false
 func step(raw):
+ PassageReveal.tick(self)
  var current=active()
  if current.room.def.has("roadEntrance") and not road_entered.has(active_id) and current.p.x>=current.room.spawn.x and current.p.onGround:
   activate_road_puzzle(active_id)
@@ -582,7 +586,12 @@ func close_road_entrance(id):
  road_entered[id]=true
  apply_road_patches(id,road_base[id])
  if road_opened.has(id): apply_road_patches(id,parsed[id].def.get("roadExit",[]))
-func open_road_exit(id):
+func apply_road_exit_patch(id,patch):
+ var local=Vector2i(patch[0],patch[1])
+ cells[Vector2i(placements[id]/8)+local]=int(patch[2])
+ parsed[id].grid[local.y*int(parsed[id].cols)+local.x]=int(patch[2])
+ if cores.has(id): cores[id].room.grid[local.y*int(parsed[id].cols)+local.x]=int(patch[2])
+func open_road_exit(id,animate=false):
  if not parsed.has(id): return
  var room=parsed[id]
  var patches=room.def.get("roadExit",[])
@@ -590,14 +599,14 @@ func open_road_exit(id):
  var newly_opened=not road_opened.has(id)
  if newly_opened:
   road_opened[id]=true
-  for patch in patches:
-   var local=Vector2i(patch[0],patch[1])
-   cells[Vector2i(placements[id]/8)+local]=int(patch[2])
-   room.grid[local.y*int(room.cols)+local.x]=int(patch[2])
-   if cores.has(id): cores[id].room.grid[local.y*int(room.cols)+local.x]=int(patch[2])
+  if animate: PassageReveal.begin(self,id)
+  # Do not leave a completed flag standing on a retiring moving platform or
+  # expose a temporary gap while the visible service panels retract.
+  for patch in patches: apply_road_exit_patch(id,patch)
  for entity in cores[id].ents:
   if entity.type=="roadRetired" or entity==cores[id].p.carrying: continue
   if entity.get("dev",false) or entity.type in ["gate","combatGate","brittle","crumble","toggle","held","slide","zip"]:
+   if newly_opened and road_opening.has(id): road_opening[id].retired.append(entity.duplicate())
    entity.road_original_type=entity.type
    entity.type="roadRetired"
    entity.solid=false
