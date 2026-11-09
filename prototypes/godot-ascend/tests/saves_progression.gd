@@ -65,6 +65,12 @@ func run():
  var restored=make(1);var b=Run.new(a.profile.path)
  Save.restore(restored,b)
  check(restored.active().ents.any(func(e):return is_same(e,restored.active().p.carrying)),"carried object rebinds to its actual entity after load")
+ # Adding bonus metadata must not discard existing Outskirts progress.
+ var current_signature=w.content_signature
+ w.content_signature=w.legacy_content_signature
+ Save.write(w,a)
+ check(Save.restore(restored,b) and digest(restored.active())==digest(w.active()),"previous-release Outskirts saves preserve live puzzle state after adding hearts")
+ w.content_signature=current_signature
  # In-flight saves retain travel progress exactly.
  w.active().p.carrying=null
  a.begin_ride(w,w.data.world.campaignWorkshop.walks[0])
@@ -72,6 +78,7 @@ func run():
  var point=a.ride_point()
  Save.write(w,a);Save.restore(restored,b)
  check(b.ride_point().distance_to(point)<.0001,"in-flight travel resumes at the same point")
+ check(b.ride.target==w.data.world.campaignWorkshop.rooms[0],"older gallery-bound saves migrate into one continuous puzzle transfer")
  # Shiny attempts have no resumable partial world.
  a.profile.garden(1).root=true;a.profile.garden(1).top=true;a.profile.garden(1).core=true;base_unlocks(a.profile)
  var core_world=make(101);a.start(core_world,true,true);core_world.active().core_run.index=2

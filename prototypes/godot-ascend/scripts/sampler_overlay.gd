@@ -41,8 +41,11 @@ func _process(_delta):
  if run.is_empty(): return
  clock_label.text=app.sampler.profile.duration(run.frames)+(" · SHINY" if run.carrying else " · PRACTICE" if not run.eligible else "")
  if not app.sampler.result.is_empty() and not showing_result:
-  showing_result=true
-  show_result()
+  if app.story!=null and not app.story.ending_ready:
+   app.story.begin_ending()
+  else:
+   showing_result=true
+   show_result()
 func close():
  scrim.hide()
  panel.hide()
@@ -57,6 +60,7 @@ func prepare_panel(mode):
  scrim.show()
  clear_content()
 func finish_panel():
+ panel.modulate.a=1
  panel.size=Vector2(800,590)
  panel.show()
  app.focus_first.call_deferred(panel)
@@ -109,6 +113,7 @@ func open_records(number=0,mode="normal"):
  finish_panel()
 func profile_visible(chapter): return app.sampler.profile.has_world(chapter)
 func show_result():
+ if app.story!=null: scrim.color=Color(0.02,0.04,0.06,.7)
  panel_mode="result"
  app.set_paused(true)
  app.pause_panel.hide()
@@ -153,5 +158,7 @@ func show_result():
   app.restart_world(),false)
  app.button(content,"Continue exploring",close,false)
  panel.size=Vector2(800,590)
+ panel.modulate.a=0
  panel.show()
+ create_tween().tween_property(panel,"modulate:a",1.0,.5)
  app.focus_first.call_deferred(panel)

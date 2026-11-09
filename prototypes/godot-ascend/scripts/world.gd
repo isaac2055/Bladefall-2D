@@ -7,6 +7,7 @@ const CampaignWorkshop=preload("res://scripts/campaign_workshop.gd")
 var campaign_completed={}
 var sampler_practice=false
 var content_signature=""
+var legacy_content_signature=""
 var data
 var cores = {}
 var placements = {}
@@ -51,8 +52,17 @@ func _init(source):
  if int(data.world.n) in [1,2,3]:
   var workshop_source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"))
   CampaignWorkshop.append(data,preload("res://scripts/authoring_data.gd").read(workshop_source))
+ preload("res://scripts/bonus_rewards.gd").prepare(data)
  preload("res://scripts/affixed_route.gd").prepare(data)
  content_signature=preload("res://authoring/codec.gd").fingerprint(data)
+ if int(data.world.n)==1:
+  # Bonus metadata changed; the previous scene/physics state is still compatible.
+  var legacy=data.duplicate(true)
+  legacy.secretRewards=legacy.get("secretRewards",[]).filter(func(r):return r.id!="secret-1")
+  legacy.branchRewards=legacy.get("branchRewards",[]).filter(func(r):return r.id!="rowan-bonus")
+  if legacy.secretRewards.is_empty(): legacy.erase("secretRewards")
+  if legacy.branchRewards.is_empty(): legacy.erase("branchRewards")
+  legacy_content_signature=preload("res://authoring/codec.gd").fingerprint(legacy)
  var sections=data.world.sections.duplicate(true)
  for q in data.world.quests: sections.append_array(q.sections)
  for q in data.world.get("secrets",[]): sections.append_array(q.sections)
@@ -274,6 +284,9 @@ func enter(id,practice=false):
   if practice and id in reward.rooms: branch_entered[reward.id]=false
   elif id==reward.rooms[0] and active_id==reward.host: branch_entered[reward.id]=true
   if not practice and active_id==reward.room and id in reward.rooms and id!=reward.room and branch_entered.get(reward.id,false): claim_branch(reward)
+ if id=="cl1-secret-r2": secret_front_entry=not practice and active_id=="cl1-o1-cut"
+ if not practice and active_id=="cl1-secret-r2" and id=="cl1-pass-9":
+  for reward in data.get("secretRewards",[]): claim_secret(reward)
  if id=="cl3-secret-e2": secret_front_entry=not practice and active_id=="cl3-c3-upper"
  if not practice and active_id=="cl3-secret-e2" and id=="cl3-pass-14" and secret_front_entry:
   for reward in data.get("secretRewards",[]): claim_secret(reward)
@@ -412,7 +425,7 @@ func claim_secret(reward):
  award_color="#ba82e6"
  notices.append("♥ "+reward.name+" · "+reward.title)
 func tick_secret_hearts():
- if not secret_front_entry or active().p.state in ["dead","respawn"]: return
+ if active().p.state in ["dead","respawn"]: return
  var p=active().p
  for reward in data.get("secretRewards",[]):
   if active_id==reward.room and abs(p.x+4-reward.x)<=9 and abs(p.y+5.5-reward.y)<=11: claim_secret(reward)

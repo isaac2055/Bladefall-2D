@@ -29,9 +29,9 @@ func invalidate():
  profile.invalidate()
  ride={}
 func carrying(): return not profile.run.is_empty() and profile.run.carrying
-func begin_ride(world,target):
+func begin_ride(world,target,from_point=null):
  var spawn=world.parsed[target].spawn
- var from=world.position()
+ var from=world.position() if from_point==null else from_point
  var to=world.placements[target]+Vector2(spawn.x,spawn.y)
  var height=clampf(absf(to.x-from.x)*.18+32,48,120)
  var top=minf(from.y,to.y)-height
@@ -95,10 +95,10 @@ func tick(world,practice=false):
   var route=w.campaignWorkshop
   if core.room.id==route.entry:
    if core.p.onGround and core.p.state not in ["dead","respawn"]:
-    begin_ride(world,route.walks[0])
+    begin_ride(world,route.rooms[0])
     return "ride"
   elif route.walkTargets.has(core.room.id):
-   if core.p.onGround and absf(core.p.x-core.room.def.galleryDock*8)<12:
+   if core.p.onGround:
     begin_ride(world,route.walkTargets[core.room.id])
     return "ride"
   elif core.room.id in route.rooms and Route.at_goal(core):
@@ -106,7 +106,7 @@ func tick(world,practice=false):
    world.campaign_completed[core.room.id]=true
    var next=route.landing[core.room.id]
    if next!="":
-    begin_ride(world,next)
+    begin_ride(world,route.walkTargets.get(next,next))
     return "ride"
    complete(world)
  elif int(w.n) in [21,22]:
@@ -135,3 +135,64 @@ func retry(world):
   world.active().deaths+=1
   if not profile.run.is_empty() and not profile.run.finished: profile.run.deaths+=1
  last_deaths=world.active().deaths
+
+# Explicit developer completion path: uses the real result/reward/unlock pipeline.
+func dev_next(world):
+ var w=world.data.world
+ var core=world.active()
+ var order=w.get("requiredMainRooms",[]).duplicate()
+ var route=w.get("campaignWorkshop",{})
+ if not route.is_empty():
+  if not route.entry in order: order.append(route.entry)
+  for id in route.rooms:
+   if not id in order: order.append(id)
+ if int(w.n)>=101:
+  profile.tick(core.room.id,maxi(0,core.deaths-last_deaths))
+  last_deaths=core.deaths
+  dev_finish_pose(core)
+  complete(world)
+  return
+ var index=order.find(core.room.id)
+ if index<0:
+  for reward in world.data.get("secretRewards",[]):
+   if reward.room==core.room.id: world.claim_secret(reward)
+  for reward in world.data.get("branchRewards",[]):
+   if core.room.id in reward.rooms: world.claim_branch(reward)
+  var next=order[0] if not order.is_empty() else ""
+  if next!="": world.enter(next,true)
+  return
+ for i in range(index+1):
+  profile.mark_clear(order[i])
+  profile.run.visited[order[i]]=true
+ profile.tick(core.room.id,maxi(0,core.deaths-last_deaths))
+ last_deaths=core.deaths
+ if not route.is_empty() and core.room.id in route.rooms:
+  world.campaign_completed[core.room.id]=true
+  if index==order.size()-1:
+   dev_finish_pose(core)
+   complete(world)
+  else: begin_ride(world,order[index+1])
+ elif index+1<order.size():
+  var count=core.deaths
+  world.enter(order[index+1],true)
+  world.active().deaths=count
+ else:
+  var ending="cl%d-atlas-crossroads"%int(w.n)
+  if world.cores.has(ending):
+   var count=core.deaths
+   world.enter(ending,true)
+   world.active().deaths=count
+  complete(world)
+
+func dev_finish_pose(core):
+ var goal=core.room.def.get("workshopGoal",core.room.def.get("puzzleGoal",[]))
+ if goal.size()==4:
+  core.p.x=goal[0]+goal[2]/2-core.p.w/2
+  core.p.y=goal[1]-core.p.h
+ elif int(profile.run.chapter)>=101:
+  for row in range(int(core.room.rows)-1,0,-1):
+   if core.room.def.map[row][-1] in [".","G"]:
+    core.p.x=core.room.w-16
+    core.p.y=(row+1)*8-core.p.h
+    break
+ core.p.vx=0;core.p.vy=0;core.p.onGround=true;core.p.state="normal"

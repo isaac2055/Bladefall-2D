@@ -9,6 +9,7 @@ const SectionMenu = preload("res://scripts/section_menu.gd")
 const CampaignWorkshop = preload("res://scripts/campaign_workshop.gd")
 var sampler=preload("res://scripts/sampler_run.gd").new()
 var sampler_overlay
+var story
 var dev_mode=false
 var dev_nodes=[]
 var gameplay_settings_nodes=[]
@@ -263,6 +264,9 @@ func _ready():
  title_screen=preload("res://scripts/front_end.gd").new()
  title_screen.app=self
  add_child(title_screen)
+ story=preload("res://scripts/road_story.gd").new()
+ story.app=self
+ add_child(story)
  controls_menu.move_to_front()
  game_started=test_mode
  apply_player_visibility()
@@ -527,7 +531,9 @@ func _unhandled_input(event):
   get_viewport().set_input_as_handled()
  elif event.is_action_pressed("knight_retry") and not paused: retry_room()
  elif event is InputEventKey and event.pressed:
-  if (chapter_number==4 or (cover_comparison or causeway_launch_rooms or weight_comparison) and chapter_number==23) and event.physical_keycode==KEY_N: workshop_room(1)
+  if (dev_mode or test_mode) and chapter_number!=4 and not (cover_comparison or causeway_launch_rooms or weight_comparison) and event.physical_keycode==KEY_N and not paused:
+   developer_next()
+  elif (chapter_number==4 or (cover_comparison or causeway_launch_rooms or weight_comparison) and chapter_number==23) and event.physical_keycode==KEY_N: workshop_room(1)
   elif event.physical_keycode==KEY_H and (is_workshop_room() or sim.room.def.get("puzzleStudy",false)): show_workshop_hint()
   elif event.physical_keycode==KEY_F11: toggle_fullscreen()
   elif event.physical_keycode==KEY_M:
@@ -560,6 +566,7 @@ func set_paused(value):
  apply_player_visibility()
  landscape.set_process(not value)
  audio.set_paused(value)
+ if title_screen!=null and title_screen.visible: audio.music.stream_paused=false
 
 func show_subtitle(who,line,seconds):
  subtitle_name.text = who.to_upper()
@@ -743,6 +750,7 @@ func decode(keys):
  return raw
 func _physics_process(_delta):
  if sim==null or paused: return
+ if story!=null and story.physics_tick(_delta): return
  var physics_start=Time.get_ticks_usec()
  ticks += 1
  if (not sampler.ride.is_empty() or sampler.failure_frames>0) and not watch:
@@ -804,7 +812,7 @@ func _physics_process(_delta):
  dash_label.modulate = Color("edbf74") if sim.p.dashes>0 else Color("687e91")
  death_label.text = "%d DEATHS" % sim.deaths
  if watch: status.text = "REFERENCE · Start / Esc opens the menu · "+("Take control" if dev_mode else "Try yourself to restart this section")
- else: status.text = Controls.prompt()
+ else: status.text = Controls.prompt()+(" · N Next (awards enabled)" if dev_mode else "")
  if chapter_number==4: status.text="← → MOVE     SPACE JUMP     D + ARROWS DASH     A CLING     R RETRY     H HINT     Esc MENU"
  if chapter_number==4 and sim.room.def.get("workshopBiome","")=="woods": status.text="← → MOVE   SPACE JUMP   D DASH   A CLING   W + ARROWS CUT   R RETRY   H HINT   Esc MENU"
  if chapter_number==4 and watch: status.text="DEMONSTRATION · Esc opens the menu"
@@ -977,6 +985,7 @@ func retry_room():
  sim=world.active()
  landscape.snap_actor()
 func restart_world():
+ if story!=null: story.cancel()
  SaveState.clear(sampler.profile,chapter_number)
  game_started=true
  if chapter_number==4:
@@ -1024,6 +1033,7 @@ func switch_chapter(number):
   select_world_menu()
   return
  maybe_autosave(true)
+ if story!=null: story.cancel()
  sampler.invalidate()
  var old=chapters[chapter_number]
  old.landscape.runtime=old.world
@@ -1355,3 +1365,24 @@ func resume_world(number):
  if sampler_overlay!=null: sampler_overlay.showing_result=false
  set_paused(false)
  return true
+
+func developer_next():
+ if not (dev_mode or test_mode) or paused or not sampler.ride.is_empty() or story!=null and story.active(): return
+ if watch:
+  watch=false;tape=[];hold=0
+  world.enter(watch_origin if world.cores.has(watch_origin) else world.active_id,true)
+  sim=world.active();landscape.runtime=world
+ if sampler.profile.run.is_empty() or sampler.profile.run.finished: sampler.start(world,true)
+ sampler.profile.run.eligible=true
+ world.sampler_practice=false
+ sampler.dev_next(world)
+ sampler.profile.collect_hearts(world)
+ var key=str(chapter_number)
+ if not sampler.profile.discovered.has(key): sampler.profile.discovered[key]={}
+ for id in sampler.profile.run.cleared: sampler.profile.discovered[key][id]=true
+ sampler.profile.discover(chapter_number,world.active_id)
+ sampler.profile.save_profile()
+ sync_sampler_scene()
+ if story!=null: story.check_begin()
+ discover_current()
+ maybe_autosave(true)

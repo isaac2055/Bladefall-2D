@@ -1,6 +1,18 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.46.0** · Player-facing Bladefall sampler for macOS: Outskirts, Woods and Causeway, their Fractured routes and Cores 1–3. Open `exports/Bladefall.app`, or share `exports/Bladefall-macOS.zip`. The app includes its own engine and all game resources.
+Version **0.47.0** · Player-facing Bladefall sampler for macOS: Outskirts, Woods and Causeway, their Fractured routes and Cores 1–3. Open `exports/Bladefall.app`, or share `exports/Bladefall-macOS.zip`. The app includes its own engine and all game resources.
+
+## Continuous lifts and story scenes · 0.47.0
+
+Title Settings preserves music; in-game pause still pauses it. Affixed transfers now go directly from finish to the next puzzle in one continuous ride, with no intermediate gallery stop or second descent. Individual puzzle checkpoints remain. Existing galleries stay available for inspection.
+
+The first lantern-route arrival establishes the collapsed road, lights the route and lowers the cradle. Outskirts, Woods and Causeway use district-specific scenery/captions. The reveal is remembered across saves; developer mode replays it once per restarted world. Clears persist before a short in-world ending: the knight steps along the safe finish ledge, lanterns dim, the next district appears in the skyline and the earned reward rises before the results card fades over the same shot. Reduced motion shortens the presentation. There are no new finale rooms, quests or generated voices.
+
+In developer/test mode, **N** completes the current challenge and advances through the normal completion/reward/unlock pipeline, preserving deaths and carried shiny status. Ordinary players cannot use it. This deliberately writes real local awards and records for testing. Watch, practice and room selection retain their ordinary restrictions unless N is explicitly used. Existing isolated comparison launchers retain their N navigation.
+
+Optional bonus routes have purple collectible hearts, including the missing Outskirts Hang Time heart and the bell-tower bonus. Visible secret hearts can be collected by touch even when entering through practice. Affixed rooms award no bonus hearts. Hearts persist in Garden.
+
+See [validation and implementation](research/CONTINUOUS-LIFTS-AND-STORY.md).
 
 ## Saves and progression · 0.46.0
 

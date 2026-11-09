@@ -84,6 +84,7 @@ static func read(profile,chapter,signature):
  return data if data is Dictionary and data.get("chapter",0)==chapter else {}
 static func restore(world,sampler,audio=null):
  var data=read(sampler.profile,int(world.data.world.n),world.content_signature)
+ if data.is_empty() and world.legacy_content_signature!="": data=read(sampler.profile,int(world.data.world.n),world.legacy_content_signature)
  if data.is_empty(): return false
  world.restart()
  if data.get("challenge",false):
@@ -108,6 +109,11 @@ static func restore(world,sampler,audio=null):
  sampler.profile.run=data.run
  for field in RUN_FIELDS:
   if data.ride.has(field): sampler.set(field,data.ride[field])
+ # Older active saves may still target the removed intermediate gallery stop.
+ var targets=world.data.world.get("campaignWorkshop",{}).get("walkTargets",{})
+ if not sampler.ride.is_empty() and targets.has(sampler.ride.target):
+  var point=sampler.ride_point()
+  sampler.begin_ride(world,targets[sampler.ride.target],point)
  sampler.result={}
  if audio!=null:
   audio.heard=data.audio.get("heard",{}).duplicate(true)

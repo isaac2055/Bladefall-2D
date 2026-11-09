@@ -1,6 +1,6 @@
-# Watch Stairs and world-ending scenes — proposal only
+# Watch Stairs and world-ending scenes — approved design
 
-No story scenes, new quests or voices are implemented by this proposal.
+Approved and implemented in 0.47.0. See CONTINUOUS-LIFTS-AND-STORY.md for the shipped presentation and verification. The original design follows.
 
 At the Watch Stairs, reveal that the upper road has collapsed. The surviving route runs through the old watch chambers, connected by a lantern-and-winch system. This makes the affixed rooms part of the road to the next district, rather than unexplained detours.
 
@@ -12,4 +12,4 @@ For the ending, let the knight leave the last chamber onto an existing overlook.
 
 The Woods can use old ranger rope cradles and lanterns between trees; the Causeway can use freight cages, iron rails and visible counterweights. Each gets one first-time establishing shot and a matching ending, while ordinary room transfers retain a common, brief rhythm.
 
-Recommended direction: visible working machinery, a broken-road explanation, and minimal text. Keep the existing knight and Bladefall scenery. Additional scenes/art/voice work should wait for approval.
+Recommended direction: visible working machinery, a broken-road explanation, and minimal text. Keep the existing knight and Bladefall scenery. No new quests or generated voices are part of this implementation.

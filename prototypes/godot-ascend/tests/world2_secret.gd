@@ -62,7 +62,7 @@ func _initialize():
   w.active().p.x=reward.x-4
   w.active().p.y=reward.y-5.5
   w.tick_secret_hearts()
-  ok=ok and w.secret_hearts.is_empty()
-  print("PASS" if ok else "FAIL"," secret reward persistence, no duplicate award, restart and sealed preview/back entry")
+  ok=ok and w.secret_hearts.has("secret-2")
+  print("PASS" if ok else "FAIL"," secret reward persistence, no duplicate award, restart and physical pickup in practice")
  w.shutdown()
  quit(0 if ok else 1)

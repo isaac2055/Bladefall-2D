@@ -1,7 +1,7 @@
 extends RefCounted
 ## Persistent rewards, unlocks and local records; active worlds use a separate atomic resume file.
 const VERSION=1
-const ROUTE_VERSION="sampler-2"
+const ROUTE_VERSION="sampler-3"
 const PLANTS=["Outskirts Trumpet","Black Woods Oak","Causeway Ivy"]
 const CORES=["Trumpet Sprite","Oak Wisp","Clockwork Seed"]
 var path="user://bladefall-garden.json"
@@ -10,6 +10,7 @@ var records={}
 var discovered={"1":{}}
 var completed={}
 var hearts={}
+var story_seen={}
 var last_world=1
 var run={}
 var last_result={}
@@ -24,6 +25,7 @@ func load_profile():
  plants=value.get("plants",{}) if value.get("plants") is Dictionary else {}
  records=value.get("records",{}) if value.get("records") is Dictionary else {}
  discovered=value.get("discovered",{"1":{}})
+ story_seen=value.get("story_seen",{}) if value.get("story_seen") is Dictionary else {}
  hearts=value.get("hearts",{}) if value.get("hearts") is Dictionary else {}
  completed=value.get("completed",{})
  last_world=int(value.get("last_world",1))
@@ -44,7 +46,7 @@ func save_profile():
  if file==null:
   save_error="Cannot save Garden: "+error_string(FileAccess.get_open_error())
   return false
- file.store_string(JSON.stringify({"version":VERSION,"plants":plants,"records":records,"discovered":discovered,"completed":completed,"last_world":last_world,"hearts":hearts}))
+ file.store_string(JSON.stringify({"version":VERSION,"plants":plants,"records":records,"discovered":discovered,"completed":completed,"last_world":last_world,"hearts":hearts,"story_seen":story_seen}))
  file.close()
  var error=DirAccess.rename_absolute(ProjectSettings.globalize_path(path+".tmp"),ProjectSettings.globalize_path(path))
  save_error="" if error==OK else "Cannot save Garden: "+error_string(error)

@@ -66,14 +66,7 @@ func _initialize():
   var route=w.data.world.campaignWorkshop
   for id in route.rooms:
    while not run.ride.is_empty(): run.tick(w)
-   check(w.active_id in route.walks,"arrived on next physical gallery: "+id)
-   if not w.active_id in route.walks: break
-   var dock=w.active().room.def.galleryDock*8
-   for f in range(1800):
-    if not run.ride.is_empty(): break
-    w.step(Inputs.decode("r" if w.active().p.x<dock else "l"));run.tick(w)
-   while not run.ride.is_empty(): run.tick(w)
-   check(w.active_id==id,"gallery enters correct puzzle")
+   check(w.active_id==id and w.checkpoint_id==id,"continuous hoist enters the next puzzle directly with its checkpoint")
    var solved=false
    for part in w.data.world.tapes[id]:
     for f in range(int(part[0])):

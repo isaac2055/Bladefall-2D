@@ -1,5 +1,5 @@
 BLADEFALL — ASCEND
-Willow Studios · Prototype 0.46.0
+Willow Studios · Prototype 0.47.0
 
 This app includes the game, engine, artwork and audio. No Godot installation,
 project checkout, download tool or online account is needed. Move Bladefall.app
@@ -10,7 +10,8 @@ The opening leads into the title menu automatically. Reduced motion bypasses it.
 Continue resumes the selected world's saved position, machinery, inventory, time
 and deaths. With no saved attempt, Play begins at the start. Reached sections
 remain available as practice. Spoken dialogue starts off; subtitles remain on.
-Settings provides audio, reduced motion, fullscreen and controls.
+Settings provides audio, reduced motion, fullscreen and controls. Title-menu
+Settings keeps the music playing; in-game Settings pauses it.
 
 Clearing a base world earns its root; a deathless full clear makes it shiny.
 Complete all three base worlds to open Fractured. Each Fractured clear earns the
@@ -18,6 +19,11 @@ flower crown and opens that world's Core. Core clears award animated keepsakes.
 On later Fractured/Core runs, collect the reward near the start and carry it
 through without dying to make it shiny. These attempts always restart the whole
 world after death, Retry or resuming from a saved challenge.
+
+The broken upper road introduces the lantern route with a short in-world scene.
+Each transfer is one uninterrupted ride into the next puzzle. World endings
+present the reward in-world before fading into results. Reduced motion shortens
+these scenes.
 
 After clearing Outskirts, Garden & records appears in Settings. It displays earned
 rewards, persistent purple bonus hearts and this Mac's local leaderboard.

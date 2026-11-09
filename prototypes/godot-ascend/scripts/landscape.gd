@@ -1,6 +1,7 @@
 @tool
 extends Node2D
 var sampler
+var story={}
 var player_styles_locked=false
 ## Presentation is interpolated and layered; the integer simulation is never modified here.
 const KnightStyles=preload("res://scripts/knight_styles.gd")
@@ -557,7 +558,10 @@ func tick_feel(delta):
  var desired=Vector2(clamp(sim.p.vx*.17,-25,25),clamp(sim.p.vy*.1,-9,17))
  if sim.p.onGround: desired.y=0
  camera_lead=camera_lead.lerp(desired,1-exp(-dt*5))
- if sampler!=null and not sampler.ride.is_empty():
+ if not story.is_empty():
+  camera_float=story.get("camera",camera_float)
+  camera_velocity=Vector2.ZERO
+ elif sampler!=null and not sampler.ride.is_empty():
   if not sampler.ride.has("camera_from"): sampler.ride.camera_from=camera_float
   var blend=smoothstep(0,1,minf(1,float(sampler.ride.frame)/24))
   camera_float=sampler.ride.camera_from.lerp(target_camera(),blend)
@@ -577,6 +581,7 @@ func _process(delta):
  clock += delta
  if sim==null: return
  actor = previous_actor.lerp(current_actor,clamp(Engine.get_physics_interpolation_fraction(),0,1))
+ if story.get("phase","")=="ending": actor=story.origin+Vector2(story.get("walk",0.0)*smoothstep(.3,1.8,float(story.age)),0)
  if sim.p.state=="dead": actor=current_actor
  if render_hold>0 and not reduced_motion: actor=held_actor
  walking += abs(sim.p.vx)*delta
@@ -817,6 +822,7 @@ func draw_front():
   if int(world_data.world.n)==2: draw_elsie_quest()
   if causeway and int(world_data.world.n)==3: draw_silas_quest()
   draw_world_hearts()
+ draw_road_story()
  draw_sampler_rewards()
  if sim.p.state!="dead":
   if sim.flipped: ink.draw_set_transform(Vector2(-camera.x,-camera.y+actor.y*2+sim.p.h),0,Vector2(1,-1))
@@ -1423,7 +1429,9 @@ func draw_world_hearts():
   if taken: color.a=0.25
   else: circle(point,11,Color(color,0.08))
   pixel_heart(point,color)
-  if not taken and not (runtime.branch_entered.get(reward.id,false) if reward.has("kind") else runtime.secret_front_entry): ink.draw_arc(point,8,0,TAU,24,Color(.8,.85,1,.5),0.7)
+  if not taken:
+   circle(point,8,Color("#ba82e62e"))
+   box(point.x-2,point.y-3,1,1,Color("#efd8ff"))
 
 func draw_feel_world():
  for ring in rings:
@@ -1650,10 +1658,6 @@ func draw_sampler_rewards():
   # Bladefall's lantern hoist: brass cage, suspension chain and warm light.
   var at=actor+Vector2(-3,sim.p.h)
   var saved_color=ink_color
-  var arrival=1-smoothstep(maxf(0,sampler.ride_duration()-.3),sampler.ride_duration(),float(sampler.ride.frame)/60)
-  ink_color*=Color(1,1,1,arrival)
-  var boarding=1-smoothstep(0,.35,float(sampler.ride.frame)/60)
-  at.y+=boarding*5
   box(at.x,at.y,14,3,"#b7a17e")
   box(at.x+1,at.y+2,12,1,"#526458")
   for side in [0,13]:
@@ -1669,3 +1673,63 @@ func draw_sampler_rewards():
   var at=actor+Vector2(4,-20-minf(12,t*4))
   if core_reward: art.draw(ink,at,home,true,shiny,clock)
   else: art.draw_part(ink,at,home,item.root,item.top if number not in [1,2,3] else false,shiny,clock)
+
+func draw_road_story():
+ if story.is_empty(): return
+ var origin=story.origin
+ var t=float(story.age)
+ var ending=story.phase=="ending"
+ var home=preload("res://scripts/run_profile.gd").home(int(world_data.world.n))
+ var timber=home==2
+ var iron=home==3
+ var material=Color("#667768" if timber else "#7c7770" if iron else "#7e827c")
+ var lantern=Color("#e7c87c")
+ # Distant trees/towers descend into the existing skyline rather than floating above it.
+ var saved=ink_color
+ ink_color*=Color(1,1,1,smoothstep(0,.6,t))
+ var far=origin+Vector2(72,-62)
+ var skyline=Color("#273e36" if home==1 else "#3d474d" if home==2 else "#473e4d")
+ for i in range(6):
+  var x=far.x+i*12
+  var y=far.y+i%3*7
+  if home==1:
+   box(x+5,y+15,3,100,skyline)
+   for tier in range(3):
+    var yy=y+tier*12
+    polygon([Vector2(x-2-tier*2,yy+22),Vector2(x+7,yy-5),Vector2(x+16+tier*2,yy+22)],skyline)
+  else:
+   box(x,y,10,140,skyline)
+   for k in range(3): box(x+k*4,y-3,2,3,skyline)
+   box(x+4,y+12,2,5,Color("#a2a07866"))
+ if not ending:
+  # Weathered piers support the broken upper road. This is scenery, never new collision.
+  var shelf=origin+Vector2(14,-31)
+  for side in [0,1]:
+   var x=shelf.x+side*100
+   var width=31 if side==0 else 48
+   box(x,shelf.y,width,4,material)
+   box(x+4,shelf.y+4,7,105,Color(material,.65))
+   for k in range(3):
+    var at=Vector2(x+5+k*9,shelf.y+4)
+    line(at,at+Vector2(2+k,9+k*4),material,2)
+   for k in range(4): line(Vector2(x+4,shelf.y+12+k*11),Vector2(x+11,shelf.y+12+k*11),Color("#3b4542"),.7)
+   line(Vector2(x+3,shelf.y),Vector2(x+3,shelf.y-13),material,1)
+ for i in range(4):
+  var at=origin+Vector2(-28+i*32,-13-i%2*17)
+  var glow=1.0
+  if ending: glow=1-smoothstep(.8+i*.45,1.8+i*.45,t)
+  circle(at,9,Color(lantern,.08*glow))
+  line(at+Vector2(0,-8),at+Vector2(0,-3),material,.8)
+  box(at.x-2,at.y-3,4,6,material)
+  box(at.x-1,at.y-2,2,3,Color(lantern,glow))
+ if not ending:
+  # A chain tightens before the empty cradle lowers, explaining the next ride.
+  var lower=smoothstep(1.4,3.6,t)
+  var at=origin+Vector2(60,-74).lerp(Vector2(-3,11),lower)
+  line(at+Vector2(7,-14),at+Vector2(7,-96),material,.8)
+  box(at.x,at.y,16,3,material)
+  for side in [0,15]: line(at+Vector2(side,0),at+Vector2(side,-15),material,1)
+  line(at+Vector2(0,-15),at+Vector2(15,-15),material,1)
+  circle(at+Vector2(8,-10),6,Color(lantern,.09*smoothstep(.6,1.2,t)))
+  box(at.x+7,at.y-12,2,4,lantern)
+ ink_color=saved

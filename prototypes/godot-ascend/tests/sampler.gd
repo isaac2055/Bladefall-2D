@@ -41,16 +41,8 @@ func run():
    while not tracker.ride.is_empty() and limit<20000:
     tracker.tick(w)
     limit+=1
-   check(w.active_id==route.walks[0] and w.checkpoint_id==route.walks[0],"hoist arrives at gallery checkpoint")
-   var dock=w.active().room.def.galleryDock*8
-   # Walk along the real gallery floor, using ordinary player input.
-   for frame in range(1500):
-    if not tracker.ride.is_empty(): break
-    w.step(Inputs.decode("r" if w.active().p.x<dock else "l"))
-    tracker.tick(w)
-   check(not tracker.ride.is_empty() and tracker.ride.target==route.rooms[0],"walking to gallery dock lowers into authored puzzle")
-   while not tracker.ride.is_empty(): tracker.tick(w)
-   check(w.active_id==route.rooms[0] and w.checkpoint_id==route.rooms[0],"each puzzle keeps an individual checkpoint")
+   check(w.active_id==route.rooms[0] and w.checkpoint_id==route.rooms[0],"one uninterrupted ride arrives at the puzzle checkpoint")
+
   if n in [21,22,23]:
    var count=0
    for d in w.data.world.rooms:
