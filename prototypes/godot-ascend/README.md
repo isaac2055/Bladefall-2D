@@ -1,6 +1,20 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.44.0** · The Bladefall sampler: Outskirts, Black Woods and Broken Causeway, their Fractured routes, Cores 1–3 and the practice workshop. Approved additions are assembled on `codex/bladefall-complete`; the browser game and Felix are separate.
+Version **0.45.0** · Player-facing Bladefall sampler for macOS: Outskirts, Woods and Causeway, their Fractured routes and Cores 1–3. Open `exports/Bladefall.app`, or share `exports/Bladefall-macOS.zip`. The app includes its own engine and all game resources.
+
+## Player release · 0.45.0
+
+Boot plays an original Willow Studios tree animation, a Bladefall bridge/knight cutscene and an animated title menu. Enter/A skips the opening; reduced motion skips it automatically. Gameplay and its clock wait until Play. The title starts a fresh journey in a discovered world. Natural onward/Fractured/Core routes are offered after qualifying clears and remain accessible from the title, so a player who leaves an ending screen can still reach newly opened routes.
+
+Player navigation lists only worlds and real sections actually arrived at, persisted with the Garden and records. No Test/Workshop entry or unknown-world placeholders appear. Section selection is labelled Practice; Start world over begins a full eligible run. The detailed mixer, appearance selectors and animation examples are session-only developer tools. Five consecutive presses of Spoken dialogue (within two seconds of each other, with no intervening controls) enter developer mode. This shortcut is intentionally absent from the bundled player readme.
+
+Every player chapter defaults to Illustration/Brush knight, Paper/Cutout people, Original scenery, Measured walking and Weathered/rock-strata treatment. Per-person style overrides cannot change the player preset. Exiting developer mode restores it.
+
+Controllers support gameplay and all menus. Controls and remapping exposes keyboard, gamepad buttons, sticks/triggers, deadzone, reset and persistent bindings. Escape and Start remain menu fallbacks. Device disconnect keeps keyboard input available. No physical controller was connected on the build Mac; validation uses injected Godot joypad events and actual InputMap/UI routing.
+
+References run in a detached simulation. They cannot move the real player, unlock rooms/worlds, alter machinery or award clears. Try yourself returns to the actual checkpoint and counts as a Retry, so the real run can still finish. A carried shiny attempt instead resets the whole world. Taking over the demonstration's position is restricted to developer mode. The first Outskirts completion explicitly explains the deathless flower-root reward.
+
+The on-theme vector icon is included as window, boot splash and multi-resolution macOS bundle artwork. The app and launcher contain Intel/Apple Silicon binaries. The ZIP includes a readme and a self-contained app; no project checkout, Godot install or online service is needed. Signing is local/ad hoc; Apple Developer ID notarization remains a separate public-distribution step. Saves retain places/rewards/records/settings, not resumable active world attempts.
 
 ## Complete sampler · 0.44.0
 

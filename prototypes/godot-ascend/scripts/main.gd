@@ -9,6 +9,17 @@ const SectionMenu = preload("res://scripts/section_menu.gd")
 const CampaignWorkshop = preload("res://scripts/campaign_workshop.gd")
 var sampler=preload("res://scripts/sampler_run.gd").new()
 var sampler_overlay
+var dev_mode=false
+var dev_nodes=[]
+var basic_volume_sliders={}
+var dev_taps=0
+var dev_last_tap=0
+var voices_button:CheckBox
+var controls_menu
+var title_screen
+var watch_origin=""
+var section_heading:Label
+var focus_resume:Button
 var campaign_up_held=false
 var data
 var world
@@ -111,18 +122,21 @@ func style(background,border="#515b5c",radius=5):
 func button(parent,value,callback,sound=true):
  var b = Button.new()
  b.text = value
- b.focus_mode = Control.FOCUS_NONE
+ b.focus_mode = Control.FOCUS_ALL
  b.add_theme_font_size_override("font_size",16)
  b.add_theme_stylebox_override("normal",style("#182831","#3e5157"))
  b.add_theme_stylebox_override("hover",style("#293c41","#d1b478"))
  b.add_theme_stylebox_override("pressed",style("#435148","#e5cf93"))
  b.pressed.connect(func():
+  reset_dev_taps()
   if sound: audio.effect("ui-select",0.6)
   callback.call())
  parent.add_child(b)
  return b
 func _ready():
  get_tree().auto_accept_quit = false
+ DisplayServer.window_set_title("Bladefall")
+ dev_mode=test_mode or initial_room!="" or initial_world!=1 or "--world" in OS.get_cmdline_user_args() or "--room" in OS.get_cmdline_user_args() or "--capture" in OS.get_cmdline_user_args()
  Controls.bind()
  # macOS OpenGL VSync intermittently waits an extra display interval on this host.
  # Pace presentation to the actual display instead; simulation remains fixed at 60 Hz.
@@ -169,14 +183,11 @@ func _ready():
   scene.world_data = chapter_world.data
   scene.runtime = chapter_world
   scene.walking_style=1
-  scene.npc_design=clampi(int(preferences.get_value("display","npc_design",1)),0,2)
-  scene.knight_design=clampi(int(preferences.get_value("display","knight_design",0)),0,2)
-  if number==1:
-   scene.knight_design=clampi(int(preferences.get_value("display","outskirts_knight_design",scene.knight_design)),0,9)
-   scene.npc_design=clampi(int(preferences.get_value("display","outskirts_npc_design",scene.npc_design)),0,7)
-   scene.environment_design=int(preferences.get_value("display","outskirts_environment",0))
-   if not scene.environment_design in Landscape.Themes.CHOICES: scene.environment_design=0
-   scene.environment_feel=clampi(int(preferences.get_value("display","outskirts_surface",0)),0,2)
+  scene.knight_design=5
+  scene.npc_design=7
+  scene.environment_design=0
+  scene.environment_feel=2
+  scene.player_styles_locked=not dev_mode
   scene.reduced_motion = preferences.get_value("display","reduced_motion",false)
   view.add_child(scene)
   scene.load_scene(chapter_world.active())
@@ -231,6 +242,20 @@ func _ready():
  sampler_overlay=preload("res://scripts/sampler_overlay.gd").new()
  sampler_overlay.app=self
  root_ui.add_child(sampler_overlay)
+ controls_menu=preload("res://scripts/controls_menu.gd").new()
+ controls_menu.app=self
+ add_child(controls_menu)
+ title_screen=preload("res://scripts/front_end.gd").new()
+ title_screen.app=self
+ add_child(title_screen)
+ controls_menu.move_to_front()
+ apply_player_visibility()
+ if not dev_mode:
+  sampler.profile.discover(chapter_number,world.active_id,false)
+  rebuild_world_menu()
+  rebuild_section_menu()
+ if not test_mode and not dev_mode: title_screen.open(true)
+ else: title_screen.hide()
 func create_interface():
  root_ui = Control.new()
  root_ui.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -300,7 +325,7 @@ func create_interface():
  var row = HBoxContainer.new()
  row.add_theme_constant_override("separation",8)
  column.add_child(row)
- button(row,"Resume",func():set_paused(false),false)
+ focus_resume=button(row,"Resume",func():set_paused(false),false)
  button(row,"Retry · R",func():retry_room();set_paused(false))
  watch_button = button(row,"Watch reference",func():toggle_watch();set_paused(false))
  puzzle_hint_button=button(row,"Hint · H",func():show_workshop_hint();set_paused(false))
@@ -316,42 +341,52 @@ func create_interface():
  workshop_demo_picker.focus_mode=Control.FOCUS_NONE
  column.add_child(workshop_demo_picker)
  workshop_demo_picker.hide()
- button(column,"Sound mixer · channels and individual effects",open_mixer,false)
+ dev_nodes.append(button(column,"Sound mixer · channels and individual effects",open_mixer,false))
  restart_button=button(column,"Start world over",restart_world)
  chapter_picker=OptionButton.new()
- for number in CHAPTERS:
-  chapter_picker.add_item(("Test · " if number==4 else ("Core %d · "%(number-100) if number>100 else str(number)+" · "))+chapters[number].world.data.world.name)
- chapter_picker.item_selected.connect(func(index):switch_chapter(CHAPTERS[index]);set_paused(false))
+ chapter_picker.focus_mode=Control.FOCUS_ALL
+ rebuild_world_menu()
+ chapter_picker.item_selected.connect(func(index):switch_chapter(chapter_picker.get_item_id(index));set_paused(false))
  column.add_child(chapter_picker)
- text(column,"EXPLORE A SECTION",12,"#bba984")
+ section_heading=text(column,"EXPLORE A SECTION · PRACTICE",12,"#bba984")
  room_picker = OptionButton.new()
  room_picker.custom_minimum_size = Vector2(560,40)
- room_picker.focus_mode = Control.FOCUS_NONE
+ room_picker.focus_mode = Control.FOCUS_ALL
+ room_picker.fit_to_longest_item=false
  rebuild_section_menu()
- room_picker.item_selected.connect(func(index):load_section(room_picker.get_item_id(index));set_paused(false))
+ room_picker.item_selected.connect(func(index):
+  if watch: toggle_watch()
+  load_section(room_picker.get_item_id(index))
+  notice_label.text="Section practice · Start world over for a full journey and rewards"
+  notice_time=5
+  set_paused(false))
  column.add_child(room_picker)
- text(column,"OUTSKIRTS APPEARANCE",12,"#bba984")
- text(column,"Walking · Measured",14,"#a6b7bb")
+ dev_nodes.append(text(column,"APPEARANCE",12,"#bba984"))
+ dev_nodes.append(text(column,"Walking · Measured",14,"#a6b7bb"))
  design_picker=OptionButton.new()
  for id in Landscape.KnightStyles.CHOICES: design_picker.add_item("Knight · "+Landscape.KnightStyles.NAMES[id],id)
  design_picker.select(design_picker.get_item_index(landscape.knight_design))
  design_picker.item_selected.connect(func(index):apply_character_settings(design_picker.get_item_id(index),chapters[1].landscape.npc_design))
  column.add_child(design_picker)
+ dev_nodes.append(design_picker)
  npc_picker=OptionButton.new()
  for id in Landscape.Styles.CHOICES: npc_picker.add_item("People · "+Landscape.Styles.NAMES[id],id)
  npc_picker.select(npc_picker.get_item_index(landscape.npc_design))
  npc_picker.item_selected.connect(func(index):apply_character_settings(chapters[1].landscape.knight_design,npc_picker.get_item_id(index)))
  column.add_child(npc_picker)
+ dev_nodes.append(npc_picker)
  environment_picker=OptionButton.new()
  for id in Landscape.Themes.CHOICES: environment_picker.add_item("Scenery · "+Landscape.Themes.NAMES[id],id)
  environment_picker.select(environment_picker.get_item_index(chapters[1].landscape.environment_design))
  environment_picker.item_selected.connect(func(index):apply_environment_settings(environment_picker.get_item_id(index)))
  column.add_child(environment_picker)
+ dev_nodes.append(environment_picker)
  feel_picker=OptionButton.new()
  for label in Landscape.Themes.FEELS: feel_picker.add_item("Treatment · "+label)
  feel_picker.select(chapters[1].landscape.environment_feel)
  feel_picker.item_selected.connect(apply_surface_settings)
  column.add_child(feel_picker)
+ dev_nodes.append(feel_picker)
  appearance_preview=Control.new()
  appearance_preview.custom_minimum_size=Vector2(560,168)
  appearance_preview.mouse_filter=Control.MOUSE_FILTER_IGNORE
@@ -365,11 +400,14 @@ func create_interface():
       found=true
  appearance_preview.draw.connect(draw_appearance_preview)
  column.add_child(appearance_preview)
- text(column,"Idle / walk / turn · People preview below",12,"#90a6ac")
+ dev_nodes.append(appearance_preview)
+ dev_nodes.append(text(column,"Idle / walk / turn · People preview below",12,"#90a6ac"))
  var voices = CheckBox.new()
+ voices_button=voices
  voices.text = "Spoken dialogue (subtitles stay on)"
  voices.button_pressed = audio.voices_enabled
  voices.toggled.connect(set_voices)
+ voices.pressed.connect(register_dev_tap)
  column.add_child(voices)
  var reduced = CheckBox.new()
  reduced.text = "Reduce motion and screen shake"
@@ -380,10 +418,25 @@ func create_interface():
  column.add_child(reduced)
  var light_row = HBoxContainer.new()
  column.add_child(light_row)
- button(light_row,"Lighting on / off",func():landscape.lit = not landscape.lit)
+ dev_nodes.append(button(light_row,"Lighting on / off",func():landscape.lit = not landscape.lit))
  button(light_row,"Fullscreen · F11",toggle_fullscreen)
- text(column,"ARROWS  Move and aim\nSPACE / C / J  Jump     D / X / K  Dash\nA / Z / SHIFT / L  Cling, climb, carry or throw\nW / V / I  Strike     R  Retry     M  Music\nController: stick / d-pad · A jump · X/B dash · LB cling",15,"#b5c0bd")
- text(column,"Native Ascend · six preloaded chapters",12,"#70888f")
+ var controls_hint=text(column,"",14,"#b5c0bd")
+ controls_hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ controls_hint.text="Use Controls and remapping to see or change your bindings. Controller menus: stick / D-pad, A to select, B to go back."
+ var basic_audio=HBoxContainer.new()
+ column.add_child(basic_audio)
+ for bus in ["Master","Music"]:
+  text(basic_audio,bus,14,"#b5c0bd")
+  var slider=HSlider.new()
+  slider.custom_minimum_size=Vector2(180,25)
+  slider.min_value=0;slider.max_value=1;slider.step=.05;slider.value=audio.levels[bus]
+  slider.value_changed.connect(func(value):audio.levels[bus]=value;audio.apply_levels();save_preferences())
+  basic_audio.add_child(slider)
+  basic_volume_sliders[bus]=slider
+ button(column,"Controls and remapping",func():controls_menu.open(),false)
+ button(column,"Title menu",func():title_screen.open(false),false)
+ button(column,"Quit game",func():close_app(),false)
+ dev_nodes.append(button(column,"Leave developer mode",func():set_dev_mode(false),false))
  pause_panel.hide()
  build_mixer()
 func apply_character_settings(design,npc):
@@ -437,9 +490,12 @@ func toggle_fullscreen():
  DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if DisplayServer.window_get_mode()==DisplayServer.WINDOW_MODE_FULLSCREEN else DisplayServer.WINDOW_MODE_FULLSCREEN)
 func _unhandled_input(event):
  if event.is_echo(): return
- if event.is_action_pressed("knight_pause"):
-  if sampler_overlay!=null and sampler_overlay.panel.visible: sampler_overlay.close()
+ if event.is_action_pressed("knight_pause") or paused and event.is_action_pressed("ui_cancel"):
+  if controls_menu!=null and controls_menu.visible:
+   controls_menu.close()
+  elif sampler_overlay!=null and sampler_overlay.panel.visible: sampler_overlay.close()
   elif mixer_panel!=null and mixer_panel.visible: close_mixer()
+  elif title_screen!=null and title_screen.visible: title_screen.show_title()
   else: set_paused(not paused)
   get_viewport().set_input_as_handled()
  elif event.is_action_pressed("knight_retry") and not paused: retry_room()
@@ -454,13 +510,25 @@ func _unhandled_input(event):
    sync_mixer()
    save_preferences()
 func set_paused(value):
+ if not value and watch and not dev_mode and (sim.exited or tape_frame>=tape.size()): value=true
+ if title_screen!=null and title_screen.visible and not value:
+  paused=true
+  pause_panel.hide()
+  root_ui.hide()
+  title_screen.play.grab_focus()
+  return
  if not value and mixer_panel!=null:
   mixer_panel.hide()
   audio.stop_previews()
  paused = value
  pause_panel.visible = value
  if value:
+  rebuild_world_menu()
+  rebuild_section_menu()
+  apply_player_visibility()
+  focus_pause()
   for bus in volume_sliders: volume_sliders[bus].set_value_no_signal(audio.levels[bus])
+  for bus in basic_volume_sliders: basic_volume_sliders[bus].set_value_no_signal(audio.levels[bus])
  landscape.set_process(not value)
  audio.set_paused(value)
 
@@ -475,7 +543,7 @@ func show_subtitle(who,line,seconds):
 func _process(delta):
  preview_clock+=delta
  if paused:
-  appearance_preview.queue_redraw()
+  if dev_mode: appearance_preview.queue_redraw()
   return
  var frame_usec=Time.get_ticks_usec()
  if capture_path!="" and ticks>30:
@@ -492,40 +560,71 @@ func _process(delta):
   subtitle_panel.modulate.a = min(1.0,subtitle_age*5)*min(1.0,subtitle_time*3)
   if subtitle_time<=0: subtitle_panel.hide();landscape.speaker=""
 func toggle_watch():
- sampler.invalidate()
- world.sampler_practice=true
+ if dev_mode:
+  sampler.invalidate()
+  world.sampler_practice=true
  if watch:
-  watch = false
-  sim.world_context=world
-  world.configure_live_core(sim)
-  if world.seam_tiles.has(sim.room.id):
-   world.set_seam(sim.room.id,true)
-   sim.room=world.parsed[sim.room.id]
-  hold = 0
-  watch_button.text = "Watch solution" if is_workshop_room() else "Watch reference"
- else:
-  watch = true
-  load_section(current)
-  if tape.is_empty(): next_section()
+  if dev_mode:
+   var snapshot=sim.p.duplicate(true)
+   watch=false
+   sim=world.active()
+   sim.p=snapshot
+   sim.world_context=world
+   world.configure_live_core(sim)
+   landscape.runtime=world
+   landscape.load_scene(sim)
+  else:
+   watch=false
+   sampler.retry(world)
+   sim=world.active()
+   current=world.regions.find(world.active_id)
+   sim.world_context=world
+   world.configure_live_core(sim)
+   landscape.runtime=world
+   landscape.load_scene(sim)
+  hold=0
+  tape=[]
+  watch_origin=""
+  watch_button.text="Watch reference"
+  title.text=data.world.name.to_upper()+" · ASCEND"
+  status.text=Controls.prompt()
+  subtitle_panel.hide()
+  subtitle_time=0
+  return
+ watch_origin=world.active_id
+ var id=data.world.rooms[current].id
+ var recording=data.world.tapes.get(id,[])
+ if recording.is_empty() and not dev_mode:
+  notice_label.text="No reference for this section."
+  notice_time=3
+  return
+ watch=true
+ load_section(current)
+ if tape.is_empty() and dev_mode: next_section()
 func load_section(index,smooth_join=false):
- sampler.invalidate()
- world.sampler_practice=true
- if chapter_number!=4: watch_button.disabled=false
- current = index
+ if index<0 or index>=data.world.rooms.size(): return
  var id=data.world.rooms[index].id
- world.enter(id,true)
- sim=world.active()
+ if not dev_mode and not sampler.profile.has_room(chapter_number,id) and id!=world.data.world.get("atlasStart",""): return
+ if not watch:
+  sampler.invalidate()
+  world.sampler_practice=true
+ if chapter_number!=4: watch_button.disabled=false
+ current=index
  if watch:
+  if watch_origin=="": watch_origin=world.active_id
+  sim=Core.new(data.constants.duplicate(true),data.playerDefaults.duplicate(true))
+  sim.load_room(world.watch_room(id).duplicate(true))
   sim.autonomous_sweepers=false
   sim.pollen_config={}
   sim.white_flowers=[]
-  sim.load_room(world.watch_room(id))
-  if world.seam_tiles.has(id): world.set_seam(id,true)
-  world.restore_progress(sim)
   sim.world_context=null
+  landscape.runtime=null
  else:
+  world.enter(id,true)
+  sim=world.active()
   world.configure_live_core(sim)
   sim.world_context=world
+  landscape.runtime=world
  landscape.load_scene(sim,smooth_join)
  audio.room_changed(sim)
  tape = []
@@ -538,11 +637,11 @@ func load_section(index,smooth_join=false):
  select_section_menu()
  clear_other_room_hint()
  puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false) or sim.room.def.get("campaignWorkshop",false)
- watch_button.text = "Take control" if watch else ("Watch solution" if is_workshop_room() else "Watch reference")
+ watch_button.text = ("Take control" if dev_mode else "Try yourself") if watch else ("Watch solution" if is_workshop_room() else "Watch reference")
  title.text = data.world.name.to_upper()+" · "+(("SOLUTION" if chapter_number==4 else "REFERENCE") if watch else "ASCEND")
  room_banner.text = sim.room.name.to_upper()
  banner_time = 2.4
- workshop_demo_picker.visible=is_workshop_room()
+ workshop_demo_picker.visible=dev_mode and is_workshop_room()
  if is_workshop_room():
   notice_time=0
   quest_label.text=bearing_caption()
@@ -628,14 +727,15 @@ func _physics_process(_delta):
  if hold>0:
   landscape.previous_actor = landscape.current_actor
   hold -= 1
-  if hold==0 and watch: next_section()
+  if hold==0 and watch:
+   set_paused(true)
+   watch_button.grab_focus()
  else:
   var before = landscape.before_tick()
   var live_input=input_now()
   if watch:
    if tape_frame<tape.size():
     sim.step(decode(tape[tape_frame]))
-    world.tick_inactive()
     tape_frame += 1
   elif journey_frame<journey.size():
    world.step(decode(journey[journey_frame]))
@@ -643,13 +743,13 @@ func _physics_process(_delta):
   else: world.step(live_input)
   var effects = landscape.after_tick(before)
   audio.events(effects)
-  audio.tick(sim,1.0/60.0)
-  if not world.notices.is_empty():
+  if not watch: audio.tick(sim,1.0/60.0)
+  if not watch and not world.notices.is_empty():
    hint_room_id=""
    notice_label.text=world.notices.pop_front()
    notice_time=4.0
    audio.effect("quest",0.6)
-  if watch and sim.exited: hold=45
+  if watch and sim.exited and hold==0: hold=45
   if not watch and world.update_region():
    sim=world.active()
    current=world.regions.find(world.active_id)
@@ -663,6 +763,7 @@ func _physics_process(_delta):
    banner_time=1.4
   if is_workshop_room() and not watch: tick_workshop()
   if not watch:
+   if not dev_mode: discover_current()
    var event=sampler.tick(world,not journey.is_empty())
    if event in ["reset","landed"]: sync_sampler_scene()
   quest_label.text=bearing_caption()
@@ -670,11 +771,11 @@ func _physics_process(_delta):
  dash_label.text = "◆ DASH" if sim.p.dashes>0 else "◇ DASH"
  dash_label.modulate = Color("edbf74") if sim.p.dashes>0 else Color("687e91")
  death_label.text = "%d DEATHS" % sim.deaths
- if watch: status.text = "ORIGINAL ROUTE     ·     Esc opens the menu     ·     Take control to play the updated world"
- else: status.text = "← → MOVE     SPACE / C JUMP     D DASH     A CLING / CARRY     W STRIKE     R RETRY"
+ if watch: status.text = "REFERENCE · Start / Esc opens the menu · "+("Take control" if dev_mode else "Try yourself to restart this section")
+ else: status.text = Controls.prompt()
  if chapter_number==4: status.text="← → MOVE     SPACE JUMP     D + ARROWS DASH     A CLING     R RETRY     H HINT     Esc MENU"
  if chapter_number==4 and sim.room.def.get("workshopBiome","")=="woods": status.text="← → MOVE   SPACE JUMP   D DASH   A CLING   W + ARROWS CUT   R RETRY   H HINT   Esc MENU"
- if chapter_number==4 and watch: status.text="DEMONSTRATION     ·     Esc → Take control to play     ·     R repeats the route"
+ if chapter_number==4 and watch: status.text="DEMONSTRATION · Esc opens the menu"
  if capture_path!="" and ticks>30: measured_physics.append((Time.get_ticks_usec()-physics_start)/1000.0)
  if capture_path!="" and ticks==screenshot_after: capture.call_deferred()
 func campaign_travel(raw):
@@ -699,6 +800,7 @@ func campaign_travel(raw):
    break
 
 func next_section():
+ if not dev_mode: return
  var sections = data.world.sections
  var index = -1
  for i in range(sections.size()):
@@ -720,17 +822,21 @@ func next_section():
 func select_section_menu():
  var menu_index=room_picker.get_item_index(current)
  room_picker.select(menu_index)
- if menu_index<0: room_picker.text="Connecting passage"
+ if menu_index<0:
+  room_picker.select(-1)
+  room_picker.text="Connecting passage" if dev_mode else "Sections visited"
 
 func rebuild_section_menu():
  room_picker.clear()
  for entry in SectionMenu.entries(data):
   var id=data.world.rooms[entry.index].id
+  if not dev_mode and not sampler.profile.has_room(chapter_number,id): continue
   var mark=""
   if chapter_number==4:
    mark="◆ " if workshop_shards.has(id) else ("✓ " if workshop_completed.has(id) else "")
   if world.campaign_completed.has(id): mark="✓ "
-  room_picker.add_item(mark+entry.label,entry.index)
+  var label=entry.label if dev_mode else "%02d · %s"%[room_picker.item_count+1,data.world.rooms[entry.index].name]
+  room_picker.add_item(mark+label,entry.index)
  select_section_menu()
 
 func capture():
@@ -758,6 +864,7 @@ func capture():
 
 func _notification(what):
  if what==NOTIFICATION_WM_CLOSE_REQUEST: close_app()
+ elif what==NOTIFICATION_APPLICATION_FOCUS_OUT and is_node_ready() and not paused: set_paused(true)
 func close_app(code=0):
  if closing: return
  closing = true
@@ -871,13 +978,16 @@ func restart_world():
 
 func switch_chapter(number):
  if number==chapter_number or not chapters.has(number): return
- if number>=101 and not test_mode and not sampler.profile.core_open(number-100):
+ if not dev_mode and (number==4 or not sampler.profile.has_world(number)): return
+ if number>=101 and not dev_mode and not test_mode and not sampler.profile.core_open(number-100):
   notice_label.text="Earn the base root and Fractured crown to unlock this Core."
   notice_time=5
-  chapter_picker.select(CHAPTERS.find(chapter_number))
+  select_world_menu()
   return
  sampler.invalidate()
  var old=chapters[chapter_number]
+ old.landscape.runtime=old.world
+ watch_origin=""
  old.container.hide()
  old.viewport.render_target_update_mode=SubViewport.UPDATE_DISABLED
  old.landscape.set_process(false)
@@ -913,7 +1023,7 @@ func switch_chapter(number):
  watch_button.text="Watch solution" if is_workshop_room() else "Watch reference"
  watch_button.disabled=false
  rebuild_section_menu()
- chapter_picker.select(CHAPTERS.find(number))
+ select_world_menu()
  design_picker.disabled=number!=1
  npc_picker.disabled=number!=1
  environment_picker.disabled=number!=1
@@ -927,8 +1037,8 @@ func switch_chapter(number):
  if number>=101: pause_description.text="The heart of the world · Core Ascend"
  clear_other_room_hint()
  puzzle_hint_button.visible=sim.room.def.get("puzzleStudy",false) or sim.room.def.get("campaignWorkshop",false)
- workshop_controls.visible=number==4 or (cover_comparison or causeway_launch_rooms or weight_comparison) and number==23
- workshop_demo_picker.visible=is_workshop_room()
+ workshop_controls.visible=dev_mode and (number==4 or (cover_comparison or causeway_launch_rooms or weight_comparison) and number==23)
+ workshop_demo_picker.visible=dev_mode and is_workshop_room()
  workshop_previous.visible=(number==4 or (cover_comparison or causeway_launch_rooms or weight_comparison) and number==23) and data.world.rooms.size()>1
  workshop_next.visible=workshop_previous.visible
  if number==4:
@@ -955,6 +1065,7 @@ func sync_mixer():
   volume_sliders[bus].set_value_no_signal(audio.levels[bus])
   mixer_level_labels[bus].text=str(roundi(audio.levels[bus]*100))+"%"
 func open_mixer():
+ if not dev_mode: return
  set_paused(true)
  pause_panel.hide()
  mixer_panel.show()
@@ -1056,9 +1167,102 @@ func build_mixer():
  mixer_panel.hide()
 
 func sync_sampler_scene():
+ if not dev_mode: discover_current()
  sim=world.active()
  current=world.regions.find(world.active_id)
  landscape.sim=sim
  landscape.active_position=world.placements[world.active_id]
  landscape.snap_actor()
  select_section_menu()
+
+func reset_dev_taps():
+ dev_taps=0
+ dev_last_tap=0
+func register_dev_tap():
+ var now=Time.get_ticks_msec()
+ if now-dev_last_tap>2000: dev_taps=0
+ dev_taps+=1
+ dev_last_tap=now
+ if dev_taps>=5:
+  set_dev_mode(true)
+  reset_dev_taps()
+func set_dev_mode(value):
+ dev_mode=value
+ if not value:
+  if chapter_number==4 or not sampler.profile.has_world(chapter_number): switch_chapter(sampler.profile.last_world if sampler.profile.has_world(sampler.profile.last_world) else 1)
+  if not sampler.profile.has_room(chapter_number,world.active_id):
+   var start_id=world.data.world.get("atlasStart",world.regions[0])
+   world.enter(start_id,true)
+   sim=world.active()
+   current=world.regions.find(start_id)
+   landscape.runtime=world
+   landscape.load_scene(sim)
+  discover_current()
+
+ if not value:
+  for chapter in chapters.values():
+   chapter.landscape.knight_design=5
+   chapter.landscape.npc_design=7
+   chapter.landscape.walking_style=1
+   chapter.landscape.environment_design=0
+   chapter.landscape.set_environment_feel(2)
+ for chapter in chapters.values(): chapter.landscape.player_styles_locked=not value
+ rebuild_world_menu()
+ rebuild_section_menu()
+ apply_player_visibility()
+ notice_label.text="Developer mode enabled" if value else "Player mode"
+ notice_time=4
+func apply_player_visibility():
+ for node in dev_nodes: node.visible=dev_mode
+ workshop_controls.visible=dev_mode and chapter_number==4
+ workshop_demo_picker.visible=dev_mode and is_workshop_room()
+ if watch: watch_button.text="Take control" if dev_mode else "Try yourself"
+func rebuild_world_menu():
+ if chapter_picker==null: return
+ chapter_picker.clear()
+ for n in CHAPTERS:
+  if not dev_mode and (n==4 or not sampler.profile.has_world(n)): continue
+  chapter_picker.add_item(world_label(n),n)
+ select_world_menu()
+func select_world_menu():
+ if chapter_picker!=null: chapter_picker.select(chapter_picker.get_item_index(chapter_number))
+func discover_current():
+ if world==null or dev_mode or watch: return
+ if sampler.profile.discover(chapter_number,world.active_id):
+  rebuild_section_menu()
+  rebuild_world_menu()
+func travel_to_world(number):
+ if not chapters.has(number) or not sampler.profile.available(number): return
+ var target=chapters[number].world
+ sampler.profile.discover(number,target.data.world.get("atlasStart",target.regions[0]))
+ rebuild_world_menu()
+ switch_chapter(number)
+ restart_world()
+ if sampler_overlay!=null:
+  sampler_overlay.panel.hide()
+  sampler_overlay.scrim.hide()
+func focus_pause():
+ if focus_resume!=null and pause_panel.is_visible_in_tree(): focus_resume.grab_focus()
+func _input(event):
+ if event is InputEventJoypadButton and event.pressed or event is InputEventJoypadMotion and absf(event.axis_value)>.5: Controls.using_controller=true
+ elif event is InputEventKey and event.pressed or event is InputEventMouseButton and event.pressed: Controls.using_controller=false
+ if dev_taps==0: return
+ if event is InputEventMouseButton and event.pressed:
+  if event.button_index!=MOUSE_BUTTON_LEFT or voices_button==null or not voices_button.get_global_rect().has_point(event.position): reset_dev_taps()
+ elif event is InputEventKey and event.pressed and not event.echo:
+  if not event.is_action_pressed("ui_accept") or get_viewport().gui_get_focus_owner()!=voices_button: reset_dev_taps()
+ elif event is InputEventJoypadButton and event.pressed:
+  if not event.is_action_pressed("ui_accept") or get_viewport().gui_get_focus_owner()!=voices_button: reset_dev_taps()
+
+func focus_first(node):
+ if not node.is_visible_in_tree(): return false
+ if node is BaseButton and node.focus_mode!=Control.FOCUS_NONE:
+  node.grab_focus()
+  return true
+ for child in node.get_children():
+  if child is Control and focus_first(child): return true
+ return false
+
+func world_label(number):
+ var label=chapters[number].world.data.world.name
+ return "Core %d · %s"%[number-100,label.trim_suffix(" · Core")] if number>=101 else label

@@ -1,7 +1,9 @@
 extends RefCounted
 ## Keep the source defaults in data; use physical keys so keyboard layouts retain their positions.
 const ACTIONS = {"l":"move_left","r":"move_right","u":"aim_up","d":"aim_down","jump":"knight_jump","dash":"knight_dash","grab":"knight_grab","strike":"knight_strike","parry":"knight_parry","portal":"knight_portal","retry":"knight_retry","pause":"knight_pause"}
-static func bind():
+static var using_controller=false
+const Remap=preload("res://scripts/control_remap.gd")
+static func bind(path=Remap.PATH):
  var source = JSON.parse_string(FileAccess.get_file_as_string("res://data/controls.json"))
  var special = {"ArrowLeft":KEY_LEFT,"ArrowRight":KEY_RIGHT,"ArrowUp":KEY_UP,"ArrowDown":KEY_DOWN,"Space":KEY_SPACE,"ShiftLeft":KEY_SHIFT,"ShiftRight":KEY_SHIFT}
  for verb in ACTIONS:
@@ -17,18 +19,26 @@ static func bind():
  for verb in pads:
   for index in pads[verb]:
    var event = InputEventJoypadButton.new()
+   event.device=-1
    event.button_index = index
    InputMap.action_add_event(ACTIONS[verb],event)
  for pair in [["l",JOY_AXIS_LEFT_X,-1.0],["r",JOY_AXIS_LEFT_X,1.0],["u",JOY_AXIS_LEFT_Y,-1.0],["d",JOY_AXIS_LEFT_Y,1.0],["grab",JOY_AXIS_TRIGGER_LEFT,1.0],["parry",JOY_AXIS_TRIGGER_RIGHT,1.0]]:
   var event = InputEventJoypadMotion.new()
+  event.device=-1
   event.axis = pair[1]
   event.axis_value = pair[2]
   InputMap.action_add_event(ACTIONS[pair[0]],event)
  var escape = InputEventKey.new()
  escape.physical_keycode = KEY_ESCAPE
  InputMap.action_add_event(ACTIONS.pause,escape)
+ Remap.load_settings(path)
+ Remap.apply(ACTIONS)
 static func read():
  var raw = {}
  for verb in ACTIONS:
   if verb not in ["retry","pause"]: raw[verb] = Input.is_action_pressed(ACTIONS[verb])
  return raw
+
+static func prompt():
+ var pad=using_controller
+ return ("Move: "+Remap.short_label(ACTIONS.l,pad)+" / "+Remap.short_label(ACTIONS.r,pad)+"   ")+"Jump: "+Remap.short_label(ACTIONS.jump,pad)+"   Dash: "+Remap.short_label(ACTIONS.dash,pad)+"   Climb/carry: "+Remap.short_label(ACTIONS.grab,pad)+"   Strike: "+Remap.short_label(ACTIONS.strike,pad)+"   Pause: "+Remap.short_label(ACTIONS.pause,pad)

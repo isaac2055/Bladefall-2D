@@ -12,7 +12,7 @@ import re
 import subprocess
 import time
 
-CURRENT_SUITES = "sampler sampler_app sampler_journey run_profile cores world_checks world2_journey world3_journey fractured_journey woods_nine".split()
+CURRENT_SUITES = "player_release sampler sampler_app sampler_journey run_profile cores world_checks world2_journey world3_journey fractured_journey woods_nine".split()
 SUITES = """fractured_woods_routes_required fractured_woods_three
 fractured_woods_three_app fractured_woods_feel fractured_nine fractured_nine_app
 feel_journey fractured_next fractured section_menu campaign_workshop application
@@ -38,7 +38,7 @@ def main():
     project = Path(__file__).resolve().parents[1]
     repo = project.parents[1]
     engine = Path(os.environ.get("GODOT", repo / ".cache/godot/Godot.app/Contents/MacOS/Godot"))
-    app = project / "exports/Bladefall Ascend Prototype.app/Contents/MacOS/BladefallAscend"
+    app = project / "exports/Bladefall.app/Contents/MacOS/BladefallAscend"
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
     overlay = output / "tests.pck"

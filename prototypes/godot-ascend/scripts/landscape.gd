@@ -1,6 +1,7 @@
 @tool
 extends Node2D
 var sampler
+var player_styles_locked=false
 ## Presentation is interpolated and layered; the integer simulation is never modified here.
 const KnightStyles=preload("res://scripts/knight_styles.gd")
 const Styles=preload("res://scripts/character_styles.gd")
@@ -198,7 +199,7 @@ func make_tiles():
  for variant in range(20):
   for y in range(8):
    for x in range(8):
-    if int(world_data.world.n)==1 and (environment_design>0 or environment_feel>0):
+    if look_number()==1 and (environment_design>0 or environment_feel>0):
      image.set_pixel(variant*8+x,y,Themes.tile_color(environment_design,variant,x,y,environment_feel))
      continue
     if variant==15:
@@ -235,6 +236,9 @@ func make_tiles():
     if fractured:
      color=Color(color.r*.88,color.g*.88,color.b*1.15,color.a)
      if variant<16 and y in [3,4,5] and x==(variant*3+y)%7 and variant%3==0: color=Color("#9eb9ce")
+    if environment_feel==2:
+     if (y+int(sin(x*.55+variant)*1.5))%8==2: color=color.lightened(.065)
+     elif (y+int(sin(x*.55+variant)*1.5))%8==6: color=color.darkened(.09)
     image.set_pixel(variant*8+x,y,color)
  var atlas = TileSetAtlasSource.new()
  atlas.texture = ImageTexture.create_from_image(image)
@@ -964,7 +968,7 @@ func draw_person(who,point,active):
  var before=ink_color
  var design=npc_design
  ink_color*=Color(who.get("tint","ffffffff"))
- npc_design=int(who.get("character_style",npc_design))
+ if not player_styles_locked: npc_design=int(who.get("character_style",npc_design))
  var dimensions=who.get("visual_scale",[1,1])
  var transformed=who.has("visual_scale") or who.has("visual_rotation")
  if transformed: ink.draw_set_transform_matrix(paint_transform*Transform2D(float(who.get("visual_rotation",0)),Vector2(dimensions[0],dimensions[1]),0,point))

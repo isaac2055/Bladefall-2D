@@ -7,6 +7,9 @@ const CORES=["Trumpet Sprite","Oak Wisp","Clockwork Seed"]
 var path="user://bladefall-garden.json"
 var plants={}
 var records={}
+var discovered={"1":{}}
+var completed={}
+var last_world=1
 var run={}
 var last_result={}
 var save_error=""
@@ -19,12 +22,24 @@ func load_profile():
  if not value is Dictionary or value.get("version",0)!=VERSION: return
  plants=value.get("plants",{}) if value.get("plants") is Dictionary else {}
  records=value.get("records",{}) if value.get("records") is Dictionary else {}
+ discovered=value.get("discovered",{"1":{}})
+ completed=value.get("completed",{})
+ last_world=int(value.get("last_world",1))
+ if not discovered is Dictionary: discovered={"1":{}}
+ if not completed is Dictionary: completed={}
+ # Older profiles already prove these worlds were completed.
+ for key in records:
+  for entry in records[key]:
+   var n=int(entry.get("chapter",0))
+   if n in [1,2,3,21,22,23,101,102,103]:
+    completed[str(n)]=true
+    if not discovered.has(str(n)): discovered[str(n)]={}
 func save_profile():
  var file=FileAccess.open(path+".tmp",FileAccess.WRITE)
  if file==null:
   save_error="Cannot save Garden: "+error_string(FileAccess.get_open_error())
   return false
- file.store_string(JSON.stringify({"version":VERSION,"plants":plants,"records":records}))
+ file.store_string(JSON.stringify({"version":VERSION,"plants":plants,"records":records,"discovered":discovered,"completed":completed,"last_world":last_world}))
  file.close()
  var error=DirAccess.rename_absolute(ProjectSettings.globalize_path(path+".tmp"),ProjectSettings.globalize_path(path))
  save_error="" if error==OK else "Cannot save Garden: "+error_string(error)
@@ -60,6 +75,8 @@ func finish(required=[]):
  if run.is_empty() or run.finished or not run.eligible: return {}
  for room in required:
   if not run.visited.has(room) and not run.cleared.has(room): return {}
+ var first_clear=not completed.get(str(run.chapter),false)
+ completed[str(run.chapter)]=true
  run.finished=true
  var n=home(run.chapter)
  var item=garden(n)
@@ -88,6 +105,7 @@ func finish(required=[]):
  if board.size()>20: board.resize(20)
  records[key]=board
  last_result=entry.duplicate(true)
+ last_result.first_clear=first_clear
  last_result.award=award
  last_result.saved=save_profile()
  return last_result
@@ -96,3 +114,22 @@ func board(chapter,mode="normal"):
 static func duration(frames):
  var cs=int(frames*100/60)
  return "%02d:%02d.%02d"%[cs/6000,(cs/100)%60,cs%100]
+
+func has_world(chapter): return discovered.has(str(chapter))
+func has_room(chapter,room): return discovered.get(str(chapter),{}).has(room)
+func discover(chapter,room,remember=true):
+ if chapter not in [1,2,3,21,22,23,101,102,103]: return false
+ var key=str(chapter)
+ if not discovered.has(key): discovered[key]={}
+ var fresh=not discovered[key].has(room)
+ var moved=remember and last_world!=chapter
+ discovered[key][room]=true
+ if remember: last_world=chapter
+ if fresh or moved: save_profile()
+ return fresh
+func available(chapter):
+ if has_world(chapter): return true
+ if chapter in [2,3]: return completed.get(str(chapter-1),false)
+ if chapter in [21,22,23]: return completed.get(str(chapter-20),false)
+ if chapter in [101,102,103]: return core_open(chapter-100)
+ return chapter==1

@@ -94,6 +94,7 @@ func open_garden():
  app.button(content,"Back to game",close,false)
  panel.size=Vector2(800,590)
  panel.show()
+ app.focus_first.call_deferred(panel)
 func show_result():
  app.set_paused(true)
  app.pause_panel.hide()
@@ -112,9 +113,24 @@ func show_result():
  icon.root=plant.root
  icon.top=plant.top
  icon.shiny=plant.core_shiny if icon.core_reward else plant.flower_shiny
- content.add_child(icon)
+ if icon.root or icon.top or icon.core_reward and icon.owned: content.add_child(icon)
+ else: icon.free()
  app.text(content,r.award if r.award!="" else "Journey recorded · clear without deaths for the flower root",20)
  app.text(content,"Saved to this Mac's "+r.mode+" leaderboard." if r.saved else app.sampler.profile.save_error,16)
+ if app.chapter_number==1 and r.get("first_clear",false):
+  var hint=app.text(content,"",17,"#cadbab")
+  hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+  hint.text="A flower root waits for a journey through the entire Outskirts without a single death. You found it!" if r.deaths==0 else "The Outskirts holds a secret reward: return and complete the entire world without a single death to earn a flower root."
+ var destinations=[]
+ if app.chapter_number in [1,2]: destinations.append(app.chapter_number+1)
+ if app.chapter_number in [1,2,3]:
+  destinations.append(app.chapter_number+20)
+  if app.sampler.profile.core_open(app.chapter_number): destinations.append(app.chapter_number+100)
+ if app.chapter_number in [21,22,23] and app.sampler.profile.core_open(app.chapter_number-20): destinations.append(app.chapter_number+80)
+ for destination in destinations:
+  app.button(content,"Continue to "+app.world_label(destination),func():
+   panel.hide();scrim.hide();app.travel_to_world(destination),false)
+
  app.button(content,"Garden and leaderboard",open_garden,false)
  app.button(content,"Replay world",func():
   showing_result=false
@@ -124,3 +140,4 @@ func show_result():
  app.button(content,"Continue exploring",close,false)
  panel.size=Vector2(800,590)
  panel.show()
+ app.focus_first.call_deferred(panel)

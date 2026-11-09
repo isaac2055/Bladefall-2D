@@ -29,9 +29,11 @@ func run():
  app.toggle_watch()
  app.restart_world()
  app.test_mode=false
+ app.dev_mode=false
  app.switch_chapter(101)
  check(app.chapter_number==1,"Core locked until both flower parts")
  app.test_mode=true
+ app.dev_mode=true
  for n in [1,2,3]:
   var p=app.sampler.profile.garden(n)
   p.root=true;p.top=true;p.core=true
