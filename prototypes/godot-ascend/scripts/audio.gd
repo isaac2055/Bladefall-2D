@@ -29,11 +29,16 @@ func _ready():
  manifest = JSON.parse_string(FileAccess.get_file_as_string("res://data/audio.json"))
  # Warm the reused resources before gameplay; first hits/lines do not load files mid-frame.
  for recording in manifest.files: stream(recording.path)
+ # Allocate the bus array in one operation. Godot 4.5's Web sample backend
+ # reorders buses when add_bus appends with -1, disconnecting Master output.
+ var missing=[]
  for bus in levels:
-  if AudioServer.get_bus_index(bus)<0:
-   AudioServer.add_bus()
-   AudioServer.set_bus_name(AudioServer.bus_count-1,bus)
-   AudioServer.set_bus_send(AudioServer.bus_count-1,"Master")
+  if AudioServer.get_bus_index(bus)<0: missing.append(bus)
+ var first=AudioServer.bus_count
+ AudioServer.bus_count=first+missing.size()
+ for i in range(missing.size()):
+  AudioServer.set_bus_name(first+i,missing[i])
+  AudioServer.set_bus_send(first+i,"Master")
  apply_levels()
  var index = AudioServer.get_bus_index("Master")
  if AudioServer.get_bus_effect_count(index)==0:
