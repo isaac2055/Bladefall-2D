@@ -44,3 +44,24 @@ This backup is local and is not sent to any service. Export a manual backup if
 needed; the next import replaces the automatic backup.
 
 The old `bladefall2d` Pages project and its playtest API are independent.
+
+## Windows download
+
+`tools/build-windows.sh` exports a Windows x64 executable and game pack with
+Godot 4.5.1's Windows export templates. It writes `exports/Bladefall-Windows.zip`,
+checks the PE signature/architecture and ZIP integrity, and includes a Windows
+readme. Run `python3 tools/check-windows.py` with `GODOT` set to exercise the
+Windows-exported game pack on the local host. This validates packaged resources
+and save behavior, not the Windows executable's runtime on a Windows PC.
+
+Upload the ZIP to the existing `ascend-v0.51.0` GitHub prerelease and redeploy Pages
+after updating the landing page. Windows saves use the same portable format as
+Mac and web. The Windows executable is unsigned.
+
+## Android feasibility
+
+Godot 4.5.1 supports APK export. This project does not yet have touch controls,
+an Android export preset or a configured Android SDK/JDK 17 toolchain on the
+release host. Android work needs those, signing with a persistent release key,
+and device performance/control testing before advertising a phone download.
+The repository's older JavaScript Android wrapper is a separate game build.
