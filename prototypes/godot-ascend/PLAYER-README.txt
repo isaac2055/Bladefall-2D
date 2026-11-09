@@ -1,5 +1,5 @@
 BLADEFALL — ASCEND
-Willow Studios · Prototype 0.47.0
+Willow Studios · Prototype 0.48.0
 
 This app includes the game, engine, artwork and audio. No Godot installation,
 project checkout, download tool or online account is needed. Move Bladefall.app
@@ -14,8 +14,9 @@ Settings provides audio, reduced motion, fullscreen and controls. Title-menu
 Settings keeps the music playing; in-game Settings pauses it.
 
 Clearing a base world earns its root; a deathless full clear makes it shiny.
-Complete all three base worlds to open Fractured. Each Fractured clear earns the
-flower crown and opens that world's Core. Core clears award animated keepsakes.
+Complete all three base worlds to open Fractured Outskirts and Core Outskirts.
+Each advanced route then unlocks in order: Outskirts, Woods, Causeway. A Fractured
+clear earns the flower crown. Core clears award animated keepsakes.
 On later Fractured/Core runs, collect the reward near the start and carry it
 through without dying to make it shiny. These attempts always restart the whole
 world after death, Retry or resuming from a saved challenge.

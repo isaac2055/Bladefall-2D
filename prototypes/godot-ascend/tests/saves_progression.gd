@@ -31,7 +31,7 @@ func run():
  r.profile.start(1);r.profile.tick("end");r.profile.finish()
  check(r.profile.garden(1).root_shiny,"deathless full base run upgrades root to shiny")
  var reload=preload("res://scripts/run_profile.gd").new(r.profile.path)
- check(reload.all_bases_clear() and reload.has_world(2) and reload.available(23) and reload.garden(1).root_shiny,"rewards/unlocks survive reload")
+ check(reload.all_bases_clear() and reload.has_world(2) and reload.available(21) and not reload.available(23) and reload.garden(1).root_shiny,"rewards/unlocks survive reload")
  for spec in [[2,"workshop-returning"],[22,"cl22-puzzle-lantern-above-door"],[23,"cl23-weight-airborne"],[102,"core-black-woods"]]:
   var n=spec[0];var id=spec[1]
   var w=make(n)

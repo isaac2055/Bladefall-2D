@@ -12,7 +12,7 @@ import re
 import subprocess
 import time
 
-CURRENT_SUITES = "bonus_routes road_presentation saves_progression player_release sampler sampler_app sampler_journey run_profile cores world_checks world2_journey world3_journey fractured_journey woods_nine".split()
+CURRENT_SUITES = "sequential_unlocks bonus_routes road_presentation saves_progression player_release sampler sampler_app sampler_journey run_profile cores world_checks world2_journey world3_journey fractured_journey woods_nine".split()
 SUITES = """fractured_woods_routes_required fractured_woods_three
 fractured_woods_three_app fractured_woods_feel fractured_nine fractured_nine_app
 feel_journey fractured_next fractured section_menu campaign_workshop application

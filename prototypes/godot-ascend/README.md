@@ -1,6 +1,12 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.47.0** · Player-facing Bladefall sampler for macOS: Outskirts, Woods and Causeway, their Fractured routes and Cores 1–3. Open `exports/Bladefall.app`, or share `exports/Bladefall-macOS.zip`. The app includes its own engine and all game resources.
+Version **0.48.0** · Player-facing Bladefall sampler for macOS: Outskirts, Woods and Causeway, their Fractured routes and Cores 1–3. Open `exports/Bladefall.app`, or share `exports/Bladefall-macOS.zip`. The app includes its own engine and all game resources.
+
+## Sequential advanced worlds · 0.48.0
+
+Completing bases 1–3 opens Fractured Outskirts and Core Outskirts. Each advanced route unlocks independently in order: Outskirts → Woods → Causeway. Existing discoveries cannot bypass the prerequisite clear. Fractured flower pickups require an earned crown. Core scores use their original base regions; Fractured Outskirts now reuses Midnight Field, while Fractured Woods and Causeway retain their distinct scores.
+
+Movement Workshop is removed from the game, including developer navigation and its play launcher. The shared world4 authoring data remains an internal source for already integrated affixed rooms. Transport-story changes are proposal only this release: see [next-LLM handoff](research/TRANSPORT-STORY-NEXT-LLM.md).
 
 ## Continuous lifts and story scenes · 0.47.0
 

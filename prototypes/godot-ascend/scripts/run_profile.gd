@@ -61,11 +61,11 @@ func garden(number):
  return plants[key]
 func core_open(number):
  var item=garden(number)
- return all_bases_clear() and item.root and item.top
+ return all_bases_clear() and (number==1 or completed.get(str(99+number),false))
 func can_carry(chapter):
  var number=home(chapter)
  if number not in [1,2,3]: return false
- return garden(number).core if chapter>=101 else core_open(number) if chapter>=21 else false
+ return garden(number).core if chapter>=101 else garden(number).top if chapter>=21 else false
 func start(chapter,eligible=true,carrying=false):
  run={"chapter":chapter,"frames":0,"deaths":0,"eligible":eligible and home(chapter) in [1,2,3],"carrying":carrying and can_carry(chapter),"finished":false,"visited":{},"cleared":{}}
  last_result={}
@@ -98,7 +98,7 @@ func finish(required=[]):
    award="Shiny flower root earned"
   if run.chapter<3 and not discovered.has(str(run.chapter+1)): discovered[str(run.chapter+1)]={}
   if all_bases_clear():
-   for chapter in [21,22,23]:
+   for chapter in [21,101]:
     if not discovered.has(str(chapter)): discovered[str(chapter)]={}
 
  elif run.chapter in [21,22,23]:
@@ -141,8 +141,8 @@ static func duration(frames):
 
 func all_bases_clear(): return completed.get("1",false) and completed.get("2",false) and completed.get("3",false)
 func has_world(chapter):
- if chapter in [21,22,23]: return all_bases_clear()
- if chapter in [101,102,103]: return core_open(chapter-100) and discovered.has(str(chapter))
+ if chapter in [21,22,23]: return all_bases_clear() and (chapter==21 or completed.get(str(chapter-1),false))
+ if chapter in [101,102,103]: return core_open(chapter-100)
  if chapter in [2,3]: return completed.get(str(chapter-1),false) or discovered.has(str(chapter))
  return discovered.has(str(chapter))
 func has_room(chapter,room): return discovered.get(str(chapter),{}).has(room)
@@ -157,7 +157,7 @@ func discover(chapter,room,remember=true):
  if fresh or moved: save_profile()
  return fresh
 func available(chapter):
- if chapter in [21,22,23]: return all_bases_clear()
+ if chapter in [21,22,23]: return all_bases_clear() and (chapter==21 or completed.get(str(chapter-1),false))
  if chapter in [101,102,103]: return core_open(chapter-100)
  if has_world(chapter): return true
  if chapter in [2,3]: return completed.get(str(chapter-1),false)

@@ -38,7 +38,7 @@ var focus_resume:Button
 var campaign_up_held=false
 var data
 var world
-const CHAPTERS=[1,2,3,21,22,23,4,101,102,103]
+const CHAPTERS=[1,2,3,21,22,23,101,102,103]
 var workshop_completed={}
 var workshop_shards={}
 var puzzle_hint_button:Button

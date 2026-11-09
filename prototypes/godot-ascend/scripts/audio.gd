@@ -131,7 +131,7 @@ func effort(name,force = false):
 func room_changed(core=null):
  if world_runtime!=null:
   var number=int(world_runtime.data.world.n)
-  var chapter=manifest.chapters.get(str(number),manifest.chapters.get(str(number-100),manifest.chapters["1"]))
+  var chapter=chapter_audio(number)
   var id=core.room.id if core!=null else world_runtime.active_id
   var boss=id in ["cl3-c3-brace","cl3-bank-b68","cl23-fc23-standard","cl23-fc23-west","cl23-fc23-east","cl23-bank-f69"]
   var score=stream(chapter.get("bossMusic",chapter.music) if boss else chapter.music,true)
@@ -250,7 +250,7 @@ func restart_world():
 
 func change_chapter(number):
  # Cores (101-120) play their base world's score and ambience.
- var chapter=manifest.chapters.get(str(number),manifest.chapters.get(str(number-100),manifest.chapters["1"]))
+ var chapter=chapter_audio(number)
  music.stream=stream(chapter.music,true)
  music.play()
  ambience.stream=stream(chapter.ambience,true)
@@ -258,3 +258,8 @@ func change_chapter(number):
  speech.stop()
  voice_queue.clear()
  active_voice={}
+
+func chapter_audio(number):
+ var chapter=manifest.chapters.get(str(number),manifest.chapters.get(str(number-100),manifest.chapters["1"])).duplicate(true)
+ if number==21: chapter.music=manifest.chapters["1"].music
+ return chapter

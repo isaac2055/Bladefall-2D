@@ -61,7 +61,7 @@ func run():
  app.reset_dev_taps();app.register_dev_tap()
  check(not app.dev_mode,"interrupted tap sequence resets")
  for i in range(4): app.voices_button.pressed.emit()
- check(app.dev_mode and app.chapter_picker.item_count==10 and app.dev_nodes.all(func(node):return node.visible),"five consecutive spoken-dialogue clicks reveal developer settings")
+ check(app.dev_mode and app.chapter_picker.item_count==9 and app.dev_nodes.all(func(node):return node.visible),"five consecutive spoken-dialogue clicks reveal developer settings")
  check(not labels(app.chapter_picker).contains("Test ·"),"Test label removed")
  app.chapters[1].landscape.environment_design=3
  app.chapters[1].landscape.knight_design=1
@@ -197,7 +197,7 @@ func run():
  await shot("cutscene")
  app.title_screen._process(2)
  check(app.title_screen.phase=="title" and app.title_screen.menu.visible,"animated cutscene resolves to title menu")
- check(app.title_screen.worlds.item_count==6,"title menu includes the earned base and Fractured unlocks")
+ check(app.title_screen.worlds.item_count==5,"title menu includes the base worlds and the first Fractured/Core unlocks")
  await shot("title")
  app.controls_menu.open()
  check(app.controls_menu.visible and app.controls_menu.get_index()>app.title_screen.get_index(),"title-screen remapping opens above the title, with controller focus")
@@ -213,9 +213,10 @@ func run():
  app.title_screen.open(true)
  check(app.title_screen.phase=="title","reduced-motion preference skips animated opening")
  app.landscape.reduced_motion=reduced
- var core_path=app.title_screen.routes.get_children().filter(func(n):return n is Button and n.text=="Core")
- check(core_path.size()==1,"both plant halves expose the unvisited Core through a newly opened route")
- core_path[0].pressed.emit()
+ var core_index=app.title_screen.worlds.get_item_index(101)
+ check(core_index>=0,"first Core is directly available after all base clears")
+ app.title_screen.worlds.select(core_index)
+ app.title_screen.start_selected()
  check(app.chapter_number==101 and app.sampler.profile.has_world(101),"Core first arrival is reachable without developer mode")
  app.title_screen.open(false)
  app.title_screen.start_selected()
