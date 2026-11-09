@@ -18,9 +18,11 @@ func clear_panel():
  app.set_paused(false)
 func run():
  path="user://road-presentation-%d.json"%OS.get_process_id()
- app=Main.instantiate();app.test_mode=true;app.sampler=Run.new(path);root.add_child(app)
+ app=Main.instantiate();app.initial_world=2;app.sampler=Run.new(path);root.add_child(app)
  await process_frame
  app.set_physics_process(false)
+ check(app.dev_mode and app.game_started,"direct developer-world launch enables story triggers")
+ app.test_mode=true
  app.title_screen.open(false)
  app.set_paused(true)
  check(not app.audio.music.stream_paused and app.paused,"title Settings freezes gameplay while title music keeps playing")

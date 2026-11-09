@@ -29,3 +29,5 @@ Actual GPU captures from `tests/road_shots.gd` cover all three establishing shot
 The native scene files, including the player's edited Outskirts, remain unchanged. Record route version sampler-3 keeps the shortened transfer times separate from old local records.
 
 Release verification: all 13 broad packaged suites passed; the final bonus-route, story and save-compatibility checks passed; the final comparison-navigation/story check passed. ZIP integrity and the app's deep code signature verify, bundle version is 0.47.0, and edited World 1 retains SHA-256 31dbed0936d4552718299175b24394ba5d0b1dc8fd073f3765949828cd056d47. Final navigation evidence is in `.cache/v47-package-navigation/pack-results.json`.
+
+Direct developer-world startup also enables story triggers before N is used. This launch case and comparison navigation pass the packaged check in `.cache/v47-package-launch/pack-results.json`.

@@ -268,7 +268,7 @@ func _ready():
  story.app=self
  add_child(story)
  controls_menu.move_to_front()
- game_started=test_mode
+ game_started=test_mode or dev_mode
  apply_player_visibility()
  if not dev_mode:
   sampler.profile.discover(chapter_number,world.active_id,false)
