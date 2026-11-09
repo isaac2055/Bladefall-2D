@@ -1,10 +1,10 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.48.0** · Player-facing Bladefall sampler for macOS: Outskirts, Woods and Causeway, their Fractured routes and Cores 1–3. Open `exports/Bladefall.app`, or share `exports/Bladefall-macOS.zip`. The app includes its own engine and all game resources.
+Version **0.53.0** · Player-facing Bladefall sampler for mobile web, Android, Windows and macOS: Outskirts, Woods and Causeway, their Fractured routes and Cores 1–3. Open `exports/Bladefall.app`, or share `exports/Bladefall-macOS.zip`. The app includes its own engine and all game resources.
 
 ## Sequential advanced worlds · 0.48.0
 
-Completing bases 1–3 opens Fractured Outskirts and Core Outskirts. Each advanced route unlocks independently in order: Outskirts → Woods → Causeway. Existing discoveries cannot bypass the prerequisite clear. Fractured flower pickups require an earned crown. Core scores use their original base regions; Fractured Outskirts now reuses Midnight Field, while Fractured Woods and Causeway retain their distinct scores.
+Completing bases 1–3 opens Fractured Outskirts. Completing all three Fractured worlds then opens Core Outskirts. Each advanced route unlocks independently in order: Outskirts → Woods → Causeway. Existing discoveries cannot bypass the prerequisite clear. Fractured flower pickups require an earned crown. Core scores use their original base regions; Fractured Outskirts now reuses Midnight Field, while Fractured Woods and Causeway retain their distinct scores.
 
 Movement Workshop is removed from the game, including developer navigation and its play launcher. The shared world4 authoring data remains an internal source for already integrated affixed rooms. Transport-story changes are proposal only this release: see [next-LLM handoff](research/TRANSPORT-STORY-NEXT-LLM.md).
 
@@ -50,7 +50,7 @@ Each normal world includes its ten approved workshop rooms, reached automaticall
 
 The active-play clock runs through the whole world, including the extensions and hoists. Completing the required route opens a results card and saves time and deaths to this Mac's leaderboard, separately for normal and carried shiny attempts. Pause time is excluded. Retry counts as a death during ordinary runs. Watch, direct room selection and recorded developer tours are practice and cannot award records or rewards. Start world over begins a fresh eligible attempt. Changing chapter cancels the previous attempt; returning to a partly played chapter is practice until restarted.
 
-Garden / Records displays the three world plants and animated Core rewards. A deathless normal clear earns the root; any Fractured clear earns the crown. Both halves unlock that world's Core. Any Core clear earns its animated Trumpet Sprite, Oak Wisp or Clockwork Seed. On later Fractured and Core replays, walk left a little from the world spawn to collect the owned reward and begin a fresh carried attempt. Death or Retry drops it and resets the entire world, including every Core lantern. Carrying never changes movement or machinery interactions. Complete that attempt without deaths to make the corresponding reward shiny. Ownership and local records persist; active attempts do not resume from saves.
+Garden / Records displays the three world plants and animated Core rewards. A deathless normal clear earns the root; any Fractured clear earns the crown. All three Fractured clears unlock Core Outskirts; the Cores then unlock sequentially. Any Core clear earns its animated Trumpet Sprite, Oak Wisp or Clockwork Seed. On later Fractured and Core replays, walk left a little from the world spawn to collect the owned reward and begin a fresh carried attempt. Death or Retry drops it and resets the entire world, including every Core lantern. Carrying never changes movement or machinery interactions. Complete that attempt without deaths to make the corresponding reward shiny. Ownership and local records persist; active attempts do not resume from saves.
 
 Editable sources: normal extensions remain shared with `levels/world4.tscn`; Fractured additions are in `world21.tscn`, `world22.tscn`, `world23.tscn`. Cores are `world101.tscn`–`world103.tscn`. The player's edited World 1 scene is preserved byte for byte. The chapter editor includes all ten chapters. Room geometry and interactions remain separate from procedural reward visuals.
 
@@ -534,3 +534,12 @@ Final packaged timing observations on this 60 Hz Mac: wall-frame median about 16
 Silas’s hook hand-in plays his existing closing recording immediately and removes any queued carry instruction, so the heart award and spoken line agree. The full application quest check verifies this exact transition.
 
 0.5.1 fixes invisible dash-movable stones: the renderer now draws their actual simulated rectangles before and after movement. `tests/sliding_block_render.gd` checks GPU-rendered pixels from an authored Causeway block in both states.
+
+
+## Mobile and native exports (0.53.0)
+
+The browser and Android builds share multi-touch movement/aim and action controls. Landscape phone menus use larger targets; rotation, focus loss and pause cancel held touches. Physical keyboard/controller input remains independent. Browser sizing honors the header and safe areas. Android Back pauses the game.
+
+Build with `tools/build-web.mjs`, `tools/build-windows.sh`, `tools/build-macos.sh` and `tools/build-android.sh`. Android requirements and signing environment are in `ANDROID-README.txt`. Outputs are ignored under `exports/`; signing secrets and keys are never added to the export preset.
+
+`tests/touch_controls.gd` exercises real game movement, simultaneous jump/dash, action buttons and cleanup. `tests/sequential_unlocks.gd` checks legacy discoveries, third-Fractured result navigation and preserved Core rewards. Use `tools/check-macos.py --suite touch_controls --suite sequential_unlocks` with an output folder to test the packaged game. `tools/check-web.mjs` verifies browser/native save round trips; `tools/check-web-audio.mjs` measures actual speaker-bound audio. `tools/check-web-mobile.mjs URL webkit` checks phone menus, save downloads and rotation; select `chromium` to also exercise simultaneous trusted touch input. Install the Playwright WebKit runtime with `npx playwright install webkit`.

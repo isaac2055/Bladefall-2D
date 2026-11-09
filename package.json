@@ -73,6 +73,7 @@
   },
   "devDependencies": {
     "fake-indexeddb": "^6.2.5",
+    "playwright": "^1.65.0",
     "wrangler": "^4.149.0"
   }
 }

@@ -1,5 +1,15 @@
 const $ = id => document.getElementById(id);
 const nativeFetch = window.fetch.bind(window);
+function fitCanvas() {
+  const box = document.querySelector('main').getBoundingClientRect();
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  const width = Math.max(1, Math.round(box.width * ratio));
+  const height = Math.max(1, Math.round(box.height * ratio));
+  if ($('canvas').width !== width) $('canvas').width = width;
+  if ($('canvas').height !== height) $('canvas').height = height;
+}
+new ResizeObserver(fitCanvas).observe(document.querySelector('main'));
+fitCanvas();
 let manifest, loaded = 0;
 const transfers = new Map();
 async function loadAsset(name) {
@@ -25,8 +35,13 @@ async function loadAsset(name) {
   })());
   return transfers.get(name);
 }
+if (!document.fullscreenEnabled) $('fullscreen').hidden = true;
+let allowPortrait = false;
+function updateOrientation() { $('rotate').hidden = !(window.bladefallReady && matchMedia('(pointer:coarse)').matches && innerHeight > innerWidth && !allowPortrait); }
+$('portrait').onclick = () => { allowPortrait = true; updateOrientation(); $('canvas').focus(); };
+window.addEventListener('resize', updateOrientation);
 $('fullscreen').onclick = async () => {
-  try { await $('canvas').requestFullscreen(); $('canvas').focus(); }
+  try { await document.documentElement.requestFullscreen(); $('canvas').focus(); }
   catch { $('fullscreen').textContent = 'Fullscreen unavailable'; }
 };
 $('start').onclick = async () => {
@@ -50,13 +65,14 @@ $('start').onclick = async () => {
     };
     let failStartup;
     const startupFailure = new Promise((_, reject) => { failStartup = reject; });
-    window.bladefallEngine = new Engine({ executable: 'index', canvas: $('canvas'), canvasResizePolicy: 2, focusCanvas: true, persistentPaths: ['/userfs'], onPrint: (...args) => console.log(...args), onPrintError: (...args) => { console.error(...args); if (args.join(' ').includes('SCRIPT ERROR')) failStartup(Error('The game encountered a startup error. Please retry or use the Mac app.')); } });
+    window.bladefallEngine = new Engine({ executable: 'index', canvas: $('canvas'), canvasResizePolicy: 0, focusCanvas: true, persistentPaths: ['/userfs'], onPrint: (...args) => console.log(...args), onPrintError: (...args) => { console.error(...args); if (args.join(' ').includes('SCRIPT ERROR')) failStartup(Error('The game encountered a startup error. Please retry or use the Mac app.')); } });
     let timer;
     try {
       await Promise.race([window.bladefallEngine.startGame(), startupFailure, new Promise((_, reject) => { timer = setTimeout(() => reject(Error('Loading took too long. Please retry.')), 120000); })]);
     } finally { clearTimeout(timer); }
     $('loading').hidden = true; $('canvas').focus();
     window.bladefallReady = true;
+    updateOrientation();
     transfers.clear();
     if (navigator.storage?.persist) navigator.storage.persist().catch(() => {});
   } catch (error) {

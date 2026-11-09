@@ -16,6 +16,8 @@ func _ready():
  var scroll=ScrollContainer.new();scroll.position=Vector2(180,45);scroll.size=Vector2(920,740);scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;add_child(scroll)
  var box=VBoxContainer.new();box.custom_minimum_size.x=890;box.add_theme_constant_override("separation",8);scroll.add_child(box)
  app.text(box,"CONTROLS",30,"#e4d5a7")
+ if app.mobile:
+  app.text(box,"TOUCH · Left thumb moves and aims in eight directions. Tap Jump or Dash with your right thumb. Hold Carry to climb; tap it beside an object to carry or throw. Strike, Parry and Portal also use the stick’s aim. Retry and Pause sit above the action buttons.",28)
  connection=app.text(box,"",15)
  message=app.text(box,"Choose a binding, then press a key, controller button or move an axis. Escape / Start cancels.",15)
  for verb in Bindings.ACTIONS:

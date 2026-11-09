@@ -17,18 +17,19 @@ try {
  const page=await browser.newPage();await page.setViewport({width:1280,height:930,deviceScaleFactor:1});
  page.on('console',m=>{if(m.type()==='error') errors.push(m.text());});page.on('pageerror',e=>errors.push(e.message));
  const client=await page.createCDPSession();await client.send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:downloads});
+ async function tap(x,y){const b=await page.$eval("#canvas",e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height}});const s=Math.min(b.w/1280,b.h/832);await page.mouse.click(b.x+(b.w-1280*s)/2+x*s,b.y+(b.h-832*s)/2+y*s);}
  async function exportSave(){
   const file=path.join(downloads,'Bladefall-save.json');await fs.rm(file,{force:true});
-  await page.mouse.click(400,264);
+  await tap(400,166);
   for(let n=0;n<100;n++){try{const text=await fs.readFile(file,'utf8');const bundle=JSON.parse(text);assert.equal(bundle.format,'bladefall-save');return {file,bundle};}catch{}await sleep(100);}
-  throw Error('Export Save did not produce a valid download');
+  await page.screenshot({path:path.join(out,'export-failure.png')});throw Error('Export Save did not produce a valid download');
  }
  async function load(){await page.click('#start');await page.waitForFunction(()=>window.bladefallReady || document.querySelector('#error').textContent,{timeout:180000});assert.equal(await page.$eval('#error',x=>x.textContent),'');await sleep(16000);}
  async function checkpoint(){return page.evaluate(()=>new Promise((resolve,reject)=>{const req=indexedDB.open('/userfs');req.onerror=()=>reject(req.error);req.onsuccess=()=>{const db=req.result;const store=db.transaction('FILE_DATA').objectStore('FILE_DATA');const request=store.getAll();const keys=store.getAllKeys();request.onerror=()=>reject(request.error);keys.onsuccess=()=>{const i=keys.result.findIndex(x=>x.endsWith('/bladefall-garden.json.world-1.save'));resolve(i<0?null:Array.from(request.result[i].contents));db.close();};};}));}
  await page.goto(base,{waitUntil:'networkidle0'});
  assert.match(await page.title(),/Bladefall/);
- assert.match(await page.$eval('a.secondary:not(.windows)',a=>a.href),/ascend-v0\.51\.0\/Bladefall-macOS.zip$/);
- assert.match(await page.$eval('a.windows',a=>a.href),/ascend-v0\.51\.0\/Bladefall-Windows.zip$/);
+ assert.match(await page.$eval('a.secondary:not(.windows)',a=>a.href),/ascend-v0\.53\.0\/Bladefall-macOS.zip$/);
+ assert.match(await page.$eval('a.windows',a=>a.href),/ascend-v0\.53\.0\/Bladefall-Windows.zip$/);
  await page.screenshot({path:path.join(out,'landing.png'),fullPage:true});
  await page.setViewport({width:390,height:844,deviceScaleFactor:1});
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'mobile layout overflows');
@@ -47,7 +48,7 @@ try {
  const nativeFile=path.join(out,'native-save.json');
  const native=spawnSync(godot,['--headless','--path',project,'--script','tests/web_save_roundtrip.gd','--',exported.file,nativeFile],{encoding:'utf8',timeout:60000});
  assert.equal(native.status,0,native.stdout+native.stderr);assert.match(native.stdout,/PASS browser checkpoint resumes natively/);console.log(native.stdout.trim());
- const chooser=page.waitForFileChooser();await page.mouse.click(525,264);await (await chooser).accept([nativeFile]);
+ const chooser=page.waitForFileChooser();await tap(525,166);await (await chooser).accept([nativeFile]);
  await sleep(30000);await page.screenshot({path:path.join(out,'import-menu.png')});
  // Imported reduced motion skips the opening. Enter resumes the same checkpoint.
  await page.keyboard.press('Enter');await sleep(1500);await page.keyboard.press('Escape');await sleep(300);

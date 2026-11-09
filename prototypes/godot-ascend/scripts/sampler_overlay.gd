@@ -139,7 +139,7 @@ func show_result():
   var hint=app.text(content,"",17,"#cadbab")
   hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
   hint.text="Garden & records is now in Settings."
- if app.chapter_number==3 and app.sampler.profile.all_bases_clear(): app.text(content,"Fractured Outskirts and Core Outskirts are now open.",17,"#cadbab")
+ if app.chapter_number==3 and app.sampler.profile.all_bases_clear(): app.text(content,"Fractured Outskirts is now open. Clear all three Fractured worlds to reach the Cores." if not app.sampler.profile.all_fractured_clear() else "Fractured routes and Core Outskirts are open.",17,"#cadbab")
  var destinations=[]
  if app.chapter_number in [1,2]: destinations.append(app.chapter_number+1)
  if app.chapter_number in [1,2,3]:
@@ -149,7 +149,8 @@ func show_result():
  if app.chapter_number in [21,22,101,102] and app.sampler.profile.available(app.chapter_number+1): destinations.append(app.chapter_number+1)
  if app.chapter_number==3 and app.sampler.profile.all_bases_clear():
   for first in [21,101]:
-   if not first in destinations: destinations.append(first)
+   if app.sampler.profile.available(first) and not first in destinations: destinations.append(first)
+ if app.chapter_number==23 and app.sampler.profile.available(101) and not 101 in destinations: destinations.append(101)
  for destination in destinations:
   app.button(content,"Continue to "+app.world_label(destination),func():
    panel.hide();scrim.hide();app.travel_to_world(destination),false)

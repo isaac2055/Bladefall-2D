@@ -2,6 +2,7 @@ extends RefCounted
 ## Keep the source defaults in data; use physical keys so keyboard layouts retain their positions.
 const ACTIONS = {"l":"move_left","r":"move_right","u":"aim_up","d":"aim_down","jump":"knight_jump","dash":"knight_dash","grab":"knight_grab","strike":"knight_strike","parry":"knight_parry","portal":"knight_portal","retry":"knight_retry","pause":"knight_pause"}
 static var using_controller=false
+static var touch={}
 const Remap=preload("res://scripts/control_remap.gd")
 static func bind(path=Remap.PATH):
  var source = JSON.parse_string(FileAccess.get_file_as_string("res://data/controls.json"))
@@ -36,7 +37,7 @@ static func bind(path=Remap.PATH):
 static func read():
  var raw = {}
  for verb in ACTIONS:
-  if verb not in ["retry","pause"]: raw[verb] = Input.is_action_pressed(ACTIONS[verb])
+  if verb not in ["retry","pause"]: raw[verb] = Input.is_action_pressed(ACTIONS[verb]) or touch.get(verb,false)
  return raw
 
 static func prompt():

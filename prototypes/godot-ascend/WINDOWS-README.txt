@@ -1,5 +1,5 @@
 BLADEFALL — ASCEND
-Willow Studios · Sample 0.51.0 · Windows x64
+Willow Studios · Sample 0.53.0 · Windows x64
 
 Extract the ZIP, open the Bladefall folder and run Bladefall.exe.
 Keep Bladefall.pck next to Bladefall.exe. Godot does not need to be installed.

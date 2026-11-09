@@ -24,6 +24,13 @@ func _ready():
  app.button(menu,"Settings",func():
   app.root_ui.show();app.root_ui.move_to_front();app.set_paused(true);app.pause_panel.show();app.focus_pause(),false)
  app.button(menu,"Quit",func():app.close_app(),false)
+ if app.mobile:
+  menu.position=Vector2(640,340);menu.custom_minimum_size.x=580
+  worlds.custom_minimum_size.y=112;worlds.add_theme_font_size_override("font_size",32)
+  worlds.get_popup().add_theme_font_size_override("font_size",30)
+  worlds.get_popup().add_theme_constant_override("v_separation",64)
+  for child in menu.get_children():
+   if child is Button and child.text in ["Controls and remapping","Quit"]: child.hide()
  menu.hide()
  back=app.button(self,"Return to journey",func():hide();app.root_ui.show();app.set_paused(false),false);back.position=Vector2(740,750);back.hide()
 func open(intro=false):

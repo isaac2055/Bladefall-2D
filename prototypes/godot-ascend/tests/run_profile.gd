@@ -17,7 +17,9 @@ func _initialize():
  p.start(21)
  p.tick("end",3)
  p.finish()
- check(p.core_open(1) and not p.garden(1).flower_shiny,"Fractured deaths allowed, unlock Core")
+ check(not p.core_open(1) and not p.garden(1).flower_shiny,"one Fractured clear does not unlock Core")
+ p.completed["22"]=true;p.completed["23"]=true
+ check(p.core_open(1),"all three Fractured clears unlock Core")
  p.start(101)
  p.tick("end",5)
  p.finish()

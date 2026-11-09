@@ -24,6 +24,8 @@ const SaveTransfer=preload("res://scripts/save_transfer.gd")
 var transfer_status:Label
 var transfer_dialog:FileDialog
 var web_import_callback
+var mobile=false
+var touch_controls
 var game_started=false
 var save_room=""
 var save_frame=0
@@ -123,7 +125,10 @@ var journey_frame=0
 func text(parent,value,size,color="#d8dfd9"):
  var l = Label.new()
  l.text = value
- l.add_theme_font_size_override("font_size",size)
+ l.add_theme_font_size_override("font_size",maxi(size,32) if mobile and parent is VBoxContainer else size)
+ if mobile and parent is VBoxContainer:
+  l.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+  l.size_flags_horizontal=Control.SIZE_EXPAND_FILL
  l.add_theme_color_override("font_color",Color(color))
  parent.add_child(l)
  return l
@@ -142,7 +147,8 @@ func button(parent,value,callback,sound=true):
  var b = Button.new()
  b.text = value
  b.focus_mode = Control.FOCUS_ALL
- b.add_theme_font_size_override("font_size",16)
+ b.add_theme_font_size_override("font_size",32 if mobile else 16)
+ if mobile: b.custom_minimum_size.y=112
  b.add_theme_stylebox_override("normal",style("#182831","#3e5157"))
  b.add_theme_stylebox_override("hover",style("#293c41","#d1b478"))
  b.add_theme_stylebox_override("pressed",style("#435148","#e5cf93"))
@@ -153,6 +159,7 @@ func button(parent,value,callback,sound=true):
  parent.add_child(b)
  return b
 func _ready():
+ mobile=OS.has_feature("mobile") or (OS.has_feature("web") and DisplayServer.is_touchscreen_available())
  get_tree().auto_accept_quit = false
  DisplayServer.window_set_title("Bladefall")
  dev_mode=test_mode or initial_room!="" or initial_world!=1 or "--world" in OS.get_cmdline_user_args() or "--room" in OS.get_cmdline_user_args() or "--capture" in OS.get_cmdline_user_args()
@@ -191,15 +198,15 @@ func _ready():
   container.position = Vector2(0,48)
   container.size = Vector2(1280,736)
   container.stretch = true
-  container.stretch_shrink = 1
+  container.stretch_shrink = 2 if mobile else 1
   var view = SubViewport.new()
-  view.size = Vector2i(1280,736)
+  view.size = Vector2i(640,368) if mobile else Vector2i(1280,736)
   view.render_target_update_mode = SubViewport.UPDATE_ALWAYS if number==1 else SubViewport.UPDATE_DISABLED
   view.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
   container.add_child(view)
   add_child(container)
   var scene = Landscape.new()
-  scene.scale = Vector2(4,4)
+  scene.scale = Vector2(2,2) if mobile else Vector2(4,4)
   scene.world_data = chapter_world.data
   scene.runtime = chapter_world
   scene.walking_style=1
@@ -280,6 +287,8 @@ func _ready():
   rebuild_section_menu()
  if not test_mode and not dev_mode: title_screen.open(true)
  else: title_screen.hide()
+ var touch_layer=CanvasLayer.new();touch_layer.layer=50;add_child(touch_layer)
+ touch_controls=preload("res://scripts/touch_controls.gd").new();touch_controls.app=self;touch_layer.add_child(touch_controls)
 func create_interface():
  root_ui = Control.new()
  root_ui.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -301,6 +310,7 @@ func create_interface():
  var menu = button(header,"II  Esc",func():set_paused(not paused),false)
  menu.position = Vector2(1176,5)
  menu.size = Vector2(88,38)
+ menu.visible=not mobile
  quest_label=text(root_ui,"",13,"#c4c8aa")
  quest_label.position=Vector2(24,56)
  notice_label=text(root_ui,"",18,"#ead9a7")
@@ -479,6 +489,16 @@ func create_interface():
  dev_nodes.append(button(column,"Leave developer mode",func():set_dev_mode(false),false))
  hud_nodes=[header,quest_label,notice_label,room_banner,status]
  pause_panel.hide()
+ if mobile:
+  for picker in [chapter_picker,room_picker]:
+   picker.custom_minimum_size.y=112
+   picker.add_theme_font_size_override("font_size",32)
+   picker.get_popup().add_theme_font_size_override("font_size",30)
+   picker.get_popup().add_theme_constant_override("v_separation",64)
+  for option in [voices,reduced]:
+   option.custom_minimum_size.y=112
+   option.add_theme_font_size_override("font_size",32)
+  for slider in basic_volume_sliders.values(): slider.custom_minimum_size=Vector2(260,100)
  build_mixer()
 func apply_character_settings(design,npc):
  var scene=chapters[1].landscape
@@ -829,7 +849,7 @@ func _physics_process(_delta):
  dash_label.modulate = Color("edbf74") if sim.p.dashes>0 else Color("687e91")
  death_label.text = "%d DEATHS" % sim.deaths
  if watch: status.text = "REFERENCE · Start / Esc opens the menu · "+("Take control" if dev_mode else "Try yourself to restart this section")
- else: status.text = Controls.prompt()+(" · N Next (awards enabled)" if dev_mode else "")
+ else: status.text = ("Move / aim with the left thumb · Hold Carry to climb or carry · Aim + Dash" if mobile else Controls.prompt())+(" · N Next (awards enabled)" if dev_mode else "")
  if chapter_number==4: status.text="← → MOVE     SPACE JUMP     D + ARROWS DASH     A CLING     R RETRY     H HINT     Esc MENU"
  if chapter_number==4 and sim.room.def.get("workshopBiome","")=="woods": status.text="← → MOVE   SPACE JUMP   D DASH   A CLING   W + ARROWS CUT   R RETRY   H HINT   Esc MENU"
  if chapter_number==4 and watch: status.text="DEMONSTRATION · Esc opens the menu"
@@ -901,6 +921,7 @@ func capture():
 func _notification(what):
  if what==NOTIFICATION_WM_CLOSE_REQUEST: close_app()
  elif what==NOTIFICATION_APPLICATION_FOCUS_OUT and is_node_ready() and not paused: set_paused(true)
+ elif what==NOTIFICATION_WM_GO_BACK_REQUEST and is_node_ready(): set_paused(not paused)
 func close_app(code=0):
  if closing: return
  maybe_autosave(true)
@@ -1025,7 +1046,7 @@ func switch_chapter(number):
  if number==chapter_number or not chapters.has(number): return
  if not dev_mode and (number==4 or not sampler.profile.has_world(number)): return
  if number>=101 and not dev_mode and not test_mode and not sampler.profile.core_open(number-100):
-  notice_label.text="Earn the base root and Fractured crown to unlock this Core."
+  notice_label.text="Clear all three Fractured worlds to unlock the Cores."
   notice_time=5
   select_world_menu()
   return
@@ -1275,6 +1296,10 @@ func apply_player_visibility():
   settings_scroll.custom_minimum_size=Vector2(600,470 if from_title else 760)
   settings_card.position=Vector2(330,166 if from_title else 24)
   settings_card.set_deferred("size",Vector2(620,500 if from_title else 784))
+  if mobile:
+   settings_scroll.custom_minimum_size=Vector2(1040,720)
+   settings_card.position=Vector2(100,36)
+   settings_card.set_deferred("size",Vector2(1080,760))
  if settings_back!=null: settings_back.visible=from_title
  if pause_title!=null: pause_title.text="SETTINGS" if from_title else data.world.name.to_upper()
  if pause_description!=null: pause_description.visible=not from_title

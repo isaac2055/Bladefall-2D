@@ -1,5 +1,5 @@
 BLADEFALL — ASCEND
-Willow Studios · Prototype 0.52.0
+Willow Studios · Prototype 0.53.0
 
 This app includes the game, engine, artwork and audio. No Godot installation,
 project checkout, download tool or online account is needed. Move Bladefall.app
@@ -14,7 +14,8 @@ Settings provides audio, reduced motion, fullscreen and controls. Title-menu
 Settings keeps the music playing; in-game Settings pauses it.
 
 Clearing a base world earns its root; a deathless full clear makes it shiny.
-Complete all three base worlds to open Fractured Outskirts and Core Outskirts.
+Complete all three base worlds to open Fractured Outskirts. Clear all three
+Fractured worlds to open Core Outskirts.
 Each advanced route then unlocks in order: Outskirts, Woods, Causeway. A Fractured
 clear earns the flower crown. Core clears award animated keepsakes.
 On later Fractured/Core runs, collect the reward near the start and carry it
@@ -59,3 +60,8 @@ Settings > Export Save creates a portable backup of your Garden, checkpoints and
 Use Settings > Import Save in either the browser or Mac app to continue there.
 Import replaces progress on that device. A prior-save backup is kept locally.
 Browser progress belongs to this browser and this site; clearing site data removes it.
+
+MOBILE
+The browser and Android versions include multi-touch move/aim and action controls.
+Rotate phones sideways. Use the left thumb to move/aim and the right-hand buttons
+to jump, dash, carry/climb/throw, strike, parry or place portals.

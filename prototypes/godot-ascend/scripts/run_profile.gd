@@ -61,7 +61,7 @@ func garden(number):
  return plants[key]
 func core_open(number):
  var item=garden(number)
- return all_bases_clear() and (number==1 or completed.get(str(99+number),false))
+ return all_bases_clear() and all_fractured_clear() and (number==1 or completed.get(str(99+number),false))
 func can_carry(chapter):
  var number=home(chapter)
  if number not in [1,2,3]: return false
@@ -98,7 +98,7 @@ func finish(required=[]):
    award="Shiny flower root earned"
   if run.chapter<3 and not discovered.has(str(run.chapter+1)): discovered[str(run.chapter+1)]={}
   if all_bases_clear():
-   for chapter in [21,101]:
+   for chapter in [21]:
     if not discovered.has(str(chapter)): discovered[str(chapter)]={}
 
  elif run.chapter in [21,22,23]:
@@ -107,6 +107,7 @@ func finish(required=[]):
   if run.carrying and run.deaths==0:
    item.flower_shiny=true
    award="Shiny "+PLANTS[n-1]
+  if all_fractured_clear() and not discovered.has("101"): discovered["101"]={}
  elif run.chapter in [101,102,103]:
   item.core=true
   award=CORES[n-1]+" earned"
@@ -140,6 +141,7 @@ static func duration(frames):
  return "%02d:%02d.%02d"%[cs/6000,(cs/100)%60,cs%100]
 
 func all_bases_clear(): return completed.get("1",false) and completed.get("2",false) and completed.get("3",false)
+func all_fractured_clear(): return completed.get("21",false) and completed.get("22",false) and completed.get("23",false)
 func has_world(chapter):
  if chapter in [21,22,23]: return all_bases_clear() and (chapter==21 or completed.get(str(chapter-1),false))
  if chapter in [101,102,103]: return core_open(chapter-100)

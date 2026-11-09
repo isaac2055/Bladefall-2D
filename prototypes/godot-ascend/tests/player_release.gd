@@ -197,7 +197,7 @@ func run():
  await shot("cutscene")
  app.title_screen._process(2)
  check(app.title_screen.phase=="title" and app.title_screen.menu.visible,"animated cutscene resolves to title menu")
- check(app.title_screen.worlds.item_count==5,"title menu includes the base worlds and the first Fractured/Core unlocks")
+ check(app.title_screen.worlds.item_count==4,"title menu includes the base worlds and Fractured Outskirts, with Cores still locked")
  await shot("title")
  app.controls_menu.open()
  check(app.controls_menu.visible and app.controls_menu.get_index()>app.title_screen.get_index(),"title-screen remapping opens above the title, with controller focus")
@@ -213,8 +213,11 @@ func run():
  app.title_screen.open(true)
  check(app.title_screen.phase=="title","reduced-motion preference skips animated opening")
  app.landscape.reduced_motion=reduced
+ check(app.title_screen.worlds.get_item_index(101)<0,"Core is absent before the three Fractured clears")
+ for n in [21,22,23]: app.sampler.profile.completed[str(n)]=true
+ app.title_screen.refresh_worlds()
  var core_index=app.title_screen.worlds.get_item_index(101)
- check(core_index>=0,"first Core is directly available after all base clears")
+ check(core_index>=0,"first Core is available after all three Fractured clears")
  app.title_screen.worlds.select(core_index)
  app.title_screen.start_selected()
  check(app.chapter_number==101 and app.sampler.profile.has_world(101),"Core first arrival is reachable without developer mode")
