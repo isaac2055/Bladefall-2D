@@ -1,5 +1,5 @@
 BLADEFALL — ASCEND
-Willow Studios · Prototype 0.48.0
+Willow Studios · Prototype 0.49.0
 
 This app includes the game, engine, artwork and audio. No Godot installation,
 project checkout, download tool or online account is needed. Move Bladefall.app
@@ -21,7 +21,8 @@ On later Fractured/Core runs, collect the reward near the start and carry it
 through without dying to make it shiny. These attempts always restart the whole
 world after death, Retry or resuming from a saved challenge.
 
-The broken upper road introduces the lantern route with a short in-world scene.
+The sealed watch gate, root-bound ranger trail and freight barrier each introduce
+their own service route with a short in-world scene.
 Each transfer is one uninterrupted ride into the next puzzle. World endings
 present the reward in-world before fading into results. Reduced motion shortens
 these scenes.

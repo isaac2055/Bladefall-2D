@@ -28,6 +28,7 @@ func check_begin():
  if active() or app.watch or not app.game_started or not app.sampler.result.is_empty(): return false
  var route=app.world.data.world.get("campaignWorkshop",{})
  if route.is_empty() or app.world.active_id!=route.entry or not app.sim.p.onGround: return false
+ if not app.sampler.ride.is_empty(): return false
  var key="lift-%d"%app.chapter_number
  if seen_this_run.has(key): return false
  if app.sampler.profile.story_seen.get(key,false) and not app.dev_mode: return false
@@ -36,7 +37,12 @@ func check_begin():
  return true
 func begin(kind):
  phase=kind;age=0
- origin=app.world.position()
+ if kind=="reveal":
+  if app.sampler.ride.get("phase","")!="reveal":
+   app.sampler.begin_reveal(app.world)
+   app.sampler.ride.reveal_duration=1.0 if app.landscape.reduced_motion else 4.2
+  age=float(app.sampler.ride.get("reveal_age",0))
+ origin=app.sampler.ride.from if kind=="reveal" else app.world.position()
  focus=origin+Vector2(72,-30)
  camera_from=app.landscape.camera_float
  var walk=0.0
@@ -50,7 +56,7 @@ func begin(kind):
  for node in app.hud_nodes: node.hide()
  app.sampler_overlay.clock_label.hide()
  app.subtitle_panel.hide()
- caption.text=({1:"The upper road is gone. The old watch still keeps a way through.",2:"The ranger path ends here. Their lanterns still mark the crossings.",3:"The road has fallen. The freight winches still turn."}.get(app.sampler.profile.home(app.chapter_number),"The old road gives way to the lantern route.") if kind=="reveal" else {1:"Beyond the watch, the woods are waiting.",2:"Beyond the last bough, the Causeway bells are calling.",3:"Beyond the iron road, another light remains."}.get(app.sampler.profile.home(app.chapter_number),"The road remembers."))
+ caption.text=({1:"The watch road is shut. The signal still carries.",2:"The roots keep the ground. The rangers kept another way.",3:"The freight road is closed. The inspection line still runs."}.get(app.sampler.profile.home(app.chapter_number),"The old road gives way to the lantern route.") if kind=="reveal" else {1:"Beyond the watch, the woods are waiting.",2:"Beyond the last bough, the Causeway bells are calling.",3:"Beyond the iron road, another light remains."}.get(app.sampler.profile.home(app.chapter_number),"The road remembers."))
  caption_panel.modulate.a=0
  app.landscape.set_process(true)
  app.audio.set_paused(false)
@@ -63,10 +69,17 @@ func begin_ending():
  app.maybe_autosave(true)
 func physics_tick(delta):
  if not active(): return check_begin()
+ if app.paused: return true
+ var old_age=age
  age+=delta
+ if phase=="reveal":
+  app.sampler.ride.reveal_age=age
+  var cue=.55 if app.sampler.profile.home(app.chapter_number)==1 else .85
+  if old_age<cue and age>=cue:
+   app.audio.effect({1:"bell",2:"lantern",3:"lever"}.get(app.sampler.profile.home(app.chapter_number),"lever"),.6)
  if phase=="ending": app.sampler.award_age=age
  app.landscape.story.age=age
- var duration=1.0 if app.landscape.reduced_motion else 4.2 if phase=="reveal" else 4.8
+ var duration=float(app.sampler.ride.get("reveal_duration",4.2)) if phase=="reveal" else 1.0 if app.landscape.reduced_motion else 4.8
  var pan=smoothstep(0,1,minf(age/2.2,1))
  if app.landscape.reduced_motion: pan=0
  app.landscape.story.camera=camera_from.lerp(origin-Vector2(112,124),pan)
@@ -76,8 +89,14 @@ func physics_tick(delta):
   if phase=="reveal":
    app.sampler.profile.story_seen["lift-%d"%app.chapter_number]=true
    app.sampler.profile.save_profile()
+   # The very same ride and drawing now accelerate from the dock at rest.
+   app.sampler.ride.camera_handoff_target=app.landscape.story.camera
+   app.sampler.ride.phase="travel"
+   app.landscape.story.phase="travel"
+   phase=""
+   hide()
+   app.apply_player_visibility()
    app.maybe_autosave(true)
-   cancel(false)
   else:
    ending_ready=true
    # Keep the final camera/lantern tableau under the card; it fades over the same shot.
@@ -87,7 +106,9 @@ func physics_tick(delta):
    app.sampler_overlay.show_result()
  return true
 func cancel(reset=true):
- if reset: seen_this_run.clear()
+ if reset:
+  seen_this_run.clear()
+  if app!=null and app.sampler!=null and app.sampler.ride.get("phase","")=="reveal": app.sampler.ride={}
  phase="";age=0;ending_ready=false
  if app!=null and app.landscape!=null: app.landscape.story={}
  hide()
@@ -95,7 +116,7 @@ func cancel(reset=true):
  if caption_panel!=null: caption_panel.show()
 func _draw():
  if not active(): return
- var duration=4.2 if phase=="reveal" else 4.8
+ var duration=float(app.sampler.ride.get("reveal_duration",4.2)) if phase=="reveal" else 1.0 if app.landscape.reduced_motion else 4.8
  var bars=smoothstep(0,.4,age)
  if phase=="reveal": bars*=1-smoothstep(duration-.5,duration,age)
  draw_rect(Rect2(0,0,1280,64*bars),Color("#070e14"))

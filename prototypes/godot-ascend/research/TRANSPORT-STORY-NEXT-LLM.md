@@ -1,5 +1,7 @@
 # Transport story: proposal and next-LLM handoff
 
+**Implemented in 0.49.0 after the user explicitly requested implementation.** See `TRANSPORT-REVISION.md` for implementation details, continuity evidence and verification. The approval warning below records the original proposal-only status.
+
 The user approved changing progression/music and removing Movement Workshop. Those changes are implemented in 0.48.0. They explicitly requested PROPOSAL ONLY for fixing the transport story/reset. Do not treat this handoff as approval to implement the story revision; wait for a new request.
 
 ## Proposed individualized stories

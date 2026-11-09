@@ -518,8 +518,14 @@ func burst(point,count,color,speed):
  for i in range(count):
   var a = float(i)*TAU/count+clock
   particles.append({"p":point,"v":Vector2(cos(a)*speed,sin(a)*speed*0.6-10),"life":0.3+float(i%4)*0.09,"max":0.57,"color":color})
-func target_camera():
- if sampler!=null and not sampler.ride.is_empty(): return actor-Vector2(153,100)
+func target_camera(ignore_ride=false):
+ if not ignore_ride and sampler!=null and not sampler.ride.is_empty():
+  var travel=actor-Vector2(153,100)
+  if sampler.ride.get("phase","")=="landing":
+   return travel.lerp(target_camera(true),smoothstep(0,29,float(sampler.ride.landing_frame)))
+  if sampler.ride.has("camera_handoff_target"):
+   return sampler.ride.camera_handoff_target.lerp(travel,smoothstep(0,60,float(sampler.ride.frame)))
+  return travel
  var look=camera_lead if not reduced_motion else Vector2.ZERO
  # Core camera zones look ahead (or behind) while the knight is inside them, as the browser view does.
  for z in sim.room.def.get("cameraZones",[]):
@@ -558,15 +564,14 @@ func tick_feel(delta):
  var desired=Vector2(clamp(sim.p.vx*.17,-25,25),clamp(sim.p.vy*.1,-9,17))
  if sim.p.onGround: desired.y=0
  camera_lead=camera_lead.lerp(desired,1-exp(-dt*5))
- if not story.is_empty():
-  camera_float=story.get("camera",camera_float)
-  camera_velocity=Vector2.ZERO
- elif sampler!=null and not sampler.ride.is_empty():
-  if not sampler.ride.has("camera_from"): sampler.ride.camera_from=camera_float
-  var blend=smoothstep(0,1,minf(1,float(sampler.ride.frame)/24))
-  camera_float=sampler.ride.camera_from.lerp(target_camera(),blend)
-  camera_velocity=Vector2.ZERO
- elif render_hold<=0: spring_camera(target_camera(),dt)
+ if render_hold<=0:
+  var target=target_camera()
+  if story.get("phase","") in ["reveal","ending"]: target=story.get("camera",camera_float)
+  # One spring carries its position AND velocity across reveal, ride and control.
+  spring_camera(target,dt)
+ if sampler!=null and not sampler.ride.is_empty():
+  sampler.ride.camera_position=camera_float
+  sampler.ride.camera_velocity=camera_velocity
  kick_velocity+=(-camera_kick*210-kick_velocity*22)*dt
  camera_kick+=kick_velocity*dt
  if reduced_motion:
@@ -1655,19 +1660,10 @@ func draw_sampler_rewards():
  if sampler.pickup_drop>0:
   art.draw(ink,sampler.drop_origin+Vector2(12,4+sin(sampler.pickup_drop*3)*5),home,core_reward,false,clock)
  if not sampler.ride.is_empty():
-  # Bladefall's lantern hoist: brass cage, suspension chain and warm light.
-  var at=actor+Vector2(-3,sim.p.h)
-  var saved_color=ink_color
-  box(at.x,at.y,14,3,"#b7a17e")
-  box(at.x+1,at.y+2,12,1,"#526458")
-  for side in [0,13]:
-   line(at+Vector2(side,0),at+Vector2(side,-14),"#8c8168",.8)
-   circle(at+Vector2(side,0),.8,Color("#d8c997"))
-  line(at+Vector2(0,-14),at+Vector2(13,-14),"#b7a17e",.8)
-  line(at+Vector2(7,-14),at+Vector2(7,-180),"#94866d",.6)
-  circle(at+Vector2(7,-11),5,Color(.95,.77,.39,.07))
-  circle(at+Vector2(7,-11),1.3,Color("#edcf86"))
-  ink_color=saved_color
+  var saved=ink_color
+  if sampler.ride.get("phase","")=="landing": ink_color.a*=1-smoothstep(12,29,float(sampler.ride.landing_frame))
+  draw_transport_cradle(sampler.cradle_point(actor,sim.p.h),home)
+  ink_color=saved
  if not sampler.result.is_empty():
   var t=sampler.award_age
   var at=actor+Vector2(4,-20-minf(12,t*4))
@@ -1679,6 +1675,7 @@ func draw_road_story():
  var origin=story.origin
  var t=float(story.age)
  var ending=story.phase=="ending"
+ if not ending and sampler!=null and not sampler.ride.is_empty(): t*=4.2/float(sampler.ride.get("reveal_duration",4.2))
  var home=preload("res://scripts/run_profile.gd").home(int(world_data.world.n))
  var timber=home==2
  var iron=home==3
@@ -1692,7 +1689,7 @@ func draw_road_story():
  for i in range(6):
   var x=far.x+i*12
   var y=far.y+i%3*7
-  if home==1:
+  if home in [1,2]:
    box(x+5,y+15,3,100,skyline)
    for tier in range(3):
     var yy=y+tier*12
@@ -1702,18 +1699,7 @@ func draw_road_story():
    for k in range(3): box(x+k*4,y-3,2,3,skyline)
    box(x+4,y+12,2,5,Color("#a2a07866"))
  if not ending:
-  # Weathered piers support the broken upper road. This is scenery, never new collision.
-  var shelf=origin+Vector2(14,-31)
-  for side in [0,1]:
-   var x=shelf.x+side*100
-   var width=31 if side==0 else 48
-   box(x,shelf.y,width,4,material)
-   box(x+4,shelf.y+4,7,105,Color(material,.65))
-   for k in range(3):
-    var at=Vector2(x+5+k*9,shelf.y+4)
-    line(at,at+Vector2(2+k,9+k*4),material,2)
-   for k in range(4): line(Vector2(x+4,shelf.y+12+k*11),Vector2(x+11,shelf.y+12+k*11),Color("#3b4542"),.7)
-   line(Vector2(x+3,shelf.y),Vector2(x+3,shelf.y-13),material,1)
+  draw_transport_station(origin,t,home)
  for i in range(4):
   var at=origin+Vector2(-28+i*32,-13-i%2*17)
   var glow=1.0
@@ -1722,14 +1708,73 @@ func draw_road_story():
   line(at+Vector2(0,-8),at+Vector2(0,-3),material,.8)
   box(at.x-2,at.y-3,4,6,material)
   box(at.x-1,at.y-2,2,3,Color(lantern,glow))
- if not ending:
-  # A chain tightens before the empty cradle lowers, explaining the next ride.
-  var lower=smoothstep(1.4,3.6,t)
-  var at=origin+Vector2(60,-74).lerp(Vector2(-3,11),lower)
-  line(at+Vector2(7,-14),at+Vector2(7,-96),material,.8)
-  box(at.x,at.y,16,3,material)
-  for side in [0,15]: line(at+Vector2(side,0),at+Vector2(side,-15),material,1)
-  line(at+Vector2(0,-15),at+Vector2(15,-15),material,1)
-  circle(at+Vector2(8,-10),6,Color(lantern,.09*smoothstep(.6,1.2,t)))
-  box(at.x+7,at.y-12,2,4,lantern)
  ink_color=saved
+
+# A single drawing serves establishing, boarding, travel and docking frames.
+func draw_transport_cradle(at,home):
+ var wood=home==2
+ var color=Color("#a18b60" if wood else "#83959c" if home==3 else "#b7a17e")
+ box(at.x,at.y,14,3,color)
+ box(at.x+1,at.y+2,12,1,"#526458")
+ for side in [0,13]:
+  line(at+Vector2(side,0),at+Vector2(side,-14),color,.8)
+  if wood: line(at+Vector2(side,-14),at+Vector2(7,-25),"#c4ad7c",.7)
+ line(at+Vector2(0,-14),at+Vector2(13,-14),color,.8)
+ line(at+Vector2(7,-25 if wood else -14),at+Vector2(7,-180),"#b5a078" if wood else "#948c83",.6)
+ if home==3:
+  for y in range(5,14,4): line(at+Vector2(0,-y),at+Vector2(13,-y),color,.5)
+ circle(at+Vector2(7,-11),5,Color(.95,.77,.39,.07))
+ circle(at+Vector2(7,-11),1.3,Color("#edcf86"))
+
+func draw_transport_station(origin,t,home):
+ var lamp=Color("#edcf86")
+ if home==1:
+  # A sealed stone watch gate, local bell, and answering watch light.
+  var gate=origin+Vector2(38,11)
+  for x in [0,27]:
+   box(gate.x+x,gate.y-51,8,60,"#737e79")
+   for y in range(4): line(gate+Vector2(x,y*12-48),gate+Vector2(x+8,y*12-48),"#455654",1)
+  box(gate.x,gate.y-51,35,6,"#90958a")
+  for x in range(9,27,4): line(gate+Vector2(x,-44),gate+Vector2(x,0),"#9c906b",1)
+  var bell=origin+Vector2(-12,-18)
+  line(bell+Vector2(0,-10),bell+Vector2(0,16),"#8d978a",2)
+  var swing=0.0 if reduced_motion else sin(t*15)*exp(-maxf(0,t-.55)*3)*smoothstep(.35,.55,t)*2
+  box(bell.x-3+swing,bell.y-6,6,5,"#c2a86f")
+  line(bell+Vector2(swing,0),origin+Vector2(4,4),"#b09c73",.6)
+  var answer=origin+Vector2(111,-54)
+  circle(answer,6,Color(lamp,.12*smoothstep(.7,1.2,t)))
+  box(answer.x-1,answer.y-2,2,4,Color(lamp,smoothstep(.7,1.2,t)))
+ elif home==2:
+  # Root-bound ground beneath a rope crossing and ranger shelter in the boughs.
+  for i in range(6):
+   var root=origin+Vector2(23+i*9,16)
+   line(root,root+Vector2(13,-9-i%3*4),"#5e7150",3)
+  var bend=0.0 if reduced_motion else sin(minf(t,3.7)/3.7*PI)*3
+  var branch=origin+Vector2(4,-67+bend)
+  line(origin+Vector2(-18,-91),branch+Vector2(80,4),"#766346",5)
+  line(branch,origin+Vector2(126,-91),"#c0ac7a",.8)
+  box(origin.x+92,origin.y-67,37,4,"#9b8154")
+  polygon([origin+Vector2(88,-85),origin+Vector2(110,-101),origin+Vector2(134,-85)],"#506b4f")
+  for i in range(12):
+   var leaf=branch+Vector2(i*7,-5+(sin(t*1.8+i)*2 if not reduced_motion else 0))
+   circle(leaf,3,Color("#5b8059"))
+  circle(origin+Vector2(15,-23),9,Color(lamp,.12*smoothstep(.2,.9,t)))
+  box(origin.x+14,origin.y-25,2,4,lamp)
+ else:
+  # Freight barrier and working inspection mechanism precede cage arrival.
+  var base=origin+Vector2(38,11)
+  for x in [0,36]: box(base.x+x,base.y-39,4,48,"#687c86")
+  box(base.x,base.y-30,40,5,"#a38960")
+  for i in range(5): line(base+Vector2(i*8,-30),base+Vector2(i*8+5,-25),"#393f47",2)
+  var wheel=origin+Vector2(82,-66)
+  circle(wheel,10,Color("#4a5761"))
+  var turn=smoothstep(.5,1.7,t)*1.8
+  for i in range(8):
+   var spoke=Vector2.from_angle(i*TAU/8+turn)
+   line(wheel+spoke*2,wheel+spoke*11,"#a39b83",1.4)
+  var drop=smoothstep(.8,1.8,t)*24
+  line(wheel+Vector2(10,0),wheel+Vector2(10,26+drop),"#929b9b",1)
+  box(wheel.x+5,wheel.y+22+drop,10,13,"#717980")
+  for i in range(4):
+   var steam=origin+Vector2(58+i*4,-12-fposmod(t*8+i*7,30))
+   circle(steam,3,Color(.65,.7,.72,.15))

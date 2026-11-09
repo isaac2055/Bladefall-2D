@@ -35,7 +35,21 @@ func begin_ride(world,target,from_point=null):
  var to=world.placements[target]+Vector2(spawn.x,spawn.y)
  var height=clampf(absf(to.x-from.x)*.18+32,48,120)
  var top=minf(from.y,to.y)-height
- ride={"from":from,"to":to,"target":target,"frame":0,"c1":Vector2(from.x,top),"c2":Vector2(to.x,top),"duration":clampf((from.distance_to(to)+height)/250.0,1.4,9.0)}
+ ride={"phase":"travel","from":from,"to":to,"target":target,"frame":0,"c1":Vector2(from.x,top),"c2":Vector2(to.x,top),"duration":clampf((from.distance_to(to)+height)/250.0,1.4,9.0)}
+func begin_reveal(world):
+ begin_ride(world,world.data.world.campaignWorkshop.rooms[0])
+ ride.phase="reveal"
+ ride.reveal_age=0.0
+ ride.reveal_duration=4.2
+ ride.home=profile.home(int(world.data.world.n))
+func cradle_point(actor,height):
+ if ride.get("phase","")=="reveal":
+  var t=float(ride.get("reveal_age",0))/float(ride.get("reveal_duration",4.2))*4.2
+  var home=int(ride.get("home",1))
+  var lower=smoothstep(1.4 if home==1 else 1.0 if home==2 else 1.8,3.7,t)
+  var start=Vector2(60,-74) if home==1 else Vector2(25,-100) if home==2 else Vector2(96,-42)
+  return ride.from+start.lerp(Vector2(-3,height),lower)
+ return actor+Vector2(-3,height)
 func ride_point():
  var t=clampf(float(ride.frame)/60/ride_duration(),0,1)
  t=t*t*t*(t*(t*6-15)+10)
@@ -65,6 +79,13 @@ func tick(world,practice=false):
   pickup_drop=.4
   return "failure"
  if not ride.is_empty():
+  if ride.get("phase","")=="reveal": return "ride"
+  if ride.get("phase","")=="landing":
+   ride.landing_frame+=1
+   if ride.landing_frame>=30:
+    ride={}
+    return "landed"
+   return "ride"
   ride.frame+=1
   if float(ride.frame)/60>=ride_duration():
    var target=ride.target
@@ -72,8 +93,9 @@ func tick(world,practice=false):
    world.enter(target,true)
    world.active().deaths=count
    last_deaths=count
-   ride={}
-   return "landed"
+   ride.phase="landing"
+   ride.landing_frame=0
+   return "docked"
   return "ride"
  if not result.is_empty() or practice: return ""
  # Start patch is behind the fresh-world spawn. Returning from later rooms cannot opt in.
@@ -129,6 +151,7 @@ func reset_failed(world):
  start(world,true,false)
  pickup_drop=0
 func retry(world):
+ ride={}
  if carrying(): reset_failed(world)
  else:
   world.retry()

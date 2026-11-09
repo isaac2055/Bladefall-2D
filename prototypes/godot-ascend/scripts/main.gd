@@ -756,7 +756,11 @@ func _physics_process(_delta):
  if (not sampler.ride.is_empty() or sampler.failure_frames>0) and not watch:
   landscape.previous_actor=landscape.current_actor
   var state=sampler.tick(world)
-  if state in ["landed","reset"]: sync_sampler_scene()
+  if state in ["docked","landed","reset"]:
+   var previous=landscape.previous_actor
+   sync_sampler_scene()
+   if state=="docked": landscape.previous_actor=previous
+   if state=="landed": landscape.story={}
   if state=="ride":
    var at=sampler.ride_point()
    landscape.current_actor=at
@@ -981,6 +985,7 @@ func retry_room():
  if watch:
   load_section(current)
   return
+ if story!=null: story.cancel(false)
  sampler.retry(world)
  sim=world.active()
  landscape.snap_actor()
@@ -1264,8 +1269,9 @@ func set_dev_mode(value):
  notice_time=4
 func apply_player_visibility():
  var from_title=title_screen!=null and title_screen.visible
- for node in hud_nodes: node.visible=not from_title
- if sampler_overlay!=null: sampler_overlay.clock_label.visible=not from_title
+ var cinematic=story!=null and story.active()
+ for node in hud_nodes: node.visible=not from_title and not cinematic
+ if sampler_overlay!=null: sampler_overlay.clock_label.visible=not from_title and not cinematic
  if from_title:
   if subtitle_panel.visible: title_subtitle_visible=true
   subtitle_panel.hide()
@@ -1345,6 +1351,9 @@ func maybe_autosave(force=false):
  var riding=not sampler.ride.is_empty()
  var frames=int(sampler.profile.run.frames)
  if not force and world.active_id==save_room and sim.deaths==save_deaths and checkpoint==save_checkpoint and riding==save_riding and frames-save_frame<600: return
+ if riding:
+  sampler.ride.camera_position=landscape.camera_float
+  sampler.ride.camera_velocity=landscape.camera_velocity
  if SaveState.write(world,sampler,audio):
   save_room=world.active_id;save_deaths=sim.deaths;save_checkpoint=checkpoint;save_frame=frames;save_riding=riding
 func resume_world(number):
@@ -1361,7 +1370,10 @@ func resume_world(number):
  if not sampler.ride.is_empty():
   var point=sampler.ride_point()
   landscape.current_actor=point;landscape.previous_actor=point;landscape.actor=point
-  landscape.camera_float=point-Vector2(153,100)
+  landscape.camera_float=sampler.ride.get("camera_position",point-Vector2(153,100))
+  landscape.camera_velocity=sampler.ride.get("camera_velocity",Vector2.ZERO)
+  landscape.camera=landscape.camera_float
+  if sampler.ride.get("phase","")=="reveal": story.begin("reveal")
  if sampler_overlay!=null: sampler_overlay.showing_result=false
  set_paused(false)
  return true
