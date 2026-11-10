@@ -26,8 +26,8 @@ func _ready():
   rows[verb]=[]
   for is_pad in [false,true]:
    var button=app.button(row,"",func():listen(verb,is_pad),false)
-   button.custom_minimum_size=Vector2(320,34)
-   button.add_theme_font_size_override("font_size",13)
+   button.custom_minimum_size=Vector2(320,96 if app.mobile else 34)
+   button.add_theme_font_size_override("font_size",26 if app.mobile else 13)
    rows[verb].append(button)
  zone=app.text(box,"Stick / trigger deadzone",15)
  var slider=HSlider.new();slider.min_value=.15;slider.max_value=.5;slider.step=.05;slider.value=Remap.deadzone;box.add_child(slider)

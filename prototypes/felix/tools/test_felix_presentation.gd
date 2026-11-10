@@ -23,6 +23,7 @@ func run():
  check(story.phase=="end","Ending still completes after the additional line")
  print("NAMING SEQUENCE checked")
  var game=load("res://felix.tscn").instantiate()
+ game.developer_mode=true
  root.add_child(game)
  await process_frame
  game.story.skip_prologue()

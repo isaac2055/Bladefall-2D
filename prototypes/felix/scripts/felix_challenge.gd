@@ -17,7 +17,7 @@ func title():
  return [("Core" if number>=101 else "Fractured")+" "+["","Outskirts","Woods","Causeway"][home],"a darker path"]
 func start(): phase="play"
 func skip_prologue(): start()
-func blocking(): return phase in ["black","end"]
+func blocking(): return phase in ["black","end"] or (tracker!=null and tracker.failure_frames>0)
 func tick(world,_sim,delta):
  hint.life=maxf(0,hint.life-delta)
  if phase!="play" or tracker==null: return

@@ -28,6 +28,7 @@ const LATE={CAMP:0.0,BORROW:.05,HOIST:.1,PATROL:.18,CHAIN:.26,UPPER:.34,RISE:.42
  "cl3-walk-3-3":.55,STAIR:.6,"cl3-walk-4-16":.65,ROAD:.7,GANTRY:.78,BRACE:.85,BRUTE:.92,LOT:1.0}
 # The drive to Dad's: one beat as Felix drops into each room and one at its light.
 # [line, who, line, who]: "dad" is the front seat, "boy" the back, "note" Phantom's notebook.
+const Narration=preload("res://scripts/felix_dialogue.gd")
 const DRIVE=[
  ["so. how was the week, bud?","dad","...fine.","boy"],
  ["you hungry? we could get burgers.","dad","...yeah. okay.","boy"],
@@ -215,16 +216,13 @@ func tick(world,sim,delta):
    if index==tale_rooms.size()-1:
     # A chapter scene change, after the final line has time to land.
     drive_done=true
-    freeze=300
+    freeze=maxi(300,ceili(Narration.remaining(lines)*60)+15)
     cue_clock=0
-    cue=[[300,func(): cut=LOT]]
+    cue=[[freeze,func(): cut=LOT]]
  if drive_done and room==LOT and not done.has("ending"): begin_ending(world,sim)
 
 func drive_line(text_value,who,seconds):
- match who:
-  "dad": say(text_value,"above",seconds)
-  "boy": say(text_value,"below",seconds)
-  _: show_hint(text_value,seconds+1.0)
+ Narration.append(lines,text_value,"above" if who=="dad" else "below",seconds)
 
 # At the camp, where the bridge is stuck: knights are for little kids now.
 func opening():
@@ -378,8 +376,8 @@ func stand_spot(world,x,ground_y,tall):
  return found
 
 func fits(cells,cx,r,tall):
- for x in [cx-1,cx,cx+1]:
-  if not cells.get(Vector2i(x,r),0) in [1,2]: return false
+ for x in range(cx-2,cx+3):
+  if cells.get(Vector2i(x,r),0)!=1: return false
   for y in range(r-tall,r):
    if cells.get(Vector2i(x,y),0)!=0: return false
  return true

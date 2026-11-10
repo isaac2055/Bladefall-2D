@@ -304,6 +304,9 @@ func draw_world_hearts(): pass
 func draw_silas_quest(): pass
 
 func target_camera():
+ if story!=null and story.room==Story.CAMP and story.freeze>0:
+  var origin=runtime.placements[Story.CAMP]
+  return Vector2(origin.x,actor.y-125)
  if riding: return Vector2(actor.x-153,actor.y-100)
  # At the lot, frame the people and the car while a scene plays.
  if story!=null and story.room==Story.LOT and (story.freeze>0 or story.phase in ["ending","end"]):

@@ -59,5 +59,23 @@ func run():
   if n==3:
    check(not story.in_car and not story.man.visible and not story.mom.visible and not story.boy.visible,"normal handoff leaves Felix visible and family at the lot")
   world.shutdown()
+ world=World.new(JSON.parse_string(FileAccess.get_file_as_string("res://data/world1.json")))
+ story=preload("res://scripts/felix_story.gd").new(world)
+ story.skip_prologue()
+ world.enter(story.STAIR,true)
+ var first=world.data.world.campaignWorkshop.rooms[0]
+ var reached=false
+ for part in [[40,""],[100,"l"],[17,"j"],[40,""],[17,"j"],[40,""],[17,"j"],[40,""],[700,"r"]]:
+  for f in range(part[0]):
+   tick(part[1])
+   if world.active_id==first:
+    reached=true
+    break
+  if reached: break
+ check(reached,"chapter 1 climbs from the existing stair into the first connected puzzle")
+ check(story.done.has("fight"),"chapter 1 family turn remains before the wardrobe")
+ check(world.active().deaths==0,"chapter 1 approach retains its safe checkpoint route")
+ if not reached: print("STAIR STOP ",world.active_id," ",world.position())
+ world.shutdown()
  print("STORY ROAD FAILURES ",failures)
  quit(1 if failures else 0)

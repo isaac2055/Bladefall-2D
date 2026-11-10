@@ -1,131 +1,64 @@
-# Felix · Chapter One, The New House · Chapter Two, Sir Felix · Chapter Three, Phantom
+# Felix
 
-A story remake of Ascend's first world, The Outskirts, as the opening of the imaginary-friend game.
-It is a separate copy of the Godot Ascend prototype (`prototypes/godot-ascend` is untouched), on branch
-`claude/felix-outskirts`.
+A quiet light, a long way home. Willow Studios' story remake uses Bladefall's approved movement and puzzle rooms, with Felix's artwork, cast and music.
 
-**Play:** double-click `Play Felix.command`. Arrows move, Space jumps, D dashes, A clings and carries,
-R retries the room, Esc pauses.
+The playable sample contains three story chapters and six gameplay-only Fractured/Core routes. Its runtime starts at `felix.tscn` / `scripts/felix_main.gd`. The inherited `main.gd` is not the Felix entry point.
 
-## What changed and what did not
+## Playing
 
-- **Unchanged:** the movement physics, the Outskirts' native rooms from `levels/world1.tscn`, their
-  order, checkpoints and every device's rules.
-- **Cut:** Rowan's and the Pilgrims' Postern side quests, their rooms and every resident. Mara's crayons stay on the road as pickups.
-- **Story (scripts/felix_story.gd):** the night a five-year-old moves into a new house. The game
-  opens on black and a child crying. One button makes a spark. The boy gives the light legs at the
-  first bricks (jump), his sock as a cape on the rug (dash) and arms at the tall boxes (climb), each
-  at the moment it is needed. He goes to bed and asks the light to check underneath. The dark from
-  under the bed climbs the wall as the night goes on. The nightlight on its dock holds it back. At
-  the windowsill, half asleep, he says "...Felix." and the light gets a face.
-- **Look (scripts/felix_view.gd):** Felix is a firefly-sized light, so the bedroom is the mountain.
-  Floorboards and furniture are wood, free-standing blocks are moving boxes. Floor spikes are loose
-  building bricks, wall spikes are pushpins and checkpoints are crayon stars. Crystals are
-  glow-in-the-dark star stickers, stakes are firefly jars and gates are cardboard flaps. The lantern
-  is a nightlight and the held door is a wall of the dark. Crumbling stone is alphabet blocks,
-  patrols are dust bunnies, the lift is a berry basket on a string and shards are crayons.
-  Behind the play rooms: the hallway door with light under it, the bed and the sleeping boy,
-  bookshelves, the desk, the dresser, and the window with the moon.
-- **The turn (scripts/felix_story.gd):** the new house is Mom's, after the separation. Two stacks of
-  boxes, "MOM" and "DAD - TAKE", say so without anyone saying it. At the top of the overlook stair,
-  after the curtain room, Felix hears the parents arguing through the floor. A door closes. The boy
-  hides under the quilt, the dark surges and the music drops out. Felix goes up to the wardrobe,
-  where the family photos are packed, to bring the good days back to him.
-- **The top of the wardrobe:** Codex's ten approved Outskirts workshop rooms (from `levels/world4.tscn`)
-  are joined into the world after the curtain room. Codex's overlook stair climbs from the curtain
-  room's nook onto a walkway along the top of the wardrobe (`join_wardrobe` in `scripts/world.gd`).
-  - **Entering a room:** each room hangs below the walkway. You drop through a two-tile hatch cut
-    in its ceiling and land on its authored start.
-  - **Inside a room:** each room is the inside of a box of family things. It ends at a photo of a
-    good day hanging on the boy's string. Rooms that needed a shard now need the photo's torn corner
-    (or two torn pieces).
-  - **Leaving a room:** reaching the photo, with the room's finish rules met, lowers the basket. It
-    lifts Felix straight up onto the walkway. Only when the photo is left of the walkway's wall does
-    it nudge him right, just past the wall. The checkpoint is where he lands.
-  - **The ending:** the photos end up propped along the windowsill when the boy says his name.
-  - **The end:** after the tenth room the walkway leads to the windowsill (the old Upper Watch room),
-    where the naming happens.
-  - **Changed in the rooms:** only the entry hatch. Spawns, routes, devices and finish rules are as
-    approved.
-  - **Checked:** `--reference workshop-relay --chain --report` walks every stretch of walkway, drops
-    into every room, plays its stored route, rides every basket and reaches the naming with zero
-    deaths.
-- **Slime:** the white flowers are now spilled green slime puddles. The patches and the slowing are the
-  same (run 55%, jump 67%, dash 60% for 3 seconds). Felix turns green and drips while it lasts, and the
-  first touch after the legs gift gets "eww, SLIME!".
-- **Collectible:** the first drawing of Felix, hidden in Hang Time (the secret above Watcher's Cut).
+Use the standalone macOS app, Windows ZIP, signed Android APK, or the browser build at https://felixsample.pages.dev. The apps include their engine and assets and play offline. `Play Felix.command` is the developer launcher and uses Godot 4.5.1.
 
-## Chapter Two, Sir Felix (the Black Woods)
+Keyboard defaults: arrows move and aim, Space jumps, D dashes, A climbs/carries, W strikes, F parries, R retries, Escape pauses. Story abilities arrive as gifts. Controllers can be remapped. On phones, use landscape orientation and the touch stick/buttons; action buttons appear as their abilities are earned.
 
-Reached from Chapter One's end card ("press any button for Chapter Two"), or from the pause menu.
-Developer flag: `--chapter 2`. Story: `scripts/woods_story.gd`. Look: `scripts/woods_view.gd`, drawn over
-Codex's Black Woods (`levels/world2.tscn`), whose forest, tiles and devices are unchanged.
+## The three chapters
 
-- **The walk (two years later, every other weekend):** the boy walks Felix through the woods to Dad's
-  new cabin. He walks a little ahead in the forest's depth and talks along the way. Afternoon turns to
-  dusk room by room, and thunder starts far off near the end.
-- **The knighting:** in Oathblade Clearing the world stops. The boy kneels with Dad's walking stick:
-  "this is dad's stick. but now it's a SWORD." / "kneel." / "I dub thee..." (a cardboard helmet) /
-  "SIR FELIX!" (the stick becomes his sword). Strike (W) is locked until then.
-- **New devices get one line each:** moth pods, the branch swap and the bell.
-- **Dad's cabin:** the road ends in the old Rootbound Overlook. Dad sits on the porch step, a backlit
-  shape whose face is never shown. "there's my guy!" / "DAD! this is Sir Felix." / "...Sir Felix. very
-  nice to meet you, sir." Then rain, lightning and the power goes out. Dad offers a story; the boy
-  asks for a knight one.
-- **Dad's story:** Codex's ten Woods workshop rooms (`levels/world4.tscn`) are the tale, joined into
-  one walkable row east of the big tree (`join_story` in `scripts/world.gd`). The road cuts into the story
-  when Dad starts telling it. Each room gets a line of Dad's as Felix drops in and another at its
-  finish, with the boy interrupting now and then. The finish is where Dad's flashlight points, and its
-  beam lifts Felix out onto the next stretch, straight up as in Chapter One. Two rooms (Two Ways Through
-  the Canopy, The Landing You Make in Midair) and The Overturned Hollow have no clear drop to their
-  start, so the beam lowers Felix in instead. Their layouts are untouched.
-- **The ending:** the last finish lifts Felix out of the story, back to the porch. The boy is asleep across
-  Dad's knees. "...and Sir Felix kept watch all night," / "so nobody had to be scared." / "...I've got
-  the watch tonight, Sir Felix." Felix sets the helmet and sword down. End card: "Chapter Two · Sir Felix".
-- **Cut:** Elsie's supper quest and its rooms, the hall behind the start, and the passages to other worlds.
-  The secret (Read the Colors) gives the boy's drawing of Sir Felix instead of a heart.
-- **Checked:** `--chapter 2 --tour --report` plays Codex's recorded Black Woods tour through every scene
-  to the cabin and into the story with zero deaths. `--chapter 2 --reference workshop-borrowed --chain
-  --report` plays all ten story rooms, every beam and the ending with zero deaths. Chapter One's chain
-  still passes.
+1. **The New House.** At five, the boy imagines a light on his first night in a new house. Legs, a sock cape and arms arrive as gifts. After the parents' muffled argument, Felix finds ten family photos in the wardrobe boxes. The windowsill naming scene gives him his face.
+2. **Sir Felix.** At seven, the walk to Dad's cabin becomes a knight's adventure. A storm cuts the power, and Dad tells a story through ten Woods exercises. The ending returns to the porch, with the boy asleep in Dad's lap.
+3. **Phantom.** At ten, a Causeway handoff becomes a spy mission. Three clues are misread, then reconsidered during the ten-room drive to Dad's. The Sunday return and mask-off ending remain.
 
-## Chapter Three, Phantom (the Causeway)
+All thirty affixed exercises now connect through walkable geometry. Authored puzzle interiors and individual checkpoints remain; completing the original goal banks its photo/story reward and opens an earned passage. There are no basket, beam or headlight rides between exercises. Chapter entrances, family scenes and endings remain. Narration queues across doorways so fast movement cannot cut off a line.
 
-Run it with `--chapter 3`, or press a button at the end of Chapter Two.
+## Fractured, Core and rewards
 
-- **Story (scripts/phantom_story.gd):** Isaac is ten. Every other Friday he is handed over at a lot
-  across the Causeway. This Friday the bridge is stuck, so Mom and her new friend, a big man in a work
-  jacket, walk him over to Dad's car. At the camp the boy decides knights are for little kids: Felix
-  becomes **Phantom**, a spy (hood, mask, Dad's stick snapped into a dagger, so W still strikes), and
-  his mission is to tail the big man and find out what he's hiding. The boy talks on a toy radio.
-  - **Three clues, each misread:** his phone keeps buzzing (The Patrol Road), he keeps looking back
-    (The Upper Chain), he's carrying two coffees (Counterweight Rise).
-  - **The counter (F)** is given in Broken Standard, the first fight.
-  - **The Brute:** in "Let Him Clear the Causeway" the big man is the Brute as the boy sees him,
-    and he smashes the broken road open.
-  - **The handoff, at the lot (cl3-atlas-crossroads):** goodbyes, the boy gets into Dad's car, and as
-    it pulls away, through the back window, Mom's smile drops and the man puts his arm around her.
-    Nobody says anything. The boy keeps it to himself.
-- **The drive (`join_story(source,3)` in scripts/world.gd):** Codex's ten Causeway workshop rooms hang
-  below their own road east of the lot, entered the same way as Dad's story. Each room has one line
-  as Felix drops in and one at its finish: Dad's small talk, the boy's short answers, and the three
-  clues re-read in Phantom's notebook ("...it was her. calling him."). The finish is a streetlight's
-  pool and headlights carry him on.
-- **Sunday night:** back at the lot, the boy gets out of Dad's car and hands the big man his bag.
-  "hey." / "...hey, bud. got it." Felix takes his mask off.
-- **Cut:** the Defector side quest and its rooms, the Pilgrims' Landing hall, and the passage to other
-  worlds. **Secret:** Phantom's ID card at the top of the Glass Ladder.
-- **Look (scripts/phantom_view.gd):** placeholder figures drawn in code over Codex's Causeway tiles
-  (the man, Mom, the boy, Dad's car, the hood and mask), Friday gold to sunset, the drive at night
-  under passing streetlights.
-- **Checks:** `--chapter 3 --tour --report` plays the whole Causeway to the lot and into
-  story-walk-0; `--chapter 3 --reference workshop-borrowed-bridge --chain --report` plays the drive
-  to Sunday night (`phase=end`). `tools/phantom-shots.sh <dir>` saves 13 shots.
+Finish all three stories to open Fractured Outskirts. Fractured routes unlock in order: Outskirts, Woods, Causeway. Clearing all three opens Core Outskirts, followed by Core Woods and Core Causeway. These routes use the current approved native layouts, Felix's costumes/materials, darker presentation and the full ability kit, without a family storyline.
 
-## Developer flags (after `--`)
+Story clears earn roots; deathless clears make them shiny. Fractured clears earn crowns and Core clears earn keepsakes. Once earned, advanced rewards can be carried through a deathless attempt for their shiny forms. Death, Retry or resuming a carried attempt restarts the route. Normal attempts preserve checkpoints. Garden and records shows rewards, banked memories and local records. Restarting a chapter retains its permanent collection.
 
-`--from <room-id>` starts at a room with every gift. `--place x y` moves Felix inside it.
-`--script prologue` plays the opening by itself. `--capture out.png --capture-after <frames>` saves
-a screenshot and quits. `--reference <room-id> --report` drives a room with its stored browser
-recording. Several of those recordings (road, Wait Below the Lip, Muster Yard) also die in the
-untouched native layout, so they cannot prove a route.
+## Saves
+
+Felix has its own application identity and storage, separate from Bladefall. Ordinary attempts save during play, at room changes, on pause, on focus loss and on quit. Saves include the world, machinery, inventory, checkpoint, gifts, collected items, story guards and queued narration. During a timed scene, the latest stable save is retained so remaining cues replay safely after relaunch.
+
+Settings provides portable export/import across browser, macOS, Windows and Android. Import validates the complete bundle before replacing local progress and retains a prior-save backup. Browser storage belongs to that browser and site; keep an exported backup. The tested bundle containing all nine route checkpoints fits within the 32 MiB import limit.
+
+## Building
+
+Run from this folder. Desktop/web use Godot 4.5.1; set `GODOT` if it is not in the repository's `.cache/godot` directory.
+
+```sh
+bash tools/build-macos.sh
+bash tools/build-windows.sh
+node tools/build-web.mjs
+bash tools/build-android.sh
+```
+
+Android uses the separate Godot 4.6.1 engine, SDK 35 and JDK 17. Its staging import cache is isolated from desktop/web. Set `ANDROID_GODOT` if needed. The persistent Felix release key is kept outside Git; on this Mac its password is in Keychain under `willowstudios.felix.android.release`. Other build hosts can provide the `GODOT_ANDROID_KEYSTORE_RELEASE_PATH`, `GODOT_ANDROID_KEYSTORE_RELEASE_USER` and `GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD` environment variables. Never commit keys or passwords.
+
+Outputs go to `exports/`. The web packager verifies its compressed chunks and keeps each Pages asset within the existing size limit. Native downloads live in the `felix-v0.1.0` GitHub release. Deploy the web directory using this folder's `wrangler.jsonc`, never Bladefall's configuration.
+
+## Verification
+
+Run these with the matching Godot engine and `--path . --script`:
+
+- `tests/story_road.gd`: original story approaches, family scenes and physical entry into the exercises.
+- `tests/connected_story.gd`: all thirty original puzzle recordings, actual walking between rooms, individual checkpoints, rewards, all tale/drive lines and endings; no between-puzzle resets.
+- `tests/story_saves.gd`: story/world resume, queued dialogue, stable-scene policy and portable bundles.
+- `tests/challenge_saves.gd`: all six challenge checkpoint round trips and carried-attempt restart policy.
+- `tests/portable_capacity.gd`: all nine saved routes in one importable bundle.
+- `tests/release_shell.gd`: title, settings, touch start, remapping, garden, unlocks and challenge restart binding.
+- `tools/test_felix_presentation.gd`: naming, all three original scores, live looping and menu audition.
+
+`python3 tools/check-advanced.py` checks the six full advanced recordings. `tools/check-web.mjs` and `tools/check-web-mobile.mjs` exercise actual WASM gameplay and save flows. Screenshot tools write to ignored `shots/`; inspect the images, not just exit codes. Build helpers reject script errors even when Godot returns success.
+
+macOS was exercised on Apple Silicon; Windows PE/ZIP/game-pack validation does not substitute for a physical Windows PC. Chromium/WebKit phone emulation and an Android emulator were used; physical iPhone testing remains outside the available hardware.
+
+Chapter Four, *Borrowed Air*, remains a proposal and is not part of this sample. No new finale rooms or combined checkpoints were introduced.

@@ -25,6 +25,8 @@ const Run=preload("res://scripts/sampler_run.gd")
 var sampler
 var front_end
 var controls_menu
+var journal
+static var carry_requested=false
 const SaveTransfer=preload("res://scripts/save_transfer.gd")
 var transfer_status:Label
 var transfer_dialog:FileDialog
@@ -34,6 +36,7 @@ var settings=ConfigFile.new()
 var touch_controls
 var mobile=false
 static var booted=false
+static var show_studio=true
 static var play_on_ready=false
 var developer_mode=false
 var save_error=""
@@ -97,7 +100,7 @@ func _ready():
  world=World.new(data)
  sim=world.active()
  story=Challenge.new(world) if chapter>=21 else [Story,Story,WoodsStory,PhantomStory][chapter].new(world)
- sampler.start(world,not developer_mode)
+ sampler.start(world,not developer_mode,carry_requested and chapter>=21)
  if chapter>=21: story.tracker=sampler
  audio=Sound.new()
  audio.levels.Efforts=0.0
@@ -106,17 +109,19 @@ func _ready():
  audio.world_runtime=world
  add_child(audio)
  audio.music.volume_db=-80
+ var half_resolution=mobile or chapter in [2,22,102]
  var container=SubViewportContainer.new()
  container.position=Vector2(0,48)
  container.size=Vector2(1280,736)
  container.stretch=true
+ container.stretch_shrink=2 if half_resolution else 1
  viewport=SubViewport.new()
- viewport.size=Vector2i(640,368) if mobile else Vector2i(1280,736)
+ viewport.size=Vector2i(640,368) if half_resolution else Vector2i(1280,736)
  viewport.canvas_item_default_texture_filter=Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
  container.add_child(viewport)
  add_child(container)
  view=ChallengeView.new() if chapter>=21 else [View,View,WoodsView,PhantomView][chapter].new()
- view.scale=Vector2(2,2) if mobile else Vector2(4,4)
+ view.scale=Vector2(2,2) if half_resolution else Vector2(4,4)
  view.reduced_motion=reduced_motion
  view.world_data=world.data
  view.runtime=world
@@ -131,6 +136,7 @@ func _ready():
  chapter_music.setup(audio.music)
  build_interface()
  if resume_on_ready and not developer_mode and restore_checkpoint():
+  if chapter>=21: story.start()
   sim=world.active()
   view.load_scene(sim)
   if story.phase!="black": title_box.hide()
@@ -141,11 +147,15 @@ func _ready():
  controls_menu=preload("res://scripts/controls_menu.gd").new()
  controls_menu.app=self
  add_child(controls_menu)
+ journal=preload("res://scripts/felix_journal.gd").new()
+ journal.app=self
+ add_child(journal)
  touch_controls=preload("res://scripts/felix_touch_controls.gd").new()
  touch_controls.app=self
  add_child(touch_controls)
- if not developer_mode and not play_on_ready: front_end.open(true)
+ if not developer_mode and not play_on_ready: front_end.open(show_studio)
  else: front_end.hide()
+ show_studio=false
  play_on_ready=false
  for i in range(args.size()):
   match args[i]:
@@ -233,16 +243,32 @@ func build_interface():
  var column=VBoxContainer.new()
  column.add_theme_constant_override("separation",12)
  var scroll=ScrollContainer.new()
- scroll.custom_minimum_size=Vector2(500,610)
+ scroll.custom_minimum_size=Vector2(500,506 if mobile else 610)
  scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
- pause_box.add_child(scroll)
+ if mobile:
+  var settings_layout=VBoxContainer.new()
+  settings_layout.add_theme_constant_override("separation",8)
+  pause_box.add_child(settings_layout)
+  var quick=HBoxContainer.new()
+  quick.add_theme_constant_override("separation",8)
+  settings_layout.add_child(quick)
+  for item in [["Resume",func():set_paused(false)],["Export",export_portable_save],["Import",import_portable_save]]:
+   var action=button(quick,item[0],item[1],false)
+   action.custom_minimum_size.x=154
+   action.add_theme_font_size_override("font_size",28)
+  settings_layout.add_child(scroll)
+ else: pause_box.add_child(scroll)
  scroll.add_child(column)
  column.custom_minimum_size.x=480
  crayon_label(column,"paused",30,Color("#fff1c9"))
  crayon_label(column,"Music",20,Color("#c9cfe8"))
  music_picker=OptionButton.new()
  music_picker.add_theme_font_override("font",crayon)
- music_picker.add_theme_font_size_override("font_size",20)
+ music_picker.add_theme_font_size_override("font_size",32 if mobile else 20)
+ if mobile:
+  music_picker.custom_minimum_size.y=96
+  music_picker.get_popup().add_theme_font_size_override("font_size",32)
+  music_picker.get_popup().add_theme_constant_override("v_separation",40)
  column.add_child(music_picker)
  for i in range(chapter_music.tracks.size()):
   music_picker.add_item(chapter_music.tracks[i].title,i)
@@ -275,25 +301,24 @@ func build_interface():
   view.reduced_motion=value
   settings.set_value("accessibility","reduced_motion",value)
   settings.save("user://felix-settings.cfg"))
+ if mobile:
+  motion.custom_minimum_size.y=96
+  motion.add_theme_font_size_override("font_size",28)
  column.add_child(motion)
+ button(column,"Garden and records",func():journal.open(),false)
  button(column,"Controls and remapping",func():controls_menu.open(),false)
  button(column,"Export save",export_portable_save,false)
  button(column,"Import save",import_portable_save,false)
  transfer_status=crayon_label(column,"",16,Color("#b5bdd4"))
  transfer_status.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  for item in [["Keep climbing",func():set_paused(false)],["Begin the chapter again",restart_chapter],["Title and chapters",func():set_paused(false);front_end.open(false)],["Quit",close_app]]:
-  var button=Button.new()
-  button.text=item[0]
-  button.add_theme_font_override("font",crayon)
-  button.add_theme_font_size_override("font_size",22)
-  button.pressed.connect(item[1])
-  column.add_child(button)
+  button(column,item[0],item[1],false)
 
 func crayon_label(parent,value,size,color):
  var label=Label.new()
  label.text=value
  label.add_theme_font_override("font",crayon)
- label.add_theme_font_size_override("font_size",size)
+ label.add_theme_font_size_override("font_size",maxi(size,28) if mobile else size)
  label.add_theme_color_override("font_color",color)
  label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  parent.add_child(label)
@@ -311,22 +336,23 @@ func world_label(n):
 func button(parent,value,action,_primary=false):
  var result=Button.new()
  result.text=value
- result.custom_minimum_size.y=62 if mobile else 48
+ result.custom_minimum_size.y=96 if mobile else 48
  result.add_theme_font_override("font",crayon)
- result.add_theme_font_size_override("font_size",24)
+ result.add_theme_font_size_override("font_size",32 if mobile else 24)
  result.pressed.connect(action)
  parent.add_child(result)
  return result
 
 func has_checkpoint(n):
- return SaveState.exists(n) if n<21 else WorldSave.exists(sampler.profile,n)
+ return SaveState.read(n).get("story",{}).get("phase","black")!="black" if n<21 else WorldSave.exists(sampler.profile,n)
 
 func restore_checkpoint():
  return SaveState.restore(world,story,sampler,audio) if chapter<21 else WorldSave.restore(world,sampler,audio)
 
-func load_chapter(n,resume=true):
+func load_chapter(n,resume=true,carry=false):
  save_checkpoint()
  chapter=n
+ carry_requested=carry
  resume_on_ready=resume
  play_on_ready=true
  get_tree().reload_current_scene()
@@ -335,6 +361,7 @@ func restart_chapter(): load_chapter(chapter,false)
 
 func save_checkpoint():
  if developer_mode or sampler==null or not SaveState.stable(story): return false
+ if chapter<21: bank_memories()
  var ok=SaveState.write_payload(SaveState.capture(world,story,sampler,audio)) if chapter<21 else WorldSave.write(world,sampler,audio)
  save_error="" if ok else "Couldn't save progress. Please export a backup before closing."
  if ok:
@@ -344,6 +371,16 @@ func save_checkpoint():
   last_saved_room=world.active_id
   saved_phase=story.phase
  return ok
+
+func bank_memories():
+ var key="felix-chapter-%d"%chapter
+ var kept=sampler.profile.story_seen.get(key,{"photos":[],"secret":false,"crayons":0})
+ for id in story.photos:
+  if id not in kept.photos: kept.photos.append(id)
+ var item=story.get("drawing") if chapter<3 else story.get("badge")
+ if item!=null and item.taken: kept.secret=true
+ if chapter==1: kept.crayons=maxi(int(kept.get("crayons",0)),story.crayons)
+ sampler.profile.story_seen[key]=kept
 
 func text(parent,value,size=20,color="#c9cfe8"):
  return crayon_label(parent,value,size,Color(color))
@@ -379,8 +416,19 @@ func set_paused(value):
  # Let the selected score play while its menu is open for comparison.
  audio.music.stream_paused=false
 
+func _input(event):
+ if event is InputEventJoypadButton or event is InputEventJoypadMotion and absf(event.axis_value)>.5: Controls.using_controller=true
+ elif event is InputEventKey or event is InputEventScreenTouch: Controls.using_controller=false
+
+func input_hint(value):
+ var hints={"SPACE   jump":["jump","jump"],"D + ARROWS   dash":["dash","aim and dash"],"HOLD A   cling and climb":["grab","hold to cling and climb"],"W   strike":["strike","strike"],"F   counter":["parry","counter"]}
+ if not hints.has(value): return value
+ var verb=hints[value][0]
+ var label={"jump":"JUMP","dash":"DASH + stick","grab":"CARRY","strike":"STRIKE","parry":"PARRY"}[verb] if mobile and not Controls.using_controller else Controls.Remap.short_label(Controls.ACTIONS[verb],Controls.using_controller)
+ return label+" · "+hints[value][1]
+
 func _unhandled_input(event):
- if front_end!=null and front_end.visible or controls_menu!=null and controls_menu.visible: return
+ if front_end!=null and front_end.visible or controls_menu!=null and controls_menu.visible or journal!=null and journal.visible: return
  if event.is_action_pressed("knight_pause") and story.phase in ["play","ending"]:
   set_paused(not paused)
   return
@@ -392,6 +440,11 @@ func _unhandled_input(event):
 
 func _notification(what):
  if what==NOTIFICATION_WM_CLOSE_REQUEST: close_app()
+ if what==NOTIFICATION_WM_GO_BACK_REQUEST:
+  if journal!=null and journal.visible: journal.close()
+  elif controls_menu!=null and controls_menu.visible: controls_menu.close()
+  elif front_end!=null and front_end.visible: close_app()
+  else: set_paused(not paused)
  if what==NOTIFICATION_APPLICATION_FOCUS_OUT or what==NOTIFICATION_APPLICATION_PAUSED: save_checkpoint()
 
 func gated(raw):
@@ -470,6 +523,7 @@ func _physics_process(_delta):
    view.active_position=world.placements[world.active_id]
    view.snap_actor()
    if report: print("ROOM ",world.active_id," deaths=",sim.deaths," frame=",ticks)
+   save_checkpoint()
   var retry=Input.is_action_pressed("knight_retry")
   if retry and not retry_held and sim.p.state not in ["dead","respawn"]: retry_room()
   retry_held=retry
@@ -479,6 +533,9 @@ func _physics_process(_delta):
   sampler.profile.tick(world.active_id,maxi(0,sim.deaths-sampler.last_deaths))
   sampler.last_deaths=sim.deaths
  story.tick(world,sim,1.0/60.0)
+ if sim!=world.active():
+  sim=world.active()
+  view.load_scene(sim)
  for id in world.campaign_completed: sampler.profile.mark_clear(id)
  if chapter<21 and story.phase=="end" and not sampler.profile.run.finished:
   sampler.profile.finish(world.data.world.campaignWorkshop.rooms)
@@ -547,7 +604,7 @@ func _process(delta):
  music_db=lerp(music_db,want,1-exp(-delta*.5))
  audio.music.volume_db=music_db
  update_lines()
- hint_label.text=save_error if save_error!="" else story.hint.text
+ hint_label.text=save_error if save_error!="" else input_hint(story.hint.text)
  hint_label.modulate.a=clamp(story.hint.life,0,1)
 
 func anchor_point(anchor):
@@ -585,8 +642,10 @@ func update_lines():
 # Rooms that are not joined in space: a short fade, then the next one.
 func go_to(id):
  cover.color.a=.9
+ var total_deaths=sim.deaths
  world.enter(id,true)
  sim=world.active()
+ sim.deaths=total_deaths
  view.load_scene(sim)
  # A chapter cut must retain the score selected in the merged Music menu.
  var selected_score=audio.music.stream

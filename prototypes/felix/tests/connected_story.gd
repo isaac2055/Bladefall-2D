@@ -5,8 +5,12 @@ const Inputs=preload("res://tests/connected_route_inputs.gd")
 const Stories=[preload("res://scripts/felix_story.gd"),preload("res://scripts/woods_story.gd"),preload("res://scripts/phantom_story.gd")]
 class StoryRun:
  var story
+ var heard=[]
  func _init(value): story=value
- func tick(world): story.tick(world,world.active(),1.0/60)
+ func tick(world):
+  story.tick(world,world.active(),1.0/60)
+  for line in story.lines:
+   if line.get("delay",0)<=0 and line.text not in heard: heard.append(line.text)
 var failures=0
 func check(ok,label):
  print("PASS " if ok else "FAIL ",label)
@@ -45,7 +49,9 @@ func run():
   if chapter==1:
    check(Inputs.next_puzzle(world,tracker,story.SILL),"walk to windowsill ending")
   else:
-   for f in range(310): tracker.tick(world)
+   for f in range(12000):
+    if story.cut!="": break
+    tracker.tick(world)
    check(story.cut==("cl2-atlas-crossroads" if chapter==2 else "cl3-atlas-crossroads"),"chapter scene returns after final line")
    if story.cut!="":
     world.enter(story.cut,true)
@@ -54,7 +60,13 @@ func run():
   check(story.phase=="end","chapter %d ending preserved"%chapter)
   check(story.photos.size()==10,"chapter %d all ten story rewards"%chapter)
   check(world.active().deaths==0,"chapter %d connected journey without deaths"%chapter)
+  if chapter==2:
+   for beat in story.TALE:
+    check(beat[0] in tracker.heard and beat[1] in tracker.heard,"both tale lines reach the player: "+beat[0])
+   for beat in story.INTERRUPTIONS: check(beat[2] in tracker.heard,"boy's interruption is retained: "+beat[2])
   if chapter==3:
+   for beat in story.DRIVE:
+    check(beat[0] in tracker.heard and beat[2] in tracker.heard,"both drive lines reach the player: "+beat[0])
    check(not story.in_car,"Felix leaves car state for drive gameplay")
   world.shutdown()
  print("CONNECTED STORY FAILURES ",failures)

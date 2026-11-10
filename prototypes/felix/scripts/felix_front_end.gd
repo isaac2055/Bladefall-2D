@@ -6,23 +6,38 @@ var intro=true
 var menu:VBoxContainer
 var routes:OptionButton
 var play:Button
+var carrying:CheckButton
 const LIGHT=preload("res://art/felix/light.png")
 func _ready():
  set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
  mouse_filter=Control.MOUSE_FILTER_STOP
  menu=VBoxContainer.new()
- menu.position=Vector2(710,330)
+ menu.position=Vector2.ZERO
  menu.custom_minimum_size.x=480
  menu.add_theme_constant_override("separation",14)
- add_child(menu)
+ var scroll=ScrollContainer.new()
+ scroll.position=Vector2(710,320)
+ scroll.size=Vector2(500,415)
+ scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+ add_child(scroll)
+ scroll.add_child(menu)
  play=app.button(menu,"",continue_selected,false)
  routes=OptionButton.new()
  routes.custom_minimum_size.y=62
- routes.add_theme_font_size_override("font_size",24)
+ routes.add_theme_font_size_override("font_size",32 if app.mobile else 24)
+ if app.mobile:
+  routes.custom_minimum_size.y=112
+  routes.get_popup().add_theme_font_size_override("font_size",32)
+  routes.get_popup().add_theme_constant_override("v_separation",40)
  menu.add_child(routes)
  refresh_worlds()
+ carrying=CheckButton.new()
+ carrying.text="Carry keepsake · deathless attempt"
+ carrying.add_theme_font_size_override("font_size",19)
+ menu.add_child(carrying)
  routes.item_selected.connect(func(_index):refresh())
- app.button(menu,"Begin selected chapter again",func():app.load_chapter(routes.get_selected_id(),false),false)
+ app.button(menu,"Start selected route again",func():app.load_chapter(routes.get_selected_id(),false),false)
+ app.button(menu,"Garden and records",func():app.journal.open(),false)
  app.button(menu,"Controls",func():app.controls_menu.open(),false)
  app.button(menu,"Settings",func():app.set_paused(true);app.pause_box.move_to_front(),false)
  app.button(menu,"Quit",app.close_app,false)
@@ -36,6 +51,8 @@ func refresh_worlds():
  routes.select(maxi(0,selected))
 
 func refresh():
+ carrying.visible=app.sampler.profile.can_carry(routes.get_selected_id())
+ if not carrying.visible: carrying.button_pressed=false
  play.text="Continue" if app.has_checkpoint(routes.get_selected_id()) else "Start journey"
 func open(with_intro=false):
  refresh_worlds()
@@ -50,7 +67,9 @@ func open(with_intro=false):
  if not intro: play.grab_focus()
 func continue_selected():
  var n=routes.get_selected_id()
- if n!=app.chapter:
+ if carrying.button_pressed:
+  app.load_chapter(n,false,true)
+ elif n!=app.chapter:
   app.load_chapter(n,true)
  else:
   hide()
@@ -102,4 +121,3 @@ func willow(root,growth,scale_factor):
    var hang=end+Vector2(j*7-7,35+sin(age*1.4+i+j)*7)*scale_factor*amount
    draw_line(end,hang,Color("#758c6b"),scale_factor)
    draw_line(hang-Vector2(0,7)*scale_factor,hang+Vector2(3,4)*scale_factor,Color("#bdc88a"),3*scale_factor)
-

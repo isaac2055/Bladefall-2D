@@ -25,6 +25,8 @@ func run():
   check(restored_story.phase=="black" and restored_story.gifts==story.gifts,"opening retains initial gifts")
   restored_world.shutdown()
   story.skip_prologue()
+  preload("res://scripts/felix_dialogue.gd").append(story.lines,"first line","above",2.0)
+  preload("res://scripts/felix_dialogue.gd").append(story.lines,"next line","below",3.0)
   var id=world.data.world.campaignWorkshop.rooms[0]
   world.enter(id,true)
   world.campaign_completed[id]=true
@@ -56,6 +58,7 @@ func run():
   restored_run=Run.new(Save.directory.path_join("felix-garden.json"))
   check(Save.restore(restored_world,restored_story,restored_run),"chapter %d completed room resumes"%n)
   check(restored_world.active_id==id and restored_world.checkpoint_id==id,"individual checkpoint round trip")
+  check(restored_story.lines==story.lines,"queued narration survives save and resume")
   check(restored_story.gifts==story.gifts and restored_story.photos==story.photos and restored_story.done==story.done,"story gifts, rewards and beat guards round trip")
   check(restored_world.road_opened.has(id) and restored_world.road_opening.is_empty(),"earned passage settles open on resume")
   check(restored_run.profile.run.cleared.has(id),"completion record survives")

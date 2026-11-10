@@ -23,6 +23,16 @@ func _ready():
  get_viewport().size_changed.connect(release_all)
 func gameplay():
  return enabled and not app.paused and not app.front_end.visible and not app.controls_menu.visible and app.story.phase=="play" and not app.story.blocking()
+func available(verb):
+ var gifts=app.story.gifts
+ match verb:
+  "jump": return gifts.legs
+  "dash": return gifts.cape
+  "grab": return gifts.arms
+  "strike": return gifts.get("sword",false) or gifts.get("dagger",false)
+  "parry": return gifts.get("counter",false)
+  "portal": return app.chapter>=21
+ return true
 func release_all():
  owners.clear();Controls.touch.clear();pad_vector=Vector2.ZERO;pad_origin=Vector2(160,660)
  queue_redraw()
@@ -50,6 +60,7 @@ func _input(event):
    return
   var chosen=""
   for verb in BUTTONS:
+   if not available(verb): continue
    if event.position.distance_to(BUTTONS[verb].at)<=BUTTONS[verb].r: chosen=verb;break
   if chosen=="" and PAD.has_point(event.position) and not owners.values().any(func(p):return p.verb=="pad"):
    chosen="pad"
@@ -97,6 +108,7 @@ func _draw():
  draw_circle(pad_origin+pad_vector*61,32,Color(.7,.8,.75,.35))
  label("MOVE / AIM",pad_origin+Vector2(0,35),22,Color(.8,.86,.8,.8))
  for verb in BUTTONS:
+  if not available(verb): continue
   var button=BUTTONS[verb]
   var held=Controls.touch.get(verb,false)
   draw_circle(button.at,button.r,Color(.42,.40,.25,.9) if held else base)

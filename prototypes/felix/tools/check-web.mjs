@@ -1,0 +1,64 @@
+import puppeteer from 'puppeteer';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+const base=process.argv[2]||'http://127.0.0.1:8877';
+const out=path.resolve(process.argv[3]||'.cache/felix-web-qa');
+await fs.mkdir(out,{recursive:true});
+const browser=await puppeteer.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',args:['--enable-unsafe-swiftshader']});
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const errors=[];
+try {
+ const page=await browser.newPage();
+ await page.setViewport({width:1280,height:930,deviceScaleFactor:1});
+ const downloads=path.join(out,'downloads');await fs.mkdir(downloads,{recursive:true});
+ const client=await page.createCDPSession();await client.send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:downloads});
+ page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+ page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(base,{waitUntil:'networkidle0'});
+ assert.match(await page.title(),/Felix/);
+ assert.equal(await page.locator('a.download').count?.()??await page.$$eval('a.download',xs=>xs.length),3);
+ await page.screenshot({path:path.join(out,'landing.png'),fullPage:true});
+ await page.setViewport({width:390,height:844,deviceScaleFactor:1});
+ assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+ await page.screenshot({path:path.join(out,'landing-phone.png'),fullPage:true});
+ await page.setViewport({width:1280,height:930,deviceScaleFactor:1});
+ await page.goto(base+'/play/',{waitUntil:'networkidle0'});
+ await page.click('#start');
+ await page.waitForFunction(()=>window.felixReady||document.querySelector('#error').textContent,{timeout:180000});
+ assert.equal(await page.$eval('#error',e=>e.textContent),'');
+ await sleep(6500);
+ await page.screenshot({path:path.join(out,'title.png')});
+ const tap=async(x,y)=>{const b=await page.$eval('#canvas',e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height}});const s=Math.min(b.w/1280,b.h/832);await page.mouse.click(b.x+(b.w-1280*s)/2+x*s,b.y+(b.h-832*s)/2+y*s)};
+ await tap(930,355);
+ await sleep(2200);
+ await page.keyboard.press('Enter');await sleep(500);
+ await page.keyboard.down('ArrowRight');await sleep(450);await page.keyboard.up('ArrowRight');await sleep(400);
+ await page.screenshot({path:path.join(out,'gameplay.png')});
+ await page.keyboard.press('Escape');await sleep(350);
+ await page.screenshot({path:path.join(out,'settings.png')});
+ const exported=path.join(downloads,'Felix-save.json');
+ await fs.rm(exported,{force:true});
+ await tap(630,501);
+ for(let i=0;i<100;i++){try{await fs.access(exported);break}catch{}await sleep(100)}
+ const bundle=JSON.parse(await fs.readFile(exported,'utf8'));
+ assert.equal(bundle.format,'felix-save');assert(bundle.files['felix-story-1.save']);assert(bundle.files['felix-garden.json']);
+ await sleep(2000);
+ const persisted=await page.evaluate(()=>new Promise((resolve,reject)=>{const req=indexedDB.open('/userfs');req.onerror=()=>reject(req.error);req.onsuccess=()=>{const db=req.result;const store=db.transaction('FILE_DATA').objectStore('FILE_DATA');const values=store.getAll();const keys=store.getAllKeys();keys.onsuccess=()=>{const i=keys.result.findIndex(k=>k.endsWith('/felix-story-1.save'));resolve(i<0?null:Array.from(values.result[i].contents));db.close()}}}));
+ assert.deepEqual(Buffer.from(persisted),Buffer.from(bundle.files['felix-story-1.save'],'base64'));
+ const chooserPromise=page.waitForFileChooser();await tap(630,561);
+ const chooser=await chooserPromise;await chooser.accept([exported]);
+ await sleep(15000);
+ await page.screenshot({path:path.join(out,'import-title.png')});
+ await tap(930,355);await sleep(300);
+ await page.keyboard.press('Escape');await sleep(300);
+ await fs.rm(exported,{force:true});await tap(630,501);
+ for(let i=0;i<100;i++){try{await fs.access(exported);break}catch{}await sleep(100)}
+ const imported=JSON.parse(await fs.readFile(exported,'utf8'));
+ assert(imported.files['felix-story-1.save']);
+ console.log('PASS actual browser save download, IndexedDB persistence and file-picker import');
+
+ assert(!errors.some(x=>/SCRIPT ERROR|Parse Error|RuntimeError|Failed to load/.test(x)),errors.join('\n'));
+ console.log('PASS landing desktop/phone, actual WASM title, prologue, gameplay and pause');
+ await fs.writeFile(path.join(out,'browser-errors.json'),JSON.stringify(errors,null,2));
+} finally {await browser.close()}

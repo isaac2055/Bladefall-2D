@@ -21,6 +21,7 @@ const SECRET="cl2-secret-w2"
 const DUSK={REFUGE:0.0,CLEARING:.05,DESCENT:.1,BRIAR:.15,KITCHEN:.25,RETURN:.35,
  "cl2-walk-2-10":.4,EDGE:.45,MIRROR:.55,FERRY:.65,ROOTBOUND:.75,TREE:.85,CABIN:.95}
 # Dad's story, one beat as Felix drops into each room and one as he reaches its light.
+const Narration=preload("res://scripts/felix_dialogue.gd")
 const TALE=[
  ["once upon a time, Sir Felix walked out into the storm...","he had to borrow a branch to cross the first gap."],
  ["the trees out there grew all crooked.","but crooked trees still hold you up."],
@@ -188,9 +189,9 @@ func tick(world,sim,delta):
  if index>=0:
   if not done.has("tale-in:"+room):
    done["tale-in:"+room]=true
-   say(TALE[index][0],"above",4.0)
+   Narration.append(lines,TALE[index][0],"above",4.0)
    for item in INTERRUPTIONS:
-    if item[0]==index and not item[1]: lines.append({"text":item[2],"anchor":"below","life":2.4,"max":2.4,"delay":4.2})
+    if item[0]==index and not item[1]: Narration.append(lines,item[2],"below",2.4)
    if sim.room.def.get("workshopRequireAllShards",false): show_hint("find all three, then bring them to the light",4.5)
    elif sim.room.def.get("workshopRequireShard",false): show_hint("find the last piece, then bring it to the light",4.5)
   if not world.campaign_completed.has(room) and preload("res://scripts/campaign_workshop.gd").goal_reached(sim):
@@ -198,15 +199,15 @@ func tick(world,sim,delta):
    world.open_road_exit(room,true)
    pulse_request=.8
    if not room in photos: photos.append(room)
-   say(TALE[index][1],"above",3.4)
+   Narration.append(lines,TALE[index][1],"above",3.4)
    for item in INTERRUPTIONS:
-    if item[0]==index and item[1]: lines.append({"text":item[2],"anchor":"below","life":2.4,"max":2.4,"delay":3.4})
+    if item[0]==index and item[1]: Narration.append(lines,item[2],"below",2.4)
    if index==tale_rooms.size()-1:
     # A chapter scene change, after the final line has time to land.
     tale_done=true
-    freeze=300
+    freeze=maxi(300,ceili(Narration.remaining(lines)*60)+15)
     cue_clock=0
-    cue=[[300,func(): cut=CABIN]]
+    cue=[[freeze,func(): cut=CABIN]]
  if tale_done and room==CABIN and not done.has("ending"): begin_ending(sim)
 
 # Dad's walking stick, a seven-year-old's ceremony, and a knight.
@@ -343,8 +344,8 @@ func stand_spot(world,x,ground_y):
  return found
 
 func boy_fits(cells,cx,r):
- for x in [cx-1,cx,cx+1]:
-  if not cells.get(Vector2i(x,r),0) in [1,2]: return false
+ for x in range(cx-2,cx+3):
+  if cells.get(Vector2i(x,r),0)!=1: return false
   for y in range(r-BOY_TALL,r):
    if cells.get(Vector2i(x,y),0)!=0: return false
  return true
