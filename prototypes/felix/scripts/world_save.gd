@@ -7,6 +7,19 @@ static func exists(profile,chapter): return FileAccess.file_exists(path(profile,
 static func clear(profile,chapter):
  var file=path(profile,chapter)
  if FileAccess.file_exists(file): DirAccess.remove_absolute(ProjectSettings.globalize_path(file))
+# Move aside an unreadable checkpoint before creating a replacement.
+# Never overwrite an earlier recovery file, even after multiple failed upgrades.
+static func archive_rejected(target):
+ if not FileAccess.file_exists(target): return true
+ var source=ProjectSettings.globalize_path(target)
+ var base=source+".recovery-"+str(int(Time.get_unix_time_from_system()))
+ var backup=base
+ var suffix=0
+ while FileAccess.file_exists(backup):
+  suffix+=1
+  backup=base+"-"+str(suffix)
+ return DirAccess.rename_absolute(source,backup)==OK
+
 static func links(value,entities,root=false):
  if value is Dictionary:
   if not root and value.has("id") and value.has("type"):

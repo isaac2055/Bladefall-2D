@@ -31,6 +31,7 @@ const SaveTransfer=preload("res://scripts/save_transfer.gd")
 var transfer_status:Label
 var transfer_dialog:FileDialog
 var web_import_callback
+var web_pause_callback
 var reduced_motion=false
 var settings=ConfigFile.new()
 var touch_controls
@@ -43,6 +44,13 @@ var save_error=""
 var last_autosave_tick=0
 var last_saved_room=""
 var saved_phase=""
+var saved_checkpoint=""
+var saved_deaths=-1
+var saved_milestones=[]
+var next_save_retry_tick=0
+var recovery_blocked=false
+var recovery_notice=""
+var recovery_time=8.0
 static var resume_on_ready=true
 var world
 var sim
@@ -92,7 +100,7 @@ func _ready():
  if args.has("--chapter"): chapter=int(args[args.find("--chapter")+1])
  developer_mode=developer_mode or Array(args).any(func(arg):return arg in ["--from","--reference","--tour","--script","--capture"])
  mobile=OS.has_feature("mobile") or DisplayServer.is_touchscreen_available()
- sampler=Run.new("user://felix-garden.json" if not developer_mode else "user://felix-qa-%d.json"%OS.get_process_id())
+ sampler=Run.new(SaveState.directory.path_join("felix-garden.json") if not developer_mode else "user://felix-qa-%d.json"%OS.get_process_id())
  if not booted and not args.has("--chapter") and not developer_mode: chapter=sampler.profile.last_world
  booted=true
  if chapter not in CHAPTERS: chapter=1
@@ -135,12 +143,16 @@ func _ready():
  chapter_music=ChapterMusic.new()
  chapter_music.setup(audio.music)
  build_interface()
- if resume_on_ready and not developer_mode and restore_checkpoint():
-  if chapter>=21: story.start()
-  sim=world.active()
-  view.load_scene(sim)
-  if story.phase!="black": title_box.hide()
- if not developer_mode: save_checkpoint()
+ if not developer_mode:
+  if resume_on_ready and restore_checkpoint():
+   if chapter>=21: story.start()
+   sim=world.active()
+   view.load_scene(sim)
+   if story.phase!="black": title_box.hide()
+   remember_saved_checkpoint()
+  else:
+   if resume_on_ready: recover_rejected_checkpoint()
+   save_checkpoint()
  front_end=FrontEnd.new()
  front_end.app=self
  add_child(front_end)
@@ -156,6 +168,9 @@ func _ready():
  if not developer_mode and not play_on_ready: front_end.open(show_studio)
  else: front_end.hide()
  show_studio=false
+ if OS.has_feature("web"):
+  web_pause_callback=JavaScriptBridge.create_callback(func(_args): pause_for_interruption())
+  JavaScriptBridge.get_interface("window").felixPauseForInterruption=web_pause_callback
  play_on_ready=false
  for i in range(args.size()):
   match args[i]:
@@ -349,6 +364,13 @@ func has_checkpoint(n):
 func restore_checkpoint():
  return SaveState.restore(world,story,sampler,audio) if chapter<21 else WorldSave.restore(world,sampler,audio)
 
+func recover_rejected_checkpoint():
+ var target=SaveState.path(chapter) if chapter<21 else WorldSave.path(sampler.profile,chapter)
+ if not FileAccess.file_exists(target): return
+ recovery_blocked=not WorldSave.archive_rejected(target)
+ recovery_notice="Could not read or back up this checkpoint. Saving is paused to protect it." if recovery_blocked else "The previous checkpoint could not be loaded. A recovery copy was kept."
+ transfer_status.text=recovery_notice
+
 func load_chapter(n,resume=true,carry=false):
  save_checkpoint()
  chapter=n
@@ -360,17 +382,31 @@ func load_chapter(n,resume=true,carry=false):
 func restart_chapter(): load_chapter(chapter,false)
 
 func save_checkpoint():
- if developer_mode or sampler==null or not SaveState.stable(story): return false
+ if developer_mode or sampler==null or recovery_blocked or not SaveState.stable(story): return false
  if chapter<21: bank_memories()
  var ok=SaveState.write_payload(SaveState.capture(world,story,sampler,audio)) if chapter<21 else WorldSave.write(world,sampler,audio)
  save_error="" if ok else "Couldn't save progress. Please export a backup before closing."
  if ok:
   sampler.profile.last_world=chapter
   sampler.profile.save_profile()
-  last_autosave_tick=ticks
-  last_saved_room=world.active_id
-  saved_phase=story.phase
+  remember_saved_checkpoint()
+ else: next_save_retry_tick=ticks+60
  return ok
+
+func remember_saved_checkpoint():
+ last_autosave_tick=ticks
+ last_saved_room=world.active_id
+ saved_phase=story.phase
+ saved_checkpoint=world.checkpoint_id
+ saved_deaths=sim.deaths
+ saved_milestones=save_milestones()
+
+func save_milestones():
+ if chapter>=21:
+  return [sim.core_run.index if sim.core_run!=null else -1, sampler.carrying(), sampler.failure_frames>0]
+ var keepsake=story.get("drawing") if chapter<3 else story.get("badge")
+ var clues=story.get("clues")
+ return [story.photos.size(),story.done.size(),bool(keepsake.taken),int(story.get("crayons")) if chapter==1 else 0,clues.size() if clues!=null else 0]
 
 func bank_memories():
  var key="felix-chapter-%d"%chapter
@@ -429,7 +465,7 @@ func input_hint(value):
 
 func _unhandled_input(event):
  if front_end!=null and front_end.visible or controls_menu!=null and controls_menu.visible or journal!=null and journal.visible: return
- if event.is_action_pressed("knight_pause") and story.phase in ["play","ending"]:
+ if event.is_action_pressed("knight_pause") and (paused or story.phase in ["play","ending"]):
   set_paused(not paused)
   return
  if story.phase=="black" and black_time>1.2 and (event is InputEventKey or event is InputEventJoypadButton or event is InputEventMouseButton or event is InputEventScreenTouch) and event.pressed:
@@ -445,7 +481,15 @@ func _notification(what):
   elif controls_menu!=null and controls_menu.visible: controls_menu.close()
   elif front_end!=null and front_end.visible: close_app()
   else: set_paused(not paused)
- if what==NOTIFICATION_APPLICATION_FOCUS_OUT or what==NOTIFICATION_APPLICATION_PAUSED: save_checkpoint()
+ if what in [NOTIFICATION_APPLICATION_FOCUS_OUT,NOTIFICATION_APPLICATION_PAUSED] and is_node_ready():
+  pause_for_interruption()
+
+func pause_for_interruption():
+ # Developer screenshot runs may deliberately render in a background window.
+ if not paused and capture_path=="":
+  set_paused(true)
+  if touch_controls!=null: touch_controls.release_all()
+  focus_pause()
 
 func gated(raw):
  if not story.gifts.legs: raw.jump=false
@@ -579,7 +623,9 @@ func _physics_process(_delta):
   view.gift_pulse=story.pulse_request
   view.burst(view.current_actor+Vector2(4,5),18,Color("#fff4d6"),26)
   story.pulse_request=0.0
- if not developer_mode and (ticks-last_autosave_tick>=120 or last_saved_room!=world.active_id or saved_phase!=story.phase): save_checkpoint()
+ # Keep immediate saves at progress boundaries; otherwise limit expensive full snapshots.
+ var boundary=last_saved_room!=world.active_id or saved_phase!=story.phase or saved_checkpoint!=world.checkpoint_id or saved_deaths!=sim.deaths or saved_milestones!=save_milestones()
+ if not developer_mode and ticks>=next_save_retry_tick and (boundary or ticks-last_autosave_tick>=600): save_checkpoint()
 
 func _process(delta):
  black_time+=delta
@@ -604,8 +650,10 @@ func _process(delta):
  music_db=lerp(music_db,want,1-exp(-delta*.5))
  audio.music.volume_db=music_db
  update_lines()
- hint_label.text=save_error if save_error!="" else input_hint(story.hint.text)
- hint_label.modulate.a=clamp(story.hint.life,0,1)
+ if not paused and story.phase!="black": recovery_time=maxf(0.0,recovery_time-delta)
+ var message=save_error if save_error!="" else (recovery_notice if recovery_time>0.0 or recovery_blocked else "")
+ hint_label.text=message if message!="" else input_hint(story.hint.text)
+ hint_label.modulate.a=1.0 if message!="" else clamp(story.hint.life,0,1)
 
 func anchor_point(anchor):
  var camera=view.camera

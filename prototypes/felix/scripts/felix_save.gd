@@ -73,7 +73,7 @@ static func restore(world,story,run,audio=null):
  for id in world.campaign_completed: world.open_road_exit(id)
  for id in world.seam_closed: world.set_seam(id,world.seam_closed[id])
  world.road_opening.clear()
- world.road_revision+=1
+ world.invalidate_road_terrain()
  if audio!=null:
   audio.heard=payload.audio.get("heard",{}).duplicate(true)
   audio.voice_queue.clear()

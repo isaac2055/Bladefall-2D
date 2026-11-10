@@ -27,8 +27,9 @@ var recorded = PackedVector2Array()
 const EVENT_CLIPS = {"pollen-slow":"rune","land-heavy":"land-hard","sentinel-bell":"bell","sentinel-stun":"stone-hit","sentinel-relocate":"shatter","oath-taken":"rune","oath-roots":"crumble","root-cut":"swing","zip-in":"zip","zip-out":"grab","hook":"grab","moving-hook":"grab","unhook":"grab","moving-unhook":"grab","mirror":"lever","shutter-open":"lever","shutter-shut":"stone-hit","feather":"gem","feather-back":"gem","anvil":"stone-hit","void-in":"portal","void-out":"portal","gravity":"rune","portal-open":"portal","portal-pass":"portal","portal-close":"lever","portal-fizzle":"stone-hit","parry":"parry","parry-success":"parry","boost":"zip","switch-high":"lever","switch-low":"lever","cart-bump":"stone-hit","cart-land":"land-hard","stone-hit":"stone-hit","stone-stop":"stone-hit","recoil-load":"lever","recoil-release":"zip","recoil-jam":"stone-hit","hinge-turn":"lever","hinge-jam":"stone-hit","brute-crack":"shatter","brute-stamp":"land-hard","enemy-tell":"stone-hit","breach":"shatter","enemy-defeat":"shatter","jump":"jump","walljump":"walljump","super":"dash","hyper":"dash","wallbounce":"walljump","dash-start":"dash","land":"land-soft","refill":"gem","death":"death","strike":"swing","stone-lit":"rune","gate-open":"gate","crumble":"crumble","crumble-shake":"crumble","shard":"gem","zip-start":"zip","zip-stop":"stone-hit","pickup":"lantern","throw":"dash","plate":"plate","held-open":"lever","held-close":"lever","lantern-lost":"shatter","climbhop":"grab","grab":"grab"}
 func _ready():
  manifest = JSON.parse_string(FileAccess.get_file_as_string("res://data/audio.json"))
- # Warm the reused resources before gameplay; first hits/lines do not load files mid-frame.
- for recording in manifest.files: stream(recording.path)
+ # Keep frequent cues ready. Load large scores on demand for the selected route.
+ for recording in manifest.files:
+  if not recording.path.begins_with("music/"): stream(recording.path)
  # Allocate the bus array in one operation. Godot 4.5's Web sample backend
  # reorders buses when add_bus appends with -1, disconnecting Master output.
  var missing=[]
