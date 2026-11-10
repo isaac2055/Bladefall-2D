@@ -41,3 +41,13 @@ Chapter Four remains a proposal and is outside this release. No new finale rooms
 - Actual Android system-picker import of a browser save, then native export back to desktop, preserves Felix's legs and position. The macOS app bundle and Windows PCK both restore that real exported checkpoint.
 - The standalone macOS bundle constructs the real title, world, artwork and audio without a source checkout.
 - In a controlled native Woods starting-scene check, a smaller internal render target raised measured FPS from 31–35 to 72–76 while preserving the displayed world scale. This is a scene measurement, not a whole-game frame-rate guarantee.
+
+## Published
+
+Felix 0.1.0 is live at https://felixsample.pages.dev with browser play and macOS,
+Windows and Android downloads. Implementation commit: `f5ac2a6`. Public release:
+https://github.com/isaac2055/Bladefall-2D/releases/tag/felix-v0.1.0.
+
+The public WASM gameplay/save checks and public asset status/digest checks pass.
+See `RELEASE-VERIFICATION.md` for the final evidence and hardware limits. Earlier
+in-progress entries above record the implementation checkpoints, not remaining work.
