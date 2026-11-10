@@ -26,9 +26,13 @@ try {
   assert(await page.evaluate(()=>window.shortSounds)>before,'simultaneous stick + Jump did not play a gameplay effect');
   await page.screenshot({path:path.join(out,'multi-touch.png')});await touch('touchEnd',[]);
  }
- await page.screenshot({path:path.join(out,'gameplay.png')});await tap(1200,174);await page.waitForTimeout(800);await page.screenshot({path:path.join(out,'pause.png')});
+ await page.screenshot({path:path.join(out,'gameplay.png')});
+ // Rotate while playing. The save menu below is only reachable if the overlay paused Godot.
+ await page.setViewportSize({width:390,height:844});await page.locator('#rotate').waitFor({state:'visible'});
+ await page.setViewportSize({width:844,height:390});await page.locator('#rotate').waitFor({state:'hidden'});
+ await page.waitForTimeout(800);await page.screenshot({path:path.join(out,'pause.png')});
  const download=page.waitForEvent('download',{timeout:30000});await tap(220,320);const save=await download;assert.equal(save.suggestedFilename(),'Bladefall-save.json');const file=path.join(out,'Bladefall-save.json');await save.saveAs(file);const bundle=JSON.parse(await fs.readFile(file,'utf8'));assert.equal(bundle.format,'bladefall-save');assert(bundle.files['bladefall-garden.json.world-1.save'],'touch journey did not create a checkpoint');
- console.log('PASS',engine,'phone touch menus, gameplay and exported checkpoint');
+ console.log('PASS',engine,'phone touch gameplay, pause on rotation and exported checkpoint');
  await page.setViewportSize({width:390,height:844});await page.locator('#rotate').waitFor({state:'visible'});await page.locator('#portrait').tap();await page.locator('#rotate').waitFor({state:'hidden'});await page.setViewportSize({width:844,height:390});
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'phone layout overflows');
  assert.deepEqual(errors,[]);await fs.writeFile(path.join(out,'result.json'),JSON.stringify({base,engine,passed:true,bounds,errors},null,2)+'\n');

@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+source "$PROJECT_DIR/tools/run-build-engine.sh"
 REPO_DIR="$(cd "$PROJECT_DIR/../.." && pwd)"
 ENGINE_PATH="${ANDROID_GODOT:-$REPO_DIR/.cache/godot-android/Godot.app/Contents/MacOS/Godot}"
 STAGE_DIR="$REPO_DIR/.cache/godot-android/project"
@@ -22,13 +23,21 @@ source,stage=map(pathlib.Path,sys.argv[1:])
 if stage.exists(): shutil.rmtree(stage)
 shutil.copytree(source,stage,ignore=shutil.ignore_patterns('.godot','exports','android','.DS_Store'))
 PY_STAGE
+cp "$PROJECT_DIR/audio/ATTRIBUTION.md" "$STAGE_DIR/audio/ATTRIBUTION.txt"
 export GODOT="$ENGINE_PATH"
 export ANDROID_DEBUG_KEYSTORE="$PROJECT_DIR/.godot/android-debug.keystore"
 if [ ! -f "$ANDROID_DEBUG_KEYSTORE" ]; then
  "$JAVA_HOME/bin/keytool" -genkeypair -keystore "$ANDROID_DEBUG_KEYSTORE" -alias androiddebugkey -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug, O=Android" -noprompt
 fi
 python3 "$PROJECT_DIR/tools/configure-android.py"
-"$ENGINE_PATH" --headless --path "$STAGE_DIR" --editor --import --quit
-"$ENGINE_PATH" --headless --path "$STAGE_DIR" --export-release Android "$PROJECT_DIR/exports/Bladefall-Android.apk"
+run_engine --headless --path "$STAGE_DIR" --editor --import --quit
+run_engine --headless --path "$STAGE_DIR" --export-release Android "$PROJECT_DIR/exports/Bladefall-Android.apk"
 "$ANDROID_SDK_ROOT/build-tools/35.0.0/apksigner" verify "$PROJECT_DIR/exports/Bladefall-Android.apk"
+python3 - "$PROJECT_DIR/exports/Bladefall-Android.apk" <<'PY_APK'
+import sys, zipfile
+with zipfile.ZipFile(sys.argv[1]) as archive:
+ assert archive.testzip() is None, 'Corrupt APK'
+ for name in ('assets/GODOT-LICENSE.txt','assets/audio/ATTRIBUTION.txt'):
+  assert archive.read(name).strip(), f'Missing packaged credits: {name}'
+PY_APK
 printf 'Built signed Android APK: %s\n' "$PROJECT_DIR/exports/Bladefall-Android.apk"

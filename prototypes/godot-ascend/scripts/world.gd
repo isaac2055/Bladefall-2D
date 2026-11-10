@@ -19,6 +19,8 @@ var checkpoint_id = ""
 var transport_legacy_signature=""
 var transport_legacy_bonus_signature=""
 var road_revision=0
+var road_reset_revision=0
+var road_room_revisions={}
 var road_opened={}
 var road_opening={}
 const PassageReveal=preload("res://scripts/passage_reveal.gd")
@@ -148,7 +150,7 @@ func restart():
  road_opened.clear()
  road_opening.clear()
  road_entered.clear()
- road_revision+=1
+ invalidate_road_terrain()
  campaign_completed.clear()
  for old in cores.values(): old.world_context=null
  cores.clear()
@@ -576,11 +578,20 @@ func watch_room(id):
   def.map[int(tile[1])]=row
  return Loader.parse(def)
 
+func invalidate_road_terrain():
+ road_revision+=1
+ road_reset_revision=road_revision
+ road_room_revisions.clear()
+
+func mark_road_terrain(id):
+ road_revision+=1
+ road_room_revisions[id]=road_revision
+
 func apply_road_patches(id,patches):
  for patch in patches:
   var local=Vector2i(patch[0],patch[1])
   cells[Vector2i(placements[id]/8)+local]=int(patch[2])
- road_revision+=1
+ mark_road_terrain(id)
 func close_road_entrance(id):
  if road_entered.has(id) or not road_base.has(id): return
  road_entered[id]=true
@@ -612,7 +623,7 @@ func open_road_exit(id,animate=false):
    entity.solid=false
    entity.dev=false
    entity.gone=true
- if newly_opened: road_revision+=1
+ if newly_opened: mark_road_terrain(id)
 func road_entity_hidden(id,entity):
  if road_entered.has(id): return false
  var a=parsed[id].def.get("roadApproach",[])

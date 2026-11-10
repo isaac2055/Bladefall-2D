@@ -15,7 +15,7 @@ overlay = output / 'tests.pck'
 built = subprocess.run([engine, '--headless', '--path', str(project), '--script', 'tools/test-pack-overlay.gd', '--', str(overlay)], capture_output=True, text=True)
 log = built.stdout + built.stderr
 assert built.returncode == 0 and 'TEST OVERLAY READY' in log and not re.search(r'(?m)^(ERROR:|SCRIPT ERROR:)', log), log
-for suite in ['player_release', 'saves_progression', 'save_transfer']:
+for suite in ['interruption_recovery', 'player_release', 'saves_progression', 'save_transfer']:
     env = os.environ.copy()
     env.update(ASCEND_TEST_OVERLAY=str(overlay), ASCEND_TEST_SCRIPT=f'res://tests/{suite}.gd')
     result = subprocess.run([engine, '--headless', '--main-pack', str(project / 'exports/windows/Bladefall.pck'), '--script', str(project / 'tools/test-pack-bootstrap.gd')], cwd=output, env=env, capture_output=True, text=True, timeout=300)

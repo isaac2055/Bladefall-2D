@@ -18,7 +18,7 @@ fractured_woods_three_app fractured_woods_feel fractured_nine fractured_nine_app
 feel_journey fractured_next fractured section_menu campaign_workshop application
 world_checks world2_journey world3_journey black_woods causeway fractured_next_app
 fractured_puzzles_app fractured_journey workshop six_puzzles_app five_puzzles_app
-editor_play fractured_causeway_studies causeway_next cover_two_baits cover_comparison causeway_launch_rooms weight_comparison""".split() + CURRENT_SUITES + ["save_transfer", "passage_reveal", "passage_shots", "touch_controls", "fingerprint_compat"]
+editor_play fractured_causeway_studies causeway_next cover_two_baits cover_comparison causeway_launch_rooms weight_comparison""".split() + CURRENT_SUITES + ["save_transfer", "passage_reveal", "passage_shots", "touch_controls", "fingerprint_compat", "interruption_recovery"]
 SOURCE_HASH_SUITES = {"fractured_woods_three", "fractured_woods_three_app", "fractured_nine_app"}
 
 
@@ -52,13 +52,23 @@ def main():
             or "TEST OVERLAY READY" not in built.stdout
             or re.search(r"(?m)^(?:ERROR:|SCRIPT ERROR:)", built.stdout)):
         raise SystemExit("FAIL test-only overlay did not build")
+    pack = app.parent.parent / "Resources/game.pck"
     bootstrap = project / "tools/test-pack-bootstrap.gd"
+    # The release template runs the shipped game, while the tool-enabled editor
+    # is needed to inject and hot-swap excluded GDScript fixtures.
+    smoke = subprocess.run([str(app), "--headless", "--quit-after", "60", "--", "--room", "0"],
+                           cwd=output, text=True, stdout=subprocess.PIPE,
+                           stderr=subprocess.STDOUT, timeout=60)
+    (output / "runtime-smoke.log").write_text(smoke.stdout)
+    if smoke.returncode or "Godot Engine" not in smoke.stdout or re.search(r"(?m)^(ERROR:|SCRIPT ERROR:)", smoke.stdout):
+        raise SystemExit("FAIL release runtime startup:\n" + smoke.stdout)
+    print("PASS standalone release runtime and game pack launch", flush=True)
 
     def run(name, extra=()):
         script = f"res://tests/{name}.gd"
         env = os.environ.copy()
         env.update(ASCEND_TEST_OVERLAY=str(overlay), ASCEND_TEST_SCRIPT=script)
-        command = [str(app), *([] if args.gpu else ["--headless"]), "--script", str(bootstrap)]
+        command = [str(engine), *([] if args.gpu else ["--headless"]), "--main-pack", str(pack), "--script", str(bootstrap)]
         if extra:
             command += ["--", *map(str, extra)]
         started = time.monotonic()

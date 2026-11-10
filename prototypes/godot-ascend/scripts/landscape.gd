@@ -1794,8 +1794,10 @@ func draw_transport_station(origin,t,home):
 
 func refresh_road_terrain():
  if tiles==null or runtime==null: return
- var route=world_data.world.get("campaignWorkshop",{})
- for id in runtime.road_base:
+ var rebuild_all=road_revision<runtime.road_reset_revision
+ var rooms=runtime.road_base if rebuild_all else runtime.road_room_revisions
+ for id in rooms:
+  if not rebuild_all and rooms[id]<=road_revision: continue
   var room=runtime.parsed[id]
   var origin=Vector2i(placements[id]/8)
   for patch in room.def.get("roadExit",[])+room.def.get("roadEntrance",[]):

@@ -24,6 +24,7 @@ const SaveTransfer=preload("res://scripts/save_transfer.gd")
 var transfer_status:Label
 var transfer_dialog:FileDialog
 var web_import_callback
+var web_pause_callback
 var mobile=false
 var touch_controls
 var game_started=false
@@ -53,6 +54,7 @@ var workshop_demo_picker:OptionButton
 var workshop_previous:Button
 var workshop_next:Button
 var chapters = {}
+var chapter_names = {}
 var chapter_number = 1
 var cover_comparison=false
 var causeway_launch_rooms=false
@@ -187,46 +189,10 @@ func _ready():
  cover_comparison=cover_comparison or "--cover-comparison" in OS.get_cmdline_user_args()
  causeway_launch_rooms=causeway_launch_rooms or "--causeway-launch-rooms" in OS.get_cmdline_user_args()
  weight_comparison=weight_comparison or "--weight-comparison" in OS.get_cmdline_user_args()
- # Construct all chapters before play; selecting a chapter preserves its live state.
- for number in CHAPTERS:
-  var chapter_data=data if number==1 else JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d.json"%number))
-  if number==23 and weight_comparison: chapter_data=JSON.parse_string(FileAccess.get_file_as_string("res://data/causeway-weight-comparison.json"))
-  elif number==23 and causeway_launch_rooms: chapter_data=JSON.parse_string(FileAccess.get_file_as_string("res://data/causeway-launch-rooms.json"))
-  elif number==23 and cover_comparison: chapter_data=JSON.parse_string(FileAccess.get_file_as_string("res://data/causeway-cover-comparison.json"))
-  var chapter_world=world if number==1 else World.new(chapter_data)
-  var container = SubViewportContainer.new()
-  container.position = Vector2(0,48)
-  container.size = Vector2(1280,736)
-  container.stretch = true
-  container.stretch_shrink = 2 if mobile else 1
-  var view = SubViewport.new()
-  view.size = Vector2i(640,368) if mobile else Vector2i(1280,736)
-  view.render_target_update_mode = SubViewport.UPDATE_ALWAYS if number==1 else SubViewport.UPDATE_DISABLED
-  view.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
-  container.add_child(view)
-  add_child(container)
-  var scene = Landscape.new()
-  scene.scale = Vector2(2,2) if mobile else Vector2(4,4)
-  scene.world_data = chapter_world.data
-  scene.runtime = chapter_world
-  scene.walking_style=1
-  scene.knight_design=5
-  scene.npc_design=7
-  scene.environment_design=0
-  scene.environment_feel=2
-  scene.player_styles_locked=not dev_mode
-  scene.reduced_motion = preferences.get_value("display","reduced_motion",false)
-  view.add_child(scene)
-  scene.load_scene(chapter_world.active())
-  scene.set_process(number==1)
-  if number!=1:
-   scene.process_mode=Node.PROCESS_MODE_DISABLED
-   for item in scene.lights:
-    item.node.hide()
-    item.sparks.emitting=false
-   scene.wind.emitting=false
-  container.visible=number==1
-  chapters[number]={"world":chapter_world,"landscape":scene,"container":container,"viewport":view}
+ # Keep visited worlds alive, but defer construction of unvisited chapters.
+ ensure_chapter(1)
+ if dev_mode:
+  for number in CHAPTERS: ensure_chapter(number)
  landscape=chapters[1].landscape
  viewport=chapters[1].viewport
  audio.world_runtime=world
@@ -289,6 +255,58 @@ func _ready():
  else: title_screen.hide()
  var touch_layer=CanvasLayer.new();touch_layer.layer=50;add_child(touch_layer)
  touch_controls=preload("res://scripts/touch_controls.gd").new();touch_controls.app=self;touch_layer.add_child(touch_controls)
+ if OS.has_feature("web"):
+  web_pause_callback=JavaScriptBridge.create_callback(func(_args):
+   if not paused: set_paused(true))
+  JavaScriptBridge.get_interface("window").bladefallPauseForInterruption=web_pause_callback
+func chapter_source(number):
+ var source="world%d"%number
+ if number==23:
+  if weight_comparison: source="causeway-weight-comparison"
+  elif causeway_launch_rooms: source="causeway-launch-rooms"
+  elif cover_comparison: source="causeway-cover-comparison"
+ return JSON.parse_string(FileAccess.get_file_as_string("res://data/"+source+".json"))
+
+func ensure_chapter(number):
+ if chapters.has(number): return chapters[number]
+ var chapter_world=world if number==1 else World.new(chapter_source(number))
+ chapter_names[number]=chapter_world.data.world.name
+ var container = SubViewportContainer.new()
+ container.position = Vector2(0,48)
+ container.size = Vector2(1280,736)
+ container.stretch = true
+ container.stretch_shrink = 2 if mobile else 1
+ var view = SubViewport.new()
+ view.size = Vector2i(640,368) if mobile else Vector2i(1280,736)
+ view.render_target_update_mode = SubViewport.UPDATE_ALWAYS if number==1 else SubViewport.UPDATE_DISABLED
+ view.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
+ container.add_child(view)
+ add_child(container)
+ if root_ui!=null: move_child(container,root_ui.get_index())
+ var scene = Landscape.new()
+ scene.scale = Vector2(2,2) if mobile else Vector2(4,4)
+ scene.world_data = chapter_world.data
+ scene.runtime = chapter_world
+ scene.walking_style=1
+ scene.knight_design=5
+ scene.npc_design=7
+ scene.environment_design=0
+ scene.environment_feel=2
+ scene.player_styles_locked=not dev_mode
+ scene.reduced_motion = preferences.get_value("display","reduced_motion",false)
+ view.add_child(scene)
+ scene.load_scene(chapter_world.active())
+ scene.set_process(number==1)
+ if number!=1:
+  scene.process_mode=Node.PROCESS_MODE_DISABLED
+  for item in scene.lights:
+   item.node.hide()
+   item.sparks.emitting=false
+  scene.wind.emitting=false
+ container.visible=number==1
+ chapters[number]={"world":chapter_world,"landscape":scene,"container":container,"viewport":view}
+ return chapters[number]
+
 func create_interface():
  root_ui = Control.new()
  root_ui.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -438,14 +456,7 @@ func create_interface():
  appearance_preview=Control.new()
  appearance_preview.custom_minimum_size=Vector2(560,168)
  appearance_preview.mouse_filter=Control.MOUSE_FILTER_IGNORE
- for name in ["vey","mara","rowan","elsie","silas"]:
-  var found=false
-  for chapter in chapters.values():
-   for room in chapter.world.data.world.rooms:
-    for person in room.get("people",[]):
-     if person.who==name and not found:
-      preview_people.append(person)
-      found=true
+ if dev_mode: load_preview_people()
  appearance_preview.draw.connect(draw_appearance_preview)
  column.add_child(appearance_preview)
  dev_nodes.append(appearance_preview)
@@ -518,6 +529,17 @@ func apply_surface_settings(index):
  chapters[1].landscape.set_environment_feel(index)
  feel_picker.select(index)
  save_preferences()
+func load_preview_people():
+ if not preview_people.is_empty(): return
+ var by_name={}
+ for number in [1,2,3]:
+  var world_data=chapters[number].world.data if chapters.has(number) else chapter_source(number)
+  for room in world_data.world.rooms:
+   for person in room.get("people",[]):
+    if not by_name.has(person.who): by_name[person.who]=person
+ for name in ["vey","mara","rowan","elsie","silas"]:
+  if by_name.has(name): preview_people.append(by_name[name])
+
 func draw_appearance_preview():
  var old_ink=landscape.ink
  landscape.ink=appearance_preview
@@ -920,7 +942,7 @@ func capture():
 
 func _notification(what):
  if what==NOTIFICATION_WM_CLOSE_REQUEST: close_app()
- elif what==NOTIFICATION_APPLICATION_FOCUS_OUT and is_node_ready() and not paused: set_paused(true)
+ elif what in [NOTIFICATION_APPLICATION_FOCUS_OUT,NOTIFICATION_APPLICATION_PAUSED] and is_node_ready() and not paused: set_paused(true)
  elif what==NOTIFICATION_WM_GO_BACK_REQUEST and is_node_ready(): set_paused(not paused)
 func close_app(code=0):
  if closing: return
@@ -1043,7 +1065,7 @@ func restart_world():
  maybe_autosave(true)
 
 func switch_chapter(number):
- if number==chapter_number or not chapters.has(number): return
+ if number==chapter_number or number not in CHAPTERS: return
  if not dev_mode and (number==4 or not sampler.profile.has_world(number)): return
  if number>=101 and not dev_mode and not test_mode and not sampler.profile.core_open(number-100):
   notice_label.text="Clear all three Fractured worlds to unlock the Cores."
@@ -1065,7 +1087,7 @@ func switch_chapter(number):
   item.sparks.emitting=false
  old.landscape.wind.emitting=false
  chapter_number=number
- var chapter=chapters[number]
+ var chapter=ensure_chapter(number)
  world=chapter.world
  data=world.data
  sim=world.active()
@@ -1256,6 +1278,7 @@ func register_dev_tap():
   reset_dev_taps()
 func set_dev_mode(value):
  dev_mode=value
+ if value: load_preview_people()
  if not value:
   if chapter_number==4 or not sampler.profile.has_world(chapter_number): switch_chapter(sampler.profile.last_world if sampler.profile.has_world(sampler.profile.last_world) else 1)
   if not sampler.profile.has_room(chapter_number,world.active_id):
@@ -1323,8 +1346,8 @@ func discover_current():
   rebuild_section_menu()
   rebuild_world_menu()
 func travel_to_world(number):
- if not chapters.has(number) or not sampler.profile.available(number): return
- var target=chapters[number].world
+ if number not in CHAPTERS or not sampler.profile.available(number): return
+ var target=ensure_chapter(number).world
  sampler.profile.discover(number,target.data.world.get("atlasStart",target.regions[0]))
  rebuild_world_menu()
  switch_chapter(number)
@@ -1358,7 +1381,8 @@ func focus_first(node):
  return false
 
 func world_label(number):
- var label=chapters[number].world.data.world.name
+ if not chapter_names.has(number): chapter_names[number]=chapter_source(number).world.name
+ var label=chapter_names[number]
  return "Core %d · %s"%[number-100,label.trim_suffix(" · Core")] if number>=101 else label
 
 func maybe_autosave(force=false):
@@ -1377,7 +1401,16 @@ func resume_world(number):
  if not sampler.profile.has_world(number): return false
  switch_chapter(number)
  if not SaveState.restore(world,sampler,audio):
+  var target=SaveState.path(sampler.profile,chapter_number)
+  if not SaveState.archive_rejected(target):
+   game_started=false
+   set_paused(true)
+   notice_label.text="Could not read or back up this checkpoint. Saving is paused to protect it."
+   notice_time=12
+   return false
   restart_world()
+  notice_label.text="The previous checkpoint could not be loaded. A recovery copy was kept."
+  notice_time=12
   return false
  game_started=true
  watch=false;hold=0;tape=[];journey=[]

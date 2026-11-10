@@ -37,7 +37,8 @@ try {
  await page.setViewport({width:1280,height:930,deviceScaleFactor:1});
  await page.goto(new URL('/play/',base).href,{waitUntil:'networkidle0'});await load();
  await page.screenshot({path:path.join(out,'menu.png')});
- await page.keyboard.press('Enter');await sleep(2000);await page.keyboard.down('ArrowRight');await sleep(300);await page.keyboard.up('ArrowRight');
+ // Allow at least one second of simulated play on a busy software renderer.
+ await page.keyboard.press('Enter');await sleep(4500);await page.keyboard.down('ArrowRight');await sleep(300);await page.keyboard.up('ArrowRight');
  await page.screenshot({path:path.join(out,'gameplay.png')});await page.keyboard.press('Escape');await sleep(300);
  const exported=await exportSave();assert(exported.bundle.files['bladefall-garden.json.world-1.save']);
  await sleep(1500);const stored=await checkpoint();assert(stored?.length>1000,'checkpoint not persisted to IndexedDB');

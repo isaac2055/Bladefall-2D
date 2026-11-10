@@ -1,13 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+source "$PROJECT_DIR/tools/run-build-engine.sh"
 REPO_DIR="$(cd "$PROJECT_DIR/../.." && pwd)"
 ENGINE_PATH="${GODOT:-$REPO_DIR/.cache/godot/Godot.app/Contents/MacOS/Godot}"
 BUILD_DIR="$PROJECT_DIR/exports/windows"
 [ -x "$ENGINE_PATH" ] || { echo 'Set GODOT to your Godot 4.5.1 executable.'; exit 1; }
 mkdir -p "$BUILD_DIR"
-"$ENGINE_PATH" --headless --path "$PROJECT_DIR" --editor --import --quit
-"$ENGINE_PATH" --headless --path "$PROJECT_DIR" --export-release Windows "$BUILD_DIR/Bladefall.exe"
+run_engine --headless --path "$PROJECT_DIR" --editor --import --quit
+run_engine --headless --path "$PROJECT_DIR" --export-release Windows "$BUILD_DIR/Bladefall.exe"
 cp "$PROJECT_DIR/WINDOWS-README.txt" "$BUILD_DIR/Read Me.txt"
 cp "$PROJECT_DIR/GODOT-LICENSE.txt" "$BUILD_DIR/GODOT-LICENSE.txt"
 cp "$PROJECT_DIR/audio/ATTRIBUTION.md" "$BUILD_DIR/Audio Credits.txt"

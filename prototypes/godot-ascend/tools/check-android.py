@@ -23,6 +23,8 @@ assets.mkdir()
 apk=project/'exports/Bladefall-Android.apk'
 with zipfile.ZipFile(apk) as archive:
     assert archive.testzip() is None,'Corrupt APK'
+    for name in ('assets/GODOT-LICENSE.txt','assets/audio/ATTRIBUTION.txt'):
+        assert archive.read(name).strip(), f'Missing packaged credits: {name}'
     for abi,machine in [('armeabi-v7a',40),('arm64-v8a',183)]:
         elf=archive.read(f'lib/{abi}/libgodot_android.so')
         assert elf[:4]==b'\x7fELF' and int.from_bytes(elf[18:20],'little')==machine,abi
@@ -59,7 +61,7 @@ assert 'APK ASSETS PACK READY' in command(['--script',script,'--',assets,pack,pr
 # Tests are the only additions to the APK assets. Direct --script startup avoids
 # swapping the SceneTree script during _init(), which differs between engines.
 results=[]
-for suite in ['fingerprint_compat','touch_controls','sequential_unlocks','player_release','saves_progression','save_transfer','passage_reveal','connected_roads','connected_saves']:
+for suite in ['interruption_recovery','fingerprint_compat','touch_controls','sequential_unlocks','player_release','saves_progression','save_transfer','passage_reveal','connected_roads','connected_saves']:
     script_name=f'res://tests/{suite}.gd'
     log_file=out/f'{suite}.log'
     with log_file.open('w') as file:

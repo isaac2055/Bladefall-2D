@@ -23,7 +23,7 @@ static func tick(world):
   state.age+=1
   # Keep the warm route cue for a moment after the mechanism settles.
   if state.age>=90: world.road_opening.erase(id)
-  world.road_revision+=1
+  world.mark_road_terrain(id)
 static func visual_value(world,id,cell,value):
  if not world.road_opening.has(id): return value
  var state=world.road_opening[id]
