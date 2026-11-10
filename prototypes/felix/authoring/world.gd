@@ -18,6 +18,7 @@ func _ready():
  if Engine.is_editor_hint(): return
  get_node("Rooms").hide()
  var game=load("res://main.tscn").instantiate()
+ game.cover_comparison=gameplay_settings.get("nativeScene","")=="res://levels/causeway-cover-comparison.tscn"
  game.initial_world=world_number
  game.initial_room=play_room_id
  add_child(game)

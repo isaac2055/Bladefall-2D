@@ -1,3 +1,13 @@
+# Current Felix release scope — November 10, 2026
+
+Isaac authorized the complete connected Felix release after the investigation: three existing story chapters with walkable affixed puzzles, story-aware saves, gameplay-only Fractured/Core routes, Willow Studios presentation, web hosting and native downloads. This supersedes the historical art-only scope and file ownership restrictions below. Work in `/Users/computer/Projects/Felix-Complete`, branch `codex/felix-connected-release`; keep Bladefall's published worktree untouched. Never push to main or force-push.
+
+Preserve approved puzzle interiors, individual checkpoints, narrative beats, gifts, collectibles and earned rewards. Adapt approaches and completion-gated exits. Chapter Four and new finale rooms are outside scope. Use the current tests under `tests/`: `connected_story.gd` proves actual traversal across the thirty puzzles without resets; `story_road.gd` proves normal story entrances; `story_saves.gd` checks saves and portable bundles; `release_shell.gd` checks menus and challenge setup. Screenshot QA remains required for art changes. Release status and remaining checks belong in `RELEASE-PROGRESS.md`.
+
+The following is the historical Chapter One art brief; retain its pixel scale and shared-body rendering contract.
+
+---
+
 # Felix: instructions for coding agents
 
 This folder is **Felix**, a story remake of Bladefall's first worlds, built in Godot 4.5. The owner is

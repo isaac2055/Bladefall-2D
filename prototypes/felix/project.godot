@@ -10,7 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Felix · The New House"
+config/name="Felix"
+config/icon="res://art/app-icon.svg"
+boot_splash/image="res://art/app-icon.png"
+boot_splash/bg_color=Color(0.063,0.075,0.122,1)
+boot_splash/fullsize=false
+config/quit_on_go_back=false
+config/use_custom_user_dir=true
+config/custom_user_dir_name="WillowStudios/Felix"
 run/main_scene="res://felix.tscn"
 config/features=PackedStringArray("4.5")
 
@@ -19,6 +26,7 @@ config/features=PackedStringArray("4.5")
 window/size/viewport_width=1280
 window/size/viewport_height=832
 window/stretch/mode="canvas_items"
+window/handheld/orientation=0
 
 [editor_plugins]
 
@@ -28,3 +36,10 @@ enabled=PackedStringArray()
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=false
+pointing/emulate_mouse_from_touch=true

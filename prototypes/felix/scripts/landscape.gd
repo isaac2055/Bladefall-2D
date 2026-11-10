@@ -1,5 +1,8 @@
 @tool
 extends Node2D
+var road_revision=-1
+var road_cells_cache={}
+const PassageReveal=preload("res://scripts/passage_reveal.gd")
 ## Presentation is interpolated and layered; the integer simulation is never modified here.
 const KnightStyles=preload("res://scripts/knight_styles.gd")
 const Styles=preload("res://scripts/character_styles.gd")
@@ -553,6 +556,9 @@ func tick_feel(delta):
  rings=rings.filter(func(r):return r.life>0)
 func _process(delta):
  if Engine.is_editor_hint(): return
+ if runtime!=null and road_revision!=runtime.road_revision:
+  refresh_road_terrain()
+  road_revision=runtime.road_revision
  var profile_start=Time.get_ticks_usec()
  clock += delta
  if sim==null: return
@@ -752,10 +758,12 @@ func draw_front():
      box(surface.x,surface.y,8,8,"#c8c8cc")
      box(surface.x+1,surface.y+1,6,1,"#edf0ed")
      line(surface+Vector2(2,3),surface+Vector2(6,6),"#9d95ad",.8)
+    if runtime!=null: t=PassageReveal.visual_value(runtime,scene.room.id,Vector2i(c,r),t)
     if t>=3:
      if scene.flipped: t=4 if t==3 else (3 if t==4 else t)
      draw_hazard(t,origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8))
   for e in scene.ents:
+   if e.type=="roadRetired" or runtime!=null and runtime.road_entity_hidden(scene.room.id,e): continue
    var painted=e
    if scene.flipped:
     painted=e.duplicate(true)
@@ -774,6 +782,7 @@ func draw_front():
   for e in scene.sweepers:
    var point=origin+Vector2(e.x,e.y)
    Art.dust_bunny(self,e,origin)
+ PassageReveal.draw(self,view)
  for trail in trails:
   var alpha = trail.life/trail.max*(.15 if reduced_motion else .48)
   var col=Color(trail.color,alpha)
@@ -1589,3 +1598,18 @@ func draw_region_devices(scene,origin,view):
   var ring=sim.p.hook.ring
   var at=origin+Vector2(ring.x+4,scene.room.h-ring.y-4 if scene.flipped else ring.y+4)
   line(at,actor+Vector2(4,4),"#a6c4ce",.8)
+
+func refresh_road_terrain():
+ if tiles==null or runtime==null: return
+ var route=world_data.world.get("campaignWorkshop",{})
+ for id in runtime.road_base:
+  var room=runtime.parsed[id]
+  var origin=Vector2i(placements[id]/8)
+  for patch in room.def.get("roadExit",[])+room.def.get("roadEntrance",[]):
+   var cell=origin+Vector2i(patch[0],patch[1])
+   var value=PassageReveal.visual_value(runtime,id,Vector2i(patch[0],patch[1]),runtime.cells.get(cell,0))
+   if road_cells_cache.get(cell,-1)==value: continue
+   road_cells_cache[cell]=value
+   if value==1: tiles.set_cell(cell,0,Vector2i(hash_at(cell.x,cell.y)%4,0))
+   elif value==2: tiles.set_cell(cell,0,Vector2i(15,0))
+   else: tiles.erase_cell(cell)

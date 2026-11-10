@@ -186,15 +186,13 @@ func tick(world,sim,delta):
   drawing.taken=true
   pulse_request=1.0
   show_hint("found: the first drawing of you",4.0)
- # Each wardrobe room ends at a drawing on a string: the basket lifts Felix out to the walkway.
+ # Bringing a photo home opens the built passage; Felix keeps moving under player control.
  var index=wardrobe_rooms.find(room)
- if index>=0 and ride==null and preload("res://scripts/campaign_workshop.gd").goal_reached(sim):
+ if index>=0 and not world.campaign_completed.has(room) and preload("res://scripts/campaign_workshop.gd").goal_reached(sim):
   world.campaign_completed[room]=true
+  world.open_road_exit(room,true)
   pulse_request=.8
   if not room in photos: photos.append(room)
-  var landing=world.wardrobe_landing[room]
-  var spawn=world.parsed[landing].spawn
-  ride={"room":room,"landing":landing,"from":felix,"to":world.placements[landing]+Vector2(spawn.x,spawn.y),"t":0.0,"photo":index}
  if index>=0 and not done.has("objective:"+room):
   done["objective:"+room]=true
   if sim.room.def.get("workshopRequireAllShards",false): show_hint("find both torn pieces, then bring them to the photo",4.5)
@@ -203,7 +201,7 @@ func tick(world,sim,delta):
  if sim.p.get("pollen",0)>0 and gifts.legs and not done.has("slime"):
   done.slime=true
   say("eww, SLIME!","boy" if boy.pose!="bed" and boy.visible else "above",2.2)
- if room==SILL and sim.p.onGround and not done.has("ending"):
+ if room==SILL and photos.size()==wardrobe_rooms.size() and sim.p.onGround and not done.has("ending"):
   begin_ending(world,sim)
 
 # Up the string to the walkway, then along it to the next stretch. Returns Felix's

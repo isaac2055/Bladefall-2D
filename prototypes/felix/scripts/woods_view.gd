@@ -464,7 +464,7 @@ func draw_play_plane():
  for scene in scenes:
   var origin=scene.world_origin if runtime!=null else active_position
   if not Rect2(origin,Vector2(scene.room.w,scene.room.h)).intersects(view): continue
-  if world_data.world.has("campaignWorkshop") and scene.room.id==world_data.world.campaignWorkshop.entry:
+  if world_data.world.has("campaignWorkshop") and not world_data.world.campaignWorkshop.get("geometry",false) and scene.room.id==world_data.world.campaignWorkshop.entry:
    var door=origin+Vector2(scene.room.spawn.x+scene.p.w/2.0,scene.room.spawn.y+scene.p.h)
    line(door+Vector2(-10,0),door+Vector2(-10,-25),"#87c9dc",2)
    line(door+Vector2(10,0),door+Vector2(10,-25),"#87c9dc",2)
@@ -477,18 +477,20 @@ func draw_play_plane():
   for r in range(max(0,floori((view.position.y-origin.y)/8)),min(int(scene.room.rows),ceili((view.end.y-origin.y)/8))):
    for c in range(max(0,floori((view.position.x-origin.x)/8)),min(int(scene.room.cols),ceili((view.end.x-origin.x)/8))):
     var t=scene.room.grid[r*int(scene.room.cols)+c]
+    t=PassageReveal.visual_value(runtime,scene.room.id,Vector2i(c,r),t)
     var glyph=scene.room.def.map[r][c]
-    if glyph in ["-","(",")"]:
+    if glyph in ["-","(",")"] and not runtime.road_opened.has(scene.room.id):
      var rail=origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8)
      sprite("twig-rail",rail)
      if glyph!="-": box(rail.x+3,rail.y+5,1,1,"#c4ac76")
-    if glyph=="%":
+    if glyph=="%" and t==1:
      var surface=origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8)
      sprite("bark-block",surface)
     if t>=3:
      if scene.flipped: t=4 if t==3 else (3 if t==4 else t)
      draw_hazard(t,origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8))
   for e in scene.ents:
+   if e.type=="roadRetired" or runtime.road_entity_hidden(scene.room.id,e): continue
    var painted=e
    if scene.flipped:
     painted=e.duplicate(true)
@@ -507,6 +509,7 @@ func draw_play_plane():
   for e in scene.sweepers:
    var point=origin+Vector2(e.x,e.y)
    Art.dust_bunny(self,e,origin)
+ PassageReveal.draw(self,view)
  for trail in trails:
   var alpha = trail.life/trail.max*(.15 if reduced_motion else .48)
   var col=Color(trail.color,alpha)

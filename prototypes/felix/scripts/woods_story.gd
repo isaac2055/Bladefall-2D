@@ -183,13 +183,7 @@ func tick(world,sim,delta):
   drawing.taken=true
   pulse_request=1.0
   show_hint("found: a drawing of Sir Felix",4.0)
- # Dad's story. Over a room with no way to drop in, the light lowers the knight to its start.
- if room.begins_with("story-walk-") and ride==null and sim.p.onGround:
-  var next=int(room.trim_prefix("story-walk-"))
-  if next<tale_rooms.size():
-   var below=world.parsed[tale_rooms[next]]
-   if below.def.has("lowerAt") and felix.x>=below.def.lowerAt*8-4:
-    ride={"room":room,"landing":below.def.id,"from":felix,"to":world.placements[below.def.id]+Vector2(below.spawn.x,below.spawn.y),"t":0.0,"photo":-1,"lower":true}
+ # The imagined journey now continues through physical passages.
  var index=tale_rooms.find(room)
  if index>=0:
   if not done.has("tale-in:"+room):
@@ -199,21 +193,20 @@ func tick(world,sim,delta):
     if item[0]==index and not item[1]: lines.append({"text":item[2],"anchor":"below","life":2.4,"max":2.4,"delay":4.2})
    if sim.room.def.get("workshopRequireAllShards",false): show_hint("find all three, then bring them to the light",4.5)
    elif sim.room.def.get("workshopRequireShard",false): show_hint("find the last piece, then bring it to the light",4.5)
-  if ride==null and preload("res://scripts/campaign_workshop.gd").goal_reached(sim):
+  if not world.campaign_completed.has(room) and preload("res://scripts/campaign_workshop.gd").goal_reached(sim):
    world.campaign_completed[room]=true
+   world.open_road_exit(room,true)
    pulse_request=.8
    if not room in photos: photos.append(room)
    say(TALE[index][1],"above",3.4)
    for item in INTERRUPTIONS:
     if item[0]==index and item[1]: lines.append({"text":item[2],"anchor":"below","life":2.4,"max":2.4,"delay":3.4})
-   var landing=world.wardrobe_landing[room]
-   if landing=="":
-    # The end of the story: the light lifts him out of it, back to the cabin.
+   if index==tale_rooms.size()-1:
+    # A chapter scene change, after the final line has time to land.
     tale_done=true
-    ride={"room":room,"landing":CABIN,"from":felix,"to":felix+Vector2(0,-150),"t":0.0,"photo":index}
-   else:
-    var spawn=world.parsed[landing].spawn
-    ride={"room":room,"landing":landing,"from":felix,"to":world.placements[landing]+Vector2(spawn.x,spawn.y),"t":0.0,"photo":index}
+    freeze=300
+    cue_clock=0
+    cue=[[300,func(): cut=CABIN]]
  if tale_done and room==CABIN and not done.has("ending"): begin_ending(sim)
 
 # Dad's walking stick, a seven-year-old's ceremony, and a knight.

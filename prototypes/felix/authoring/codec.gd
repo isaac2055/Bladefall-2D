@@ -2,7 +2,31 @@
 extends RefCounted
 const STATIC_GLYPHS=".#%=^v<>-()I{}"
 const GROUP_GLYPHS="ABKZGHM~VXQCY"
-static func fingerprint(data): return JSON.stringify(data,"",true,true).sha256_text()
+static func fingerprint(data):
+ # 4.6 changed full-precision JSON float formatting. Keep the original 4.5
+ # representation so native scene guards and existing checkpoints stay valid.
+ if Engine.get_version_info().minor<6: return JSON.stringify(data,"",true,true).sha256_text()
+ return fingerprint_json(data).sha256_text()
+static var fingerprint_tokens:RegEx
+static func fingerprint_json(value):
+ var json=JSON.stringify(value,"",true,true)
+ if fingerprint_tokens==null:
+  fingerprint_tokens=RegEx.create_from_string(r'"(?:\\.|[^"\\])*"|(-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)')
+ var pieces=PackedStringArray()
+ var cursor=0
+ for token in fingerprint_tokens.search_all(json):
+  var number=token.get_string(1)
+  if number=="" or not ("." in number or "e" in number or "E" in number): continue
+  var numeric=number.to_float()
+  # Integral floats already have the original spelling, except exponents/-0.
+  if numeric==floor(numeric) and not ("e" in number or "E" in number) and number!="-0.0": continue
+  var legacy="0.0" if numeric==0.0 else String.num(numeric,maxi(1,17-int(floor(log(absf(numeric))/log(10.0)))))
+  if legacy==number: continue
+  var at=token.get_start(1)
+  pieces.append(json.substr(cursor,at-cursor));pieces.append(legacy)
+  cursor=token.get_end(1)
+ pieces.append(json.substr(cursor))
+ return "".join(pieces)
 static func key(type,x,y): return "%s@%.4f,%.4f"%[type,x,y]
 static func objects(room): return room.get_node("Objects").get_children()
 static func glyph_at(layer,cell):

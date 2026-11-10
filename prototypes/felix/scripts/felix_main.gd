@@ -10,11 +10,37 @@ const WoodsStory=preload("res://scripts/woods_story.gd")
 const PhantomView=preload("res://scripts/phantom_view.gd")
 const PhantomStory=preload("res://scripts/phantom_story.gd")
 const NAMES=["","The New House","Sir Felix","Phantom"]
+const CHAPTERS=[1,2,3,21,22,23,101,102,103]
+const Challenge=preload("res://scripts/felix_challenge.gd")
+const ChallengeView=preload("res://scripts/felix_challenge_view.gd")
+const FrontEnd=preload("res://scripts/felix_front_end.gd")
+const WorldSave=preload("res://scripts/world_save.gd")
 const NUMBERS=["","One","Two","Three"]
 const Controls=preload("res://scripts/controls.gd")
 const Sound=preload("res://scripts/audio.gd")
 const ChapterMusic=preload("res://scripts/felix_music.gd")
 
+const SaveState=preload("res://scripts/felix_save.gd")
+const Run=preload("res://scripts/sampler_run.gd")
+var sampler
+var front_end
+var controls_menu
+const SaveTransfer=preload("res://scripts/save_transfer.gd")
+var transfer_status:Label
+var transfer_dialog:FileDialog
+var web_import_callback
+var reduced_motion=false
+var settings=ConfigFile.new()
+var touch_controls
+var mobile=false
+static var booted=false
+static var play_on_ready=false
+var developer_mode=false
+var save_error=""
+var last_autosave_tick=0
+var last_saved_room=""
+var saved_phase=""
+static var resume_on_ready=true
 var world
 var sim
 var view
@@ -54,15 +80,25 @@ static var chapter=1
 func _ready():
  get_tree().auto_accept_quit=false
  Controls.bind()
+ settings.load("user://felix-settings.cfg")
+ reduced_motion=bool(settings.get_value("accessibility","reduced_motion",false))
  RenderingServer.set_default_clear_color(Color("05060a"))
  crayon=SystemFont.new()
  crayon.font_names=PackedStringArray(["Chalkboard SE","Marker Felt","Comic Sans MS","Noteworthy"])
  var args=OS.get_cmdline_user_args()
  if args.has("--chapter"): chapter=int(args[args.find("--chapter")+1])
+ developer_mode=developer_mode or Array(args).any(func(arg):return arg in ["--from","--reference","--tour","--script","--capture"])
+ mobile=OS.has_feature("mobile") or DisplayServer.is_touchscreen_available()
+ sampler=Run.new("user://felix-garden.json" if not developer_mode else "user://felix-qa-%d.json"%OS.get_process_id())
+ if not booted and not args.has("--chapter") and not developer_mode: chapter=sampler.profile.last_world
+ booted=true
+ if chapter not in CHAPTERS: chapter=1
  var data=JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d.json"%chapter))
  world=World.new(data)
  sim=world.active()
- story=[Story,Story,WoodsStory,PhantomStory][chapter].new(world)
+ story=Challenge.new(world) if chapter>=21 else [Story,Story,WoodsStory,PhantomStory][chapter].new(world)
+ sampler.start(world,not developer_mode)
+ if chapter>=21: story.tracker=sampler
  audio=Sound.new()
  audio.levels.Efforts=0.0
  audio.levels.Ambience=0.0
@@ -75,21 +111,42 @@ func _ready():
  container.size=Vector2(1280,736)
  container.stretch=true
  viewport=SubViewport.new()
- viewport.size=Vector2i(1280,736)
+ viewport.size=Vector2i(640,368) if mobile else Vector2i(1280,736)
  viewport.canvas_item_default_texture_filter=Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
  container.add_child(viewport)
  add_child(container)
- view=[View,View,WoodsView,PhantomView][chapter].new()
- view.scale=Vector2(4,4)
+ view=ChallengeView.new() if chapter>=21 else [View,View,WoodsView,PhantomView][chapter].new()
+ view.scale=Vector2(2,2) if mobile else Vector2(4,4)
+ view.reduced_motion=reduced_motion
  view.world_data=world.data
  view.runtime=world
- view.story=story
+ if chapter>=21:
+  view.felix_story=story
+  view.sampler=sampler
+ else: view.story=story
  viewport.add_child(view)
  view.load_scene(sim)
  audio.room_changed(sim)
  chapter_music=ChapterMusic.new()
  chapter_music.setup(audio.music)
  build_interface()
+ if resume_on_ready and not developer_mode and restore_checkpoint():
+  sim=world.active()
+  view.load_scene(sim)
+  if story.phase!="black": title_box.hide()
+ if not developer_mode: save_checkpoint()
+ front_end=FrontEnd.new()
+ front_end.app=self
+ add_child(front_end)
+ controls_menu=preload("res://scripts/controls_menu.gd").new()
+ controls_menu.app=self
+ add_child(controls_menu)
+ touch_controls=preload("res://scripts/felix_touch_controls.gd").new()
+ touch_controls.app=self
+ add_child(touch_controls)
+ if not developer_mode and not play_on_ready: front_end.open(true)
+ else: front_end.hide()
+ play_on_ready=false
  for i in range(args.size()):
   match args[i]:
    "--capture": capture_path=args[i+1]
@@ -157,9 +214,9 @@ func build_interface():
  end_box.hide()
  ui.add_child(end_box)
  crayon_label(end_box,"Felix",72,Color("#fff1c9"))
- crayon_label(end_box,"Chapter %s  ·  %s"%[NUMBERS[chapter],NAMES[chapter]],28,Color("#c9cfe8"))
+ crayon_label(end_box,world_label(chapter),28,Color("#c9cfe8"))
  end_stats=crayon_label(end_box,"",22,Color("#9aa3c4"))
- crayon_label(end_box,"to be continued" if chapter==3 else "press any button for Chapter %s"%NUMBERS[chapter+1],20,Color("#6f7694"))
+ crayon_label(end_box,"press any button to return to the title" if chapter>=3 else "press any button for Chapter %s"%NUMBERS[chapter+1],20,Color("#6f7694"))
  pause_box=PanelContainer.new()
  var panel=StyleBoxFlat.new()
  panel.bg_color=Color(.04,.05,.09,.92)
@@ -169,13 +226,18 @@ func build_interface():
  panel.content_margin_top=22
  panel.content_margin_bottom=22
  pause_box.add_theme_stylebox_override("panel",panel)
- pause_box.position=Vector2(400,215)
- pause_box.size=Vector2(480,390)
+ pause_box.position=Vector2(360,85)
+ pause_box.size=Vector2(560,670)
  pause_box.hide()
  ui.add_child(pause_box)
  var column=VBoxContainer.new()
  column.add_theme_constant_override("separation",12)
- pause_box.add_child(column)
+ var scroll=ScrollContainer.new()
+ scroll.custom_minimum_size=Vector2(500,610)
+ scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+ pause_box.add_child(scroll)
+ scroll.add_child(column)
+ column.custom_minimum_size.x=480
  crayon_label(column,"paused",30,Color("#fff1c9"))
  crayon_label(column,"Music",20,Color("#c9cfe8"))
  music_picker=OptionButton.new()
@@ -205,7 +267,21 @@ func build_interface():
  music_volume.accessibility_name="Music volume"
  music_volume.value_changed.connect(func(value):chapter_music.set_gain(value/100.0))
  column.add_child(music_volume)
- for item in [["Keep climbing",func():set_paused(false)],["Begin the chapter again",restart_chapter],["Chapter %s"%NUMBERS[chapter%3+1],func():chapter=chapter%3+1;restart_chapter()],["Quit",func():get_tree().quit()]]:
+ var motion=CheckButton.new()
+ motion.text="Reduced motion"
+ motion.button_pressed=reduced_motion
+ motion.toggled.connect(func(value):
+  reduced_motion=value
+  view.reduced_motion=value
+  settings.set_value("accessibility","reduced_motion",value)
+  settings.save("user://felix-settings.cfg"))
+ column.add_child(motion)
+ button(column,"Controls and remapping",func():controls_menu.open(),false)
+ button(column,"Export save",export_portable_save,false)
+ button(column,"Import save",import_portable_save,false)
+ transfer_status=crayon_label(column,"",16,Color("#b5bdd4"))
+ transfer_status.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ for item in [["Keep climbing",func():set_paused(false)],["Begin the chapter again",restart_chapter],["Title and chapters",func():set_paused(false);front_end.open(false)],["Quit",close_app]]:
   var button=Button.new()
   button.text=item[0]
   button.add_theme_font_override("font",crayon)
@@ -227,28 +303,96 @@ func begin_play():
  story.start()
  title_box.hide()
 
-func restart_chapter():
+func world_label(n):
+ if n in [1,2,3]: return "Chapter %s · %s"%[NUMBERS[n],NAMES[n]]
+ var home=n-100 if n>=101 else n-20
+ return ("Core" if n>=101 else "Fractured")+" "+["","Outskirts","Woods","Causeway"][home]
+
+func button(parent,value,action,_primary=false):
+ var result=Button.new()
+ result.text=value
+ result.custom_minimum_size.y=62 if mobile else 48
+ result.add_theme_font_override("font",crayon)
+ result.add_theme_font_size_override("font_size",24)
+ result.pressed.connect(action)
+ parent.add_child(result)
+ return result
+
+func has_checkpoint(n):
+ return SaveState.exists(n) if n<21 else WorldSave.exists(sampler.profile,n)
+
+func restore_checkpoint():
+ return SaveState.restore(world,story,sampler,audio) if chapter<21 else WorldSave.restore(world,sampler,audio)
+
+func load_chapter(n,resume=true):
+ save_checkpoint()
+ chapter=n
+ resume_on_ready=resume
+ play_on_ready=true
  get_tree().reload_current_scene()
 
+func restart_chapter(): load_chapter(chapter,false)
+
+func save_checkpoint():
+ if developer_mode or sampler==null or not SaveState.stable(story): return false
+ var ok=SaveState.write_payload(SaveState.capture(world,story,sampler,audio)) if chapter<21 else WorldSave.write(world,sampler,audio)
+ save_error="" if ok else "Couldn't save progress. Please export a backup before closing."
+ if ok:
+  sampler.profile.last_world=chapter
+  sampler.profile.save_profile()
+  last_autosave_tick=ticks
+  last_saved_room=world.active_id
+  saved_phase=story.phase
+ return ok
+
+func text(parent,value,size=20,color="#c9cfe8"):
+ return crayon_label(parent,value,size,Color(color))
+
+func focus_pause():
+ var buttons=pause_box.find_children("*","Button",true,false)
+ if not buttons.is_empty(): buttons[0].grab_focus()
+
+func reset_dev_taps(): pass
+
+func retry_room():
+ if chapter>=21: sampler.retry(world)
+ else:
+  world.retry()
+  world.active().deaths+=1
+ sim=world.active()
+ view.sim=sim
+ view.active_position=world.placements[world.active_id]
+ view.snap_actor()
+
+func _exit_tree():
+ if world!=null: world.shutdown()
+
+func close_app():
+ save_checkpoint()
+ get_tree().quit()
+
 func set_paused(value):
- paused=value
+ if value: save_checkpoint()
+ paused=value or (front_end!=null and front_end.visible)
  pause_box.visible=value
  audio.set_paused(value)
  # Let the selected score play while its menu is open for comparison.
  audio.music.stream_paused=false
 
 func _unhandled_input(event):
+ if front_end!=null and front_end.visible or controls_menu!=null and controls_menu.visible: return
  if event.is_action_pressed("knight_pause") and story.phase in ["play","ending"]:
   set_paused(not paused)
   return
- if story.phase=="black" and black_time>1.2 and (event is InputEventKey or event is InputEventJoypadButton) and event.pressed:
+ if story.phase=="black" and black_time>1.2 and (event is InputEventKey or event is InputEventJoypadButton or event is InputEventMouseButton or event is InputEventScreenTouch) and event.pressed:
   begin_play()
- if story.phase=="end" and end_shown and black_time>2.0 and (event is InputEventKey or event is InputEventJoypadButton) and event.pressed:
-  if chapter<3: chapter+=1
-  restart_chapter()
+ if story.phase=="end" and end_shown and black_time>2.0 and (event is InputEventKey or event is InputEventJoypadButton or event is InputEventMouseButton or event is InputEventScreenTouch) and event.pressed:
+  if chapter<3: load_chapter(chapter+1,false)
+  else: front_end.open(false)
 
 func _notification(what):
- if what==NOTIFICATION_WM_CLOSE_REQUEST: get_tree().quit()
+ if what==NOTIFICATION_WM_CLOSE_REQUEST: close_app()
+ if what==NOTIFICATION_APPLICATION_FOCUS_OUT or what==NOTIFICATION_APPLICATION_PAUSED: save_checkpoint()
 
 func gated(raw):
  if not story.gifts.legs: raw.jump=false
@@ -256,10 +400,10 @@ func gated(raw):
  if not story.gifts.arms: raw.grab=false
  if not story.gifts.get("sword",false) and not story.gifts.get("dagger",false): raw.strike=false
  if not story.gifts.get("counter",false): raw.parry=false
- raw.portal=false
+ if chapter<21: raw.portal=false
  return raw
 
-func scripted_input():
+func recorded_input():
  if script_frame>=script_tape.size(): return null
  var keys=script_tape[script_frame]
  script_frame+=1
@@ -268,23 +412,49 @@ func scripted_input():
  for key in letters: raw[key]=letters[key] in keys
  return raw
 
+var chain_puzzle=""
+var chain_wait=0
+func decode_input(keys):
+ var raw={}
+ var letters={"l":"l","r":"r","u":"u","d":"d","jump":"j","dash":"x","grab":"g","strike":"s","parry":"p","portal":"q"}
+ for key in letters: raw[key]=letters[key] in keys
+ return raw
+
+func scripted_input():
+ if not chain: return recorded_input()
+ var id=world.active_id
+ if not sim.room.def.get("campaignWorkshop",false) or world.campaign_completed.has(id): return decode_input("r")
+ if chain_puzzle!=id:
+  if chain_wait>0:
+   chain_wait-=1
+   return decode_input("")
+  var spawn=sim.room.spawn
+  var approach=world.road_approach_active(id)
+  var target=maxf(0,spawn.x-16) if approach else spawn.x
+  if approach and sim.p.x>=spawn.x-16 and absf(sim.p.vx)<.1 and sim.p.onGround:
+   chain_wait=4
+   return decode_input("r")
+  var dx=target-sim.p.x
+  if absf(dx)<.1 and absf(sim.p.vx)<.1 and sim.p.onGround and not approach:
+   if is_equal_approx(absf(sim.p.remX),.5):
+    chain_wait=4
+    return decode_input("l" if sim.p.remX>0 else "r")
+   chain_puzzle=id
+   script_tape=[]
+   script_frame=0
+   for part in world.data.world.tapes.get(id,[]):
+    for i in range(int(part[0])): script_tape.append(part[1])
+   return decode_input("")
+  var aim=dx-sim.p.vx*absf(sim.p.vx)/(2*float(sim.K.runReduce))
+  return decode_input("r" if aim>.25 else "l" if aim< -.25 else "")
+ return recorded_input()
+
 func _physics_process(_delta):
  ticks+=1
  if report and ticks%300==0: print("FPS ",Engine.get_frames_per_second()," AT ",world.active_id," p=",Vector2(sim.p.x,sim.p.y)," state=",sim.p.state," deaths=",sim.deaths," tape=",script_frame,"/",script_tape.size()," phase=",story.phase)
  if capture_path!="" and ticks==capture_after: capture.call_deferred()
  if paused: return
  if story.phase=="black" and not script_tape.is_empty() and ticks==40: begin_play()
- if chain and pending_room!="" and script_frame>=script_tape.size():
-  var spawn=world.parsed[pending_room].spawn
-  print("LANDED ",pending_room," at ",Vector2(sim.p.x,sim.p.y)," spawn ",Vector2(spawn.x,spawn.y)," state=",sim.p.state," deaths=",sim.deaths)
-  world.enter(pending_room,true)
-  sim=world.active()
-  view.load_scene(sim,true)
-  script_tape=[]
-  script_frame=0
-  for part in world.data.world.tapes.get(pending_room,[]):
-   for i in range(int(part[0])): script_tape.append(part[1])
-  pending_room=""
  if not story.blocking():
   var before=view.before_tick()
   var raw=scripted_input()
@@ -296,25 +466,23 @@ func _physics_process(_delta):
   world.notices.clear()
   if world.update_region():
    sim=world.active()
-   if chain and walking_in and sim.room.def.get("campaignWorkshop",false):
-    walking_in=false
-    pending_room=sim.room.id
-    script_tape=[]
-    for i in range(240): script_tape.append("")
-    script_frame=0
    view.sim=sim
    view.active_position=world.placements[world.active_id]
    view.snap_actor()
    if report: print("ROOM ",world.active_id," deaths=",sim.deaths," frame=",ticks)
   var retry=Input.is_action_pressed("knight_retry")
-  if retry and not retry_held and sim.p.state not in ["dead","respawn"]:
-   world.retry()
-   sim=world.active()
-   view.snap_actor()
+  if retry and not retry_held and sim.p.state not in ["dead","respawn"]: retry_room()
   retry_held=retry
  else:
   view.previous_actor=view.current_actor
+ if chapter<21:
+  sampler.profile.tick(world.active_id,maxi(0,sim.deaths-sampler.last_deaths))
+  sampler.last_deaths=sim.deaths
  story.tick(world,sim,1.0/60.0)
+ for id in world.campaign_completed: sampler.profile.mark_clear(id)
+ if chapter<21 and story.phase=="end" and not sampler.profile.run.finished:
+  sampler.profile.finish(world.data.world.campaignWorkshop.rooms)
+
  if story.ride!=null:
   var point=story.ride_point(1.0/60.0)
   if point==null:
@@ -354,6 +522,7 @@ func _physics_process(_delta):
   view.gift_pulse=story.pulse_request
   view.burst(view.current_actor+Vector2(4,5),18,Color("#fff4d6"),26)
   story.pulse_request=0.0
+ if not developer_mode and (ticks-last_autosave_tick>=120 or last_saved_room!=world.active_id or saved_phase!=story.phase): save_checkpoint()
 
 func _process(delta):
  black_time+=delta
@@ -378,7 +547,7 @@ func _process(delta):
  music_db=lerp(music_db,want,1-exp(-delta*.5))
  audio.music.volume_db=music_db
  update_lines()
- hint_label.text=story.hint.text
+ hint_label.text=save_error if save_error!="" else story.hint.text
  hint_label.modulate.a=clamp(story.hint.life,0,1)
 
 func anchor_point(anchor):
@@ -483,3 +652,53 @@ func capture():
  RenderingServer.force_draw(false)
  get_viewport().get_texture().get_image().save_png(capture_path)
  get_tree().quit()
+
+func export_portable_save():
+ save_checkpoint()
+ sampler.profile.save_profile()
+ var bundle=SaveTransfer.export_bundle()
+ if OS.has_feature("web"):
+  JavaScriptBridge.download_buffer(bundle.to_utf8_buffer(),"Felix-save.json","application/json")
+  transfer_status.text="Save exported. Keep this file to move or back up your progress."
+ else:
+  open_transfer_dialog(true,bundle)
+func import_portable_save():
+ if OS.has_feature("web"):
+  web_import_callback=JavaScriptBridge.create_callback(func(args):receive_portable_save(str(args[0])))
+  var browser=JavaScriptBridge.get_interface("window")
+  browser.felixImportSave=web_import_callback
+  JavaScriptBridge.eval("""(() => { const input=document.createElement('input'); input.type='file'; input.accept='.json,application/json'; input.onchange=async()=>{const file=input.files[0];if(!file)return;if(file.size>33554432){window.felixImportSave('');return;}window.felixImportSave(await file.text());}; input.click(); })()""",true)
+ else:
+  open_transfer_dialog(false)
+func open_transfer_dialog(exporting,bundle=""):
+ if is_instance_valid(transfer_dialog): transfer_dialog.queue_free()
+ transfer_dialog=FileDialog.new()
+ transfer_dialog.use_native_dialog=true
+ transfer_dialog.access=FileDialog.ACCESS_FILESYSTEM
+ transfer_dialog.file_mode=FileDialog.FILE_MODE_SAVE_FILE if exporting else FileDialog.FILE_MODE_OPEN_FILE
+ transfer_dialog.filters=PackedStringArray(["*.json ; Felix save"])
+ transfer_dialog.title="Export Felix save" if exporting else "Import Felix save"
+ if exporting: transfer_dialog.current_file="Felix-save.json"
+ transfer_dialog.file_selected.connect(func(path):
+  if exporting:
+   var file=FileAccess.open(path,FileAccess.WRITE)
+   if file==null: transfer_status.text="Cannot write the save file."
+   else:
+    file.store_string(bundle);file.close()
+    transfer_status.text="Save exported."
+  else:
+   var file=FileAccess.open(path,FileAccess.READ)
+   if file==null or file.get_length()>SaveTransfer.LIMIT: transfer_status.text="Cannot read this save file."
+   else: receive_portable_save(file.get_as_text()))
+ add_child(transfer_dialog)
+ transfer_dialog.popup_centered_ratio(0.7)
+func receive_portable_save(source):
+ var error=SaveTransfer.import_bundle(source)
+ if error!="":
+  transfer_status.text=error
+  return
+ # Reload from the imported files without saving the outgoing in-memory run.
+ resume_on_ready=true
+ booted=false
+ play_on_ready=false
+ get_tree().reload_current_scene()

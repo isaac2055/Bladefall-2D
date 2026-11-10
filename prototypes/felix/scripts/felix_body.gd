@@ -20,9 +20,14 @@ func limb(v,a,b,width=1.5):
  v.ink.draw_set_transform_matrix(v.paint_transform)
 
 # Simulation pauses retain velocity for a clean resume; their drawing should idle.
+func held(v):
+ var narrative=v.get("felix_story")
+ if narrative==null: narrative=v.story
+ return narrative!=null and not narrative is Dictionary and narrative.blocking() and not v.riding
+
 func pose(v):
  var p=v.sim.p
- if v.story!=null and v.story.blocking() and not v.riding:
+ if held(v):
   p=p.duplicate()
   p.vx=0
   p.vy=0
@@ -41,7 +46,7 @@ func draw(v,g):
  var bob=0.0 if g.legs else sin(v.clock*3)*1.2-1.5
  var center=Vector2(x+4,y+4.5+bob)
  var walking_now=p.onGround and p.state=="normal" and abs(p.vx)>10
- var cycle=0.0 if v.story!=null and v.story.blocking() and not v.riding else v.walking/4.2
+ var cycle=0.0 if held(v) else v.walking/4.2
  if g.cape:
   var ready=p.dashes>0
   var root=center+Vector2(-p.facing*2.5,-1.5)

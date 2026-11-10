@@ -5,6 +5,11 @@ const Loader = preload("res://scripts/room_loader.gd")
 const Layout = preload("res://scripts/world_layout.gd")
 const CampaignWorkshop=preload("res://scripts/campaign_workshop.gd")
 var campaign_completed={}
+var wardrobe_walks=[]
+var wardrobe_landing={}
+var sampler_practice=false
+var content_signature=""
+var legacy_content_signature=""
 var data
 var cores = {}
 var placements = {}
@@ -13,6 +18,14 @@ var cells = {}
 var regions = []
 var active_id = ""
 var checkpoint_id = ""
+var transport_legacy_signature=""
+var transport_legacy_bonus_signature=""
+var road_revision=0
+var road_opened={}
+var road_opening={}
+const PassageReveal=preload("res://scripts/passage_reveal.gd")
+var road_base={}
+var road_entered={}
 var bearings = {}
 var mara_complete = false
 var notices = []
@@ -43,19 +56,23 @@ var portal_rooms={}
 var portal_cells={}
 var secret_hearts={}
 var secret_front_entry=false
-var award_color="#ff9fc8"
+var award_color="#ba82e6"
 func _init(source):
  data=preload("res://scripts/authoring_data.gd").read(source)
- # Felix: the New House keeps only the road and its one secret. Side quests,
- # their rooms and the people who gave them are cut; the workshop is not appended.
+ if int(data.world.n) in [1,2,3]:
+  var workshop_source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"))
+  CampaignWorkshop.append(data,preload("res://scripts/authoring_data.gd").read(workshop_source))
  var chapter=int(data.world.n)
- strip_to_road(data,{1:["rowan","socket-19-1"],2:["refuge"],3:["defector"]}.get(chapter,[]))
- # The approved workshop rooms: in Chapter One the top of the wardrobe, between the curtain and
- # the sill; in Chapter Two, Dad's story on the stormy night after the cabin.
- var workshop_source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"))
- CampaignWorkshop.append(data,preload("res://scripts/authoring_data.gd").read(workshop_source))
- if chapter==1: join_wardrobe(data)
- elif chapter in [2,3] and not OS.get_cmdline_user_args().has("--unjoined"): join_story(data,chapter)
+ if chapter in [1,2,3]:
+  strip_to_road(data,{1:["rowan","socket-19-1"],2:["refuge"],3:["defector"]}[chapter])
+  preload("res://scripts/felix_route.gd").prepare(data)
+ else:
+  for room in data.world.rooms: room.erase("people")
+  preload("res://scripts/bonus_rewards.gd").prepare(data)
+  preload("res://scripts/affixed_route.gd").prepare(data)
+ content_signature=preload("res://authoring/codec.gd").fingerprint(data)
+ wardrobe_walks=data.world.get("campaignWorkshop",{}).get("walks",[])
+ wardrobe_landing=data.world.get("campaignWorkshop",{}).get("landing",{})
  var sections=data.world.sections.duplicate(true)
  for q in data.world.quests: sections.append_array(q.sections)
  for q in data.world.get("secrets",[]): sections.append_array(q.sections)
@@ -109,6 +126,12 @@ func _init(source):
     var key=Vector2i(placements[id]/8)+local
     var value={"#":1,"%":1,"=":2,"^":3,"v":4,"<":5,">":6}.get(tile[2],0)
     seam_tiles[id].append({"local":local,"point":key,"open":cells.get(key,0),"closed":value})
+ for id in regions:
+  var room=parsed[id]
+  var patches=room.def.get("roadExit",[])+room.def.get("roadEntrance",[])
+  if patches.is_empty(): continue
+  road_base[id]=[]
+  for patch in patches: road_base[id].append([int(patch[0]),int(patch[1]),int(room.grid[int(patch[1])*int(room.cols)+int(patch[0])])])
  restart()
 func strip_to_road(source,cut_quests):
  var cut_rooms={}
@@ -126,138 +149,15 @@ func strip_to_road(source,cut_quests):
   d.erase("sideQuest")
   if d.has("doors"): d.doors=d.doors.filter(func(door): return str(door.get("to","")) not in cut_quests)
  source.world.passages=source.world.get("passages",[]).filter(func(s): return not cut_rooms.has(s.room))
-# One walkable world: from the curtain room's top-left nook, climb the overlook stair onto a
-# walkway along the top of the wardrobe. Each puzzle room hangs below it and is entered by
-# dropping through a hatch onto its authored start. The boy's basket lifts Felix out from
-# the drawing at its finish onto the next stretch of walkway. The windowsill ends the row.
-const SHELF_TOP=-89
-const ROOM_TOP=-83
-const ROOM_GAP=6
-var wardrobe_walks=[]
-var wardrobe_landing={}
-func put_section(source,id,x,y,fire=null):
- for section in source.world.sections:
-  if section.room==id:
-   section.x=x
-   section.y=y
-   section.fire=fire
-   return
- source.world.sections.append({"room":id,"x":x,"y":y,"fire":fire})
-func set_glyph(map,c,r,ch):
- var row=map[r]
- map[r]=row.substr(0,c)+ch+row.substr(c+1)
-func hatch_column(def):
- var found=find_hatch(def)
- return found[0]
-# [column, whether a 2-wide drop from the ceiling to the room's start is clear of everything].
-func find_hatch(def):
- var map=def.map
- var sc=-1
- var sr=-1
- for r in range(map.size()):
-  var at=map[r].find("P")
-  if at>=0:
-   sc=at
-   sr=r
- for offset in [0,1,-1,2,-2,3,-3,4,-4]:
-  var c=sc+offset
-  if c<1 or c+1>map[0].length()-2: continue
-  var clear=true
-  for r in range(1,sr+1):
-   for k in [c,c+1]:
-    if not map[r][k] in [".","P"]: clear=false
-  if clear and map[sr+1][c]=="#" and map[sr+1][c+1]=="#": return [c,true]
- return [sc,false]
-func walk_room(id,cols,hole,barrier,open_right,spawn_col=2,title="The Top of the Wardrobe"):
- var map=[]
- for r in range(6):
-  var row=""
-  for c in range(cols):
-   var ch="."
-   if r==0 or r==5: ch="#"
-   if r==5 and hole>=0 and (c==hole or c==hole+1): ch="."
-   if r in [1,2,3,4] and c==cols-1 and barrier and not open_right: ch="#"
-   row+=ch
-  map.append(row)
- set_glyph(map,spawn_col,4,"P")
- return {"id":id,"name":title,"cols":cols,"rows":6,"map":map,"exit":"right","lock":["strike","parry","portal"],"palette":"outskirts","wardrobeWalk":true}
-# Hang the workshop rooms in a row below a walkway, each entered through a ceiling hatch. Walk i
-# leads to room i's hatch; returns [x after the last room, start of the next walk, the last
-# room's finish column].
-func hang_rooms(source,rooms,x,start,shelf_top,room_top,prefix,title,lower_blocked=false):
- var defs={}
- for d in source.world.rooms: defs[d.id]=d
- var finished_at=-1
- for i in range(rooms.size()):
-  var def=defs[rooms[i]]
-  var found=find_hatch(def)
-  var hc=found[0]
-  # A room whose start has no clear drop above it keeps its ceiling; the light lowers Felix
-  # in from the walkway instead (lowerAt: the walkway column, in world tiles).
-  var lowered=lower_blocked and not found[1]
-  if lowered: def.lowerAt=x+hc
-  else:
-   for k in [hc,hc+1]: set_glyph(def.map,k,0,".")
-  put_section(source,rooms[i],x,room_top,null)
-  var hole=x+hc
-  var finish=hole+2
-  var walk=prefix+str(i)
-  # The basket lifts Felix straight up from the last room's finish and sets him down there;
-  # only a finish left of this stretch's wall nudges him right, just past it.
-  var landing=2 if finished_at<0 else clampi(finished_at-start,2,hole-start-3)
-  source.world.rooms.append(walk_room(walk,finish-start+1,-1 if lowered else hole-start,true,false,landing,title))
-  put_section(source,walk,start,shelf_top,{"c":landing,"r":4})
-  var goal=def.get("workshopGoal",[0,0,8,0])
-  finished_at=x+int(floor((goal[0]+goal[2]/2.0)/8.0))
-  wardrobe_walks.append(walk)
-  start=finish+1
-  x+=int(def.get("cols",40))+ROOM_GAP
- return [x,start,finished_at]
-func join_wardrobe(source):
- var rooms=source.world.campaignWorkshop.rooms
- var defs={}
- for d in source.world.rooms: defs[d.id]=d
- # Codex's overlook stair already climbs from the curtain room's nook; open its side onto the walkway.
- var stair=defs["godot-overlook-stair"]
- for r in [22,23,24,25]: set_glyph(stair.map,7,r,".")
- var row=hang_rooms(source,rooms,563,481,SHELF_TOP,ROOM_TOP,"felix-walk-","The Top of the Wardrobe")
- var x=row[0]
- var start=row[1]
- var finished_at=row[2]
- # The windowsill at the end of the row; its doorway now faces the walkway.
- var sill=defs["cl1-atlas-crossroads"]
- for r in [6,7,8,9]:
-  set_glyph(sill.map,0,r,".")
-  set_glyph(sill.map,39,r,"#")
- var last="felix-walk-%d"%rooms.size()
- var last_landing=clampi(finished_at-start,2,x-start-3)
- source.world.rooms.append(walk_room(last,x-start,-1,false,true,last_landing))
- put_section(source,last,start,SHELF_TOP,{"c":last_landing,"r":4})
- wardrobe_walks.append(last)
- put_section(source,"cl1-atlas-crossroads",x,-94,{"c":5,"r":9})
- for i in range(rooms.size()): wardrobe_landing[rooms[i]]=wardrobe_walks[i+1]
-# Chapter Two: Dad's story on the stormy night. It begins on its own stretch of path, east of the
-# cabin and the big tree, and runs room by room; the last room's finish ends the story, back
-# at the cabin. Passages to other worlds and the hall behind the start are cut.
-const STORY_TOP=-40
-const DRIVE_TOP=-60
-# Chapter Three: the drive to Dad's, east of the lot at the end of the Causeway, the same way.
-func join_story(source,chapter=2):
- var arrival="cl%d-atlas-arrival"%chapter
- var passage="cl%d-passage-"%chapter
- source.world.rooms=source.world.rooms.filter(func(d): return d.id!=arrival)
- source.world.sections=source.world.sections.filter(func(s): return s.room!=arrival)
- source.world.rooms=source.world.rooms.filter(func(d): return not str(d.id).begins_with(passage))
- source.world.passages=source.world.get("passages",[]).filter(func(s): return not str(s.room).begins_with(passage))
- source.world.sections=source.world.sections.filter(func(s): return not str(s.room).begins_with(passage))
- var rooms=source.world.campaignWorkshop.rooms
- if chapter==2: hang_rooms(source,rooms,500,490,STORY_TOP,STORY_TOP+6,"story-walk-","The Storm",true)
- else: hang_rooms(source,rooms,720,710,DRIVE_TOP,DRIVE_TOP+6,"story-walk-","The Drive",true)
- for i in range(rooms.size()-1): wardrobe_landing[rooms[i]]=wardrobe_walks[i+1]
- wardrobe_landing[rooms[-1]]=""
- # No workshop doorway at the cabin: the story is entered by Dad telling it.
- source.world.campaignWorkshop.entry=""
 func restart():
+ for id in road_base:
+  for tile in road_base[id]:
+   cells[Vector2i(placements[id]/8)+Vector2i(tile[0],tile[1])]=tile[2]
+   parsed[id].grid[tile[1]*int(parsed[id].cols)+tile[0]]=tile[2]
+ road_opened.clear()
+ road_opening.clear()
+ road_entered.clear()
+ road_revision+=1
  campaign_completed.clear()
  for old in cores.values(): old.world_context=null
  cores.clear()
@@ -281,7 +181,7 @@ func restart():
  portal_cells.clear()
  secret_hearts.clear()
  secret_front_entry=false
- award_color="#ff9fc8"
+ award_color="#ba82e6"
  mara_complete=false
  mara_registered=false
  dormant=data.playerDefaults.duplicate(true)
@@ -303,6 +203,7 @@ func restart():
   cores[id]=core
  active_id=data.world.get("atlasStart",data.world.sections[0].room)
  checkpoint_id=active_id
+ for id in road_base: apply_road_patches(id,parsed[id].def.get("roadEntrance",[]))
 func configure_live_core(core):
  core.autonomous_sweepers=int(data.world.n)==1
  if data.has("whiteFlowers"):
@@ -329,6 +230,7 @@ func blocker(core,x,y,w,h,ignore):
   for i in range(other.ents.size()):
    if other==core and i==ignore: continue
    var e=other.ents[i]
+   if road_entity_hidden(id,e): continue
    if other.solid_entity(e) and area.intersects(Rect2(e.x+shift.x,(other.room.h-e.y-e.h if other.flipped else e.y)+shift.y,e.w,e.h)):
     return i if other==core else -2
  return -1
@@ -347,7 +249,11 @@ func thru_global(core,a):
    if edge==y and x<e.x+other.world_origin.x+e.w and x+a.w>e.x+other.world_origin.x: return true
  return false
 func step(raw):
+ PassageReveal.tick(self)
  var current=active()
+ if current.room.def.has("roadEntrance") and not road_entered.has(active_id) and current.p.x>=current.room.spawn.x and current.p.onGround:
+  activate_road_puzzle(active_id)
+ if road_opened.has(active_id): open_road_exit(active_id)
  update_seams(raw)
  var old_state=current.p.state
  if old_state=="dead" and current.p.deadTimer<=1 and current.freeze==0: return_extra_objects(current)
@@ -378,7 +284,7 @@ func tick_inactive():
 func collect_progress():
  # The workshop shard is an optional round trip, banked at its finish by the UI.
  # Death/retry resets the pickup along with the room, unlike campaign bearings.
- if data.world.get("workshop",false) or active().room.def.get("campaignWorkshop",false): return
+ if data.world.get("workshop",false) or data.world.get("coverComparison",false) or active().room.def.get("campaignWorkshop",false) or Core.PuzzleReturns.required(active().room.def): return
  # Only the active knight can collect or light a stake. Inactive machinery cannot.
  for id in [active_id]:
   var core=cores[id]
@@ -410,10 +316,16 @@ func restore_progress(core):
  for i in range(core.ents.size()):
   if not core.ents[i].id is String: core.ents[i].id=i
 func retry():
+ if active().room.def.get("roadConnector",false) and checkpoint_id!=active_id:
+  var deaths=active().deaths
+  enter(checkpoint_id,true)
+  active().deaths=deaths
+  return
  var core=active()
  var deaths=core.deaths
  return_extra_objects(core)
  core.load_room(parsed[active_id],true)
+ if road_opened.has(active_id): open_road_exit(active_id)
  core.deaths=deaths
  restore_progress(core)
 func enter(id,practice=false):
@@ -424,6 +336,9 @@ func enter(id,practice=false):
   if practice and id in reward.rooms: branch_entered[reward.id]=false
   elif id==reward.rooms[0] and active_id==reward.host: branch_entered[reward.id]=true
   if not practice and active_id==reward.room and id in reward.rooms and id!=reward.room and branch_entered.get(reward.id,false): claim_branch(reward)
+ if id=="cl1-secret-r2": secret_front_entry=not practice and active_id=="cl1-o1-cut"
+ if not practice and active_id=="cl1-secret-r2" and id=="cl1-pass-9":
+  for reward in data.get("secretRewards",[]): claim_secret(reward)
  if id=="cl3-secret-e2": secret_front_entry=not practice and active_id=="cl3-c3-upper"
  if not practice and active_id=="cl3-secret-e2" and id=="cl3-pass-14" and secret_front_entry:
   for reward in data.get("secretRewards",[]): claim_secret(reward)
@@ -433,6 +348,7 @@ func enter(id,practice=false):
  var point=position()
  var motion=old.p
  if practice:
+  close_road_entrance(id)
   active_id=id
   checkpoint_id=id
   var destination=active()
@@ -480,7 +396,7 @@ func enter(id,practice=false):
  destination.buf=old.buf.duplicate()
  destination.freeze=old.freeze
  destination.deaths=old.deaths
- checkpoint_id=id
+ if not destination.room.def.get("roadConnector",false): checkpoint_id=id
  return true
 func update_region():
  var point=position()+Vector2(4,5)
@@ -540,7 +456,7 @@ func tick_elsie():
    quest_lantern=false
    quest_complete=true
    quest_award_frame=frames
-   award_color="#ff9fc8"
+   award_color="#ba82e6"
    notices.append("♥ Heart · A Place for Supper")
   return
  var perch=data.quest.perches[elsie_perch]
@@ -559,10 +475,10 @@ func claim_secret(reward):
  if secret_hearts.has(reward.id): return
  secret_hearts[reward.id]=true
  quest_award_frame=frames
- award_color=reward.color
+ award_color="#ba82e6"
  notices.append("♥ "+reward.name+" · "+reward.title)
 func tick_secret_hearts():
- if not secret_front_entry or active().p.state in ["dead","respawn"]: return
+ if active().p.state in ["dead","respawn"]: return
  var p=active().p
  for reward in data.get("secretRewards",[]):
   if active_id==reward.room and abs(p.x+4-reward.x)<=9 and abs(p.y+5.5-reward.y)<=11: claim_secret(reward)
@@ -605,7 +521,7 @@ func tick_silas():
    quest_complete=true
    silas_step=2
    quest_award_frame=frames
-   award_color="#ff9fc8"
+   award_color="#ba82e6"
    notices.append("♥ Heart · The Clockwork Defector")
 
 func set_portal_holes(core,holes):
@@ -620,7 +536,7 @@ func claim_branch(reward):
  if branch_hearts.has(reward.id): return
  branch_hearts[reward.id]=true
  quest_award_frame=frames
- award_color=reward.color
+ award_color="#ba82e6"
  notices.append("♥ Heart · "+reward.title)
 func tick_branch_rewards():
  var core=active()
@@ -668,3 +584,58 @@ func watch_room(id):
   row[int(tile[0])]=tile[2]
   def.map[int(tile[1])]=row
  return Loader.parse(def)
+
+func apply_road_patches(id,patches):
+ for patch in patches:
+  var local=Vector2i(patch[0],patch[1])
+  cells[Vector2i(placements[id]/8)+local]=int(patch[2])
+ road_revision+=1
+func close_road_entrance(id):
+ if road_entered.has(id) or not road_base.has(id): return
+ road_entered[id]=true
+ apply_road_patches(id,road_base[id])
+ if road_opened.has(id): apply_road_patches(id,parsed[id].def.get("roadExit",[]))
+func apply_road_exit_patch(id,patch):
+ var local=Vector2i(patch[0],patch[1])
+ cells[Vector2i(placements[id]/8)+local]=int(patch[2])
+ parsed[id].grid[local.y*int(parsed[id].cols)+local.x]=int(patch[2])
+ if cores.has(id): cores[id].room.grid[local.y*int(parsed[id].cols)+local.x]=int(patch[2])
+func open_road_exit(id,animate=false):
+ if not parsed.has(id): return
+ var room=parsed[id]
+ var patches=room.def.get("roadExit",[])
+ if patches.is_empty(): return
+ var newly_opened=not road_opened.has(id)
+ if newly_opened:
+  road_opened[id]=true
+  if animate: PassageReveal.begin(self,id)
+  # Do not leave a completed flag standing on a retiring moving platform or
+  # expose a temporary gap while the visible service panels retract.
+  for patch in patches: apply_road_exit_patch(id,patch)
+ for entity in cores[id].ents:
+  if entity.type=="roadRetired" or entity==cores[id].p.carrying: continue
+  if entity.get("dev",false) or entity.type in ["gate","combatGate","brittle","crumble","toggle","held","slide","zip"]:
+   if newly_opened and road_opening.has(id): road_opening[id].retired.append(entity.duplicate())
+   entity.road_original_type=entity.type
+   entity.type="roadRetired"
+   entity.solid=false
+   entity.dev=false
+   entity.gone=true
+ if newly_opened: road_revision+=1
+func road_entity_hidden(id,entity):
+ if road_entered.has(id): return false
+ var a=parsed[id].def.get("roadApproach",[])
+ return a.size()==4 and Rect2(a[0],a[1],a[2],a[3]).intersects(Rect2(entity.x,entity.y,entity.get("w",0),entity.get("h",0)))
+func activate_road_puzzle(id):
+ var core=cores[id]
+ var motion={}
+ for key in ["x","y","vx","vy","facing","onGround","wasGround"]: motion[key]=core.p[key]
+ var deaths=core.deaths
+ return_extra_objects(core)
+ core.load_room(parsed[id])
+ for key in motion: core.p[key]=motion[key]
+ core.deaths=deaths
+ restore_progress(core)
+ close_road_entrance(id)
+func road_approach_active(id):
+ return parsed[id].def.has("roadEntrance") and not road_entered.has(id)

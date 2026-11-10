@@ -292,6 +292,7 @@ func place_glow_lights():
  for scene in scenes:
   if not Rect2(scene.world_origin,Vector2(scene.room.w,scene.room.h)).intersects(view): continue
   for e in scene.ents:
+   if e.type=="roadRetired" or runtime.road_entity_hidden(scene.room.id,e): continue
    var at=scene.world_origin+Vector2(e.x+e.w/2.0,e.y+e.h/2.0)
    if not view.has_point(at): continue
    if e.type=="refill" and e.timer==0: spots.append([at,Color(.78,1,.62),.55,.3])
@@ -426,17 +427,23 @@ func curtains():
 func wardrobe(view):
  var left=max(view.position.x,WARDROBE_X)
  var right=min(view.end.x,WINDOW.position.x-40)
- var top=max(view.position.y,-712)
+ var roof=-712.0
+ for id in runtime.data.world.campaignWorkshop.rooms:
+  roof=minf(roof,runtime.rectangles[id].position.y-32)
+ var top=max(view.position.y,roof)
+ if right<=left or view.end.y<=top: return
  pixel_tile("room/wardrobe",Rect2(left,top,right-left,view.end.y-top))
- if view.end.y>-664:
-  top=max(view.position.y,-664)
-  pixel_tile("room/corrugated",Rect2(left,top,right-left,view.end.y-top))
- for gx in range(floori(view.position.x/90),ceili(view.end.x/90)+1):
-  var h=30+hash_at(gx,5,9)%14
-  var b=Rect2(gx*90+hash_at(gx,4,9)%30,-672-h,50+hash_at(gx,6,9)%20,h)
-  if b.position.x<left or b.end.x>right: continue
-  pixel("room/box",b.position,b.size,Color("#b9a8ae"))
-  marker(["PHOTOS","FAMILY","BABY STUFF","PHOTOS","XMAS"][posmod(gx,5)],b.position+Vector2(4,b.size.y*.62),6,Color("#15100c"))
+ pixel_tile("room/corrugated",Rect2(left,top,right-left,view.end.y-top))
+ # Each photo exercise remains a box, even when its new doorway changes its elevation.
+ var labels=["PHOTOS","FAMILY","BABY STUFF","PHOTOS","XMAS"]
+ var index=0
+ for id in runtime.data.world.campaignWorkshop.rooms:
+  var bounds=runtime.rectangles[id]
+  var b=Rect2(bounds.position+Vector2(12,-26),Vector2(62,24))
+  if view.intersects(b):
+   pixel("room/box",b.position,b.size,Color("#b9a8ae"))
+   marker(labels[index%labels.size()],b.position+Vector2(4,17),6,Color("#15100c"))
+  index+=1
 
 func crayon_star(point,current):
  var tint=Color("#ffe39a") if current else Color("#d9c17a")
@@ -544,11 +551,14 @@ func draw_front():
   for r in range(max(0,floori((view.position.y-origin.y)/8)),min(int(scene.room.rows),ceili((view.end.y-origin.y)/8))):
    for c in range(max(0,floori((view.position.x-origin.x)/8)),min(int(scene.room.cols),ceili((view.end.x-origin.x)/8))):
     var t=scene.room.grid[r*int(scene.room.cols)+c]
+    t=PassageReveal.visual_value(runtime,scene.room.id,Vector2i(c,r),t)
     if t>=3: draw_hazard(t,origin+Vector2(c*8,r*8))
   if scene.room.def.has("workshopGoal"): goal_drawing(scene,origin)
   for e in scene.ents:
+   if e.type=="roadRetired" or runtime.road_entity_hidden(scene.room.id,e): continue
    if Rect2(origin+Vector2(e.x,e.y),Vector2(e.w,e.h)).grow(18).intersects(view): draw_entity(e,origin)
   for e in scene.sweepers: dust_bunny(e,origin,scene.room.id)
+ PassageReveal.draw(self,view)
  slime_puddles(view)
  if story!=null: story_items(view)
  for trail in trails:

@@ -29,11 +29,16 @@ func _ready():
  manifest = JSON.parse_string(FileAccess.get_file_as_string("res://data/audio.json"))
  # Warm the reused resources before gameplay; first hits/lines do not load files mid-frame.
  for recording in manifest.files: stream(recording.path)
+ # Allocate the bus array in one operation. Godot 4.5's Web sample backend
+ # reorders buses when add_bus appends with -1, disconnecting Master output.
+ var missing=[]
  for bus in levels:
-  if AudioServer.get_bus_index(bus)<0:
-   AudioServer.add_bus()
-   AudioServer.set_bus_name(AudioServer.bus_count-1,bus)
-   AudioServer.set_bus_send(AudioServer.bus_count-1,"Master")
+  if AudioServer.get_bus_index(bus)<0: missing.append(bus)
+ var first=AudioServer.bus_count
+ AudioServer.bus_count=first+missing.size()
+ for i in range(missing.size()):
+  AudioServer.set_bus_name(first+i,missing[i])
+  AudioServer.set_bus_send(first+i,"Master")
  apply_levels()
  var index = AudioServer.get_bus_index("Master")
  if AudioServer.get_bus_effect_count(index)==0:
@@ -130,7 +135,8 @@ func effort(name,force = false):
  effect(name,0.58)
 func room_changed(core=null):
  if world_runtime!=null:
-  var chapter=manifest.chapters.get(str(int(world_runtime.data.world.n)),manifest.chapters["1"])
+  var number=int(world_runtime.data.world.n)
+  var chapter=chapter_audio(number)
   var id=core.room.id if core!=null else world_runtime.active_id
   var boss=id in ["cl3-c3-brace","cl3-bank-b68","cl23-fc23-standard","cl23-fc23-west","cl23-fc23-east","cl23-bank-f69"]
   var score=stream(chapter.get("bossMusic",chapter.music) if boss else chapter.music,true)
@@ -248,7 +254,8 @@ func restart_world():
  foot_clock=0
 
 func change_chapter(number):
- var chapter=manifest.chapters.get(str(number),manifest.chapters["1"])
+ # Cores (101-120) play their base world's score and ambience.
+ var chapter=chapter_audio(number)
  music.stream=stream(chapter.music,true)
  music.play()
  ambience.stream=stream(chapter.ambience,true)
@@ -256,3 +263,8 @@ func change_chapter(number):
  speech.stop()
  voice_queue.clear()
  active_voice={}
+
+func chapter_audio(number):
+ var chapter=manifest.chapters.get(str(number),manifest.chapters.get(str(number-100),manifest.chapters["1"])).duplicate(true)
+ if number==21: chapter.music=manifest.chapters["1"].music
+ return chapter

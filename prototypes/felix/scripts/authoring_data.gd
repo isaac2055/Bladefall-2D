@@ -9,7 +9,7 @@ static func baseline(source):
  return data
 static func read(source,path=""):
  var base=baseline(source)
- if path=="": path="res://levels/world%d.tscn"%int(source.world.n)
+ if path=="": path=source.get("nativeScene","res://levels/world%d.tscn"%int(source.world.n))
  if not ResourceLoader.exists(path):
   push_error("Missing native chapter scene: "+path)
   return base

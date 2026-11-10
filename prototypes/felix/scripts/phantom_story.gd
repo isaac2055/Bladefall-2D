@@ -156,7 +156,13 @@ func tick(world,sim,delta):
   tick_ending(delta)
   return
  if phase!="play": return
- if room in tale_rooms or room.begins_with("story-walk-"): in_drive=true
+ if room in tale_rooms or room.begins_with("story-walk-"):
+  in_drive=true
+  in_car=false
+  man.lead=false
+  man.visible=false
+  mom.visible=false
+  boy.visible=false
  var origin=world.placements.get(room,Vector2.ZERO)
  # The Causeway, tailing the target.
  if room==CAMP and not done.has("opening") and sim.p.onGround: opening()
@@ -192,13 +198,7 @@ func tick(world,sim,delta):
   badge.taken=true
   pulse_request=1.0
   show_hint("found: Phantom's ID card",4.0)
- # The drive. Over a room with no way to drop in, the headlights lower him to its start.
- if room.begins_with("story-walk-") and ride==null and sim.p.onGround:
-  var next=int(room.trim_prefix("story-walk-"))
-  if next<tale_rooms.size():
-   var below=world.parsed[tale_rooms[next]]
-   if below.def.has("lowerAt") and felix.x>=below.def.lowerAt*8-4:
-    ride={"room":room,"landing":below.def.id,"from":felix,"to":world.placements[below.def.id]+Vector2(below.spawn.x,below.spawn.y),"t":0.0,"photo":-1,"lower":true}
+ # The imagined journey now continues through physical passages.
  var index=tale_rooms.find(room)
  if index>=0:
   if not done.has("drive-in:"+room):
@@ -206,19 +206,18 @@ func tick(world,sim,delta):
    drive_line(DRIVE[index][0],DRIVE[index][1],4.0)
    if sim.room.def.get("workshopRequireAllShards",false): show_hint("find all three, then bring them to the light",4.5)
    elif sim.room.def.get("workshopRequireShard",false): show_hint("find the last piece, then bring it to the light",4.5)
-  if ride==null and preload("res://scripts/campaign_workshop.gd").goal_reached(sim):
+  if not world.campaign_completed.has(room) and preload("res://scripts/campaign_workshop.gd").goal_reached(sim):
    world.campaign_completed[room]=true
+   world.open_road_exit(room,true)
    pulse_request=.8
    if not room in photos: photos.append(room)
    drive_line(DRIVE[index][2],DRIVE[index][3],3.4)
-   var landing=world.wardrobe_landing[room]
-   if landing=="":
-    # Sunday night: back at the lot.
+   if index==tale_rooms.size()-1:
+    # A chapter scene change, after the final line has time to land.
     drive_done=true
-    ride={"room":room,"landing":LOT,"from":felix,"to":felix+Vector2(0,-150),"t":0.0,"photo":index}
-   else:
-    var spawn=world.parsed[landing].spawn
-    ride={"room":room,"landing":landing,"from":felix,"to":world.placements[landing]+Vector2(spawn.x,spawn.y),"t":0.0,"photo":index}
+    freeze=300
+    cue_clock=0
+    cue=[[300,func(): cut=LOT]]
  if drive_done and room==LOT and not done.has("ending"): begin_ending(world,sim)
 
 func drive_line(text_value,who,seconds):
