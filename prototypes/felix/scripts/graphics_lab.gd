@@ -20,8 +20,10 @@ var extra_pickers={}
 var strength_sliders={}
 var strength_labels={}
 var comparing=false
+var compare_with_favorite=false
 var favorite={}
 var compare_button:Button
+var comparison_picker:OptionButton
 var recall_button:Button
 var feedback:Label
 var badge:Label
@@ -95,8 +97,12 @@ func setup(parent,font:Font,is_mobile,launch_args):
  parallax.toggled.connect(func(value):set_override("parallax",value))
  switches.parallax=parallax
  extra.add_child(parallax)
+ comparison_picker=OptionButton.new()
+ comparison_picker.add_item("Compare against · Original")
+ comparison_picker.add_item("Compare against · Favorite")
+ comparison_picker.item_selected.connect(select_comparison_reference)
+ detail.add_child(comparison_picker)
  compare_button=Button.new()
- compare_button.text="Compare with Original · F8"
  compare_button.pressed.connect(toggle_comparison)
  detail.add_child(compare_button)
  var keep=Button.new()
@@ -204,8 +210,23 @@ func toggle_comparison():
  if not active: return
  comparing=not comparing
  sync_controls()
- announce("Original · F8 to return" if comparing else current_name())
+ announce(comparison_name()+" · F8 to return" if comparing else current_name())
  changed.emit()
+
+func select_comparison_reference(index):
+ compare_with_favorite=index==1 and not favorite.is_empty()
+ sync_controls()
+ if comparing:
+  announce(comparison_name()+" · F8 to return")
+  changed.emit()
+
+func comparison_name():
+ return "Favorite" if compare_with_favorite else "Original"
+
+func displayed_options():
+ if not active: return DEFAULTS
+ if not comparing: return options
+ return favorite if compare_with_favorite else DEFAULTS
 
 func current_name():
  return PRESETS[options.preset] if options.preset<CUSTOM else "Custom look"
@@ -213,7 +234,7 @@ func current_name():
 func save_favorite():
  favorite=options.duplicate()
  sync_controls()
- feedback.text="Favorite saved."
+ feedback.text="Favorite saved from the current look."
  save_and_emit()
 
 func recall_favorite():
@@ -329,11 +350,13 @@ func sync_controls():
  for key in strength_sliders:
   strength_sliders[key].set_value_no_signal(options[key])
   strength_labels[key].text=strength_sliders[key].accessibility_name+" · %d%%"%options[key]
- compare_button.text="Return to "+current_name()+" · F8" if comparing else "Compare with Original · F8"
+ comparison_picker.set_item_disabled(1,favorite.is_empty())
+ comparison_picker.select(1 if compare_with_favorite else 0)
+ compare_button.text="Return to "+current_name()+" · F8" if comparing else "Compare with "+comparison_name()+" · F8"
  recall_button.disabled=favorite.is_empty()
 
 func apply(view,container,auto_shrink,style):
- var look=DEFAULTS if comparing else options
+ var look=displayed_options()
  var shrink=auto_shrink
  if active:
   if look.scale==1: shrink=1
@@ -379,8 +402,9 @@ func apply(view,container,auto_shrink,style):
  view.refresh_lab_effects()
 
 func diagnostics(container):
- var result=options.duplicate() if active and not comparing else DEFAULTS.duplicate()
- result.comparing_original=comparing
+ var result=displayed_options().duplicate()
+ result.comparing_original=comparing and not compare_with_favorite
+ result.comparing_favorite=comparing and compare_with_favorite
  result.render_shrink=container.stretch_shrink
  return result
 
