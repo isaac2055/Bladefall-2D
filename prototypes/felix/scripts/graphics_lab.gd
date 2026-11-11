@@ -1,17 +1,18 @@
 extends VBoxContainer
 ## Dev-only controls. These preferences never enter a campaign save.
 signal changed
-const PRESETS=["Original","Clear","Atmospheric","Illustrated","Nightfall"]
-const CUSTOM=5
-const FINISHES=["Original","Grit","Etched"]
+const PRESETS=["Original","Clear","Atmospheric","Illustrated","Nightfall","Autumn","Frostlight"]
+const CUSTOM=7
+const FINISHES=["Original","Grit","Etched","Brushed"]
 const SCENERIES=["Original","Illustrated","Nightfall"]
 const MOTIONS=["Still","Gentle","Full"]
-const WEATHER=["Motes","Rain","Glints"]
+const WEATHER=["Motes","Rain","Glints","Snow","Leaves"]
+const PALETTES=["Original","Amber","Frost"]
 const DENSITIES=["Sparse","Balanced","Lush"]
 const Surface=preload("res://shaders/surface_finish.gdshader")
 const SCALES=["Auto","Full","Half"]
 const Atmosphere=preload("res://scripts/graphics_lab_atmosphere.gd")
-const DEFAULTS={"preset":0,"particles":true,"shadows":true,"post":true,"atmosphere":false,"scale":0,"finish":0,"scenery":0,"motion":2,"weather":0,"density":1,"surface_strength":100,"backdrop_strength":100,"weather_strength":100,"parallax":true}
+const DEFAULTS={"preset":0,"particles":true,"shadows":true,"post":true,"atmosphere":false,"scale":0,"finish":0,"scenery":0,"motion":2,"weather":0,"density":1,"surface_strength":100,"backdrop_strength":100,"weather_strength":100,"parallax":true,"palette":0}
 var options=DEFAULTS.duplicate()
 var extra_pickers={}
 var strength_sliders={}
@@ -65,7 +66,7 @@ func setup(parent,font:Font,is_mobile,launch_args):
  extra.hide()
  detail.add_child(extra)
  extras.toggled.connect(func(value):extra.visible=value)
- for entry in [["finish","Surface",FINISHES],["scenery","Backdrop",SCENERIES],["motion","Scenery motion",MOTIONS],["weather","Weather",WEATHER],["density","Weather density",DENSITIES]]:
+ for entry in [["finish","Surface",FINISHES],["scenery","Backdrop",SCENERIES],["motion","Scenery motion",MOTIONS],["weather","Weather",WEATHER],["palette","Scenery palette",PALETTES],["density","Weather density",DENSITIES]]:
   var picker=OptionButton.new()
   for title in entry[2]: picker.add_item(entry[1]+" · "+title)
   if entry[0]=="weather": picker.tooltip_text="Uses the Atmospheric accents switch."
@@ -151,7 +152,7 @@ func set_active(value):
   if config.load(path)==OK:
    read_options(config)
    var stored=config.get_value("favorite","options",{})
-   if stored is Dictionary and not stored.is_empty(): favorite=validated(stored)
+   if stored is Dictionary and not stored.is_empty(): favorite=validated(stored,int(config.get_value("graphics","version",1)))
  for arg in args:
   if arg.begins_with("--graphics-preset="):
    var index=PRESETS.find(arg.get_slice("=",1).capitalize())
@@ -165,11 +166,14 @@ func set_active(value):
     options.preset=CUSTOM
  sync_controls()
 
-func validated(values):
+func validated(values,version=4):
  var result=DEFAULTS.duplicate()
  result.preset=clampi(int(values.get("preset",0)),0,CUSTOM)
- for key in ["scale","finish","scenery","motion","weather","density"]:
+ if version==1 and result.preset==3 or version<4 and result.preset==5: result.preset=CUSTOM
+ for key in ["scale","scenery","motion","density","palette"]:
   result[key]=clampi(int(values.get(key,DEFAULTS[key])),0,2)
+ result.finish=clampi(int(values.get("finish",0)),0,FINISHES.size()-1)
+ result.weather=clampi(int(values.get("weather",0)),0,WEATHER.size()-1)
  for key in ["particles","shadows","post","atmosphere","parallax"]:
   result[key]=bool(values.get(key,DEFAULTS[key]))
  for key in ["surface_strength","backdrop_strength","weather_strength"]:
@@ -179,9 +183,8 @@ func validated(values):
 func read_options(config):
  var values={}
  for key in DEFAULTS: values[key]=config.get_value("graphics",key,DEFAULTS[key])
- # Version 1 used preset slot 3 for Custom. Preserve existing overrides.
- if int(config.get_value("graphics","version",1))==1 and values.preset==3: values.preset=CUSTOM
- options=validated(values)
+ # Preserve both earlier custom-preset slots, including saved favorites.
+ options=validated(values,int(config.get_value("graphics","version",1)))
 
 func toggle_comparison():
  if not active: return
@@ -249,6 +252,15 @@ func select_preset(index,persist):
   options.scenery=2
   options.weather=1
   options.particles=false
+ elif index in [5,6]:
+  options.finish=3 if index==5 else 1
+  options.scenery=1 if index==5 else 2
+  options.palette=1 if index==5 else 2
+  options.weather=4 if index==5 else 3
+  options.motion=1
+  options.particles=false
+  options.backdrop_strength=85
+  options.weather_strength=85
  sync_controls()
  if persist:
   announce(current_name())
@@ -267,7 +279,7 @@ func set_override(key,value):
 func save_and_emit():
  if not cli_override:
   var config=ConfigFile.new()
-  config.set_value("graphics","version",3)
+  config.set_value("graphics","version",4)
   for key in options: config.set_value("graphics",key,options[key])
   if not favorite.is_empty(): config.set_value("favorite","options",favorite)
   if config.save(path)!=OK: feedback.text="Could not save developer preferences."
@@ -325,7 +337,7 @@ func apply(view,container,auto_shrink,style):
    view.add_child(view.lab_atmosphere)
    if "backdrop" in view and view.backdrop!=null:
     view.move_child(view.lab_atmosphere,view.backdrop.get_index())
-  view.lab_atmosphere.configure(style,look.scenery,look.atmosphere,look.motion,look.weather,look.backdrop_strength/100.0,look.weather_strength/100.0,look.density,look.parallax)
+  view.lab_atmosphere.configure(style,look.scenery,look.atmosphere,look.motion,look.weather,look.backdrop_strength/100.0,look.weather_strength/100.0,look.density,look.parallax,look.palette)
   view.lab_atmosphere.show()
  elif view.lab_atmosphere!=null: view.lab_atmosphere.hide()
  view.refresh_lab_effects()
