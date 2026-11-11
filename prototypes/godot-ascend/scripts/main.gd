@@ -12,6 +12,8 @@ var sampler_overlay
 var story
 var dev_mode=false
 var dev_nodes=[]
+const GraphicsLab=preload("res://scripts/graphics_lab.gd")
+var graphics_lab: GraphicsLab
 var gameplay_settings_nodes=[]
 var hud_nodes=[]
 var title_subtitle_visible=false
@@ -164,7 +166,7 @@ func _ready():
  mobile=OS.has_feature("mobile") or (OS.has_feature("web") and DisplayServer.is_touchscreen_available())
  get_tree().auto_accept_quit = false
  DisplayServer.window_set_title("Bladefall")
- dev_mode=test_mode or initial_room!="" or initial_world!=1 or "--world" in OS.get_cmdline_user_args() or "--room" in OS.get_cmdline_user_args() or "--capture" in OS.get_cmdline_user_args()
+ dev_mode=test_mode or initial_room!="" or initial_world!=1 or "--world" in OS.get_cmdline_user_args() or "--room" in OS.get_cmdline_user_args() or "--capture" in OS.get_cmdline_user_args() or "--dev-graphics" in OS.get_cmdline_user_args()
  Controls.bind()
  # macOS OpenGL VSync intermittently waits an extra display interval on this host.
  # Pace presentation to the actual display instead; simulation remains fixed at 60 Hz.
@@ -227,6 +229,7 @@ func _ready():
   elif args[i]=="--world" and i+1<args.size(): switch_chapter(int(args[i+1]))
   elif args[i]=="--room" and i+1<args.size(): current = int(args[i+1])
  load_section(current)
+ apply_graphics_lab()
  if watch and tape.is_empty(): next_section()
  sampler.start(world,not watch and initial_room=="" and current==0 and journey.is_empty())
  if "--room" in args or "--watch" in args or "--tour" in args or "--fractured-tour" in args: sampler.invalidate()
@@ -428,6 +431,11 @@ func create_interface():
  column.add_child(room_picker)
  gameplay_settings_nodes.append(room_picker)
  dev_nodes.append(text(column,"APPEARANCE",12,"#bba984"))
+ graphics_lab=GraphicsLab.new()
+ graphics_lab.setup(column,null,mobile,OS.get_cmdline_user_args())
+ graphics_lab.set_active(dev_mode)
+ graphics_lab.changed.connect(apply_graphics_lab)
+ dev_nodes.append(graphics_lab)
  dev_nodes.append(text(column,"Walking · Measured",14,"#a6b7bb"))
  design_picker=OptionButton.new()
  for id in Landscape.KnightStyles.CHOICES: design_picker.add_item("Knight · "+Landscape.KnightStyles.NAMES[id],id)
@@ -473,6 +481,7 @@ func create_interface():
  reduced.button_pressed = landscape.reduced_motion
  reduced.toggled.connect(func(value):
   for chapter in chapters.values(): chapter.landscape.reduced_motion=value
+  apply_graphics_lab()
   save_preferences())
  column.add_child(reduced)
  var light_row = HBoxContainer.new()
@@ -572,6 +581,9 @@ func save_preferences():
 func toggle_fullscreen():
  DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if DisplayServer.window_get_mode()==DisplayServer.WINDOW_MODE_FULLSCREEN else DisplayServer.WINDOW_MODE_FULLSCREEN)
 func _unhandled_input(event):
+ if graphics_lab!=null and graphics_lab.handle_shortcut(event):
+  get_viewport().set_input_as_handled()
+  return
  if event.is_echo(): return
  if event.is_action_pressed("knight_pause") or paused and event.is_action_pressed("ui_cancel"):
   if controls_menu!=null and controls_menu.visible:
@@ -917,12 +929,17 @@ func rebuild_section_menu():
   room_picker.add_item(mark+label,entry.index)
  select_section_menu()
 
+func apply_graphics_lab():
+ if graphics_lab==null: return
+ graphics_lab.apply(landscape,chapters[chapter_number].container,2 if mobile else 1,0)
+
 func capture():
  if capture_menu: set_paused(true)
  await RenderingServer.frame_post_draw
  var result = get_viewport().get_texture().get_image().save_png(capture_path)
  if audio_capture_path!="": audio.save_capture(audio_capture_path)
  var report = {"fps":Engine.get_frames_per_second(),"audio":audio.counts,"presentation":landscape.observed,"shadow_occluders":landscape.occluder_count,"lights":landscape.lights.size(),"room":sim.room.id,"camera":[landscape.camera.x,landscape.camera.y]}
+ report.graphics=graphics_lab.diagnostics(chapters[chapter_number].container)
  report.frame_ms=timing_stats(measured_frames)
  report.wall_frame_ms=timing_stats(real_frame_times)
  report.refresh_hz=DisplayServer.screen_get_refresh_rate()
@@ -942,7 +959,7 @@ func capture():
 
 func _notification(what):
  if what==NOTIFICATION_WM_CLOSE_REQUEST: close_app()
- elif what in [NOTIFICATION_APPLICATION_FOCUS_OUT,NOTIFICATION_APPLICATION_PAUSED] and is_node_ready() and not paused: set_paused(true)
+ elif what in [NOTIFICATION_APPLICATION_FOCUS_OUT,NOTIFICATION_APPLICATION_PAUSED] and is_node_ready() and not paused and capture_path=="": set_paused(true)
  elif what==NOTIFICATION_WM_GO_BACK_REQUEST and is_node_ready(): set_paused(not paused)
 func close_app(code=0):
  if closing: return
@@ -1105,6 +1122,7 @@ func switch_chapter(number):
  landscape.process_mode=Node.PROCESS_MODE_INHERIT
  landscape.set_process(not paused)
  landscape.load_scene(sim)
+ apply_graphics_lab()
  current=world.regions.find(world.active_id)
  watch=false
  tape=[]
@@ -1278,6 +1296,8 @@ func register_dev_tap():
   reset_dev_taps()
 func set_dev_mode(value):
  dev_mode=value
+ if graphics_lab!=null: graphics_lab.set_active(value)
+ apply_graphics_lab()
  if value: load_preview_people()
  if not value:
   if chapter_number==4 or not sampler.profile.has_world(chapter_number): switch_chapter(sampler.profile.last_world if sampler.profile.has_world(sampler.profile.last_world) else 1)
