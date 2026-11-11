@@ -77,7 +77,45 @@ func run():
  check(not view.lab_atmosphere.motion,"Reduced Motion stops the seasonal weather")
  view.reduced_motion=false
  game._unhandled_input(quick)
- check(lab.preset_picker.selected==0,"F9 wraps Frostlight back to Original")
+ check(lab.preset_picker.selected==7 and view.lab_atmosphere.weather==5,"F9 adds Mist after Frostlight")
+ lab.set_override("parallax",false)
+ var mist=view.lab_atmosphere
+ var renders=DisplayServer.get_name()!="headless"
+ var was_processing=view.is_processing()
+ view.set_process(false)
+ await process_frame
+ if renders: await RenderingServer.frame_post_draw
+ var backdrop_draws=mist.scenery_draws
+ var wind_start=mist.wind_time
+ mist.update_sample(mist.previous_clock+.06,view.camera.x,false)
+ await process_frame
+ if renders: await RenderingServer.frame_post_draw
+ check(mist.wind_time>wind_start,"Preset wind advances mist")
+ if renders:
+  check(backdrop_draws>0 and mist.scenery_draws==backdrop_draws,"Moving mist reuses the stationary backdrop drawing")
+ var before_left=mist.wind_time
+ lab.extra_pickers.wind.item_selected.emit(2)
+ check(mist.wind_time==before_left,"Changing wind preserves the current drift position")
+ mist.update_sample(mist.previous_clock+.06,view.camera.x,false)
+ check(mist.wind_time<before_left,"Left wind reverses mist drift")
+ var before_right=mist.wind_time
+ lab.extra_pickers.wind.item_selected.emit(3)
+ mist.update_sample(mist.previous_clock+.06,view.camera.x,false)
+ check(mist.wind_time>before_right,"Right wind reverses mist drift again")
+ lab.extra_pickers.wind.item_selected.emit(1)
+ var calm=mist.wind_time
+ mist.update_sample(mist.previous_clock+.06,view.camera.x,false)
+ check(mist.wind_time==calm,"Calm stops horizontal weather drift")
+ var before_camera=mist.scenery_draws
+ lab.set_override("parallax",true)
+ mist.update_sample(mist.previous_clock+.06,(mist.offset+120.0)/.35,false)
+ await process_frame
+ if renders: await RenderingServer.frame_post_draw
+ if renders: check(mist.scenery_draws>before_camera,"Camera-follow movement refreshes the cached backdrop")
+ view.set_process(was_processing)
+ lab.preset_picker.item_selected.emit(7)
+ game._unhandled_input(quick)
+ check(lab.preset_picker.selected==0,"F9 wraps Mist back to Original")
  lab.preset_picker.item_selected.emit(4)
  lab.extra_pickers.weather.item_selected.emit(2)
  check(view.lab_atmosphere.weather==2 and view.lab_atmosphere.scenery==2,"Weather can change without replacing the backdrop")
@@ -135,6 +173,12 @@ func run():
  legacy.set_value("graphics","preset",5)
  lab.read_options(legacy)
  check(lab.options.preset==lab.CUSTOM,"Version 3 custom options do not silently become Autumn")
+ legacy.set_value("graphics","version",4)
+ legacy.set_value("graphics","preset",7)
+ lab.read_options(legacy)
+ check(lab.options.preset==lab.CUSTOM and lab.options.wind==0,"Version 4 custom options do not silently become Mist")
+ check(lab.validated({"preset":0,"preset_id":"mist"}).preset==7,"Stable preset IDs take precedence over the old index")
+ check(lab.serialized({"preset":7}).preset_id=="mist","Mist serializes with a stable name")
  lab.preset_picker.item_selected.emit(0)
  check(view.tiles.material==original_material and not view.lab_atmosphere.visible,"Original removes both experimental render layers")
  check(view.post.visible and view.wind.visible and container.stretch_shrink==auto,"Original restores post, ambient particles and automatic resolution")
