@@ -1,6 +1,7 @@
 extends VBoxContainer
 ## Dev-only controls. These preferences never enter a campaign save.
 signal changed
+signal photo_requested
 const PRESETS=["Original","Clear","Atmospheric","Illustrated","Nightfall","Autumn","Frostlight","Mist","Dawn","Storm"]
 const CUSTOM=10
 const PRESET_KEYS=["original","clear","atmospheric","illustrated","nightfall","autumn","frostlight","mist","dawn","storm","custom"]
@@ -22,6 +23,7 @@ var strength_labels={}
 var comparing=false
 var compare_with_favorite=false
 var favorite={}
+var photo_button:Button
 var compare_button:Button
 var comparison_picker:OptionButton
 var recall_button:Button
@@ -53,6 +55,10 @@ func setup(parent,font:Font,is_mobile,launch_args):
  preset_picker.set_item_disabled(CUSTOM,true)
  preset_picker.item_selected.connect(func(i):select_preset(i,true))
  detail.add_child(preset_picker)
+ photo_button=Button.new()
+ photo_button.text="Photo mode"
+ photo_button.pressed.connect(func():photo_requested.emit())
+ detail.add_child(photo_button)
  for entry in [["particles","Ambient particles"],["shadows","Decorative shadows"],["post","Vignette and grain"],["atmosphere","Atmospheric accents"]]:
   var control=CheckButton.new()
   control.text=entry[1]

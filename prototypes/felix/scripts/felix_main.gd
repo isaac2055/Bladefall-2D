@@ -42,6 +42,8 @@ static var play_on_ready=false
 var developer_mode=false
 const GraphicsLab=preload("res://scripts/graphics_lab.gd")
 var graphics_lab: GraphicsLab
+const GraphicsPhoto=preload("res://scripts/graphics_photo.gd")
+var graphics_photo:GraphicsPhoto
 var world_container: SubViewportContainer
 var capture_wall_times=[]
 var capture_physics_times=[]
@@ -334,6 +336,7 @@ func build_interface():
  graphics_lab=GraphicsLab.new()
  graphics_lab.setup(column,crayon,mobile,OS.get_cmdline_user_args())
  graphics_lab.changed.connect(apply_graphics_lab)
+ graphics_lab.photo_requested.connect(open_graphics_photo)
  button(column,"Garden and records",func():journal.open(),false)
  button(column,"Controls and remapping",func():controls_menu.open(),false)
  button(column,"Export save",export_portable_save,false)
@@ -459,6 +462,9 @@ func close_app():
  get_tree().quit()
 
 func set_paused(value):
+ if not value and graphics_photo!=null:
+  graphics_photo.close()
+  return
  if value: save_checkpoint()
  paused=value or (front_end!=null and front_end.visible)
  pause_box.visible=value
@@ -478,6 +484,7 @@ func input_hint(value):
  return label+" · "+hints[value][1]
 
 func _unhandled_input(event):
+ if graphics_photo!=null: return
  if graphics_lab!=null and graphics_lab.handle_shortcut(event):
   get_viewport().set_input_as_handled()
   return
@@ -773,6 +780,16 @@ func play_tour():
   for i in range(int(part[0])): script_tape.append(part[1])
  # The recording stops at the overlook's top; walk down the decks to Dad's cabin.
  for i in range(700 if chapter==2 else 240): script_tape.append("l" if chapter==2 else "r")
+
+func open_graphics_photo():
+ if graphics_photo!=null or not paused or not graphics_lab.active or (front_end!=null and front_end.visible) or story.phase not in ["play","ending"]: return
+ if touch_controls!=null: touch_controls.release_all()
+ graphics_photo=GraphicsPhoto.new()
+ add_child(graphics_photo)
+ graphics_photo.closed.connect(func():
+  graphics_photo=null
+  graphics_lab.photo_button.grab_focus())
+ graphics_photo.setup(self,viewport,view,graphics_lab,"Felix")
 
 func apply_graphics_lab():
  if graphics_lab==null: return
