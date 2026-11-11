@@ -70,6 +70,43 @@ func run():
  check(not view.lab_atmosphere.motion and view.lab_atmosphere.visible,"Still freezes the scenery without removing the backdrop")
  lab.extra_pickers.finish.item_selected.emit(0)
  check(view.tiles.material==original_material and view.lab_atmosphere.visible,"Surface and backdrop can be changed independently")
+ lab.preset_picker.item_selected.emit(3)
+ lab.strength_sliders.surface_strength.value=35
+ lab.strength_sliders.backdrop_strength.value=60
+ lab.strength_sliders.weather_strength.value=40
+ lab.extra_pickers.density.item_selected.emit(0)
+ check(is_equal_approx(view.tiles.material.get_shader_parameter("strength"),.35) and is_equal_approx(view.lab_atmosphere.backdrop_strength,.6) and is_equal_approx(view.lab_atmosphere.weather_strength,.4) and view.lab_atmosphere.density==0,"Strength and density controls reach the real render layers")
+ var custom=lab.options.duplicate()
+ var compare=InputEventKey.new()
+ compare.physical_keycode=KEY_F8
+ compare.pressed=true
+ game._unhandled_input(compare)
+ check(lab.comparing and view.tiles.material==original_material and not view.lab_atmosphere.visible and lab.options==custom,"F8 previews Original without discarding custom settings")
+ check(lab.badge.visible and lab.badge.text.contains("Original"),"A/B comparison announces the displayed look")
+ game._unhandled_input(compare)
+ check(not lab.comparing and lab.options==custom and view.lab_atmosphere.visible and is_equal_approx(view.tiles.material.get_shader_parameter("strength"),.35),"F8 restores the exact custom look")
+ var config_path="user://graphics-favorite-qa-%d.cfg"%OS.get_process_id()
+ lab.path=config_path
+ lab.cli_override=false
+ lab.save_favorite()
+ lab.preset_picker.item_selected.emit(0)
+ lab.recall_favorite()
+ check(lab.options==custom and lab.favorite==custom and not lab.recall_button.disabled,"Favorite survives preset changes and restores all strengths")
+ var other=load("res://scripts/graphics_lab.gd").new()
+ other.setup(root,null,false,PackedStringArray())
+ other.path=config_path
+ other.set_active(true)
+ check(other.favorite==custom and other.options==custom,"Developer options and favorite survive a fresh settings instance")
+ other.free()
+ lab.cli_override=true
+ if FileAccess.file_exists(config_path): DirAccess.remove_absolute(ProjectSettings.globalize_path(config_path))
+ lab.strength_sliders.surface_strength.value=0
+ lab.strength_sliders.backdrop_strength.value=0
+ lab.strength_sliders.weather_strength.value=0
+ check(view.tiles.material==original_material and not view.lab_atmosphere.visible,"Zero strength removes experimental rendering work")
+ lab.strength_sliders.backdrop_strength.value=60
+ lab.set_override("parallax",false)
+ check(not view.lab_atmosphere.parallax,"Scenery camera motion can be disabled separately")
  var legacy=ConfigFile.new()
  legacy.set_value("graphics","preset",3)
  legacy.set_value("graphics","particles",false)

@@ -1,6 +1,7 @@
 shader_type canvas_item;
 // Changes only the tile's painted RGB. Alpha, tile geometry, and light masks are untouched.
 uniform int finish = 0;
+uniform float strength : hint_range(0.0,1.0) = 1.0;
 varying vec2 surface_pixel;
 
 void vertex() {
@@ -18,5 +19,5 @@ void fragment() {
   float fleck = step(7.0, mod(p.x * 3.0 - p.y, 9.0));
   mark = 0.08 + fleck * 0.08 - groove * 0.19;
  }
- COLOR.rgb *= 1.0 + mark;
+ COLOR.rgb *= 1.0 + mark * strength;
 }
