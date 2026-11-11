@@ -41,6 +41,9 @@ var ink: CanvasItem
 var ambient: CanvasModulate
 var wind: GPUParticles2D
 var post: ColorRect
+var lab_particles=true
+var lab_post=true
+var lab_atmosphere: Node2D
 var fires = []
 var wall_lamps=[]
 var surfaces = []
@@ -616,7 +619,7 @@ func _process(delta):
  tiles.position = -camera
  occluders.position = -camera
  ambient.color = mood if lit else Color.WHITE
- wind.emitting = not reduced_motion
+ wind.emitting = lab_particles and not reduced_motion
  for item in lights:
   var point = item.point-camera
   var visible_now = Rect2(-70,-60,460,320).has_point(point)
@@ -624,7 +627,7 @@ func _process(delta):
   item.node.position = point-Vector2(0,5)
   item.node.energy = (0.8 if forest else 1.45)+sin(clock*9+item.point.x)*0.04
   item.sparks.position = point-Vector2(0,5)
-  item.sparks.emitting = visible_now and not reduced_motion
+  item.sparks.emitting = lab_particles and visible_now and not reduced_motion
  for part in particles:
   part.life -= delta
   part.p += part.v*delta
@@ -647,12 +650,26 @@ func _process(delta):
  shake = max(0,shake-delta)
  flash = max(0,flash-delta)
  fade = max(0,fade-delta)
- post.material.set_shader_parameter("strength",0.5 if reduced_motion else 1.0)
- post.material.set_shader_parameter("mood_tint",Vector3(mood.r,mood.g,mood.b))
- post.material.set_shader_parameter("pulse",0.0 if reduced_motion else max(death_time*.35,impact_power*.05))
+ if lab_post:
+  post.material.set_shader_parameter("strength",0.5 if reduced_motion else 1.0)
+  post.material.set_shader_parameter("mood_tint",Vector3(mood.r,mood.g,mood.b))
+  post.material.set_shader_parameter("pulse",0.0 if reduced_motion else max(death_time*.35,impact_power*.05))
+ if lab_atmosphere!=null and lab_atmosphere.visible:
+  lab_atmosphere.update_sample(clock,camera.x,reduced_motion)
  queue_redraw()
  front.queue_redraw()
  draw_cpu_us.presentation=Time.get_ticks_usec()-profile_start
+# Also applied by the settings panel while the simulation is paused.
+func refresh_lab_effects():
+ wind.visible=lab_particles
+ wind.emitting=lab_particles and not reduced_motion
+ for item in lights:
+  item.sparks.visible=lab_particles
+  var point=item.point-camera
+  item.sparks.emitting=lab_particles and not reduced_motion and Rect2(-70,-60,460,320).has_point(point) and item.sparks.process_material!=null
+ if lab_atmosphere!=null and lab_atmosphere.visible:
+  lab_atmosphere.update_sample(clock,camera.x,reduced_motion)
+
 func box(x,y,w,h,color): ink.draw_rect(Rect2(x,y,w,h),(Color(color) if color is String else color)*ink_color)
 func line(a,b,color,width=1.0): ink.draw_line(a,b,(Color(color) if color is String else color)*ink_color,width)
 func polygon(points,color): ink.draw_colored_polygon(PackedVector2Array(points),(Color(color) if color is String else color)*ink_color)

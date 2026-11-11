@@ -40,6 +40,12 @@ static var booted=false
 static var show_studio=true
 static var play_on_ready=false
 var developer_mode=false
+const GraphicsLab=preload("res://scripts/graphics_lab.gd")
+var graphics_lab: GraphicsLab
+var world_container: SubViewportContainer
+var capture_wall_times=[]
+var capture_physics_times=[]
+var last_capture_frame_usec=0
 var save_error=""
 var last_autosave_tick=0
 var last_saved_room=""
@@ -98,7 +104,8 @@ func _ready():
  crayon.font_names=PackedStringArray(["Chalkboard SE","Marker Felt","Comic Sans MS","Noteworthy"])
  var args=OS.get_cmdline_user_args()
  if args.has("--chapter"): chapter=int(args[args.find("--chapter")+1])
- developer_mode=developer_mode or Array(args).any(func(arg):return arg in ["--from","--reference","--tour","--script","--capture"])
+ var lab_requested="--dev-graphics" in args or Array(args).any(func(arg):return arg.begins_with("--graphics-preset=") or arg.begins_with("--graphics-scale="))
+ developer_mode=developer_mode or lab_requested or Array(args).any(func(arg):return arg in ["--from","--reference","--tour","--script","--capture"])
  mobile=OS.has_feature("mobile") or DisplayServer.is_touchscreen_available()
  sampler=Run.new(SaveState.directory.path_join("felix-garden.json") if not developer_mode else "user://felix-qa-%d.json"%OS.get_process_id())
  if not booted and not args.has("--chapter") and not developer_mode: chapter=sampler.profile.last_world
@@ -119,6 +126,7 @@ func _ready():
  audio.music.volume_db=-80
  var half_resolution=mobile or chapter in [2,22,102]
  var container=SubViewportContainer.new()
+ world_container=container
  container.position=Vector2(0,48)
  container.size=Vector2(1280,736)
  container.stretch=true
@@ -143,6 +151,8 @@ func _ready():
  chapter_music=ChapterMusic.new()
  chapter_music.setup(audio.music)
  build_interface()
+ graphics_lab.set_active(lab_requested)
+ apply_graphics_lab()
  if not developer_mode:
   if resume_on_ready and restore_checkpoint():
    if chapter>=21: story.start()
@@ -314,12 +324,16 @@ func build_interface():
  motion.toggled.connect(func(value):
   reduced_motion=value
   view.reduced_motion=value
+  apply_graphics_lab()
   settings.set_value("accessibility","reduced_motion",value)
   settings.save("user://felix-settings.cfg"))
  if mobile:
   motion.custom_minimum_size.y=96
   motion.add_theme_font_size_override("font_size",28)
  column.add_child(motion)
+ graphics_lab=GraphicsLab.new()
+ graphics_lab.setup(column,crayon,mobile,OS.get_cmdline_user_args())
+ graphics_lab.changed.connect(apply_graphics_lab)
  button(column,"Garden and records",func():journal.open(),false)
  button(column,"Controls and remapping",func():controls_menu.open(),false)
  button(column,"Export save",export_portable_save,false)
@@ -464,8 +478,11 @@ func input_hint(value):
  return label+" · "+hints[value][1]
 
 func _unhandled_input(event):
+ if graphics_lab!=null and graphics_lab.handle_shortcut(event):
+  get_viewport().set_input_as_handled()
+  return
  if front_end!=null and front_end.visible or controls_menu!=null and controls_menu.visible or journal!=null and journal.visible: return
- if event.is_action_pressed("knight_pause") and (paused or story.phase in ["play","ending"]):
+ if event.is_action_pressed("knight_pause") and (paused or graphics_lab.active or story.phase in ["play","ending"]):
   set_paused(not paused)
   return
  if story.phase=="black" and black_time>1.2 and (event is InputEventKey or event is InputEventJoypadButton or event is InputEventMouseButton or event is InputEventScreenTouch) and event.pressed:
@@ -551,6 +568,7 @@ func _physics_process(_delta):
  if report and ticks%300==0: print("FPS ",Engine.get_frames_per_second()," AT ",world.active_id," p=",Vector2(sim.p.x,sim.p.y)," state=",sim.p.state," deaths=",sim.deaths," tape=",script_frame,"/",script_tape.size()," phase=",story.phase)
  if capture_path!="" and ticks==capture_after: capture.call_deferred()
  if paused: return
+ var capture_start=Time.get_ticks_usec() if capture_path!="" and ticks>30 else 0
  if story.phase=="black" and not script_tape.is_empty() and ticks==40: begin_play()
  if not story.blocking():
   var before=view.before_tick()
@@ -626,8 +644,13 @@ func _physics_process(_delta):
  # Keep immediate saves at progress boundaries; otherwise limit expensive full snapshots.
  var boundary=last_saved_room!=world.active_id or saved_phase!=story.phase or saved_checkpoint!=world.checkpoint_id or saved_deaths!=sim.deaths or saved_milestones!=save_milestones()
  if not developer_mode and ticks>=next_save_retry_tick and (boundary or ticks-last_autosave_tick>=600): save_checkpoint()
+ if capture_start>0: capture_physics_times.append((Time.get_ticks_usec()-capture_start)/1000.0)
 
 func _process(delta):
+ if capture_path!="" and ticks>30 and not paused:
+  var now=Time.get_ticks_usec()
+  if last_capture_frame_usec>0: capture_wall_times.append((now-last_capture_frame_usec)/1000.0)
+  last_capture_frame_usec=now
  black_time+=delta
  # The black opening: a child crying somewhere in a dark room.
  if story.phase=="black":
@@ -751,14 +774,22 @@ func play_tour():
  # The recording stops at the overlook's top; walk down the decks to Dad's cabin.
  for i in range(700 if chapter==2 else 240): script_tape.append("l" if chapter==2 else "r")
 
+func apply_graphics_lab():
+ if graphics_lab==null: return
+ var home=chapter if chapter<21 else (chapter-100 if chapter>=101 else chapter-20)
+ graphics_lab.apply(view,world_container,2 if mobile or chapter in [2,22,102] else 1,home)
+
 func capture():
  for i in range(3): await get_tree().process_frame
  # A window in the background may not have been redrawn lately; draw this frame now.
  _process(0.0)
  view._process(0.0)
  RenderingServer.force_draw(false)
- get_viewport().get_texture().get_image().save_png(capture_path)
- get_tree().quit()
+ var error=get_viewport().get_texture().get_image().save_png(capture_path)
+ var result={"room":world.active_id,"graphics":graphics_lab.diagnostics(world_container),"wall_frame_ms":GraphicsLab.timing_stats(capture_wall_times),"physics_ms":GraphicsLab.timing_stats(capture_physics_times),"draw_calls":Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME),"draw_cpu_us":view.draw_cpu_us}
+ var file=FileAccess.open(capture_path+".json",FileAccess.WRITE)
+ if file!=null: file.store_string(JSON.stringify(result,"  "))
+ get_tree().quit(error)
 
 func export_portable_save():
  save_checkpoint()
