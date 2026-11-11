@@ -8,6 +8,7 @@ var accents=false
 var speed=2
 var weather=0
 var palette=0
+var shaft_strength=0.0
 var wind=0
 var wind_time=0.0
 var scenery_canvas:Node2D
@@ -21,8 +22,8 @@ var previous_clock=-1.0
 var offset=0.0
 var motion=true
 
-func configure(region,backdrop,show_accents,motion_speed,weather_kind,backdrop_gain=1.0,weather_gain=1.0,weather_density=1,camera_motion=true,scenery_palette=0,weather_wind=0):
- var scenery_changed=scenery_canvas==null or style!=region or scenery!=backdrop or backdrop_strength!=backdrop_gain or palette!=scenery_palette
+func configure(region,backdrop,show_accents,motion_speed,weather_kind,backdrop_gain=1.0,weather_gain=1.0,weather_density=1,camera_motion=true,scenery_palette=0,weather_wind=0,shaft_gain=0.0):
+ var scenery_changed=scenery_canvas==null or style!=region or scenery!=backdrop or backdrop_strength!=backdrop_gain or palette!=scenery_palette or shaft_strength!=shaft_gain
  style=region
  scenery=backdrop
  accents=show_accents
@@ -33,16 +34,18 @@ func configure(region,backdrop,show_accents,motion_speed,weather_kind,backdrop_g
  density=weather_density
  parallax=camera_motion
  palette=scenery_palette
+ shaft_strength=shaft_gain
  wind=weather_wind
- if scenery_canvas==null and scenery!=0:
+ if scenery_canvas==null and (scenery!=0 or shaft_strength>0.0):
   scenery_canvas=Node2D.new()
   scenery_canvas.show_behind_parent=true
   scenery_canvas.draw.connect(func():
    scenery_draws+=1
-   draw_scenery(scenery_canvas))
+   if scenery!=0 and backdrop_strength>0.0: draw_scenery(scenery_canvas)
+   if shaft_strength>0.0: draw_shafts(scenery_canvas))
   add_child(scenery_canvas)
  if scenery_canvas!=null:
-  scenery_canvas.visible=scenery!=0 and backdrop_strength>0.0
+  scenery_canvas.visible=(scenery!=0 and backdrop_strength>0.0) or shaft_strength>0.0
   if scenery_changed and scenery_canvas.visible: scenery_canvas.queue_redraw()
  queue_redraw()
 
@@ -106,6 +109,9 @@ func _draw():
 
 func tinted(color):
  if palette==0: return color
+ if palette==3:
+  var rose=color.lerp(Color("#bb7464"),.42)
+  return Color(rose,color.a)
  var scale=Vector3(1.22,.97,.68) if palette==1 else Vector3(.78,1.02,1.22)
  return Color(minf(1.0,color.r*scale.x),minf(1.0,color.g*scale.y),minf(1.0,color.b*scale.z),color.a)
 
@@ -140,6 +146,23 @@ func draw_mist():
   var points=PackedVector2Array([Vector2(x,y+h),Vector2(x+width*.22,y),Vector2(x+width*.72,y-2),Vector2(x+width,y+h),Vector2(x+width*.72,y+h*2),Vector2(x+width*.22,y+h*2)])
   var colors=PackedColorArray([Color(tint,0),Color(tint,strength),Color(tint,strength*.7),Color(tint,0),Color(tint,.04*weather_strength),Color(tint,.04*weather_strength)])
   draw_polygon(points,colors)
+
+func draw_shafts(canvas):
+ # Soft edges on the cached backdrop, behind all playable surfaces and actors.
+ var tint=tinted(Color("#f1cca4"))
+ var shift=floor(fposmod(offset*.08,108.0))
+ for i in range(-1,4):
+  var x=94.0+i*108.0-shift
+  var width=24.0+posmod(i*13,26)
+  var end=x-92.0
+  var opacity=(.11+.025*posmod(i,3))*shaft_strength
+  var top=Vector2(x+width*.5,0)
+  var bottom=Vector2(end+width*.5+16,172)
+  var transparent=Color(tint,0)
+  var bright=Color(tint,opacity)
+  var fade=Color(tint,opacity*.22)
+  canvas.draw_polygon(PackedVector2Array([Vector2(x,0),top,bottom,Vector2(end,172)]),PackedColorArray([transparent,bright,fade,transparent]))
+  canvas.draw_polygon(PackedVector2Array([top,Vector2(x+width,0),Vector2(end+width+35,172),bottom]),PackedColorArray([bright,transparent,transparent,fade]))
 
 func draw_scenery(canvas):
  var night=scenery==2
