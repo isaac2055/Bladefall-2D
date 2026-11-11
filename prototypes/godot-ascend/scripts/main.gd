@@ -931,7 +931,7 @@ func rebuild_section_menu():
 
 func apply_graphics_lab():
  if graphics_lab==null: return
- graphics_lab.apply(landscape,chapters[chapter_number].container,2 if mobile else 1,0)
+ graphics_lab.apply(landscape,chapters[chapter_number].container,2 if mobile else 1,4 if landscape.forest else (5 if landscape.causeway else 0))
 
 func capture():
  if capture_menu: set_paused(true)
