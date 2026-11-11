@@ -9,6 +9,10 @@ var speed=2
 var weather=0
 var palette=0
 var shaft_strength=0.0
+var cloud_strength=0.0
+var cloud_layers:Array[Node2D]=[]
+var cloud_drift=0.0
+const CLOUD_PERIOD=160.0
 var wind=0
 var wind_time=0.0
 var scenery_canvas:Node2D
@@ -22,8 +26,9 @@ var previous_clock=-1.0
 var offset=0.0
 var motion=true
 
-func configure(region,backdrop,show_accents,motion_speed,weather_kind,backdrop_gain=1.0,weather_gain=1.0,weather_density=1,camera_motion=true,scenery_palette=0,weather_wind=0,shaft_gain=0.0):
+func configure(region,backdrop,show_accents,motion_speed,weather_kind,backdrop_gain=1.0,weather_gain=1.0,weather_density=1,camera_motion=true,scenery_palette=0,weather_wind=0,shaft_gain=0.0,cloud_gain=0.0):
  var scenery_changed=scenery_canvas==null or style!=region or scenery!=backdrop or backdrop_strength!=backdrop_gain or palette!=scenery_palette or shaft_strength!=shaft_gain
+ var clouds_changed=cloud_strength!=cloud_gain or palette!=scenery_palette
  style=region
  scenery=backdrop
  accents=show_accents
@@ -35,6 +40,7 @@ func configure(region,backdrop,show_accents,motion_speed,weather_kind,backdrop_g
  parallax=camera_motion
  palette=scenery_palette
  shaft_strength=shaft_gain
+ cloud_strength=cloud_gain
  wind=weather_wind
  if scenery_canvas==null and (scenery!=0 or shaft_strength>0.0):
   scenery_canvas=Node2D.new()
@@ -44,9 +50,20 @@ func configure(region,backdrop,show_accents,motion_speed,weather_kind,backdrop_g
    if scenery!=0 and backdrop_strength>0.0: draw_scenery(scenery_canvas)
    if shaft_strength>0.0: draw_shafts(scenery_canvas))
   add_child(scenery_canvas)
+  move_child(scenery_canvas,0)
  if scenery_canvas!=null:
   scenery_canvas.visible=(scenery!=0 and backdrop_strength>0.0) or shaft_strength>0.0
   if scenery_changed and scenery_canvas.visible: scenery_canvas.queue_redraw()
+ if cloud_strength>0.0 and cloud_layers.is_empty():
+  for layer in range(2):
+   var canvas=Node2D.new()
+   canvas.show_behind_parent=true
+   canvas.draw.connect(draw_cloud_band.bind(canvas,layer))
+   add_child(canvas)
+   cloud_layers.append(canvas)
+ for canvas in cloud_layers:
+  canvas.visible=cloud_strength>0.0
+  if clouds_changed and canvas.visible: canvas.queue_redraw()
  queue_redraw()
 
 func update_sample(world_clock,camera_x,reduced):
@@ -69,6 +86,12 @@ func update_sample(world_clock,camera_x,reduced):
  wind_time=next_wind
  offset=next_offset
  motion=moving
+ if cloud_strength>0.0 and moving:
+  var direction=wind_factor()
+  if weather==1: direction=-direction
+  cloud_drift+=elapsed*rate*direction
+  for layer in range(cloud_layers.size()):
+   cloud_layers[layer].position.x=floor(fposmod(cloud_drift*(5.0+layer*7.0)-offset*(.04+layer*.04),CLOUD_PERIOD))
  if backdrop_changed and scenery_canvas!=null and scenery_canvas.visible: scenery_canvas.queue_redraw()
  if weather_changed and accents and weather_strength>0.0: queue_redraw()
 
@@ -91,6 +114,8 @@ func _draw():
  if not motion: return
  if weather in [3,4]:
   draw_seasonal_weather()
+ elif weather==6:
+  draw_driving_rain()
  elif weather==1:
   for i in range([12,32,48][density]):
    var x=fposmod(i*81.17-wind_time*21.0-offset*.12,320.0)
@@ -106,6 +131,43 @@ func _draw():
     draw_rect(Rect2(at-Vector2(1,0),Vector2(3,1)),Color(mote,pulse*.65))
     draw_rect(Rect2(at-Vector2(0,1),Vector2(1,3)),Color(mote,pulse))
    else: draw_rect(Rect2(at,Vector2(2 if i%5==0 else 1,1)),Color(mote,pulse))
+
+func draw_driving_rain():
+ var tint=tinted(Color("#a6c2e4"))
+ var direction=wind_factor()
+ for layer in range(2):
+  var count=[10,20,30][density]
+  for i in range(count):
+   var x=fposmod(i*79.37+layer*31.0+wind_time*(27.0+layer*26.0)-offset*(.08+layer*.08),320.0)
+   var length=5.0+layer*4.0+i%3
+   var y=fposmod(i*53.27+layer*19.0+age*(60.0+layer*35.0+i%5*4.0),200.0)-length
+   var tip=Vector2(floor(x),floor(y))
+   var tail=tip-Vector2(direction*length*.55,length)
+   draw_line(tail,tip,Color(tint,(.18+layer*.12)*weather_strength),.55+layer*.3)
+
+func draw_cloud_band(canvas:Node2D,layer:int):
+ # Each profile repeats across the viewport. Wind moves the cached draw commands.
+ var tint=tinted(Color("#5f7caa") if layer==0 else Color("#27364f"))
+ var transparent=Color(tint,0)
+ var center=Color(tint,(.45+layer*.16)*cloud_strength)
+ var points=PackedVector2Array()
+ var colors=PackedColorArray()
+ var indices=PackedInt32Array()
+ for i in range(-16,33):
+  var x=i*10.0
+  var angle=TAU*x/CLOUD_PERIOD
+  var profile=sin(angle+layer*1.3)*11.0+sin(angle*2.0-layer)*6.0+cos(angle*3.0)*3.0
+  var y=25.0+layer*33.0+floor(profile)
+  var depth=17.0+layer*12.0+floor(sin(angle*2.0+layer)*5.0)
+  points.append(Vector2(x,y-depth))
+  points.append(Vector2(x,y))
+  points.append(Vector2(x,y+depth))
+  colors.append(transparent)
+  colors.append(center)
+  colors.append(transparent)
+  var a=(i+16)*3
+  if a>0: indices.append_array([a-3,a,a+1,a-3,a+1,a-2,a-2,a+1,a+2,a-2,a+2,a-1])
+ RenderingServer.canvas_item_add_triangle_array(canvas.get_canvas_item(),indices,points,colors)
 
 func tinted(color):
  if palette==0: return color
