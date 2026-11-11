@@ -64,6 +64,34 @@ func run():
  var expected=game.viewport.get_texture().get_image().get_region(photo.crop_rect(full))
  if not require(image.get_size()==half and image.get_data()==expected.get_data(),"PNG matches the source crop pixel for pixel, with no interface"): return
  DirAccess.remove_absolute(path)
+ await photo.toggle_reference()
+ if not require(photo.pinned!=null and photo.reference_label.text.contains("Storm"),"Pin captures the displayed Storm look"): return
+ lab.select_preset(1,true)
+ lab.set_override("scale",2)
+ await process_frame
+ await RenderingServer.frame_post_draw
+ var live=game.viewport.get_texture().get_image()
+ var live_size=live.get_size()
+ var reference=photo.pinned.duplicate()
+ reference.resize(live_size.x,live_size.y,Image.INTERPOLATE_NEAREST)
+ photo.split.value=.35
+ var frame_crop=photo.crop_rect(live_size)
+ var split_at=roundi(frame_crop.size.x*.35)
+ var left=Rect2i(frame_crop.position,Vector2i(split_at,frame_crop.size.y))
+ var right=Rect2i(frame_crop.position+Vector2i(split_at,0),Vector2i(frame_crop.size.x-split_at,frame_crop.size.y))
+ if not require(photo.preview.split_pixel==split_at and Vector2i(photo.preview.reference.get_size())==live_size,"Preview aligns the pinned look after a render-scale change"): return
+ await photo.save_photo()
+ files=DirAccess.get_files_at(photo.photo_folder)
+ if not require(files.size()==1,"Saving a wipe produces one PNG"): return
+ path=photo.photo_folder.path_join(files[0])
+ image=Image.load_from_file(path)
+ var left_area=Rect2i(Vector2i.ZERO,left.size)
+ var right_area=Rect2i(Vector2i(split_at,0),right.size)
+ if not require(image.get_region(left_area).get_data()==reference.get_region(left).get_data() and image.get_region(right_area).get_data()==live.get_region(right).get_data(),"Export uses exact pinned pixels on the left and live pixels on the right"): return
+ if not require(reference.get_region(left).get_data()!=live.get_region(left).get_data(),"Pinned and live looks are visibly different"): return
+ await photo.toggle_reference()
+ if not require(photo.pinned==null and photo.preview.reference==null and not photo.split.editable,"Clearing the pin restores normal single-look capture"): return
+ DirAccess.remove_absolute(path)
  DirAccess.remove_absolute(photo.photo_folder)
  if not require(game.world.active_id==room and game.world.frames==frame and game.world.checkpoint_id==checkpoint and renderer.camera==camera,"Framing and capture preserve room, world frame, camera and checkpoint"): return
  game.set_paused(false)
