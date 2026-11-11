@@ -1,10 +1,18 @@
 extends VBoxContainer
 ## Dev-only controls. These preferences never enter a campaign save.
 signal changed
-const PRESETS=["Original","Clear","Atmospheric"]
+const PRESETS=["Original","Clear","Atmospheric","Illustrated","Nightfall"]
+const CUSTOM=5
+const FINISHES=["Original","Grit","Etched"]
+const SCENERIES=["Original","Illustrated","Nightfall"]
+const MOTIONS=["Still","Gentle","Full"]
+const WEATHER=["Motes","Rain","Glints"]
+const Surface=preload("res://shaders/surface_finish.gdshader")
 const SCALES=["Auto","Full","Half"]
 const Atmosphere=preload("res://scripts/graphics_lab_atmosphere.gd")
-var options={"preset":0,"particles":true,"shadows":true,"post":true,"atmosphere":false,"scale":0}
+const DEFAULTS={"preset":0,"particles":true,"shadows":true,"post":true,"atmosphere":false,"scale":0,"finish":0,"scenery":0,"motion":2,"weather":0}
+var options=DEFAULTS.duplicate()
+var extra_pickers={}
 var active=false
 var enabled_once=false
 var path="user://dev-graphics.cfg"
@@ -27,7 +35,7 @@ func setup(parent,font:Font,is_mobile,launch_args):
  preset_picker=OptionButton.new()
  for title in PRESETS: preset_picker.add_item(title)
  preset_picker.add_item("Custom")
- preset_picker.set_item_disabled(3,true)
+ preset_picker.set_item_disabled(CUSTOM,true)
  preset_picker.item_selected.connect(func(i):select_preset(i,true))
  detail.add_child(preset_picker)
  for entry in [["particles","Ambient particles"],["shadows","Decorative shadows"],["post","Vignette and grain"],["atmosphere","Atmospheric accents"]]:
@@ -40,11 +48,26 @@ func setup(parent,font:Font,is_mobile,launch_args):
  for title in SCALES: scale_picker.add_item("Render scale · "+title)
  scale_picker.item_selected.connect(func(i):set_override("scale",i))
  detail.add_child(scale_picker)
+ var extras=CheckButton.new()
+ extras.text="Surface, scenery and weather"
+ detail.add_child(extras)
+ var extra=VBoxContainer.new()
+ extra.hide()
+ detail.add_child(extra)
+ extras.toggled.connect(func(value):extra.visible=value)
+ for entry in [["finish","Surface",FINISHES],["scenery","Backdrop",SCENERIES],["motion","Scenery motion",MOTIONS],["weather","Weather",WEATHER]]:
+  var picker=OptionButton.new()
+  for title in entry[2]: picker.add_item(entry[1]+" · "+title)
+  if entry[0]=="weather": picker.tooltip_text="Uses the Atmospheric accents switch."
+  if entry[0]=="motion": picker.tooltip_text="Affects only the experimental scenery and weather."
+  picker.item_selected.connect(func(i):set_override(entry[0],i))
+  extra.add_child(picker)
+  extra_pickers[entry[0]]=picker
  var reset=Button.new()
  reset.text="Reset to Original"
  reset.pressed.connect(func():select_preset(0,true))
  detail.add_child(reset)
- for control in [header]+detail.get_children():
+ for control in [header]+detail.get_children().filter(func(node):return node is BaseButton)+extra.get_children():
   if font!=null: control.add_theme_font_override("font",font)
   if is_mobile:
    control.custom_minimum_size.y=56
@@ -63,9 +86,7 @@ func set_active(value):
  if not cli_override:
   var config=ConfigFile.new()
   if config.load(path)==OK:
-   options.preset=clampi(int(config.get_value("graphics","preset",0)),0,3)
-   options.scale=clampi(int(config.get_value("graphics","scale",0)),0,2)
-   for key in switches: options[key]=bool(config.get_value("graphics",key,options[key]))
+   read_options(config)
  for arg in args:
   if arg.begins_with("--graphics-preset="):
    var index=PRESETS.find(arg.get_slice("=",1).capitalize())
@@ -75,30 +96,50 @@ func set_active(value):
    if index>=0: options.scale=index
  sync_controls()
 
+func read_options(config):
+ var index=clampi(int(config.get_value("graphics","preset",0)),0,CUSTOM)
+ # Version 1 used preset slot 3 for Custom. Preserve existing overrides.
+ if int(config.get_value("graphics","version",1))==1 and index==3: index=CUSTOM
+ options.preset=index
+ for key in ["scale","finish","scenery","motion","weather"]:
+  options[key]=clampi(int(config.get_value("graphics",key,DEFAULTS[key])),0,2)
+ for key in switches: options[key]=bool(config.get_value("graphics",key,DEFAULTS[key]))
+
 func handle_shortcut(event):
  if not active or not event is InputEventKey or not event.pressed or event.echo or event.physical_keycode!=KEY_F9: return false
  select_preset((options.preset+1)%PRESETS.size() if options.preset<PRESETS.size() else 0,true)
  return true
 
 func select_preset(index,persist):
+ options=DEFAULTS.duplicate()
  options.preset=index
  options.particles=index!=1
  options.shadows=index!=1
  options.post=index!=1
- options.atmosphere=index==2
- options.scale=0
+ options.atmosphere=index>=2
+ if index==3:
+  options.finish=2
+  options.scenery=1
+  options.motion=1
+  options.weather=2
+ elif index==4:
+  options.finish=1
+  options.scenery=2
+  options.weather=1
+  options.particles=false
  sync_controls()
  if persist: save_and_emit()
 
 func set_override(key,value):
  options[key]=value
- options.preset=3
+ options.preset=CUSTOM
  sync_controls()
  save_and_emit()
 
 func save_and_emit():
  if not cli_override:
   var config=ConfigFile.new()
+  config.set_value("graphics","version",2)
   for key in options: config.set_value("graphics",key,options[key])
   config.save(path)
  changed.emit()
@@ -107,6 +148,7 @@ func sync_controls():
  preset_picker.select(options.preset)
  scale_picker.select(options.scale)
  for key in switches: switches[key].set_pressed_no_signal(options[key])
+ for key in extra_pickers: extra_pickers[key].select(options[key])
 
 func apply(view,container,auto_shrink,style):
  var shrink=auto_shrink
@@ -129,17 +171,31 @@ func apply(view,container,auto_shrink,style):
   elif light.has_meta("lab_original_shadow"):
    light.shadow_enabled=light.get_meta("lab_original_shadow")
    light.remove_meta("lab_original_shadow")
- if active and options.atmosphere:
+ var finish=int(options.finish) if active else 0
+ if finish!=0:
+  if not view.tiles.has_meta("lab_original_material"):
+   # A Dictionary can retain a null material without removing the metadata.
+   view.tiles.set_meta("lab_original_material",{"value":view.tiles.material})
+   var treatment=ShaderMaterial.new()
+   treatment.shader=Surface
+   view.tiles.material=treatment
+  view.tiles.material.set_shader_parameter("finish",finish)
+ elif view.tiles.has_meta("lab_original_material"):
+  view.tiles.material=view.tiles.get_meta("lab_original_material").value
+  view.tiles.remove_meta("lab_original_material")
+ if active and (options.atmosphere or options.scenery!=0):
   if view.lab_atmosphere==null:
    view.lab_atmosphere=Atmosphere.new()
-   view.lab_atmosphere.style=style
    view.add_child(view.lab_atmosphere)
+   if "backdrop" in view and view.backdrop!=null:
+    view.move_child(view.lab_atmosphere,view.backdrop.get_index())
+  view.lab_atmosphere.configure(style,options.scenery,options.atmosphere,options.motion,options.weather)
   view.lab_atmosphere.show()
  elif view.lab_atmosphere!=null: view.lab_atmosphere.hide()
  view.refresh_lab_effects()
 
 func diagnostics(container):
- var result=options.duplicate() if active else {"preset":0,"particles":true,"shadows":true,"post":true,"atmosphere":false,"scale":0}
+ var result=options.duplicate() if active else DEFAULTS.duplicate()
  result.render_shrink=container.stretch_shrink
  return result
 

@@ -1,29 +1,128 @@
 extends Node2D
-## A bounded, purely decorative layer below tiles, actors and UI.
-var style=0 # Bladefall, bedroom, Woods, Causeway
+## Scenery is screen-sized and stays below solid tiles, devices and story actors.
+const HAZE=[Color("#6379a0"),Color("#c69769"),Color("#6e8464"),Color("#738db7"),Color("#6379a0"),Color("#6379a0")]
+const MOTES=[Color("#f2a66c"),Color("#f2ca94"),Color("#b9d57a"),Color("#a5bbdd"),Color("#f2a66c"),Color("#f2a66c")]
+var style=0 # Bladefall, bedroom, Felix Woods, Felix Causeway, Bladefall Woods, Bladefall Causeway
+var scenery=0
+var accents=false
+var speed=2
+var weather=0
 var age=0.0
+var previous_clock=-1.0
 var offset=0.0
 var motion=true
 
+func configure(region,backdrop,show_accents,motion_speed,weather_kind):
+ style=region
+ scenery=backdrop
+ accents=show_accents
+ speed=motion_speed
+ weather=weather_kind
+ queue_redraw()
+
 func update_sample(world_clock,camera_x,reduced):
- var next_age=0.0 if reduced else world_clock
- var next_offset=0.0 if reduced else camera_x
- if next_age==age and next_offset==offset and motion==(not reduced): return
+ var moving=not reduced and speed>0
+ var rate=0.35 if speed==1 else 1.0
+ var elapsed=clampf(world_clock-previous_clock,0.0,0.1) if previous_clock>=0.0 else 0.0
+ previous_clock=world_clock
+ # Changing speed preserves the phase of the weather already in flight.
+ var next_age=age+elapsed*rate if moving and accents else age
+ var next_offset=floor(camera_x*rate) if moving and scenery!=0 else (camera_x*rate if moving else 0.0)
+ if next_age==age and next_offset==offset and motion==moving: return
  age=next_age
  offset=next_offset
- motion=not reduced
+ motion=moving
  queue_redraw()
 
 func _draw():
- var haze=[Color("#6379a0"),Color("#c69769"),Color("#6e8464"),Color("#738db7")][style]
- var mote=[Color("#f2a66c"),Color("#f2ca94"),Color("#b9d57a"),Color("#a5bbdd")][style]
- # Soft background bands; solid tiles and hazards draw over these.
+ if scenery!=0: draw_scenery()
+ if not accents: return
+ var haze=HAZE[style]
+ var mote=MOTES[style]
  for band in range(12):
   var t=(band+1)/12.0
   draw_rect(Rect2(0,100+band*7,320,7),Color(haze,t*t*.13))
  if not motion: return
- for i in range(26 if style!=3 else 16):
-  var x=fposmod(i*127.31+age*(4.0+i%4)-offset*.12,320.0)
-  var y=fposmod(i*41.79-age*(1.0+i%3),177.0)
-  var pulse=.20+.14*sin(i*1.7+age*1.3)
-  draw_rect(Rect2(floor(x),floor(y),2 if i%5==0 else 1,1),Color(mote,pulse))
+ if weather==1:
+  for i in range(32):
+   var x=fposmod(i*81.17-age*21.0-offset*.12,320.0)
+   var y=fposmod(i*51.03+age*(58.0+i%4*5.0),177.0)
+   draw_line(Vector2(floor(x),floor(y)),Vector2(floor(x)-2,floor(y)+6),Color("#9fb8da",.30))
+ else:
+  for i in range(26 if style!=3 else 16):
+   var x=fposmod(i*127.31+age*(4.0+i%4)-offset*.12,320.0)
+   var y=fposmod(i*41.79-age*(1.0+i%3),177.0)
+   var pulse=.20+.14*sin(i*1.7+age*1.3)
+   var at=Vector2(floor(x),floor(y))
+   if weather==2:
+    draw_rect(Rect2(at-Vector2(1,0),Vector2(3,1)),Color(mote,pulse*.65))
+    draw_rect(Rect2(at-Vector2(0,1),Vector2(1,3)),Color(mote,pulse))
+   else: draw_rect(Rect2(at,Vector2(2 if i%5==0 else 1,1)),Color(mote,pulse))
+
+func draw_scenery():
+ var night=scenery==2
+ var upper=Color("#1c2a57",.45) if night else Color(HAZE[style],.31)
+ var lower=Color("#25334d",.7) if night else Color(HAZE[style].darkened(.48),.62)
+ for i in range(9):
+  var fraction=i/8.0
+  draw_rect(Rect2(0,i*21,320,21),upper.lerp(lower,fraction))
+ if style==1:
+  draw_wallpaper(night)
+  return
+ var moon_at=Vector2(249-floor(offset*.018),45)
+ moon_at.x=fposmod(moon_at.x+18,356)-18
+ var moon=Color("#a5bddb",.44) if night else Color("#ead0a0",.48)
+ draw_circle(moon_at,13,Color(moon,.10))
+ draw_circle(moon_at,9,moon)
+ if style in [3,5]:
+  draw_shore(lower)
+ elif style in [2,4]:
+  draw_tree_bands(lower)
+ else:
+  draw_ridges(lower)
+
+func draw_wallpaper(night):
+ var paper=Color("#829bc8",.17) if night else Color("#efd4a4",.20)
+ var shift=floor(fposmod(offset*.08,16))
+ for x in range(-16,336,16):
+  var edge=x-shift
+  draw_rect(Rect2(edge,0,2,152),paper)
+  for y in range(16,151,24):
+   var center=Vector2(edge+8,y)
+   draw_colored_polygon(PackedVector2Array([center+Vector2(0,-3),center+Vector2(3,0),center+Vector2(0,3),center+Vector2(-3,0)]),paper)
+ draw_rect(Rect2(0,147,320,3),Color(paper,.30))
+ draw_rect(Rect2(0,151,320,33),Color("#2d2937",.32))
+
+func draw_tree_bands(base):
+ for layer in range(2):
+  var spacing=29+layer*12
+  var shift=floor(fposmod(offset*(.05+layer*.08),spacing))
+  var tone=Color(base.darkened(layer*.21),.51+layer*.14)
+  for i in range(-1,13):
+   var x=i*spacing-shift
+   var peak=67+layer*25+posmod(i*23,31)
+   draw_rect(Rect2(x-1,peak,3+layer,184-peak),tone)
+   draw_colored_polygon(PackedVector2Array([Vector2(x,peak-24),Vector2(x-13-layer*4,peak+38),Vector2(x+14+layer*4,peak+38)]),tone)
+
+func draw_shore(base):
+ var shore=Color(base.darkened(.3),.58)
+ draw_rect(Rect2(0,122,320,62),shore)
+ for i in range(14):
+  var x=fposmod(i*79.0-offset*.13,320.0)
+  var y=127+posmod(i*19,51)
+  draw_rect(Rect2(floor(x),y,12+i%4*6,1),Color("#9cb3cd",.22))
+ var shift=floor(fposmod(offset*.08,72))
+ for i in range(-1,6):
+  var x=i*72+posmod(i*13,11)-shift
+  var tip=103+posmod(i*19,15)
+  # Rounded-off silhouettes read as distant posts rather than landing ledges.
+  draw_colored_polygon(PackedVector2Array([Vector2(x,tip),Vector2(x+2,tip-3),Vector2(x+4,tip+1),Vector2(x+5,154),Vector2(x-1,154)]),Color(shore.darkened(.24),.46))
+
+func draw_ridges(base):
+ for layer in range(2):
+  var shift=floor(fposmod(offset*(.05+layer*.07),64))
+  var points=PackedVector2Array([Vector2(-64,184)])
+  for i in range(8):
+   points.append(Vector2(i*64-shift-32,100+layer*25+posmod(i*29,34)))
+  points.append(Vector2(416,184))
+  draw_colored_polygon(points,Color(base.darkened(.13+layer*.15),.63))
