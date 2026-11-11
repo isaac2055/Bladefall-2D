@@ -123,7 +123,27 @@ func run():
  check(not view.lab_atmosphere.visible,"Zero shaft strength removes the last experimental layer")
  lab.preset_picker.item_selected.emit(8)
  game._unhandled_input(quick)
- check(lab.preset_picker.selected==0,"F9 wraps Dawn back to Original")
+ var storm=view.lab_atmosphere
+ check(lab.preset_picker.selected==9 and storm.weather==6 and storm.cloud_layers.size()==2 and is_equal_approx(storm.cloud_strength,.85),"F9 selects Storm with cloud cover and driving rain")
+ var wind_phase=storm.cloud_drift
+ storm.update_sample(storm.previous_clock+.08,view.camera.x,false)
+ check(storm.cloud_drift>wind_phase,"Storm clouds drift with the preset wind")
+ wind_phase=storm.cloud_drift
+ lab.set_override("wind",2)
+ storm.update_sample(storm.previous_clock+.08,view.camera.x,false)
+ check(storm.cloud_drift<wind_phase,"Storm clouds reverse with left wind")
+ wind_phase=storm.cloud_drift
+ var positions=storm.cloud_layers.map(func(layer): return layer.position)
+ storm.update_sample(storm.previous_clock+.08,view.camera.x,true)
+ check(storm.cloud_drift==wind_phase and storm.cloud_layers.map(func(layer): return layer.position)==positions and not storm.motion,"Reduced Motion holds Storm clouds still and stops driving rain")
+ lab.set_override("scenery",0)
+ lab.set_override("atmosphere",false)
+ check(storm.visible and storm.cloud_layers[0].visible,"Cloud cover works independently of backdrop and rain")
+ lab.strength_sliders.cloud_strength.value=0
+ check(not storm.visible and not storm.cloud_layers[0].is_visible_in_tree(),"Zero cloud cover hides both cached layers")
+ lab.preset_picker.item_selected.emit(9)
+ game._unhandled_input(quick)
+ check(lab.preset_picker.selected==0,"F9 wraps Storm back to Original")
  lab.preset_picker.item_selected.emit(4)
  lab.extra_pickers.weather.item_selected.emit(2)
  check(view.lab_atmosphere.weather==2 and view.lab_atmosphere.scenery==2,"Weather can change without replacing the backdrop")
@@ -190,6 +210,9 @@ func run():
  legacy.set_value("graphics","scale",2)
  lab.read_options(legacy)
  check(lab.options.preset==lab.CUSTOM and not lab.options.particles and lab.options.scale==2 and lab.options.scenery==0,"Old custom settings migrate without becoming Illustrated")
+ check(lab.validated({"preset":9},6).preset==lab.CUSTOM,"Version 6 Custom does not become Storm")
+ var saved_storm=lab.validated(lab.serialized({"preset":9,"weather":6,"cloud_strength":85}))
+ check(saved_storm.preset==9 and saved_storm.weather==6 and saved_storm.cloud_strength==85,"Storm settings round-trip with a stable name")
  var previous_favorite={"preset":5,"weather":2,"surface_strength":35}
  var migrated=lab.validated(previous_favorite,3)
  check(migrated.preset==lab.CUSTOM and migrated.weather==2 and migrated.surface_strength==35,"Version 3 custom favorites remain Custom after seasonal presets are added")
