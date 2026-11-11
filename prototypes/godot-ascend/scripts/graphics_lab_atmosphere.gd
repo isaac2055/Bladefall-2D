@@ -7,6 +7,7 @@ var scenery=0
 var accents=false
 var speed=2
 var weather=0
+var palette=0
 var backdrop_strength=1.0
 var weather_strength=1.0
 var density=1
@@ -16,7 +17,7 @@ var previous_clock=-1.0
 var offset=0.0
 var motion=true
 
-func configure(region,backdrop,show_accents,motion_speed,weather_kind,backdrop_gain=1.0,weather_gain=1.0,weather_density=1,camera_motion=true):
+func configure(region,backdrop,show_accents,motion_speed,weather_kind,backdrop_gain=1.0,weather_gain=1.0,weather_density=1,camera_motion=true,scenery_palette=0):
  style=region
  scenery=backdrop
  accents=show_accents
@@ -26,6 +27,7 @@ func configure(region,backdrop,show_accents,motion_speed,weather_kind,backdrop_g
  weather_strength=weather_gain
  density=weather_density
  parallax=camera_motion
+ palette=scenery_palette
  queue_redraw()
 
 func update_sample(world_clock,camera_x,reduced):
@@ -49,17 +51,19 @@ func update_sample(world_clock,camera_x,reduced):
 func _draw():
  if scenery!=0 and backdrop_strength>0.0: draw_scenery()
  if not accents or weather_strength<=0.0: return
- var haze=HAZE[style]
- var mote=MOTES[style]
+ var haze=tinted(HAZE[style])
+ var mote=tinted(MOTES[style])
  for band in range(12):
   var t=(band+1)/12.0
   draw_rect(Rect2(0,100+band*7,320,7),Color(haze,t*t*.13*weather_strength))
  if not motion: return
- if weather==1:
+ if weather in [3,4]:
+  draw_seasonal_weather()
+ elif weather==1:
   for i in range([12,32,48][density]):
    var x=fposmod(i*81.17-age*21.0-offset*.12,320.0)
    var y=fposmod(i*51.03+age*(58.0+i%4*5.0),177.0)
-   draw_line(Vector2(floor(x),floor(y)),Vector2(floor(x)-2,floor(y)+6),Color("#9fb8da",.30*weather_strength))
+   draw_line(Vector2(floor(x),floor(y)),Vector2(floor(x)-2,floor(y)+6),Color(tinted(Color("#9fb8da")),.30*weather_strength))
  else:
   for i in range([10,26 if style!=3 else 16,40][density]):
    var x=fposmod(i*127.31+age*(4.0+i%4)-offset*.12,320.0)
@@ -71,10 +75,37 @@ func _draw():
     draw_rect(Rect2(at-Vector2(0,1),Vector2(1,3)),Color(mote,pulse))
    else: draw_rect(Rect2(at,Vector2(2 if i%5==0 else 1,1)),Color(mote,pulse))
 
+func tinted(color):
+ if palette==0: return color
+ var scale=Vector3(1.22,.97,.68) if palette==1 else Vector3(.78,1.02,1.22)
+ return Color(minf(1.0,color.r*scale.x),minf(1.0,color.g*scale.y),minf(1.0,color.b*scale.z),color.a)
+
+func draw_seasonal_weather():
+ var leaves=weather==4
+ var count=[6,12,20][density] if leaves else [12,26,42][density]
+ for i in range(count):
+  var drift=sin(age*(.7+i%3*.1)+i*2.17)
+  var x=fposmod(i*71.31+age*(2.0+i%3)+drift*(7 if leaves else 4)-offset*.10,320.0)
+  var y=fposmod(i*47.23+age*(9.0+i%4*3.0),177.0)
+  var at=Vector2(floor(x),floor(y))
+  if leaves:
+   var color=Color("#c78548") if i%3==0 else (Color("#d9b76a") if i%3==1 else Color("#9a704f"))
+   color.a=(.40+i%3*.10)*weather_strength
+   draw_set_transform(at,drift*.8)
+   draw_colored_polygon(PackedVector2Array([Vector2(-3,0),Vector2(0,-2),Vector2(3,0),Vector2(0,2)]),color)
+   draw_line(Vector2(-2,0),Vector2(2,0),Color("#f1d69d",.30*weather_strength))
+   draw_set_transform(Vector2.ZERO)
+  else:
+   var color=Color("#d2e4ed",(.30+i%3*.12)*weather_strength)
+   draw_rect(Rect2(at,Vector2(2 if i%4==0 else 1,2 if i%4==0 else 1)),color)
+   if i%4==0: draw_rect(Rect2(at-Vector2.ONE,Vector2(4,4)),Color(color,.055*weather_strength))
+
 func draw_scenery():
  var night=scenery==2
- var upper=Color("#1c2a57",.45) if night else Color(HAZE[style],.31)
- var lower=Color("#25334d",.7) if night else Color(HAZE[style].darkened(.48),.62)
+ var upper=Color("#1c2a57",.45) if night else Color(tinted(HAZE[style]),.31)
+ var lower=Color("#25334d",.7) if night else Color(tinted(HAZE[style]).darkened(.48),.62)
+ upper=tinted(upper) if night else upper
+ lower=tinted(lower) if night else lower
  upper.a*=backdrop_strength
  lower.a*=backdrop_strength
  for i in range(9):
@@ -83,12 +114,7 @@ func draw_scenery():
  if style==1:
   draw_wallpaper(night)
   return
- var moon_at=Vector2(249-floor(offset*.018),45)
- moon_at.x=fposmod(moon_at.x+18,356)-18
- var moon=Color("#a5bddb",.44) if night else Color("#ead0a0",.48)
- moon.a*=backdrop_strength
- draw_circle(moon_at,13,Color(moon,.10*backdrop_strength))
- draw_circle(moon_at,9,moon)
+ # Keep the authored sun/moon: another disc can collide with the original sky.
  if style in [3,5]:
   draw_shore(lower)
  elif style in [2,4]:
@@ -98,6 +124,7 @@ func draw_scenery():
 
 func draw_wallpaper(night):
  var paper=Color("#829bc8",.17) if night else Color("#efd4a4",.20)
+ paper=tinted(paper)
  paper.a*=backdrop_strength
  var shift=floor(fposmod(offset*.08,16))
  for x in range(-16,336,16):
@@ -126,7 +153,7 @@ func draw_shore(base):
  for i in range(14):
   var x=fposmod(i*79.0-offset*.13,320.0)
   var y=127+posmod(i*19,51)
-  draw_rect(Rect2(floor(x),y,12+i%4*6,1),Color("#9cb3cd",.22*backdrop_strength))
+  draw_rect(Rect2(floor(x),y,12+i%4*6,1),Color(tinted(Color("#9cb3cd")),.22*backdrop_strength))
  var shift=floor(fposmod(offset*.08,72))
  for i in range(-1,6):
   var x=i*72+posmod(i*13,11)-shift

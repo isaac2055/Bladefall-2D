@@ -18,6 +18,10 @@ void fragment() {
   float groove = step(6.0, mod(p.x + p.y * 2.0, 8.0));
   float fleck = step(7.0, mod(p.x * 3.0 - p.y, 9.0));
   mark = 0.08 + fleck * 0.08 - groove * 0.19;
+ } else if (finish == 3) {
+  float fiber = step(5.0, mod(p.y + floor(p.x / 11.0), 7.0));
+  float seam = step(10.0, mod(p.x, 11.0));
+  mark = fiber * 0.10 - seam * 0.07 - 0.025;
  }
  COLOR.rgb *= 1.0 + mark * strength;
 }
