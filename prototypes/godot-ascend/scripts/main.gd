@@ -14,6 +14,8 @@ var dev_mode=false
 var dev_nodes=[]
 const GraphicsLab=preload("res://scripts/graphics_lab.gd")
 var graphics_lab: GraphicsLab
+const GraphicsPhoto=preload("res://scripts/graphics_photo.gd")
+var graphics_photo:GraphicsPhoto
 var gameplay_settings_nodes=[]
 var hud_nodes=[]
 var title_subtitle_visible=false
@@ -435,6 +437,7 @@ func create_interface():
  graphics_lab.setup(column,null,mobile,OS.get_cmdline_user_args())
  graphics_lab.set_active(dev_mode)
  graphics_lab.changed.connect(apply_graphics_lab)
+ graphics_lab.photo_requested.connect(open_graphics_photo)
  dev_nodes.append(graphics_lab)
  dev_nodes.append(text(column,"Walking · Measured",14,"#a6b7bb"))
  design_picker=OptionButton.new()
@@ -581,6 +584,7 @@ func save_preferences():
 func toggle_fullscreen():
  DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if DisplayServer.window_get_mode()==DisplayServer.WINDOW_MODE_FULLSCREEN else DisplayServer.WINDOW_MODE_FULLSCREEN)
 func _unhandled_input(event):
+ if graphics_photo!=null: return
  if graphics_lab!=null and graphics_lab.handle_shortcut(event):
   get_viewport().set_input_as_handled()
   return
@@ -607,6 +611,9 @@ func _unhandled_input(event):
    sync_mixer()
    save_preferences()
 func set_paused(value):
+ if not value and graphics_photo!=null:
+  graphics_photo.close()
+  return
  if not value and watch and not dev_mode and (sim.exited or tape_frame>=tape.size()): value=true
  if value: maybe_autosave(true)
  if title_screen!=null and title_screen.visible and not value:
@@ -928,6 +935,16 @@ func rebuild_section_menu():
   var label=entry.label if dev_mode else "%02d · %s"%[room_picker.item_count+1,data.world.rooms[entry.index].name]
   room_picker.add_item(mark+label,entry.index)
  select_section_menu()
+
+func open_graphics_photo():
+ if graphics_photo!=null or not paused or not graphics_lab.active or title_screen!=null and title_screen.visible: return
+ if touch_controls!=null: touch_controls.release_all()
+ graphics_photo=GraphicsPhoto.new()
+ add_child(graphics_photo)
+ graphics_photo.closed.connect(func():
+  graphics_photo=null
+  graphics_lab.photo_button.grab_focus())
+ graphics_photo.setup(self,viewport,landscape,graphics_lab,"Bladefall")
 
 func apply_graphics_lab():
  if graphics_lab==null: return
