@@ -3,6 +3,10 @@ import fs from 'node:fs';
 import test from 'node:test';
 import vm from 'node:vm';
 
+await import('../public/bladefall-progression.js');
+await import('../public/bladefall-zones.js');
+const Zones = globalThis.BladefallZones;
+
 const html = fs.readFileSync(new URL('../public/index.html', import.meta.url), 'utf8');
 const finishSource = html.slice(
   html.indexOf('function offerExploreWorldClear('),
@@ -35,10 +39,11 @@ test('The Outskirts exit delivers its original result after the active run chang
   context.offerExploreWorldClear();
   assert.equal(calls.length,0);
 
-  const crossing = {connectorId:'outskirts-black-woods',sourceZoneId:'outskirts',targetZoneId:'black-woods'};
+  const crossing = Zones.planTransition('outskirts-black-woods','outskirts',{});
+  assert.equal(crossing.targetZoneId,'black-woods');
   context.offerExploreWorldClear(true);
   context.offerExploreWorldClear(true,{...crossing,connectorId:'side-exit'});
-  context.offerExploreWorldClear(true,{...crossing,sourceZoneId:'black-woods',targetZoneId:'outskirts'});
+  context.offerExploreWorldClear(true,Zones.planTransition('outskirts-black-woods','black-woods',{}));
   assert.equal(calls.length,0);
   assert.equal(context.G.outskirtsTrial,true);
   context.offerExploreWorldClear(true,crossing);
