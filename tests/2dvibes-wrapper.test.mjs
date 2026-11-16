@@ -11,3 +11,32 @@ test('Only the published challenge slug launches the Outskirts time trial',()=>{
   assert.equal(frame.src,expected);
  }
 });
+
+test('Trial preview sends one bounded result for the matching route and season', () => {
+ const origin = 'https://outskirts-trial.2dvibes.pages.dev';
+ let tick;
+ const run = {id:'1', world:'0', campaign:'base', mode:'explore', season:'playtest-2026-10-v2', ms:61789.4, deaths:2, eligible:false, done:false};
+ const frame = {contentDocument:{}, contentWindow:{BladefallPlaytest:{state:()=>({run})}}};
+ const messages = [];
+ const context = {
+  URL, URLSearchParams, location:{search:'?challenge=outskirts-v1'},
+  document:{referrer:origin+'/',querySelector:()=>frame},
+  parent:{postMessage:(data,target)=>messages.push({data,target})},
+  window:{dvCreateEngagement:()=>({active:()=>false})}, setInterval:fn=>{tick=fn;}
+ };
+ const script = fs.readFileSync(new URL('../public/2dvibes-play.js',import.meta.url),'utf8');
+ vm.runInNewContext(script,context);
+ tick();
+ assert.equal(messages.filter(m=>m.data.type==='2dvibes:trial-result').length,0);
+ run.done = true;
+ tick();
+ tick();
+ const result = messages.filter(m=>m.data.type==='2dvibes:trial-result');
+ assert.equal(result.length,1);
+ assert.deepEqual(JSON.parse(JSON.stringify(result[0])),{
+  target:origin, data:{type:'2dvibes:trial-result',challenge:'outskirts-v1',ms:61789,deaths:2,eligible:false}
+ });
+ Object.assign(run,{id:'2',world:'1'});
+ tick();
+ assert.equal(messages.filter(m=>m.data.type==='2dvibes:trial-result').length,1);
+});
