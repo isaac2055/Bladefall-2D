@@ -40,7 +40,7 @@ function collectHeart(id){
  run.heartIds.push(id);run.hearts=run.heartIds.length;refresh();return true;
 }
 const hasHeart=id=>!!run?.heartIds?.includes(id);
-function refresh(){if(clock){clock.hidden=!run||data.settings.clock!==true;clock.textContent=run?`${M.format(run.ms)} · ${run.deaths} deaths${run.mode==='survival'?` · ♥ ${run.hearts}/${M.world(run.mode,run.world)?.hearts||0}`:''}${run.eligible?'':' · practice'}`:'';}}
+function refresh(){if(clock){clock.hidden=!run||data.settings.clock!==true;clock.textContent=run?`${M.format(run.ms)} · ${run.deaths} ${run.deaths===1?'death':'deaths'}${run.mode==='survival'?` · ♥ ${run.hearts}/${M.world(run.mode,run.world)?.hearts||0}`:''}${run.eligible?'':' · practice'}`:'';}}
 function clockShown(){return data.settings.clock===true;}   /* (7.320) the speedrun timer is off unless turned on */function setClock(v){data.settings.clock=!!v;persist();refresh();}function feedbackEnabled(){return !!data.settings.feedback;}
 /* (7.356) Pure play: no leaderboard or feedback screen after a world (Explore's own setting; Ascend also honours its Pure play option). */
 function pure(){return data.settings.pure===true||!!readJSON('bladefall.pcore.v1')?.options?.pure&&location.pathname.includes('precision');}function setPure(v){data.settings.pure=!!v;persist();}function setFeedback(value){data.settings.feedback=!!value;persist();}
