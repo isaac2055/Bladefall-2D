@@ -35,8 +35,14 @@ test('The Outskirts exit delivers its original result after the active run chang
   context.offerExploreWorldClear();
   assert.equal(calls.length,0);
 
+  const crossing = {connectorId:'outskirts-black-woods',sourceZoneId:'outskirts',targetZoneId:'black-woods'};
   context.offerExploreWorldClear(true);
-  context.offerExploreWorldClear(true);
+  context.offerExploreWorldClear(true,{...crossing,connectorId:'side-exit'});
+  context.offerExploreWorldClear(true,{...crossing,sourceZoneId:'black-woods',targetZoneId:'outskirts'});
+  assert.equal(calls.length,0);
+  assert.equal(context.G.outskirtsTrial,true);
+  context.offerExploreWorldClear(true,crossing);
+  context.offerExploreWorldClear(true,crossing);
   activeRun = {world:'1', done:false, ms:0, deaths:0, eligible:true};
   context.G.stageIndex = 1;
   await Promise.resolve();

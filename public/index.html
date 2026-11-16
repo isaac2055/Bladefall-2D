@@ -2016,13 +2016,15 @@ function recordSessionClear(stageIndex){
   }catch(_e){}
   return false;
 }
-function offerExploreWorldClear(exited=false){
+function offerExploreWorldClear(exited=false, transit=null){
   if(!exited)return; // Acquisitions and boss clears unlock exits; only departure ends a timed world.
   const trial=BladefallPlaytest.state().run;
   if(!G||!trial||trial.done||trial.world!==String(G.stageIndex))return;
   const source=G.stageIndex,world=BladefallPlaytest.model.world('explore',source);
   if(!world)return;
   if(G.outskirtsTrial && source===0){
+    if(transit?.connectorId!=='outskirts-black-woods' ||
+       transit.sourceZoneId!=='outskirts' || transit.targetZoneId!=='black-woods')return;
     G.outskirtsTrial=false;
     // Capture the result before a physical exit replaces the active run.
     void BladefallPlaytest.complete({offer:false}).then(result=>{
@@ -11895,7 +11897,7 @@ const BFZoneStreamer=BFStreamingModule.createStreamer({zones:BFZonesModule,adapt
     // Co-op: both machines must build this region from the same seed and the same world
     // state, because the shared world is synced by object position in the lists.
     if(G.coopSession&&coopActive()&&NET.isHost())NET.stageSeed=BFSimulationModule.createSeed();
-    if(sequential||G.physicalDepartureCommitted)offerExploreWorldClear(true);
+    if(sequential||G.physicalDepartureCommitted)offerExploreWorldClear(true,plan);
     loadStage(prepared.stageIndex);delete G._pendingZoneEndpoint;restorePlayer(carry);
     if(!sequential)BladefallPlaytest.invalidate('entered through a side or return route');
     G.zoneTransition={connectorId:plan.connectorId,from:plan.sourceZoneId,to:plan.targetZoneId,
