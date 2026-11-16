@@ -2023,6 +2023,7 @@ function offerExploreWorldClear(exited=false){
   const source=G.stageIndex,world=BladefallPlaytest.model.world('explore',source);
   if(!world)return;
   if(G.outskirtsTrial && source===0){
+    G.outskirtsTrial=false;
     // Capture the result before a physical exit replaces the active run.
     void BladefallPlaytest.complete({offer:false}).then(result=>{
       if(!result||window.parent===window)return;
@@ -11434,6 +11435,7 @@ function loadStage(i){
   // Leaving the Foundry ends the attempt: the act checkpoint is for retrying THIS fight,
   // not a permanent unlock you can walk back into.
   if(i!==10)colossusActCheckpoint=0;
+  if(i!==0)G.outskirtsTrial=false;
   const s=STAGES[i];G.stageIndex=i;
   if(!window.BLADEFALL_WORKSHOP_PLAY)BladefallPlaytest.start('explore',i,{eligible:!G.playtestResumed&&!G.bossRush&&!G.ngPlus&&!G.usedTestMode&&!coopActive()&&(G.levelSelectMode||!meta.world?.cleared?.includes(BFWorldModule.stageId(i))),reason:G.playtestResumed?'resumed mid-world':'assisted, repeated persistent world, or alternate rules'});
   recordWorldEntry(i);
