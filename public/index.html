@@ -24804,7 +24804,7 @@ function titleScreen(){
   mode='title';showGameUI(false);document.getElementById('bosshpwrap').classList.remove('on');
   const hasRun=!!meta.run,journeyDepth=Math.max(meta.bestStage||0,meta.run&&meta.run.stageIndex||0);
   let lastPlayed={},surviveCheckpoint=null;
-  try{lastPlayed=JSON.parse(localStorage.getItem('bladefall.last-played.v1'))||{};surviveCheckpoint=JSON.parse(localStorage.getItem('bladefall.climb.atlas.v1'))?.checkpoint;}catch{}
+  if(!BF_OUTSKIRTS_TRIAL)try{lastPlayed=JSON.parse(localStorage.getItem('bladefall.last-played.v1'))||{};surviveCheckpoint=JSON.parse(localStorage.getItem('bladefall.climb.atlas.v1'))?.checkpoint;}catch{}
   const hasSurvive=!!(surviveCheckpoint&&Number.isInteger(surviveCheckpoint.world)&&surviveCheckpoint.world>=1&&surviveCheckpoint.world<=40&&typeof surviveCheckpoint.room==='string');
   const continueSurvive=hasSurvive&&(lastPlayed.game==='survive'||!hasRun),canContinue=hasRun||hasSurvive;
   const hasExtraSkin=meta.skinsOwned&&Object.keys(meta.skinsOwned).filter(id=>meta.skinsOwned[id]).length>1;
@@ -26285,10 +26285,10 @@ const WATCH_ACTIONS=Object.fromEntries(Object.entries(WATCH_KEYS).map(([a,k])=>[
 // Which keybinding drives each recorded action (up/interact share the Up arrow, as in play).
 const RECORD_BINDS={left:'left',right:'right',down:'slam',jump:'jump',attack:'attack',dodge:'dash',portal:'portal',flip:'flip',command:'companion',pickup:'pickup',counter:'counter',tool:'tool',hook:'hook',checkpoint:'checkpoint',echo:'echo',swap:'swap'};
 function exploreRoutes(){return window.BladefallExploreRoutes||null;}
-function exploreLocalRoute(stage){try{const r=JSON.parse(localStorage.getItem('bladefall.explore.route.'+stage)||'null');return r&&Array.isArray(r.tape)?r:null;}catch(e){return null;}}
+function exploreLocalRoute(stage){if(BF_OUTSKIRTS_TRIAL)return null;try{const r=JSON.parse(localStorage.getItem('bladefall.explore.route.'+stage)||'null');return r&&Array.isArray(r.tape)?r:null;}catch(e){return null;}}
 function exploreRoute(stage){return exploreLocalRoute(stage)||exploreRoutes()?.stages?.[stage]||null;}
 function exploreLocalRoutes(){const out={};for(let s=0;s<=45;s++){const r=exploreLocalRoute(s);if(r)out[s]=r;}return out;}
-function exploreWatchSpeed(){let s=1;try{s=+localStorage.getItem('bladefall.explore.watchSpeed')||1;}catch(e){}return [1,2,4,8].includes(s)?s:1;}
+function exploreWatchSpeed(){if(BF_OUTSKIRTS_TRIAL)return 1;let s=1;try{s=+localStorage.getItem('bladefall.explore.watchSpeed')||1;}catch(e){}return [1,2,4,8].includes(s)?s:1;}
 // The simulation always sees the view the route was recorded in; drawing gets the window back.
 function withWatchView(fn){
   const view=exploreRoutes()?.view||{w:1440,h:900},saved=[VW,VH,GROUND_Y];
@@ -26307,7 +26307,7 @@ function exploreWatchBanner(){
   if(!W){el?.remove();return;}
   if(!el){el=document.createElement('div');el.id='exploreWatchBanner';el.style.cssText='position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:60;padding:6px 12px;border-radius:6px;background:rgba(10,12,18,.78);color:#f3d79a;font:600 12px system-ui;letter-spacing:.04em;cursor:pointer;';
     // Tap: cycle the speed while watching, or pause a recording (the pause button stops a watch).
-    el.onclick=()=>{const X=exploreWatch;if(!X)return;if(X.record&&X.f>=X.frames.length){exploreRecordPause();return;}const st=[1,2,4,8];X.speed=st[(st.indexOf(X.speed)+1)%4];try{localStorage.setItem('bladefall.explore.watchSpeed',String(X.speed));}catch(e){}exploreWatchBanner();};
+    el.onclick=()=>{const X=exploreWatch;if(!X)return;if(X.record&&X.f>=X.frames.length){exploreRecordPause();return;}const st=[1,2,4,8];X.speed=st[(st.indexOf(X.speed)+1)%4];if(!BF_OUTSKIRTS_TRIAL)try{localStorage.setItem('bladefall.explore.watchSpeed',String(X.speed));}catch(e){}exploreWatchBanner();};
     document.body.append(el);}
   const live=W.record&&W.f>=W.frames.length,name=STAGES[W.stage]?.name||'';
   el.style.color=live?'#ff8f8f':'#f3d79a';
@@ -26349,6 +26349,7 @@ function exploreWatchStop(finished,message){
 }
 // Recording ends: keep the route on this device (it plays at once) — Export in the level select takes it to the game.
 function exploreRecordFinish(end){
+  if(BF_OUTSKIRTS_TRIAL){exploreWatchStop(false,'Route recording is available in the main game.');return;}
   const W=exploreWatch,all=W.frames.slice(0,Math.min(W.f,W.frames.length)).concat(W.rec),tape=[];
   for(const k of all){const last=tape[tape.length-1];if(last&&last[1]===k)last[0]++;else tape.push([1,k]);}
   if(!W.rec.length){exploreWatchStop(false,'Nothing was recorded');return;}
@@ -26383,7 +26384,7 @@ function exploreWatchTick(){
   if(BFKeyboard.isPressed('Escape')||BFPad.isPressed('pause')){BFKeyboard.clearPressed();if(live())exploreRecordPause();else exploreWatchStop(false);return;}
   if(!live()&&(BFKeyboard.isPressed('BracketRight')||BFKeyboard.isPressed('BracketLeft'))){
     const steps=[1,2,4,8],i=steps.indexOf(W.speed)+(BFKeyboard.isPressed('BracketRight')?1:-1);
-    W.speed=steps[Math.max(0,Math.min(3,i))];try{localStorage.setItem('bladefall.explore.watchSpeed',String(W.speed));}catch(e){}
+    W.speed=steps[Math.max(0,Math.min(3,i))];if(!BF_OUTSKIRTS_TRIAL)try{localStorage.setItem('bladefall.explore.watchSpeed',String(W.speed));}catch(e){}
     toast('Watch speed '+W.speed+'×',900);exploreWatchBanner();
   }
   if(!W.record&&BFKeyboard.isPressed('KeyN')){BFKeyboard.clearPressed();exploreWatchNext('skipped');return;}

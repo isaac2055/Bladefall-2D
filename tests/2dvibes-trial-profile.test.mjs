@@ -36,3 +36,29 @@ test('The dedicated trial uses a clean profile, keeps the timer and invalidates 
   await game.sync();
   assert.deepEqual(calls,[]);
 });
+
+test('Trial route tools leave saved recordings and replay preferences alone', () => {
+  const html = fs.readFileSync(new URL('../public/index.html', import.meta.url), 'utf8');
+  const routeReaders = html.slice(html.indexOf('function exploreLocalRoute('), html.indexOf('// The simulation always sees'));
+  const saveRecording = html.slice(html.indexOf('function exploreRecordFinish('), html.indexOf('function exploreRecordPause('));
+  const accesses = [];
+  const messages = [];
+  const context = {
+    BF_OUTSKIRTS_TRIAL: true,
+    localStorage: {
+      getItem(key) { accesses.push(key); return key.endsWith('watchSpeed') ? '4' : '{"tape":[]}'; },
+      setItem(key) { accesses.push(key); }
+    },
+    exploreWatchStop(_, message) { messages.push(message); }
+  };
+  vm.runInNewContext(routeReaders + saveRecording, context);
+  assert.equal(context.exploreLocalRoute(0), null);
+  assert.equal(context.exploreWatchSpeed(), 1);
+  context.exploreRecordFinish('level-end');
+  assert.match(messages[0], /main game/);
+  assert.deepEqual(accesses, []);
+  context.BF_OUTSKIRTS_TRIAL = false;
+  assert(Array.isArray(context.exploreLocalRoute(0).tape));
+  assert.equal(context.exploreWatchSpeed(), 4);
+  assert.equal(accesses.length, 2);
+});
