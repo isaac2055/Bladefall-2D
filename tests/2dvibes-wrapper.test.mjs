@@ -5,38 +5,36 @@ test('Wrapper counts moving clock, completion once, and same-course restarts onl
 
 test('Only the published challenge slug launches the Outskirts time trial',()=>{
  const source=fs.readFileSync(new URL('../public/2dvibes-play.js',import.meta.url),'utf8');
- for(const [search,expected] of [['?challenge=outskirts-v1','/?timeTrial=0'],['?challenge=other','/'],['?timeTrial=7','/']]){
+ for(const [search,expected] of [['?challenge=outskirts-v1','/?dvTrial=outskirts-v1'],['?challenge=other','/'],['?timeTrial=7','/']]){
   const frame={src:'/'},window={};
   vm.runInNewContext(source,{URL,URLSearchParams,location:{search},document:{referrer:'',querySelector:()=>frame},window,parent:window});
   assert.equal(frame.src,expected);
  }
 });
 
-test('Trial preview sends one bounded result for the matching route and season', () => {
+test('Trial preview forwards only a valid finish from its game frame', () => {
  const origin = 'https://outskirts-trial.2dvibes.pages.dev';
- let tick;
- const run = {id:'1', world:'0', campaign:'base', mode:'explore', season:'playtest-2026-10-v2', ms:61789.4, deaths:2, eligible:false, done:false};
- const frame = {contentDocument:{}, contentWindow:{BladefallPlaytest:{state:()=>({run})}}};
+ const gameOrigin = 'https://bladefall2d.pages.dev';
+ let onMessage;
+ const frame = {contentWindow:{}};
  const messages = [];
  const context = {
-  URL, URLSearchParams, location:{search:'?challenge=outskirts-v1'},
+  URL, URLSearchParams, location:{origin:gameOrigin,search:'?challenge=outskirts-v1'},
   document:{referrer:origin+'/',querySelector:()=>frame},
   parent:{postMessage:(data,target)=>messages.push({data,target})},
-  window:{dvCreateEngagement:()=>({active:()=>false})}, setInterval:fn=>{tick=fn;}
+  window:{addEventListener:(_,fn)=>{onMessage=fn;}}, setInterval(){}
  };
  const script = fs.readFileSync(new URL('../public/2dvibes-play.js',import.meta.url),'utf8');
  vm.runInNewContext(script,context);
- tick();
- assert.equal(messages.filter(m=>m.data.type==='2dvibes:trial-result').length,0);
- run.done = true;
- tick();
- tick();
- const result = messages.filter(m=>m.data.type==='2dvibes:trial-result');
- assert.equal(result.length,1);
- assert.deepEqual(JSON.parse(JSON.stringify(result[0])),{
+ const finish = {source:frame.contentWindow,origin:gameOrigin,data:{
+  type:'bladefall:outskirts-result',ms:61789,deaths:2,eligible:false
+ }};
+ onMessage({...finish,source:{}});
+ onMessage({...finish,origin});
+ onMessage({...finish,data:{...finish.data,ms:NaN}});
+ onMessage(finish);
+ const results = messages.filter(m=>m.data.type==='2dvibes:trial-result');
+ assert.deepEqual(JSON.parse(JSON.stringify(results)),[{
   target:origin, data:{type:'2dvibes:trial-result',challenge:'outskirts-v1',ms:61789,deaths:2,eligible:false}
- });
- Object.assign(run,{id:'2',world:'1'});
- tick();
- assert.equal(messages.filter(m=>m.data.type==='2dvibes:trial-result').length,1);
+ }]);
 });

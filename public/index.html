@@ -373,7 +373,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-side-story-world.js?v=7.379.0"></script>
 <script src="bladefall-quest-round2.js?v=7.379.0"></script>
 <script src="bladefall-quest-errands.js?v=7.378.0"></script>
-<script src="bladefall-explore-mounts.js?v=7.379.0"></script>
+<script src="bladefall-explore-mounts.js?v=7.379.0-trial1"></script>
 <script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
@@ -723,6 +723,8 @@ const BFDialogueModule=window.BladefallDialogue;
 if(!BFCore||!BFSimulationModule||!BFRendererModule||!BFPlatformerModule||!BFEnvironmentModule||!BFReactionsModule||!BFInteractionsModule||!BFPortalsModule||!BFRemixModule||!BFFluidsModule||!BFEcologyModule||!BFAIModule||!BFAuthoringModule||!BFCampaignModule||!BFChartersModule||!BFProgressionModule||!BFSecretsModule||!BFCapabilitiesModule||!BFMovementProgressionModule||!BFPortalProgressionModule||!BFWeaponProgressionModule||!BFEquipmentEconomyModule||!BFEchoesModule||!BFAdvancementModule||!BFZonesModule||!BFZoneStateModule||!BFRecoveryModule||!BFStreamingModule||!BFWorldModule||!BFStoryModule||!BFShopsModule||!BFQuestsModule||!BFMilestonesModule||!BFFoundationAuditModule||!BFCinematicsModule||!BFStorageModule||!BFInputModule||!BFContentModule||!BFPresentationModule||!BFMultiplayerModule||!BFAudioModule||!BFCameraModule||!BFReleaseModule||!BFBloodModule||!BFInventoryModule||!BFDialogueModule)throw new Error('Bladefall runtime module failed to load');
 const BFRuntime=BFCore.createRuntime({gameVersion:VERSION,fixedHz:60,metricSamples:180});
 const BF_TAS_ENABLED=typeof location!=='undefined'&&new URLSearchParams(location.search).has('tas');
+const BF_OUTSKIRTS_TRIAL=!BF_TAS_ENABLED&&new URLSearchParams(location.search).get('dvTrial')==='outskirts-v1';
+const BF_OUTSKIRTS_SEED=0x0A775E71;
 const BF_TAS_SEED=0xB1ADEFA1;
 let tasInjected=null,tasPrevious={},tasStepping=false;
 let exploreWatch=null;const watchLike=()=>BF_TAS_ENABLED||!!exploreWatch;   // 7.341: a watched route runs under the TAS rules
@@ -744,7 +746,7 @@ const BFFluidSystem=BFFluidsModule.createFluidSystem({events:BFRuntime.events});
 const BFEcology=BFEcologyModule.createEcologySystem();
 const BFAISystem=BFAIModule.createAI({events:BFRuntime.events});
 const BFAuthoring=BFAuthoringModule.createAuthoring({events:BFRuntime.events});
-const BFSaveStore=BFStorageModule.createJsonStore(()=>window.localStorage);
+const BFSaveStore=BFStorageModule.createJsonStore(()=>BF_OUTSKIRTS_TRIAL?null:window.localStorage);
 const BFContentRegistry=BFContentModule.createRegistry();
 const BFPresentation=BFPresentationModule.createChannel(BFRuntime.events);
 let BFRenderer=null;
@@ -970,7 +972,7 @@ if(!BFEcologyValidation.ok)throw new Error('Bladefall ecology validation failed'
 const SAVE_KEY='bladefall_v2';
 const LEADERBOARD_KEY='bladefall_leaderboards_v1';
 function loadSave(){return BFSaveStore.read(SAVE_KEY,{})||{};}
-function persist(){if(!BF_TAS_ENABLED&&!exploreWatch)BFSaveStore.write(SAVE_KEY,meta);}   // a watch runs on default save data and never saves
+function persist(){if(!BF_OUTSKIRTS_TRIAL&&!BF_TAS_ENABLED&&!exploreWatch)BFSaveStore.write(SAVE_KEY,meta);}   // a watch runs on default save data and never saves
 function loadLeaderboards(){
   const saved=BFSaveStore.read(LEADERBOARD_KEY,{})||{};
   const out=BFMilestonesModule.createArchive(saved);
@@ -2020,6 +2022,16 @@ function offerExploreWorldClear(exited=false){
   if(!G||!trial||trial.done||trial.world!==String(G.stageIndex))return;
   const source=G.stageIndex,world=BladefallPlaytest.model.world('explore',source);
   if(!world)return;
+  if(G.outskirtsTrial && source===0){
+    // Capture the result before a physical exit replaces the active run.
+    void BladefallPlaytest.complete({offer:false}).then(result=>{
+      if(!result||window.parent===window)return;
+      window.parent.postMessage({
+        type:'bladefall:outskirts-result', ms:result.ms, deaths:result.deaths, eligible:result.eligible===true
+      },location.origin);
+    });
+    return;
+  }
   void BladefallPlaytest.complete({feedbackInfo:{mode:'explore',world:String(source),campaign:world.campaign,name:world.name,room:world.id},
     menuLabel:'Continue playing',menu:()=>resumePlay()});
 }
@@ -3736,7 +3748,7 @@ const STORY={
     "The last Warden climbs into the dawn, and rests.",
     "The cycle is broken."]
 };
-function markExplorePlayed(){try{localStorage.setItem('bladefall.last-played.v1',JSON.stringify({game:'explore'}));}catch{}}
+function markExplorePlayed(){if(BF_OUTSKIRTS_TRIAL)return;try{localStorage.setItem('bladefall.last-played.v1',JSON.stringify({game:'explore'}));}catch{}}
 function beginRun(ngPlus,carrySnap,scales,opts){
   BladefallPlaytest.reset();menuSfx('ui-world');
   markExplorePlayed();
@@ -3745,7 +3757,7 @@ function beginRun(ngPlus,carrySnap,scales,opts){
   syncMovementCapabilities(p);syncEchoRuntimeMods(p);
   recomputeArmor(p);
   if(!scales)scales=carrySnap?computeNgScales(p):{hp:1,dmg:1};
-  G={p,stageIndex:0,enemies:[],particles:[],texts:[],pickups:[],projectiles:[],obstacles:[],aoes:[],shadows:[],cam:0,shake:0,
+  G={p,outskirtsTrial:opts?.outskirtsTrial===true,stageIndex:0,enemies:[],particles:[],texts:[],pickups:[],projectiles:[],obstacles:[],aoes:[],shadows:[],cam:0,shake:0,
      ngPlus:ngPlus||0,ngHp:scales.hp,ngDmg:scales.dmg,baseLoadout:snapOf(p),portal:null,stageBanner:0,
      killGoal:0,kills:0,boss:null,time:0,tookDamage:false,combo:0,comboT:0,leverActive:0,
      runStats:{dmg:0,taken:0,kills:0,gold:0,best:null},
@@ -26424,7 +26436,10 @@ function integrationState(){
       renderer:BFRenderer&&BFRenderer.diagnostics(),release:BFReleaseMonitor.diagnostics()}
   };
 }
-if(new URLSearchParams(location.search).has('timeTrial'))setTimeout(()=>{const id=new URLSearchParams(location.search).get('timeTrial'),w=BladefallPlaytest.model.world('explore',id);if(w&&(w.campaign==='base'||BladefallPlaytest.unlocked('explore',id)))beginRun(0,null,{hp:1,dmg:1},{startStage:+id,levelSelect:true});},0);
+if(BF_OUTSKIRTS_TRIAL)setTimeout(()=>beginRun(0,null,{hp:1,dmg:1},{
+  startStage:0,levelSelect:true,outskirtsTrial:true,runSeed:BF_OUTSKIRTS_SEED
+}),0);
+else if(new URLSearchParams(location.search).has('timeTrial'))setTimeout(()=>{const id=new URLSearchParams(location.search).get('timeTrial'),w=BladefallPlaytest.model.world('explore',id);if(w&&(w.campaign==='base'||BladefallPlaytest.unlocked('explore',id)))beginRun(0,null,{hp:1,dmg:1},{startStage:+id,levelSelect:true});},0);
 BladefallPlaytest.setup({startTrial:(which,id)=>{if(which==='survival')location.href='precision.html?pitch=climb&world='+encodeURIComponent(id);else beginRun(0,null,{hp:1,dmg:1},{startStage:+id,levelSelect:true});},canStartTrial:(which,id)=>BladefallPlaytest.model.world(which,id)?.campaign==='base'||BladefallPlaytest.unlocked(which,id),pause:()=>{const before=mode;mode='pause';return ()=>{mode=before;};},clearInput:()=>{for(const k of Object.keys(input))if(typeof input[k]==='boolean')input[k]=false;}});
 function drawWorkshopExplore(ctx,area){
  if(!window.BLADEFALL_WORKSHOP_SOURCE)throw Error('Native editor art requires an isolated source frame.');

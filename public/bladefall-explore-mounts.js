@@ -122,8 +122,9 @@ const mount=()=>ok()?MOUNTS[G.stageIndex]||null:null;
    started from the level select, story or no story, and lift the "Not yet" ability gate, so each one can be
    tried at once. It is kept on this device until five more taps; campaign runs never see it. */
 const TEST_KEY='bladefall.mounts.test';
-let testOn=(()=>{try{return root.localStorage?.getItem(TEST_KEY)==='1';}catch(e){return false;}})();
-function setTestMode(on){testOn=!!on;try{on?root.localStorage.setItem(TEST_KEY,'1'):root.localStorage.removeItem(TEST_KEY);}catch(e){}return testOn;}
+const fixedTrial=new URLSearchParams(root.location?.search||'').get('dvTrial')==='outskirts-v1';
+let testOn=!fixedTrial&&(()=>{try{return root.localStorage?.getItem(TEST_KEY)==='1';}catch(e){return false;}})();
+function setTestMode(on){if(fixedTrial)return false;testOn=!!on;try{on?root.localStorage.setItem(TEST_KEY,'1'):root.localStorage.removeItem(TEST_KEY);}catch(e){}return testOn;}
 const testing=()=>testOn&&ok()&&!!G.levelSelectMode;
 function earned(m){
  if(testing())return true;
