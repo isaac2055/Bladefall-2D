@@ -52,3 +52,16 @@ test('Wrapper transfers launch/fullscreen focus to the nested game, without scro
  document.hidden=true;frameHandlers.load();handlers.focus();
  assert.equal(focusCalls.length,2);assert.equal(windowFocusCalls.length,2);
 });
+
+
+test('Only the embedding allowlisted parent can request keyboard focus',()=>{
+ const listeners={},parent={postMessage(){}},calls=[];
+ const frame={contentWindow:{focus:()=>calls.push('window')},focus:()=>calls.push('frame'),addEventListener(){}};
+ const window={addEventListener:(type,fn)=>(listeners[type]??=[]).push(fn)};
+ const context={URL,URLSearchParams,location:{origin:'https://bladefall2d.pages.dev',search:''},document:{hidden:false,referrer:'https://2dvibes.com/',querySelector:()=>frame},window,parent,setInterval(){}};
+ vm.runInNewContext(fs.readFileSync(new URL('../public/2dvibes-play.js',import.meta.url),'utf8'),context);
+ const send=event=>listeners.message.forEach(fn=>fn(event));
+ const event={source:parent,origin:'https://2dvibes.com',data:{type:'2dvibes:focus'}};
+ send({...event,source:{}});send({...event,origin:'https://other.example'});send({...event,data:{type:'other'}});assert.equal(calls.length,0);
+ send(event);assert.deepEqual(calls,['frame','window']);
+});
