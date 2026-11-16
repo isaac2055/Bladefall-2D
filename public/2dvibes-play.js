@@ -1,7 +1,11 @@
 // The site focuses this wrapper after launch/fullscreen. Pass that focus into
 // the nested game so keyboard input works without an extra canvas click.
 const gameFrame = document.querySelector('#game');
-const focusGame = () => { if (!document.hidden) gameFrame.focus({preventScroll:true}); };
+const focusGame = () => {
+ if (document.hidden) return;
+ gameFrame.focus({preventScroll:true});
+ gameFrame.contentWindow.focus();
+};
 window.addEventListener('focus', focusGame);
 gameFrame.addEventListener('load', focusGame);
 // Only published challenge IDs can select an in-game route.

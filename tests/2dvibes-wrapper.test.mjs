@@ -41,14 +41,14 @@ test('Trial preview forwards only a valid finish from its game frame', () => {
 
 
 test('Wrapper transfers launch/fullscreen focus to the nested game, without scrolling or focusing a hidden tab',()=>{
- const handlers={},frameHandlers={},focusCalls=[];
- const frame={focus:options=>focusCalls.push(options),addEventListener:(type,fn)=>frameHandlers[type]=fn};
+ const handlers={},frameHandlers={},focusCalls=[],windowFocusCalls=[];
+ const frame={contentWindow:{focus:()=>windowFocusCalls.push(true)},focus:options=>focusCalls.push(options),addEventListener:(type,fn)=>frameHandlers[type]=fn};
  const window={addEventListener:(type,fn)=>handlers[type]=fn};
  const document={hidden:false,referrer:'',querySelector:()=>frame};
  vm.runInNewContext(fs.readFileSync(new URL('../public/2dvibes-play.js',import.meta.url),'utf8'),{URL,URLSearchParams,location:{search:''},document,window,parent:window});
  frameHandlers.load();handlers.focus();
- assert.equal(focusCalls.length,2);
+ assert.equal(focusCalls.length,2);assert.equal(windowFocusCalls.length,2);
  assert(focusCalls.every(options=>options.preventScroll===true));
  document.hidden=true;frameHandlers.load();handlers.focus();
- assert.equal(focusCalls.length,2);
+ assert.equal(focusCalls.length,2);assert.equal(windowFocusCalls.length,2);
 });
