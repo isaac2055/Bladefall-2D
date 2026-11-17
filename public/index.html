@@ -57,6 +57,8 @@ html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--bg);co
 .btn.pressed{background:rgba(232,163,61,.55);border-color:#f3c272;transform:scale(.94);}
 .btn svg{width:46%;height:46%;fill:currentColor;}
 #joyzone{position:absolute;left:0;bottom:0;width:46%;height:46%;pointer-events:auto;}
+#gesturezone{display:none;position:absolute;left:42%;right:0;top:0;bottom:0;pointer-events:auto;touch-action:none;}
+@media(pointer:coarse){html.explore-smooth #bJump,html.explore-smooth #bDodge{display:none!important;}html.explore-smooth #joyzone{width:42%;height:100%;}html.explore-smooth #gesturezone{display:block;}html.explore-smooth #bFlag{width:34px;height:34px;font-size:17px;}html.explore-smooth #bAttack{width:58px;height:58px;font-size:12px;}}
 #joy{position:absolute;width:104px;height:104px;border-radius:50%;background:rgba(28,30,38,.35);border:1.5px solid rgba(255,255,255,.12);display:none;pointer-events:none;}
 #joyknob{position:absolute;width:46px;height:46px;border-radius:50%;background:rgba(232,163,61,.5);border:1.5px solid #f3c272;left:29px;top:29px;pointer-events:none;}
 #bAttack{width:96px;height:96px;right:16px;bottom:16px;font-size:16px;background:rgba(232,69,61,.26);border-color:rgba(255,140,134,.45);}
@@ -83,7 +85,7 @@ html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--bg);co
 #bFlag.pressed{background:rgba(228,196,106,.6);}#bFlag.spent{opacity:.42;}#bFlag.off{display:none;}
 #bFlag small{position:absolute;right:3px;bottom:2px;font-size:9px;font-weight:900;}
 /* (7.311) On a touch screen the run clock stands left of the pause button instead of over it. */
-@media (pointer:coarse){#bfTrialClock{right:calc(54px + env(safe-area-inset-right,0px))!important;top:calc(8px + env(safe-area-inset-top,0px))!important}}
+@media (pointer:coarse){#bfTrialClock{right:calc(54px + env(safe-area-inset-right,0px))!important;top:calc(8px + env(safe-area-inset-top,0px))!important}html.explore-smooth #bfTrialClock{right:calc(104px + env(safe-area-inset-right,0px))!important}}
 #fuelTag{font-size:11px;font-weight:800;color:#e8a33d;}
 #flipTag{font-size:11px;font-weight:800;color:#c47bff;}
 #portalTag{font-size:11px;font-weight:800;color:#8fdcff;}
@@ -202,6 +204,7 @@ body.a11y-reduced-motion *,body.a11y-reduced-motion *::before,body.a11y-reduced-
 <button id="pausebtn" class="hide">II</button>
 <div id="controls" class="hide">
   <div id="joyzone"><div id="joy"><div id="joyknob"></div></div></div>
+  <div id="gesturezone" aria-hidden="true"></div>
   <button class="btn" id="bDodge">DODGE</button>
   <button class="btn" id="bJump"><svg viewBox="0 0 24 24"><path d="M12 4l7 8h-4v8h-6v-8H5z"/></svg></button>
   <button class="btn" id="bAttack">SLASH</button>
@@ -389,6 +392,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-storage.js"></script>
 <script src="bladefall-touch-layout.js?v=7.318.0"></script>
 <script src="bladefall-input.js?v=7.304.0"></script>
+<script src="bladefall-explore-touch.js?v=1"></script>
 <script src="bladefall-content.js"></script>
 <script src="bladefall-presentation.js"></script>
 <script src="bladefall-multiplayer.js"></script>
@@ -473,7 +477,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.379.0';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.379.1';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -982,7 +986,7 @@ function loadLeaderboards(){
 }
 function persistLeaderboards(){BFSaveStore.write(LEADERBOARD_KEY,leaderboards);}
 const leaderboards=loadLeaderboards();
-const META_DEFAULTS={saveSchemaVersion:BFReleaseModule.SAVE_SCHEMA_VERSION,ngPlus:0,bestStage:0,actTwoReached:false,soundOn:true,musicVolume:0.4,sfxVolume:0.8,dynamicAudio:true,nightMode:false,soundCaptions:false,voices:true,cameraAssist:true,reducedMotion:false,flashReduction:false,rideGhost:false,screenShake:1,graphicsQuality:'auto',rendererMode:'v4',highContrast:false,largeText:false,colorAssist:false,haptics:true,combatCues:true,totalKills:0,bossKills:0,kingKills:0,tyrantKills:0,magicBossKills:0,rangedBossKills:0,legendaryFound:0,flawlessStages:0,maxLevel:1,lastNgHp:1,lastNgDmg:1,autoAttack:false,autoKeep:false,run:null,world:null,zoneState:null,recovery:null,capabilities:null,weaponTechniques:null,advancement:null,legacyTrainingCredit:null,equipment:null,inventory:null,echoes:null,gifts:null,recollections:null,secrets:null,story:null,shops:null,quests:null,sideStories:null,achievements:{},keybinds:null,coins:{},vaultCleared:false,followerTier:0,linewalkerUnlocked:false,devUnlocked:false,reach:null,gold:0,skin:'warden',skinsOwned:null,bossRushBest:0,bossTypeKills:null,outskirtsFieldChart:false,outskirtsMaraRelocated:false,portalPairProved:false,openingClockMinute:0,flagHintShown:false,upStrikeTaught:false,gateTrials:null,viewScale:'close',viewZoom:1};
+const META_DEFAULTS={saveSchemaVersion:BFReleaseModule.SAVE_SCHEMA_VERSION,ngPlus:0,bestStage:0,actTwoReached:false,soundOn:true,musicVolume:0.4,sfxVolume:0.8,dynamicAudio:true,nightMode:false,soundCaptions:false,voices:true,cameraAssist:true,reducedMotion:false,flashReduction:false,rideGhost:false,screenShake:1,graphicsQuality:'auto',rendererMode:'v4',highContrast:false,largeText:false,colorAssist:false,haptics:true,combatCues:true,totalKills:0,bossKills:0,kingKills:0,tyrantKills:0,magicBossKills:0,rangedBossKills:0,legendaryFound:0,flawlessStages:0,maxLevel:1,lastNgHp:1,lastNgDmg:1,autoAttack:false,autoKeep:false,run:null,world:null,zoneState:null,recovery:null,capabilities:null,weaponTechniques:null,advancement:null,legacyTrainingCredit:null,equipment:null,inventory:null,echoes:null,gifts:null,recollections:null,secrets:null,story:null,shops:null,quests:null,sideStories:null,achievements:{},keybinds:null,coins:{},vaultCleared:false,followerTier:0,linewalkerUnlocked:false,devUnlocked:false,reach:null,gold:0,skin:'warden',skinsOwned:null,bossRushBest:0,bossTypeKills:null,outskirtsFieldChart:false,outskirtsMaraRelocated:false,portalPairProved:false,openingClockMinute:0,flagHintShown:false,upStrikeTaught:false,gateTrials:null,exploreTouchPreset:'smooth',viewScale:'close',viewZoom:1};
 const BFSaveMigration=BFReleaseModule.migrateSave(BF_TAS_ENABLED?null:loadSave(),META_DEFAULTS);
 const meta=Object.assign({},META_DEFAULTS,BFSaveMigration.save);
 const BFWorldMigration=BFWorldModule.migrateProgress(meta.world,meta);
@@ -2608,20 +2612,18 @@ window.addEventListener('keydown',e=>{
   if(yes)yes.click();
 });
 
-/* Virtual joystick */
-(function(){
-  const zone=document.getElementById('joyzone'),joy=document.getElementById('joy'),knob=document.getElementById('joyknob');
-  let pid=null,ox=0,oy=0;const radius=()=>46*(window.BladefallTouchLayout?.resolve('explore','stick',{x:104,y:innerHeight-104,r:52}).r||52)/52;
-  const setKnob=(x,y)=>{knob.style.transform=`translate(${x}px,${y}px)`};
-  zone.addEventListener('pointerdown',e=>{
-    if(pid!==null || e.pointerType==='mouse')return;
-    e.preventDefault();window.BladefallTouchLayout?.fullscreen();pid=e.pointerId;ox=e.clientX;oy=e.clientY;
-    joy.style.display='block';const zr=zone.getBoundingClientRect();const size=radius()/46;joy.style.width=joy.style.height=(104*size)+'px';knob.style.width=knob.style.height=(46*size)+'px';knob.style.left=knob.style.top=(29*size)+'px';joy.style.left=(ox-zr.left-52*size)+'px';joy.style.top=(oy-zr.top-52*size)+'px';setKnob(0,0);zone.setPointerCapture&&zone.setPointerCapture(e.pointerId);});
-  zone.addEventListener('pointermove',e=>{if(e.pointerId!==pid)return;e.preventDefault();let dx=e.clientX-ox,dy=e.clientY-oy;const R=radius(),d=Math.sqrt(dx*dx+dy*dy);if(d>R){dx=dx/d*R;dy=dy/d*R;}setKnob(dx,dy);input.jx=dx/R;input.jz=dy/R;});
-  const rel=e=>{if(e.pointerId!==pid)return;pid=null;joy.style.display='none';input.jx=0;input.jz=0;input.touchUpT=0;input.touchUpUsed=false;setKnob(0,0);};
-  zone.addEventListener('pointerup',rel);zone.addEventListener('pointercancel',rel);zone.addEventListener('lostpointercapture',rel);
-  zone.addEventListener('contextmenu',e=>e.preventDefault());
-})();
+/* Ascend's Smooth interaction model, adapted to Explore's existing abilities. */
+const exploreTouch=BladefallExploreTouch.create({
+ input,zone:document.getElementById('joyzone'),gestureZone:document.getElementById('gesturezone'),
+ joy:document.getElementById('joy'),knob:document.getElementById('joyknob'),
+ preset:()=>meta.exploreTouchPreset,
+ playing:()=>mode==='play'&&!!G&&!document.getElementById('fieldConversation')&&!watchLike()&&!BladefallPlaytest.isOpen()&&!document.querySelector('dialog[open]'),
+ canDash:()=>movementProfile().dash||(meta.testMode&&!G.cartMode),
+ fullscreen:()=>window.BladefallTouchLayout?.fullscreen(),
+ stickLayout:()=>window.BladefallTouchLayout?.resolve('explore','stick',{x:104,y:innerHeight-104,r:52})||{x:104,y:innerHeight-104,r:52},
+ fixedStick:()=>!!window.BladefallTouchLayout?.config('explore').stick,
+ changed:preset=>document.documentElement.classList.toggle('explore-smooth',preset==='smooth')
+});
 
 const EXPLORE_TOUCH_IDS=['bJump','bAttack','bDodge','bPortal','bFlip','bCommand','bTool','bFlag','pausebtn'];
 const exploreTouchOriginal=new Map();
@@ -2632,7 +2634,7 @@ function applyExploreTouchLayout(){const api=window.BladefallTouchLayout;if(!api
  for(const id of [...EXPLORE_TOUCH_IDS,'joyzone']){const el=document.getElementById(id),off=!!api.hidden?.('explore',id==='joyzone'?'stick':id);if(id==='pausebtn'||id==='joyzone')el.style.opacity=off?'0':'';else el.style.visibility=off?'hidden':'';}
  applySafeAreaOffsets();}
 addEventListener('resize',applyExploreTouchLayout);applyExploreTouchLayout();
-function clearExploreTouchInput(){for(const k of Object.keys(input))if(typeof input[k]==='boolean')input[k]=false;input.jx=input.jz=input.touchUpT=0;input.touchUpUsed=false;document.getElementById('joy').style.display='none';if(G?.p)G.p.jumpBuf=G.p.dashBuf=G.p.atkBuf=0;}
+function clearExploreTouchInput(){exploreTouch.releaseAll();for(const k of Object.keys(input))if(typeof input[k]==='boolean')input[k]=false;input.jx=input.jz=input.touchUpT=0;input.touchUpUsed=false;document.getElementById('joy').style.display='none';if(G?.p)G.p.jumpBuf=G.p.dashBuf=G.p.atkBuf=0;}
 function editExploreTouchLayout(){clearExploreTouchInput();window.BladefallTouchLayout?.open({mode:'explore',items:exploreTouchItems,onChange:applyExploreTouchLayout});}
 
 /* Pause button */
@@ -24771,7 +24773,7 @@ function campaignHasProgress(){
    A factory reset (five presses of Reset Controls) still wipes everything. */
 const NEW_GAME_KEEPS=['saveSchemaVersion','soundOn','musicVolume','sfxVolume','dynamicAudio','nightMode','soundCaptions','voices','cameraAssist','reducedMotion',
   'flashReduction','rideGhost','screenShake','graphicsQuality','rendererMode','highContrast','largeText','colorAssist','haptics','combatCues','autoAttack','autoKeep',
-  'keybinds','viewScale','viewZoom','hardcore','achievements','skin','skinsOwned','bossRushBest','totalKills','bossKills','kingKills','tyrantKills','magicBossKills',
+  'keybinds','exploreTouchPreset','viewScale','viewZoom','hardcore','achievements','skin','skinsOwned','bossRushBest','totalKills','bossKills','kingKills','tyrantKills','magicBossKills',
   'rangedBossKills','legendaryFound','flawlessStages','maxLevel','bossTypeKills'];
 function resetCampaignForNewGame(){
   const keep=Object.fromEntries(NEW_GAME_KEEPS.filter(k=>k in meta).map(k=>[k,meta[k]]));
@@ -25112,7 +25114,7 @@ function openSettings(returnTo){
       <label><input type="checkbox" data-setting="haptics" ${meta.haptics?'checked':''}>Haptics<small>supported devices</small></label>
       <label><input type="checkbox" data-setting="autoAttack" ${meta.autoAttack?'checked':''}>Auto attack<small>accessibility assist</small></label>
     </div>
-    <div class="settingsection">Touch Controls</div><button class="bigbtn ghost" id="editExploreTouch">Move / resize touch controls</button><p class="ovsub">Hold the stick up briefly to interact. Aim up-left or up-right while dashing for a diagonal dash.</p><div class="settingsection">Controls</div><p class="ovsub" style="text-align:left;font-size:12px">Controller: stick / D-pad move and aim · A jump · B dash · X attack · Y take item · RB portal · LT tool · RT counter · Menu pause.<br>Hold LB: A gravity flip · B companion · X chainhook · Y echo · RB swap weapon · RT checkpoint. Menus: D-pad, A select, B back.</p>
+    <div class="settingsection">Touch Controls</div><label class="kbrow"><span class="kbname">Touch layout</span><select id="exploreTouchPreset"><option value="smooth" ${meta.exploreTouchPreset!=='buttons'?'selected':''}>Smooth · tap jump, swipe dash</option><option value="buttons" ${meta.exploreTouchPreset==='buttons'?'selected':''}>On-screen buttons</option></select></label><button class="bigbtn ghost" id="editExploreTouch">Move / resize touch controls</button><p class="ovsub">Drag on the left to move; tap to jump; swipe on the right to dash once unlocked. The stick appears under your thumb. Hold the stick up briefly to interact. Other action buttons appear as their abilities unlock.</p><div class="settingsection">Controls</div><p class="ovsub" style="text-align:left;font-size:12px">Controller: stick / D-pad move and aim · A jump · B dash · X attack · Y take item · RB portal · LT tool · RT counter · Menu pause.<br>Hold LB: A gravity flip · B companion · X chainhook · Y echo · RB swap weapon · RT checkpoint. Menus: D-pad, A select, B back.</p>
     <p class="ovsub" style="margin:0 0 6px;text-align:left;">Click a key, then press its replacement</p>
     <div class="kblist">${rows}</div>
     <label class="volrow" style="margin-top:12px;cursor:pointer;justify-content:flex-start;gap:10px;">
@@ -25129,6 +25131,7 @@ function openSettings(returnTo){
     <button class="bigbtn" id="settingsBack">Back</button>
   </div>`);
   document.getElementById('editExploreTouch').onclick=editExploreTouchLayout;
+  document.getElementById('exploreTouchPreset').onchange=e=>{clearExploreTouchInput();meta.exploreTouchPreset=e.target.value;persist();exploreTouch.tick(0);applyExploreTouchLayout();};
   const tmChk=document.getElementById('testModeChk');
   if(tmChk)tmChk.onchange=e=>{meta.testMode=e.target.checked;if(!meta.testMode)revokeTestModeLoaner();persist();hudUpdate();};
   document.querySelectorAll('[data-setting]').forEach(el=>el.onchange=e=>{
@@ -26024,6 +26027,7 @@ function gameUpdate(){
   if(exploreWatch&&!tasStepping){exploreWatchTick();return;}
   if(BF_TAS_ENABLED&&!tasStepping)return;
   const started=performance.now();
+  if(!tasStepping)exploreTouch.tick(BFRuntime.fixedDt);
   pollExploreController();
   if(mode==='play'&&G)BFSimulation.step(simulationInputFrame(),dt=>update(dt));
   else update(BFRuntime.fixedDt);
@@ -26543,7 +26547,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.379.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.379.1').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */
@@ -26574,7 +26578,7 @@ function applySafeAreaOffsets(){
   set('bPortal','right',214);set('bPortal','bottom',60);
   set('bTool','right',290);set('bTool','bottom',130);
   set('pausebtn','top',8);
-  set('bFlag','top',48);set('bFlag','right',12);
+  set('bFlag','top',meta.exploreTouchPreset==='buttons'?48:8);set('bFlag','right',meta.exploreTouchPreset==='buttons'?12:58);
   set('cutSkip','bottom',20);
 }
 applySafeAreaOffsets();

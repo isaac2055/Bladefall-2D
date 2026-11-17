@@ -1,8 +1,9 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v552-explore-quest-playtest';
+const CACHE_NAME = 'bladefall-v553-explore-smooth-touch';
 const CORE_ASSETS = [
+  './bladefall-explore-touch.js?v=1',
   './bladefall-quest-round2-stories.js?v=7.378.0',
   './bladefall-quest-round2.js?v=7.379.0',
   './bladefall-climb-round2.js?v=7.378.0',
