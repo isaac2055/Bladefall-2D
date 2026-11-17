@@ -29,7 +29,7 @@ if (challenge === 'outskirts-v1') {
   });
 }
  const emit=(event,value=0,context)=>parent.postMessage({type:'2dvibes:loader',event,value,...(context?{context}:{})},origin);let ready=false,runId=null,last=0,active=0,finished=false,course=null,inputDocument=null,engagement=null;emit('load_requested');
- function bindInput(){const doc=frame.contentDocument;if(!doc||doc===inputDocument)return;inputDocument=doc;engagement=window.dvCreateEngagement(doc,doc,frame.contentWindow,()=>emit('first_canvas_input'));}
+ function bindInput(){const doc=frame.contentDocument;if(!doc||doc===inputDocument)return;inputDocument=doc;engagement=window.dvCreateEngagement(doc,doc,frame.contentWindow,()=>emit('first_canvas_input'));focusGame();}
  window.dvBindGameInput=bindInput;
  frame.addEventListener('load',bindInput);bindInput();
  const levels=window.dvCreateLevelTracker?.({emit,engaged:()=>!!engagement?.active(),build:()=>String(frame.contentWindow.BLADEFALL_VERSION||'web')});
