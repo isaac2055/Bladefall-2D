@@ -26486,6 +26486,7 @@ window.__BF={telemetryState:gameTelemetryState,get G(){return G;},get mode(){ret
   snap(){if(!G||!G.p)return{};const p=G.p;return{version:VERSION,mode,stage:G.stageIndex,stageName:STAGES[G.stageIndex].name,
     player:{x:Math.round(p.x),z:Math.round(p.z),jy:Math.round(p.jy),hp:Math.round(p.hp),maxHp:effMaxHp(p),lvl:p.level,weapon:p.weapon?p.weapon.name:null,weaponRarity:p.weapon?p.weapon.rarity:null},
     enemies:G.enemies.filter(e=>!e.dead).length,ngPlus:G.ngPlus};}};
+try{if(parent!==window)parent.dvBindGameInput?.();}catch{/* An unrelated embedding origin cannot bind game input. */}
 Object.assign(window.__BF,{tas:BFTAS,
   outskirtsState:()=>G&&G.outskirtsProduction||null,
   blackWoodsState:()=>G&&G.blackWoodsProduction||null,

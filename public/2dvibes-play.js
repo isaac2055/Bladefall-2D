@@ -29,14 +29,16 @@ if (challenge === 'outskirts-v1') {
   });
 }
  const emit=(event,value=0,context)=>parent.postMessage({type:'2dvibes:loader',event,value,...(context?{context}:{})},origin);let ready=false,runId=null,last=0,active=0,finished=false,course=null,inputDocument=null,engagement=null;emit('load_requested');
+ function bindInput(){const doc=frame.contentDocument;if(!doc||doc===inputDocument)return;inputDocument=doc;engagement=window.dvCreateEngagement(doc,doc,frame.contentWindow,()=>emit('first_canvas_input'));}
+ window.dvBindGameInput=bindInput;
+ frame.addEventListener('load',bindInput);bindInput();
  const levels=window.dvCreateLevelTracker?.({emit,engaged:()=>!!engagement?.active(),build:()=>String(frame.contentWindow.BLADEFALL_VERSION||'web')});
  if(levels){window.addEventListener('message',event=>{if(event.source===parent&&event.origin===origin&&event.data?.type==='2dvibes:telemetry-consent')levels?.setConsent(event.data.allow===true);});
  parent.postMessage({type:'2dvibes:telemetry-ready'},origin);
  window.addEventListener('pagehide',()=>levels?.end('exit'));
  document.addEventListener?.('visibilitychange',()=>{if(document.hidden)levels?.flush();});}
  setInterval(()=>{try{
-  const game=frame.contentWindow,run=game.BladefallPlaytest?.state().run;if(!run||!levels)return;
-  if(inputDocument!==frame.contentDocument){inputDocument=frame.contentDocument;engagement=window.dvCreateEngagement(inputDocument,inputDocument,game,()=>emit('first_canvas_input'));}
+  const game=frame.contentWindow;bindInput();const run=game.BladefallPlaytest?.state().run;if(!run||!levels)return;
   if(!ready){ready=true;emit('engine_ready');}
   const native=game.__BF,precision=game.BladefallPrecisionView?.view;
   const level=run.done&&levels.current()?levels.current().level:native?.G?'stage:'+native.G.stageIndex:precision?.g?.room?.id;
