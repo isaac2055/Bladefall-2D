@@ -15,15 +15,16 @@ const edition=launchParams.get('edition');
 if (challenge === 'outskirts-v1') {
   document.querySelector('#game').src = '/?dvTrial=outskirts-v1';
 }else if(edition==='ascend'){
- gameFrame.src='/precision.html?pitch=climb&mode=play';
+ gameFrame.src='/precision.html?pitch=climb&mode=play&home=1';
  document.title='Bladefall · Ascend';
 }else if(edition==='explore'){
  gameFrame.src='/?standalone=explore';
  document.title='Explore';
 }
-(()=>{const frame=document.querySelector('#game');const allowed=new Set(['https://2dvibes.com','https://www.2dvibes.com','https://2dvibes.pages.dev']);let origin;try{origin=new URL(document.referrer).origin;}catch{return;}const trialPreview = challenge === 'outskirts-v1' && origin === 'https://outskirts-trial.2dvibes.pages.dev';
+(()=>{const frame=document.querySelector('#game');const allowed=new Set(['https://2dvibe.com','https://www.2dvibe.com','https://2dvibes.com','https://www.2dvibes.com','https://2dvibes.pages.dev']);let origin;try{origin=new URL(document.referrer).origin;}catch{return;}const trialPreview = challenge === 'outskirts-v1' && origin === 'https://outskirts-trial.2dvibes.pages.dev';
 if(parent===window||(!allowed.has(origin)&&!trialPreview))return;
 window.addEventListener('message', event => {
+ if(event.source===parent&&event.origin===origin&&(event.data?.type==='2dvibes:pause'||event.data?.type==='2dvibes:mobile-view'&&event.data.active===false)){const game=frame.contentWindow;if(game.BladefallPrecisionView?.view?.g)game.BladefallPitchView?.climb?.title?.();else game.bladefallPauseForInterruption?.();}
  if (event.source === parent && event.origin === origin && event.data?.type === '2dvibes:focus') focusGame();
 });
 if (challenge === 'outskirts-v1') {

@@ -68,7 +68,7 @@ test('Only the embedding allowlisted parent can request keyboard focus',()=>{
 
 test('Published edition links open Ascend or standalone Explore directly, and preserve the trial override',()=>{
  const source=fs.readFileSync(new URL('../public/2dvibes-play.js',import.meta.url),'utf8');
- for(const [search,expected] of [['?edition=ascend','/precision.html?pitch=climb&mode=play'],['?edition=explore','/?standalone=explore'],['?edition=ascend&challenge=outskirts-v1','/?dvTrial=outskirts-v1'],['?edition=unknown','/']]){
+ for(const [search,expected] of [['?edition=ascend','/precision.html?pitch=climb&mode=play&home=1'],['?edition=explore','/?standalone=explore'],['?edition=ascend&challenge=outskirts-v1','/?dvTrial=outskirts-v1'],['?edition=unknown','/']]){
   const frame={src:'/',addEventListener(){}},window={addEventListener(){}};
   vm.runInNewContext(source,{URL,URLSearchParams,location:{search},document:{referrer:'',querySelector:()=>frame},window,parent:window});
   assert.equal(frame.src,expected);

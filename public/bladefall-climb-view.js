@@ -105,10 +105,11 @@ PV.start=function(q,api){
   store('bladefall.climb.atlas.v1',st.atlas.snapshot());
  }
  st.review=q.has('review');
+ st.home=q.get('home')==='1';
  root.BladefallClimbSession?.init(st,q);
  const n=+(q.get('world')||q.get('region')||0);
  if(n&&startWorld(n,q.has('room')?+q.get('room'):null))return;
- worldMenu();
+ if(st.home)titleScreen();else worldMenu();
  if(q.has('resume'))document.getElementById('clContinue')?.click();
  if(q.has('coopmenu'))document.getElementById('coPanel')?.scrollIntoView({block:'center'});
 };
@@ -267,6 +268,16 @@ function drawPassageViews(b,g){
   b.restore();
  }
 }
+function continueJourney(){
+ const view=st.view,active=!!view.g&&!!st.world,cp=st.atlas.state.checkpoint;
+ if(active){view.mode='play';view.paused=false;st.api.hideOverlay();st.api.music(true);}
+ else if(cp){const w=CL().world(cp.world);startWorld(cp.world,w.chapter.rooms.findIndex(r=>r.id===cp.room));st.branchVia=cp.via;const g=view.g;if(g.room.def.atlasTransit&&cp.entry){const port=g.room.def.atlasSockets.find(p=>p.edge===cp.entry),x=g.room.def.atlasTerrain?port.plane+(cp.entry==='left'?32:-40):cp.entry==='left'?32:g.room.w-40,y=g.room.def.atlasTerrain?port.floor*8-11:g.room.def.atlasTransit.floor[Math.floor(x/8)]*8-11;st.passageEntry=cp.entry;g.room.spawn={x,y};g.p.x=x;g.p.y=y;for(const q of view.scarf||[]){q.x=x+4;q.y=y+3;}}rememberLocation();}else startWorld(1);
+}
+function titleScreen(){
+ if(!root.BladefallWebTitle){worldMenu();return;}
+ st.view.mode='menu';st.view.paused=true;st.api.music(false);
+ root.BladefallWebTitle.show({api:st.api,canContinue:!!st.view.g||!!st.atlas.state.checkpoint,onContinue:continueJourney,onStart:()=>startWorld(1),onWorlds:atlasMap,onSettings:()=>V().options?.(titleScreen,{fromMenu:true})});
+}
 function worldMenu(select=false){
  if(!st.review){atlasMap();return;}
  const api=st.api,view=st.view;view.mode='menu';api.music(false);
@@ -326,7 +337,8 @@ function atlasMap(){
  document.getElementById('clScores')?.addEventListener('click',()=>root.BladefallPlaytest?.boards('survival'));
  {const b=document.getElementById('clGarden');if(b)b.onclick=()=>root.BladefallClimbRewards?.card(st.api,()=>atlasMap());}
  {const b=document.getElementById('clSettings');if(b)b.onclick=()=>V().options?.(()=>atlasMap(),{fromMenu:!active});}
- document.getElementById('clContinue').onclick=()=>{if(active){view.mode='play';view.paused=false;st.api.hideOverlay();st.api.music(true);}else if(cp){const w=CL().world(cp.world);startWorld(cp.world,w.chapter.rooms.findIndex(r=>r.id===cp.room));st.branchVia=cp.via;const g=view.g;if(g.room.def.atlasTransit&&cp.entry){const port=g.room.def.atlasSockets.find(p=>p.edge===cp.entry),x=g.room.def.atlasTerrain?port.plane+(cp.entry==='left'?32:-40):cp.entry==='left'?32:g.room.w-40,y=g.room.def.atlasTerrain?port.floor*8-11:g.room.def.atlasTransit.floor[Math.floor(x/8)]*8-11;st.passageEntry=cp.entry;g.room.spawn={x,y};g.p.x=x;g.p.y=y;for(const q of view.scarf||[]){q.x=x+4;q.y=y+3;}}rememberLocation();}else startWorld(1);};
+ document.getElementById('clContinue').onclick=continueJourney;
+ if(st.home)document.querySelectorAll('a[href="index.html"]').forEach(a=>a.onclick=e=>{e.preventDefault();titleScreen();});
  if(root.BladefallClimbCoop)root.BladefallClimbCoop.bindMenu();
 }
 PV.menu=function(){if(!st)return BASE.menu();worldMenu();return true;};
@@ -1556,7 +1568,7 @@ function captureTestCheckpoint(){if(!st)return null;return structuredClone({ques
 function restoreTestCheckpoint(context){if(!st||!context)return;Object.assign(st,structuredClone(context));st.deathMark=st.view.g.deaths;st.cam=null;st.slide=null;st.trail=[];st.dispCache.clear();}
 /* (7.376) Forget the rooms drawn for the map and for neighbours (they were built before an edit or publish). */
 function refreshDisplay(){if(!st)return;st.dispCache?.clear();st.frozen?.clear?.();st.portCache=null;}
-PV.climb={refreshDisplay,watchWorlds:(list,label)=>watchWorlds(list,label),watching:()=>st?.watching||null,watchLog:()=>st?.watchLog||[],roadOf:n=>roadOf(CL().world(n)),captureTestCheckpoint,restoreTestCheckpoint,resetCamera:()=>{if(st){st.cam=null;st.view.camRoom=null;}},testCameraBounds:()=>{if(!st?.view.g)return null;const pl=sectionOf(st.view.g),geo=CL().geography;if(geo){const b=geo.bounds;return {x:b.x*8-pl.x,y:b.y*8-pl.y,w:b.w*8,h:b.h*8};}const b=bounds(pl.chain);return {x:b.x0-pl.x,y:b.y0-pl.y,w:b.x1-b.x0,h:b.y1-b.y0};},fracturedOpen:n=>fracturedOpen(n),heartTotals:()=>heartTotals(),skipInfo,skipSection,returnPassage,useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:(n,room=null,fromStart=false)=>startWorld(n,room,fromStart),menu:()=>worldMenu(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
+PV.climb={refreshDisplay,watchWorlds:(list,label)=>watchWorlds(list,label),watching:()=>st?.watching||null,watchLog:()=>st?.watchLog||[],roadOf:n=>roadOf(CL().world(n)),captureTestCheckpoint,restoreTestCheckpoint,resetCamera:()=>{if(st){st.cam=null;st.view.camRoom=null;}},testCameraBounds:()=>{if(!st?.view.g)return null;const pl=sectionOf(st.view.g),geo=CL().geography;if(geo){const b=geo.bounds;return {x:b.x*8-pl.x,y:b.y*8-pl.y,w:b.w*8,h:b.h*8};}const b=bounds(pl.chain);return {x:b.x0-pl.x,y:b.y0-pl.y,w:b.x1-b.x0,h:b.y1-b.y0};},fracturedOpen:n=>fracturedOpen(n),heartTotals:()=>heartTotals(),skipInfo,skipSection,returnPassage,useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:(n,room=null,fromStart=false)=>startWorld(n,room,fromStart),menu:()=>worldMenu(),title:()=>titleScreen(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
 /* (7.375) While an Ascend Together puzzle runs (bladefall-climb-together.js), its shared room is not part of any climb
    world: the climb steps aside and the base view draws, moves the camera and runs the HUD, with the puzzle's own line. */
 for(const k of ['camera','drawWorld','holding','exit','draw','background','track','chapterDone','palette']){const own=PV[k];if(typeof own!=='function')continue;

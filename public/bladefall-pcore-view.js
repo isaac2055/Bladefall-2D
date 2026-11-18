@@ -962,6 +962,7 @@ function togglePause(){
  ${ch.climb&&!view.trial?'<button class="pcBtn ghost" id="pcChapters">World map</button>':''}
  <button class="pcBtn ghost" id="pcCtl">Controls</button><button class="pcBtn ghost" id="pcAssist">Assist &amp; options</button>${view.trial?'<button class="pcBtn ghost" id="pcLeave">Leave the gate (you keep the levels you finished)</button>':!ch.climb?'<button class="pcBtn ghost" id="pcChapters">Chapters</button>':''}
  ${ch.climb?'<a class="pcBtn ghost" href="index.html">Return to title menu</a>':''}</div>`);
+ if(ch.climb&&view.pitch?.home){const homeLink=overlay().querySelector('a[href="index.html"]');if(homeLink)homeLink.onclick=e=>{e.preventDefault();root.BladefallPitchView.climb.title();};}
  document.getElementById('pcResume').onclick=togglePause;
  document.getElementById('pcEditLevel')?.addEventListener('click',()=>root.BladefallWorkshopBridge?.editAscend());
  document.getElementById('pcOriginalLevel')?.addEventListener('click',()=>{root.BladefallWorkshopBridge.useOriginal('ascend');togglePause();});
