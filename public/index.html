@@ -24861,7 +24861,7 @@ function openExploreMenu(){
  // (7.363) The level editor from the menu: it opens on the Outskirts; New / Open lists every original level.
  document.getElementById('exploreLevelEditor')?.addEventListener('click',()=>{beginRun(0,null,{hp:1,dmg:1},{startStage:0,levelSelect:true});setTimeout(()=>window.BladefallWorkshopBridge?.editExplore(),400);});
  document.getElementById('exploreBack').onclick=titleScreen;
- if(new URLSearchParams(location.search).get('standalone')==='explore')document.getElementById('exploreBack').hidden=true;
+ if(new URLSearchParams(location.search).get('standalone')==='explore'){document.getElementById('exploreBack').hidden=true;document.getElementById('exploreBack').style.display='none';}
 }
 /* Extras belong to the offline app and local development builds. */
 function offlineApp(){return location.protocol==='file:'||['appassets.bladefall','localhost','127.0.0.1','[::1]'].includes(location.hostname)||location.hostname.endsWith('.localhost');}
