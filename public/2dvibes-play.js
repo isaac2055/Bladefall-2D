@@ -9,9 +9,17 @@ const focusGame = () => {
 window.addEventListener('focus', focusGame);
 gameFrame.addEventListener('load', focusGame);
 // Only published challenge IDs can select an in-game route.
-const challenge = new URLSearchParams(location.search).get('challenge');
+const launchParams=new URLSearchParams(location.search);
+const challenge=launchParams.get('challenge');
+const edition=launchParams.get('edition');
 if (challenge === 'outskirts-v1') {
   document.querySelector('#game').src = '/?dvTrial=outskirts-v1';
+}else if(edition==='ascend'){
+ gameFrame.src='/precision.html?pitch=climb&mode=play';
+ document.title='Bladefall · Ascend';
+}else if(edition==='explore'){
+ gameFrame.src='/?standalone=explore';
+ document.title='Explore';
 }
 (()=>{const frame=document.querySelector('#game');const allowed=new Set(['https://2dvibes.com','https://www.2dvibes.com','https://2dvibes.pages.dev']);let origin;try{origin=new URL(document.referrer).origin;}catch{return;}const trialPreview = challenge === 'outskirts-v1' && origin === 'https://outskirts-trial.2dvibes.pages.dev';
 if(parent===window||(!allowed.has(origin)&&!trialPreview))return;
